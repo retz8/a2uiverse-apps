@@ -66,6 +66,7 @@ This repo is planned from the platform TODO: `../a2uiverse/_dev/TODO.md` is the 
 
 - **`[apps]` sub-tasks are worked directly on `main` of this repo** — no worktree, no sub-task branch — from a session rooted in `../a2uiverse/` with this repo as an additional working directory.
 - **Specs, plans, and handoffs live in `../a2uiverse/_dev/docs/`.** `_dev/docs/` here holds only repo-local docs (e.g. `tunnel-environment.md`).
+- **Nightly routine.** `a2uiverse-apps nightly producing routine` (Claude cloud Routine, 05:00 KST, Opus) drains `autonomous-ready` issues into labelled PRs per the harness's autonomous contract; triage with `daily-work-harness:review-nightly` from `../a2uiverse/`. Labels are provisioned on the repo.
 - **Commit convention:** conventional commits — `<type>(phase-<N>): …` for phase/sub-task work, bare `<type>: …` off-phase.
 
 ---
