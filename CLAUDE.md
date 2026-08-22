@@ -13,9 +13,13 @@ This file (`CLAUDE.md`) holds only the **operational rules** not covered elsewhe
 
 ### The one rule
 
-> **An app may depend on the app bundle format and the A2UI/A2A protocols. It may never depend on the platform.**
+> **An app may depend on `@a2uiverse/sdk` and the A2UI/A2A protocols. It may never depend on anything else in the platform.**
 
-No import, package, or path into `../a2uiverse/`. An app reaches the platform only by being installed through the bundle and spoken to over A2A.
+No import, package, or path into `../a2uiverse/`; `@a2uiverse/sdk` is consumed as a published package. An app reaches the platform only by being installed through its bundle and spoken to over A2A.
+
+### Layout
+
+One folder per app: `<vendor>/agent/` (the A2A agent, its own project), `<vendor>/<vendor>-catalog/` (catalog schema + React implementation), and the app manifest at the folder root. Catalogs are packages of the root pnpm workspace, run with Turborepo. Vocabulary (catalog / schema / implementation; "adapter" only for the framework layer) is defined in the `a2ui-sdk-design` skill.
 
 ---
 
