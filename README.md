@@ -19,6 +19,11 @@ One folder per app. Each folder is one installable app: its A2A agent, its `<ven
 
 The catalogs share one pnpm workspace with Turborepo over it; each agent is its own project.
 
+```
+pnpm install      # fresh clone
+pnpm verify       # build · typecheck · test · lint · format:check over every catalog
+```
+
 ## Status
 
 In development. The platform design lives in the `a2uiverse` repo's `SPEC.md`.

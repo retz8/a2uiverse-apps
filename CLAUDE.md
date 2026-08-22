@@ -55,6 +55,11 @@ This project targets a single protocol version at a time.
 
 Catalog-authoring and renderer-design conventions live in the `a2ui-sdk-design` skill (read per the top instruction before that work).
 
+### Setup and gates
+
+- **Fresh clone:** `pnpm install` at the root (Node ≥ 22; Corepack resolves the pinned pnpm). Each app's agent is its own project — follow that app's README for its setup (e.g. `uv sync` for a Python agent).
+- **Gates:** `pnpm verify` — `turbo run build typecheck test` over every `*/*-catalog`, then `eslint .` and `prettier --check .`. Agent test suites run per that app's README. Must be green before any commit lands on `main`.
+
 ### Daily-work harness
 
 This repo is planned from the platform TODO: `../a2uiverse/_dev/TODO.md` is the single phase ladder. There is no separate TODO here. Sub-tasks whose code lands in this repo carry an `[apps]` tag there.
