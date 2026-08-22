@@ -53,10 +53,10 @@ Catalog-authoring and renderer-design conventions live in the `a2ui-sdk-design` 
 
 ### Daily-work harness
 
-The dev workflow (phases → sub-tasks, dispatch, branching, wrap-up) lives in the **`daily-work-harness` plugin** — its skills (`daily-work-harness:pick-up-task` / `:wrap-up` / `:rebase-with-main` / `:grill-to-spec`) and the `daily-workflow.md` reference doc they read. Operational rules it relies on:
+This repo is planned from the platform TODO: `../a2uiverse/_dev/TODO.md` is the single phase ladder. There is no separate TODO here. Sub-tasks whose code lands in this repo carry an `[apps]` tag there.
 
-- **`_dev/` lives on `main`.** `_dev/TODO.md` and everything under `_dev/docs/` is edited and committed on `main` only — never on a worktree/sub-task branch. Worktree branches carry implementation code only.
-- **Implementation plans go to `_dev/docs/plan/`** as `task-<N.M>-<short>.md` — `superpowers:writing-plans` must emit there.
+- **`[apps]` sub-tasks are worked directly on `main` of this repo** — no worktree, no sub-task branch — from a session rooted in `../a2uiverse/` with this repo as an additional working directory.
+- **Specs, plans, and handoffs live in `../a2uiverse/_dev/docs/`.** `_dev/docs/` here holds only repo-local docs (e.g. `tunnel-environment.md`).
 - **Commit convention:** conventional commits — `<type>(phase-<N>): …` for phase/sub-task work, bare `<type>: …` off-phase.
 
 ---

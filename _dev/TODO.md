@@ -1,6 +1,3 @@
 # a2uiverse-apps — Dev TODO
 
-## Phase 1 — <title>
-<one-line goal of the phase>
-
-## Backlog
+Planned from `../a2uiverse/_dev/TODO.md`. Sub-tasks whose code lands in this repo carry an `[apps]` tag there.
