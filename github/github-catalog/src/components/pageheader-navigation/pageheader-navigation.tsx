@@ -1,11 +1,17 @@
 import type {ReactNode} from 'react';
+import {useRef} from 'react';
 import {PageHeader as PrimerPageHeader} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
 import {PageHeaderNavigationApi} from './pageheader-navigation.schema.js';
 import {renderChildList} from '../../shared/child-list.js';
+import type {Responsive} from '../../shared/pageheader-root.js';
+import {
+  hiddenAttributes,
+  ownedAttributeNames,
+  usePageHeaderRootAttributes,
+} from '../../shared/pageheader-root.js';
 
-/** A resolved `hidden`: either a scalar boolean or Primer's `{narrow, regular, wide}` map. */
-type Responsive<T> = T | {narrow?: T; regular?: T; wide?: T};
+const OWNED = ['data-has-nav', ...ownedAttributeNames('nav-hidden')];
 
 /** Resolved props: ChildList arrives as built `children`; `aria-*` are plain strings post-binder. */
 type PageHeaderNavigationViewProps = {
@@ -23,15 +29,27 @@ export function PageHeaderNavigationView({
   hidden,
   children,
 }: PageHeaderNavigationViewProps) {
+  const ref = useRef<HTMLDivElement>(null);
+  // Navigation presence and visibility live on the PageHeader root (see shared/pageheader-root).
+  usePageHeaderRootAttributes(
+    ref,
+    OWNED,
+    {'data-has-nav': '', ...hiddenAttributes('nav-hidden', hidden)},
+    [hidden],
+  );
+  // Primer's Navigation forwards no ref; a contents-only anchor locates the root without
+  // disturbing the header grid (the Navigation stays the grid item).
   return (
-    <PrimerPageHeader.Navigation
-      as={as}
-      aria-label={ariaLabel}
-      aria-labelledby={ariaLabelledby}
-      hidden={hidden}
-    >
-      {children}
-    </PrimerPageHeader.Navigation>
+    <div ref={ref} style={{display: 'contents'}}>
+      <PrimerPageHeader.Navigation
+        as={as}
+        aria-label={ariaLabel}
+        aria-labelledby={ariaLabelledby}
+        hidden={hidden}
+      >
+        {children}
+      </PrimerPageHeader.Navigation>
+    </div>
   );
 }
 
