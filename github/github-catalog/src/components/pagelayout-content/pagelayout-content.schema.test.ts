@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {PageLayoutContentApi} from './pagelayout-content.schema';
+import {PageLayoutContentApi} from './pagelayout-content.schema.js';
 
 describe('PageLayoutContentApi.schema', () => {
   it('accepts an empty content region (all props optional)', () => {

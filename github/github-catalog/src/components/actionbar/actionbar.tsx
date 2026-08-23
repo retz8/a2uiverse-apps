@@ -1,8 +1,8 @@
 import type {ReactNode} from 'react';
 import {ActionBar as PrimerActionBar} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {ActionBarApi} from './actionbar.schema';
-import {renderChildList} from '../../shared/child-list';
+import {ActionBarApi} from './actionbar.schema.js';
+import {renderChildList} from '../../shared/child-list.js';
 
 /** Resolved accessibility: the nested DynamicString is a plain string after the binder resolves it. */
 type ResolvedAccessibility = {label?: string; description?: string};

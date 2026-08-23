@@ -1,8 +1,8 @@
 import type {ReactNode} from 'react';
 import {PageHeader as PrimerPageHeader} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {PageHeaderBreadcrumbsApi} from './pageheader-breadcrumbs.schema';
-import {renderChildList} from '../../shared/child-list';
+import {PageHeaderBreadcrumbsApi} from './pageheader-breadcrumbs.schema.js';
+import {renderChildList} from '../../shared/child-list.js';
 
 /** A resolved `hidden`: either a scalar boolean or Primer's `{narrow, regular, wide}` map. */
 type Responsive<T> = T | {narrow?: T; regular?: T; wide?: T};

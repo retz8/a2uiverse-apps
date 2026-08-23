@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {RadioApi} from './radio.schema';
+import {RadioApi} from './radio.schema.js';
 
 const action = {event: {name: 'select'}};
 

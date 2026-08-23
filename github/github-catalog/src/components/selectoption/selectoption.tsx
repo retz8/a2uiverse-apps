@@ -1,6 +1,6 @@
 import {Select as PrimerSelect} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {SelectOptionApi} from './selectoption.schema';
+import {SelectOptionApi} from './selectoption.schema.js';
 
 /**
  * Resolved props: `text`/`value` are plain strings after the binder resolves their DynamicStrings;

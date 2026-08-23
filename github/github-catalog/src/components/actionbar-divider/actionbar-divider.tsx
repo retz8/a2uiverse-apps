@@ -1,6 +1,6 @@
 import {ActionBar as PrimerActionBar} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {ActionBarDividerApi} from './actionbar-divider.schema';
+import {ActionBarDividerApi} from './actionbar-divider.schema.js';
 
 /** Zero-prop view: a thin `aria-hidden` vertical separator provided by Primer. */
 export function ActionBarDividerView() {

@@ -1,3 +1,3 @@
-export {ProgressBarComponent} from './progressbar';
-export {ProgressBarApi} from './progressbar.schema';
-export type {ProgressBarProps} from './progressbar.schema';
+export {ProgressBarComponent} from './progressbar.js';
+export {ProgressBarApi} from './progressbar.schema.js';
+export type {ProgressBarProps} from './progressbar.schema.js';

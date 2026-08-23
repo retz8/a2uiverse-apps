@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {ActionListGroupApi} from './actionlist-group.schema';
+import {ActionListGroupApi} from './actionlist-group.schema.js';
 
 describe('ActionListGroupApi.schema', () => {
   it('accepts a minimal valid Group (every prop optional)', () => {

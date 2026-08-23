@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {PageHeaderNavigationApi} from './pageheader-navigation.schema';
+import {PageHeaderNavigationApi} from './pageheader-navigation.schema.js';
 
 describe('PageHeaderNavigationApi.schema', () => {
   it('accepts a minimal valid Navigation (every prop optional)', () => {

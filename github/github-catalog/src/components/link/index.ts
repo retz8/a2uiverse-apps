@@ -1,3 +1,3 @@
-export {LinkComponent} from './link';
-export {LinkApi} from './link.schema';
-export type {LinkProps} from './link.schema';
+export {LinkComponent} from './link.js';
+export {LinkApi} from './link.schema.js';
+export type {LinkProps} from './link.schema.js';

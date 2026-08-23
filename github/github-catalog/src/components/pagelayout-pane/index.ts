@@ -1,3 +1,3 @@
-export {PageLayoutPaneComponent} from './pagelayout-pane';
-export {PageLayoutPaneApi} from './pagelayout-pane.schema';
-export type {PageLayoutPaneProps} from './pagelayout-pane.schema';
+export {PageLayoutPaneComponent} from './pagelayout-pane.js';
+export {PageLayoutPaneApi} from './pagelayout-pane.schema.js';
+export type {PageLayoutPaneProps} from './pagelayout-pane.schema.js';

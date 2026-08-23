@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {SegmentedControlIconButtonApi} from './segmentedcontroliconbutton.schema';
+import {SegmentedControlIconButtonApi} from './segmentedcontroliconbutton.schema.js';
 
 describe('SegmentedControlIconButtonApi.schema', () => {
   it('accepts a minimal valid icon segment (icon + accessibility)', () => {

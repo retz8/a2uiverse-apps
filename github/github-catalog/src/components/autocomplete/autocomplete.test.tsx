@@ -2,7 +2,7 @@ import {describe, it, expect, afterEach} from 'vitest';
 import {render, screen, cleanup} from '@testing-library/react';
 import {ThemeProvider, BaseStyles} from '@primer/react';
 import type {ReactElement} from 'react';
-import {AutocompleteView} from './autocomplete';
+import {AutocompleteView} from './autocomplete.js';
 
 afterEach(cleanup);
 

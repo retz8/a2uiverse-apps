@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {SplitPageLayoutContentApi} from './split-page-layout-content.schema';
+import {SplitPageLayoutContentApi} from './split-page-layout-content.schema.js';
 
 describe('SplitPageLayoutContentApi.schema', () => {
   it('accepts a minimal valid Content (no props — all optional)', () => {

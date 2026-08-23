@@ -1,7 +1,7 @@
 import type {ElementType, ReactNode} from 'react';
 import {IconButton as PrimerIconButton} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {IconButtonApi} from './iconbutton.schema';
+import {IconButtonApi} from './iconbutton.schema.js';
 
 /** Resolved accessibility: nested DynamicStrings are plain strings after the binder resolves them. */
 type ResolvedAccessibility = {label?: string; description?: string};

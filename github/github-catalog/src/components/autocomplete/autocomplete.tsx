@@ -1,8 +1,8 @@
 import type {ReactNode} from 'react';
 import {Autocomplete as PrimerAutocomplete} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {AutocompleteApi} from './autocomplete.schema';
-import {renderChildList} from '../../shared/child-list';
+import {AutocompleteApi} from './autocomplete.schema.js';
+import {renderChildList} from '../../shared/child-list.js';
 
 /** Resolved props: the `ChildList` arrives as built `children` (the Input + the Overlay). */
 type AutocompleteViewProps = {

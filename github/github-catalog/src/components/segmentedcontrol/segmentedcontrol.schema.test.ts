@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {SegmentedControlApi} from './segmentedcontrol.schema';
+import {SegmentedControlApi} from './segmentedcontrol.schema.js';
 
 describe('SegmentedControlApi.schema', () => {
   it('accepts a minimal valid SegmentedControl (every prop optional)', () => {

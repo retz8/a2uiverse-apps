@@ -1,7 +1,7 @@
 import {type ReactElement, type ReactNode, isValidElement} from 'react';
 import {ActionMenu as PrimerActionMenu} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {ActionMenuAnchorApi} from './actionmenu-anchor.schema';
+import {ActionMenuAnchorApi} from './actionmenu-anchor.schema.js';
 
 /** Resolved props: the synthetic `child` ComponentId arrives as a single built node. */
 type ActionMenuAnchorViewProps = {

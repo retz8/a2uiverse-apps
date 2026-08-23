@@ -3,8 +3,8 @@ import * as octicons from '@primer/octicons-react';
 import type {Icon as OcticonComponent} from '@primer/octicons-react';
 import {NavList as PrimerNavList} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {NavListGroupExpandApi} from './navlist-groupexpand.schema';
-import {nameToExport} from '../icon/icon';
+import {NavListGroupExpandApi} from './navlist-groupexpand.schema.js';
+import {nameToExport} from '../icon/icon.js';
 
 /** The octicons namespace as a name-keyed lookup of icon components. */
 const OCTICONS = octicons as unknown as Record<string, OcticonComponent | undefined>;

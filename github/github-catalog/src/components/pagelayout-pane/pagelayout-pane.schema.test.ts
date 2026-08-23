@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {PageLayoutPaneApi} from './pagelayout-pane.schema';
+import {PageLayoutPaneApi} from './pagelayout-pane.schema.js';
 
 describe('PageLayoutPaneApi.schema', () => {
   it('accepts an empty pane (all props optional)', () => {

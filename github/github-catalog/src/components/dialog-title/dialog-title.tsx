@@ -1,6 +1,6 @@
 import {Dialog as PrimerDialog} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {DialogTitleApi} from './dialog-title.schema';
+import {DialogTitleApi} from './dialog-title.schema.js';
 
 /** Resolved props: the DynamicString `text` is a plain string after the binder resolves it. */
 type DialogTitleViewProps = {text: string};

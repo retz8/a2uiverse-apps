@@ -1,3 +1,3 @@
-export {TreeViewErrorDialogComponent} from './treeview-errordialog';
-export {TreeViewErrorDialogApi} from './treeview-errordialog.schema';
-export type {TreeViewErrorDialogProps} from './treeview-errordialog.schema';
+export {TreeViewErrorDialogComponent} from './treeview-errordialog.js';
+export {TreeViewErrorDialogApi} from './treeview-errordialog.schema.js';
+export type {TreeViewErrorDialogProps} from './treeview-errordialog.schema.js';

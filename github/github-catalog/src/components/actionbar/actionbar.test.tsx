@@ -2,7 +2,7 @@ import {describe, it, expect, afterEach} from 'vitest';
 import {render, screen, cleanup} from '@testing-library/react';
 import {ThemeProvider, BaseStyles} from '@primer/react';
 import type {ReactElement} from 'react';
-import {ActionBarView} from './actionbar';
+import {ActionBarView} from './actionbar.js';
 
 afterEach(cleanup);
 

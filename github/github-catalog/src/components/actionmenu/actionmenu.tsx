@@ -2,7 +2,7 @@ import {Fragment, forwardRef, type ComponentType, type ReactNode} from 'react';
 import {ActionMenu as PrimerActionMenu} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
 import type {ComponentContext} from '@a2ui/web_core/v0_9';
-import {ActionMenuApi} from './actionmenu.schema';
+import {ActionMenuApi} from './actionmenu.schema.js';
 
 /** `buildChild` from the a2ui react binder: resolves a component id (with optional data-scope basePath) to a node. */
 type BuildChild = (id: string, basePath?: string) => ReactNode;

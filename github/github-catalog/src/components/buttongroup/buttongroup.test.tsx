@@ -1,6 +1,6 @@
 import {describe, it, expect, afterEach} from 'vitest';
 import {render, screen, cleanup} from '@testing-library/react';
-import {ButtonGroupView} from './buttongroup';
+import {ButtonGroupView} from './buttongroup.js';
 
 afterEach(cleanup);
 

@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {FormControlCaptionApi} from './formcontrol-caption.schema';
+import {FormControlCaptionApi} from './formcontrol-caption.schema.js';
 
 describe('FormControlCaptionApi.schema', () => {
   it('accepts a literal text caption', () => {

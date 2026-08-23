@@ -1,8 +1,8 @@
 import {useContext, type ReactElement, type ReactNode} from 'react';
 import {SegmentedControl as PrimerSegmentedControl} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {SegmentedControlIconButtonApi} from './segmentedcontroliconbutton.schema';
-import {SegmentSlotContext} from '../../shared/segmented-control-context';
+import {SegmentedControlIconButtonApi} from './segmentedcontroliconbutton.schema.js';
+import {SegmentSlotContext} from '../../shared/segmented-control-context.js';
 
 /** Resolved accessibility: nested DynamicStrings are plain strings after the binder resolves them. */
 type ResolvedAccessibility = {label?: string; description?: string};

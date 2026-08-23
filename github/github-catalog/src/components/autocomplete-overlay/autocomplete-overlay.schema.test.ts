@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {AutocompleteOverlayApi} from './autocomplete-overlay.schema';
+import {AutocompleteOverlayApi} from './autocomplete-overlay.schema.js';
 
 describe('AutocompleteOverlayApi.schema', () => {
   it('accepts a minimal valid Autocomplete.Overlay (no props — children optional)', () => {

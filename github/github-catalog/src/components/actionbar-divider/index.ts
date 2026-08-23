@@ -1,3 +1,3 @@
-export {ActionBarDividerComponent} from './actionbar-divider';
-export {ActionBarDividerApi} from './actionbar-divider.schema';
-export type {ActionBarDividerProps} from './actionbar-divider.schema';
+export {ActionBarDividerComponent} from './actionbar-divider.js';
+export {ActionBarDividerApi} from './actionbar-divider.schema.js';
+export type {ActionBarDividerProps} from './actionbar-divider.schema.js';

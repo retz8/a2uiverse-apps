@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {ActionListDescriptionApi} from './actionlist-description.schema';
+import {ActionListDescriptionApi} from './actionlist-description.schema.js';
 
 describe('ActionListDescriptionApi.schema', () => {
   it('accepts a minimal valid Description (text only)', () => {

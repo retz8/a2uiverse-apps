@@ -1,7 +1,7 @@
 import {describe, it, expect} from 'vitest';
 import {render, cleanup} from '@testing-library/react';
 import {afterEach} from 'vitest';
-import {SelectPanelItemView} from './selectpanel-item';
+import {SelectPanelItemView} from './selectpanel-item.js';
 
 afterEach(cleanup);
 

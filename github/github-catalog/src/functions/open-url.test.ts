@@ -1,6 +1,6 @@
 import {describe, it, expect, vi, afterEach} from 'vitest';
 import type {DataContext} from '@a2ui/web_core/v0_9';
-import {openUrl} from './open-url';
+import {openUrl} from './open-url.js';
 
 const ctx = {} as DataContext;
 

@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {CheckboxGroupCaptionApi} from './checkboxgroup-caption.schema';
+import {CheckboxGroupCaptionApi} from './checkboxgroup-caption.schema.js';
 
 describe('CheckboxGroupCaptionApi.schema', () => {
   it('accepts a literal text caption', () => {

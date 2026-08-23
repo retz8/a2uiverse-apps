@@ -1,8 +1,8 @@
 import type {ElementType} from 'react';
 import {ActionBar as PrimerActionBar} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {ActionBarIconButtonApi} from './actionbar-iconbutton.schema';
-import {iconComponent} from '../../shared/icon-component';
+import {ActionBarIconButtonApi} from './actionbar-iconbutton.schema.js';
+import {iconComponent} from '../../shared/icon-component.js';
 
 /** Resolved accessibility: nested DynamicStrings are plain strings after the binder resolves them. */
 type ResolvedAccessibility = {label?: string; description?: string};

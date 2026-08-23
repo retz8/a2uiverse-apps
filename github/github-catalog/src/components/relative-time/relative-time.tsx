@@ -1,6 +1,6 @@
 import {RelativeTime as PrimerRelativeTime} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {RelativeTimeApi, type RelativeTimeProps} from './relative-time.schema';
+import {RelativeTimeApi, type RelativeTimeProps} from './relative-time.schema.js';
 
 /** Resolved props: `datetime` is a plain ISO string after the binder resolves the DynamicString. */
 type RelativeTimeViewProps = Omit<RelativeTimeProps, 'datetime'> & {datetime: string};

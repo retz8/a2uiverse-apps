@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {TreeViewErrorDialogApi} from './treeview-errordialog.schema';
+import {TreeViewErrorDialogApi} from './treeview-errordialog.schema.js';
 
 const fnAction = {functionCall: {call: 'consoleLog', args: {message: 'm'}, returnType: 'void'}};
 const eventAction = {event: {name: 'retry-subtree', context: {}}};

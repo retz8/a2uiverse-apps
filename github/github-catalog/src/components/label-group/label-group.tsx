@@ -1,8 +1,8 @@
 import type {ElementType, ReactNode} from 'react';
 import {LabelGroup as PrimerLabelGroup} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {LabelGroupApi} from './label-group.schema';
-import {renderChildList} from '../../shared/child-list';
+import {LabelGroupApi} from './label-group.schema.js';
+import {renderChildList} from '../../shared/child-list.js';
 
 /**
  * Resolved props: the `ChildList` arrives as built `children`; `overflowStyle`, `visibleChildCount`

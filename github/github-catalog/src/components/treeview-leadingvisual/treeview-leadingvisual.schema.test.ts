@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {TreeViewLeadingVisualApi} from './treeview-leadingvisual.schema';
+import {TreeViewLeadingVisualApi} from './treeview-leadingvisual.schema.js';
 
 describe('TreeViewLeadingVisualApi.schema', () => {
   it('accepts a minimal valid LeadingVisual (child only)', () => {

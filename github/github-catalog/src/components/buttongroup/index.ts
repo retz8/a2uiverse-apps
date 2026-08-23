@@ -1,3 +1,3 @@
-export {ButtonGroupComponent} from './buttongroup';
-export {ButtonGroupApi} from './buttongroup.schema';
-export type {ButtonGroupProps} from './buttongroup.schema';
+export {ButtonGroupComponent} from './buttongroup.js';
+export {ButtonGroupApi} from './buttongroup.schema.js';
+export type {ButtonGroupProps} from './buttongroup.schema.js';

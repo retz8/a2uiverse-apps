@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {DialogApi} from './dialog.schema';
+import {DialogApi} from './dialog.schema.js';
 
 const fnAction = {functionCall: {call: 'consoleLog', args: {message: 'm'}, returnType: 'void'}};
 const eventAction = {event: {name: 'dialog-close', context: {}}};

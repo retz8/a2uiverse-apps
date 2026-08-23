@@ -1,6 +1,6 @@
 import {CheckboxGroup as PrimerCheckboxGroup} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {CheckboxGroupCaptionApi} from './checkboxgroup-caption.schema';
+import {CheckboxGroupCaptionApi} from './checkboxgroup-caption.schema.js';
 
 /** Resolved props: the DynamicString `text` is a plain string after the binder resolves it. */
 type CheckboxGroupCaptionViewProps = {text: string};

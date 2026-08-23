@@ -1,8 +1,8 @@
 import type {ComponentType, ReactNode} from 'react';
 import {ButtonGroup as PrimerButtonGroup} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {ButtonGroupApi} from './buttongroup.schema';
-import {renderChildList} from '../../shared/child-list';
+import {ButtonGroupApi} from './buttongroup.schema.js';
+import {renderChildList} from '../../shared/child-list.js';
 
 /** Resolved props: ChildList arrives as built `children`; `role`/`as` pass through as scalars. */
 type ButtonGroupViewProps = {

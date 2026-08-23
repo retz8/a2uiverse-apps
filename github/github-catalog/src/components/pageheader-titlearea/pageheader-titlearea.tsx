@@ -1,8 +1,8 @@
 import type {ReactNode} from 'react';
 import {PageHeader as PrimerPageHeader} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {PageHeaderTitleAreaApi} from './pageheader-titlearea.schema';
-import {renderChildList} from '../../shared/child-list';
+import {PageHeaderTitleAreaApi} from './pageheader-titlearea.schema.js';
+import {renderChildList} from '../../shared/child-list.js';
 
 /** A resolved value: either a scalar or Primer's `{narrow, regular, wide}` responsive map. */
 type Responsive<T> = T | {narrow?: T; regular?: T; wide?: T};

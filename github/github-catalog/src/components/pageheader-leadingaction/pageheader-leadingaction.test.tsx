@@ -1,6 +1,6 @@
 import {describe, it, expect, afterEach} from 'vitest';
 import {render, screen, cleanup} from '@testing-library/react';
-import {PageHeaderLeadingActionView} from './pageheader-leadingaction';
+import {PageHeaderLeadingActionView} from './pageheader-leadingaction.js';
 
 afterEach(cleanup);
 

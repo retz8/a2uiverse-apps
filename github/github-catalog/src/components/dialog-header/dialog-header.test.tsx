@@ -1,7 +1,7 @@
 import {describe, it, expect, afterEach} from 'vitest';
 import {render, screen, cleanup} from '@testing-library/react';
 import {ThemeProvider, BaseStyles} from '@primer/react';
-import {DialogHeaderView} from './dialog-header';
+import {DialogHeaderView} from './dialog-header.js';
 
 afterEach(cleanup);
 

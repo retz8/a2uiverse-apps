@@ -1,7 +1,7 @@
 import {Dialog as PrimerDialog} from '@primer/react';
 import type {DialogProps as PrimerDialogProps} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {DialogButtonsApi} from './dialog-buttons.schema';
+import {DialogButtonsApi} from './dialog-buttons.schema.js';
 
 type PrimerFooterButtons = NonNullable<PrimerDialogProps['footerButtons']>;
 

@@ -1,3 +1,3 @@
-export {PageHeaderContextAreaComponent} from './pageheader-contextarea';
-export {PageHeaderContextAreaApi} from './pageheader-contextarea.schema';
-export type {PageHeaderContextAreaProps} from './pageheader-contextarea.schema';
+export {PageHeaderContextAreaComponent} from './pageheader-contextarea.js';
+export {PageHeaderContextAreaApi} from './pageheader-contextarea.schema.js';
+export type {PageHeaderContextAreaProps} from './pageheader-contextarea.schema.js';

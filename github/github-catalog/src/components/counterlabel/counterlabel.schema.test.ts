@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {CounterLabelApi} from './counterlabel.schema';
+import {CounterLabelApi} from './counterlabel.schema.js';
 
 describe('CounterLabelApi.schema', () => {
   it('accepts a minimal valid CounterLabel (count only)', () => {

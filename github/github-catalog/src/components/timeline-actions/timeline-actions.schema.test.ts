@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {TimelineActionsApi} from './timeline-actions.schema';
+import {TimelineActionsApi} from './timeline-actions.schema.js';
 
 describe('TimelineActionsApi.schema', () => {
   it('accepts a minimal valid Actions (children only)', () => {

@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {ActionBarIconButtonApi} from './actionbar-iconbutton.schema';
+import {ActionBarIconButtonApi} from './actionbar-iconbutton.schema.js';
 
 const action = {event: {name: 'save'}};
 const accessibility = {label: 'Save'};

@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {BreadcrumbsItemApi} from './breadcrumbsitem.schema';
+import {BreadcrumbsItemApi} from './breadcrumbsitem.schema.js';
 
 describe('BreadcrumbsItemApi.schema', () => {
   it('accepts a minimal valid item (label only)', () => {

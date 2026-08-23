@@ -1,6 +1,6 @@
 import {describe, it, expect} from 'vitest';
 import type {DataContext} from '@a2ui/web_core/v0_9';
-import {regex} from './regex';
+import {regex} from './regex.js';
 
 const ctx = {} as DataContext;
 

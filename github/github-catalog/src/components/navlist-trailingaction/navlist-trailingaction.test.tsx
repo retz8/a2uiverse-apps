@@ -2,7 +2,7 @@ import type {ReactNode} from 'react';
 import {describe, it, expect, vi, afterEach} from 'vitest';
 import {render, screen, cleanup, fireEvent} from '@testing-library/react';
 import {NavList as PrimerNavList} from '@primer/react';
-import {NavListTrailingActionView} from './navlist-trailingaction';
+import {NavListTrailingActionView} from './navlist-trailingaction.js';
 
 afterEach(cleanup);
 

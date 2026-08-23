@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {StackItemApi} from './stackitem.schema';
+import {StackItemApi} from './stackitem.schema.js';
 
 describe('StackItemApi.schema', () => {
   it('accepts a minimal valid StackItem (every prop optional)', () => {

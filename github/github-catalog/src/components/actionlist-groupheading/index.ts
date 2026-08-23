@@ -1,3 +1,3 @@
-export {ActionListGroupHeadingComponent} from './actionlist-groupheading';
-export {ActionListGroupHeadingApi} from './actionlist-groupheading.schema';
-export type {ActionListGroupHeadingProps} from './actionlist-groupheading.schema';
+export {ActionListGroupHeadingComponent} from './actionlist-groupheading.js';
+export {ActionListGroupHeadingApi} from './actionlist-groupheading.schema.js';
+export type {ActionListGroupHeadingProps} from './actionlist-groupheading.schema.js';

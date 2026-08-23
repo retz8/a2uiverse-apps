@@ -1,6 +1,6 @@
 import {NavList as PrimerNavList} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {NavListGroupHeadingApi} from './navlist-groupheading.schema';
+import {NavListGroupHeadingApi} from './navlist-groupheading.schema.js';
 
 /** Resolved props: the Dynamic* strings resolve to plain strings; content arrives as `text`. */
 type NavListGroupHeadingViewProps = {

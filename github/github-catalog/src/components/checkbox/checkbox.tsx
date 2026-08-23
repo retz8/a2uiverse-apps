@@ -1,8 +1,8 @@
 import type {ChangeEvent} from 'react';
 import {Checkbox as PrimerCheckbox} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {useFormControlInputProps} from '../../shared/form-control-forwarding';
-import {CheckboxApi} from './checkbox.schema';
+import {useFormControlInputProps} from '../../shared/form-control-forwarding.js';
+import {CheckboxApi} from './checkbox.schema.js';
 
 /** Resolved accessibility: nested DynamicStrings are plain strings after the binder resolves them. */
 type ResolvedAccessibility = {label?: string; description?: string};

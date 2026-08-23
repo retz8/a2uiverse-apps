@@ -2,7 +2,7 @@ import {describe, it, expect, afterEach} from 'vitest';
 import {render, screen, cleanup} from '@testing-library/react';
 import {ThemeProvider, BaseStyles, Timeline as PrimerTimeline, Button} from '@primer/react';
 import type {ReactElement} from 'react';
-import {TimelineActionsView} from './timeline-actions';
+import {TimelineActionsView} from './timeline-actions.js';
 
 afterEach(cleanup);
 

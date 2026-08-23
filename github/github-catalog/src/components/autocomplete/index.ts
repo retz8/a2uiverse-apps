@@ -1,3 +1,3 @@
-export {AutocompleteComponent} from './autocomplete';
-export {AutocompleteApi} from './autocomplete.schema';
-export type {AutocompleteProps} from './autocomplete.schema';
+export {AutocompleteComponent} from './autocomplete.js';
+export {AutocompleteApi} from './autocomplete.schema.js';
+export type {AutocompleteProps} from './autocomplete.schema.js';

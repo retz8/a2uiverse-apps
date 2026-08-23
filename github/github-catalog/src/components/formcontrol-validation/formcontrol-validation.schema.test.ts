@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {FormControlValidationApi} from './formcontrol-validation.schema';
+import {FormControlValidationApi} from './formcontrol-validation.schema.js';
 
 describe('FormControlValidationApi.schema', () => {
   it('accepts a literal error variant', () => {

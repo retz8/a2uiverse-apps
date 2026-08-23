@@ -2,7 +2,7 @@ import type {ComponentProps, FunctionComponent, ReactNode} from 'react';
 import {TextInput as PrimerTextInput} from '@primer/react';
 import type {IconProps} from '@primer/octicons-react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {TextInputActionApi} from './textinput-action.schema';
+import {TextInputActionApi} from './textinput-action.schema.js';
 
 /** Resolved accessibility: nested DynamicStrings are plain strings after the binder resolves them. */
 type ResolvedAccessibility = {label?: string; description?: string};

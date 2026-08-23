@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {ActionMenuButtonApi} from './actionmenu-button.schema';
+import {ActionMenuButtonApi} from './actionmenu-button.schema.js';
 
 describe('ActionMenuButtonApi.schema', () => {
   it('accepts a minimal valid ActionMenu.Button (no required props)', () => {

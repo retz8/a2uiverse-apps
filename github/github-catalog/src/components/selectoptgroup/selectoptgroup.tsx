@@ -1,8 +1,8 @@
 import type {ReactNode} from 'react';
 import {Select as PrimerSelect} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {SelectOptGroupApi} from './selectoptgroup.schema';
-import {renderChildList} from '../../shared/child-list';
+import {SelectOptGroupApi} from './selectoptgroup.schema.js';
+import {renderChildList} from '../../shared/child-list.js';
 
 /**
  * Resolved props: `label` is the plain string after the binder resolves the DynamicString;

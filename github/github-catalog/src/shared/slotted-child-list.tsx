@@ -1,6 +1,6 @@
 import {Fragment, type ComponentType, type ReactNode} from 'react';
 import type {ComponentContext} from '@a2ui/web_core/v0_9';
-import {renderChildList} from './child-list';
+import {renderChildList} from './child-list.js';
 
 /** `buildChild` from the a2ui react binder: resolves a component id (with optional data-scope basePath) to a node. */
 type BuildChild = (id: string, basePath?: string) => ReactNode;

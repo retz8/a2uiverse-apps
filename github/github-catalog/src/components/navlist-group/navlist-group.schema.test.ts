@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {NavListGroupApi} from './navlist-group.schema';
+import {NavListGroupApi} from './navlist-group.schema.js';
 
 describe('NavListGroupApi.schema', () => {
   it('accepts a minimal valid NavList.Group (no required props)', () => {

@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {TextInputActionApi} from './textinput-action.schema';
+import {TextInputActionApi} from './textinput-action.schema.js';
 
 const action = {event: {name: 'clear'}};
 

@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {SplitPageLayoutSidebarApi} from './split-page-layout-sidebar.schema';
+import {SplitPageLayoutSidebarApi} from './split-page-layout-sidebar.schema.js';
 
 describe('SplitPageLayoutSidebarApi.schema', () => {
   it('accepts a minimal valid Sidebar (no props — all optional)', () => {

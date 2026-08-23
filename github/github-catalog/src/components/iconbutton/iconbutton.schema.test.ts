@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {IconButtonApi} from './iconbutton.schema';
+import {IconButtonApi} from './iconbutton.schema.js';
 
 const action = {event: {name: 'approve'}};
 const accessibility = {label: 'Like'};

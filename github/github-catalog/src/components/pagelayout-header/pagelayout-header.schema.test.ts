@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {PageLayoutHeaderApi} from './pagelayout-header.schema';
+import {PageLayoutHeaderApi} from './pagelayout-header.schema.js';
 
 describe('PageLayoutHeaderApi.schema', () => {
   it('accepts an empty header (all props optional)', () => {

@@ -1,3 +1,3 @@
-export {PageHeaderBreadcrumbsComponent} from './pageheader-breadcrumbs';
-export {PageHeaderBreadcrumbsApi} from './pageheader-breadcrumbs.schema';
-export type {PageHeaderBreadcrumbsProps} from './pageheader-breadcrumbs.schema';
+export {PageHeaderBreadcrumbsComponent} from './pageheader-breadcrumbs.js';
+export {PageHeaderBreadcrumbsApi} from './pageheader-breadcrumbs.schema.js';
+export type {PageHeaderBreadcrumbsProps} from './pageheader-breadcrumbs.schema.js';

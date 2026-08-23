@@ -1,3 +1,3 @@
-export {BreadcrumbsComponent} from './breadcrumbs';
-export {BreadcrumbsApi} from './breadcrumbs.schema';
-export type {BreadcrumbsProps} from './breadcrumbs.schema';
+export {BreadcrumbsComponent} from './breadcrumbs.js';
+export {BreadcrumbsApi} from './breadcrumbs.schema.js';
+export type {BreadcrumbsProps} from './breadcrumbs.schema.js';

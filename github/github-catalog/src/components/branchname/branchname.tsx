@@ -1,6 +1,6 @@
 import {BranchName as PrimerBranchName} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {BranchNameApi, type BranchNameProps} from './branchname.schema';
+import {BranchNameApi, type BranchNameProps} from './branchname.schema.js';
 
 /**
  * Resolved props: `text` and `href` are plain strings after the binder resolves the

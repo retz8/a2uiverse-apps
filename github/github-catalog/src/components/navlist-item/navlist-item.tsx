@@ -1,8 +1,8 @@
 import type {ComponentType, ReactNode} from 'react';
 import {NavList as PrimerNavList} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {NavListItemApi} from './navlist-item.schema';
-import {renderSlottedChildList, type SlotMap} from '../../shared/slotted-child-list';
+import {NavListItemApi} from './navlist-item.schema.js';
+import {renderSlottedChildList, type SlotMap} from '../../shared/slotted-child-list.js';
 
 type AriaCurrent = 'page' | 'step' | 'location' | 'date' | 'time' | 'true' | 'false';
 

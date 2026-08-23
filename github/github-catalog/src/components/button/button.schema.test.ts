@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {ButtonApi} from './button.schema';
+import {ButtonApi} from './button.schema.js';
 
 const action = {event: {name: 'submit'}};
 

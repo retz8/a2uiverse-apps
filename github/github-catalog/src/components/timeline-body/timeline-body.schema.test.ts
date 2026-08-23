@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {TimelineBodyApi} from './timeline-body.schema';
+import {TimelineBodyApi} from './timeline-body.schema.js';
 
 describe('TimelineBodyApi.schema', () => {
   it('accepts a minimal valid Body (children only)', () => {

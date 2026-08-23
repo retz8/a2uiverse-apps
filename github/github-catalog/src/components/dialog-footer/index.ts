@@ -1,3 +1,3 @@
-export {DialogFooterComponent} from './dialog-footer';
-export {DialogFooterApi} from './dialog-footer.schema';
-export type {DialogFooterProps} from './dialog-footer.schema';
+export {DialogFooterComponent} from './dialog-footer.js';
+export {DialogFooterApi} from './dialog-footer.schema.js';
+export type {DialogFooterProps} from './dialog-footer.schema.js';

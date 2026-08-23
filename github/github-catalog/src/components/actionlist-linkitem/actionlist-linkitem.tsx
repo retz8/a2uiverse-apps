@@ -1,8 +1,8 @@
 import type {ComponentType, ReactNode} from 'react';
 import {ActionList as PrimerActionList} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {ActionListLinkItemApi} from './actionlist-linkitem.schema';
-import {renderSlottedChildList, type SlotMap} from '../../shared/slotted-child-list';
+import {ActionListLinkItemApi} from './actionlist-linkitem.schema.js';
+import {renderSlottedChildList, type SlotMap} from '../../shared/slotted-child-list.js';
 
 /**
  * The slot leaves an `ActionList.LinkItem` can hold, routed to their Primer slot — identical to the

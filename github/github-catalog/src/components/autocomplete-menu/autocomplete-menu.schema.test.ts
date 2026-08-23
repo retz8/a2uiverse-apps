@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {AutocompleteMenuApi} from './autocomplete-menu.schema';
+import {AutocompleteMenuApi} from './autocomplete-menu.schema.js';
 
 const minimalItem = {id: 'bug', text: 'Bug'};
 

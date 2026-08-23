@@ -1,8 +1,8 @@
 import type {ReactNode} from 'react';
 import {Breadcrumbs as PrimerBreadcrumbs} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {BreadcrumbsApi} from './breadcrumbs.schema';
-import {renderChildList} from '../../shared/child-list';
+import {BreadcrumbsApi} from './breadcrumbs.schema.js';
+import {renderChildList} from '../../shared/child-list.js';
 
 /** Resolved props: the ChildList arrives as built `children`; the enums pass through to Primer. */
 type BreadcrumbsViewProps = {

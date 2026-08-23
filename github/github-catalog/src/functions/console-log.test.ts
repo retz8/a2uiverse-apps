@@ -1,6 +1,6 @@
 import {describe, it, expect, vi} from 'vitest';
 import type {DataContext} from '@a2ui/web_core/v0_9';
-import {consoleLog} from './console-log';
+import {consoleLog} from './console-log.js';
 
 describe('consoleLog function', () => {
   it('declares its api', () => {

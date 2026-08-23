@@ -1,6 +1,6 @@
 import {NavList as PrimerNavList} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {NavListDescriptionApi} from './navlist-description.schema';
+import {NavListDescriptionApi} from './navlist-description.schema.js';
 
 /** Resolved props: `text` resolves to a plain string; the rest pass through. */
 type NavListDescriptionViewProps = {

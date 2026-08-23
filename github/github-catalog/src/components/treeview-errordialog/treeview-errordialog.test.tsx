@@ -2,7 +2,7 @@ import {describe, it, expect, vi, afterEach} from 'vitest';
 import {render, screen, cleanup, fireEvent} from '@testing-library/react';
 import {ThemeProvider, BaseStyles, TreeView as PrimerTreeView} from '@primer/react';
 import type {ReactElement} from 'react';
-import {TreeViewErrorDialogView} from './treeview-errordialog';
+import {TreeViewErrorDialogView} from './treeview-errordialog.js';
 
 afterEach(cleanup);
 

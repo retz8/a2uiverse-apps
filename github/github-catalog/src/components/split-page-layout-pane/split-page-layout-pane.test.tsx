@@ -1,6 +1,6 @@
 import {describe, it, expect, afterEach} from 'vitest';
 import {render, screen, cleanup} from '@testing-library/react';
-import {SplitPageLayoutPaneView} from './split-page-layout-pane';
+import {SplitPageLayoutPaneView} from './split-page-layout-pane.js';
 
 afterEach(cleanup);
 

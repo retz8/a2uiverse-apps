@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {TimelineBadgeApi} from './timeline-badge.schema';
+import {TimelineBadgeApi} from './timeline-badge.schema.js';
 
 describe('TimelineBadgeApi.schema', () => {
   it('accepts a minimal valid Badge (child only)', () => {

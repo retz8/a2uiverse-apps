@@ -2,7 +2,7 @@ import {describe, it, expect, vi, afterEach} from 'vitest';
 import {render, screen, cleanup, fireEvent} from '@testing-library/react';
 import {ThemeProvider, BaseStyles} from '@primer/react';
 import type {ReactElement} from 'react';
-import {DialogView} from './dialog';
+import {DialogView} from './dialog.js';
 
 afterEach(cleanup);
 

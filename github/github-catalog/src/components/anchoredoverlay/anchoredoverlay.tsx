@@ -2,8 +2,8 @@ import {type ReactNode, useEffect, useState} from 'react';
 import {AnchoredOverlay as PrimerAnchoredOverlay} from '@primer/react';
 import type {AnchoredOverlayProps as PrimerAnchoredOverlayProps} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {AnchoredOverlayApi} from './anchoredoverlay.schema';
-import {renderChildList} from '../../shared/child-list';
+import {AnchoredOverlayApi} from './anchoredoverlay.schema.js';
+import {renderChildList} from '../../shared/child-list.js';
 
 type AnchorSide = NonNullable<PrimerAnchoredOverlayProps['side']>;
 type AnchorAlign = NonNullable<PrimerAnchoredOverlayProps['align']>;

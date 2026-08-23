@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {ActionListTrailingActionApi} from './actionlist-trailingaction.schema';
+import {ActionListTrailingActionApi} from './actionlist-trailingaction.schema.js';
 
 const action = {event: {name: 'remove'}};
 

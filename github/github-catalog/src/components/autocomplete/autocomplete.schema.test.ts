@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {AutocompleteApi} from './autocomplete.schema';
+import {AutocompleteApi} from './autocomplete.schema.js';
 
 describe('AutocompleteApi.schema', () => {
   it('accepts a minimal valid Autocomplete (no props — children optional)', () => {

@@ -1,3 +1,3 @@
-export {PageLayoutContentComponent} from './pagelayout-content';
-export {PageLayoutContentApi} from './pagelayout-content.schema';
-export type {PageLayoutContentProps} from './pagelayout-content.schema';
+export {PageLayoutContentComponent} from './pagelayout-content.js';
+export {PageLayoutContentApi} from './pagelayout-content.schema.js';
+export type {PageLayoutContentProps} from './pagelayout-content.schema.js';

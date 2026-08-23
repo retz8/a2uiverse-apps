@@ -1,6 +1,6 @@
 import {describe, it, expect, vi} from 'vitest';
 import type {DataContext} from '@a2ui/web_core/v0_9';
-import {clearValue} from './clear-value';
+import {clearValue} from './clear-value.js';
 
 describe('clearValue function', () => {
   it('declares its api', () => {

@@ -2,7 +2,7 @@ import {describe, it, expect, afterEach} from 'vitest';
 import {render, screen, cleanup} from '@testing-library/react';
 import {ThemeProvider, BaseStyles, Select as PrimerSelect} from '@primer/react';
 import type {ReactElement} from 'react';
-import {SelectOptGroupView} from './selectoptgroup';
+import {SelectOptGroupView} from './selectoptgroup.js';
 
 afterEach(cleanup);
 

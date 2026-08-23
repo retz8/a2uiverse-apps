@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {RelativeTimeApi} from './relative-time.schema';
+import {RelativeTimeApi} from './relative-time.schema.js';
 
 describe('RelativeTimeApi.schema', () => {
   it('accepts a minimal valid RelativeTime (datetime only)', () => {

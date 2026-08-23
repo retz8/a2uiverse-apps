@@ -1,6 +1,6 @@
 import {ActionList as PrimerActionList} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {ActionListDividerApi} from './actionlist-divider.schema';
+import {ActionListDividerApi} from './actionlist-divider.schema.js';
 
 /** Resolved props: none — Divider is a self-contained separator. */
 export function ActionListDividerView() {

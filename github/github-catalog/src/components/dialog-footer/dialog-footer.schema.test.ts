@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {DialogFooterApi} from './dialog-footer.schema';
+import {DialogFooterApi} from './dialog-footer.schema.js';
 
 describe('DialogFooterApi.schema', () => {
   it('accepts an empty footer (children optional)', () => {

@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {LabelApi} from './label.schema';
+import {LabelApi} from './label.schema.js';
 
 describe('LabelApi.schema', () => {
   it('accepts a minimal valid Label (text only)', () => {

@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {PageHeaderTitleApi} from './pageheader-title.schema';
+import {PageHeaderTitleApi} from './pageheader-title.schema.js';
 
 describe('PageHeaderTitleApi.schema', () => {
   it('accepts a minimal valid Title (text)', () => {

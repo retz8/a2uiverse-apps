@@ -1,7 +1,7 @@
 import type {ReactElement, ElementType, ReactNode} from 'react';
 import {Button as PrimerButton} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {ButtonApi} from './button.schema';
+import {ButtonApi} from './button.schema.js';
 
 /** Resolved accessibility: nested DynamicStrings are plain strings after the binder resolves them. */
 type ResolvedAccessibility = {label?: string; description?: string};

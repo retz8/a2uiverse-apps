@@ -1,6 +1,6 @@
 import {CounterLabel as PrimerCounterLabel} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {CounterLabelApi, type CounterLabelProps} from './counterlabel.schema';
+import {CounterLabelApi, type CounterLabelProps} from './counterlabel.schema.js';
 
 /** Resolved props: `count` is a plain number after the binder resolves the DynamicNumber. */
 type CounterLabelViewProps = Omit<CounterLabelProps, 'count'> & {count: number};

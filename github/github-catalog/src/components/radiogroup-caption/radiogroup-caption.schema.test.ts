@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {RadioGroupCaptionApi} from './radiogroup-caption.schema';
+import {RadioGroupCaptionApi} from './radiogroup-caption.schema.js';
 
 describe('RadioGroupCaptionApi.schema', () => {
   it('accepts a literal text caption', () => {

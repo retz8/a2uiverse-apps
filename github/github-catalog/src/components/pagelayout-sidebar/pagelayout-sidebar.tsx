@@ -1,8 +1,8 @@
 import type {ComponentProps, ReactNode} from 'react';
 import {PageLayout as PrimerPageLayout} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {PageLayoutSidebarApi} from './pagelayout-sidebar.schema';
-import {renderChildList} from '../../shared/child-list';
+import {PageLayoutSidebarApi} from './pagelayout-sidebar.schema.js';
+import {renderChildList} from '../../shared/child-list.js';
 
 type Spacing = 'none' | 'condensed' | 'normal';
 type Responsive<T> = T | {narrow?: T; regular?: T; wide?: T};

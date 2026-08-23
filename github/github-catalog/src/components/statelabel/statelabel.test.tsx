@@ -1,6 +1,6 @@
 import {describe, it, expect, afterEach} from 'vitest';
 import {render, screen, cleanup} from '@testing-library/react';
-import {StateLabelView} from './statelabel';
+import {StateLabelView} from './statelabel.js';
 
 afterEach(cleanup);
 

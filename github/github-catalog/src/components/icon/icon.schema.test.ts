@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {IconApi} from './icon.schema';
+import {IconApi} from './icon.schema.js';
 
 describe('IconApi.schema', () => {
   it('accepts a minimal valid Icon (name only)', () => {

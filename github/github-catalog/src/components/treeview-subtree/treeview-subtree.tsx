@@ -1,8 +1,8 @@
 import type {ReactNode} from 'react';
 import {TreeView as PrimerTreeView} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {TreeViewSubTreeApi} from './treeview-subtree.schema';
-import {renderChildList} from '../../shared/child-list';
+import {TreeViewSubTreeApi} from './treeview-subtree.schema.js';
+import {renderChildList} from '../../shared/child-list.js';
 
 /** Resolved accessibility: the nested DynamicString is a plain string post-binder. */
 type ResolvedAccessibility = {label?: string; description?: string};

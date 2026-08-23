@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {PageLayoutSidebarApi} from './pagelayout-sidebar.schema';
+import {PageLayoutSidebarApi} from './pagelayout-sidebar.schema.js';
 
 describe('PageLayoutSidebarApi.schema', () => {
   it('accepts an empty sidebar (all props optional)', () => {

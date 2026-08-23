@@ -1,8 +1,8 @@
 import type {ReactNode} from 'react';
 import {Dialog as PrimerDialog} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {DialogFooterApi} from './dialog-footer.schema';
-import {renderChildList} from '../../shared/child-list';
+import {DialogFooterApi} from './dialog-footer.schema.js';
+import {renderChildList} from '../../shared/child-list.js';
 
 /** Resolved props: the ChildList arrives as built `children` (the DialogButtons row). */
 type DialogFooterViewProps = {children?: ReactNode};

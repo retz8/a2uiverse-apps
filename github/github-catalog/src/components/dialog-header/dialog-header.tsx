@@ -1,8 +1,8 @@
 import type {ReactNode} from 'react';
 import {Dialog as PrimerDialog} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {DialogHeaderApi} from './dialog-header.schema';
-import {renderChildList} from '../../shared/child-list';
+import {DialogHeaderApi} from './dialog-header.schema.js';
+import {renderChildList} from '../../shared/child-list.js';
 
 /** Resolved props: the ChildList arrives as built `children` (DialogTitle/Subtitle/CloseButton). */
 type DialogHeaderViewProps = {children?: ReactNode};

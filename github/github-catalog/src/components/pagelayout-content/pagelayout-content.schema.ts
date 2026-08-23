@@ -1,7 +1,7 @@
 import {z} from 'zod';
 import {CommonSchemas} from '@a2ui/web_core/v0_9';
-import {responsive} from '../../shared/responsive';
-import {spacing, sizeWidth} from '../../shared/page-layout';
+import {responsive} from '../../shared/responsive.js';
+import {spacing, sizeWidth} from '../../shared/page-layout.js';
 
 /**
  * Runtime (zod) representation of Primer PageLayout.Content, props-only. A region leaf of the

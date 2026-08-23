@@ -1,6 +1,6 @@
 import {z} from 'zod';
 import {CommonSchemas} from '@a2ui/web_core/v0_9';
-import {responsive} from '../../shared/responsive';
+import {responsive} from '../../shared/responsive.js';
 
 /**
  * The per-viewport `variant` enum: hide the segment labels, or collapse the whole control into a

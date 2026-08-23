@@ -1,3 +1,3 @@
-export {RadioGroupValidationComponent} from './radiogroup-validation';
-export {RadioGroupValidationApi} from './radiogroup-validation.schema';
-export type {RadioGroupValidationProps} from './radiogroup-validation.schema';
+export {RadioGroupValidationComponent} from './radiogroup-validation.js';
+export {RadioGroupValidationApi} from './radiogroup-validation.schema.js';
+export type {RadioGroupValidationProps} from './radiogroup-validation.schema.js';

@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {CheckboxGroupValidationApi} from './checkboxgroup-validation.schema';
+import {CheckboxGroupValidationApi} from './checkboxgroup-validation.schema.js';
 
 describe('CheckboxGroupValidationApi.schema', () => {
   it('accepts a literal error variant', () => {

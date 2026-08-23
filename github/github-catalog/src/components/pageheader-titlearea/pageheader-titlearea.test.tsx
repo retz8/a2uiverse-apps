@@ -1,6 +1,6 @@
 import {describe, it, expect, afterEach} from 'vitest';
 import {render, screen, cleanup} from '@testing-library/react';
-import {PageHeaderTitleAreaView} from './pageheader-titlearea';
+import {PageHeaderTitleAreaView} from './pageheader-titlearea.js';
 
 afterEach(cleanup);
 

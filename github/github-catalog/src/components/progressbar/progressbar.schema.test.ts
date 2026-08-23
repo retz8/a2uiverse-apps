@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {ProgressBarApi} from './progressbar.schema';
+import {ProgressBarApi} from './progressbar.schema.js';
 
 describe('ProgressBarApi.schema', () => {
   it('accepts an empty ProgressBar (nothing is required — empty track)', () => {

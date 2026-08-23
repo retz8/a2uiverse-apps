@@ -1,6 +1,6 @@
 import {describe, it, expect, afterEach} from 'vitest';
 import {render, cleanup} from '@testing-library/react';
-import {ActionBarDividerView} from './actionbar-divider';
+import {ActionBarDividerView} from './actionbar-divider.js';
 
 afterEach(cleanup);
 

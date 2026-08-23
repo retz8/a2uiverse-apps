@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {CheckboxGroupApi} from './checkboxgroup.schema';
+import {CheckboxGroupApi} from './checkboxgroup.schema.js';
 
 describe('CheckboxGroupApi.schema', () => {
   it('accepts a minimal valid CheckboxGroup (children only)', () => {

@@ -1,6 +1,6 @@
 import {describe, it, expect} from 'vitest';
 import type {DataContext} from '@a2ui/web_core/v0_9';
-import {length} from './length';
+import {length} from './length.js';
 
 const ctx = {} as DataContext;
 

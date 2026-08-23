@@ -1,7 +1,7 @@
 import {z} from 'zod';
 import {CommonSchemas} from '@a2ui/web_core/v0_9';
-import {responsive} from '../../shared/responsive';
-import {regionPaddingEnum, responsiveRegionDivider} from '../../shared/page-layout-region';
+import {responsive} from '../../shared/responsive.js';
+import {regionPaddingEnum, responsiveRegionDivider} from '../../shared/page-layout-region.js';
 
 /**
  * Runtime (zod) representation of Primer `SplitPageLayout.Header`, props-only. The banner region

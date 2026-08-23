@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {PageHeaderTrailingActionApi} from './pageheader-trailingaction.schema';
+import {PageHeaderTrailingActionApi} from './pageheader-trailingaction.schema.js';
 
 describe('PageHeaderTrailingActionApi.schema', () => {
   it('accepts a minimal valid component (every prop optional)', () => {

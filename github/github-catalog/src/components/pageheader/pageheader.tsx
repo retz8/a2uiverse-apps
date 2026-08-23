@@ -1,8 +1,8 @@
 import type {ComponentProps, ReactNode} from 'react';
 import {PageHeader as PrimerPageHeader} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {PageHeaderApi} from './pageheader.schema';
-import {renderChildList} from '../../shared/child-list';
+import {PageHeaderApi} from './pageheader.schema.js';
+import {renderChildList} from '../../shared/child-list.js';
 
 /** Primer's closed `role` union, derived from the component's own props (no internal import). */
 type PrimerAriaRole = ComponentProps<typeof PrimerPageHeader>['role'];

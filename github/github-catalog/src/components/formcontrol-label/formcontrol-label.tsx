@@ -1,6 +1,6 @@
 import {FormControl as PrimerFormControl} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {FormControlLabelApi} from './formcontrol-label.schema';
+import {FormControlLabelApi} from './formcontrol-label.schema.js';
 
 /** Resolved props: the DynamicString `text` is a plain string after the binder resolves it; the
  * booleans/string pass through. `required`/`disabled` come from FormControl's context at render. */

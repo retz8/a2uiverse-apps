@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {TreeViewDirectoryIconApi} from './treeview-directoryicon.schema';
+import {TreeViewDirectoryIconApi} from './treeview-directoryicon.schema.js';
 
 describe('TreeViewDirectoryIconApi.schema', () => {
   it('accepts the empty props object (zero-prop leaf)', () => {

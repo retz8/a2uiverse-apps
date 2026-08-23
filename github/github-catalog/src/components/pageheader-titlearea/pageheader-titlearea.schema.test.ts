@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {PageHeaderTitleAreaApi} from './pageheader-titlearea.schema';
+import {PageHeaderTitleAreaApi} from './pageheader-titlearea.schema.js';
 
 describe('PageHeaderTitleAreaApi.schema', () => {
   it('accepts a minimal valid TitleArea (every prop optional)', () => {

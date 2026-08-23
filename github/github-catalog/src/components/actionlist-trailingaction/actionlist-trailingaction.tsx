@@ -1,7 +1,7 @@
 import type {ComponentType, ElementType, ReactNode} from 'react';
 import {ActionList as PrimerActionList} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {ActionListTrailingActionApi} from './actionlist-trailingaction.schema';
+import {ActionListTrailingActionApi} from './actionlist-trailingaction.schema.js';
 
 /** Resolved props: Dynamic* resolve to primitives, action -> onClick, the icon ComponentId -> a built child. */
 type ActionListTrailingActionViewProps = {

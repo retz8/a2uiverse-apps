@@ -2,7 +2,7 @@ import {describe, it, expect, afterEach} from 'vitest';
 import {render, screen, cleanup} from '@testing-library/react';
 import {ThemeProvider, BaseStyles, CheckboxGroup, FormControl, Checkbox} from '@primer/react';
 import type {ReactElement} from 'react';
-import {CheckboxGroupView} from './checkboxgroup';
+import {CheckboxGroupView} from './checkboxgroup.js';
 
 afterEach(cleanup);
 

@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {ActionBarGroupApi} from './actionbar-group.schema';
+import {ActionBarGroupApi} from './actionbar-group.schema.js';
 
 describe('ActionBarGroupApi.schema', () => {
   it('accepts a minimal valid ActionBar.Group (children optional)', () => {

@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {AvatarApi} from './avatar.schema';
+import {AvatarApi} from './avatar.schema.js';
 
 const src = 'https://example.com/octocat.png';
 

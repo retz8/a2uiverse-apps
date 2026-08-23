@@ -1,7 +1,7 @@
 import type {ElementType, ReactNode} from 'react';
 import {Token as PrimerToken} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {TokenApi} from './token.schema';
+import {TokenApi} from './token.schema.js';
 
 /** Resolved accessibility: nested DynamicStrings are plain strings after the binder resolves them. */
 type ResolvedAccessibility = {label?: string; description?: string};

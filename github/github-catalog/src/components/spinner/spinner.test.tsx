@@ -1,6 +1,6 @@
 import {describe, it, expect, afterEach, beforeAll, vi} from 'vitest';
 import {render, screen, cleanup, act} from '@testing-library/react';
-import {SpinnerView} from './spinner';
+import {SpinnerView} from './spinner.js';
 
 // Primer Spinner reads `prefers-reduced-motion` via useMedia → window.matchMedia,
 // which jsdom does not implement. Stub it so the animation-sync effect is a no-op.

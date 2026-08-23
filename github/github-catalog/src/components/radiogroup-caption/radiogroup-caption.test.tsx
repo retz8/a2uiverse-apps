@@ -1,7 +1,7 @@
 import {describe, it, expect, afterEach} from 'vitest';
 import {render, screen, cleanup} from '@testing-library/react';
 import {ThemeProvider, BaseStyles} from '@primer/react';
-import {RadioGroupCaptionView} from './radiogroup-caption';
+import {RadioGroupCaptionView} from './radiogroup-caption.js';
 
 afterEach(cleanup);
 

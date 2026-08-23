@@ -1,8 +1,8 @@
 import {type ReactNode} from 'react';
 import {CheckboxGroup as PrimerCheckboxGroup} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {CheckboxGroupApi} from './checkboxgroup.schema';
-import {renderSlottedChildList, type SlotMap} from '../../shared/slotted-child-list';
+import {CheckboxGroupApi} from './checkboxgroup.schema.js';
+import {renderSlottedChildList, type SlotMap} from '../../shared/slotted-child-list.js';
 
 /**
  * Slot routing for the root's `children`. Primer's `CheckboxGroup` scans direct children for its

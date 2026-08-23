@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {ActionMenuOverlayApi} from './actionmenu-overlay.schema';
+import {ActionMenuOverlayApi} from './actionmenu-overlay.schema.js';
 
 describe('ActionMenuOverlayApi.schema', () => {
   it('accepts a minimal valid ActionMenu.Overlay (children only)', () => {

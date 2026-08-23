@@ -1,3 +1,3 @@
-export {SplitPageLayoutPaneComponent} from './split-page-layout-pane';
-export {SplitPageLayoutPaneApi} from './split-page-layout-pane.schema';
-export type {SplitPageLayoutPaneProps} from './split-page-layout-pane.schema';
+export {SplitPageLayoutPaneComponent} from './split-page-layout-pane.js';
+export {SplitPageLayoutPaneApi} from './split-page-layout-pane.schema.js';
+export type {SplitPageLayoutPaneProps} from './split-page-layout-pane.schema.js';

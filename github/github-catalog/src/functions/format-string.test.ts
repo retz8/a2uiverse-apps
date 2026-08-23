@@ -1,7 +1,7 @@
 import {describe, it, expect} from 'vitest';
 import {signal} from '@preact/signals-core';
 import type {DataContext} from '@a2ui/web_core/v0_9';
-import {formatString} from './format-string';
+import {formatString} from './format-string.js';
 
 // formatString is the one adopted function that genuinely uses the data context: it parses the
 // template's ${...} blocks and calls resolveSignal on each, then returns a computed signal over

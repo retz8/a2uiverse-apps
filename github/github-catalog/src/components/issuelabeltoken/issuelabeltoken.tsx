@@ -1,6 +1,6 @@
 import {IssueLabelToken as PrimerIssueLabelToken} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {IssueLabelTokenApi} from './issuelabeltoken.schema';
+import {IssueLabelTokenApi} from './issuelabeltoken.schema.js';
 
 /** Resolved accessibility: nested DynamicStrings are plain strings after the binder resolves them. */
 type ResolvedAccessibility = {label?: string; description?: string};

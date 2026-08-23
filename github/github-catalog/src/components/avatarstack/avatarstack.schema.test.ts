@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {AvatarStackApi} from './avatarstack.schema';
+import {AvatarStackApi} from './avatarstack.schema.js';
 
 describe('AvatarStackApi.schema', () => {
   it('accepts a minimal valid AvatarStack (children only)', () => {

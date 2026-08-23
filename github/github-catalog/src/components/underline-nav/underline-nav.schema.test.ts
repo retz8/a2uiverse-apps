@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {UnderlineNavApi} from './underline-nav.schema';
+import {UnderlineNavApi} from './underline-nav.schema.js';
 
 describe('UnderlineNavApi.schema', () => {
   it('accepts a minimal valid UnderlineNav (required children + aria-label)', () => {

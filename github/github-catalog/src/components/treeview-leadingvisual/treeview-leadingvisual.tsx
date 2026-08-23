@@ -1,7 +1,7 @@
 import type {ReactNode} from 'react';
 import {TreeView as PrimerTreeView} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {TreeViewLeadingVisualApi} from './treeview-leadingvisual.schema';
+import {TreeViewLeadingVisualApi} from './treeview-leadingvisual.schema.js';
 
 /** Resolved props: the `child` ComponentId arrives as a built node; `label` passes through. */
 type TreeViewLeadingVisualViewProps = {

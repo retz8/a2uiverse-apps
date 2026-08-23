@@ -1,6 +1,6 @@
 import {describe, it, expect, afterEach, vi} from 'vitest';
 import {render, cleanup, act} from '@testing-library/react';
-import {SkeletonBoxView} from './skeletonbox';
+import {SkeletonBoxView} from './skeletonbox.js';
 
 afterEach(cleanup);
 

@@ -2,8 +2,8 @@ import {type ComponentType, type ElementType, type ReactNode, useEffect, useStat
 import {SelectPanel as PrimerSelectPanel} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
 import type {ComponentContext} from '@a2ui/web_core/v0_9';
-import {SelectPanelApi} from './selectpanel.schema';
-import {iconComponent} from '../../shared/icon-component';
+import {SelectPanelApi} from './selectpanel.schema.js';
+import {iconComponent} from '../../shared/icon-component.js';
 
 /** `buildChild` from the a2ui react binder: resolves a component id (with optional scope) to a node. */
 type BuildChild = (id: string, basePath?: string) => ReactNode;

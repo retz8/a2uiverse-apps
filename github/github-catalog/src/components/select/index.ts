@@ -1,3 +1,3 @@
-export {SelectComponent} from './select';
-export {SelectApi} from './select.schema';
-export type {SelectProps} from './select.schema';
+export {SelectComponent} from './select.js';
+export {SelectApi} from './select.schema.js';
+export type {SelectProps} from './select.schema.js';

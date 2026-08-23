@@ -1,6 +1,6 @@
 import {FormControl as PrimerFormControl} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {FormControlValidationApi} from './formcontrol-validation.schema';
+import {FormControlValidationApi} from './formcontrol-validation.schema.js';
 
 /** Resolved props: the DynamicString `text` is a plain string, and the bindable `variant` union
  * resolves to a literal `'error'`/`'success'` after the binder resolves any `DataBinding`. */

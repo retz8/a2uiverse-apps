@@ -2,7 +2,7 @@ import {describe, it, expect, afterEach} from 'vitest';
 import {render, screen, cleanup} from '@testing-library/react';
 import {ThemeProvider, BaseStyles, Timeline as PrimerTimeline} from '@primer/react';
 import type {ReactElement} from 'react';
-import {TimelineView} from './timeline';
+import {TimelineView} from './timeline.js';
 
 afterEach(cleanup);
 

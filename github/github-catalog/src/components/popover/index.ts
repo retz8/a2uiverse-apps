@@ -1,3 +1,3 @@
-export {PopoverComponent} from './popover';
-export {PopoverApi} from './popover.schema';
-export type {PopoverProps} from './popover.schema';
+export {PopoverComponent} from './popover.js';
+export {PopoverApi} from './popover.schema.js';
+export type {PopoverProps} from './popover.schema.js';

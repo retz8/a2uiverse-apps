@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {PageHeaderContextBarApi} from './pageheader-contextbar.schema';
+import {PageHeaderContextBarApi} from './pageheader-contextbar.schema.js';
 
 describe('PageHeaderContextBarApi.schema', () => {
   it('accepts a minimal valid component (every prop optional)', () => {

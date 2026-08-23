@@ -1,6 +1,6 @@
 import {z} from 'zod';
 import {CommonSchemas} from '@a2ui/web_core/v0_9';
-import {spacing, sizeWidth} from '../../shared/page-layout';
+import {spacing, sizeWidth} from '../../shared/page-layout.js';
 
 /**
  * Runtime (zod) representation of Primer PageLayout, props-only. The root of the compound family:

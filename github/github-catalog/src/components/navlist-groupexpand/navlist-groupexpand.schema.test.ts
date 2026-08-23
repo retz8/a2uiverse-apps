@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {NavListGroupExpandApi} from './navlist-groupexpand.schema';
+import {NavListGroupExpandApi} from './navlist-groupexpand.schema.js';
 
 const minimal = {items: [{text: 'api'}], label: 'Show more'};
 

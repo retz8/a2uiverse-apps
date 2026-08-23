@@ -1,3 +1,3 @@
-export {DetailsComponent} from './details';
-export {DetailsApi} from './details.schema';
-export type {DetailsProps} from './details.schema';
+export {DetailsComponent} from './details.js';
+export {DetailsApi} from './details.schema.js';
+export type {DetailsProps} from './details.schema.js';

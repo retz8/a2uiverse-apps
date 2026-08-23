@@ -1,6 +1,6 @@
 import {Label as PrimerLabel} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {LabelApi, type LabelProps} from './label.schema';
+import {LabelApi, type LabelProps} from './label.schema.js';
 
 /** Resolved props: `text` is a plain string after the binder resolves the DynamicString. */
 type LabelViewProps = Omit<LabelProps, 'text'> & {text: string};

@@ -1,7 +1,7 @@
 import type {ComponentType, ReactElement, ReactNode} from 'react';
 import {UnderlineNav as PrimerUnderlineNav} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {UnderlineNavItemApi} from './underline-nav-item.schema';
+import {UnderlineNavItemApi} from './underline-nav-item.schema.js';
 
 type AriaCurrent = 'page' | 'step' | 'location' | 'date' | 'time' | 'true' | 'false';
 

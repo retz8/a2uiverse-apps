@@ -1,8 +1,8 @@
 import type {ComponentProps, ReactNode} from 'react';
 import {SplitPageLayout as PrimerSplitPageLayout} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {SplitPageLayoutPaneApi} from './split-page-layout-pane.schema';
-import {renderChildList} from '../../shared/child-list';
+import {SplitPageLayoutPaneApi} from './split-page-layout-pane.schema.js';
+import {renderChildList} from '../../shared/child-list.js';
 
 /** A resolved responsive value: a scalar or Primer's `{narrow, regular, wide}` map. */
 type Responsive<T> = T | {narrow?: T; regular?: T; wide?: T};

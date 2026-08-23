@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {SplitPageLayoutFooterApi} from './split-page-layout-footer.schema';
+import {SplitPageLayoutFooterApi} from './split-page-layout-footer.schema.js';
 
 describe('SplitPageLayoutFooterApi.schema', () => {
   it('accepts a minimal valid Footer (no props — all optional)', () => {

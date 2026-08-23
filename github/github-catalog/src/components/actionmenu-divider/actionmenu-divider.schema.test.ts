@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {ActionMenuDividerApi} from './actionmenu-divider.schema';
+import {ActionMenuDividerApi} from './actionmenu-divider.schema.js';
 
 describe('ActionMenuDividerApi.schema', () => {
   it('accepts an empty Divider (no props)', () => {

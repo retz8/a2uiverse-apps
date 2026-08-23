@@ -1,6 +1,6 @@
 import {RadioGroup as PrimerRadioGroup} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {RadioGroupLabelApi} from './radiogroup-label.schema';
+import {RadioGroupLabelApi} from './radiogroup-label.schema.js';
 
 /** Resolved props: the DynamicString `text` is a plain string after the binder resolves it; the
  * boolean passes through. */

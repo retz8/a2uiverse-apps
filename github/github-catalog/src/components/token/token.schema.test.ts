@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {TokenApi} from './token.schema';
+import {TokenApi} from './token.schema.js';
 
 describe('TokenApi.schema', () => {
   it('accepts a minimal valid Token (text only)', () => {

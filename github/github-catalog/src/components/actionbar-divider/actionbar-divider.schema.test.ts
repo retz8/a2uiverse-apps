@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {ActionBarDividerApi} from './actionbar-divider.schema';
+import {ActionBarDividerApi} from './actionbar-divider.schema.js';
 
 describe('ActionBarDividerApi.schema', () => {
   it('accepts an empty object (zero-prop)', () => {

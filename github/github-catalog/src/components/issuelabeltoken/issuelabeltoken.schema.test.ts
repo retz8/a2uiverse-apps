@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {IssueLabelTokenApi} from './issuelabeltoken.schema';
+import {IssueLabelTokenApi} from './issuelabeltoken.schema.js';
 
 describe('IssueLabelTokenApi.schema', () => {
   it('accepts a minimal valid IssueLabelToken (text only)', () => {

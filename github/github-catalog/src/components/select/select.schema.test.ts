@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {SelectApi} from './select.schema';
+import {SelectApi} from './select.schema.js';
 
 describe('SelectApi.schema', () => {
   it('accepts a minimal valid Select (value only)', () => {

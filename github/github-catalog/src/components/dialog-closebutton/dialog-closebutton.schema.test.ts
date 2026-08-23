@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {DialogCloseButtonApi} from './dialog-closebutton.schema';
+import {DialogCloseButtonApi} from './dialog-closebutton.schema.js';
 
 const fnAction = {
   functionCall: {call: 'consoleLog', args: {message: 'closebutton'}, returnType: 'void'},

@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {SplitPageLayoutApi} from './split-page-layout.schema';
+import {SplitPageLayoutApi} from './split-page-layout.schema.js';
 
 describe('SplitPageLayoutApi.schema', () => {
   it('accepts a minimal valid SplitPageLayout (no slots — all optional)', () => {

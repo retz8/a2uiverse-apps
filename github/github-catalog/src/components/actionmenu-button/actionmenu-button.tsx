@@ -1,7 +1,7 @@
 import type {ReactElement, ElementType, ReactNode} from 'react';
 import {ActionMenu as PrimerActionMenu} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {ActionMenuButtonApi} from './actionmenu-button.schema';
+import {ActionMenuButtonApi} from './actionmenu-button.schema.js';
 
 /** Resolved accessibility: nested DynamicStrings are plain strings after the binder resolves them. */
 type ResolvedAccessibility = {label?: string; description?: string};

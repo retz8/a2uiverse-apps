@@ -1,8 +1,8 @@
 import type {ChangeEvent} from 'react';
 import {Textarea as PrimerTextarea} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {useFormControlInputProps} from '../../shared/form-control-forwarding';
-import {TextareaApi} from './textarea.schema';
+import {useFormControlInputProps} from '../../shared/form-control-forwarding.js';
+import {TextareaApi} from './textarea.schema.js';
 
 /** Resolved accessibility: nested DynamicStrings are plain strings after the binder resolves them. */
 type ResolvedAccessibility = {label?: string; description?: string};

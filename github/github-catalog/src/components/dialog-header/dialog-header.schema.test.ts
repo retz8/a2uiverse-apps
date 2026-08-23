@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {DialogHeaderApi} from './dialog-header.schema';
+import {DialogHeaderApi} from './dialog-header.schema.js';
 
 describe('DialogHeaderApi.schema', () => {
   it('accepts an empty header (children optional)', () => {

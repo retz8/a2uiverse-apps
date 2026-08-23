@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {DetailsApi} from './details.schema';
+import {DetailsApi} from './details.schema.js';
 
 describe('DetailsApi.schema', () => {
   it('accepts a minimal valid Details (summary + open only)', () => {

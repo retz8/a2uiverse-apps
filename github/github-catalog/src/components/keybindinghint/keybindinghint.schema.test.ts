@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {KeybindingHintApi} from './keybindinghint.schema';
+import {KeybindingHintApi} from './keybindinghint.schema.js';
 
 describe('KeybindingHintApi.schema', () => {
   it('accepts a minimal valid KeybindingHint (keys only)', () => {

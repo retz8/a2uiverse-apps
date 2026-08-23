@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {ActionListGroupHeadingApi} from './actionlist-groupheading.schema';
+import {ActionListGroupHeadingApi} from './actionlist-groupheading.schema.js';
 
 describe('ActionListGroupHeadingApi.schema', () => {
   it('accepts a minimal valid GroupHeading (every prop optional)', () => {

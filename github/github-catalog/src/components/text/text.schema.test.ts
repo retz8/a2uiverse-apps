@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {TextApi} from './text.schema';
+import {TextApi} from './text.schema.js';
 
 describe('TextApi.schema', () => {
   it('accepts a minimal valid Text (text only)', () => {

@@ -2,7 +2,7 @@ import {describe, it, expect, vi, afterEach} from 'vitest';
 import {render, screen, cleanup, fireEvent} from '@testing-library/react';
 import {ThemeProvider, BaseStyles, ActionList as PrimerActionList} from '@primer/react';
 import type {ReactElement} from 'react';
-import {ActionListItemView} from './actionlist-item';
+import {ActionListItemView} from './actionlist-item.js';
 
 afterEach(cleanup);
 

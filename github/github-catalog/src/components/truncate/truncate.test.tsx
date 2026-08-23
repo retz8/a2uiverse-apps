@@ -1,6 +1,6 @@
 import {describe, it, expect, afterEach} from 'vitest';
 import {render, screen, cleanup} from '@testing-library/react';
-import {TruncateView} from './truncate';
+import {TruncateView} from './truncate.js';
 
 afterEach(cleanup);
 

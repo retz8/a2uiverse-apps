@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {ConfirmationDialogApi} from './confirmationdialog.schema';
+import {ConfirmationDialogApi} from './confirmationdialog.schema.js';
 
 const fnAction = {functionCall: {call: 'consoleLog', args: {message: 'm'}, returnType: 'void'}};
 const eventAction = {event: {name: 'cd-confirm-delete', context: {}}};

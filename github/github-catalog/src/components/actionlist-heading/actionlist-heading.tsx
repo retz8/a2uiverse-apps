@@ -1,7 +1,7 @@
 import type {ComponentType, ReactNode} from 'react';
 import {ActionList as PrimerActionList} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {ActionListHeadingApi} from './actionlist-heading.schema';
+import {ActionListHeadingApi} from './actionlist-heading.schema.js';
 
 /** Resolved props: `text` is a plain string after the binder resolves the DynamicString. */
 type ActionListHeadingViewProps = {

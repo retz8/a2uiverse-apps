@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {CheckboxGroupLabelApi} from './checkboxgroup-label.schema';
+import {CheckboxGroupLabelApi} from './checkboxgroup-label.schema.js';
 
 describe('CheckboxGroupLabelApi.schema', () => {
   it('accepts a literal text label', () => {

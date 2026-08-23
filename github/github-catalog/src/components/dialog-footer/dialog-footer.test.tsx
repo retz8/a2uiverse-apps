@@ -1,7 +1,7 @@
 import {describe, it, expect, afterEach} from 'vitest';
 import {render, screen, cleanup} from '@testing-library/react';
 import {ThemeProvider, BaseStyles} from '@primer/react';
-import {DialogFooterView} from './dialog-footer';
+import {DialogFooterView} from './dialog-footer.js';
 
 afterEach(cleanup);
 

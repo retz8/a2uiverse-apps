@@ -1,8 +1,8 @@
 import type {ComponentProps, ComponentType, ReactNode} from 'react';
 import {TreeView as PrimerTreeView} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {TreeViewItemApi} from './treeview-item.schema';
-import {renderSlottedChildList, type SlotMap} from '../../shared/slotted-child-list';
+import {TreeViewItemApi} from './treeview-item.schema.js';
+import {renderSlottedChildList, type SlotMap} from '../../shared/slotted-child-list.js';
 
 /** A reference-matched slot component that also carries element-level props (e.g. `label`). */
 type SlotWithProps = ComponentType<{children?: ReactNode; [prop: string]: unknown}>;

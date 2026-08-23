@@ -1,3 +1,3 @@
-export {RadioGroupCaptionComponent} from './radiogroup-caption';
-export {RadioGroupCaptionApi} from './radiogroup-caption.schema';
-export type {RadioGroupCaptionProps} from './radiogroup-caption.schema';
+export {RadioGroupCaptionComponent} from './radiogroup-caption.js';
+export {RadioGroupCaptionApi} from './radiogroup-caption.schema.js';
+export type {RadioGroupCaptionProps} from './radiogroup-caption.schema.js';

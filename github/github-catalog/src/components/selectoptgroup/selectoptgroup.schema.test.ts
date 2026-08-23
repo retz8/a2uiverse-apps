@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {SelectOptGroupApi} from './selectoptgroup.schema';
+import {SelectOptGroupApi} from './selectoptgroup.schema.js';
 
 describe('SelectOptGroupApi.schema', () => {
   it('accepts a minimal valid SelectOptGroup (no props)', () => {

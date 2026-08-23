@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {TreeViewApi} from './treeview.schema';
+import {TreeViewApi} from './treeview.schema.js';
 
 describe('TreeViewApi.schema', () => {
   it('accepts a minimal valid TreeView (children only)', () => {

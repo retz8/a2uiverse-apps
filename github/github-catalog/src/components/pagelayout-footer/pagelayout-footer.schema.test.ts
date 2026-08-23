@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {PageLayoutFooterApi} from './pagelayout-footer.schema';
+import {PageLayoutFooterApi} from './pagelayout-footer.schema.js';
 
 describe('PageLayoutFooterApi.schema', () => {
   it('accepts an empty footer (all props optional)', () => {

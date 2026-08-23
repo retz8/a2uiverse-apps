@@ -1,7 +1,7 @@
 import {z} from 'zod';
 import {CommonSchemas} from '@a2ui/web_core/v0_9';
-import {responsive} from '../../shared/responsive';
-import {regionPaddingEnum} from '../../shared/page-layout-region';
+import {responsive} from '../../shared/responsive.js';
+import {regionPaddingEnum} from '../../shared/page-layout-region.js';
 
 /**
  * Runtime (zod) representation of Primer `SplitPageLayout.Content`, props-only. The main content

@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {ActionListLinkItemApi} from './actionlist-linkitem.schema';
+import {ActionListLinkItemApi} from './actionlist-linkitem.schema.js';
 
 describe('ActionListLinkItemApi.schema', () => {
   it('accepts a minimal valid LinkItem (href only)', () => {

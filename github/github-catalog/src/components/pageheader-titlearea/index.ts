@@ -1,3 +1,3 @@
-export {PageHeaderTitleAreaComponent} from './pageheader-titlearea';
-export {PageHeaderTitleAreaApi} from './pageheader-titlearea.schema';
-export type {PageHeaderTitleAreaProps} from './pageheader-titlearea.schema';
+export {PageHeaderTitleAreaComponent} from './pageheader-titlearea.js';
+export {PageHeaderTitleAreaApi} from './pageheader-titlearea.schema.js';
+export type {PageHeaderTitleAreaProps} from './pageheader-titlearea.schema.js';

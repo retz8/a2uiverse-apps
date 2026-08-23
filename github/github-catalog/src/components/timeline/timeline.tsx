@@ -1,8 +1,8 @@
 import type {ReactNode} from 'react';
 import {Timeline as PrimerTimeline} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {TimelineApi} from './timeline.schema';
-import {renderChildList} from '../../shared/child-list';
+import {TimelineApi} from './timeline.schema.js';
+import {renderChildList} from '../../shared/child-list.js';
 
 /** Resolved props: ChildList arrives as built `children`; `clipSidebar` passes through. */
 type TimelineViewProps = {

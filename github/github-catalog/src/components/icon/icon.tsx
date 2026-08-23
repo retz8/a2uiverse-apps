@@ -1,7 +1,7 @@
 import * as octicons from '@primer/octicons-react';
 import type {Icon as OcticonComponent} from '@primer/octicons-react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {IconApi, ICON_FILLS} from './icon.schema';
+import {IconApi, ICON_FILLS} from './icon.schema.js';
 
 /** The octicons namespace as a name-keyed lookup of icon components. */
 const OCTICONS = octicons as unknown as Record<string, OcticonComponent | undefined>;

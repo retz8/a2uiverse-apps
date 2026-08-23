@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {ActionListItemApi} from './actionlist-item.schema';
+import {ActionListItemApi} from './actionlist-item.schema.js';
 
 const action = {event: {name: 'select'}};
 

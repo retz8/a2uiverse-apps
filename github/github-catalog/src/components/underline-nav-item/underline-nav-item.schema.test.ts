@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {UnderlineNavItemApi} from './underline-nav-item.schema';
+import {UnderlineNavItemApi} from './underline-nav-item.schema.js';
 
 describe('UnderlineNavItemApi.schema', () => {
   it('accepts a minimal valid item (text only)', () => {

@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {RadioGroupLabelApi} from './radiogroup-label.schema';
+import {RadioGroupLabelApi} from './radiogroup-label.schema.js';
 
 describe('RadioGroupLabelApi.schema', () => {
   it('accepts a literal text label', () => {

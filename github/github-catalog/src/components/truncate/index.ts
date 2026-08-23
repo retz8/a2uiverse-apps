@@ -1,3 +1,3 @@
-export {TruncateComponent} from './truncate';
-export {TruncateApi} from './truncate.schema';
-export type {TruncateProps} from './truncate.schema';
+export {TruncateComponent} from './truncate.js';
+export {TruncateApi} from './truncate.schema.js';
+export type {TruncateProps} from './truncate.schema.js';

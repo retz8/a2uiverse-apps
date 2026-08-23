@@ -2,8 +2,8 @@ import {type ReactNode, useEffect, useState} from 'react';
 import {Dialog as PrimerDialog} from '@primer/react';
 import type {DialogProps as PrimerDialogProps} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {DialogApi} from './dialog.schema';
-import {renderSlottedChildList, type SlotMap} from '../../shared/slotted-child-list';
+import {DialogApi} from './dialog.schema.js';
+import {renderSlottedChildList, type SlotMap} from '../../shared/slotted-child-list.js';
 
 /**
  * Slot routing for the root's `children`. Primer's `Dialog` scans direct children for its

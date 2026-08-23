@@ -1,3 +1,3 @@
-export {StateLabelComponent} from './statelabel';
-export {StateLabelApi} from './statelabel.schema';
-export type {StateLabelProps} from './statelabel.schema';
+export {StateLabelComponent} from './statelabel.js';
+export {StateLabelApi} from './statelabel.schema.js';
+export type {StateLabelProps} from './statelabel.schema.js';

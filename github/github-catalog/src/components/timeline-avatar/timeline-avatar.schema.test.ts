@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {TimelineAvatarApi} from './timeline-avatar.schema';
+import {TimelineAvatarApi} from './timeline-avatar.schema.js';
 
 describe('TimelineAvatarApi.schema', () => {
   it('accepts a minimal valid Avatar (child only)', () => {

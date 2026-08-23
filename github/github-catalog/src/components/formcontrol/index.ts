@@ -1,3 +1,3 @@
-export {FormControlComponent} from './formcontrol';
-export {FormControlApi} from './formcontrol.schema';
-export type {FormControlProps} from './formcontrol.schema';
+export {FormControlComponent} from './formcontrol.js';
+export {FormControlApi} from './formcontrol.schema.js';
+export type {FormControlProps} from './formcontrol.schema.js';

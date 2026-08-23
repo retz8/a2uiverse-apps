@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {CheckboxApi} from './checkbox.schema';
+import {CheckboxApi} from './checkbox.schema.js';
 
 describe('CheckboxApi.schema', () => {
   it('accepts a minimal valid Checkbox (checked only)', () => {

@@ -1,7 +1,7 @@
 import {describe, it, expect, afterEach} from 'vitest';
 import {render, cleanup} from '@testing-library/react';
 import {ThemeProvider, BaseStyles, ActionList as PrimerActionList} from '@primer/react';
-import {ActionListDividerView} from './actionlist-divider';
+import {ActionListDividerView} from './actionlist-divider.js';
 
 afterEach(cleanup);
 

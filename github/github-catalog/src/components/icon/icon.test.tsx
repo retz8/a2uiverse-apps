@@ -1,8 +1,8 @@
 import {describe, it, expect, afterEach} from 'vitest';
 import {render, screen, cleanup} from '@testing-library/react';
 import * as octicons from '@primer/octicons-react';
-import {IconView, nameToExport} from './icon';
-import {ICON_NAMES} from './icon.schema';
+import {IconView, nameToExport} from './icon.js';
+import {ICON_NAMES} from './icon.schema.js';
 
 afterEach(cleanup);
 

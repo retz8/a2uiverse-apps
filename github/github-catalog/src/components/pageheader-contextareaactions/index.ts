@@ -1,3 +1,3 @@
-export {PageHeaderContextAreaActionsComponent} from './pageheader-contextareaactions';
-export {PageHeaderContextAreaActionsApi} from './pageheader-contextareaactions.schema';
-export type {PageHeaderContextAreaActionsProps} from './pageheader-contextareaactions.schema';
+export {PageHeaderContextAreaActionsComponent} from './pageheader-contextareaactions.js';
+export {PageHeaderContextAreaActionsApi} from './pageheader-contextareaactions.schema.js';
+export type {PageHeaderContextAreaActionsProps} from './pageheader-contextareaactions.schema.js';

@@ -1,3 +1,3 @@
-export {RadioGroupComponent} from './radiogroup';
-export {RadioGroupApi} from './radiogroup.schema';
-export type {RadioGroupProps} from './radiogroup.schema';
+export {RadioGroupComponent} from './radiogroup.js';
+export {RadioGroupApi} from './radiogroup.schema.js';
+export type {RadioGroupProps} from './radiogroup.schema.js';

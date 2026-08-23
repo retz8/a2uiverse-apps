@@ -1,6 +1,6 @@
 import {describe, it, expect} from 'vitest';
 import type {DataContext} from '@a2ui/web_core/v0_9';
-import {countSelected} from './count-selected';
+import {countSelected} from './count-selected.js';
 
 describe('countSelected function', () => {
   it('declares its api', () => {

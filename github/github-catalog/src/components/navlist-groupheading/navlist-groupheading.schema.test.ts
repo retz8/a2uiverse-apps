@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {NavListGroupHeadingApi} from './navlist-groupheading.schema';
+import {NavListGroupHeadingApi} from './navlist-groupheading.schema.js';
 
 describe('NavListGroupHeadingApi.schema', () => {
   it('accepts a minimal valid GroupHeading (text only)', () => {

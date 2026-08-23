@@ -1,3 +1,3 @@
-export {RadioComponent} from './radio';
-export {RadioApi} from './radio.schema';
-export type {RadioProps} from './radio.schema';
+export {RadioComponent} from './radio.js';
+export {RadioApi} from './radio.schema.js';
+export type {RadioProps} from './radio.schema.js';

@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {TruncateApi} from './truncate.schema';
+import {TruncateApi} from './truncate.schema.js';
 
 describe('TruncateApi.schema', () => {
   it('accepts a minimal valid Truncate (text + title only)', () => {

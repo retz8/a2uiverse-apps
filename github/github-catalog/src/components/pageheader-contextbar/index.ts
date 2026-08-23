@@ -1,3 +1,3 @@
-export {PageHeaderContextBarComponent} from './pageheader-contextbar';
-export {PageHeaderContextBarApi} from './pageheader-contextbar.schema';
-export type {PageHeaderContextBarProps} from './pageheader-contextbar.schema';
+export {PageHeaderContextBarComponent} from './pageheader-contextbar.js';
+export {PageHeaderContextBarApi} from './pageheader-contextbar.schema.js';
+export type {PageHeaderContextBarProps} from './pageheader-contextbar.schema.js';

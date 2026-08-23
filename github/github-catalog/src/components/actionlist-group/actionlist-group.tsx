@@ -1,8 +1,8 @@
 import type {ComponentType, ReactNode} from 'react';
 import {ActionList as PrimerActionList} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {ActionListGroupApi} from './actionlist-group.schema';
-import {renderChildList} from '../../shared/child-list';
+import {ActionListGroupApi} from './actionlist-group.schema.js';
+import {renderChildList} from '../../shared/child-list.js';
 
 /** Resolved props: the ChildList arrives as built `children`; `auxiliaryText` resolves to a string. */
 type ActionListGroupViewProps = {

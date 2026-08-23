@@ -1,3 +1,3 @@
-export {SegmentedControlButtonComponent} from './segmentedcontrolbutton';
-export {SegmentedControlButtonApi} from './segmentedcontrolbutton.schema';
-export type {SegmentedControlButtonProps} from './segmentedcontrolbutton.schema';
+export {SegmentedControlButtonComponent} from './segmentedcontrolbutton.js';
+export {SegmentedControlButtonApi} from './segmentedcontrolbutton.schema.js';
+export type {SegmentedControlButtonProps} from './segmentedcontrolbutton.schema.js';

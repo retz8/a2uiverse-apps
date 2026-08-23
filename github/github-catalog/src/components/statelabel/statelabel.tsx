@@ -1,6 +1,6 @@
 import {StateLabel as PrimerStateLabel} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {StateLabelApi, STATELABEL_STATUSES, type StateLabelProps} from './statelabel.schema';
+import {StateLabelApi, STATELABEL_STATUSES, type StateLabelProps} from './statelabel.schema.js';
 
 /** Resolved props: `text` is a plain string after the binder resolves the DynamicString. */
 type StateLabelViewProps = Omit<StateLabelProps, 'text'> & {text: string};

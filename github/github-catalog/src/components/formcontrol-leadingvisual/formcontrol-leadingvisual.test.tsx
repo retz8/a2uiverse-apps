@@ -2,7 +2,7 @@ import {describe, it, expect, afterEach} from 'vitest';
 import {render, cleanup} from '@testing-library/react';
 import {ThemeProvider, BaseStyles} from '@primer/react';
 import {BellIcon} from '@primer/octicons-react';
-import {FormControlLeadingVisualView} from './formcontrol-leadingvisual';
+import {FormControlLeadingVisualView} from './formcontrol-leadingvisual.js';
 
 afterEach(cleanup);
 

@@ -1,8 +1,8 @@
 import {useContext} from 'react';
 import {Avatar as PrimerAvatar} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {AvatarApi} from './avatar.schema';
-import {AvatarStackItemContext} from '../../shared/avatar-stack-context';
+import {AvatarApi} from './avatar.schema.js';
+import {AvatarStackItemContext} from '../../shared/avatar-stack-context.js';
 
 /** Resolved props: `src`/`alt` are plain strings after the binder resolves the DynamicStrings. */
 type AvatarViewProps = {

@@ -2,7 +2,7 @@ import {describe, it, expect, vi, afterEach} from 'vitest';
 import {render, screen, cleanup, fireEvent} from '@testing-library/react';
 import {ThemeProvider, BaseStyles, ActionMenu as PrimerActionMenu, ActionList} from '@primer/react';
 import type {ReactElement, ReactNode} from 'react';
-import {ActionMenuView} from './actionmenu';
+import {ActionMenuView} from './actionmenu.js';
 
 afterEach(cleanup);
 

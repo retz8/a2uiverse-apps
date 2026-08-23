@@ -1,8 +1,8 @@
 import type {ReactNode} from 'react';
 import {PageLayout as PrimerPageLayout} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {PageLayoutFooterApi} from './pagelayout-footer.schema';
-import {renderChildList} from '../../shared/child-list';
+import {PageLayoutFooterApi} from './pagelayout-footer.schema.js';
+import {renderChildList} from '../../shared/child-list.js';
 
 type Spacing = 'none' | 'condensed' | 'normal';
 type Divider =

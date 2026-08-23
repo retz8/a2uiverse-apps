@@ -1,3 +1,3 @@
-export {TextComponent} from './text';
-export {TextApi} from './text.schema';
-export type {TextProps} from './text.schema';
+export {TextComponent} from './text.js';
+export {TextApi} from './text.schema.js';
+export type {TextProps} from './text.schema.js';

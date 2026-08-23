@@ -2,7 +2,7 @@ import {describe, it, expect, afterEach} from 'vitest';
 import {render, screen, cleanup} from '@testing-library/react';
 import {ThemeProvider, BaseStyles, FormControl, TextInput} from '@primer/react';
 import type {ReactElement} from 'react';
-import {FormControlView} from './formcontrol';
+import {FormControlView} from './formcontrol.js';
 
 afterEach(cleanup);
 

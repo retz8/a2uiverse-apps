@@ -1,7 +1,7 @@
 import type {MouseEvent} from 'react';
 import {Pagination as PrimerPagination} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {PaginationApi} from './pagination.schema';
+import {PaginationApi} from './pagination.schema.js';
 
 /** Resolved accessibility: nested DynamicStrings are plain strings after the binder resolves them. */
 type ResolvedAccessibility = {label?: string; description?: string};

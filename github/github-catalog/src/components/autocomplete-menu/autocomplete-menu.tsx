@@ -1,8 +1,8 @@
 import {type ComponentProps, type ElementType, type ReactNode, useEffect, useState} from 'react';
 import {Autocomplete as PrimerAutocomplete} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {AutocompleteMenuApi} from './autocomplete-menu.schema';
-import {iconComponent} from '../../shared/icon-component';
+import {AutocompleteMenuApi} from './autocomplete-menu.schema.js';
+import {iconComponent} from '../../shared/icon-component.js';
 
 /** `buildChild` from the a2ui react binder: resolves a component id to a node. */
 type BuildChild = (id: string, basePath?: string) => ReactNode;

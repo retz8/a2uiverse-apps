@@ -1,3 +1,3 @@
-export {DialogBodyComponent} from './dialog-body';
-export {DialogBodyApi} from './dialog-body.schema';
-export type {DialogBodyProps} from './dialog-body.schema';
+export {DialogBodyComponent} from './dialog-body.js';
+export {DialogBodyApi} from './dialog-body.schema.js';
+export type {DialogBodyProps} from './dialog-body.schema.js';

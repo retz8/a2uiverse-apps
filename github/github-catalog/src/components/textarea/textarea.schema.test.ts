@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {TextareaApi} from './textarea.schema';
+import {TextareaApi} from './textarea.schema.js';
 
 describe('TextareaApi.schema', () => {
   it('accepts a minimal valid Textarea (value only)', () => {

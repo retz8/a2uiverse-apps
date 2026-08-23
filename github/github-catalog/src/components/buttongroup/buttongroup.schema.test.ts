@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {ButtonGroupApi} from './buttongroup.schema';
+import {ButtonGroupApi} from './buttongroup.schema.js';
 
 describe('ButtonGroupApi.schema', () => {
   it('accepts a minimal valid ButtonGroup (every prop optional)', () => {

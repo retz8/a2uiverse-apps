@@ -1,8 +1,8 @@
 import type {ReactNode} from 'react';
 import {NavList as PrimerNavList} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {NavListGroupApi} from './navlist-group.schema';
-import {renderChildList} from '../../shared/child-list';
+import {NavListGroupApi} from './navlist-group.schema.js';
+import {renderChildList} from '../../shared/child-list.js';
 
 /** Resolved props: `children` arrives as a built `ChildList`; `title` resolves to a plain string. */
 type NavListGroupViewProps = {

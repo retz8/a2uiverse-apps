@@ -1,3 +1,3 @@
-export {SelectPanelItemComponent} from './selectpanel-item';
-export {SelectPanelItemApi} from './selectpanel-item.schema';
-export type {SelectPanelItemProps} from './selectpanel-item.schema';
+export {SelectPanelItemComponent} from './selectpanel-item.js';
+export {SelectPanelItemApi} from './selectpanel-item.schema.js';
+export type {SelectPanelItemProps} from './selectpanel-item.schema.js';

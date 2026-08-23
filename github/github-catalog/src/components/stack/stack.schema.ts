@@ -1,6 +1,6 @@
 import {z} from 'zod';
 import {CommonSchemas} from '@a2ui/web_core/v0_9';
-import {responsive} from '../../shared/responsive';
+import {responsive} from '../../shared/responsive.js';
 
 /** Primer's shared six-step spacing scale, reused by gap and the three padding props. */
 const spacingEnum = () => z.enum(['none', 'tight', 'condensed', 'cozy', 'normal', 'spacious']);

@@ -1,3 +1,3 @@
-export {PageHeaderTitleComponent} from './pageheader-title';
-export {PageHeaderTitleApi} from './pageheader-title.schema';
-export type {PageHeaderTitleProps} from './pageheader-title.schema';
+export {PageHeaderTitleComponent} from './pageheader-title.js';
+export {PageHeaderTitleApi} from './pageheader-title.schema.js';
+export type {PageHeaderTitleProps} from './pageheader-title.schema.js';

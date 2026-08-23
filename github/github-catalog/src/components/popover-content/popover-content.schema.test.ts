@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {PopoverContentApi} from './popover-content.schema';
+import {PopoverContentApi} from './popover-content.schema.js';
 
 const fnAction = {functionCall: {call: 'consoleLog', args: {message: 'm'}, returnType: 'void'}};
 const eventAction = {event: {name: 'popover-dismiss', context: {}}};

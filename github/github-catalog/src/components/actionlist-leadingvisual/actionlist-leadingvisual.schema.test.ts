@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {ActionListLeadingVisualApi} from './actionlist-leadingvisual.schema';
+import {ActionListLeadingVisualApi} from './actionlist-leadingvisual.schema.js';
 
 describe('ActionListLeadingVisualApi.schema', () => {
   it('accepts an empty LeadingVisual (children optional)', () => {

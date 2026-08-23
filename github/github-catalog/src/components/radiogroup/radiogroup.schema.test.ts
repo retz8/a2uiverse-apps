@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {RadioGroupApi} from './radiogroup.schema';
+import {RadioGroupApi} from './radiogroup.schema.js';
 
 describe('RadioGroupApi.schema', () => {
   it('accepts a minimal valid RadioGroup (children + name)', () => {

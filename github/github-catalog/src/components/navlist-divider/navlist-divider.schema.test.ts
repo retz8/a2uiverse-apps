@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {NavListDividerApi} from './navlist-divider.schema';
+import {NavListDividerApi} from './navlist-divider.schema.js';
 
 describe('NavListDividerApi.schema', () => {
   it('accepts the empty object (propless leaf)', () => {

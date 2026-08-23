@@ -1,6 +1,6 @@
 import {RadioGroup as PrimerRadioGroup} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {RadioGroupCaptionApi} from './radiogroup-caption.schema';
+import {RadioGroupCaptionApi} from './radiogroup-caption.schema.js';
 
 /** Resolved props: the DynamicString `text` is a plain string after the binder resolves it. */
 type RadioGroupCaptionViewProps = {text: string};

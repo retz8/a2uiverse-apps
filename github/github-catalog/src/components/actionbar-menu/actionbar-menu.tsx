@@ -2,8 +2,8 @@ import {type ComponentProps, type ElementType, type ReactNode} from 'react';
 import {ActionBar as PrimerActionBar} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
 import type {ComponentContext} from '@a2ui/web_core/v0_9';
-import {ActionBarMenuApi} from './actionbar-menu.schema';
-import {iconComponent} from '../../shared/icon-component';
+import {ActionBarMenuApi} from './actionbar-menu.schema.js';
+import {iconComponent} from '../../shared/icon-component.js';
 
 /** `buildChild` from the a2ui react binder: resolves a component id to a node. */
 type BuildChild = (id: string, basePath?: string) => ReactNode;

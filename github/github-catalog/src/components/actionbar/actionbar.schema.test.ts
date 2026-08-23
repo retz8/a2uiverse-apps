@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {ActionBarApi} from './actionbar.schema';
+import {ActionBarApi} from './actionbar.schema.js';
 
 const accessibility = {label: 'Formatting'};
 

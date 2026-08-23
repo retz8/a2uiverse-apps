@@ -1,6 +1,6 @@
 import {CheckboxGroup as PrimerCheckboxGroup} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {CheckboxGroupValidationApi} from './checkboxgroup-validation.schema';
+import {CheckboxGroupValidationApi} from './checkboxgroup-validation.schema.js';
 
 /** Resolved props: the DynamicString `text` is a plain string, and the bindable `variant` union
  * resolves to a literal `'error'`/`'success'` after the binder resolves any `DataBinding`. */

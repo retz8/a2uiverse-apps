@@ -1,8 +1,8 @@
 import type {ReactNode} from 'react';
 import {UnderlineNav as PrimerUnderlineNav} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {UnderlineNavApi} from './underline-nav.schema';
-import {renderChildList} from '../../shared/child-list';
+import {UnderlineNavApi} from './underline-nav.schema.js';
+import {renderChildList} from '../../shared/child-list.js';
 
 /** Resolved props: `children` arrives as a built `ChildList`; `aria-label`/`loadingCounters` resolve to primitives. */
 type UnderlineNavViewProps = {

@@ -1,5 +1,5 @@
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {SelectPanelItemApi} from './selectpanel-item.schema';
+import {SelectPanelItemApi} from './selectpanel-item.schema.js';
 
 /**
  * `SelectPanel.Item` is a **data-carrier leaf**, not a self-rendering component. Primer's

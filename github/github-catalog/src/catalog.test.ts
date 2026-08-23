@@ -1,6 +1,6 @@
 import {describe, it, expect} from 'vitest';
-import {CATALOG, CATALOG_ID} from './index';
-import {COMPONENTS, FUNCTIONS} from './catalog.registry';
+import {CATALOG, CATALOG_ID} from './index.js';
+import {COMPONENTS, FUNCTIONS} from './catalog.registry.js';
 
 describe('CATALOG', () => {
   it('carries the catalog id', () => {

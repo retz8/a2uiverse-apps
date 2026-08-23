@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {NavListTrailingVisualApi} from './navlist-trailingvisual.schema';
+import {NavListTrailingVisualApi} from './navlist-trailingvisual.schema.js';
 
 describe('NavListTrailingVisualApi.schema', () => {
   it('accepts a minimal valid NavList.TrailingVisual (no required props)', () => {

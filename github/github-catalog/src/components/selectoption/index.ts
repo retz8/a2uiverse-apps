@@ -1,3 +1,3 @@
-export {SelectOptionComponent} from './selectoption';
-export {SelectOptionApi} from './selectoption.schema';
-export type {SelectOptionProps} from './selectoption.schema';
+export {SelectOptionComponent} from './selectoption.js';
+export {SelectOptionApi} from './selectoption.schema.js';
+export type {SelectOptionProps} from './selectoption.schema.js';

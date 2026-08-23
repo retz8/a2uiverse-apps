@@ -1,3 +1,3 @@
-export {CATALOG} from './catalog';
-export {CATALOG_ID} from './catalog-id';
-export {Provider} from './provider';
+export {CATALOG} from './catalog.js';
+export {CATALOG_ID} from './catalog-id.js';
+export {Provider} from './provider.js';

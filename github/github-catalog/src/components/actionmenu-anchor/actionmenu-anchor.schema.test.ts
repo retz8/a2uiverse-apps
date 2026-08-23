@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {ActionMenuAnchorApi} from './actionmenu-anchor.schema';
+import {ActionMenuAnchorApi} from './actionmenu-anchor.schema.js';
 
 describe('ActionMenuAnchorApi.schema', () => {
   it('accepts a valid ActionMenu.Anchor (child)', () => {

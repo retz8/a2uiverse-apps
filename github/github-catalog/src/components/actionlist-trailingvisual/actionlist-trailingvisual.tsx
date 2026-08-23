@@ -1,8 +1,8 @@
 import type {ReactNode} from 'react';
 import {ActionList as PrimerActionList} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {ActionListTrailingVisualApi} from './actionlist-trailingvisual.schema';
-import {renderChildList} from '../../shared/child-list';
+import {ActionListTrailingVisualApi} from './actionlist-trailingvisual.schema.js';
+import {renderChildList} from '../../shared/child-list.js';
 
 /** Resolved props: the ChildList arrives as built `children`. */
 type ActionListTrailingVisualViewProps = {

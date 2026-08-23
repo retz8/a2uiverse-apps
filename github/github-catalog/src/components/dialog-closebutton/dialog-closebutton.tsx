@@ -1,6 +1,6 @@
 import {Dialog as PrimerDialog} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {DialogCloseButtonApi} from './dialog-closebutton.schema';
+import {DialogCloseButtonApi} from './dialog-closebutton.schema.js';
 
 /** Resolved props: the Action resolves to a () => void closure wired to Primer's onClose. */
 type DialogCloseButtonViewProps = {onClose?: () => void};

@@ -1,6 +1,6 @@
 import {describe, it, expect, afterEach} from 'vitest';
 import {render, screen, cleanup} from '@testing-library/react';
-import {ActionBarGroupView} from './actionbar-group';
+import {ActionBarGroupView} from './actionbar-group.js';
 
 afterEach(cleanup);
 

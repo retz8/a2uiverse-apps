@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {FormControlApi} from './formcontrol.schema';
+import {FormControlApi} from './formcontrol.schema.js';
 
 describe('FormControlApi.schema', () => {
   it('accepts a minimal valid FormControl (children only)', () => {

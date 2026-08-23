@@ -2,7 +2,7 @@ import {describe, it, expect, afterEach, vi} from 'vitest';
 import {render, screen, cleanup, fireEvent} from '@testing-library/react';
 import {ThemeProvider, BaseStyles, RadioGroup, FormControl, Radio} from '@primer/react';
 import type {ReactElement} from 'react';
-import {RadioGroupView} from './radiogroup';
+import {RadioGroupView} from './radiogroup.js';
 
 afterEach(cleanup);
 

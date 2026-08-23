@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {TreeViewTrailingVisualApi} from './treeview-trailingvisual.schema';
+import {TreeViewTrailingVisualApi} from './treeview-trailingvisual.schema.js';
 
 describe('TreeViewTrailingVisualApi.schema', () => {
   it('accepts a minimal valid TrailingVisual (child only)', () => {

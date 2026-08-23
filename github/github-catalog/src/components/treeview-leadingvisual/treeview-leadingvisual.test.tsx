@@ -2,7 +2,7 @@ import {describe, it, expect, afterEach} from 'vitest';
 import {render, screen, cleanup} from '@testing-library/react';
 import {ThemeProvider, BaseStyles, TreeView as PrimerTreeView} from '@primer/react';
 import type {ReactElement} from 'react';
-import {TreeViewLeadingVisualView} from './treeview-leadingvisual';
+import {TreeViewLeadingVisualView} from './treeview-leadingvisual.js';
 
 afterEach(cleanup);
 

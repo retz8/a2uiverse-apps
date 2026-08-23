@@ -1,3 +1,3 @@
-export {TimelineComponent} from './timeline';
-export {TimelineApi} from './timeline.schema';
-export type {TimelineProps} from './timeline.schema';
+export {TimelineComponent} from './timeline.js';
+export {TimelineApi} from './timeline.schema.js';
+export type {TimelineProps} from './timeline.schema.js';

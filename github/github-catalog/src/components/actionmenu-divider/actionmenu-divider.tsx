@@ -1,6 +1,6 @@
 import {ActionMenu as PrimerActionMenu} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {ActionMenuDividerApi} from './actionmenu-divider.schema';
+import {ActionMenuDividerApi} from './actionmenu-divider.schema.js';
 
 /** Resolved props: none — Divider is a self-contained separator. */
 export function ActionMenuDividerView() {

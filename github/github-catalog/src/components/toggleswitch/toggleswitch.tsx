@@ -1,7 +1,7 @@
 import type React from 'react';
 import {ToggleSwitch as PrimerToggleSwitch} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {ToggleSwitchApi} from './toggleswitch.schema';
+import {ToggleSwitchApi} from './toggleswitch.schema.js';
 
 /** Resolved accessibility: the nested DynamicStrings are plain strings post-binder. */
 type ResolvedAccessibility = {label?: string; description?: string};

@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {PageHeaderContextAreaActionsApi} from './pageheader-contextareaactions.schema';
+import {PageHeaderContextAreaActionsApi} from './pageheader-contextareaactions.schema.js';
 
 describe('PageHeaderContextAreaActionsApi.schema', () => {
   it('accepts a minimal valid component (every prop optional)', () => {

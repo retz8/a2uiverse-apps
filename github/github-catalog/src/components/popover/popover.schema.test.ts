@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {PopoverApi} from './popover.schema';
+import {PopoverApi} from './popover.schema.js';
 
 describe('PopoverApi.schema', () => {
   it('accepts a minimal valid Popover (children only)', () => {

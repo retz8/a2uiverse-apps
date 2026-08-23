@@ -1,7 +1,7 @@
 import type {ChangeEvent, HTMLProps, ReactElement, ReactNode} from 'react';
 import {Autocomplete as PrimerAutocomplete} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {AutocompleteInputApi} from './autocomplete-input.schema';
+import {AutocompleteInputApi} from './autocomplete-input.schema.js';
 
 /** Resolved accessibility: nested DynamicStrings are plain strings after the binder resolves them. */
 type ResolvedAccessibility = {label?: string; description?: string};

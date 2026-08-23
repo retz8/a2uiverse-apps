@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {SkeletonBoxApi} from './skeletonbox.schema';
+import {SkeletonBoxApi} from './skeletonbox.schema.js';
 
 describe('SkeletonBoxApi.schema', () => {
   it('accepts an empty SkeletonBox (all props optional)', () => {

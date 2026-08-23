@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {TimelineBreakApi} from './timeline-break.schema';
+import {TimelineBreakApi} from './timeline-break.schema.js';
 
 describe('TimelineBreakApi.schema', () => {
   it('accepts the empty object (propless leaf)', () => {

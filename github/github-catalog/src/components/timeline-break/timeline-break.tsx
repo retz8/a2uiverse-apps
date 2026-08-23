@@ -1,6 +1,6 @@
 import {Timeline as PrimerTimeline} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {TimelineBreakApi} from './timeline-break.schema';
+import {TimelineBreakApi} from './timeline-break.schema.js';
 
 /** Propless: renders Timeline.Break with no forwarded props. */
 export function TimelineBreakView() {

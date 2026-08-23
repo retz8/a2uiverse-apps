@@ -1,6 +1,6 @@
 import {describe, it, expect, afterEach} from 'vitest';
 import {render, screen, cleanup} from '@testing-library/react';
-import {KeybindingHintView} from './keybindinghint';
+import {KeybindingHintView} from './keybindinghint.js';
 
 afterEach(cleanup);
 

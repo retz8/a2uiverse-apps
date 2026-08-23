@@ -1,8 +1,8 @@
 import type {ReactNode} from 'react';
 import {TreeView as PrimerTreeView} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {TreeViewErrorDialogApi} from './treeview-errordialog.schema';
-import {renderChildList} from '../../shared/child-list';
+import {TreeViewErrorDialogApi} from './treeview-errordialog.schema.js';
+import {renderChildList} from '../../shared/child-list.js';
 
 /** Resolved props: ChildList arrives as built `children`; `title` passes through; the two Actions
  * resolve to () => void closures wired to Primer's onRetry/onDismiss. */

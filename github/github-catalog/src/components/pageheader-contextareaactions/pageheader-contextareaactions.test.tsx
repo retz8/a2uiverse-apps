@@ -1,6 +1,6 @@
 import {describe, it, expect, afterEach} from 'vitest';
 import {render, screen, cleanup} from '@testing-library/react';
-import {PageHeaderContextAreaActionsView} from './pageheader-contextareaactions';
+import {PageHeaderContextAreaActionsView} from './pageheader-contextareaactions.js';
 
 afterEach(cleanup);
 

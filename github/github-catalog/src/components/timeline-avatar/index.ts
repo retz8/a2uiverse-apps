@@ -1,3 +1,3 @@
-export {TimelineAvatarComponent} from './timeline-avatar';
-export {TimelineAvatarApi} from './timeline-avatar.schema';
-export type {TimelineAvatarProps} from './timeline-avatar.schema';
+export {TimelineAvatarComponent} from './timeline-avatar.js';
+export {TimelineAvatarApi} from './timeline-avatar.schema.js';
+export type {TimelineAvatarProps} from './timeline-avatar.schema.js';

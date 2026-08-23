@@ -1,6 +1,6 @@
 import {describe, it, expect, afterEach} from 'vitest';
 import {render, screen, cleanup} from '@testing-library/react';
-import {LinkView} from './link';
+import {LinkView} from './link.js';
 
 afterEach(cleanup);
 

@@ -1,6 +1,6 @@
 import {describe, it, expect, afterEach} from 'vitest';
 import {render, screen, cleanup} from '@testing-library/react';
-import {NavListView} from './navlist';
+import {NavListView} from './navlist.js';
 
 afterEach(cleanup);
 

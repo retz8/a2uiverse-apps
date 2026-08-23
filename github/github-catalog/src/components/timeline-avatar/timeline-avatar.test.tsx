@@ -2,7 +2,7 @@ import {describe, it, expect, afterEach} from 'vitest';
 import {render, screen, cleanup} from '@testing-library/react';
 import {ThemeProvider, BaseStyles, Timeline as PrimerTimeline} from '@primer/react';
 import type {ReactElement} from 'react';
-import {TimelineAvatarView} from './timeline-avatar';
+import {TimelineAvatarView} from './timeline-avatar.js';
 
 afterEach(cleanup);
 

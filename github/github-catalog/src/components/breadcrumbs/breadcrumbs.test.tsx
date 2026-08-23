@@ -1,7 +1,7 @@
 import {describe, it, expect, afterEach} from 'vitest';
 import {render, screen, cleanup} from '@testing-library/react';
 import {Breadcrumbs as PrimerBreadcrumbs} from '@primer/react';
-import {BreadcrumbsView} from './breadcrumbs';
+import {BreadcrumbsView} from './breadcrumbs.js';
 
 afterEach(cleanup);
 

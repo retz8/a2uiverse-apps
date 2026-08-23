@@ -1,7 +1,7 @@
 import {type ElementType, type ReactNode} from 'react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {PopoverApi} from './popover.schema';
-import {renderChildList} from '../../shared/child-list';
+import {PopoverApi} from './popover.schema.js';
+import {renderChildList} from '../../shared/child-list.js';
 
 /** The 12 caret positions (Primer's `CaretPosition`); the code default is `"top"`. */
 type CaretPosition =

@@ -1,6 +1,6 @@
 import {describe, it, expect, vi, afterEach} from 'vitest';
 import {render, screen, cleanup, fireEvent} from '@testing-library/react';
-import {UnderlineNavItemView} from './underline-nav-item';
+import {UnderlineNavItemView} from './underline-nav-item.js';
 
 afterEach(cleanup);
 

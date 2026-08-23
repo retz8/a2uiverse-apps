@@ -1,8 +1,8 @@
 import {type ReactNode, useEffect} from 'react';
 import {Details as PrimerDetails, useDetails} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {DetailsApi} from './details.schema';
-import {renderChildList} from '../../shared/child-list';
+import {DetailsApi} from './details.schema.js';
+import {renderChildList} from '../../shared/child-list.js';
 
 /** Resolved accessibility: nested DynamicStrings are plain strings after the binder resolves them. */
 type ResolvedAccessibility = {label?: string; description?: string};

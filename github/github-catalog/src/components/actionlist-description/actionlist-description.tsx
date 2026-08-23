@@ -1,6 +1,6 @@
 import {ActionList as PrimerActionList} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {ActionListDescriptionApi} from './actionlist-description.schema';
+import {ActionListDescriptionApi} from './actionlist-description.schema.js';
 
 /** Resolved props: `text` is a plain string after the binder resolves the DynamicString. */
 type ActionListDescriptionViewProps = {

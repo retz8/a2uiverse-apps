@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {ActionListApi} from './actionlist.schema';
+import {ActionListApi} from './actionlist.schema.js';
 
 describe('ActionListApi.schema', () => {
   it('accepts a minimal valid ActionList (every prop optional)', () => {

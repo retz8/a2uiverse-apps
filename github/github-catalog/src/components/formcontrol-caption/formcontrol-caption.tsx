@@ -1,6 +1,6 @@
 import {FormControl as PrimerFormControl} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {FormControlCaptionApi} from './formcontrol-caption.schema';
+import {FormControlCaptionApi} from './formcontrol-caption.schema.js';
 
 /** Resolved props: the DynamicString `text` is a plain string after the binder resolves it. */
 type FormControlCaptionViewProps = {text: string};

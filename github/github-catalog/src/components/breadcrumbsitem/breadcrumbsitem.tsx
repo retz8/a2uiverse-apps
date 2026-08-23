@@ -1,6 +1,6 @@
 import {Breadcrumbs as PrimerBreadcrumbs} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {BreadcrumbsItemApi} from './breadcrumbsitem.schema';
+import {BreadcrumbsItemApi} from './breadcrumbsitem.schema.js';
 
 /** Resolved accessibility: the nested DynamicStrings are plain strings post-binder. */
 type ResolvedAccessibility = {label?: string; description?: string};

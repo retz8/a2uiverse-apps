@@ -1,6 +1,6 @@
 import {NavList as PrimerNavList} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {NavListDividerApi} from './navlist-divider.schema';
+import {NavListDividerApi} from './navlist-divider.schema.js';
 
 /** Propless: renders NavList.Divider with no forwarded props. */
 export function NavListDividerView() {

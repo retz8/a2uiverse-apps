@@ -1,6 +1,6 @@
 import {Heading as PrimerHeading} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {HeadingApi, type HeadingProps} from './heading.schema';
+import {HeadingApi, type HeadingProps} from './heading.schema.js';
 
 /** Resolved props: `text` is a plain string after the binder resolves the DynamicString. */
 type HeadingViewProps = Omit<HeadingProps, 'text'> & {text: string};

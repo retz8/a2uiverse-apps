@@ -1,8 +1,8 @@
 import type {ChangeEvent, HTMLProps, ReactElement, ReactNode} from 'react';
 import {TextInput as PrimerTextInput} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {TextInputApi} from './textinput.schema';
-import {useFormControlInputProps} from '../../shared/form-control-forwarding';
+import {TextInputApi} from './textinput.schema.js';
+import {useFormControlInputProps} from '../../shared/form-control-forwarding.js';
 
 /** Resolved accessibility: nested DynamicStrings are plain strings after the binder resolves them. */
 type ResolvedAccessibility = {label?: string; description?: string};

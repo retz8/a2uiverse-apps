@@ -1,3 +1,3 @@
-export {AutocompleteOverlayComponent} from './autocomplete-overlay';
-export {AutocompleteOverlayApi} from './autocomplete-overlay.schema';
-export type {AutocompleteOverlayProps} from './autocomplete-overlay.schema';
+export {AutocompleteOverlayComponent} from './autocomplete-overlay.js';
+export {AutocompleteOverlayApi} from './autocomplete-overlay.schema.js';
+export type {AutocompleteOverlayProps} from './autocomplete-overlay.schema.js';

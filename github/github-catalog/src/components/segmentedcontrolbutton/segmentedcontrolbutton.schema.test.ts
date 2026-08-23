@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {SegmentedControlButtonApi} from './segmentedcontrolbutton.schema';
+import {SegmentedControlButtonApi} from './segmentedcontrolbutton.schema.js';
 
 describe('SegmentedControlButtonApi.schema', () => {
   it('accepts a minimal valid segment (label only)', () => {

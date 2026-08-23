@@ -1,3 +1,3 @@
-export {TextareaComponent} from './textarea';
-export {TextareaApi} from './textarea.schema';
-export type {TextareaProps} from './textarea.schema';
+export {TextareaComponent} from './textarea.js';
+export {TextareaApi} from './textarea.schema.js';
+export type {TextareaProps} from './textarea.schema.js';

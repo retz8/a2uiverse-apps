@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {PaginationApi} from './pagination.schema';
+import {PaginationApi} from './pagination.schema.js';
 
 describe('PaginationApi.schema', () => {
   it('accepts a minimal valid Pagination (pageCount + currentPage only)', () => {

@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {TreeViewItemApi} from './treeview-item.schema';
+import {TreeViewItemApi} from './treeview-item.schema.js';
 
 const fnAction = {functionCall: {call: 'consoleLog', args: {message: 'm'}, returnType: 'void'}};
 const eventAction = {event: {name: 'select-item', context: {}}};

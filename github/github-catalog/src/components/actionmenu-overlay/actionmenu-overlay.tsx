@@ -1,8 +1,8 @@
 import {type ComponentProps, type ReactNode} from 'react';
 import {ActionMenu as PrimerActionMenu} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {ActionMenuOverlayApi} from './actionmenu-overlay.schema';
-import {renderChildList} from '../../shared/child-list';
+import {ActionMenuOverlayApi} from './actionmenu-overlay.schema.js';
+import {renderChildList} from '../../shared/child-list.js';
 
 type PrimerOverlayProps = ComponentProps<typeof PrimerActionMenu.Overlay>;
 type OverlaySide = PrimerOverlayProps['side'];

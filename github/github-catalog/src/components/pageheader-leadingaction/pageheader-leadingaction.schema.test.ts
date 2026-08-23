@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {PageHeaderLeadingActionApi} from './pageheader-leadingaction.schema';
+import {PageHeaderLeadingActionApi} from './pageheader-leadingaction.schema.js';
 
 describe('PageHeaderLeadingActionApi.schema', () => {
   it('accepts a minimal valid component (every prop optional)', () => {

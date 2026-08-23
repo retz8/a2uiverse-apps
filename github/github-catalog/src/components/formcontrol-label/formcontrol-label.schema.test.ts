@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {FormControlLabelApi} from './formcontrol-label.schema';
+import {FormControlLabelApi} from './formcontrol-label.schema.js';
 
 describe('FormControlLabelApi.schema', () => {
   it('accepts a literal text label', () => {

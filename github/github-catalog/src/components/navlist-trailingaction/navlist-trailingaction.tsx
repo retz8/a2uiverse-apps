@@ -1,7 +1,7 @@
 import type {ElementType, ReactNode} from 'react';
 import {NavList as PrimerNavList} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {NavListTrailingActionApi} from './navlist-trailingaction.schema';
+import {NavListTrailingActionApi} from './navlist-trailingaction.schema.js';
 
 /** Resolved accessibility: nested DynamicStrings are plain strings after the binder resolves them. */
 type ResolvedAccessibility = {label?: string; description?: string};

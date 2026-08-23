@@ -1,3 +1,3 @@
-export {PageHeaderTrailingActionComponent} from './pageheader-trailingaction';
-export {PageHeaderTrailingActionApi} from './pageheader-trailingaction.schema';
-export type {PageHeaderTrailingActionProps} from './pageheader-trailingaction.schema';
+export {PageHeaderTrailingActionComponent} from './pageheader-trailingaction.js';
+export {PageHeaderTrailingActionApi} from './pageheader-trailingaction.schema.js';
+export type {PageHeaderTrailingActionProps} from './pageheader-trailingaction.schema.js';

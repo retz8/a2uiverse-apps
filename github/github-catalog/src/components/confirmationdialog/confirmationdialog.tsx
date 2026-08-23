@@ -2,8 +2,8 @@ import {type ReactNode, useState} from 'react';
 import {ConfirmationDialog as PrimerConfirmationDialog} from '@primer/react';
 import type {ConfirmationDialogProps as PrimerConfirmationDialogProps} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {ConfirmationDialogApi} from './confirmationdialog.schema';
-import {renderChildList} from '../../shared/child-list';
+import {ConfirmationDialogApi} from './confirmationdialog.schema.js';
+import {renderChildList} from '../../shared/child-list.js';
 
 /**
  * Resolved props: Dynamic* resolve to primitives, the two synthetic Actions resolve to () => void

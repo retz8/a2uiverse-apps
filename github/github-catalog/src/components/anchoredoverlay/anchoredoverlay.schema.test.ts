@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {AnchoredOverlayApi} from './anchoredoverlay.schema';
+import {AnchoredOverlayApi} from './anchoredoverlay.schema.js';
 
 const fnAction = {functionCall: {call: 'consoleLog', args: {message: 'm'}, returnType: 'void'}};
 const eventAction = {event: {name: 'panel-open', context: {}}};

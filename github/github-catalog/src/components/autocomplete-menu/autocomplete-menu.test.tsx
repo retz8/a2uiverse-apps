@@ -1,7 +1,7 @@
 import {describe, it, expect, vi, afterEach} from 'vitest';
 import {render, screen, cleanup, fireEvent} from '@testing-library/react';
 import {ThemeProvider, BaseStyles, Autocomplete as PrimerAutocomplete} from '@primer/react';
-import {AutocompleteMenuView} from './autocomplete-menu';
+import {AutocompleteMenuView} from './autocomplete-menu.js';
 
 afterEach(cleanup);
 

@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {SplitPageLayoutHeaderApi} from './split-page-layout-header.schema';
+import {SplitPageLayoutHeaderApi} from './split-page-layout-header.schema.js';
 
 describe('SplitPageLayoutHeaderApi.schema', () => {
   it('accepts a minimal valid Header (no props — all optional)', () => {

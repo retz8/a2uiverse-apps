@@ -1,3 +1,3 @@
-export {PaginationComponent} from './pagination';
-export {PaginationApi} from './pagination.schema';
-export type {PaginationProps} from './pagination.schema';
+export {PaginationComponent} from './pagination.js';
+export {PaginationApi} from './pagination.schema.js';
+export type {PaginationProps} from './pagination.schema.js';

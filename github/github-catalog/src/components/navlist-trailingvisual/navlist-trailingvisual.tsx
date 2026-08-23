@@ -1,8 +1,8 @@
 import type {ReactNode} from 'react';
 import {NavList as PrimerNavList} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {NavListTrailingVisualApi} from './navlist-trailingvisual.schema';
-import {renderChildList} from '../../shared/child-list';
+import {NavListTrailingVisualApi} from './navlist-trailingvisual.schema.js';
+import {renderChildList} from '../../shared/child-list.js';
 
 /** Resolved props: `children` arrives as a built `ChildList`. */
 type NavListTrailingVisualViewProps = {

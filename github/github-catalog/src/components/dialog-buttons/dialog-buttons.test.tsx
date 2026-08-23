@@ -1,7 +1,7 @@
 import {describe, it, expect, vi, afterEach} from 'vitest';
 import {render, screen, cleanup, fireEvent} from '@testing-library/react';
 import {ThemeProvider, BaseStyles} from '@primer/react';
-import {DialogButtonsView} from './dialog-buttons';
+import {DialogButtonsView} from './dialog-buttons.js';
 
 afterEach(cleanup);
 

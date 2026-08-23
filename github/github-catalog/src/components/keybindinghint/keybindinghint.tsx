@@ -1,6 +1,6 @@
 import {KeybindingHint as PrimerKeybindingHint} from '@primer/react/experimental';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {KeybindingHintApi, type KeybindingHintProps} from './keybindinghint.schema';
+import {KeybindingHintApi, type KeybindingHintProps} from './keybindinghint.schema.js';
 
 /**
  * Resolved props: `keys` is a plain string after the binder resolves the DynamicString.

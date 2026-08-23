@@ -1,6 +1,6 @@
 import {describe, it, expect} from 'vitest';
 import type {DataContext} from '@a2ui/web_core/v0_9';
-import {not} from './not';
+import {not} from './not.js';
 
 const ctx = {} as DataContext;
 

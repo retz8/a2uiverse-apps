@@ -1,3 +1,3 @@
-export {LabelComponent} from './label';
-export {LabelApi} from './label.schema';
-export type {LabelProps} from './label.schema';
+export {LabelComponent} from './label.js';
+export {LabelApi} from './label.schema.js';
+export type {LabelProps} from './label.schema.js';

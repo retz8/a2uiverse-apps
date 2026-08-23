@@ -1,8 +1,8 @@
 import type {ReactNode} from 'react';
 import {NavList as PrimerNavList} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {NavListApi} from './navlist.schema';
-import {renderChildList} from '../../shared/child-list';
+import {NavListApi} from './navlist.schema.js';
+import {renderChildList} from '../../shared/child-list.js';
 
 /** Resolved props: `children` arrives as a built `ChildList`; the aria strings resolve to plain strings. */
 type NavListViewProps = {

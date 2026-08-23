@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {ToggleSwitchApi} from './toggleswitch.schema';
+import {ToggleSwitchApi} from './toggleswitch.schema.js';
 
 const accessibility = {label: 'Notifications'};
 

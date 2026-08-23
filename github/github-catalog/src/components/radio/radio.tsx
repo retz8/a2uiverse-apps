@@ -1,7 +1,7 @@
 import {Radio as PrimerRadio} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {useFormControlInputProps} from '../../shared/form-control-forwarding';
-import {RadioApi} from './radio.schema';
+import {useFormControlInputProps} from '../../shared/form-control-forwarding.js';
+import {RadioApi} from './radio.schema.js';
 
 /** Resolved accessibility: nested DynamicStrings are plain strings after the binder resolves them. */
 type ResolvedAccessibility = {label?: string; description?: string};

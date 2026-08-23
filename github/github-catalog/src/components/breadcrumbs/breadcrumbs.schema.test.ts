@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {BreadcrumbsApi} from './breadcrumbs.schema';
+import {BreadcrumbsApi} from './breadcrumbs.schema.js';
 
 describe('BreadcrumbsApi.schema', () => {
   it('accepts a minimal valid Breadcrumbs (every prop optional)', () => {

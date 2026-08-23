@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {StateLabelApi} from './statelabel.schema';
+import {StateLabelApi} from './statelabel.schema.js';
 
 describe('StateLabelApi.schema', () => {
   it('accepts a minimal valid StateLabel (text + status)', () => {

@@ -1,3 +1,3 @@
-export {TreeViewLeadingVisualComponent} from './treeview-leadingvisual';
-export {TreeViewLeadingVisualApi} from './treeview-leadingvisual.schema';
-export type {TreeViewLeadingVisualProps} from './treeview-leadingvisual.schema';
+export {TreeViewLeadingVisualComponent} from './treeview-leadingvisual.js';
+export {TreeViewLeadingVisualApi} from './treeview-leadingvisual.schema.js';
+export type {TreeViewLeadingVisualProps} from './treeview-leadingvisual.schema.js';

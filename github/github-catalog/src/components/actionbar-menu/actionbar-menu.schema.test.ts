@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {ActionBarMenuApi} from './actionbar-menu.schema';
+import {ActionBarMenuApi} from './actionbar-menu.schema.js';
 
 const accessibility = {label: 'Actions'};
 const action = {functionCall: {call: 'consoleLog', args: {message: 'x'}, returnType: 'void'}};

@@ -5,7 +5,7 @@ import {fileURLToPath} from 'node:url';
 import {resolve, dirname} from 'node:path';
 import {z} from 'zod';
 import {BASIC_FUNCTION_APIS} from '@a2ui/web_core/v0_9';
-import {BASIC_FUNCTION_NAMES, COMPONENTS, FUNCTIONS} from './catalog.registry';
+import {BASIC_FUNCTION_NAMES, COMPONENTS, FUNCTIONS} from './catalog.registry.js';
 
 type JsonProp = {const?: string; enum?: string[]};
 type JsonComponent = {properties: Record<string, JsonProp>; required: string[]};

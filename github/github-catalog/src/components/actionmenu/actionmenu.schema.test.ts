@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {ActionMenuApi} from './actionmenu.schema';
+import {ActionMenuApi} from './actionmenu.schema.js';
 
 describe('ActionMenuApi.schema', () => {
   it('accepts a minimal valid ActionMenu (children only)', () => {

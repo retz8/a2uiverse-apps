@@ -1,8 +1,8 @@
 import type {ElementType, ReactNode} from 'react';
 import {PageLayout as PrimerPageLayout} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {PageLayoutContentApi} from './pagelayout-content.schema';
-import {renderChildList} from '../../shared/child-list';
+import {PageLayoutContentApi} from './pagelayout-content.schema.js';
+import {renderChildList} from '../../shared/child-list.js';
 
 type Spacing = 'none' | 'condensed' | 'normal';
 type SizeWidth = 'full' | 'medium' | 'large' | 'xlarge';

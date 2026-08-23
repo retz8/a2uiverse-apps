@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {DialogSubtitleApi} from './dialog-subtitle.schema';
+import {DialogSubtitleApi} from './dialog-subtitle.schema.js';
 
 describe('DialogSubtitleApi.schema', () => {
   it('accepts a literal text subtitle', () => {

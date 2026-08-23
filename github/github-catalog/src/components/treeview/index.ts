@@ -1,3 +1,3 @@
-export {TreeViewComponent} from './treeview';
-export {TreeViewApi} from './treeview.schema';
-export type {TreeViewProps} from './treeview.schema';
+export {TreeViewComponent} from './treeview.js';
+export {TreeViewApi} from './treeview.schema.js';
+export type {TreeViewProps} from './treeview.schema.js';

@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {NavListDescriptionApi} from './navlist-description.schema';
+import {NavListDescriptionApi} from './navlist-description.schema.js';
 
 describe('NavListDescriptionApi.schema', () => {
   it('accepts a minimal valid Description (text only)', () => {

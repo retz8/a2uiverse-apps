@@ -1,8 +1,8 @@
 import type {ReactNode} from 'react';
 import {Timeline as PrimerTimeline} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {TimelineBodyApi} from './timeline-body.schema';
-import {renderChildList} from '../../shared/child-list';
+import {TimelineBodyApi} from './timeline-body.schema.js';
+import {renderChildList} from '../../shared/child-list.js';
 
 /** Resolved props: ChildList arrives as built `children`. */
 type TimelineBodyViewProps = {

@@ -1,8 +1,8 @@
 import type {ComponentType, ElementType, ReactNode} from 'react';
 import {ActionList as PrimerActionList} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {ActionListApi} from './actionlist.schema';
-import {renderChildList} from '../../shared/child-list';
+import {ActionListApi} from './actionlist.schema.js';
+import {renderChildList} from '../../shared/child-list.js';
 
 /** Resolved accessibility: nested DynamicStrings are plain strings after the binder resolves them. */
 type ResolvedAccessibility = {label?: string; description?: string};

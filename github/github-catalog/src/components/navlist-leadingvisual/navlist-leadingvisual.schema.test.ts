@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {NavListLeadingVisualApi} from './navlist-leadingvisual.schema';
+import {NavListLeadingVisualApi} from './navlist-leadingvisual.schema.js';
 
 describe('NavListLeadingVisualApi.schema', () => {
   it('accepts a minimal valid NavList.LeadingVisual (no required props)', () => {

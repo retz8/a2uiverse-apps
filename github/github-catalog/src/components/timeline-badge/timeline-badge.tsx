@@ -1,7 +1,7 @@
 import type {ReactNode} from 'react';
 import {Timeline as PrimerTimeline} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {TimelineBadgeApi} from './timeline-badge.schema';
+import {TimelineBadgeApi} from './timeline-badge.schema.js';
 
 /** Resolved props: the `child` ComponentId arrives as a built node; `variant` passes through. */
 type TimelineBadgeViewProps = {

@@ -1,6 +1,6 @@
 import {describe, it, expect, vi} from 'vitest';
 import type {DataContext} from '@a2ui/web_core/v0_9';
-import {windowAlert} from './window-alert';
+import {windowAlert} from './window-alert.js';
 
 describe('windowAlert function', () => {
   it('declares its api', () => {

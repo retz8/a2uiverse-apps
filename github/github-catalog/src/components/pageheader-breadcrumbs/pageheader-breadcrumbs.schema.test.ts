@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {PageHeaderBreadcrumbsApi} from './pageheader-breadcrumbs.schema';
+import {PageHeaderBreadcrumbsApi} from './pageheader-breadcrumbs.schema.js';
 
 describe('PageHeaderBreadcrumbsApi.schema', () => {
   it('accepts a minimal valid component (every prop optional)', () => {

@@ -1,6 +1,6 @@
 import {describe, it, expect} from 'vitest';
 import type {DataContext} from '@a2ui/web_core/v0_9';
-import {formatDate} from './format-date';
+import {formatDate} from './format-date.js';
 
 const ctx = {} as DataContext;
 

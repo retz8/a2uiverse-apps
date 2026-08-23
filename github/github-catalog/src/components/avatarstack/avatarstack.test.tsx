@@ -1,6 +1,6 @@
 import {describe, it, expect, afterEach} from 'vitest';
 import {render, screen, cleanup} from '@testing-library/react';
-import {AvatarStackView} from './avatarstack';
+import {AvatarStackView} from './avatarstack.js';
 
 afterEach(cleanup);
 

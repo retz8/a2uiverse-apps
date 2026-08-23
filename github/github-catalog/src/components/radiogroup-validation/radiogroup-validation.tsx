@@ -1,6 +1,6 @@
 import {RadioGroup as PrimerRadioGroup} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {RadioGroupValidationApi} from './radiogroup-validation.schema';
+import {RadioGroupValidationApi} from './radiogroup-validation.schema.js';
 
 /** Resolved props: the DynamicString `text` is a plain string, and the bindable `variant` union
  * resolves to a literal `'error'`/`'success'` after the binder resolves any `DataBinding`. */

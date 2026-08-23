@@ -1,7 +1,7 @@
 import type {ReactNode} from 'react';
 import {FormControl as PrimerFormControl} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {FormControlLeadingVisualApi} from './formcontrol-leadingvisual.schema';
+import {FormControlLeadingVisualApi} from './formcontrol-leadingvisual.schema.js';
 
 /** Resolved props: the `child` ComponentId arrives as a built node (the leading icon). */
 type FormControlLeadingVisualViewProps = {children?: ReactNode};

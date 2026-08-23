@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {SelectPanelItemApi} from './selectpanel-item.schema';
+import {SelectPanelItemApi} from './selectpanel-item.schema.js';
 
 const fnAction = {functionCall: {call: 'consoleLog', args: {message: 'm'}, returnType: 'void'}};
 const eventAction = {event: {name: 'label-select', context: {}}};

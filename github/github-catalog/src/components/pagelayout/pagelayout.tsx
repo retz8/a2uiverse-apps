@@ -1,7 +1,7 @@
 import type {ReactNode} from 'react';
 import {PageLayout as PrimerPageLayout, asSlot} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {PageLayoutApi} from './pagelayout.schema';
+import {PageLayoutApi} from './pagelayout.schema.js';
 
 type Spacing = 'none' | 'condensed' | 'normal';
 type SizeWidth = 'full' | 'medium' | 'large' | 'xlarge';

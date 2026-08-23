@@ -1,7 +1,7 @@
 import {describe, it, expect, afterEach} from 'vitest';
 import {render, screen, cleanup} from '@testing-library/react';
 import {ThemeProvider, BaseStyles} from '@primer/react';
-import {CheckboxGroupCaptionView} from './checkboxgroup-caption';
+import {CheckboxGroupCaptionView} from './checkboxgroup-caption.js';
 
 afterEach(cleanup);
 

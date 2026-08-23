@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {PageLayoutApi} from './pagelayout.schema';
+import {PageLayoutApi} from './pagelayout.schema.js';
 
 describe('PageLayoutApi.schema', () => {
   it('accepts an empty PageLayout (all props optional)', () => {

@@ -1,6 +1,6 @@
 import {Link as PrimerLink} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {LinkApi} from './link.schema';
+import {LinkApi} from './link.schema.js';
 
 /** Resolved accessibility: the nested DynamicStrings are plain strings post-binder. */
 type ResolvedAccessibility = {label?: string; description?: string};

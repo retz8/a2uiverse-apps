@@ -1,6 +1,6 @@
 import {ProgressBar as PrimerProgressBar} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {ProgressBarApi, type ProgressBarBgRole} from './progressbar.schema';
+import {ProgressBarApi, type ProgressBarBgRole} from './progressbar.schema.js';
 
 /** Resolved accessibility: nested DynamicStrings are plain strings after the binder resolves them. */
 type ResolvedAccessibility = {label?: string; description?: string};

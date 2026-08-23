@@ -1,6 +1,6 @@
 import {describe, it, expect, afterEach} from 'vitest';
 import {render, screen, cleanup} from '@testing-library/react';
-import {AvatarView} from './avatar';
+import {AvatarView} from './avatar.js';
 
 const SRC = 'https://example.com/octocat.png';
 

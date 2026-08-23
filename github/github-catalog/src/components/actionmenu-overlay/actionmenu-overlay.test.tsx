@@ -2,7 +2,7 @@ import {describe, it, expect, afterEach} from 'vitest';
 import {render, screen, cleanup} from '@testing-library/react';
 import {ThemeProvider, BaseStyles, ActionMenu as PrimerActionMenu, ActionList} from '@primer/react';
 import type {ReactElement} from 'react';
-import {ActionMenuOverlayView, mapVariant} from './actionmenu-overlay';
+import {ActionMenuOverlayView, mapVariant} from './actionmenu-overlay.js';
 
 afterEach(cleanup);
 

@@ -1,3 +1,3 @@
-export {FormControlLeadingVisualComponent} from './formcontrol-leadingvisual';
-export {FormControlLeadingVisualApi} from './formcontrol-leadingvisual.schema';
-export type {FormControlLeadingVisualProps} from './formcontrol-leadingvisual.schema';
+export {FormControlLeadingVisualComponent} from './formcontrol-leadingvisual.js';
+export {FormControlLeadingVisualApi} from './formcontrol-leadingvisual.schema.js';
+export type {FormControlLeadingVisualProps} from './formcontrol-leadingvisual.schema.js';

@@ -1,3 +1,3 @@
-export {SegmentedControlComponent} from './segmentedcontrol';
-export {SegmentedControlApi} from './segmentedcontrol.schema';
-export type {SegmentedControlProps} from './segmentedcontrol.schema';
+export {SegmentedControlComponent} from './segmentedcontrol.js';
+export {SegmentedControlApi} from './segmentedcontrol.schema.js';
+export type {SegmentedControlProps} from './segmentedcontrol.schema.js';

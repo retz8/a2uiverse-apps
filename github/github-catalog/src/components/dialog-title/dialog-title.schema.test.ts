@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {DialogTitleApi} from './dialog-title.schema';
+import {DialogTitleApi} from './dialog-title.schema.js';
 
 describe('DialogTitleApi.schema', () => {
   it('accepts a literal text title', () => {

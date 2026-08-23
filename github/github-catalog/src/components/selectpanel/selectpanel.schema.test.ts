@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {SelectPanelApi} from './selectpanel.schema';
+import {SelectPanelApi} from './selectpanel.schema.js';
 
 const fnAction = {functionCall: {call: 'consoleLog', args: {message: 'm'}, returnType: 'void'}};
 const eventAction = {event: {name: 'panel-toggle', context: {}}};

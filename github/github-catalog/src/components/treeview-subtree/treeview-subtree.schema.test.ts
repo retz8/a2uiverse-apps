@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {TreeViewSubTreeApi} from './treeview-subtree.schema';
+import {TreeViewSubTreeApi} from './treeview-subtree.schema.js';
 
 describe('TreeViewSubTreeApi.schema', () => {
   it('accepts a minimal valid SubTree (every prop optional)', () => {

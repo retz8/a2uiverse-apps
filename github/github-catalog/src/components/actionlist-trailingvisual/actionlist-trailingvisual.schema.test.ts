@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {ActionListTrailingVisualApi} from './actionlist-trailingvisual.schema';
+import {ActionListTrailingVisualApi} from './actionlist-trailingvisual.schema.js';
 
 describe('ActionListTrailingVisualApi.schema', () => {
   it('accepts an empty TrailingVisual (children optional)', () => {

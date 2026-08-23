@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {LabelGroupApi} from './label-group.schema';
+import {LabelGroupApi} from './label-group.schema.js';
 
 describe('LabelGroupApi.schema', () => {
   it('accepts a minimal valid LabelGroup (every prop optional)', () => {

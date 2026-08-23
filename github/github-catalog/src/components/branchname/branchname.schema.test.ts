@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {BranchNameApi} from './branchname.schema';
+import {BranchNameApi} from './branchname.schema.js';
 
 describe('BranchNameApi.schema', () => {
   it('accepts a minimal valid BranchName (text only)', () => {

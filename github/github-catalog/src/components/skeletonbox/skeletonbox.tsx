@@ -1,6 +1,6 @@
 import {SkeletonBox as PrimerSkeletonBox} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {SkeletonBoxApi, type SkeletonBoxProps} from './skeletonbox.schema';
+import {SkeletonBoxApi, type SkeletonBoxProps} from './skeletonbox.schema.js';
 
 /**
  * Resolved props mirror the schema — `height`/`width` are plain strings and `delay` is a

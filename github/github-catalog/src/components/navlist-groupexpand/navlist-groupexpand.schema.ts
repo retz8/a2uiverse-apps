@@ -1,6 +1,6 @@
 import {z} from 'zod';
 import {CommonSchemas} from '@a2ui/web_core/v0_9';
-import {ICON_NAMES} from '../icon/icon.schema';
+import {ICON_NAMES} from '../icon/icon.schema.js';
 
 /**
  * The nested `trailingAction` on a GroupExpand item. Unlike the composable

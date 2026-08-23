@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {LinkApi} from './link.schema';
+import {LinkApi} from './link.schema.js';
 
 describe('LinkApi.schema', () => {
   it('accepts a minimal valid Link (text + href only)', () => {

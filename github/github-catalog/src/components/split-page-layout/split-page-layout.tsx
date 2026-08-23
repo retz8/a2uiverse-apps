@@ -1,7 +1,7 @@
 import type {ReactNode} from 'react';
 import {PageLayout as PrimerPageLayout, asSlot} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {SplitPageLayoutApi} from './split-page-layout.schema';
+import {SplitPageLayoutApi} from './split-page-layout.schema.js';
 
 /**
  * Primer's `SplitPageLayout` is `PageLayout` with these Root presets; its region subcomponents are

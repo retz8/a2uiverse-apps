@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {FormControlLeadingVisualApi} from './formcontrol-leadingvisual.schema';
+import {FormControlLeadingVisualApi} from './formcontrol-leadingvisual.schema.js';
 
 describe('FormControlLeadingVisualApi.schema', () => {
   it('accepts a component-id child', () => {

@@ -1,7 +1,7 @@
 import {describe, it, expect, afterEach} from 'vitest';
 import {render, cleanup} from '@testing-library/react';
 import {ThemeProvider, BaseStyles, Timeline as PrimerTimeline} from '@primer/react';
-import {TimelineBreakView} from './timeline-break';
+import {TimelineBreakView} from './timeline-break.js';
 
 afterEach(cleanup);
 

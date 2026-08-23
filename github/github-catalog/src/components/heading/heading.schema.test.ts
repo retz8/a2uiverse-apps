@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {HeadingApi} from './heading.schema';
+import {HeadingApi} from './heading.schema.js';
 
 describe('HeadingApi.schema', () => {
   it('accepts a minimal valid Heading (text only)', () => {

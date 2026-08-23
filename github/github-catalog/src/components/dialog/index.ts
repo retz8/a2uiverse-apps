@@ -1,3 +1,3 @@
-export {DialogComponent} from './dialog';
-export {DialogApi, dialogButtonSchema} from './dialog.schema';
-export type {DialogProps} from './dialog.schema';
+export {DialogComponent} from './dialog.js';
+export {DialogApi, dialogButtonSchema} from './dialog.schema.js';
+export type {DialogProps} from './dialog.schema.js';

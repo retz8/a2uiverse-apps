@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {RadioGroupValidationApi} from './radiogroup-validation.schema';
+import {RadioGroupValidationApi} from './radiogroup-validation.schema.js';
 
 describe('RadioGroupValidationApi.schema', () => {
   it('accepts a literal error variant', () => {

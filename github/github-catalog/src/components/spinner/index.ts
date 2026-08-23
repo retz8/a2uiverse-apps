@@ -1,3 +1,3 @@
-export {SpinnerComponent} from './spinner';
-export {SpinnerApi} from './spinner.schema';
-export type {SpinnerProps} from './spinner.schema';
+export {SpinnerComponent} from './spinner.js';
+export {SpinnerApi} from './spinner.schema.js';
+export type {SpinnerProps} from './spinner.schema.js';

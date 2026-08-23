@@ -1,6 +1,6 @@
 import {Spinner as PrimerSpinner} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {SpinnerApi, type SpinnerProps} from './spinner.schema';
+import {SpinnerApi, type SpinnerProps} from './spinner.schema.js';
 
 /**
  * Resolved props: `srText` is a plain string (or `null`) after the binder resolves the

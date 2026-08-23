@@ -1,3 +1,3 @@
-export {TokenComponent} from './token';
-export {TokenApi} from './token.schema';
-export type {TokenProps} from './token.schema';
+export {TokenComponent} from './token.js';
+export {TokenApi} from './token.schema.js';
+export type {TokenProps} from './token.schema.js';

@@ -1,7 +1,7 @@
 import {describe, it, expect, afterEach} from 'vitest';
 import {render, screen, cleanup} from '@testing-library/react';
 import {NavList as PrimerNavList} from '@primer/react';
-import {NavListItemView} from './navlist-item';
+import {NavListItemView} from './navlist-item.js';
 
 afterEach(cleanup);
 

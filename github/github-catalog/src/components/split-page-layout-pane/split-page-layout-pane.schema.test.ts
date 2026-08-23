@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {SplitPageLayoutPaneApi} from './split-page-layout-pane.schema';
+import {SplitPageLayoutPaneApi} from './split-page-layout-pane.schema.js';
 
 describe('SplitPageLayoutPaneApi.schema', () => {
   it('accepts a minimal valid Pane (no props — all optional)', () => {

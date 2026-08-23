@@ -1,6 +1,6 @@
 import {describe, it, expect, afterEach} from 'vitest';
 import {render, screen, cleanup} from '@testing-library/react';
-import {SegmentedControlView} from './segmentedcontrol';
+import {SegmentedControlView} from './segmentedcontrol.js';
 
 afterEach(cleanup);
 

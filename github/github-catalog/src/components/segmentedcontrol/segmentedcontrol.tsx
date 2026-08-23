@@ -1,8 +1,8 @@
 import type {ReactNode} from 'react';
 import {SegmentedControl as PrimerSegmentedControl} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {SegmentedControlApi} from './segmentedcontrol.schema';
-import {SegmentSlotContext} from '../../shared/segmented-control-context';
+import {SegmentedControlApi} from './segmentedcontrol.schema.js';
+import {SegmentSlotContext} from '../../shared/segmented-control-context.js';
 
 /** A resolved responsive prop: either a scalar value or Primer's `{narrow, regular, wide}` map. */
 type Responsive<T> = T | {narrow?: T; regular?: T; wide?: T};

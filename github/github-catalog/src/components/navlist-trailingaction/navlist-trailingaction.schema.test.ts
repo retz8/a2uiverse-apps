@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {NavListTrailingActionApi} from './navlist-trailingaction.schema';
+import {NavListTrailingActionApi} from './navlist-trailingaction.schema.js';
 
 const action = {event: {name: 'pin'}};
 const accessibility = {label: 'Pin'};

@@ -1,5 +1,5 @@
 import {z} from 'zod';
-import {dialogButtonSchema} from '../dialog/dialog.schema';
+import {dialogButtonSchema} from '../dialog/dialog.schema.js';
 
 /**
  * Runtime (zod) representation of Primer `Dialog.Buttons`, props-only. A row of action buttons

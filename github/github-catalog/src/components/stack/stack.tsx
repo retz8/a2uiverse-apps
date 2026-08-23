@@ -1,8 +1,8 @@
 import type {ElementType, ReactNode} from 'react';
 import {Stack as PrimerStack} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {StackApi} from './stack.schema';
-import {renderChildList} from '../../shared/child-list';
+import {StackApi} from './stack.schema.js';
+import {renderChildList} from '../../shared/child-list.js';
 
 /** A resolved scale prop: either a scalar value or Primer's `{narrow, regular, wide}` responsive map. */
 type Responsive<T> = T | {narrow?: T; regular?: T; wide?: T};

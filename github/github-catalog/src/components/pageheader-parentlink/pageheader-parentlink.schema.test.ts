@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {PageHeaderParentLinkApi} from './pageheader-parentlink.schema';
+import {PageHeaderParentLinkApi} from './pageheader-parentlink.schema.js';
 
 describe('PageHeaderParentLinkApi.schema', () => {
   it('accepts a minimal valid ParentLink (text + href)', () => {

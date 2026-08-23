@@ -1,6 +1,6 @@
 import {CheckboxGroup as PrimerCheckboxGroup} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {CheckboxGroupLabelApi} from './checkboxgroup-label.schema';
+import {CheckboxGroupLabelApi} from './checkboxgroup-label.schema.js';
 
 /** Resolved props: the DynamicString `text` is a plain string after the binder resolves it; the
  * boolean passes through. */

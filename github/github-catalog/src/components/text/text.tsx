@@ -1,6 +1,6 @@
 import {Text as PrimerText} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {TextApi, type TextProps} from './text.schema';
+import {TextApi, type TextProps} from './text.schema.js';
 
 /** Resolved props: `text` is a plain string after the binder resolves the DynamicString. */
 type TextViewProps = Omit<TextProps, 'text'> & {text: string};

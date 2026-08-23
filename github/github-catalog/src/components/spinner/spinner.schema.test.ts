@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import {SpinnerApi} from './spinner.schema';
+import {SpinnerApi} from './spinner.schema.js';
 
 describe('SpinnerApi.schema', () => {
   it('accepts a minimal valid Spinner (no props — all optional)', () => {

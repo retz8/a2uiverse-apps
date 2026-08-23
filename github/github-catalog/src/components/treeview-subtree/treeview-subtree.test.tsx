@@ -2,7 +2,7 @@ import {describe, it, expect, afterEach} from 'vitest';
 import {render, screen, cleanup} from '@testing-library/react';
 import {ThemeProvider, BaseStyles, TreeView as PrimerTreeView} from '@primer/react';
 import type {ReactElement} from 'react';
-import {TreeViewSubTreeView} from './treeview-subtree';
+import {TreeViewSubTreeView} from './treeview-subtree.js';
 
 afterEach(cleanup);
 

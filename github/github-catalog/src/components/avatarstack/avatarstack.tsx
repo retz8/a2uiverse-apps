@@ -1,8 +1,8 @@
 import {useMemo, type ReactNode} from 'react';
 import {AvatarStack as PrimerAvatarStack} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {AvatarStackApi} from './avatarstack.schema';
-import {AvatarStackItemContext} from '../../shared/avatar-stack-context';
+import {AvatarStackApi} from './avatarstack.schema.js';
+import {AvatarStackItemContext} from '../../shared/avatar-stack-context.js';
 
 /** `buildChild` from the a2ui react binder: resolves a component id (with optional data-scope basePath) to a node. */
 type BuildChild = (id: string, basePath?: string) => ReactNode;

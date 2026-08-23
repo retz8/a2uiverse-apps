@@ -1,7 +1,7 @@
 import type {ComponentType, ReactNode} from 'react';
 import {Truncate as PrimerTruncate} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {TruncateApi, type TruncateProps} from './truncate.schema';
+import {TruncateApi, type TruncateProps} from './truncate.schema.js';
 
 /**
  * Resolved props: `text` and `title` are plain strings after the binder resolves the

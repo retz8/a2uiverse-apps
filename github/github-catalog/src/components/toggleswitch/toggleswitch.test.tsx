@@ -1,6 +1,6 @@
 import {describe, it, expect, vi, afterEach} from 'vitest';
 import {render, screen, cleanup, fireEvent, act} from '@testing-library/react';
-import {ToggleSwitchView} from './toggleswitch';
+import {ToggleSwitchView} from './toggleswitch.js';
 
 afterEach(cleanup);
 

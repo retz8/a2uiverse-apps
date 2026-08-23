@@ -1,7 +1,7 @@
 import type {ReactNode} from 'react';
 import {Timeline as PrimerTimeline} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {TimelineAvatarApi} from './timeline-avatar.schema';
+import {TimelineAvatarApi} from './timeline-avatar.schema.js';
 
 /** Resolved props: the `child` ComponentId arrives as a built node. */
 type TimelineAvatarViewProps = {

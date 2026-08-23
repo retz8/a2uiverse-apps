@@ -1,6 +1,6 @@
 import {z} from 'zod';
 import {CommonSchemas} from '@a2ui/web_core/v0_9';
-import {responsive} from '../../shared/responsive';
+import {responsive} from '../../shared/responsive.js';
 
 /**
  * One element of a dialog's button row — the shared local element type for the `Dialog` family.

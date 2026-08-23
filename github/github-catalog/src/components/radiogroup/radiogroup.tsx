@@ -1,8 +1,8 @@
 import {type ReactNode} from 'react';
 import {RadioGroup as PrimerRadioGroup} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
-import {RadioGroupApi} from './radiogroup.schema';
-import {renderSlottedChildList, type SlotMap} from '../../shared/slotted-child-list';
+import {RadioGroupApi} from './radiogroup.schema.js';
+import {renderSlottedChildList, type SlotMap} from '../../shared/slotted-child-list.js';
 
 /**
  * Slot routing for the root's `children`. Primer's `RadioGroup` scans direct children for its
