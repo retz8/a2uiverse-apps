@@ -1,0 +1,232 @@
+{
+  "name": "pr-review-compose",
+  "intent": "Draft an approving review saying the spec doc looks reasonable.",
+  "messages": [
+    {
+      "version": "v0.9",
+      "createSurface": {
+        "surfaceId": "draft-pr-review-2123",
+        "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/github/github-catalog/catalogs/v0.9.1/catalog.json",
+        "sendDataModel": true
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateComponents": {
+        "surfaceId": "draft-pr-review-2123",
+        "components": [
+          {
+            "id": "root",
+            "component": "Stack",
+            "direction": "vertical",
+            "gap": "normal",
+            "padding": "normal",
+            "children": [
+              "header-stack",
+              "fc-verdict",
+              "fc-body",
+              "actions"
+            ]
+          },
+          {
+            "id": "header-stack",
+            "component": "Stack",
+            "direction": "horizontal",
+            "align": "center",
+            "gap": "condensed",
+            "children": [
+              "title-icon",
+              "title-heading"
+            ]
+          },
+          {
+            "id": "title-icon",
+            "component": "Icon",
+            "name": "pencil",
+            "fill": "accent",
+            "accessibility": {
+              "label": "Pencil Icon"
+            }
+          },
+          {
+            "id": "title-heading",
+            "component": "Heading",
+            "text": "Submit Review on #2123",
+            "as": "h2",
+            "variant": "medium"
+          },
+          {
+            "id": "fc-verdict",
+            "component": "FormControl",
+            "children": [
+              "verdict-label",
+              "verdict-select"
+            ]
+          },
+          {
+            "id": "verdict-label",
+            "component": "FormControlLabel",
+            "text": "Review Decision"
+          },
+          {
+            "id": "verdict-select",
+            "component": "SegmentedControl",
+            "selectedIndex": {
+              "path": "/verdictIndex"
+            },
+            "children": [
+              "seg-approve",
+              "seg-comment",
+              "seg-changes"
+            ]
+          },
+          {
+            "id": "seg-approve",
+            "component": "SegmentedControlButton",
+            "label": "Approve",
+            "leadingVisual": "icon-approve-btn"
+          },
+          {
+            "id": "icon-approve-btn",
+            "component": "Icon",
+            "name": "check",
+            "fill": "success"
+          },
+          {
+            "id": "seg-comment",
+            "component": "SegmentedControlButton",
+            "label": "Comment",
+            "leadingVisual": "icon-comment-btn"
+          },
+          {
+            "id": "icon-comment-btn",
+            "component": "Icon",
+            "name": "comment"
+          },
+          {
+            "id": "seg-changes",
+            "component": "SegmentedControlButton",
+            "label": "Request Changes",
+            "leadingVisual": "icon-changes-btn"
+          },
+          {
+            "id": "icon-changes-btn",
+            "component": "Icon",
+            "name": "x-circle",
+            "fill": "danger"
+          },
+          {
+            "id": "fc-body",
+            "component": "FormControl",
+            "required": true,
+            "children": [
+              "body-label",
+              "body-caption",
+              "body-textarea"
+            ]
+          },
+          {
+            "id": "body-label",
+            "component": "FormControlLabel",
+            "text": "Review Comments"
+          },
+          {
+            "id": "body-caption",
+            "component": "FormControlCaption",
+            "text": "Markdown formatting is supported. Your feedback is sent directly to the author."
+          },
+          {
+            "id": "body-textarea",
+            "component": "Textarea",
+            "value": {
+              "path": "/reviewBody"
+            },
+            "required": true,
+            "block": true,
+            "rows": 6
+          },
+          {
+            "id": "actions",
+            "component": "ButtonGroup",
+            "children": [
+              "btn-cancel",
+              "btn-submit"
+            ]
+          },
+          {
+            "id": "btn-cancel",
+            "component": "Button",
+            "child": "cancel-txt",
+            "variant": "invisible",
+            "action": {
+              "functionCall": {
+                "call": "clearValue",
+                "args": {
+                  "path": "/reviewBody"
+                },
+                "returnType": "void"
+              }
+            }
+          },
+          {
+            "id": "cancel-txt",
+            "component": "Text",
+            "text": "Clear"
+          },
+          {
+            "id": "btn-submit",
+            "component": "Button",
+            "child": "submit-txt",
+            "variant": "primary",
+            "disabled": {
+              "call": "not",
+              "args": {
+                "value": {
+                  "call": "required",
+                  "args": {
+                    "value": {
+                      "path": "/reviewBody"
+                    }
+                  },
+                  "returnType": "boolean"
+                }
+              },
+              "returnType": "boolean"
+            },
+            "action": {
+              "event": {
+                "name": "submit-pr-review",
+                "context": {
+                  "repository": "a2ui-project/a2ui",
+                  "prNumber": 2123,
+                  "body": {
+                    "path": "/reviewBody"
+                  },
+                  "verdict": {
+                    "path": "/verdictIndex"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": "submit-txt",
+            "component": "Text",
+            "text": "Submit Review"
+          }
+        ]
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateDataModel": {
+        "surfaceId": "draft-pr-review-2123",
+        "path": "/",
+        "value": {
+          "verdictIndex": 0,
+          "reviewBody": "The specification document looks very reasonable. The security architecture, local client-side function calls, and bidirectional state synchronization protocol are well-defined and address the key security threat models. SafeContentFrame integration details are robust. Ready to approve!"
+        }
+      }
+    }
+  ]
+}

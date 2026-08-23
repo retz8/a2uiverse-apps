@@ -1,0 +1,22 @@
+[
+  {
+    "version": "v0.9",
+    "updateDataModel": {"path": "/pullsCount", "value": "5"}
+  },
+  {
+    "version": "v0.9",
+    "updateComponents": {
+      "components": [
+        {
+          "id": "tab-pulls",
+          "component": "UnderlineNav.Item",
+          "text": "Pull requests",
+          "aria-current": "page",
+          "counter": {"path": "/pullsCount"},
+          "href": "#/pulls",
+          "action": {"event": {"name": "select", "context": {"tab": "pulls"}}}
+        }
+      ]
+    }
+  }
+]

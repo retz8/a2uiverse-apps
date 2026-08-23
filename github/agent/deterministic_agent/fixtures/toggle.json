@@ -1,0 +1,14 @@
+[
+  {
+    "version": "v0.9",
+    "updateDataModel": {"path": "/setting", "value": false}
+  },
+  {
+    "version": "v0.9",
+    "updateComponents": {
+      "components": [
+        {"id": "status", "component": "Text", "text": "⚠️ Could not save — reverted by server"}
+      ]
+    }
+  }
+]

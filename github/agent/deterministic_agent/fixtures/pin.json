@@ -1,0 +1,12 @@
+[
+  {
+    "version": "v0.9",
+    "updateDataModel": {"path": "/pinStatus", "value": "📌 Pinned — server confirmed"}
+  },
+  {
+    "version": "v0.9",
+    "updateComponents": {
+      "components": [{"id": "pin-icon", "component": "Icon", "name": "check-circle-fill"}]
+    }
+  }
+]

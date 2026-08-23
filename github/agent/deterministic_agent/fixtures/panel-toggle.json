@@ -1,0 +1,21 @@
+[
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "path": "/panel/title",
+      "value": "Apply labels — 12 available"
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateComponents": {
+      "components": [
+        {
+          "id": "anchor-label",
+          "component": "Text",
+          "text": "Labels ▾"
+        }
+      ]
+    }
+  }
+]

@@ -26,6 +26,14 @@ pnpm install      # fresh clone
 pnpm verify       # build · typecheck · test · lint · format:check over every catalog
 ```
 
+## Apps
+
+| App       | Port  | Agent                                                                                                                                                                                                                       | Catalog                   |
+| --------- | ----- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- |
+| `github/` | 11001 | Python (uv) — `cd github/agent && uv sync`, then `uv run python -m deterministic_agent` (no model), `TOOL_BACKEND=stub uv run python -m llm_agent` (model + canned data), `uv run python -m llm_agent` (model + GitHub MCP) | `github-catalog` — Primer |
+
+Catalogs are consumed by the platform straight from this repo as git dependencies (`github:retz8/a2uiverse-apps#path:<vendor>/<vendor>-catalog`); nothing is published to a registry. Agent test suites run per the app's `agent/README.md`.
+
 ## Status
 
 In development. The platform design lives in the `a2uiverse` repo's `SPEC.md`.

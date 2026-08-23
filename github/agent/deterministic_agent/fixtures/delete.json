@@ -1,0 +1,12 @@
+[
+  {
+    "version": "v0.9",
+    "updateDataModel": {"path": "/rowDeleted", "value": true}
+  },
+  {
+    "version": "v0.9",
+    "updateComponents": {
+      "components": [{"id": "label-src", "component": "Text", "text": "🗑 Deleted"}]
+    }
+  }
+]

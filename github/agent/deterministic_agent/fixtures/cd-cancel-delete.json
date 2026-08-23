@@ -1,0 +1,21 @@
+[
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "path": "/cd/title",
+      "value": "✅ Branch kept"
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateComponents": {
+      "components": [
+        {
+          "id": "cd-body",
+          "component": "Text",
+          "text": "No changes made — server received cancel"
+        }
+      ]
+    }
+  }
+]

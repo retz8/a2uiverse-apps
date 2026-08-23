@@ -1,0 +1,12 @@
+[
+  {
+    "version": "v0.9",
+    "updateDataModel": {"path": "/approved", "value": true}
+  },
+  {
+    "version": "v0.9",
+    "updateComponents": {
+      "components": [{"id": "approve-icon", "component": "Icon", "name": "check-circle-fill"}]
+    }
+  }
+]

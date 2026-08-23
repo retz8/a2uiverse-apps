@@ -1,0 +1,12 @@
+[
+  {
+    "version": "v0.9",
+    "updateDataModel": {"path": "/locked", "value": true}
+  },
+  {
+    "version": "v0.9",
+    "updateComponents": {
+      "components": [{"id": "status", "component": "Text", "text": "✅ Selection received"}]
+    }
+  }
+]

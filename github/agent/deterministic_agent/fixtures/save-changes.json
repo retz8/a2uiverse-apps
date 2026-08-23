@@ -1,0 +1,21 @@
+[
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "path": "/dialog/title",
+      "value": "✅ Settings saved"
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateComponents": {
+      "components": [
+        {
+          "id": "slots-body-text",
+          "component": "Text",
+          "text": "The server saved your changes — you can close this dialog."
+        }
+      ]
+    }
+  }
+]

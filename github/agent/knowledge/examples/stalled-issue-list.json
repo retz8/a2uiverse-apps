@@ -1,0 +1,343 @@
+{
+  "name": "stalled-issue-list",
+  "intent": "Which issues on a2ui-project/a2ui look like they're stalled waiting on someone?",
+  "messages": [
+    {
+      "version": "v0.9",
+      "createSurface": {
+        "surfaceId": "stalled-issues-list",
+        "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/github/github-catalog/catalogs/v0.9.1/catalog.json",
+        "sendDataModel": true
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateComponents": {
+        "surfaceId": "stalled-issues-list",
+        "components": [
+          {
+            "id": "root",
+            "component": "Stack",
+            "direction": "vertical",
+            "gap": "normal",
+            "padding": "normal",
+            "children": [
+              "ph",
+              "list"
+            ]
+          },
+          {
+            "id": "ph",
+            "component": "PageHeader",
+            "aria-label": "Stalled issues header",
+            "children": [
+              "ph-ta",
+              "ph-desc"
+            ]
+          },
+          {
+            "id": "ph-ta",
+            "component": "PageHeader.TitleArea",
+            "variant": "medium",
+            "children": [
+              "ph-lv",
+              "ph-title",
+              "ph-tv"
+            ]
+          },
+          {
+            "id": "ph-lv",
+            "component": "PageHeader.LeadingVisual",
+            "children": [
+              "ph-icon"
+            ]
+          },
+          {
+            "id": "ph-icon",
+            "component": "Icon",
+            "name": "clock",
+            "fill": "attention",
+            "accessibility": {
+              "label": "Stalled Issues Icon"
+            }
+          },
+          {
+            "id": "ph-title",
+            "component": "PageHeader.Title",
+            "text": "Stalled Issues",
+            "as": "h1"
+          },
+          {
+            "id": "ph-tv",
+            "component": "PageHeader.TrailingVisual",
+            "children": [
+              "ph-counter"
+            ]
+          },
+          {
+            "id": "ph-counter",
+            "component": "CounterLabel",
+            "count": {
+              "path": "/stalledCount"
+            },
+            "variant": "primary"
+          },
+          {
+            "id": "ph-desc",
+            "component": "PageHeader.Description",
+            "children": [
+              "ph-desc-text"
+            ]
+          },
+          {
+            "id": "ph-desc-text",
+            "component": "Text",
+            "text": "Open issues currently flagged as waiting for author response or feedback.",
+            "size": "small"
+          },
+          {
+            "id": "list",
+            "component": "ActionList",
+            "role": "listbox",
+            "showDividers": true,
+            "children": {
+              "componentId": "issue-row",
+              "path": "/issues"
+            }
+          },
+          {
+            "id": "issue-row",
+            "component": "ActionList.Item",
+            "children": [
+              "row-lv",
+              "row-content-wrapper"
+            ],
+            "action": {
+              "event": {
+                "name": "open-issue",
+                "context": {
+                  "repository": {
+                    "path": "repository"
+                  },
+                  "number": {
+                    "path": "number"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": "row-lv",
+            "component": "ActionList.LeadingVisual",
+            "children": [
+              "row-icon"
+            ]
+          },
+          {
+            "id": "row-icon",
+            "component": "Icon",
+            "name": "issue-opened",
+            "fill": "open"
+          },
+          {
+            "id": "row-content-wrapper",
+            "component": "Stack",
+            "direction": "vertical",
+            "gap": "none",
+            "children": [
+              "row-top-line",
+              "row-bottom-line"
+            ]
+          },
+          {
+            "id": "row-top-line",
+            "component": "Stack",
+            "direction": "horizontal",
+            "gap": "condensed",
+            "align": "center",
+            "children": [
+              "row-title",
+              "row-labels"
+            ]
+          },
+          {
+            "id": "row-title",
+            "component": "Text",
+            "text": {
+              "path": "title"
+            },
+            "weight": "semibold"
+          },
+          {
+            "id": "row-labels",
+            "component": "LabelGroup",
+            "children": {
+              "componentId": "label-token",
+              "path": "labels"
+            }
+          },
+          {
+            "id": "label-token",
+            "component": "IssueLabelToken",
+            "text": {
+              "path": "name"
+            },
+            "fillColor": {
+              "path": "color"
+            }
+          },
+          {
+            "id": "row-bottom-line",
+            "component": "Stack",
+            "direction": "horizontal",
+            "gap": "condensed",
+            "align": "center",
+            "children": [
+              "row-meta",
+              "row-bullet",
+              "row-time"
+            ]
+          },
+          {
+            "id": "row-meta",
+            "component": "Text",
+            "text": {
+              "path": "meta"
+            },
+            "size": "small"
+          },
+          {
+            "id": "row-bullet",
+            "component": "Text",
+            "text": "•",
+            "size": "small"
+          },
+          {
+            "id": "row-time",
+            "component": "RelativeTime",
+            "datetime": {
+              "path": "updatedAt"
+            },
+            "format": "relative"
+          }
+        ]
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateDataModel": {
+        "surfaceId": "stalled-issues-list",
+        "path": "/",
+        "value": {
+          "stalledCount": 9,
+          "issues": [
+            {
+              "number": 2115,
+              "title": "[BUG]: TransportFormat inlineCatalogs merge does not rebuild $defs.anyComponent",
+              "meta": "#2115 • opened by likebean • assigned to Varun-S10 • updated",
+              "updatedAt": "2026-07-28T10:56:26Z",
+              "labels": [
+                {
+                  "name": "type: bug",
+                  "color": "#a15765"
+                },
+                {
+                  "name": "P2",
+                  "color": "#d40aea"
+                },
+                {
+                  "name": "status: waiting-for-author-response",
+                  "color": "#000000"
+                }
+              ],
+              "repository": "a2ui-project/a2ui"
+            },
+            {
+              "number": 1929,
+              "title": "add feature to download catalog JSON from the agent or client",
+              "meta": "#1929 • opened by wrenj • assigned to jacobsimionato, wrenj • updated",
+              "updatedAt": "2026-07-07T14:40:31Z",
+              "labels": [
+                {
+                  "name": "P3",
+                  "color": "#d40aea"
+                },
+                {
+                  "name": "type: feature/enhancement",
+                  "color": "#c2e0c6"
+                },
+                {
+                  "name": "status: waiting-for-author-response",
+                  "color": "#000000"
+                },
+                {
+                  "name": "status: first-line-handled",
+                  "color": "#9af797"
+                }
+              ],
+              "repository": "a2ui-project/a2ui"
+            },
+            {
+              "number": 1901,
+              "title": "examples/simple_chat is buggy",
+              "meta": "#1901 • opened by polina-c • assigned to polina-c • updated",
+              "updatedAt": "2026-07-07T14:39:57Z",
+              "labels": [
+                {
+                  "name": "type: bug",
+                  "color": "#a15765"
+                },
+                {
+                  "name": "P3",
+                  "color": "#d40aea"
+                },
+                {
+                  "name": "status: waiting-for-author-response",
+                  "color": "#000000"
+                },
+                {
+                  "name": "status: first-line-handled",
+                  "color": "#9af797"
+                },
+                {
+                  "name": "component: genui",
+                  "color": "#6d18a0"
+                }
+              ],
+              "repository": "a2ui-project/a2ui"
+            },
+            {
+              "number": 1897,
+              "title": "It seems gemini review of PR does not read instructions.",
+              "meta": "#1897 • opened by polina-c • assigned to polina-c • updated",
+              "updatedAt": "2026-07-07T15:40:38Z",
+              "labels": [
+                {
+                  "name": "type: bug",
+                  "color": "#a15765"
+                },
+                {
+                  "name": "P3",
+                  "color": "#d40aea"
+                },
+                {
+                  "name": "status: waiting-for-author-response",
+                  "color": "#000000"
+                },
+                {
+                  "name": "status: first-line-handled",
+                  "color": "#9af797"
+                },
+                {
+                  "name": "component: genui",
+                  "color": "#6d18a0"
+                }
+              ],
+              "repository": "a2ui-project/a2ui"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

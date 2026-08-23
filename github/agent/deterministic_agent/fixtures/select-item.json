@@ -1,0 +1,12 @@
+[
+  {
+    "version": "v0.9",
+    "updateDataModel": {"path": "/itemSelected", "value": true}
+  },
+  {
+    "version": "v0.9",
+    "updateComponents": {
+      "components": [{"id": "label-src", "component": "Text", "text": "✅ src selected"}]
+    }
+  }
+]

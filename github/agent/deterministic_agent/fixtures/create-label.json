@@ -1,0 +1,16 @@
+[
+  {
+    "version": "v0.9",
+    "updateDataModel": {"path": "/add/message", "value": "Label \"wontfix\" created"}
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {"path": "/selected", "value": ["wontfix"]}
+  },
+  {
+    "version": "v0.9",
+    "updateComponents": {
+      "components": [{"id": "add-status", "component": "Text", "text": "✅ Server added the label"}]
+    }
+  }
+]

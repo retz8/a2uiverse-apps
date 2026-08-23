@@ -1,0 +1,21 @@
+[
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "path": "/cd/deleting",
+      "value": true
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateComponents": {
+      "components": [
+        {
+          "id": "cd-body",
+          "component": "Text",
+          "text": "🗑️ Deleting branch — server received confirm"
+        }
+      ]
+    }
+  }
+]

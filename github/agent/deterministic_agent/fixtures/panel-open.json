@@ -1,0 +1,21 @@
+[
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "path": "/panel/message",
+      "value": "Loaded 3 items from server"
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateComponents": {
+      "components": [
+        {
+          "id": "panel-status",
+          "component": "Text",
+          "text": "✅ Options loaded — server acknowledged"
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,21 @@
+[
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "path": "/deleted",
+      "value": true
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateComponents": {
+      "components": [
+        {
+          "id": "dialog-body",
+          "component": "Text",
+          "text": "🗑️ Deleted — server received confirm-delete"
+        }
+      ]
+    }
+  }
+]

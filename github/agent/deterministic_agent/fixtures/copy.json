@@ -1,0 +1,12 @@
+[
+  {
+    "version": "v0.9",
+    "updateDataModel": {"path": "/status", "value": "Copied to clipboard"}
+  },
+  {
+    "version": "v0.9",
+    "updateComponents": {
+      "components": [{"id": "menu-icon", "component": "Icon", "name": "check"}]
+    }
+  }
+]

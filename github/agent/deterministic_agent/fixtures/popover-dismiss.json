@@ -1,0 +1,21 @@
+[
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "path": "/dismissNote",
+      "value": "Server acknowledged the dismissal."
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateComponents": {
+      "components": [
+        {
+          "id": "popover-heading",
+          "component": "Heading",
+          "text": "✅ Dismissed"
+        }
+      ]
+    }
+  }
+]

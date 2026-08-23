@@ -1,0 +1,14 @@
+[
+  {
+    "version": "v0.9",
+    "updateDataModel": {"path": "/selected", "value": true}
+  },
+  {
+    "version": "v0.9",
+    "updateComponents": {
+      "components": [
+        {"id": "status", "component": "Text", "text": "✅ Selected — server received \"option-1\""}
+      ]
+    }
+  }
+]

@@ -1,0 +1,423 @@
+{
+  "name": "issue-detail",
+  "intent": "Open a2ui-project/a2ui issue #2124.",
+  "messages": [
+    {
+      "version": "v0.9",
+      "createSurface": {
+        "surfaceId": "issue-detail-2124",
+        "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/github/github-catalog/catalogs/v0.9.1/catalog.json",
+        "sendDataModel": true
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateComponents": {
+        "surfaceId": "issue-detail-2124",
+        "components": [
+          {
+            "id": "root",
+            "component": "PageLayout",
+            "padding": "normal",
+            "columnGap": "normal",
+            "header": "hd",
+            "content": "ct",
+            "pane": "pn"
+          },
+          {
+            "id": "hd",
+            "component": "PageLayout.Header",
+            "divider": "line",
+            "children": [
+              "ph"
+            ]
+          },
+          {
+            "id": "ph",
+            "component": "PageHeader",
+            "aria-label": "Issue header",
+            "children": [
+              "ph-ta",
+              "ph-desc"
+            ]
+          },
+          {
+            "id": "ph-ta",
+            "component": "PageHeader.TitleArea",
+            "variant": "large",
+            "children": [
+              "ph-lv",
+              "ph-title"
+            ]
+          },
+          {
+            "id": "ph-lv",
+            "component": "PageHeader.LeadingVisual",
+            "children": [
+              "ph-icon"
+            ]
+          },
+          {
+            "id": "ph-icon",
+            "component": "Icon",
+            "name": "issue-opened",
+            "fill": "open",
+            "accessibility": {
+              "label": "Open Issue"
+            }
+          },
+          {
+            "id": "ph-title",
+            "component": "PageHeader.Title",
+            "text": "Swift: Simplify or remove queue hopping logic #2124",
+            "as": "h1"
+          },
+          {
+            "id": "ph-desc",
+            "component": "PageHeader.Description",
+            "children": [
+              "ph-state"
+            ]
+          },
+          {
+            "id": "ph-state",
+            "component": "StateLabel",
+            "status": "issueOpened",
+            "text": "Open"
+          },
+          {
+            "id": "ct",
+            "component": "PageLayout.Content",
+            "padding": "normal",
+            "children": [
+              "ct-stack"
+            ]
+          },
+          {
+            "id": "ct-stack",
+            "component": "Stack",
+            "direction": "vertical",
+            "gap": "normal",
+            "children": [
+              "tl",
+              "fc-comment",
+              "comment-actions"
+            ]
+          },
+          {
+            "id": "tl",
+            "component": "Timeline",
+            "children": [
+              "body"
+            ]
+          },
+          {
+            "id": "body",
+            "component": "TimelineItem",
+            "children": [
+              "body-av",
+              "body-badge",
+              "body-content"
+            ]
+          },
+          {
+            "id": "body-av",
+            "component": "TimelineAvatar",
+            "child": "body-avatar"
+          },
+          {
+            "id": "body-avatar",
+            "component": "Avatar",
+            "src": "https://avatars.githubusercontent.com/u/4238299?v=4",
+            "alt": "pinieb",
+            "size": 24
+          },
+          {
+            "id": "body-badge",
+            "component": "TimelineBadge",
+            "child": "body-icon"
+          },
+          {
+            "id": "body-icon",
+            "component": "Icon",
+            "name": "comment"
+          },
+          {
+            "id": "body-content",
+            "component": "TimelineBody",
+            "children": [
+              "body-head",
+              "body-p1",
+              "body-p2-stack"
+            ]
+          },
+          {
+            "id": "body-head",
+            "component": "Stack",
+            "direction": "horizontal",
+            "gap": "condensed",
+            "align": "center",
+            "children": [
+              "body-author",
+              "body-verb",
+              "body-time"
+            ]
+          },
+          {
+            "id": "body-author",
+            "component": "Text",
+            "text": "pinieb",
+            "weight": "semibold"
+          },
+          {
+            "id": "body-verb",
+            "component": "Text",
+            "text": "opened this issue"
+          },
+          {
+            "id": "body-time",
+            "component": "RelativeTime",
+            "datetime": "2026-07-29T14:45:57Z",
+            "format": "relative"
+          },
+          {
+            "id": "body-p1",
+            "component": "Text",
+            "text": "BTW is it necessary to support updates triggered from background queues here and throughout the SDK? It makes the logic throughout the SDK harder to reason about, because writes are only actioned after an async gap.",
+            "as": "p"
+          },
+          {
+            "id": "body-p2-stack",
+            "component": "Stack",
+            "direction": "horizontal",
+            "gap": "condensed",
+            "align": "center",
+            "wrap": "wrap",
+            "children": [
+              "b2-t1",
+              "b2-user",
+              "b2-t2",
+              "b2-pr"
+            ]
+          },
+          {
+            "id": "b2-t1",
+            "component": "Text",
+            "text": "Originally posted by"
+          },
+          {
+            "id": "b2-user",
+            "component": "Button",
+            "variant": "link",
+            "child": "b2-user-text",
+            "action": {
+              "event": {
+                "name": "open-user",
+                "context": {
+                  "username": "jacobsimionato"
+                }
+              }
+            }
+          },
+          {
+            "id": "b2-user-text",
+            "component": "Text",
+            "text": "@jacobsimionato",
+            "weight": "semibold"
+          },
+          {
+            "id": "b2-t2",
+            "component": "Text",
+            "text": "in"
+          },
+          {
+            "id": "b2-pr",
+            "component": "Button",
+            "variant": "link",
+            "child": "b2-pr-text",
+            "action": {
+              "event": {
+                "name": "open-pull-request",
+                "context": {
+                  "repository": "a2ui-project/a2ui",
+                  "number": 2058
+                }
+              }
+            }
+          },
+          {
+            "id": "b2-pr-text",
+            "component": "Text",
+            "text": "a2ui-project/a2ui#2058",
+            "weight": "semibold"
+          },
+          {
+            "id": "fc-comment",
+            "component": "FormControl",
+            "children": [
+              "comment-label",
+              "comment-textarea"
+            ]
+          },
+          {
+            "id": "comment-label",
+            "component": "FormControlLabel",
+            "text": "Add a comment"
+          },
+          {
+            "id": "comment-textarea",
+            "component": "Textarea",
+            "value": {
+              "path": "/newCommentBody"
+            },
+            "placeholder": "Leave a comment",
+            "resize": "vertical",
+            "rows": 4
+          },
+          {
+            "id": "comment-actions",
+            "component": "ButtonGroup",
+            "children": [
+              "btn-submit-comment"
+            ]
+          },
+          {
+            "id": "btn-submit-comment",
+            "component": "Button",
+            "variant": "primary",
+            "child": "btn-submit-txt",
+            "disabled": {
+              "call": "not",
+              "args": {
+                "value": {
+                  "call": "required",
+                  "args": {
+                    "value": {
+                      "path": "/newCommentBody"
+                    }
+                  },
+                  "returnType": "boolean"
+                }
+              },
+              "returnType": "boolean"
+            },
+            "action": {
+              "event": {
+                "name": "add-comment",
+                "context": {
+                  "repository": "a2ui-project/a2ui",
+                  "issueNumber": 2124,
+                  "body": {
+                    "path": "/newCommentBody"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": "btn-submit-txt",
+            "component": "Text",
+            "text": "Comment"
+          },
+          {
+            "id": "pn",
+            "component": "PageLayout.Pane",
+            "position": "end",
+            "width": "small",
+            "divider": "line",
+            "children": [
+              "meta"
+            ]
+          },
+          {
+            "id": "meta",
+            "component": "Stack",
+            "direction": "vertical",
+            "gap": "normal",
+            "children": [
+              "asg-head",
+              "asg-row",
+              "lbl-head",
+              "lbl-group"
+            ]
+          },
+          {
+            "id": "asg-head",
+            "component": "Heading",
+            "text": "Assignees",
+            "as": "h3",
+            "variant": "small"
+          },
+          {
+            "id": "asg-row",
+            "component": "Stack",
+            "direction": "horizontal",
+            "gap": "condensed",
+            "align": "center",
+            "children": [
+              "asg-av",
+              "asg-name"
+            ]
+          },
+          {
+            "id": "asg-av",
+            "component": "Avatar",
+            "src": "https://avatars.githubusercontent.com/u/4238299?v=4",
+            "alt": "pinieb"
+          },
+          {
+            "id": "asg-name",
+            "component": "Text",
+            "text": "pinieb",
+            "size": "small",
+            "weight": "semibold"
+          },
+          {
+            "id": "lbl-head",
+            "component": "Heading",
+            "text": "Labels",
+            "as": "h3",
+            "variant": "small"
+          },
+          {
+            "id": "lbl-group",
+            "component": "LabelGroup",
+            "children": [
+              "lbl-p2",
+              "lbl-enh",
+              "lbl-renderers"
+            ]
+          },
+          {
+            "id": "lbl-p2",
+            "component": "IssueLabelToken",
+            "text": "P2",
+            "fillColor": "#d40aea"
+          },
+          {
+            "id": "lbl-enh",
+            "component": "IssueLabelToken",
+            "text": "type: feature/enhancement",
+            "fillColor": "#c2e0c6"
+          },
+          {
+            "id": "lbl-renderers",
+            "component": "IssueLabelToken",
+            "text": "other renderers",
+            "fillColor": "#28048c"
+          }
+        ]
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateDataModel": {
+        "surfaceId": "issue-detail-2124",
+        "path": "/",
+        "value": {
+          "newCommentBody": ""
+        }
+      }
+    }
+  ]
+}

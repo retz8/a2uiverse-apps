@@ -1,0 +1,14 @@
+[
+  {
+    "version": "v0.9",
+    "updateDataModel": {"path": "/removed", "value": true}
+  },
+  {
+    "version": "v0.9",
+    "updateComponents": {
+      "components": [
+        {"id": "status", "component": "Text", "text": "🗑️ Removed \"bug\" — server confirmed"}
+      ]
+    }
+  }
+]

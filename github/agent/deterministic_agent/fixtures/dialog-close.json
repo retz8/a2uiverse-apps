@@ -1,0 +1,28 @@
+[
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "path": "/closeStatus",
+      "value": "✅ Close received — server acknowledged the dismissal"
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "path": "/dialogOpen",
+      "value": true
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateComponents": {
+      "components": [
+        {
+          "id": "dialog-body",
+          "component": "Text",
+          "text": "The server has logged this dialog as dismissed."
+        }
+      ]
+    }
+  }
+]
