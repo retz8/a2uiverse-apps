@@ -1,7 +1,7 @@
 {
   "name": "github-catalog",
   "version": "0.1.0",
-  "description": "The GitHub app catalog for A2UIVerse: the A2UI catalog schema and its Primer React implementation, with the Provider that scopes Primer to the fragment.",
+  "description": "The GitHub app catalog for A2UIVerse: the A2UI catalog schema, its Primer React implementation, and the Provider \u2014 the bundle ships Primer itself; the host supplies only React, the A2UI runtime, and zod.",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -32,13 +32,13 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@primer/primitives": "^11.9.0"
+    "@primer/octicons-react": "19.28.1",
+    "@primer/primitives": "11.10.0",
+    "@primer/react": "38.36.0"
   },
   "peerDependencies": {
     "@a2ui/react": "^0.10.1",
     "@a2ui/web_core": "^0.10.1",
-    "@primer/octicons-react": "^19.28.1",
-    "@primer/react": "^38.28.0",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "zod": "^3.25.76"
@@ -47,8 +47,6 @@
     "@a2ui/react": "^0.10.2",
     "@a2ui/web_core": "^0.10.1",
     "@preact/signals-core": "^1.14.2",
-    "@primer/octicons-react": "19.28.1",
-    "@primer/react": "^38.28.0",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",

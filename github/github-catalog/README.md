@@ -32,6 +32,10 @@ import {CATALOG, CATALOG_ID, Provider} from 'github-catalog';
   stylesheets loaded on first mount. A host wraps each of this catalog's
   fragments in it; the bundle owns this setup, the host registers nothing.
 
+The bundle ships Primer itself (`@primer/react`, octicons, primitives) at exact
+versions. A host supplies only the shared runtime that must be a singleton:
+React, `@a2ui/react` / `@a2ui/web_core`, and `zod`.
+
 **In the client**, `CATALOG` powers rendering and `CATALOG_ID` identifies
 surfaces:
 
