@@ -29,3 +29,7 @@ CLAUDE.local.md
 
 # Per-machine Claude Code settings
 .claude/settings.local.json
+
+# Agent debug dumps (rewritten per turn)
+*.dump.json
+*.dump.txt
