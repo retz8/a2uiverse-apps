@@ -1,8 +1,10 @@
 # a2uiverse-apps
 
-Mock vendor apps for [A2UIVerse](https://github.com/retz8/a2uiverse).
+Vendor apps for [A2UIVerse](https://github.com/retz8/a2uiverse).
 
-Each app is an A2A agent that paints its own UI with A2UI, packaged as an A2UIVerse app bundle. They exist to exercise cross-agent composition in the platform: several vendors, each in its own design system, composed into one surface.
+Each app is an A2A agent backed by its vendor's official public MCP server, painting its own UI with A2UI, packaged as an A2UIVerse app bundle. A vendor catalog is the A2UI basic catalog themed to mimic the vendor's product. They exercise cross-agent composition in the platform: several vendors, each in its own look, composed into one surface.
+
+Roster: `github` · `gmail` · `google-calendar`.
 
 These apps depend on `@a2uiverse/sdk` — the app manifest contract and protocol extension — and on the A2UI/A2A protocols. They never depend on anything else in the platform.
 

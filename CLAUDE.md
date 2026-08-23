@@ -9,7 +9,7 @@
 
 This file (`CLAUDE.md`) holds only the **operational rules** not covered elsewhere.
 
-`a2uiverse-apps` holds the **mock vendor apps** of A2UIVerse. Each app is an A2A agent that paints its own UI with A2UI, packaged as an A2UIVerse app bundle. This repo is a **downstream consumer** of the A2UI and A2A protocols — not the protocol repo. The protocol, schemas, and standard catalogs live in the sibling fork at `../A2UI/`, which tracks `a2ui-project/a2ui` via its `upstream` remote. Read the spec from the `upstream/main` ref (see §2), not the fork's working tree.
+`a2uiverse-apps` holds the **vendor apps** of A2UIVerse — all of them external apps; there are no internal agents. Each app is an A2A agent backed by its vendor's **official public MCP server**, painting its own UI with A2UI, packaged as an A2UIVerse app bundle. A vendor catalog is the A2UI basic catalog themed through its `--a2ui-*` tokens to mimic the vendor's product (GitHub is the exception, on Primer). Every agent runs on one port in one of three modes: `deterministic`, `llm`, `llm` without MCP. This repo is a **downstream consumer** of the A2UI and A2A protocols — not the protocol repo. The protocol, schemas, and standard catalogs live in the sibling fork at `../A2UI/`, which tracks `a2ui-project/a2ui` via its `upstream` remote. Read the spec from the `upstream/main` ref (see §2), not the fork's working tree.
 
 ### The one rule
 

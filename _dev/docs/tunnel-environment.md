@@ -9,12 +9,12 @@ working with this repo.
 
 ## Rules
 
-- **Every app's A2A server** runs with its public **base URL set to its tunnel
-  URL** so the agent card advertises an endpoint the caller can reach. With a
-  `localhost` default the card fetch succeeds but the `message/send` POST
-  targets an unreachable host.
-- The platform (`../a2uiverse`) is pointed at each app's tunnel URL, never
-  `localhost`.
+- **Vendor agents are reached by the orchestrator on `localhost`** and are not
+  tunnelled. The browser never talks to an agent directly.
+- When an agent *is* tunnelled (direct-vs-hub comparison only), run it with its
+  public **base URL set to its tunnel URL** so the agent card advertises an
+  endpoint the caller can reach. With a `localhost` default the card fetch
+  succeeds but the `message/send` POST targets an unreachable host.
 - Jioh forwards the ports in play and sets them **Public** manually at the
   start of a session. If you see `Failed to fetch` (or `401`/`404`/`502` at the
   tunnel), suspect a non-public or unforwarded port before debugging the app —
@@ -27,11 +27,14 @@ working with this repo.
 
 ## Ports
 
-Assigned per app as each lands; keep this table current.
+Vendor agents take `11001+` sequentially, one port per app regardless of run
+mode (`deterministic` · `llm` · `llm` without MCP). Keep this table current.
 
 | App | Port |
 |---|---|
-| — | — |
+| github | 11001 |
+| gmail | 11002 |
+| google-calendar | 11003 |
 
 ## Run commands
 
