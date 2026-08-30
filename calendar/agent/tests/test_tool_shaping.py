@@ -16,6 +16,7 @@ from llm_agent.tool_shaping import (
     PROJECTION_NOTE,
     annotate,
     capture_tool_result,
+    pin_calendar,
     recording,
     shape_tool_response,
     suppress_notifications,
@@ -44,30 +45,46 @@ PAYLOAD = {
 
 
 class TestNotificationSuppression:
-    def test_forces_the_modern_parameter_to_none(self):
-        assert suppress_notifications({"sendUpdates": "all"})["sendUpdates"] == "none"
+    """The parameter name and value come from the server's own tool schema, not from us.
 
-    def test_forces_the_legacy_parameter_to_false(self):
-        assert suppress_notifications({"sendNotifications": True})["sendNotifications"] is False
+    The first draft of this guard pinned `sendUpdates`/`sendNotifications` — the REST API v3
+    spelling — which this MCP server does not take. It set two arguments nothing reads and
+    suppressed nothing. The live schema says `notificationLevel`, enum
+    NOTIFICATION_LEVEL_UNSPECIFIED | NONE | EXTERNAL_ONLY | ALL, with unspecified documented
+    as "Treated as ALL". So these assert the exact vocabulary; a rename upstream must fail
+    here rather than degrade quietly to a guard that mails everyone.
+    """
 
-    def test_pins_both_even_when_the_caller_passed_neither(self):
-        # The guard does not depend on the model having mentioned notifications. A tool whose
-        # server-side default is "notify" would otherwise mail people on an argument nobody
-        # wrote.
-        guarded = suppress_notifications({"summary": "Design team sync"})
-        assert guarded["sendUpdates"] == "none"
-        assert guarded["sendNotifications"] is False
+    def test_forces_the_notification_level_to_none(self):
+        assert suppress_notifications({"notificationLevel": "ALL"})["notificationLevel"] == "NONE"
+
+    def test_overrides_external_only_too(self):
+        # EXTERNAL_ONLY still mails people; it is not a partial win.
+        assert (
+            suppress_notifications({"notificationLevel": "EXTERNAL_ONLY"})["notificationLevel"]
+            == "NONE"
+        )
+
+    def test_pins_it_even_when_the_caller_passed_nothing(self):
+        # The load-bearing case. Absent is documented as "Treated as ALL", so omitting the
+        # argument is the LOUD choice — the guard must add it, not merely correct it.
+        assert suppress_notifications({"summary": "Design team sync"})["notificationLevel"] == "NONE"
+
+    def test_the_silent_value_is_one_the_server_accepts(self):
+        # A value outside the enum would be rejected at call time, turning a safety guard
+        # into an outage — and tempting whoever debugs it to remove the guard.
+        assert "NONE" in {"NOTIFICATION_LEVEL_UNSPECIFIED", "NONE", "EXTERNAL_ONLY", "ALL"}
 
     def test_leaves_every_other_argument_alone(self):
-        args = {"summary": "Design team sync", "start": "2026-09-03T14:00:00+09:00"}
+        args = {"summary": "Design team sync", "startTime": "2026-09-03T14:00:00-04:00"}
         guarded = suppress_notifications(args)
         assert guarded["summary"] == args["summary"]
-        assert guarded["start"] == args["start"]
+        assert guarded["startTime"] == args["startTime"]
 
     def test_does_not_mutate_the_caller_s_dict(self):
-        args = {"sendUpdates": "all"}
+        args = {"notificationLevel": "ALL"}
         suppress_notifications(args)
-        assert args["sendUpdates"] == "all"
+        assert args["notificationLevel"] == "ALL"
 
     def test_applies_with_the_recorder_off(self, monkeypatch):
         # Suppression is a live-mode concern, not a record-mode one. Gmail's substitution was
@@ -75,10 +92,81 @@ class TestNotificationSuppression:
         # exactly the unguarded ones.
         monkeypatch.delenv("A2UI_RECORD_DIR", raising=False)
         assert recording() is None
-        assert suppress_notifications({"sendUpdates": "all"})["sendUpdates"] == "none"
+        assert suppress_notifications({"notificationLevel": "ALL"})["notificationLevel"] == "NONE"
 
     def test_a_non_dict_is_passed_through(self):
         assert suppress_notifications(None) is None
+
+
+class TestPinsRespectTheToolSchema:
+    """A pin applied to a tool that does not declare the parameter is a hard failure.
+
+    The server answers an undeclared argument with 400 "Unknown name ... Cannot find field",
+    verified live: `list_events` with a `notificationLevel` is a 400, without it a 200. An
+    earlier draft applied suppression unconditionally "to reads as well as writes" on the
+    theory that it was the defensive choice. It would have broken every read the agent makes.
+    """
+
+    WRITE_ARGS = {"summary", "startTime", "endTime", "calendarId", "notificationLevel"}
+    READ_ARGS = {"calendarId", "startTime", "endTime", "pageSize"}
+
+    def test_notification_pin_is_skipped_on_a_tool_without_the_parameter(self):
+        out = suppress_notifications({"calendarId": "x", "pageSize": 3}, self.READ_ARGS)
+        assert "notificationLevel" not in out
+
+    def test_notification_pin_is_applied_on_a_tool_with_it(self):
+        out = suppress_notifications({"summary": "s"}, self.WRITE_ARGS)
+        assert out["notificationLevel"] == "NONE"
+
+    def test_calendar_pin_is_skipped_on_a_tool_without_the_parameter(self, monkeypatch):
+        monkeypatch.setenv("CALENDAR_ID", "demo@group.calendar.google.com")
+        assert "calendarId" not in pin_calendar({"query": "review"}, {"query", "pageSize"})
+
+    def test_calendar_pin_is_applied_on_a_tool_with_it(self, monkeypatch):
+        monkeypatch.setenv("CALENDAR_ID", "demo@group.calendar.google.com")
+        out = pin_calendar({"calendarId": "primary"}, self.READ_ARGS)
+        assert out["calendarId"] == "demo@group.calendar.google.com"
+
+    def test_an_empty_schema_pins_nothing(self):
+        # A tool whose schema could not be read must not have arguments invented for it.
+        assert suppress_notifications({"a": 1}, set()) == {"a": 1}
+        assert pin_calendar({"a": 1}, set()) == {"a": 1}
+
+
+class TestCalendarPinning:
+    """The agent must not be able to read `primary`, whatever the model asks for.
+
+    `calendarId` is a per-call argument and the API's default is the user's own calendar.
+    Decision 4's whole guarantee — that a recording bound for a public repo contains only
+    authored events — rests on this, so it is overwritten rather than defaulted.
+    """
+
+    def test_overwrites_primary(self, monkeypatch):
+        monkeypatch.setenv("CALENDAR_ID", "demo@group.calendar.google.com")
+        assert pin_calendar({"calendarId": "primary"})["calendarId"] == (
+            "demo@group.calendar.google.com"
+        )
+
+    def test_adds_the_argument_when_the_caller_omitted_it(self, monkeypatch):
+        monkeypatch.setenv("CALENDAR_ID", "demo@group.calendar.google.com")
+        assert pin_calendar({"eventId": "ev-1"})["calendarId"] == "demo@group.calendar.google.com"
+
+    def test_overwrites_any_other_calendar(self, monkeypatch):
+        monkeypatch.setenv("CALENDAR_ID", "demo@group.calendar.google.com")
+        pinned = pin_calendar({"calendarId": "someone.else@example.com"})
+        assert pinned["calendarId"] == "demo@group.calendar.google.com"
+
+    def test_does_not_mutate_the_caller_s_dict(self, monkeypatch):
+        monkeypatch.setenv("CALENDAR_ID", "demo@group.calendar.google.com")
+        args = {"calendarId": "primary"}
+        pin_calendar(args)
+        assert args["calendarId"] == "primary"
+
+    def test_never_invents_primary_when_the_id_is_unset(self, monkeypatch):
+        # Startup already refuses without an id; this must not paper over that by filling in
+        # a default, which would be the exact failure the guard exists to prevent.
+        monkeypatch.delenv("CALENDAR_ID", raising=False)
+        assert "calendarId" not in pin_calendar({"eventId": "ev-1"})
 
 
 class TestProjectionNote:

@@ -34,13 +34,23 @@ def _fixture(name: str) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def list_events(timeMin: str = "", timeMax: str = "", maxResults: int = 25) -> dict:  # noqa: N803 - MCP arg names
+def list_events(
+    calendarId: str = "",  # noqa: N803 - MCP arg name
+    startTime: str = "",  # noqa: N803
+    endTime: str = "",  # noqa: N803
+    pageSize: int = 25,  # noqa: N803
+    orderBy: str = "startTime",  # noqa: N803
+    timeZone: str = "",  # noqa: N803
+) -> dict:
     """Lists events on the calendar within a time range.
 
     Args:
-        timeMin: RFC 3339 lower bound, inclusive. Empty means the fixture's own range.
-        timeMax: RFC 3339 upper bound, exclusive. Empty means the fixture's own range.
-        maxResults: Maximum events to return. Defaults to 25.
+        calendarId: The calendar to read. Pinned to the demo calendar in every run mode.
+        startTime: RFC 3339 lower bound, inclusive. Empty means the fixture's own range.
+        endTime: RFC 3339 upper bound, exclusive. Empty means the fixture's own range.
+        pageSize: Maximum events to return. Defaults to 25.
+        orderBy: "startTime" or "updated".
+        timeZone: The zone to resolve the range in. Empty means the calendar's own.
 
     Returns:
         An object with an `events` list; each event carries its id, summary, start and end,
@@ -48,14 +58,15 @@ def list_events(timeMin: str = "", timeMax: str = "", maxResults: int = 25) -> d
     """
     payload = _fixture("list-events")
     events = payload.get("events", [])
-    return {**payload, "events": events[:maxResults]}
+    return {**payload, "events": events[:pageSize]}
 
 
-def get_event(eventId: str) -> dict:  # noqa: N803 - MCP arg name
+def get_event(eventId: str, calendarId: str = "") -> dict:  # noqa: N803 - MCP arg names
     """Gets one event by id.
 
     Args:
         eventId: The event's id.
+        calendarId: The calendar to read. Pinned to the demo calendar in every run mode.
 
     Returns:
         The event and its attendees. Returns an object with an "error" key if unknown.
@@ -67,45 +78,29 @@ def get_event(eventId: str) -> dict:  # noqa: N803 - MCP arg name
     return event
 
 
-def list_calendars() -> dict:
-    """Lists the calendars the credential can see.
-
-    Returns:
-        An object with a `calendars` list of {id, summary, primary, accessRole}.
-    """
-    return _fixture("list-calendars")
-
-
-def query_freebusy(timeMin: str = "", timeMax: str = "") -> dict:  # noqa: N803 - MCP arg names
-    """Reports busy intervals within a time range.
-
-    Args:
-        timeMin: RFC 3339 lower bound, inclusive.
-        timeMax: RFC 3339 upper bound, exclusive.
-
-    Returns:
-        An object with a `busy` list of {start, end}.
-    """
-    return _fixture("query-freebusy")
-
-
 def create_event(
     summary: str = "",
-    start: str = "",
-    end: str = "",
-    attendees: list[str] | None = None,
+    startTime: str = "",  # noqa: N803
+    endTime: str = "",  # noqa: N803
+    calendarId: str = "",  # noqa: N803
+    attendeeEmails: list[str] | None = None,  # noqa: N803
     location: str = "",
     description: str = "",
+    timeZone: str = "",  # noqa: N803
+    allDay: bool = False,  # noqa: N803
 ) -> dict:
     """Creates an event. In the stub backend nothing is written.
 
     Args:
         summary: The event's title.
-        start: RFC 3339 start, or a date for an all-day event.
-        end: RFC 3339 end, or a date for an all-day event.
-        attendees: Attendee addresses.
+        startTime: RFC 3339 start, or a date for an all-day event.
+        endTime: RFC 3339 end, or a date for an all-day event.
+        calendarId: The calendar to write to. Pinned to the demo calendar.
+        attendeeEmails: Attendee addresses. They are NOT notified.
         location: Where the event is.
         description: The event's notes.
+        timeZone: The zone the times are given in.
+        allDay: Whether this is an all-day event.
 
     Returns:
         An Event object with `id` and `htmlLink`.
@@ -113,12 +108,19 @@ def create_event(
     return {"id": "stub-event", "htmlLink": "https://example.com/event/stub-event"}
 
 
-def respond_to_event(eventId: str, responseStatus: str) -> dict:  # noqa: N803 - MCP arg names
+def respond_to_event(
+    eventId: str,  # noqa: N803
+    responseStatus: str,  # noqa: N803
+    calendarId: str = "",  # noqa: N803
+    responseComment: str = "",  # noqa: N803
+) -> dict:
     """Sets the viewer's own response on an event. In the stub backend nothing is written.
 
     Args:
         eventId: The event to respond to.
         responseStatus: One of "accepted", "declined", "tentative".
+        calendarId: The calendar the event is on. Pinned to the demo calendar.
+        responseComment: An optional note sent with the response.
 
     Returns:
         An object echoing the id and the new responseStatus.
@@ -129,8 +131,6 @@ def respond_to_event(eventId: str, responseStatus: str) -> dict:  # noqa: N803 -
 STUB_TOOLS = [
     list_events,
     get_event,
-    list_calendars,
-    query_freebusy,
     create_event,
     respond_to_event,
 ]

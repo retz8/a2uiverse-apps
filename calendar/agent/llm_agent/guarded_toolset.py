@@ -3,11 +3,17 @@
 Two duties, at the lowest boundary available -- `McpTool._run_async_impl`, which builds the
 argument dict on the way out and the result dict on the way back.
 
-**Outbound: notification suppression, in every run mode.** Calendar's writes reach third
-parties, so `suppress_notifications` pins the notification parameter to its non-notifying
-value on every call before it leaves (task-2.7 decision 2). This is not a record-mode
-concern; it is a live-mode one, which is exactly why it lives here rather than in a callback
-that only some paths take.
+**Outbound: two pins, in every run mode.**
+
+`suppress_notifications` forces `notificationLevel` to `NONE` on every call before it leaves
+(task-2.7 decision 2). Calendar's writes reach third parties, and the server treats an absent
+notificationLevel as `ALL` — so omitting the argument is the loud choice, not the safe one.
+
+`pin_calendar` forces `calendarId` to the seeded demo calendar. The API's default is the
+user's `primary`, and nothing else in the stack stops the model naming it.
+
+Neither is a record-mode concern; both are live-mode ones, which is exactly why they live
+here rather than in a callback that only some paths take.
 
 **Inbound: corpus capture, in record mode only.** `capture_tool_result` writes the payload the
 model read to the corpus `scripts/derive_corpus.py` builds the stub fixtures from, and returns
@@ -31,16 +37,29 @@ from typing import Any
 from google.adk.tools.mcp_tool import McpToolset
 from google.adk.tools.mcp_tool.mcp_tool import McpTool
 
-from llm_agent.tool_shaping import capture_tool_result, suppress_notifications
+from llm_agent.tool_shaping import capture_tool_result, pin_calendar, suppress_notifications
 
 
 class GuardedMcpTool(McpTool):
-    """An McpTool that cannot notify attendees, and records its result in record mode."""
+    """An McpTool confined to the demo calendar and unable to notify anyone."""
+
+    def _accepted_args(self) -> set[str]:
+        """The parameter names this tool actually declares, off its own MCP schema.
+
+        Both pins are filtered through this. The server rejects an undeclared argument with a
+        400, so a pin applied blind would break every tool that does not take it — which, for
+        `notificationLevel`, is every read.
+        """
+        schema = getattr(getattr(self, "_mcp_tool", None), "inputSchema", None) or {}
+        properties = schema.get("properties") if isinstance(schema, dict) else None
+        return set(properties) if isinstance(properties, dict) else set()
 
     async def _run_async_impl(self, **kwargs: Any) -> Any:
         args = kwargs.get("args")
         if isinstance(args, dict):
-            kwargs = {**kwargs, "args": suppress_notifications(args)}
+            accepts = self._accepted_args()
+            guarded = suppress_notifications(args, accepts)
+            kwargs = {**kwargs, "args": pin_calendar(guarded, accepts)}
         result = await super()._run_async_impl(**kwargs)
         return capture_tool_result(result, self.name)
 

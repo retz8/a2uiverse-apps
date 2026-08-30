@@ -43,8 +43,6 @@ def test_stub_backend_gives_the_stub_toolset(monkeypatch):
     assert {t.__name__ for t in tools} == {
         "list_events",
         "get_event",
-        "list_calendars",
-        "query_freebusy",
         "create_event",
         "respond_to_event",
     }

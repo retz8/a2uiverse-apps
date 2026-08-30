@@ -2,12 +2,11 @@
 
 No test here touches the network: McpToolset connects lazily, so construction is offline.
 
-The tool names themselves are PROVISIONAL until the first live run — nothing in either repo
-records this server's inventory (task-2.7 spec, open item 1). So what is pinned here is the
-POLICY rather than the vocabulary: how many writes there are and what they are for, that no
-tool deletes or amends an existing event, and that the scopes cover both tiers. A name that
-turns out wrong should make one of these fail loudly and be fixed by a rename in `mcp.py`
-plus a rename here — never by widening the assertion until it passes.
+The inventory was read off the live server (task-2.7 spec, open item 1 — resolved): it
+exposes nine tools, of which four are admitted. The provisional guesses that preceded that
+run were wrong in two ways worth remembering, because both tests below exist for them: there
+was no `query_freebusy`, and `search_events`/`list_calendars` take no `calendarId` at all —
+so admitting either would have read the developer's `primary` straight into a public corpus.
 """
 
 from __future__ import annotations
@@ -19,6 +18,7 @@ from llm_agent.mcp import (
     CALENDAR_MCP_URL,
     CALENDAR_SCOPES,
     CALENDAR_TOOLS,
+    WITHHELD_TOOLS,
     MissingDemoCalendarError,
     MissingGoogleCredentialError,
     demo_calendar_id,
@@ -26,18 +26,19 @@ from llm_agent.mcp import (
     quota_project,
 )
 
-# The shape of what this agent deliberately does not hold. Calendar's destructive surface is
-# worse than Gmail's in one specific way: it reaches third parties. Deleting an event cancels
-# it in other people's calendars, where trashing mail is private and reversible.
-WITHHELD = {
-    "delete_event",
+# The server's nine tools, as read off it live. Named in full so that a tool APPEARING or
+# DISAPPEARING upstream is a visible diff here rather than a silent change in what the agent
+# can do.
+SERVER_TOOLS = {
+    "list_events",
+    "get_event",
+    "search_events",
+    "list_calendars",
+    "create_event",
     "update_event",
-    "patch_event",
-    "move_event",
-    "import_event",
-    "create_calendar",
-    "delete_calendar",
-    "clear_calendar",
+    "delete_event",
+    "respond_to_event",
+    "suggest_time",
 }
 
 
@@ -46,7 +47,20 @@ def test_endpoint_is_the_documented_mcp_server():
 
 
 def test_no_destructive_tool_is_admitted():
-    assert WITHHELD.isdisjoint(CALENDAR_TOOLS)
+    assert set(WITHHELD_TOOLS).isdisjoint(CALENDAR_TOOLS)
+
+
+def test_the_admitted_and_withheld_sets_account_for_the_whole_server():
+    # Every tool the server offers is either taken or refused on purpose. A tool that is in
+    # neither set is one nobody decided about.
+    assert set(CALENDAR_TOOLS) | set(WITHHELD_TOOLS) == SERVER_TOOLS
+
+
+def test_every_admitted_tool_can_be_confined_to_one_calendar():
+    # The invariant that makes pin_calendar total rather than best-effort: each admitted tool
+    # takes a calendarId. search_events and list_calendars do NOT, which is why they are
+    # withheld — they would read the user's primary calendar and no guard could stop them.
+    assert set(CALENDAR_TOOLS).isdisjoint({"search_events", "list_calendars"})
 
 
 def test_nothing_that_amends_an_existing_event_is_admitted():
@@ -65,12 +79,17 @@ def test_exactly_two_writes_are_admitted_one_per_tier():
     assert len(set(CALENDAR_TOOLS) - writes) == len(CALENDAR_TOOLS) - 2
 
 
+def test_no_tool_that_invents_a_time_is_admitted():
+    # suggest_time proposes times the model never read. The prompt's hardest rule is that a
+    # time on a surface came from a payload, and a tool whose purpose is to invent one
+    # undercuts it more quietly than a wrong answer would.
+    assert "suggest_time" not in CALENDAR_TOOLS
+
+
 def test_the_admitted_set_is_exactly_what_the_beats_need():
     assert set(CALENDAR_TOOLS) == {
         "list_events",
         "get_event",
-        "list_calendars",
-        "query_freebusy",
         "create_event",
         "respond_to_event",
     }

@@ -39,6 +39,7 @@ import google.auth.transport.requests
 from google.adk.tools.mcp_tool import StreamableHTTPConnectionParams
 
 from llm_agent.guarded_toolset import GuardedMcpToolset
+from llm_agent.tool_shaping import CALENDAR_ID_ENV
 
 CALENDAR_MCP_URL = "https://calendarmcp.googleapis.com/mcp/v1"
 
@@ -53,31 +54,46 @@ CALENDAR_SCOPES = (
 
 # Pinned explicitly rather than inherited from the server's full set: the tool surface is a
 # statement about what the agent is, so it stays reviewable and diffable. Everything absent
-# here is absent deliberately -- see the module docstring.
+# here is absent deliberately.
 #
-# PROVISIONAL until the first live run. Nothing in either repo records this server's real
-# inventory (task-2.7 spec, open item 1), so these names are the Calendar API's own surface as
-# the MCP server is expected to project it. `tests/test_llm_mcp.py` pins the POLICY -- reads
-# plus exactly the two writes the beats need, no deletion, no notifying tool -- so a name that
-# turns out wrong is a rename here, not a redesign.
+# Read off the live server on the first run. It exposes nine tools; four are admitted.
+#
+# EVERY ADMITTED TOOL TAKES `calendarId`, and that is load-bearing rather than incidental:
+# it is what lets `tool_shaping.pin_calendar` confine the whole surface to the seeded demo
+# calendar. A tool without that argument cannot be confined, and would read the developer's
+# `primary` — which is the one thing task-2.7 decision 4 exists to prevent.
 CALENDAR_TOOLS = (
     # reads
     "list_events",
     "get_event",
-    "list_calendars",
-    "query_freebusy",
     # creating write -- painted as a proposal, fires on the user's confirm action
     "create_event",
     # toggling write -- fires directly on its action
     "respond_to_event",
 )
 
-# Withheld deliberately: delete_event, update_event, move_event, import_event,
-# create_calendar, delete_calendar, clear_calendar, and every tool that mails attendees about
-# an event that already exists.
+# Withheld, with the reason, because each is a different kind of refusal:
+#
+#   delete_event, update_event  -- destructive and amending. They reach third parties:
+#                                  deleting cancels the event in other people's calendars.
+#                                  Rescheduling is out of scope for 2.7 (decision 1).
+#   search_events               -- takes NO calendarId, so it searches every calendar the
+#                                  credential can see, `primary` included. Not confinable.
+#   list_calendars              -- likewise takes no calendarId, and returns the user's other
+#                                  calendars by name. No beat needs it.
+#   suggest_time                -- proposes times the model never read. The prompt's hardest
+#                                  rule is that a time on a surface came from a payload; a
+#                                  tool whose whole purpose is to invent one undercuts it.
+WITHHELD_TOOLS = (
+    "delete_event",
+    "update_event",
+    "search_events",
+    "list_calendars",
+    "suggest_time",
+)
 
 PROJECT_ENV_VAR = "GOOGLE_CLOUD_PROJECT"
-CALENDAR_ID_ENV = "CALENDAR_ID"
+
 
 
 class MissingGoogleCredentialError(RuntimeError):

@@ -25,7 +25,26 @@ import os
 from pathlib import Path
 
 AGENT = Path(__file__).resolve().parent.parent
-SELF_EMAIL = os.environ.get("SEED_SELF_EMAIL", "")
+
+
+def _self_email() -> str:
+    """The demo calendar's own address, which Google flags `self` on every seeded event.
+
+    It is not personal data, but it is an identifier, and it is the only string in a capture
+    that the authored seed did not put there. `.env` already holds it, so it is read from
+    there rather than asking for a second copy in a second variable.
+    """
+    if os.environ.get("CALENDAR_ID"):
+        return os.environ["CALENDAR_ID"]
+    env = AGENT / ".env"
+    if env.is_file():
+        for line in env.read_text(encoding="utf-8").splitlines():
+            if line.startswith("CALENDAR_ID="):
+                return line.split("=", 1)[1].strip()
+    return ""
+
+
+SELF_EMAIL = _self_email()
 CAPTURED = AGENT / ".recordings" / "payloads"
 BEATS = AGENT / "recordings" / "beats"
 STUB = AGENT / "llm_agent" / "fixtures"
@@ -99,11 +118,13 @@ def settled_messages(beat_path: Path) -> list[dict]:
 
 
 def mask_self(value: object) -> object:
-    """Replaces the authenticated account's own address wherever it appears.
+    """Replaces the demo calendar's own address wherever it appears.
 
-    The seed authors every other attendee, so this is the only real identifier a capture can
-    carry. It is walked over the whole payload rather than the keys we expect, because an
-    address under a key nobody anticipated is exactly the one that would be published.
+    The seed authors every other attendee, so this is the only identifier a capture carries
+    that nobody chose. It is walked over the whole payload rather than the keys we expect,
+    because a value under a key nobody anticipated is exactly the one that would be
+    published — and `test_corpus_is_publishable` fails on it, since
+    `group.calendar.google.com` is not a reserved example domain.
     """
     if isinstance(value, dict):
         return {k: mask_self(v) for k, v in value.items()}

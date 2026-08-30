@@ -67,33 +67,88 @@ _ANNOTATION_KEY = "_payload_notes"
 # Notification suppression
 # ---------------------------------------------------------------------------
 
-# Both spellings the Calendar API has used for "tell the attendees". The modern one is an
-# enum, the legacy one a boolean; which of them this server's tools take is not recorded
-# anywhere (task-2.7 spec, open item 1), so both are pinned rather than guessed between.
-_SEND_UPDATES_ARG = "sendUpdates"
-_SEND_NOTIFICATIONS_ARG = "sendNotifications"
+# The server's own parameter, read off its tool schemas on the first live run. Its enum is
+# NOTIFICATION_LEVEL_UNSPECIFIED | NONE | EXTERNAL_ONLY | ALL, and — the reason this guard
+# exists rather than merely tidies — **unspecified is documented as "Treated as ALL"**. The
+# default is to email every attendee. Omitting the argument is not the safe choice; it is the
+# loud one.
+#
+# An earlier draft pinned `sendUpdates`/`sendNotifications`, which is the REST API v3 spelling
+# and does not exist on this server. It would have set two arguments nothing reads and
+# suppressed nothing at all. Hence: no guessed argument names here, and the test asserts the
+# effect on a real tool schema's vocabulary rather than on ours.
+_NOTIFICATION_ARG = "notificationLevel"
+_SILENT = "NONE"
 
-_SILENT_UPDATES = "none"
+# The calendar the agent is confined to. Read from the environment rather than passed in, so
+# that a code path which forgets to thread it through still cannot escape the demo calendar.
+CALENDAR_ID_ENV = "CALENDAR_ID"
+
+# Every admitted tool that takes one; a tool without it is unaffected.
+_CALENDAR_ARG = "calendarId"
 
 
-def suppress_notifications(args: dict[str, Any]) -> dict[str, Any]:
-    """Forces every outbound call to be non-notifying.
+def suppress_notifications(args: dict[str, Any], accepts: set[str] | None = None) -> dict[str, Any]:
+    """Forces every call that CAN notify to be non-notifying.
 
-    Applied unconditionally, to reads as well as writes: a read that carries neither argument
-    is unchanged, and pinning the value rather than checking a tool allow-list means a tool
-    admitted later cannot quietly acquire the ability to mail people.
+    `accepts` is the parameter set the tool actually declares, read off its own MCP schema.
+    Passing it is what makes this safe to apply to the whole surface: the server rejects an
+    argument a tool does not declare with a hard 400 ("Unknown name ... Cannot find field"),
+    so an unconditional pin would take every read down. Verified against the live server —
+    `list_events` with a `notificationLevel` is a 400, without it a 200.
+
+    Omit `accepts` and the pin is applied unconditionally; that path exists for unit tests
+    that are asserting the rewrite itself, not for calls.
 
     Returns a new dict; the caller's is not mutated.
     """
     if not isinstance(args, dict):
         return args
+    if accepts is not None and _NOTIFICATION_ARG not in accepts:
+        return dict(args)
     guarded = dict(args)
-    if _SEND_UPDATES_ARG in guarded and guarded[_SEND_UPDATES_ARG] != _SILENT_UPDATES:
-        logger.info("notification suppressed: %s -> %s", _SEND_UPDATES_ARG, _SILENT_UPDATES)
-    if _SEND_NOTIFICATIONS_ARG in guarded and guarded[_SEND_NOTIFICATIONS_ARG] is not False:
-        logger.info("notification suppressed: %s -> False", _SEND_NOTIFICATIONS_ARG)
-    guarded[_SEND_UPDATES_ARG] = _SILENT_UPDATES
-    guarded[_SEND_NOTIFICATIONS_ARG] = False
+    if guarded.get(_NOTIFICATION_ARG, _SILENT) != _SILENT:
+        logger.info(
+            "notification suppressed: %s %s -> %s",
+            _NOTIFICATION_ARG,
+            guarded[_NOTIFICATION_ARG],
+            _SILENT,
+        )
+    guarded[_NOTIFICATION_ARG] = _SILENT
+    return guarded
+
+
+def pin_calendar(args: dict[str, Any], accepts: set[str] | None = None) -> dict[str, Any]:
+    """Forces every call onto the seeded demo calendar.
+
+    `calendarId` is a per-call argument on this server, and the API's default is the
+    authenticated user's `primary`. Nothing in the prompt or the tool inventory prevents the
+    model from reading `primary` — it would simply be a plausible-looking argument — and that
+    is the developer's real calendar, which task-2.7 decision 4 exists to keep out of a
+    recording bound for a public repo.
+
+    So the confinement is enforced here rather than asked for: the value is overwritten, not
+    defaulted. Every admitted tool declares `calendarId`, which is not a coincidence — a tool
+    that does not cannot be confined, and the two the server offers that do not
+    (`search_events`, `list_calendars`) are withheld for exactly that reason.
+
+    `accepts` is honoured for the same 400 that governs suppression above.
+
+    Returns a new dict; the caller's is not mutated.
+    """
+    if not isinstance(args, dict):
+        return args
+    if accepts is not None and _CALENDAR_ARG not in accepts:
+        return dict(args)
+    calendar_id = os.environ.get(CALENDAR_ID_ENV)
+    if not calendar_id:
+        return dict(args)
+    guarded = dict(args)
+    if guarded.get(_CALENDAR_ARG, calendar_id) != calendar_id:
+        logger.info(
+            "calendar pinned: %s %s -> %s", _CALENDAR_ARG, guarded[_CALENDAR_ARG], calendar_id
+        )
+    guarded[_CALENDAR_ARG] = calendar_id
     return guarded
 
 

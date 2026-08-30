@@ -112,11 +112,18 @@ def _times(event: dict, today: date, time_zone: str) -> dict:
 
 def _body(event: dict, today: date, time_zone: str, self_email: str | None) -> dict:
     attendees = [dict(a) for a in event.get("attendees", [])]
-    # The viewer's own row. `rsvp-toggle` needs an event carrying the user as an attendee
-    # with something to answer; whether the API honours a self-attendee response on an event
-    # the same account organises is the open question this seed exists to expose on the first
-    # live run (task-2.7 spec, open item 2).
-    if self_email and event.get("selfResponse"):
+    # The viewer's own row, added only to events that HAVE guests. An event with no
+    # attendees is a block the person put on their own calendar: it has no invitation and no
+    # response, and that is a distinct row shape the agenda has to be able to show. Giving it
+    # a lone self-attendee would turn every personal block into a meeting with one guest.
+    #
+    # `self_email` is the demo CALENDAR's address, not the developer's. That is deliberate
+    # and it is what makes the beats work: Google sets `self: true` on the attendee matching
+    # the calendar being queried, so the agent reads this row as "my own response" exactly as
+    # it would on a real user's calendar — and no personal address enters the corpus.
+    # Verified on the first live run: needsAction does stick this way, which is what
+    # `rsvp-toggle` needs (task-2.7 spec, open item 2 — resolved).
+    if self_email and event.get("selfResponse") and attendees:
         attendees.append(
             {"email": self_email, "self": True, "responseStatus": event["selfResponse"]}
         )

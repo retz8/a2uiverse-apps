@@ -16,9 +16,7 @@ from llm_agent.tools import (
     STUB_TOOLS,
     create_event,
     get_event,
-    list_calendars,
     list_events,
-    query_freebusy,
     respond_to_event,
 )
 
@@ -36,8 +34,6 @@ def test_stub_tools_mirror_the_admitted_mcp_surface():
     assert STUB_TOOLS == [
         list_events,
         get_event,
-        list_calendars,
-        query_freebusy,
         create_event,
         respond_to_event,
     ]
@@ -46,7 +42,7 @@ def test_stub_tools_mirror_the_admitted_mcp_surface():
 def test_no_stub_tool_writes_anything():
     # Every stub write is an acknowledgement, never a mutation — the round-trip is
     # exercised, the calendar is not.
-    assert create_event(summary="s", start="a", end="b")["id"] == "stub-event"
+    assert create_event(summary="s", startTime="a", endTime="b")["id"] == "stub-event"
     assert respond_to_event("ev-1", "accepted") == {"id": "ev-1", "responseStatus": "accepted"}
 
 
@@ -55,7 +51,7 @@ def test_no_stub_tool_can_delete_or_amend_an_existing_event():
     # inventory written out by hand, so a deletion or update appearing here would mean the
     # live surface had grown one too.
     names = {tool.__name__ for tool in STUB_TOOLS}
-    for forbidden in ("delete_event", "update_event", "move_event", "clear_calendar"):
+    for forbidden in ("delete_event", "update_event", "search_events", "suggest_time"):
         assert forbidden not in names
 
 
@@ -81,7 +77,7 @@ def test_list_returns_events_with_bindable_fields():
 
 @requires_corpus
 def test_list_honours_max_results():
-    assert len(list_events(maxResults=1)["events"]) <= 1
+    assert len(list_events(pageSize=1)["events"]) <= 1
 
 
 @requires_corpus
