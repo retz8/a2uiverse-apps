@@ -1,0 +1,13 @@
+{
+  "$comment": "Placeholder until the sdk manifest schema lands (Phase 9); mirrors the orchestrator's registry record.",
+  "id": "gmail",
+  "displayName": "Gmail",
+  "agent": {
+    "url": "http://localhost:11002",
+    "auth": "none"
+  },
+  "catalog": {
+    "id": "https://github.com/retz8/a2uiverse-apps/blob/main/gmail/gmail-catalog/catalogs/v0.9.1/catalog.json",
+    "package": "gmail-catalog"
+  }
+}
