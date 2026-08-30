@@ -33,3 +33,9 @@ CLAUDE.local.md
 # Agent debug dumps (rewritten per turn)
 *.dump.json
 *.dump.txt
+
+# Raw agent recordings: the local capture layer. Only the FINALIZED artifacts are
+# tracked (recordings/beats/, and the fixtures derived from them) — the raw session
+# dumps and captured MCP payloads stay on the machine that recorded them.
+.recordings/
+*.dump.jsonl

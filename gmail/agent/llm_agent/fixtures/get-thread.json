@@ -1,0 +1,27 @@
+{
+  "1a0479e77360b0bb": {
+    "id": "1a0479e77360b0bb",
+    "messages": [
+      {
+        "id": "1a0479e77360b0bb",
+        "snippet": "question review estimate pending draft summary review reply attached agenda agenda timeline reply summary pending feedback review proposal pending follow review review review schedule notes attached st",
+        "subject": "notes proposal follow agenda review meeting agenda status pending meeting thread follow update ",
+        "sender": "clara.ferreira@example.com",
+        "toRecipients": [
+          "nora.lindqvist@example.com"
+        ],
+        "date": "2026-08-28T09:05:49Z",
+        "plaintextBody": "Hello,\n\nYour following Google Cloud project(s) came back as an error:\n\n506907\nPlease take a look at this reference on how to identify a project number,\nand send us a valid project number using this link? It can be just one, or\nyou can request to allowlist multiple projects.\n\nIf you have questions, please respond to this email.\n\nThank you! The Google Workspace Developer Preview Program team",
+        "labelIds": [
+          "UNREAD",
+          "IMPORTANT",
+          "INBOX"
+        ],
+        "threadId": "1a0479e77360b0bb",
+        "historyId": "2136493",
+        "internalDate": "1787907949000",
+        "sizeEstimate": 13140
+      }
+    ]
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "name": "reply-compose",
+  "intent": "Draft a reply confirming Thursday works.",
+  "messages": [
+    {
+      "version": "v0.9",
+      "createSurface": {
+        "surfaceId": "draft-th-1",
+        "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/gmail/gmail-catalog/catalogs/v0.9.1/catalog.json",
+        "sendDataModel": true
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateDataModel": {
+        "surfaceId": "draft-th-1",
+        "path": "/",
+        "value": {
+          "to": "Alex Bergman",
+          "subject": "Re: Revised timeline for the review",
+          "body": "Thursday still works on my end — I will have the estimates ready before the review. Thanks for moving it."
+        }
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateComponents": {
+        "surfaceId": "draft-th-1",
+        "components": [
+          { "id": "root", "component": "Card", "child": "body" },
+          {
+            "id": "body",
+            "component": "Column",
+            "children": ["heading", "to-row", "subject-field", "body-field", "actions"]
+          },
+          { "id": "heading", "component": "Text", "variant": "h3", "text": "Save this reply?" },
+          { "id": "to-row", "component": "Row", "align": "center", "children": ["to-label", "to-value"] },
+          { "id": "to-label", "component": "Text", "variant": "caption", "text": "TO" },
+          { "id": "to-value", "component": "Text", "text": { "path": "/to" } },
+          {
+            "id": "subject-field",
+            "component": "TextField",
+            "label": "Subject",
+            "value": { "path": "/subject" }
+          },
+          {
+            "id": "body-field",
+            "component": "TextField",
+            "label": "Message",
+            "variant": "longText",
+            "value": { "path": "/body" }
+          },
+          { "id": "actions", "component": "Row", "children": ["save", "cancel"] },
+          {
+            "id": "save",
+            "component": "Button",
+            "variant": "primary",
+            "child": "save-label",
+            "action": {
+              "event": { "name": "confirm-draft", "context": { "threadId": "th-1" } }
+            }
+          },
+          { "id": "save-label", "component": "Text", "text": "Save draft" },
+          {
+            "id": "cancel",
+            "component": "Button",
+            "variant": "borderless",
+            "child": "cancel-label",
+            "action": {
+              "event": { "name": "cancel-draft", "context": { "threadId": "th-1" } }
+            }
+          },
+          { "id": "cancel-label", "component": "Text", "text": "Discard" }
+        ]
+      }
+    }
+  ]
+}
