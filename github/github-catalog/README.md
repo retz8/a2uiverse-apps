@@ -32,6 +32,13 @@ import {CATALOG, CATALOG_ID, Provider} from 'github-catalog';
   stylesheets loaded on first mount. A host wraps each of this catalog's
   fragments in it; the bundle owns this setup, the host registers nothing.
 
+  It is also what makes this catalog safe to render **beside** another one. Its
+  tokens are scoped to its own wrapper rather than written to `:root`, and it
+  anchors Primer's portal root inside that wrapper — so overlays open themed and
+  inside the fragment they belong to, instead of escaping to the end of `body`
+  where they would render unthemed over someone else's surface. The platform's
+  collision detector fails the build if either property regresses.
+
 The bundle ships Primer itself (`@primer/react`, octicons, primitives) at exact
 versions. A host supplies only the shared runtime that must be a singleton:
 React, `@a2ui/react` / `@a2ui/web_core`, and `zod`.

@@ -63,6 +63,23 @@ uv run python -m llm_agent --host localhost
 > (`llm_agent/mcp.py`), so write tools — merging, reviewing, editing — never
 > enter its tool inventory. A PAT minted with write permissions gains nothing.
 
+### When the PAT is dead
+
+A rejected `GITHUB_MCP_PAT` does not surface as an auth error. The MCP toolset fails to load, the
+agent starts anyway with no tools, the model then calls a tool that does not exist, and the turn
+ends as `MALFORMED_FUNCTION_CALL` with a polite apology on the canvas. The symptom points nowhere
+near the cause, so check the token first:
+
+```bash
+curl -s -o /dev/null -w "%{http_code}\n" \
+  -H "Authorization: Bearer $(grep '^GITHUB_MCP_PAT=' .env | cut -d= -f2-)" \
+  https://api.github.com/user
+```
+
+`200` and the token is fine; `401` and it is expired or revoked. Note that extending an expired
+classic token regenerates it — the new value has to be copied into `.env`, or the file keeps a
+string GitHub no longer recognises.
+
 ### Serving a browser on another machine
 
 `--base-url` sets the URL the agent card advertises (default
@@ -90,55 +107,18 @@ deliberately:
    toolset tuple; update its assertions to the new contract so the suite is
    green again.
 
-## Recording live runs as fixtures
+## Recording live runs
 
-The agent ships a recorder: with `A2UI_RECORD_DIR` set, every conversation's
-streamed A2UI output is captured as the exact batch sequence it was sent, one
-file per conversation; unset, the agent behaves identically and writes nothing.
-A capture replays just as the live run streamed, so client-side work can be
-driven by real agent output with no LLM in the loop. Recording is headless — no
-browser involved; the driver runs on the same machine as the agent.
+With `A2UI_RECORD_DIR` set, every conversation's streamed A2UI output is captured as the exact
+batch sequence it was sent, one file per conversation; unset, the agent behaves identically and
+writes nothing. `scripts/record_beats.py` drives scripted prompts against an armed agent.
 
-Two layers are involved: the recorder writes a raw per-conversation capture
-into `A2UI_RECORD_DIR` (`.recordings/`, gitignored), and the driver script
-`scripts/record_beats.py` turns a capture into a tracked fixture — it sends a
-scripted prompt, verifies the run actually painted a surface, and finalizes it
-under `recordings/beats/` with its metadata (prompt, model, title). Only the
-finalized fixtures are tracked.
+Nothing is scrubbed on the way through, and nothing needs to be: this agent reads public
+repositories through the read-only GitHub MCP server. That is unlike the Gmail agent, where the
+same flag also arms a pseudonymizer.
 
-The tracked set holds one live run of each of the eight **beats** — the
-scripted moments of the client demo (open the PR inbox, drill into a PR, and so
-on) — and is what the client's canvas verification replays.
+**The beats the canvas replays are not recorded here.** They live in the platform repo
+(`apps/client/recordings/beats/`) and are captured through the composing hub, so they carry the
+shell's paint and the composition stamps alongside this agent's output — see that repo's client
+README. This recorder is for capturing raw agent output on its own.
 
-### Re-recording the existing beats
-
-The eight beat prompts are defined in the driver, so refreshing a stale fixture
-is just running it. The model is fixed when the agent starts, so a beat that
-needs a different model is recorded against a separately-started agent:
-
-```bash
-# default model
-A2UI_RECORD_DIR=.recordings uv run python -m llm_agent --host localhost
-uv run python scripts/record_beats.py --beats 1,4,5,7,8 --model gemini-3.7-flash
-
-# stronger model
-MODEL_NAME=gemini-3.1-pro-preview A2UI_RECORD_DIR=.recordings \
-  uv run python -m llm_agent --host localhost
-uv run python scripts/record_beats.py --beats 2,3,6 --model gemini-3.1-pro-preview
-```
-
-The driver retries a beat that fails to paint, then records best-available and flags it
-in its summary. Beat 3 is defined as a follow-up to beat 2, so asking for it drives both
-in one conversation.
-
-### Recording a new beat
-
-1. Add a `Turn(...)` entry to the `BEATS` list in `scripts/record_beats.py`:
-   beat number, slug, title, the exact prompt, and `chains=True` if it must run
-   as a follow-up inside the previous beat's conversation.
-2. Start the agent with the recorder armed (as above).
-3. Drive just the new beat: `uv run python scripts/record_beats.py --beats 9
-   --model <model the agent runs>`.
-4. The fixture lands in `recordings/beats/`; the client bundles that whole
-   directory via `import.meta.glob`, so it is picked up with no client code
-   change.

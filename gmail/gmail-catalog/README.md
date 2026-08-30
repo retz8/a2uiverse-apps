@@ -20,8 +20,10 @@ Primer (SPEC §4.2, phase-2 decision 3).
 
 ## Theme
 
-The Provider writes ~25 custom properties **on its own wrapper element** — never `:root`, no
-stylesheet, no font loaded, nothing global (phase-2 decision 4). It sets the base tier
+The Provider writes ~25 custom properties **on its own wrapper element** — never `:root` — and
+alongside them a product stylesheet scoped to that same wrapper class, loaded on first mount.
+Nothing is global (phase-2 decision 4, SPEC §14): tokens carry the palette, and the sheet styles
+the basic components' runtime DOM where a token cannot reach it. It sets the base tier
 (colour, shape, type, spacing) plus the short list of per-component tokens carrying Material 3
 Expressive's signature: the pill button, the raised card on a lighter ground, and the rounded
 field and chip. Every other component token falls through to the basic catalog's defaults.

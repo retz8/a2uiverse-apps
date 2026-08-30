@@ -20,8 +20,10 @@ Primer (SPEC §4.2, phase-2 decision 3).
 
 ## Theme
 
-The Provider writes its custom properties **on its own wrapper element** — never `:root`, no
-stylesheet, no font loaded, nothing global (phase-2 decision 4).
+The Provider writes its custom properties **on its own wrapper element** — never `:root`, and
+alongside them a product stylesheet scoped to that same wrapper class, loaded on first mount.
+Nothing is global (phase-2 decision 4, SPEC §14): tokens carry the palette, and the sheet styles
+the basic components' runtime DOM where a token cannot reach it.
 
 Calendar and Gmail are the same design system by the same company, so the theme is built on
 where Calendar genuinely differs rather than on restating Material 3 a second time (task-2.7

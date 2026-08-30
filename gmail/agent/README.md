@@ -114,7 +114,11 @@ the wrong host.
 With `A2UI_RECORD_DIR` set, every conversation's streamed A2UI output is captured as the
 exact batch sequence it was sent; unset, the agent behaves identically and writes nothing.
 
-**Setting `A2UI_RECORD_DIR` also arms pseudonymization.** Every Gmail MCP payload passes
+**Setting `A2UI_RECORD_DIR` also arms pseudonymization** — which is why it matters beyond this
+agent's own fixtures. The beats the canvas replays are recorded in the platform repo, through the
+composing hub, and that recorder captures whatever the hub relays without being able to tell
+whether anything was scrubbed. Starting this agent armed is what keeps real mail out of a tracked
+file there; `check:fixtures` in the platform repo is the backstop if it is forgotten. Every Gmail MCP payload passes
 through a deterministic, length-preserving substitution (`llm_agent/tool_shaping.py`) before
 the model sees it, so the model paints stand-in names and subjects natively and no real mail
 reaches the recorded stream, the prompt dump, or the model provider. The seed is fixed, so a
