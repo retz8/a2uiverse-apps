@@ -1,6 +1,6 @@
 {
   "name": "github-catalog",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "The GitHub app catalog for A2UIVerse: the A2UI catalog schema, its Primer React implementation, and the Provider \u2014 the bundle ships Primer itself; the host supplies only React, the A2UI runtime, and zod.",
   "license": "MIT",
   "repository": {
@@ -26,8 +26,8 @@
     "catalogs"
   ],
   "scripts": {
-    "build": "tsc -p tsconfig.json",
-    "prepare": "tsc -p tsconfig.json",
+    "build": "node scripts/build-scoped-css.mjs && tsc -p tsconfig.json",
+    "prepare": "node scripts/build-scoped-css.mjs && tsc -p tsconfig.json",
     "typecheck": "tsc --noEmit",
     "test": "vitest run"
   },
