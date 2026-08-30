@@ -15,6 +15,7 @@ from llm_agent.tool_shaping import (
     annotate,
     pseudonymize,
     recording,
+    scrub_tool_result,
     shape_tool_response,
 )
 
@@ -53,17 +54,14 @@ class TestPseudonymizationIsGated:
         # The live path is untouched and fully real — annotation only.
         assert message["sender"] == "Real Person <real.person@corp.invalid>"
 
-    def test_on_when_recording(self, monkeypatch, tmp_path):
+    def test_the_callback_does_not_substitute(self, monkeypatch, tmp_path):
+        # Substitution lives in the tool, not here: doing it in both places would
+        # substitute already-substituted values, leaving the corpus and the painted
+        # stream disagreeing about names that are both fake. See TestScrubIsTheRealBoundary.
         monkeypatch.setenv("A2UI_RECORD_DIR", str(tmp_path))
         shaped = shape_tool_response(_mcp(PAYLOAD), "search_threads")
-        assert "real.person@corp.invalid" not in json.dumps(shaped)
-
-    def test_recording_captures_the_payload_for_the_stub_corpus(self, monkeypatch, tmp_path):
-        monkeypatch.setenv("A2UI_RECORD_DIR", str(tmp_path))
-        shape_tool_response(_mcp(PAYLOAD), "search_threads")
-        captured = (tmp_path / "payloads" / "search_threads.jsonl").read_text()
-        assert "corp.invalid" not in captured  # captured AFTER substitution, never before
-        assert "example.com" in captured
+        assert "real.person@corp.invalid" in json.dumps(shaped)
+        assert not (tmp_path / "payloads").exists()
 
 
 class TestPseudonymization:
@@ -144,3 +142,59 @@ class TestPassThrough:
         monkeypatch.setenv("A2UI_RECORD_DIR", str(tmp_path))
         for candidate in (None, 1, [], {}, {"content": None}, {"content": [1, 2]}):
             shape_tool_response(candidate, "t")
+
+
+class TestScrubIsTheRealBoundary:
+    """The regression that made the first recorded corpus unpublishable.
+
+    CallToolResult carries BOTH `content` (text parts) and `structuredContent` (the same
+    payload, already parsed). The after_tool_callback rewrote only the text parts, so the
+    model read the structured one: the captured corpus was clean while the painted stream
+    carried a real address.
+    """
+
+    def _result(self) -> dict:
+        return {
+            "content": [{"type": "text", "text": json.dumps(PAYLOAD)}],
+            "structuredContent": PAYLOAD,
+            "isError": False,
+        }
+
+    def test_structured_content_is_scrubbed_too(self, monkeypatch, tmp_path):
+        monkeypatch.setenv("A2UI_RECORD_DIR", str(tmp_path))
+        out = scrub_tool_result(self._result(), "search_threads")
+        assert "corp.invalid" not in json.dumps(out)
+        assert "corp.invalid" not in json.dumps(out["structuredContent"])
+
+    def test_both_branches_agree_after_scrubbing(self, monkeypatch, tmp_path):
+        # The model may read either; they must not disagree about who wrote the mail.
+        monkeypatch.setenv("A2UI_RECORD_DIR", str(tmp_path))
+        out = scrub_tool_result(self._result(), "search_threads")
+        from_text = json.loads(out["content"][0]["text"])
+        assert from_text == out["structuredContent"]
+
+    def test_an_unrecognised_branch_is_not_passed_through(self, monkeypatch, tmp_path):
+        # A key this layer does not know about is exactly where the leak hid.
+        monkeypatch.setenv("A2UI_RECORD_DIR", str(tmp_path))
+        out = scrub_tool_result({"somethingNew": PAYLOAD}, "t")
+        assert "corp.invalid" not in json.dumps(out)
+
+    def test_addresses_in_non_json_prose_are_substituted(self, monkeypatch, tmp_path):
+        monkeypatch.setenv("A2UI_RECORD_DIR", str(tmp_path))
+        out = scrub_tool_result(
+            {"content": [{"type": "text", "text": "Mail from real.person@corp.invalid today"}]},
+            "t",
+        )
+        assert "real.person@corp.invalid" not in json.dumps(out)
+
+    def test_live_path_is_untouched(self, monkeypatch):
+        monkeypatch.delenv("A2UI_RECORD_DIR", raising=False)
+        result = self._result()
+        assert scrub_tool_result(result, "t") is result
+
+    def test_the_corpus_is_captured_from_the_scrubbed_result(self, monkeypatch, tmp_path):
+        monkeypatch.setenv("A2UI_RECORD_DIR", str(tmp_path))
+        scrub_tool_result(self._result(), "search_threads")
+        captured = (tmp_path / "payloads" / "search_threads.jsonl").read_text()
+        assert "corp.invalid" not in captured
+        assert "example.com" in captured

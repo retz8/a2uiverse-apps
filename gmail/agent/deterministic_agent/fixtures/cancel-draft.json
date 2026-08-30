@@ -1,0 +1,15 @@
+[
+  {
+    "version": "v0.9",
+    "updateComponents": {
+      "components": [
+        {
+          "id": "heading",
+          "component": "Text",
+          "variant": "h3",
+          "text": "Draft discarded"
+        }
+      ]
+    }
+  }
+]

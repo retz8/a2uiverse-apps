@@ -1,0 +1,1619 @@
+{
+  "name": "beat-2-thread-detail",
+  "beat": 2,
+  "title": "Thread detail",
+  "prompt": "Open the most recent one of those.",
+  "model": "gemini-3.7-flash",
+  "recordedAt": "2026-08-30T04:29:56+00:00",
+  "contextId": "05784a94-7216-4770-a55c-006b842d8160",
+  "chainedFrom": "beat-1-inbox-digest",
+  "turns": [
+    {
+      "taskId": "b4a4af0b-009e-4511-96f2-544bf15db50c",
+      "kind": "utterance",
+      "prompt": "Open the most recent one of those.",
+      "action": null,
+      "batches": [
+        {
+          "offsetMs": 12399,
+          "messages": [
+            {
+              "paintMeta": {
+                "surfaceId": "thread-1a05077dde2deea4",
+                "title": "Thread: status agenda proposal proposal pending pendi"
+              }
+            }
+          ],
+          "texts": [
+            "\n"
+          ]
+        },
+        {
+          "offsetMs": 12472,
+          "messages": [
+            {
+              "version": "v0.9",
+              "createSurface": {
+                "surfaceId": "thread-1a05077dde2deea4",
+                "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/gmail/gmail-catalog/catalogs/v0.9.1/catalog.json",
+                "sendDataModel": true
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 12593,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "thread-1a05077dde2deea4",
+                "value": {
+                  "subject": "status agenda proposal proposal pending pendi"
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 12648,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "thread-1a05077dde2deea4",
+                "value": {
+                  "count": "1 message"
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 12706,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "thread-1a05077dde2deea4",
+                "value": {
+                  "messages": [
+                    {
+                      "id": "1a05077dde2deea4",
+                      "sender": "sara.moreau@example.com",
+                      "when": "Aug 30, 02:20"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 12999,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "thread-1a05077dde2deea4",
+                "value": {
+                  "messages": [
+                    {
+                      "id": "1a05077dde2deea4",
+                      "sender": "sara.moreau@example.com",
+                      "when": "Aug 30, 02:20",
+                      "body": "Your job alert for \uc18c\ud504\ud2b8\uc6e8\uc5b4 \uc5d4\uc9c0\ub2c8\uc5b4 in South Korea\n\nNew jobs match your preferences:\n\n\u2022 Software Engineer- Autonomy \u2014 Seoul Robotics (Seongnam)\n\u2022 Staff Software Development Technology Engineer - Games \u2014 AMD (Seoul Incheon Metropolitan Area)\n\u2022 Forward Deployed Engineer - Seoul \u2014 OpenAI (Seoul)\n\u2022 [\uc2e0\uc785-\uc5f0\uad6c\uc9c1] \ud154\ub808\uc11c\ube44\uc2a4 SW \uc124\uacc4 \u2014 Hyundai MOBIS (Yongin)\n\u2022 [\uc2e0\uc785-\uc5f0\uad6c\uc9c1] \uc790\uc728\uc8fc\ud589 \ud1b5\ud569\uc81c\uc5b4\uae30 \uac1c\ubc1c \u2014 Hyundai MOBIS (Yongin)\n\u2022 Applied Scientist / Research Engineer ($200K\u2013$350K + Equity) \u2014 Harper (Seoul, South Korea)"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 13058,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "thread-1a05077dde2deea4",
+                "path": "/",
+                "value": {
+                  "subject": "status agenda proposal proposal pending pendi",
+                  "count": "1 message",
+                  "messages": [
+                    {
+                      "id": "1a05077dde2deea4",
+                      "sender": "sara.moreau@example.com",
+                      "when": "Aug 30, 02:20",
+                      "body": "Your job alert for \uc18c\ud504\ud2b8\uc6e8\uc5b4 \uc5d4\uc9c0\ub2c8\uc5b4 in South Korea\n\nNew jobs match your preferences:\n\n\u2022 Software Engineer- Autonomy \u2014 Seoul Robotics (Seongnam)\n\u2022 Staff Software Development Technology Engineer - Games \u2014 AMD (Seoul Incheon Metropolitan Area)\n\u2022 Forward Deployed Engineer - Seoul \u2014 OpenAI (Seoul)\n\u2022 [\uc2e0\uc785-\uc5f0\uad6c\uc9c1] \ud154\ub808\uc11c\ube44\uc2a4 SW \uc124\uacc4 \u2014 Hyundai MOBIS (Yongin)\n\u2022 [\uc2e0\uc785-\uc5f0\uad6c\uc9c1] \uc790\uc728\uc8fc\ud589 \ud1b5\ud569\uc81c\uc5b4\uae30 \uac1c\ubc1c \u2014 Hyundai MOBIS (Yongin)\n\u2022 Applied Scientist / Research Engineer ($200K\u2013$350K + Equity) \u2014 Harper (Seoul, South Korea)"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 13187,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "loading_body"
+                  },
+                  {
+                    "id": "loading_body",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "thread-1a05077dde2deea4"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 13241,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "loading_subject",
+                      "loading_count",
+                      "loading_divider",
+                      "loading_messages",
+                      "loading_actions"
+                    ]
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "loading_subject",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_count",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_divider",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_messages",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "thread-1a05077dde2deea4"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 13313,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "subject",
+                      "loading_count",
+                      "loading_divider",
+                      "loading_messages",
+                      "loading_actions"
+                    ]
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "subject",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": {
+                      "path": "/subject"
+                    }
+                  },
+                  {
+                    "id": "loading_count",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_divider",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_messages",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "thread-1a05077dde2deea4"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 13441,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "subject",
+                      "count",
+                      "loading_divider",
+                      "loading_messages",
+                      "loading_actions"
+                    ]
+                  },
+                  {
+                    "id": "count",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/count"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "subject",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": {
+                      "path": "/subject"
+                    }
+                  },
+                  {
+                    "id": "loading_divider",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_messages",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "thread-1a05077dde2deea4"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 13507,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "subject",
+                      "count",
+                      "divider",
+                      "loading_messages",
+                      "loading_actions"
+                    ]
+                  },
+                  {
+                    "id": "count",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/count"
+                    }
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "subject",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": {
+                      "path": "/subject"
+                    }
+                  },
+                  {
+                    "id": "loading_messages",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "thread-1a05077dde2deea4"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 13577,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "subject",
+                      "count",
+                      "divider",
+                      "messages",
+                      "loading_actions"
+                    ]
+                  },
+                  {
+                    "id": "count",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/count"
+                    }
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "messages",
+                    "component": "Column",
+                    "children": {
+                      "path": "/messages",
+                      "componentId": "loading_message"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "subject",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": {
+                      "path": "/subject"
+                    }
+                  },
+                  {
+                    "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_message",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "thread-1a05077dde2deea4"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 13713,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "subject",
+                      "count",
+                      "divider",
+                      "messages",
+                      "loading_actions"
+                    ]
+                  },
+                  {
+                    "id": "count",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/count"
+                    }
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "message",
+                    "component": "Column",
+                    "children": [
+                      "loading_message-head",
+                      "loading_message-body"
+                    ]
+                  },
+                  {
+                    "id": "messages",
+                    "component": "Column",
+                    "children": {
+                      "path": "/messages",
+                      "componentId": "message"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "subject",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": {
+                      "path": "/subject"
+                    }
+                  },
+                  {
+                    "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_message-head",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_message-body",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "thread-1a05077dde2deea4"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 13831,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "subject",
+                      "count",
+                      "divider",
+                      "messages",
+                      "loading_actions"
+                    ]
+                  },
+                  {
+                    "id": "count",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/count"
+                    }
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "message",
+                    "component": "Column",
+                    "children": [
+                      "message-head",
+                      "loading_message-body"
+                    ]
+                  },
+                  {
+                    "id": "message-head",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "loading_message-sender",
+                      "loading_message-when"
+                    ]
+                  },
+                  {
+                    "id": "messages",
+                    "component": "Column",
+                    "children": {
+                      "path": "/messages",
+                      "componentId": "message"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "subject",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": {
+                      "path": "/subject"
+                    }
+                  },
+                  {
+                    "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_message-body",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_message-sender",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_message-when",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "thread-1a05077dde2deea4"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 13957,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "subject",
+                      "count",
+                      "divider",
+                      "messages",
+                      "loading_actions"
+                    ]
+                  },
+                  {
+                    "id": "count",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/count"
+                    }
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "message",
+                    "component": "Column",
+                    "children": [
+                      "message-head",
+                      "loading_message-body"
+                    ]
+                  },
+                  {
+                    "id": "message-head",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "message-sender",
+                      "loading_message-when"
+                    ]
+                  },
+                  {
+                    "id": "message-sender",
+                    "component": "Text",
+                    "text": {
+                      "path": "sender"
+                    }
+                  },
+                  {
+                    "id": "messages",
+                    "component": "Column",
+                    "children": {
+                      "path": "/messages",
+                      "componentId": "message"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "subject",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": {
+                      "path": "/subject"
+                    }
+                  },
+                  {
+                    "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_message-body",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_message-when",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "thread-1a05077dde2deea4"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 14027,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "subject",
+                      "count",
+                      "divider",
+                      "messages",
+                      "loading_actions"
+                    ]
+                  },
+                  {
+                    "id": "count",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/count"
+                    }
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "message",
+                    "component": "Column",
+                    "children": [
+                      "message-head",
+                      "loading_message-body"
+                    ]
+                  },
+                  {
+                    "id": "message-head",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "message-sender",
+                      "message-when"
+                    ]
+                  },
+                  {
+                    "id": "message-sender",
+                    "component": "Text",
+                    "text": {
+                      "path": "sender"
+                    }
+                  },
+                  {
+                    "id": "message-when",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "when"
+                    }
+                  },
+                  {
+                    "id": "messages",
+                    "component": "Column",
+                    "children": {
+                      "path": "/messages",
+                      "componentId": "message"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "subject",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": {
+                      "path": "/subject"
+                    }
+                  },
+                  {
+                    "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_message-body",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "thread-1a05077dde2deea4"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 14092,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "subject",
+                      "count",
+                      "divider",
+                      "messages",
+                      "loading_actions"
+                    ]
+                  },
+                  {
+                    "id": "count",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/count"
+                    }
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "message",
+                    "component": "Column",
+                    "children": [
+                      "message-head",
+                      "message-body"
+                    ]
+                  },
+                  {
+                    "id": "message-body",
+                    "component": "Text",
+                    "text": {
+                      "path": "body"
+                    }
+                  },
+                  {
+                    "id": "message-head",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "message-sender",
+                      "message-when"
+                    ]
+                  },
+                  {
+                    "id": "message-sender",
+                    "component": "Text",
+                    "text": {
+                      "path": "sender"
+                    }
+                  },
+                  {
+                    "id": "message-when",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "when"
+                    }
+                  },
+                  {
+                    "id": "messages",
+                    "component": "Column",
+                    "children": {
+                      "path": "/messages",
+                      "componentId": "message"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "subject",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": {
+                      "path": "/subject"
+                    }
+                  },
+                  {
+                    "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "thread-1a05077dde2deea4"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 14224,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "actions",
+                    "component": "Row",
+                    "children": [
+                      "loading_reply",
+                      "loading_archive"
+                    ]
+                  },
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "subject",
+                      "count",
+                      "divider",
+                      "messages",
+                      "actions"
+                    ]
+                  },
+                  {
+                    "id": "count",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/count"
+                    }
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "message",
+                    "component": "Column",
+                    "children": [
+                      "message-head",
+                      "message-body"
+                    ]
+                  },
+                  {
+                    "id": "message-body",
+                    "component": "Text",
+                    "text": {
+                      "path": "body"
+                    }
+                  },
+                  {
+                    "id": "message-head",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "message-sender",
+                      "message-when"
+                    ]
+                  },
+                  {
+                    "id": "message-sender",
+                    "component": "Text",
+                    "text": {
+                      "path": "sender"
+                    }
+                  },
+                  {
+                    "id": "message-when",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "when"
+                    }
+                  },
+                  {
+                    "id": "messages",
+                    "component": "Column",
+                    "children": {
+                      "path": "/messages",
+                      "componentId": "message"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "subject",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": {
+                      "path": "/subject"
+                    }
+                  },
+                  {
+                    "id": "loading_reply",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_archive",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "thread-1a05077dde2deea4"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 14427,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "actions",
+                    "component": "Row",
+                    "children": [
+                      "reply",
+                      "loading_archive"
+                    ]
+                  },
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "subject",
+                      "count",
+                      "divider",
+                      "messages",
+                      "actions"
+                    ]
+                  },
+                  {
+                    "id": "count",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/count"
+                    }
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "message",
+                    "component": "Column",
+                    "children": [
+                      "message-head",
+                      "message-body"
+                    ]
+                  },
+                  {
+                    "id": "message-body",
+                    "component": "Text",
+                    "text": {
+                      "path": "body"
+                    }
+                  },
+                  {
+                    "id": "message-head",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "message-sender",
+                      "message-when"
+                    ]
+                  },
+                  {
+                    "id": "message-sender",
+                    "component": "Text",
+                    "text": {
+                      "path": "sender"
+                    }
+                  },
+                  {
+                    "id": "message-when",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "when"
+                    }
+                  },
+                  {
+                    "id": "messages",
+                    "component": "Column",
+                    "children": {
+                      "path": "/messages",
+                      "componentId": "message"
+                    }
+                  },
+                  {
+                    "id": "reply",
+                    "component": "Button",
+                    "variant": "primary",
+                    "child": "loading_reply-label",
+                    "action": {
+                      "event": {
+                        "name": "draft-reply",
+                        "context": {
+                          "threadId": "1a05077dde2deea4"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "subject",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": {
+                      "path": "/subject"
+                    }
+                  },
+                  {
+                    "id": "loading_archive",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_reply-label",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "thread-1a05077dde2deea4"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 14490,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "actions",
+                    "component": "Row",
+                    "children": [
+                      "reply",
+                      "loading_archive"
+                    ]
+                  },
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "subject",
+                      "count",
+                      "divider",
+                      "messages",
+                      "actions"
+                    ]
+                  },
+                  {
+                    "id": "count",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/count"
+                    }
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "message",
+                    "component": "Column",
+                    "children": [
+                      "message-head",
+                      "message-body"
+                    ]
+                  },
+                  {
+                    "id": "message-body",
+                    "component": "Text",
+                    "text": {
+                      "path": "body"
+                    }
+                  },
+                  {
+                    "id": "message-head",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "message-sender",
+                      "message-when"
+                    ]
+                  },
+                  {
+                    "id": "message-sender",
+                    "component": "Text",
+                    "text": {
+                      "path": "sender"
+                    }
+                  },
+                  {
+                    "id": "message-when",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "when"
+                    }
+                  },
+                  {
+                    "id": "messages",
+                    "component": "Column",
+                    "children": {
+                      "path": "/messages",
+                      "componentId": "message"
+                    }
+                  },
+                  {
+                    "id": "reply",
+                    "component": "Button",
+                    "variant": "primary",
+                    "child": "reply-label",
+                    "action": {
+                      "event": {
+                        "name": "draft-reply",
+                        "context": {
+                          "threadId": "1a05077dde2deea4"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "reply-label",
+                    "component": "Text",
+                    "text": "Draft a reply"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "subject",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": {
+                      "path": "/subject"
+                    }
+                  },
+                  {
+                    "id": "loading_archive",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "thread-1a05077dde2deea4"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 14741,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "actions",
+                    "component": "Row",
+                    "children": [
+                      "reply",
+                      "archive"
+                    ]
+                  },
+                  {
+                    "id": "archive",
+                    "component": "Button",
+                    "child": "loading_archive-label",
+                    "action": {
+                      "event": {
+                        "name": "label-toggle",
+                        "context": {
+                          "threadId": "1a05077dde2deea4",
+                          "labelId": "INBOX",
+                          "add": false
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "subject",
+                      "count",
+                      "divider",
+                      "messages",
+                      "actions"
+                    ]
+                  },
+                  {
+                    "id": "count",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/count"
+                    }
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "message",
+                    "component": "Column",
+                    "children": [
+                      "message-head",
+                      "message-body"
+                    ]
+                  },
+                  {
+                    "id": "message-body",
+                    "component": "Text",
+                    "text": {
+                      "path": "body"
+                    }
+                  },
+                  {
+                    "id": "message-head",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "message-sender",
+                      "message-when"
+                    ]
+                  },
+                  {
+                    "id": "message-sender",
+                    "component": "Text",
+                    "text": {
+                      "path": "sender"
+                    }
+                  },
+                  {
+                    "id": "message-when",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "when"
+                    }
+                  },
+                  {
+                    "id": "messages",
+                    "component": "Column",
+                    "children": {
+                      "path": "/messages",
+                      "componentId": "message"
+                    }
+                  },
+                  {
+                    "id": "reply",
+                    "component": "Button",
+                    "variant": "primary",
+                    "child": "reply-label",
+                    "action": {
+                      "event": {
+                        "name": "draft-reply",
+                        "context": {
+                          "threadId": "1a05077dde2deea4"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "reply-label",
+                    "component": "Text",
+                    "text": "Draft a reply"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "subject",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": {
+                      "path": "/subject"
+                    }
+                  },
+                  {
+                    "id": "loading_archive-label",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "thread-1a05077dde2deea4"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 14805,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "actions",
+                    "component": "Row",
+                    "children": [
+                      "reply",
+                      "archive"
+                    ]
+                  },
+                  {
+                    "id": "archive",
+                    "component": "Button",
+                    "child": "archive-label",
+                    "action": {
+                      "event": {
+                        "name": "label-toggle",
+                        "context": {
+                          "threadId": "1a05077dde2deea4",
+                          "labelId": "INBOX",
+                          "add": false
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "archive-label",
+                    "component": "Text",
+                    "text": "Archive"
+                  },
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "subject",
+                      "count",
+                      "divider",
+                      "messages",
+                      "actions"
+                    ]
+                  },
+                  {
+                    "id": "count",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/count"
+                    }
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "message",
+                    "component": "Column",
+                    "children": [
+                      "message-head",
+                      "message-body"
+                    ]
+                  },
+                  {
+                    "id": "message-body",
+                    "component": "Text",
+                    "text": {
+                      "path": "body"
+                    }
+                  },
+                  {
+                    "id": "message-head",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "message-sender",
+                      "message-when"
+                    ]
+                  },
+                  {
+                    "id": "message-sender",
+                    "component": "Text",
+                    "text": {
+                      "path": "sender"
+                    }
+                  },
+                  {
+                    "id": "message-when",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "when"
+                    }
+                  },
+                  {
+                    "id": "messages",
+                    "component": "Column",
+                    "children": {
+                      "path": "/messages",
+                      "componentId": "message"
+                    }
+                  },
+                  {
+                    "id": "reply",
+                    "component": "Button",
+                    "variant": "primary",
+                    "child": "reply-label",
+                    "action": {
+                      "event": {
+                        "name": "draft-reply",
+                        "context": {
+                          "threadId": "1a05077dde2deea4"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "reply-label",
+                    "component": "Text",
+                    "text": "Draft a reply"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "subject",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": {
+                      "path": "/subject"
+                    }
+                  }
+                ],
+                "surfaceId": "thread-1a05077dde2deea4"
+              }
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "outcome": "completed",
+      "durationMs": 14983
+    }
+  ]
+}

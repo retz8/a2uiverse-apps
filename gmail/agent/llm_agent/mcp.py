@@ -23,7 +23,9 @@ import os
 import google.auth
 import google.auth.exceptions
 import google.auth.transport.requests
-from google.adk.tools.mcp_tool import McpToolset, StreamableHTTPConnectionParams
+from google.adk.tools.mcp_tool import StreamableHTTPConnectionParams
+
+from llm_agent.recording_toolset import RecordingMcpToolset
 
 GMAIL_MCP_URL = "https://gmailmcp.googleapis.com/mcp/v1"
 
@@ -126,13 +128,16 @@ def gmail_connection_params() -> StreamableHTTPConnectionParams:
     )
 
 
-def build_gmail_toolset() -> McpToolset:
+def build_gmail_toolset() -> RecordingMcpToolset:
     """Constructs the Gmail MCP toolset with the destructive tools filtered out.
 
-    Construction is offline: McpToolset stores its connection parameters and builds a
+    Construction is offline: the toolset stores its connection parameters and builds a
     session manager, connecting only when its tools are first listed.
+
+    The toolset is the recording variant: in record mode every result is pseudonymized
+    inside the tool, before it can be returned. See llm_agent/recording_toolset.py.
     """
-    return McpToolset(
+    return RecordingMcpToolset(
         connection_params=gmail_connection_params(),
         tool_filter=list(GMAIL_TOOLS),
     )

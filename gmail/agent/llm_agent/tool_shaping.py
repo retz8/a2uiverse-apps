@@ -95,6 +95,9 @@ _SYSTEM_LABELS = frozenset(
 
 _ADDRESS_RE = re.compile(r"^\s*(?:\"?(?P<name>[^\"<]*?)\"?\s*)?<?(?P<addr>[^\s<>]+@[^\s<>]+)>?\s*$")
 
+# For prose that is not structured JSON: catch addresses wherever they appear in the text.
+_ADDRESS_IN_TEXT = re.compile(r"[\w.+-]+@[\w.-]+\.[a-zA-Z]{2,}")
+
 _FIRST = (
     "Alex", "Priya", "Jonas", "Mei", "Tomas", "Sara", "Idris", "Nora",
     "Lucas", "Hana", "Omar", "Elin", "Dmitri", "Yuki", "Ravi", "Clara",
@@ -263,13 +266,74 @@ def annotate(payload: Any) -> Any | None:
     return annotated
 
 
+def scrub_tool_result(result: Any, tool_name: str = "tool") -> Any:
+    """Pseudonymizes an MCP CallToolResult dict IN FULL, in record mode.
+
+    This is the substitution boundary. It runs inside the tool, on the dict the tool is about
+    to return, so there is no copy for the model to read instead.
+
+    An `after_tool_callback` was the first attempt and it leaked: `CallToolResult` carries
+    BOTH `content` (text parts) and `structuredContent` (the same payload, already parsed).
+    Rewriting only the text parts left the structured field real, and that is the one the
+    model reads — the captured corpus was clean while the painted stream was not. So this
+    walks EVERY branch of the result rather than the branches we happen to know about, and
+    the corpus is captured from what it returns.
+    """
+    if not recording() or not isinstance(result, dict):
+        return result
+
+    scrubbed: dict[str, Any] = {}
+    for key, value in result.items():
+        if key == "content" and isinstance(value, list):
+            scrubbed[key] = [_scrub_content_part(part) for part in value]
+        else:
+            # structuredContent, and anything else the result grows: pseudonymize the whole
+            # branch. A key we do not recognise is a key we must not pass through untouched.
+            scrubbed[key] = pseudonymize(value, key)
+
+    capture_payload(tool_name, _corpus_payload(scrubbed))
+    return scrubbed
+
+
+def _scrub_content_part(part: Any) -> Any:
+    """Pseudonymizes one MCP content part, JSON-encoded text included."""
+    if not isinstance(part, dict):
+        return part
+    text = part.get("text")
+    if not isinstance(text, str):
+        return pseudonymize(part)
+    try:
+        payload = json.loads(text)
+    except ValueError:
+        # Non-JSON prose: substitute addresses in place rather than pass it through. A part
+        # this layer cannot parse is exactly where a real string would otherwise survive.
+        return {**part, "text": _ADDRESS_IN_TEXT.sub(lambda m: _fake_address(m.group(0)), text)}
+    return {**part, "text": json.dumps(pseudonymize(payload))}
+
+
+def _corpus_payload(scrubbed: dict) -> Any:
+    """The decoded payload to record for the stub corpus, preferring the structured field."""
+    structured = scrubbed.get("structuredContent")
+    if isinstance(structured, dict) and structured:
+        return structured
+    for part in scrubbed.get("content") or []:
+        if isinstance(part, dict) and isinstance(part.get("text"), str):
+            try:
+                return json.loads(part["text"])
+            except ValueError:
+                continue
+    return {}
+
+
 def shape_tool_response(response: Any, tool_name: str = "tool") -> Any | None:
-    """The `after_tool_callback` body: pseudonymize in record mode, then annotate.
+    """The `after_tool_callback` body: projection notes only.
 
     Returns None to pass the response through untouched, per ADK's callback contract.
-    Order matters — pseudonymization runs first, so nothing added by annotation can leak a
-    real value, the corpus capture sees only pseudonymized payloads, and the annotations
-    describe the payload the model will actually read.
+
+    Pseudonymization deliberately does NOT happen here. It runs inside the tool
+    (`scrub_tool_result`), for the reason that module documents, and running it in both
+    places would substitute already-substituted values — leaving the recorded corpus and the
+    painted stream disagreeing about names that are both fake.
     """
     if not isinstance(response, dict):
         return None
@@ -288,10 +352,6 @@ def shape_tool_response(response: Any, tool_name: str = "tool") -> Any | None:
         except ValueError:
             parts.append(part)
             continue
-        if recording():
-            payload = pseudonymize(payload)
-            capture_payload(tool_name, payload)
-            changed = True
         annotated = annotate(payload)
         if annotated is not None:
             payload = annotated

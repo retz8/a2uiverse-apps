@@ -1,0 +1,197 @@
+[
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "draft-1a05077dde2deea4",
+      "value": {
+        "to": "sara.moreau@example.com"
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "draft-1a05077dde2deea4",
+      "path": "/",
+      "value": {
+        "to": "sara.moreau@example.com",
+        "subject": "Re: status agenda proposal proposal pending pendi",
+        "body": "Thanks for the update. I will get to it this week."
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateComponents": {
+      "components": [
+        {
+          "id": "root",
+          "component": "Card",
+          "child": "body"
+        },
+        {
+          "id": "loading_body",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "body",
+          "component": "Column",
+          "children": [
+            "heading",
+            "to-row",
+            "subject-field",
+            "body-field",
+            "actions"
+          ]
+        },
+        {
+          "id": "loading_heading",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "loading_to-row",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "loading_subject-field",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "loading_body-field",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "loading_actions",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "heading",
+          "component": "Text",
+          "variant": "h3",
+          "text": "Save this reply?"
+        },
+        {
+          "id": "to-row",
+          "component": "Row",
+          "align": "center",
+          "children": [
+            "to-label",
+            "to-value"
+          ]
+        },
+        {
+          "id": "loading_to-label",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "loading_to-value",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "to-label",
+          "component": "Text",
+          "variant": "caption",
+          "text": "TO"
+        },
+        {
+          "id": "to-value",
+          "component": "Text",
+          "text": {
+            "path": "/to"
+          }
+        },
+        {
+          "id": "subject-field",
+          "component": "TextField",
+          "label": "Subject",
+          "value": {
+            "path": "/subject"
+          }
+        },
+        {
+          "id": "body-field",
+          "component": "TextField",
+          "label": "Message",
+          "variant": "longText",
+          "value": {
+            "path": "/body"
+          }
+        },
+        {
+          "id": "actions",
+          "component": "Row",
+          "children": [
+            "save",
+            "cancel"
+          ]
+        },
+        {
+          "id": "loading_save",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "loading_cancel",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "save",
+          "component": "Button",
+          "variant": "primary",
+          "child": "save-label",
+          "action": {
+            "event": {
+              "name": "confirm-draft",
+              "context": {
+                "threadId": "1a05077dde2deea4"
+              }
+            }
+          }
+        },
+        {
+          "id": "loading_save-label",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "save-label",
+          "component": "Text",
+          "text": "Save draft"
+        },
+        {
+          "id": "cancel",
+          "component": "Button",
+          "variant": "borderless",
+          "child": "cancel-label",
+          "action": {
+            "event": {
+              "name": "cancel-draft",
+              "context": {
+                "threadId": "1a05077dde2deea4"
+              }
+            }
+          }
+        },
+        {
+          "id": "loading_cancel-label",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "cancel-label",
+          "component": "Text",
+          "text": "Discard"
+        }
+      ]
+    }
+  }
+]
