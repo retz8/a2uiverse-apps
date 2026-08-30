@@ -5,11 +5,12 @@ from __future__ import annotations
 from a2a.server.apps import A2AStarletteApplication
 from a2a.server.request_handlers import DefaultRequestHandler
 from a2a.server.tasks import InMemoryTaskStore
-from a2a.types import AgentCapabilities, AgentCard, AgentSkill
+from a2a.types import AgentCapabilities, AgentCard
 from a2ui.a2a.extension import get_a2ui_agent_extension
 from a2ui.schema.constants import VERSION_0_9
 from starlette.middleware.cors import CORSMiddleware
 
+from agent_card import APP_DESCRIPTION, APP_NAME, SKILLS
 from deterministic_agent.catalog import supported_catalog_ids
 from deterministic_agent.executor import DeterministicAgentExecutor
 
@@ -24,22 +25,19 @@ def build_agent_card(base_url: str) -> AgentCard:
         supported_catalog_ids=supported_catalog_ids(),
     )
     capabilities = AgentCapabilities(streaming=True, extensions=[extension])
-    skill = AgentSkill(
-        id="canned_a2ui",
-        name="Canned A2UI responder",
-        description="Returns a fixed, catalog-conformant A2UI surface for known UI events.",
-        tags=["a2ui", "deterministic"],
-        examples=["submit"],
-    )
+    # The same document the live agent serves. The run mode is a launch detail, and this
+    # mode is the composition harness the no-LLM fan-out demo routes over — a card
+    # describing the harness rather than the product would make the Router rank that demo
+    # against a document nothing else matches.
     return AgentCard(
-        name="Deterministic A2UI Agent",
-        description="Deterministic Phase 2 A2A server returning canned A2UI (no LLM).",
+        name=APP_NAME,
+        description=APP_DESCRIPTION,
         url=base_url,
         version="0.1.0",
         default_input_modes=["text", "text/plain"],
         default_output_modes=["text", "text/plain"],
         capabilities=capabilities,
-        skills=[skill],
+        skills=SKILLS,
     )
 
 
