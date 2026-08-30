@@ -48,6 +48,14 @@ function useSystemAppearance(): 'light' | 'dark' {
 const FONT_STACK =
   "'Google Sans', 'Google Sans Text', Roboto, -apple-system, 'Helvetica Neue', Arial, sans-serif";
 
+let themeLoaded: Promise<unknown> | null = null;
+
+/** The product sheet, scoped to the wrapper class; loaded on first mount, nothing global. */
+function loadTheme() {
+  themeLoaded ??= import('./theme.css');
+  return themeLoaded;
+}
+
 /** Shape, type, spacing and density — appearance-independent. */
 const STRUCTURE = {
   '--a2ui-border-radius': '8px',
@@ -136,6 +144,9 @@ export const CALENDAR_TOKENS_DARK = {...STRUCTURE, ...DARK_TOKENS} as const sati
  */
 export function Provider({children}: {children: ReactNode}) {
   const tokens = useSystemAppearance() === 'dark' ? CALENDAR_TOKENS_DARK : CALENDAR_TOKENS;
+  useEffect(() => {
+    void loadTheme();
+  }, []);
   return (
     <div
       className="calendar-catalog"

@@ -38,6 +38,14 @@ function useSystemAppearance(): 'light' | 'dark' {
 const FONT_STACK =
   "'Google Sans', 'Google Sans Text', Roboto, -apple-system, 'Helvetica Neue', Arial, sans-serif";
 
+let themeLoaded: Promise<unknown> | null = null;
+
+/** The product sheet, scoped to the wrapper class; loaded on first mount, nothing global. */
+function loadTheme() {
+  themeLoaded ??= import('./theme.css');
+  return themeLoaded;
+}
+
 /** Material 3 elevation level 1 — what lifts Gmail's message list off its ground. */
 const ELEVATION_1 = '0 1px 2px 0 rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15)';
 const ELEVATION_1_DARK = '0 1px 2px 0 rgba(0, 0, 0, 0.6), 0 1px 3px 1px rgba(0, 0, 0, 0.3)';
@@ -80,6 +88,8 @@ const LIGHT = {
   '--a2ui-color-input': '#ffffff',
   '--a2ui-color-on-input': '#1f1f1f',
   '--a2ui-card-box-shadow': ELEVATION_1,
+  '--a2ui-row-hover': '#f2f6fc',
+  '--a2ui-text-caption-color': '#5e5e5e',
 } as const;
 
 /** Material 3 dark, on the same roles. */
@@ -96,6 +106,8 @@ const DARK_TOKENS = {
   '--a2ui-color-input': '#1e1f20',
   '--a2ui-color-on-input': '#e3e3e3',
   '--a2ui-card-box-shadow': ELEVATION_1_DARK,
+  '--a2ui-row-hover': '#28292a',
+  '--a2ui-text-caption-color': '#a8a8a8',
 } as const;
 
 export const GMAIL_TOKENS = {...STRUCTURE, ...LIGHT} as const satisfies Record<
@@ -114,6 +126,9 @@ export const GMAIL_TOKENS_DARK = {...STRUCTURE, ...DARK_TOKENS} as const satisfi
  */
 export function Provider({children}: {children: ReactNode}) {
   const tokens = useSystemAppearance() === 'dark' ? GMAIL_TOKENS_DARK : GMAIL_TOKENS;
+  useEffect(() => {
+    void loadTheme();
+  }, []);
   return (
     <div
       className="gmail-catalog"

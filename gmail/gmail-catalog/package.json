@@ -1,6 +1,6 @@
 {
   "name": "gmail-catalog",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "The Gmail app catalog for A2UIVerse: the A2UI basic catalog under a Material 3 product theme, as schema + implementation + Provider. The host supplies React, the A2UI runtime, and zod.",
   "license": "MIT",
   "repository": {
@@ -32,8 +32,8 @@
     "catalogs"
   ],
   "scripts": {
-    "build": "tsc -p tsconfig.json",
-    "prepare": "tsc -p tsconfig.json",
+    "build": "tsc -p tsconfig.json && node scripts/copy-theme.mjs",
+    "prepare": "tsc -p tsconfig.json && node scripts/copy-theme.mjs",
     "typecheck": "tsc --noEmit",
     "test": "vitest run"
   },

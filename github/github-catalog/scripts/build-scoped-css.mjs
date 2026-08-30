@@ -2,7 +2,8 @@
  * Generates `primer-scoped.css`: the Primer token sheets that declare at `:root`, rewritten to
  * the catalog's own scope element so nothing this bundle ships lands outside a fragment
  * boundary. Written to `src/` (what the package's own toolchain resolves) and `dist/` (what a
- * host installing the published package resolves); both are committed, like `dist/` itself.
+ * host installing the published package resolves); both are gitignored —
+ * `prepare` regenerates them on install.
  */
 import {readFileSync, writeFileSync, mkdirSync} from 'node:fs';
 import {createRequire} from 'node:module';

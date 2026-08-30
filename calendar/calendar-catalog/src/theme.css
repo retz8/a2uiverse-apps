@@ -1,0 +1,92 @@
+/*
+ * Google Calendar product styling over the basic catalog's runtime DOM, scoped to the
+ * Provider's wrapper class. Upstream ships no classes on Button, Row, Column or caption
+ * Text (its CSS-module maps compile to empty objects), so the hooks are element and
+ * structural selectors: an event row is a Button wrapping a classless layout div, an
+ * action button is a Button wrapping a lone `.body` Text, and a caption is a `span > em`.
+ *
+ * Every var() read carries a fallback: the token definitions live as inline style on the
+ * wrapper, which stylesheet analysis cannot see.
+ */
+
+/* Neutralize UA button chrome; event blocks and pills both build on this. */
+.calendar-catalog button {
+  font: inherit;
+  appearance: none;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  border: none;
+  background: none;
+  margin: 0;
+}
+
+/* An event row is Calendar's signature colored block: time leading, title beside it. */
+.calendar-catalog button:has(> div:not([class])) {
+  display: block;
+  width: 100%;
+  border-radius: 8px;
+  padding: 0.375rem 0.75rem;
+  background: var(--a2ui-color-primary, #039be5);
+  color: var(--a2ui-color-on-primary, #ffffff);
+}
+
+.calendar-catalog button:has(> div:not([class])):hover {
+  filter: brightness(0.94);
+}
+
+/* The event title reads over the time. */
+.calendar-catalog button > div:not([class]) > div:first-child > .body + .body {
+  font-weight: 600;
+}
+
+/* Captions render as <em>: quiet and upright, never italic. */
+.calendar-catalog em {
+  font-style: normal;
+  color: var(--a2ui-text-caption-color, #5f6368);
+}
+
+/* A caption inside an event block sits on the event color. */
+.calendar-catalog button:has(> div:not([class])) em {
+  color: color-mix(in srgb, var(--a2ui-color-on-primary, #ffffff) 85%, transparent);
+}
+
+/* Action buttons: the confirming action leads its row and is the only filled pill. */
+.calendar-catalog button:has(> .body:only-child) {
+  display: inline-block;
+  width: auto;
+  border-radius: var(--a2ui-button-border-radius, 9999px);
+  padding: 0.375rem 1.125rem;
+  color: var(--a2ui-color-primary, #039be5);
+  font-weight: 500;
+}
+
+.calendar-catalog button:has(> .body:only-child):hover {
+  background: var(--a2ui-color-secondary, #e1f5fe);
+}
+
+.calendar-catalog button:has(> .body:only-child):first-child {
+  background: var(--a2ui-color-primary, #039be5);
+  color: var(--a2ui-color-on-primary, #ffffff);
+}
+
+.calendar-catalog button:has(> .body:only-child):first-child:hover {
+  background: var(--a2ui-color-primary, #039be5);
+  filter: brightness(0.94);
+}
+
+/* Proposal fields: rounded quiet inputs. */
+.calendar-catalog input,
+.calendar-catalog textarea {
+  font: inherit;
+  border: 1px solid var(--a2ui-color-border, #dadce0);
+  border-radius: var(--a2ui-textfield-border-radius, 8px);
+  padding: 0.375rem 0.75rem;
+  background: var(--a2ui-color-input, #ffffff);
+  color: var(--a2ui-color-on-input, #1f1f1f);
+}
+
+.calendar-catalog label {
+  font-size: var(--a2ui-font-size-s, 0.6875rem);
+  color: var(--a2ui-text-caption-color, #5f6368);
+}

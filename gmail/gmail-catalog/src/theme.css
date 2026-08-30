@@ -1,0 +1,93 @@
+/*
+ * Gmail product styling over the basic catalog's runtime DOM, scoped to the Provider's
+ * wrapper class. Upstream ships no classes on Button, Row, Column or caption Text (its
+ * CSS-module maps compile to empty objects), so the hooks are element and structural
+ * selectors: a tappable list row is a Button wrapping a classless layout div, an action
+ * button is a Button wrapping a lone `.body` Text, and a caption is a `span > em`.
+ *
+ * Every var() read carries a fallback: the token definitions live as inline style on the
+ * wrapper, which stylesheet analysis cannot see.
+ */
+
+/* Neutralize UA button chrome; rows and pills both build on this. */
+.gmail-catalog button {
+  font: inherit;
+  appearance: none;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  border: none;
+  background: none;
+  margin: 0;
+}
+
+/* A tappable list row: full-width, quiet until hovered — Gmail's row wash. */
+.gmail-catalog button:has(> div:not([class])) {
+  display: block;
+  width: 100%;
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+}
+
+.gmail-catalog button:has(> div:not([class])):hover {
+  background: var(--a2ui-row-hover, #f2f6fc);
+}
+
+/* The sender is the row's primary label. */
+.gmail-catalog button > div:not([class]) > div:first-child > .body:first-child {
+  font-weight: 600;
+}
+
+/* Captions render as <em>: quiet and upright, never italic. */
+.gmail-catalog em {
+  font-style: normal;
+  color: var(--a2ui-text-caption-color, #5e5e5e);
+}
+
+/* A row's snippet keeps to one line. */
+.gmail-catalog button span:has(> em) {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Action buttons: the confirming action leads its row and is the only filled pill. */
+.gmail-catalog button:has(> .body:only-child) {
+  display: inline-block;
+  width: auto;
+  border-radius: var(--a2ui-button-border-radius, 9999px);
+  padding: 0.5rem 1.25rem;
+  color: var(--a2ui-color-primary, #0b57d0);
+  font-weight: 500;
+}
+
+.gmail-catalog button:has(> .body:only-child):hover {
+  background: var(--a2ui-row-hover, #f2f6fc);
+}
+
+.gmail-catalog button:has(> .body:only-child):first-child {
+  background: var(--a2ui-color-primary, #0b57d0);
+  color: var(--a2ui-color-on-primary, #ffffff);
+}
+
+.gmail-catalog button:has(> .body:only-child):first-child:hover {
+  background: var(--a2ui-color-primary, #0b57d0);
+  filter: brightness(1.08);
+}
+
+/* Proposal fields: rounded quiet inputs. */
+.gmail-catalog input,
+.gmail-catalog textarea {
+  font: inherit;
+  border: 1px solid var(--a2ui-color-border, #c4c7c5);
+  border-radius: var(--a2ui-textfield-border-radius, 8px);
+  padding: 0.5rem 0.75rem;
+  background: var(--a2ui-color-input, #ffffff);
+  color: var(--a2ui-color-on-input, #1f1f1f);
+}
+
+.gmail-catalog label {
+  font-size: var(--a2ui-font-size-s, 0.75rem);
+  color: var(--a2ui-text-caption-color, #5e5e5e);
+}
