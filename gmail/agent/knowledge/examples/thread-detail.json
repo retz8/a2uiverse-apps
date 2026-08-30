@@ -1,0 +1,115 @@
+{
+  "name": "thread-detail",
+  "intent": "Open the thread from Alex about the timeline.",
+  "messages": [
+    {
+      "version": "v0.9",
+      "createSurface": {
+        "surfaceId": "thread-th-1",
+        "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/gmail/gmail-catalog/catalogs/v0.9.1/catalog.json",
+        "sendDataModel": true
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateDataModel": {
+        "surfaceId": "thread-th-1",
+        "path": "/",
+        "value": {
+          "subject": "Revised timeline for the review",
+          "count": "3 messages",
+          "messages": [
+            {
+              "id": "m-1",
+              "sender": "Alex Bergman",
+              "when": "Mon 14:02",
+              "body": "Moving the review a week later so the second round of edits lands first."
+            },
+            {
+              "id": "m-2",
+              "sender": "You",
+              "when": "Mon 16:20",
+              "body": "That works. I will have the estimates ready before it."
+            },
+            {
+              "id": "m-3",
+              "sender": "Alex Bergman",
+              "when": "09:41",
+              "body": "Attaching the updated schedule — could you confirm Thursday still works on your end?"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateComponents": {
+        "surfaceId": "thread-th-1",
+        "components": [
+          { "id": "root", "component": "Card", "child": "body" },
+          {
+            "id": "body",
+            "component": "Column",
+            "children": ["subject", "count", "divider", "messages", "actions"]
+          },
+          { "id": "subject", "component": "Text", "variant": "h3", "text": { "path": "/subject" } },
+          {
+            "id": "count",
+            "component": "Text",
+            "variant": "caption",
+            "text": { "path": "/count" }
+          },
+          { "id": "divider", "component": "Divider" },
+          {
+            "id": "messages",
+            "component": "Column",
+            "children": { "path": "/messages", "componentId": "message" }
+          },
+          {
+            "id": "message",
+            "component": "Column",
+            "children": ["message-head", "message-body"]
+          },
+          {
+            "id": "message-head",
+            "component": "Row",
+            "justify": "spaceBetween",
+            "align": "center",
+            "children": ["message-sender", "message-when"]
+          },
+          { "id": "message-sender", "component": "Text", "text": { "path": "sender" } },
+          {
+            "id": "message-when",
+            "component": "Text",
+            "variant": "caption",
+            "text": { "path": "when" }
+          },
+          { "id": "message-body", "component": "Text", "text": { "path": "body" } },
+          { "id": "actions", "component": "Row", "children": ["reply", "archive"] },
+          {
+            "id": "reply",
+            "component": "Button",
+            "variant": "primary",
+            "child": "reply-label",
+            "action": {
+              "event": { "name": "draft-reply", "context": { "threadId": "th-1" } }
+            }
+          },
+          { "id": "reply-label", "component": "Text", "text": "Draft a reply" },
+          {
+            "id": "archive",
+            "component": "Button",
+            "child": "archive-label",
+            "action": {
+              "event": {
+                "name": "label-toggle",
+                "context": { "threadId": "th-1", "labelId": "INBOX", "add": false }
+              }
+            }
+          },
+          { "id": "archive-label", "component": "Text", "text": "Archive" }
+        ]
+      }
+    }
+  ]
+}

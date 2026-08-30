@@ -1,0 +1,851 @@
+[
+  {
+    "version": "v0.9",
+    "createSurface": {
+      "surfaceId": "needs-attention",
+      "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/gmail/gmail-catalog/catalogs/v0.9.1/catalog.json",
+      "sendDataModel": true
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "needs-attention",
+      "value": {
+        "threads": [
+          {
+            "id": "1a05077dde2deea4",
+            "sender": "sara.moreau@example.com",
+            "subject": "status agenda proposal proposal pending pendi"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "needs-attention",
+      "value": {
+        "threads": [
+          {
+            "id": "1a05077dde2deea4",
+            "sender": "sara.moreau@example.com",
+            "subject": "status agenda proposal proposal pending pendi",
+            "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "needs-attention",
+      "value": {
+        "threads": [
+          {
+            "id": "1a05077dde2deea4",
+            "sender": "sara.moreau@example.com",
+            "subject": "status agenda proposal proposal pending pendi",
+            "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
+            "when": "Aug 30, 02:20"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "needs-attention",
+      "value": {
+        "threads": [
+          {
+            "id": "1a05077dde2deea4",
+            "sender": "sara.moreau@example.com",
+            "subject": "status agenda proposal proposal pending pendi",
+            "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
+            "when": "Aug 30, 02:20"
+          },
+          {
+            "id": "1a0506754ca907e9",
+            "sender": "sara.vasquez@example.com"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "needs-attention",
+      "value": {
+        "threads": [
+          {
+            "id": "1a05077dde2deea4",
+            "sender": "sara.moreau@example.com",
+            "subject": "status agenda proposal proposal pending pendi",
+            "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
+            "when": "Aug 30, 02:20"
+          },
+          {
+            "id": "1a0506754ca907e9",
+            "sender": "sara.vasquez@example.com",
+            "subject": "confirm pending reply status section schedule pending feedback review re",
+            "snippet": "review reply feedback question agenda pending question section agenda proposal confirm confirm follow status notes note"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "needs-attention",
+      "value": {
+        "threads": [
+          {
+            "id": "1a05077dde2deea4",
+            "sender": "sara.moreau@example.com",
+            "subject": "status agenda proposal proposal pending pendi",
+            "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
+            "when": "Aug 30, 02:20"
+          },
+          {
+            "id": "1a0506754ca907e9",
+            "sender": "sara.vasquez@example.com",
+            "subject": "confirm pending reply status section schedule pending feedback review re",
+            "snippet": "review reply feedback question agenda pending question section agenda proposal confirm confirm follow status notes note",
+            "when": "Aug 30, 02:01"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "needs-attention",
+      "value": {
+        "threads": [
+          {
+            "id": "1a05077dde2deea4",
+            "sender": "sara.moreau@example.com",
+            "subject": "status agenda proposal proposal pending pendi",
+            "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
+            "when": "Aug 30, 02:20"
+          },
+          {
+            "id": "1a0506754ca907e9",
+            "sender": "sara.vasquez@example.com",
+            "subject": "confirm pending reply status section schedule pending feedback review re",
+            "snippet": "review reply feedback question agenda pending question section agenda proposal confirm confirm follow status notes note",
+            "when": "Aug 30, 02:01"
+          },
+          {
+            "id": "1a05009f2b759fbe"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "needs-attention",
+      "value": {
+        "threads": [
+          {
+            "id": "1a05077dde2deea4",
+            "sender": "sara.moreau@example.com",
+            "subject": "status agenda proposal proposal pending pendi",
+            "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
+            "when": "Aug 30, 02:20"
+          },
+          {
+            "id": "1a0506754ca907e9",
+            "sender": "sara.vasquez@example.com",
+            "subject": "confirm pending reply status section schedule pending feedback review re",
+            "snippet": "review reply feedback question agenda pending question section agenda proposal confirm confirm follow status notes note",
+            "when": "Aug 30, 02:01"
+          },
+          {
+            "id": "1a05009f2b759fbe",
+            "sender": "sara.moreau@example.com",
+            "subject": "estimate update update reply draft"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "needs-attention",
+      "value": {
+        "threads": [
+          {
+            "id": "1a05077dde2deea4",
+            "sender": "sara.moreau@example.com",
+            "subject": "status agenda proposal proposal pending pendi",
+            "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
+            "when": "Aug 30, 02:20"
+          },
+          {
+            "id": "1a0506754ca907e9",
+            "sender": "sara.vasquez@example.com",
+            "subject": "confirm pending reply status section schedule pending feedback review re",
+            "snippet": "review reply feedback question agenda pending question section agenda proposal confirm confirm follow status notes note",
+            "when": "Aug 30, 02:01"
+          },
+          {
+            "id": "1a05009f2b759fbe",
+            "sender": "sara.moreau@example.com",
+            "subject": "estimate update update reply draft",
+            "snippet": "attached question question revision status draft meeting status reply draft reply revision reply proposal update estimate timeline timeline status feedback agenda confirm summary notes follow section a"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "needs-attention",
+      "value": {
+        "threads": [
+          {
+            "id": "1a05077dde2deea4",
+            "sender": "sara.moreau@example.com",
+            "subject": "status agenda proposal proposal pending pendi",
+            "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
+            "when": "Aug 30, 02:20"
+          },
+          {
+            "id": "1a0506754ca907e9",
+            "sender": "sara.vasquez@example.com",
+            "subject": "confirm pending reply status section schedule pending feedback review re",
+            "snippet": "review reply feedback question agenda pending question section agenda proposal confirm confirm follow status notes note",
+            "when": "Aug 30, 02:01"
+          },
+          {
+            "id": "1a05009f2b759fbe",
+            "sender": "sara.moreau@example.com",
+            "subject": "estimate update update reply draft",
+            "snippet": "attached question question revision status draft meeting status reply draft reply revision reply proposal update estimate timeline timeline status feedback agenda confirm summary notes follow section a",
+            "when": "Aug 30, 00:20"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "needs-attention",
+      "value": {
+        "threads": [
+          {
+            "id": "1a05077dde2deea4",
+            "sender": "sara.moreau@example.com",
+            "subject": "status agenda proposal proposal pending pendi",
+            "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
+            "when": "Aug 30, 02:20"
+          },
+          {
+            "id": "1a0506754ca907e9",
+            "sender": "sara.vasquez@example.com",
+            "subject": "confirm pending reply status section schedule pending feedback review re",
+            "snippet": "review reply feedback question agenda pending question section agenda proposal confirm confirm follow status notes note",
+            "when": "Aug 30, 02:01"
+          },
+          {
+            "id": "1a05009f2b759fbe",
+            "sender": "sara.moreau@example.com",
+            "subject": "estimate update update reply draft",
+            "snippet": "attached question question revision status draft meeting status reply draft reply revision reply proposal update estimate timeline timeline status feedback agenda confirm summary notes follow section a",
+            "when": "Aug 30, 00:20"
+          },
+          {
+            "id": "1a04de0a0c4cad33",
+            "sender": "nora.haddad@example.com"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "needs-attention",
+      "value": {
+        "threads": [
+          {
+            "id": "1a05077dde2deea4",
+            "sender": "sara.moreau@example.com",
+            "subject": "status agenda proposal proposal pending pendi",
+            "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
+            "when": "Aug 30, 02:20"
+          },
+          {
+            "id": "1a0506754ca907e9",
+            "sender": "sara.vasquez@example.com",
+            "subject": "confirm pending reply status section schedule pending feedback review re",
+            "snippet": "review reply feedback question agenda pending question section agenda proposal confirm confirm follow status notes note",
+            "when": "Aug 30, 02:01"
+          },
+          {
+            "id": "1a05009f2b759fbe",
+            "sender": "sara.moreau@example.com",
+            "subject": "estimate update update reply draft",
+            "snippet": "attached question question revision status draft meeting status reply draft reply revision reply proposal update estimate timeline timeline status feedback agenda confirm summary notes follow section a",
+            "when": "Aug 30, 00:20"
+          },
+          {
+            "id": "1a04de0a0c4cad33",
+            "sender": "nora.haddad@example.com",
+            "subject": "status update question notes question section status thread confirm draft update review meeting agenda update status question"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "needs-attention",
+      "value": {
+        "threads": [
+          {
+            "id": "1a05077dde2deea4",
+            "sender": "sara.moreau@example.com",
+            "subject": "status agenda proposal proposal pending pendi",
+            "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
+            "when": "Aug 30, 02:20"
+          },
+          {
+            "id": "1a0506754ca907e9",
+            "sender": "sara.vasquez@example.com",
+            "subject": "confirm pending reply status section schedule pending feedback review re",
+            "snippet": "review reply feedback question agenda pending question section agenda proposal confirm confirm follow status notes note",
+            "when": "Aug 30, 02:01"
+          },
+          {
+            "id": "1a05009f2b759fbe",
+            "sender": "sara.moreau@example.com",
+            "subject": "estimate update update reply draft",
+            "snippet": "attached question question revision status draft meeting status reply draft reply revision reply proposal update estimate timeline timeline status feedback agenda confirm summary notes follow section a",
+            "when": "Aug 30, 00:20"
+          },
+          {
+            "id": "1a04de0a0c4cad33",
+            "sender": "nora.haddad@example.com",
+            "subject": "status update question notes question section status thread confirm draft update review meeting agenda update status question",
+            "snippet": "estimate revision notes attached attached summary confirm timeline update update timeline feedback revision follow notes feedback feedback status confirm section reply summary review section notes est",
+            "when": "Aug 29, 14:15"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "needs-attention",
+      "value": {
+        "threads": [
+          {
+            "id": "1a05077dde2deea4",
+            "sender": "sara.moreau@example.com",
+            "subject": "status agenda proposal proposal pending pendi",
+            "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
+            "when": "Aug 30, 02:20"
+          },
+          {
+            "id": "1a0506754ca907e9",
+            "sender": "sara.vasquez@example.com",
+            "subject": "confirm pending reply status section schedule pending feedback review re",
+            "snippet": "review reply feedback question agenda pending question section agenda proposal confirm confirm follow status notes note",
+            "when": "Aug 30, 02:01"
+          },
+          {
+            "id": "1a05009f2b759fbe",
+            "sender": "sara.moreau@example.com",
+            "subject": "estimate update update reply draft",
+            "snippet": "attached question question revision status draft meeting status reply draft reply revision reply proposal update estimate timeline timeline status feedback agenda confirm summary notes follow section a",
+            "when": "Aug 30, 00:20"
+          },
+          {
+            "id": "1a04de0a0c4cad33",
+            "sender": "nora.haddad@example.com",
+            "subject": "status update question notes question section status thread confirm draft update review meeting agenda update status question",
+            "snippet": "estimate revision notes attached attached summary confirm timeline update update timeline feedback revision follow notes feedback feedback status confirm section reply summary review section notes est",
+            "when": "Aug 29, 14:15"
+          },
+          {
+            "id": "1a04b517d4ebb2c1"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "needs-attention",
+      "value": {
+        "threads": [
+          {
+            "id": "1a05077dde2deea4",
+            "sender": "sara.moreau@example.com",
+            "subject": "status agenda proposal proposal pending pendi",
+            "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
+            "when": "Aug 30, 02:20"
+          },
+          {
+            "id": "1a0506754ca907e9",
+            "sender": "sara.vasquez@example.com",
+            "subject": "confirm pending reply status section schedule pending feedback review re",
+            "snippet": "review reply feedback question agenda pending question section agenda proposal confirm confirm follow status notes note",
+            "when": "Aug 30, 02:01"
+          },
+          {
+            "id": "1a05009f2b759fbe",
+            "sender": "sara.moreau@example.com",
+            "subject": "estimate update update reply draft",
+            "snippet": "attached question question revision status draft meeting status reply draft reply revision reply proposal update estimate timeline timeline status feedback agenda confirm summary notes follow section a",
+            "when": "Aug 30, 00:20"
+          },
+          {
+            "id": "1a04de0a0c4cad33",
+            "sender": "nora.haddad@example.com",
+            "subject": "status update question notes question section status thread confirm draft update review meeting agenda update status question",
+            "snippet": "estimate revision notes attached attached summary confirm timeline update update timeline feedback revision follow notes feedback feedback status confirm section reply summary review section notes est",
+            "when": "Aug 29, 14:15"
+          },
+          {
+            "id": "1a04b517d4ebb2c1",
+            "sender": "sara.moreau@example.com",
+            "subject": "pending timeline question draft meeting"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "needs-attention",
+      "value": {
+        "threads": [
+          {
+            "id": "1a05077dde2deea4",
+            "sender": "sara.moreau@example.com",
+            "subject": "status agenda proposal proposal pending pendi",
+            "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
+            "when": "Aug 30, 02:20"
+          },
+          {
+            "id": "1a0506754ca907e9",
+            "sender": "sara.vasquez@example.com",
+            "subject": "confirm pending reply status section schedule pending feedback review re",
+            "snippet": "review reply feedback question agenda pending question section agenda proposal confirm confirm follow status notes note",
+            "when": "Aug 30, 02:01"
+          },
+          {
+            "id": "1a05009f2b759fbe",
+            "sender": "sara.moreau@example.com",
+            "subject": "estimate update update reply draft",
+            "snippet": "attached question question revision status draft meeting status reply draft reply revision reply proposal update estimate timeline timeline status feedback agenda confirm summary notes follow section a",
+            "when": "Aug 30, 00:20"
+          },
+          {
+            "id": "1a04de0a0c4cad33",
+            "sender": "nora.haddad@example.com",
+            "subject": "status update question notes question section status thread confirm draft update review meeting agenda update status question",
+            "snippet": "estimate revision notes attached attached summary confirm timeline update update timeline feedback revision follow notes feedback feedback status confirm section reply summary review section notes est",
+            "when": "Aug 29, 14:15"
+          },
+          {
+            "id": "1a04b517d4ebb2c1",
+            "sender": "sara.moreau@example.com",
+            "subject": "pending timeline question draft meeting",
+            "snippet": "review thread section status draft notes attached estimate section status proposal draft notes estimate update attached question draft timeline review schedule schedule attached attached agenda section"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "needs-attention",
+      "value": {
+        "threads": [
+          {
+            "id": "1a05077dde2deea4",
+            "sender": "sara.moreau@example.com",
+            "subject": "status agenda proposal proposal pending pendi",
+            "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
+            "when": "Aug 30, 02:20"
+          },
+          {
+            "id": "1a0506754ca907e9",
+            "sender": "sara.vasquez@example.com",
+            "subject": "confirm pending reply status section schedule pending feedback review re",
+            "snippet": "review reply feedback question agenda pending question section agenda proposal confirm confirm follow status notes note",
+            "when": "Aug 30, 02:01"
+          },
+          {
+            "id": "1a05009f2b759fbe",
+            "sender": "sara.moreau@example.com",
+            "subject": "estimate update update reply draft",
+            "snippet": "attached question question revision status draft meeting status reply draft reply revision reply proposal update estimate timeline timeline status feedback agenda confirm summary notes follow section a",
+            "when": "Aug 30, 00:20"
+          },
+          {
+            "id": "1a04de0a0c4cad33",
+            "sender": "nora.haddad@example.com",
+            "subject": "status update question notes question section status thread confirm draft update review meeting agenda update status question",
+            "snippet": "estimate revision notes attached attached summary confirm timeline update update timeline feedback revision follow notes feedback feedback status confirm section reply summary review section notes est",
+            "when": "Aug 29, 14:15"
+          },
+          {
+            "id": "1a04b517d4ebb2c1",
+            "sender": "sara.moreau@example.com",
+            "subject": "pending timeline question draft meeting",
+            "snippet": "review thread section status draft notes attached estimate section status proposal draft notes estimate update attached question draft timeline review schedule schedule attached attached agenda section",
+            "when": "Aug 29, 02:20"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "needs-attention",
+      "value": {
+        "threads": [
+          {
+            "id": "1a05077dde2deea4",
+            "sender": "sara.moreau@example.com",
+            "subject": "status agenda proposal proposal pending pendi",
+            "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
+            "when": "Aug 30, 02:20"
+          },
+          {
+            "id": "1a0506754ca907e9",
+            "sender": "sara.vasquez@example.com",
+            "subject": "confirm pending reply status section schedule pending feedback review re",
+            "snippet": "review reply feedback question agenda pending question section agenda proposal confirm confirm follow status notes note",
+            "when": "Aug 30, 02:01"
+          },
+          {
+            "id": "1a05009f2b759fbe",
+            "sender": "sara.moreau@example.com",
+            "subject": "estimate update update reply draft",
+            "snippet": "attached question question revision status draft meeting status reply draft reply revision reply proposal update estimate timeline timeline status feedback agenda confirm summary notes follow section a",
+            "when": "Aug 30, 00:20"
+          },
+          {
+            "id": "1a04de0a0c4cad33",
+            "sender": "nora.haddad@example.com",
+            "subject": "status update question notes question section status thread confirm draft update review meeting agenda update status question",
+            "snippet": "estimate revision notes attached attached summary confirm timeline update update timeline feedback revision follow notes feedback feedback status confirm section reply summary review section notes est",
+            "when": "Aug 29, 14:15"
+          },
+          {
+            "id": "1a04b517d4ebb2c1",
+            "sender": "sara.moreau@example.com",
+            "subject": "pending timeline question draft meeting",
+            "snippet": "review thread section status draft notes attached estimate section status proposal draft notes estimate update attached question draft timeline review schedule schedule attached attached agenda section",
+            "when": "Aug 29, 02:20"
+          },
+          {
+            "id": "1a04ae39f1c01039",
+            "sender": "sara.moreau@example.com",
+            "subject": "draft attached notes confirm pending dr"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "needs-attention",
+      "value": {
+        "threads": [
+          {
+            "id": "1a05077dde2deea4",
+            "sender": "sara.moreau@example.com",
+            "subject": "status agenda proposal proposal pending pendi",
+            "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
+            "when": "Aug 30, 02:20"
+          },
+          {
+            "id": "1a0506754ca907e9",
+            "sender": "sara.vasquez@example.com",
+            "subject": "confirm pending reply status section schedule pending feedback review re",
+            "snippet": "review reply feedback question agenda pending question section agenda proposal confirm confirm follow status notes note",
+            "when": "Aug 30, 02:01"
+          },
+          {
+            "id": "1a05009f2b759fbe",
+            "sender": "sara.moreau@example.com",
+            "subject": "estimate update update reply draft",
+            "snippet": "attached question question revision status draft meeting status reply draft reply revision reply proposal update estimate timeline timeline status feedback agenda confirm summary notes follow section a",
+            "when": "Aug 30, 00:20"
+          },
+          {
+            "id": "1a04de0a0c4cad33",
+            "sender": "nora.haddad@example.com",
+            "subject": "status update question notes question section status thread confirm draft update review meeting agenda update status question",
+            "snippet": "estimate revision notes attached attached summary confirm timeline update update timeline feedback revision follow notes feedback feedback status confirm section reply summary review section notes est",
+            "when": "Aug 29, 14:15"
+          },
+          {
+            "id": "1a04b517d4ebb2c1",
+            "sender": "sara.moreau@example.com",
+            "subject": "pending timeline question draft meeting",
+            "snippet": "review thread section status draft notes attached estimate section status proposal draft notes estimate update attached question draft timeline review schedule schedule attached attached agenda section",
+            "when": "Aug 29, 02:20"
+          },
+          {
+            "id": "1a04ae39f1c01039",
+            "sender": "sara.moreau@example.com",
+            "subject": "draft attached notes confirm pending dr",
+            "snippet": "timeline summary draft agenda confirm confirm section schedule schedule review notes section agenda confirm update schedule question follow estimate feedback revision feedback summary notes section fo",
+            "when": "Aug 29, 00:20"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "needs-attention",
+      "path": "/",
+      "value": {
+        "threads": [
+          {
+            "id": "1a05077dde2deea4",
+            "sender": "sara.moreau@example.com",
+            "subject": "status agenda proposal proposal pending pendi",
+            "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
+            "when": "Aug 30, 02:20"
+          },
+          {
+            "id": "1a0506754ca907e9",
+            "sender": "sara.vasquez@example.com",
+            "subject": "confirm pending reply status section schedule pending feedback review re",
+            "snippet": "review reply feedback question agenda pending question section agenda proposal confirm confirm follow status notes note",
+            "when": "Aug 30, 02:01"
+          },
+          {
+            "id": "1a05009f2b759fbe",
+            "sender": "sara.moreau@example.com",
+            "subject": "estimate update update reply draft",
+            "snippet": "attached question question revision status draft meeting status reply draft reply revision reply proposal update estimate timeline timeline status feedback agenda confirm summary notes follow section a",
+            "when": "Aug 30, 00:20"
+          },
+          {
+            "id": "1a04de0a0c4cad33",
+            "sender": "nora.haddad@example.com",
+            "subject": "status update question notes question section status thread confirm draft update review meeting agenda update status question",
+            "snippet": "estimate revision notes attached attached summary confirm timeline update update timeline feedback revision follow notes feedback feedback status confirm section reply summary review section notes est",
+            "when": "Aug 29, 14:15"
+          },
+          {
+            "id": "1a04b517d4ebb2c1",
+            "sender": "sara.moreau@example.com",
+            "subject": "pending timeline question draft meeting",
+            "snippet": "review thread section status draft notes attached estimate section status proposal draft notes estimate update attached question draft timeline review schedule schedule attached attached agenda section",
+            "when": "Aug 29, 02:20"
+          },
+          {
+            "id": "1a04ae39f1c01039",
+            "sender": "sara.moreau@example.com",
+            "subject": "draft attached notes confirm pending dr",
+            "snippet": "timeline summary draft agenda confirm confirm section schedule schedule review notes section agenda confirm update schedule question follow estimate feedback revision feedback summary notes section fo",
+            "when": "Aug 29, 00:20"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateComponents": {
+      "components": [
+        {
+          "id": "root",
+          "component": "Card",
+          "child": "body"
+        },
+        {
+          "id": "loading_body",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "body",
+          "component": "Column",
+          "children": [
+            "heading",
+            "sub",
+            "divider",
+            "thread-list"
+          ]
+        },
+        {
+          "id": "loading_heading",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "loading_sub",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "loading_divider",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "loading_thread-list",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "heading",
+          "component": "Text",
+          "variant": "h3",
+          "text": "Needs attention"
+        },
+        {
+          "id": "sub",
+          "component": "Text",
+          "variant": "caption",
+          "text": "Unread conversations in your inbox"
+        },
+        {
+          "id": "divider",
+          "component": "Divider"
+        },
+        {
+          "id": "thread-list",
+          "component": "Column",
+          "children": {
+            "path": "/threads",
+            "componentId": "thread-row"
+          }
+        },
+        {
+          "id": "loading_thread-row",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "thread-row",
+          "component": "Button",
+          "variant": "borderless",
+          "child": "thread-body",
+          "action": {
+            "event": {
+              "name": "open-thread",
+              "context": {
+                "threadId": {
+                  "path": "id"
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "loading_thread-body",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "thread-body",
+          "component": "Column",
+          "children": [
+            "thread-top",
+            "thread-subject",
+            "thread-preview"
+          ]
+        },
+        {
+          "id": "loading_thread-top",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "loading_thread-subject",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "loading_thread-preview",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "thread-top",
+          "component": "Row",
+          "justify": "spaceBetween",
+          "align": "center",
+          "children": [
+            "thread-sender",
+            "thread-when"
+          ]
+        },
+        {
+          "id": "loading_thread-sender",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "loading_thread-when",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "thread-sender",
+          "component": "Text",
+          "text": {
+            "path": "sender"
+          }
+        },
+        {
+          "id": "thread-when",
+          "component": "Text",
+          "variant": "caption",
+          "text": {
+            "path": "when"
+          }
+        },
+        {
+          "id": "thread-subject",
+          "component": "Text",
+          "text": {
+            "path": "subject"
+          }
+        },
+        {
+          "id": "thread-preview",
+          "component": "Text",
+          "variant": "caption",
+          "text": {
+            "path": "snippet"
+          }
+        }
+      ]
+    }
+  }
+]

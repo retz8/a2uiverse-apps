@@ -1,0 +1,33 @@
+[project]
+name = "a2uiverse-gmail-agent"
+version = "0.1.0"
+description = "A2A servers for the Gmail app: the deterministic composition harness and the live LLM agent."
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "a2ui-agent-sdk>=0.2.4,<0.3.0",
+    "a2a-sdk[http-server]>=0.3.0,<0.4.0",
+    "google-adk>=2.5.0,<3.0.0",
+    "python-dotenv>=1.0.0",
+    "uvicorn>=0.40.0",
+    "click>=8.1.8",
+    "mcp>=1.28.1,<2.0.0",
+]
+
+[tool.uv]
+package = false
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.0",
+    "pytest-asyncio>=1.3.0",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+pythonpath = ["."]
+testpaths = ["tests"]
+filterwarnings = [
+    # Third-party: starlette's TestClient deprecates its httpx backend. Not our code.
+    "ignore:Using `httpx` with `starlette.testclient` is deprecated",
+]

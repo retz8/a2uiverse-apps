@@ -1,0 +1,477 @@
+{
+  "nextPageToken": "07260524272033349592",
+  "resultCountEstimate": "201",
+  "threads": [
+    {
+      "id": "1a05077dde2deea4",
+      "messages": [
+        {
+          "date": "2026-08-30T02:20:12Z",
+          "historyId": "2138011",
+          "id": "1a05077dde2deea4",
+          "internalDate": "1788056412000",
+          "labelIds": [
+            "UNREAD",
+            "INBOX"
+          ],
+          "sender": "sara.moreau@example.com",
+          "sizeEstimate": 211260,
+          "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
+          "subject": "status agenda proposal proposal pending pendi",
+          "threadId": "1a05077dde2deea4",
+          "toRecipients": [
+            "nora.lindqvist@example.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1a0506754ca907e9",
+      "messages": [
+        {
+          "date": "2026-08-30T02:01:41Z",
+          "historyId": "2138010",
+          "id": "1a0506754ca907e9",
+          "internalDate": "1788055301000",
+          "labelIds": [
+            "UNREAD",
+            "INBOX"
+          ],
+          "sender": "sara.vasquez@example.com",
+          "sizeEstimate": 68058,
+          "snippet": "review reply feedback question agenda pending question section agenda proposal confirm confirm follow status notes note",
+          "subject": "confirm pending reply status section schedule pending feedback review re",
+          "threadId": "1a0506754ca907e9",
+          "toRecipients": [
+            "nora.lindqvist@example.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1a05009f2b759fbe",
+      "messages": [
+        {
+          "date": "2026-08-30T00:20:12Z",
+          "historyId": "2138009",
+          "id": "1a05009f2b759fbe",
+          "internalDate": "1788049212000",
+          "labelIds": [
+            "UNREAD",
+            "INBOX"
+          ],
+          "sender": "sara.moreau@example.com",
+          "sizeEstimate": 157240,
+          "snippet": "attached question question revision status draft meeting status reply draft reply revision reply proposal update estimate timeline timeline status feedback agenda confirm summary notes follow section a",
+          "subject": "estimate update update reply draft ",
+          "threadId": "1a05009f2b759fbe",
+          "toRecipients": [
+            "nora.lindqvist@example.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1a04de0a0c4cad33",
+      "messages": [
+        {
+          "date": "2026-08-29T14:15:02Z",
+          "historyId": "2138008",
+          "id": "1a04de0a0c4cad33",
+          "internalDate": "1788012902000",
+          "labelIds": [
+            "UNREAD",
+            "INBOX"
+          ],
+          "sender": "nora.haddad@example.com",
+          "sizeEstimate": 187578,
+          "snippet": "estimate revision notes attached attached summary confirm timeline update update timeline feedback revision follow notes feedback feedback status confirm section reply summary review section notes est",
+          "subject": "status update question notes question section status thread confirm draft update review meeting agenda update status question ",
+          "threadId": "1a04de0a0c4cad33",
+          "toRecipients": [
+            "nora.lindqvist@example.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1a04b517d4ebb2c1",
+      "messages": [
+        {
+          "date": "2026-08-29T02:20:14Z",
+          "historyId": "2137521",
+          "id": "1a04b517d4ebb2c1",
+          "internalDate": "1787970014000",
+          "labelIds": [
+            "UNREAD",
+            "INBOX"
+          ],
+          "sender": "sara.moreau@example.com",
+          "sizeEstimate": 211122,
+          "snippet": "review thread section status draft notes attached estimate section status proposal draft notes estimate update attached question draft timeline review schedule schedule attached attached agenda section",
+          "subject": "pending timeline question draft meeting ",
+          "threadId": "1a04b517d4ebb2c1",
+          "toRecipients": [
+            "nora.lindqvist@example.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1a04ae39f1c01039",
+      "messages": [
+        {
+          "date": "2026-08-29T00:20:14Z",
+          "historyId": "2137519",
+          "id": "1a04ae39f1c01039",
+          "internalDate": "1787962814000",
+          "labelIds": [
+            "UNREAD",
+            "INBOX"
+          ],
+          "sender": "sara.moreau@example.com",
+          "sizeEstimate": 157352,
+          "snippet": "timeline summary draft agenda confirm confirm section schedule schedule review notes section agenda confirm update schedule question follow estimate feedback revision feedback summary notes section fo",
+          "subject": "draft attached notes confirm pending dr",
+          "threadId": "1a04ae39f1c01039",
+          "toRecipients": [
+            "nora.lindqvist@example.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1a04a725cd94084b",
+      "messages": [
+        {
+          "date": "2026-08-28T22:16:31Z",
+          "historyId": "2137107",
+          "id": "1a04a725cd94084b",
+          "internalDate": "1787955391000",
+          "labelIds": [
+            "INBOX"
+          ],
+          "sender": "omar.silva@example.com",
+          "sizeEstimate": 124037,
+          "snippet": "draft timeline summary section agenda summary meeting timeline meeting proposal notes meeting question update notes timeline summary section update revision feedback schedule status estimate timeline ",
+          "subject": "schedule meeting review ",
+          "threadId": "1a04a725cd94084b",
+          "toRecipients": [
+            "nora.lindqvist@example.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1a04a5d4134774e3",
+      "messages": [
+        {
+          "date": "2026-08-28T21:52:30Z",
+          "historyId": "2137171",
+          "id": "1a04a5d4134774e3",
+          "internalDate": "1787953950000",
+          "labelIds": [
+            "UNREAD",
+            "INBOX"
+          ],
+          "sender": "nora.haddad@example.com",
+          "sizeEstimate": 183494,
+          "snippet": "summary reply timeline update reply feedback draft thread thread summary schedule meeting section reply confirm question agenda follow status meeting status proposal timeline reply thread question sect",
+          "subject": "schedule draft section follow section question thread draft confirm update meeting pending esti",
+          "threadId": "1a04a5d4134774e3",
+          "toRecipients": [
+            "nora.lindqvist@example.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1a0497ece97d9b6f",
+      "messages": [
+        {
+          "ccRecipients": [
+            "yuki.ferreira@example.com",
+            "tomas.ferreira@example.com"
+          ],
+          "date": "2026-08-28T17:49:04Z",
+          "historyId": "2137531",
+          "id": "1a0497ece97d9b6f",
+          "internalDate": "1787939344000",
+          "labelIds": [
+            "INBOX"
+          ],
+          "sender": "yuki.vasquez@example.com",
+          "sizeEstimate": 17321,
+          "snippet": "pending update timeline follow agenda revision update timeline reply agenda meeting agenda attached follow notes review proposal agenda section draft question feedback update summary estimate draft",
+          "subject": "confirm meeting follow revision estimate summary notes r",
+          "threadId": "1a0497ece97d9b6f",
+          "toRecipients": [
+            "idris.haddad@example.com",
+            "hana.okonkwo@example.com",
+            "lucas.nakamura@example.com",
+            "hana.lindqvist@example.com",
+            "dmitri.haddad@example.com",
+            "clara.lindqvist@example.com",
+            "priya.lindqvist@example.com",
+            "idris.nakamura@example.com",
+            "dmitri.vasquez@example.com",
+            "mei.lindqvist@example.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1a049006123869cd",
+      "messages": [
+        {
+          "date": "2026-08-28T15:32:07Z",
+          "historyId": "2137037",
+          "id": "1a049006123869cd",
+          "internalDate": "1787931127000",
+          "labelIds": [
+            "UNREAD",
+            "INBOX"
+          ],
+          "sender": "nora.haddad@example.com",
+          "sizeEstimate": 155285,
+          "snippet": "proposal status agenda schedule question estimate thread schedule agenda question thread status thread reply update schedule meeting question review notes reply status revision review section status ag",
+          "subject": "attached revision meeting question timeline revision status ",
+          "threadId": "1a049006123869cd",
+          "toRecipients": [
+            "nora.lindqvist@example.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1a048c5636839f3f",
+      "messages": [
+        {
+          "date": "2026-08-28T14:28:00Z",
+          "historyId": "2137035",
+          "id": "1a048c5636839f3f",
+          "internalDate": "1787927280000",
+          "labelIds": [
+            "UNREAD",
+            "INBOX"
+          ],
+          "sender": "clara.ferreira@example.com",
+          "sizeEstimate": 36250,
+          "snippet": "reply timeline confirm summary estimate status follow pending update section summary draft schedule status update update status estimate status reply estimate notes schedule section confirm notes propo",
+          "subject": "section summary meeting meeting section timeline review attached es",
+          "threadId": "1a048c5636839f3f",
+          "toRecipients": [
+            "nora.lindqvist@example.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1a0487e725d966d4",
+      "messages": [
+        {
+          "date": "2026-08-28T13:09:14Z",
+          "historyId": "2137033",
+          "id": "1a0487e725d966d4",
+          "internalDate": "1787922554000",
+          "labelIds": [
+            "UNREAD",
+            "INBOX"
+          ],
+          "sender": "clara.ferreira@example.com",
+          "sizeEstimate": 43525,
+          "snippet": "update follow estimate proposal confirm reply revision schedule review section confirm thread proposal update update schedule update feedback section update schedule proposal question update reply feed",
+          "subject": "proposal question pending estimate",
+          "threadId": "1a0487e725d966d4",
+          "toRecipients": [
+            "nora.lindqvist@example.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1a0483e4bd76fbc0",
+      "messages": [
+        {
+          "date": "2026-08-28T12:00:06Z",
+          "historyId": "2136596",
+          "id": "1a0483e4bd76fbc0",
+          "internalDate": "1787918406000",
+          "labelIds": [
+            "UNREAD",
+            "INBOX"
+          ],
+          "sender": "tomas.novak@example.com",
+          "sizeEstimate": 46957,
+          "snippet": "review attached attached confirm pending schedule attached timeline summary feedback section update schedule feedback update summary question summary review revision thread notes confirm confirm pe",
+          "subject": "meeting follow feedb",
+          "threadId": "1a0483e4bd76fbc0",
+          "toRecipients": [
+            "dmitri.haddad@example.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1a047a0ad195847b",
+      "messages": [
+        {
+          "date": "2026-08-28T09:08:15Z",
+          "historyId": "2136534",
+          "id": "1a047a0ad195847b",
+          "internalDate": "1787908095000",
+          "labelIds": [
+            "IMPORTANT",
+            "INBOX"
+          ],
+          "sender": "clara.ferreira@example.com",
+          "sizeEstimate": 13006,
+          "snippet": "estimate timeline question agenda follow status revision schedule question review reply schedule feedback summary status thread thread review notes confirm notes question status confirm section pendi",
+          "subject": "agenda feedback thread pending draft schedule summary follow follow meeting review update proposal update update estima",
+          "threadId": "1a047a0ad195847b",
+          "toRecipients": [
+            "nora.lindqvist@example.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1a0479e77360b0bb",
+      "messages": [
+        {
+          "date": "2026-08-28T09:05:49Z",
+          "historyId": "2136493",
+          "id": "1a0479e77360b0bb",
+          "internalDate": "1787907949000",
+          "labelIds": [
+            "UNREAD",
+            "IMPORTANT",
+            "INBOX"
+          ],
+          "sender": "clara.ferreira@example.com",
+          "sizeEstimate": 13140,
+          "snippet": "question review estimate pending draft summary review reply attached agenda agenda timeline reply summary pending feedback review proposal pending follow review review review schedule notes attached st",
+          "subject": "notes proposal follow agenda review meeting agenda status pending meeting thread follow update ",
+          "threadId": "1a0479e77360b0bb",
+          "toRecipients": [
+            "nora.lindqvist@example.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1a0468f646d09b8d",
+      "messages": [
+        {
+          "date": "2026-08-28T04:09:44Z",
+          "historyId": "2136032",
+          "id": "1a0468f646d09b8d",
+          "internalDate": "1787890184000",
+          "labelIds": [
+            "UNREAD",
+            "INBOX"
+          ],
+          "sender": "priya.nakamura@example.com",
+          "sizeEstimate": 208111,
+          "snippet": "notes thread timeline summary status update confirm review schedule notes meeting estimate attached update update update status estimate status reply estimate notes schedule section confirm notes propo",
+          "subject": "feedback reply summary notes threa",
+          "threadId": "1a0468f646d09b8d",
+          "toRecipients": [
+            "nora.lindqvist@example.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1a0462b238d43297",
+      "messages": [
+        {
+          "date": "2026-08-28T02:20:13Z",
+          "historyId": "2136274",
+          "id": "1a0462b238d43297",
+          "internalDate": "1787883613000",
+          "labelIds": [
+            "INBOX"
+          ],
+          "sender": "sara.moreau@example.com",
+          "sizeEstimate": 157269,
+          "snippet": "timeline summary draft agenda confirm confirm section schedule schedule review notes section agenda confirm update schedule question follow estimate feedback revision feedback summary notes section fo",
+          "subject": "draft attached notes confirm pending dr",
+          "threadId": "1a0462b238d43297",
+          "toRecipients": [
+            "nora.lindqvist@example.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1a045bd3f8a728d3",
+      "messages": [
+        {
+          "date": "2026-08-28T00:20:13Z",
+          "historyId": "2136028",
+          "id": "1a045bd3f8a728d3",
+          "internalDate": "1787876413000",
+          "labelIds": [
+            "UNREAD",
+            "INBOX"
+          ],
+          "sender": "sara.moreau@example.com",
+          "sizeEstimate": 213834,
+          "snippet": "feedback timeline schedule timeline confirm meeting reply timeline estimate meeting meeting revision draft feedback agenda timeline meeting timeline attached feedback question attached feedback feedba",
+          "subject": "meeting schedule estimate question timeline feedbac",
+          "threadId": "1a045bd3f8a728d3",
+          "toRecipients": [
+            "nora.lindqvist@example.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1a0455aa016d20a6",
+      "messages": [
+        {
+          "date": "2026-08-27T22:31:54Z",
+          "historyId": "2136026",
+          "id": "1a0455aa016d20a6",
+          "internalDate": "1787869914000",
+          "labelIds": [
+            "UNREAD",
+            "INBOX"
+          ],
+          "sender": "nora.haddad@example.com",
+          "sizeEstimate": 101730,
+          "snippet": "draft section feedback proposal revision thread notes estimate timeline pending proposal schedule thread feedback feedback pending section schedule section meeting agenda confirm reply status attached",
+          "subject": "review draft status pending pending pending thread draf",
+          "threadId": "1a0455aa016d20a6",
+          "toRecipients": [
+            "nora.lindqvist@example.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1a0454621a429440",
+      "messages": [
+        {
+          "date": "2026-08-27T22:09:56Z",
+          "historyId": "2136024",
+          "id": "1a0454621a429440",
+          "internalDate": "1787868596000",
+          "labelIds": [
+            "UNREAD",
+            "INBOX"
+          ],
+          "sender": "nora.vasquez@example.com",
+          "sizeEstimate": 41642,
+          "snippet": "feedback meeting attached section revision confirm thread summary review estimate timeline confirm question attached draft summary draft",
+          "subject": "attached proposal schedu",
+          "threadId": "1a0454621a429440",
+          "toRecipients": [
+            "nora.lindqvist@example.com"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "name": "inbox-digest",
+  "intent": "What needs my attention today?",
+  "messages": [
+    {
+      "version": "v0.9",
+      "createSurface": {
+        "surfaceId": "needs-attention",
+        "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/gmail/gmail-catalog/catalogs/v0.9.1/catalog.json",
+        "sendDataModel": true
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateDataModel": {
+        "surfaceId": "needs-attention",
+        "path": "/",
+        "value": {
+          "threads": [
+            {
+              "id": "th-1",
+              "sender": "Alex Bergman",
+              "subject": "Revised timeline for the review",
+              "snippet": "Attaching the updated schedule — could you confirm Thursday still works on your end?",
+              "when": "09:41"
+            },
+            {
+              "id": "th-2",
+              "sender": "Priya Nakamura",
+              "subject": "Budget questions before Friday",
+              "snippet": "Two line items I could not reconcile against the estimate. Numbers below.",
+              "when": "Yesterday"
+            },
+            {
+              "id": "th-3",
+              "sender": "Jonas Okonkwo",
+              "subject": "Notes from the planning session",
+              "snippet": "Wrote up what we agreed. Shout if I have mangled anything in the second section.",
+              "when": "Tue"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateComponents": {
+        "surfaceId": "needs-attention",
+        "components": [
+          { "id": "root", "component": "Card", "child": "body" },
+          {
+            "id": "body",
+            "component": "Column",
+            "children": ["heading", "sub", "divider", "thread-list"]
+          },
+          { "id": "heading", "component": "Text", "variant": "h3", "text": "Waiting on you" },
+          {
+            "id": "sub",
+            "component": "Text",
+            "variant": "caption",
+            "text": "3 threads where someone is waiting on a reply"
+          },
+          { "id": "divider", "component": "Divider" },
+          {
+            "id": "thread-list",
+            "component": "Column",
+            "children": { "path": "/threads", "componentId": "thread-row" }
+          },
+          {
+            "id": "thread-row",
+            "component": "Button",
+            "variant": "borderless",
+            "child": "thread-body",
+            "action": {
+              "event": {
+                "name": "open-thread",
+                "context": { "threadId": { "path": "id" } }
+              }
+            }
+          },
+          {
+            "id": "thread-body",
+            "component": "Column",
+            "children": ["thread-top", "thread-subject", "thread-preview"]
+          },
+          {
+            "id": "thread-top",
+            "component": "Row",
+            "justify": "spaceBetween",
+            "align": "center",
+            "children": ["thread-sender", "thread-when"]
+          },
+          { "id": "thread-sender", "component": "Text", "text": { "path": "sender" } },
+          {
+            "id": "thread-when",
+            "component": "Text",
+            "variant": "caption",
+            "text": { "path": "when" }
+          },
+          { "id": "thread-subject", "component": "Text", "text": { "path": "subject" } },
+          {
+            "id": "thread-preview",
+            "component": "Text",
+            "variant": "caption",
+            "text": { "path": "snippet" }
+          }
+        ]
+      }
+    }
+  ]
+}

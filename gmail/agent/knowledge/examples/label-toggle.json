@@ -1,0 +1,68 @@
+{
+  "name": "label-toggle",
+  "intent": "Show me my labels so I can file the receipts.",
+  "messages": [
+    {
+      "version": "v0.9",
+      "createSurface": {
+        "surfaceId": "labels",
+        "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/gmail/gmail-catalog/catalogs/v0.9.1/catalog.json",
+        "sendDataModel": true
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateDataModel": {
+        "surfaceId": "labels",
+        "path": "/",
+        "value": {
+          "labels": [
+            { "id": "Label_12", "name": "Receipts" },
+            { "id": "Label_19", "name": "Travel" },
+            { "id": "Label_23", "name": "Reading" }
+          ]
+        }
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateComponents": {
+        "surfaceId": "labels",
+        "components": [
+          { "id": "root", "component": "Card", "child": "body" },
+          {
+            "id": "body",
+            "component": "Column",
+            "children": ["heading", "sub", "divider", "label-list"]
+          },
+          { "id": "heading", "component": "Text", "variant": "h3", "text": "Your labels" },
+          {
+            "id": "sub",
+            "component": "Text",
+            "variant": "caption",
+            "text": "Applies to the thread you have open"
+          },
+          { "id": "divider", "component": "Divider" },
+          {
+            "id": "label-list",
+            "component": "Column",
+            "children": { "path": "/labels", "componentId": "label-row" }
+          },
+          {
+            "id": "label-row",
+            "component": "Button",
+            "variant": "borderless",
+            "child": "label-name",
+            "action": {
+              "event": {
+                "name": "label-toggle",
+                "context": { "labelId": { "path": "id" }, "add": true }
+              }
+            }
+          },
+          { "id": "label-name", "component": "Text", "text": { "path": "name" } }
+        ]
+      }
+    }
+  ]
+}

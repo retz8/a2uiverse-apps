@@ -1,0 +1,1853 @@
+{
+  "name": "beat-1-inbox-digest",
+  "beat": 1,
+  "title": "Inbox digest",
+  "prompt": "What needs my attention today?",
+  "model": "gemini-3.7-flash",
+  "recordedAt": "2026-08-30T04:29:56+00:00",
+  "contextId": "05784a94-7216-4770-a55c-006b842d8160",
+  "chainedFrom": null,
+  "turns": [
+    {
+      "taskId": "6b791a23-e84e-43eb-a1a3-d4640d73a19a",
+      "kind": "utterance",
+      "prompt": "What needs my attention today?",
+      "action": null,
+      "batches": [
+        {
+          "offsetMs": 25436,
+          "messages": [
+            {
+              "paintMeta": {
+                "surfaceId": "needs-attention",
+                "title": "Needs attention"
+              }
+            }
+          ],
+          "texts": [
+            "\n"
+          ]
+        },
+        {
+          "offsetMs": 25506,
+          "messages": [
+            {
+              "version": "v0.9",
+              "createSurface": {
+                "surfaceId": "needs-attention",
+                "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/gmail/gmail-catalog/catalogs/v0.9.1/catalog.json",
+                "sendDataModel": true
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 25640,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1a05077dde2deea4",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "status agenda proposal proposal pending pendi"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 25728,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1a05077dde2deea4",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "status agenda proposal proposal pending pendi",
+                      "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 25760,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1a05077dde2deea4",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "status agenda proposal proposal pending pendi",
+                      "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
+                      "when": "Aug 30, 02:20"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 25826,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1a05077dde2deea4",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "status agenda proposal proposal pending pendi",
+                      "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
+                      "when": "Aug 30, 02:20"
+                    },
+                    {
+                      "id": "1a0506754ca907e9",
+                      "sender": "sara.vasquez@example.com"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 25901,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1a05077dde2deea4",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "status agenda proposal proposal pending pendi",
+                      "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
+                      "when": "Aug 30, 02:20"
+                    },
+                    {
+                      "id": "1a0506754ca907e9",
+                      "sender": "sara.vasquez@example.com",
+                      "subject": "confirm pending reply status section schedule pending feedback review re",
+                      "snippet": "review reply feedback question agenda pending question section agenda proposal confirm confirm follow status notes note"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 25966,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1a05077dde2deea4",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "status agenda proposal proposal pending pendi",
+                      "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
+                      "when": "Aug 30, 02:20"
+                    },
+                    {
+                      "id": "1a0506754ca907e9",
+                      "sender": "sara.vasquez@example.com",
+                      "subject": "confirm pending reply status section schedule pending feedback review re",
+                      "snippet": "review reply feedback question agenda pending question section agenda proposal confirm confirm follow status notes note",
+                      "when": "Aug 30, 02:01"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 26032,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1a05077dde2deea4",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "status agenda proposal proposal pending pendi",
+                      "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
+                      "when": "Aug 30, 02:20"
+                    },
+                    {
+                      "id": "1a0506754ca907e9",
+                      "sender": "sara.vasquez@example.com",
+                      "subject": "confirm pending reply status section schedule pending feedback review re",
+                      "snippet": "review reply feedback question agenda pending question section agenda proposal confirm confirm follow status notes note",
+                      "when": "Aug 30, 02:01"
+                    },
+                    {
+                      "id": "1a05009f2b759fbe"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 26129,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1a05077dde2deea4",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "status agenda proposal proposal pending pendi",
+                      "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
+                      "when": "Aug 30, 02:20"
+                    },
+                    {
+                      "id": "1a0506754ca907e9",
+                      "sender": "sara.vasquez@example.com",
+                      "subject": "confirm pending reply status section schedule pending feedback review re",
+                      "snippet": "review reply feedback question agenda pending question section agenda proposal confirm confirm follow status notes note",
+                      "when": "Aug 30, 02:01"
+                    },
+                    {
+                      "id": "1a05009f2b759fbe",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "estimate update update reply draft"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 26178,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1a05077dde2deea4",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "status agenda proposal proposal pending pendi",
+                      "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
+                      "when": "Aug 30, 02:20"
+                    },
+                    {
+                      "id": "1a0506754ca907e9",
+                      "sender": "sara.vasquez@example.com",
+                      "subject": "confirm pending reply status section schedule pending feedback review re",
+                      "snippet": "review reply feedback question agenda pending question section agenda proposal confirm confirm follow status notes note",
+                      "when": "Aug 30, 02:01"
+                    },
+                    {
+                      "id": "1a05009f2b759fbe",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "estimate update update reply draft",
+                      "snippet": "attached question question revision status draft meeting status reply draft reply revision reply proposal update estimate timeline timeline status feedback agenda confirm summary notes follow section a"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 26232,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1a05077dde2deea4",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "status agenda proposal proposal pending pendi",
+                      "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
+                      "when": "Aug 30, 02:20"
+                    },
+                    {
+                      "id": "1a0506754ca907e9",
+                      "sender": "sara.vasquez@example.com",
+                      "subject": "confirm pending reply status section schedule pending feedback review re",
+                      "snippet": "review reply feedback question agenda pending question section agenda proposal confirm confirm follow status notes note",
+                      "when": "Aug 30, 02:01"
+                    },
+                    {
+                      "id": "1a05009f2b759fbe",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "estimate update update reply draft",
+                      "snippet": "attached question question revision status draft meeting status reply draft reply revision reply proposal update estimate timeline timeline status feedback agenda confirm summary notes follow section a",
+                      "when": "Aug 30, 00:20"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 26294,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1a05077dde2deea4",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "status agenda proposal proposal pending pendi",
+                      "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
+                      "when": "Aug 30, 02:20"
+                    },
+                    {
+                      "id": "1a0506754ca907e9",
+                      "sender": "sara.vasquez@example.com",
+                      "subject": "confirm pending reply status section schedule pending feedback review re",
+                      "snippet": "review reply feedback question agenda pending question section agenda proposal confirm confirm follow status notes note",
+                      "when": "Aug 30, 02:01"
+                    },
+                    {
+                      "id": "1a05009f2b759fbe",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "estimate update update reply draft",
+                      "snippet": "attached question question revision status draft meeting status reply draft reply revision reply proposal update estimate timeline timeline status feedback agenda confirm summary notes follow section a",
+                      "when": "Aug 30, 00:20"
+                    },
+                    {
+                      "id": "1a04de0a0c4cad33",
+                      "sender": "nora.haddad@example.com"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 26368,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1a05077dde2deea4",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "status agenda proposal proposal pending pendi",
+                      "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
+                      "when": "Aug 30, 02:20"
+                    },
+                    {
+                      "id": "1a0506754ca907e9",
+                      "sender": "sara.vasquez@example.com",
+                      "subject": "confirm pending reply status section schedule pending feedback review re",
+                      "snippet": "review reply feedback question agenda pending question section agenda proposal confirm confirm follow status notes note",
+                      "when": "Aug 30, 02:01"
+                    },
+                    {
+                      "id": "1a05009f2b759fbe",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "estimate update update reply draft",
+                      "snippet": "attached question question revision status draft meeting status reply draft reply revision reply proposal update estimate timeline timeline status feedback agenda confirm summary notes follow section a",
+                      "when": "Aug 30, 00:20"
+                    },
+                    {
+                      "id": "1a04de0a0c4cad33",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "status update question notes question section status thread confirm draft update review meeting agenda update status question"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 26443,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1a05077dde2deea4",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "status agenda proposal proposal pending pendi",
+                      "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
+                      "when": "Aug 30, 02:20"
+                    },
+                    {
+                      "id": "1a0506754ca907e9",
+                      "sender": "sara.vasquez@example.com",
+                      "subject": "confirm pending reply status section schedule pending feedback review re",
+                      "snippet": "review reply feedback question agenda pending question section agenda proposal confirm confirm follow status notes note",
+                      "when": "Aug 30, 02:01"
+                    },
+                    {
+                      "id": "1a05009f2b759fbe",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "estimate update update reply draft",
+                      "snippet": "attached question question revision status draft meeting status reply draft reply revision reply proposal update estimate timeline timeline status feedback agenda confirm summary notes follow section a",
+                      "when": "Aug 30, 00:20"
+                    },
+                    {
+                      "id": "1a04de0a0c4cad33",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "status update question notes question section status thread confirm draft update review meeting agenda update status question",
+                      "snippet": "estimate revision notes attached attached summary confirm timeline update update timeline feedback revision follow notes feedback feedback status confirm section reply summary review section notes est",
+                      "when": "Aug 29, 14:15"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 26508,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1a05077dde2deea4",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "status agenda proposal proposal pending pendi",
+                      "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
+                      "when": "Aug 30, 02:20"
+                    },
+                    {
+                      "id": "1a0506754ca907e9",
+                      "sender": "sara.vasquez@example.com",
+                      "subject": "confirm pending reply status section schedule pending feedback review re",
+                      "snippet": "review reply feedback question agenda pending question section agenda proposal confirm confirm follow status notes note",
+                      "when": "Aug 30, 02:01"
+                    },
+                    {
+                      "id": "1a05009f2b759fbe",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "estimate update update reply draft",
+                      "snippet": "attached question question revision status draft meeting status reply draft reply revision reply proposal update estimate timeline timeline status feedback agenda confirm summary notes follow section a",
+                      "when": "Aug 30, 00:20"
+                    },
+                    {
+                      "id": "1a04de0a0c4cad33",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "status update question notes question section status thread confirm draft update review meeting agenda update status question",
+                      "snippet": "estimate revision notes attached attached summary confirm timeline update update timeline feedback revision follow notes feedback feedback status confirm section reply summary review section notes est",
+                      "when": "Aug 29, 14:15"
+                    },
+                    {
+                      "id": "1a04b517d4ebb2c1"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 26583,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1a05077dde2deea4",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "status agenda proposal proposal pending pendi",
+                      "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
+                      "when": "Aug 30, 02:20"
+                    },
+                    {
+                      "id": "1a0506754ca907e9",
+                      "sender": "sara.vasquez@example.com",
+                      "subject": "confirm pending reply status section schedule pending feedback review re",
+                      "snippet": "review reply feedback question agenda pending question section agenda proposal confirm confirm follow status notes note",
+                      "when": "Aug 30, 02:01"
+                    },
+                    {
+                      "id": "1a05009f2b759fbe",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "estimate update update reply draft",
+                      "snippet": "attached question question revision status draft meeting status reply draft reply revision reply proposal update estimate timeline timeline status feedback agenda confirm summary notes follow section a",
+                      "when": "Aug 30, 00:20"
+                    },
+                    {
+                      "id": "1a04de0a0c4cad33",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "status update question notes question section status thread confirm draft update review meeting agenda update status question",
+                      "snippet": "estimate revision notes attached attached summary confirm timeline update update timeline feedback revision follow notes feedback feedback status confirm section reply summary review section notes est",
+                      "when": "Aug 29, 14:15"
+                    },
+                    {
+                      "id": "1a04b517d4ebb2c1",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "pending timeline question draft meeting"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 26652,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1a05077dde2deea4",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "status agenda proposal proposal pending pendi",
+                      "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
+                      "when": "Aug 30, 02:20"
+                    },
+                    {
+                      "id": "1a0506754ca907e9",
+                      "sender": "sara.vasquez@example.com",
+                      "subject": "confirm pending reply status section schedule pending feedback review re",
+                      "snippet": "review reply feedback question agenda pending question section agenda proposal confirm confirm follow status notes note",
+                      "when": "Aug 30, 02:01"
+                    },
+                    {
+                      "id": "1a05009f2b759fbe",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "estimate update update reply draft",
+                      "snippet": "attached question question revision status draft meeting status reply draft reply revision reply proposal update estimate timeline timeline status feedback agenda confirm summary notes follow section a",
+                      "when": "Aug 30, 00:20"
+                    },
+                    {
+                      "id": "1a04de0a0c4cad33",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "status update question notes question section status thread confirm draft update review meeting agenda update status question",
+                      "snippet": "estimate revision notes attached attached summary confirm timeline update update timeline feedback revision follow notes feedback feedback status confirm section reply summary review section notes est",
+                      "when": "Aug 29, 14:15"
+                    },
+                    {
+                      "id": "1a04b517d4ebb2c1",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "pending timeline question draft meeting",
+                      "snippet": "review thread section status draft notes attached estimate section status proposal draft notes estimate update attached question draft timeline review schedule schedule attached attached agenda section"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 26716,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1a05077dde2deea4",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "status agenda proposal proposal pending pendi",
+                      "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
+                      "when": "Aug 30, 02:20"
+                    },
+                    {
+                      "id": "1a0506754ca907e9",
+                      "sender": "sara.vasquez@example.com",
+                      "subject": "confirm pending reply status section schedule pending feedback review re",
+                      "snippet": "review reply feedback question agenda pending question section agenda proposal confirm confirm follow status notes note",
+                      "when": "Aug 30, 02:01"
+                    },
+                    {
+                      "id": "1a05009f2b759fbe",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "estimate update update reply draft",
+                      "snippet": "attached question question revision status draft meeting status reply draft reply revision reply proposal update estimate timeline timeline status feedback agenda confirm summary notes follow section a",
+                      "when": "Aug 30, 00:20"
+                    },
+                    {
+                      "id": "1a04de0a0c4cad33",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "status update question notes question section status thread confirm draft update review meeting agenda update status question",
+                      "snippet": "estimate revision notes attached attached summary confirm timeline update update timeline feedback revision follow notes feedback feedback status confirm section reply summary review section notes est",
+                      "when": "Aug 29, 14:15"
+                    },
+                    {
+                      "id": "1a04b517d4ebb2c1",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "pending timeline question draft meeting",
+                      "snippet": "review thread section status draft notes attached estimate section status proposal draft notes estimate update attached question draft timeline review schedule schedule attached attached agenda section",
+                      "when": "Aug 29, 02:20"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 26792,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1a05077dde2deea4",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "status agenda proposal proposal pending pendi",
+                      "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
+                      "when": "Aug 30, 02:20"
+                    },
+                    {
+                      "id": "1a0506754ca907e9",
+                      "sender": "sara.vasquez@example.com",
+                      "subject": "confirm pending reply status section schedule pending feedback review re",
+                      "snippet": "review reply feedback question agenda pending question section agenda proposal confirm confirm follow status notes note",
+                      "when": "Aug 30, 02:01"
+                    },
+                    {
+                      "id": "1a05009f2b759fbe",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "estimate update update reply draft",
+                      "snippet": "attached question question revision status draft meeting status reply draft reply revision reply proposal update estimate timeline timeline status feedback agenda confirm summary notes follow section a",
+                      "when": "Aug 30, 00:20"
+                    },
+                    {
+                      "id": "1a04de0a0c4cad33",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "status update question notes question section status thread confirm draft update review meeting agenda update status question",
+                      "snippet": "estimate revision notes attached attached summary confirm timeline update update timeline feedback revision follow notes feedback feedback status confirm section reply summary review section notes est",
+                      "when": "Aug 29, 14:15"
+                    },
+                    {
+                      "id": "1a04b517d4ebb2c1",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "pending timeline question draft meeting",
+                      "snippet": "review thread section status draft notes attached estimate section status proposal draft notes estimate update attached question draft timeline review schedule schedule attached attached agenda section",
+                      "when": "Aug 29, 02:20"
+                    },
+                    {
+                      "id": "1a04ae39f1c01039",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "draft attached notes confirm pending dr"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 26944,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1a05077dde2deea4",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "status agenda proposal proposal pending pendi",
+                      "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
+                      "when": "Aug 30, 02:20"
+                    },
+                    {
+                      "id": "1a0506754ca907e9",
+                      "sender": "sara.vasquez@example.com",
+                      "subject": "confirm pending reply status section schedule pending feedback review re",
+                      "snippet": "review reply feedback question agenda pending question section agenda proposal confirm confirm follow status notes note",
+                      "when": "Aug 30, 02:01"
+                    },
+                    {
+                      "id": "1a05009f2b759fbe",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "estimate update update reply draft",
+                      "snippet": "attached question question revision status draft meeting status reply draft reply revision reply proposal update estimate timeline timeline status feedback agenda confirm summary notes follow section a",
+                      "when": "Aug 30, 00:20"
+                    },
+                    {
+                      "id": "1a04de0a0c4cad33",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "status update question notes question section status thread confirm draft update review meeting agenda update status question",
+                      "snippet": "estimate revision notes attached attached summary confirm timeline update update timeline feedback revision follow notes feedback feedback status confirm section reply summary review section notes est",
+                      "when": "Aug 29, 14:15"
+                    },
+                    {
+                      "id": "1a04b517d4ebb2c1",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "pending timeline question draft meeting",
+                      "snippet": "review thread section status draft notes attached estimate section status proposal draft notes estimate update attached question draft timeline review schedule schedule attached attached agenda section",
+                      "when": "Aug 29, 02:20"
+                    },
+                    {
+                      "id": "1a04ae39f1c01039",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "draft attached notes confirm pending dr",
+                      "snippet": "timeline summary draft agenda confirm confirm section schedule schedule review notes section agenda confirm update schedule question follow estimate feedback revision feedback summary notes section fo",
+                      "when": "Aug 29, 00:20"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 26993,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "path": "/",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1a05077dde2deea4",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "status agenda proposal proposal pending pendi",
+                      "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
+                      "when": "Aug 30, 02:20"
+                    },
+                    {
+                      "id": "1a0506754ca907e9",
+                      "sender": "sara.vasquez@example.com",
+                      "subject": "confirm pending reply status section schedule pending feedback review re",
+                      "snippet": "review reply feedback question agenda pending question section agenda proposal confirm confirm follow status notes note",
+                      "when": "Aug 30, 02:01"
+                    },
+                    {
+                      "id": "1a05009f2b759fbe",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "estimate update update reply draft",
+                      "snippet": "attached question question revision status draft meeting status reply draft reply revision reply proposal update estimate timeline timeline status feedback agenda confirm summary notes follow section a",
+                      "when": "Aug 30, 00:20"
+                    },
+                    {
+                      "id": "1a04de0a0c4cad33",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "status update question notes question section status thread confirm draft update review meeting agenda update status question",
+                      "snippet": "estimate revision notes attached attached summary confirm timeline update update timeline feedback revision follow notes feedback feedback status confirm section reply summary review section notes est",
+                      "when": "Aug 29, 14:15"
+                    },
+                    {
+                      "id": "1a04b517d4ebb2c1",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "pending timeline question draft meeting",
+                      "snippet": "review thread section status draft notes attached estimate section status proposal draft notes estimate update attached question draft timeline review schedule schedule attached attached agenda section",
+                      "when": "Aug 29, 02:20"
+                    },
+                    {
+                      "id": "1a04ae39f1c01039",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "draft attached notes confirm pending dr",
+                      "snippet": "timeline summary draft agenda confirm confirm section schedule schedule review notes section agenda confirm update schedule question follow estimate feedback revision feedback summary notes section fo",
+                      "when": "Aug 29, 00:20"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 27126,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "loading_body"
+                  },
+                  {
+                    "id": "loading_body",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 27199,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "loading_heading",
+                      "loading_sub",
+                      "loading_divider",
+                      "loading_thread-list"
+                    ]
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "loading_heading",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_sub",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_divider",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_thread-list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 27276,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "loading_sub",
+                      "loading_divider",
+                      "loading_thread-list"
+                    ]
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "Needs attention"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "loading_sub",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_divider",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_thread-list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 27423,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "sub",
+                      "loading_divider",
+                      "loading_thread-list"
+                    ]
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "Needs attention"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "Unread conversations in your inbox"
+                  },
+                  {
+                    "id": "loading_divider",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_thread-list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 27501,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "sub",
+                      "divider",
+                      "loading_thread-list"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "Needs attention"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "Unread conversations in your inbox"
+                  },
+                  {
+                    "id": "loading_thread-list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 27569,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "sub",
+                      "divider",
+                      "thread-list"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "Needs attention"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "Unread conversations in your inbox"
+                  },
+                  {
+                    "id": "thread-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/threads",
+                      "componentId": "loading_thread-row"
+                    }
+                  },
+                  {
+                    "id": "loading_thread-row",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 27763,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "sub",
+                      "divider",
+                      "thread-list"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "Needs attention"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "Unread conversations in your inbox"
+                  },
+                  {
+                    "id": "thread-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/threads",
+                      "componentId": "thread-row"
+                    }
+                  },
+                  {
+                    "id": "thread-row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "loading_thread-body",
+                    "action": {
+                      "event": {
+                        "name": "open-thread",
+                        "context": {
+                          "threadId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "loading_thread-body",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 27911,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "sub",
+                      "divider",
+                      "thread-list"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "Needs attention"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "Unread conversations in your inbox"
+                  },
+                  {
+                    "id": "thread-body",
+                    "component": "Column",
+                    "children": [
+                      "loading_thread-top",
+                      "loading_thread-subject",
+                      "loading_thread-preview"
+                    ]
+                  },
+                  {
+                    "id": "thread-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/threads",
+                      "componentId": "thread-row"
+                    }
+                  },
+                  {
+                    "id": "thread-row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "thread-body",
+                    "action": {
+                      "event": {
+                        "name": "open-thread",
+                        "context": {
+                          "threadId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "loading_thread-top",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_thread-subject",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_thread-preview",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 28065,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "sub",
+                      "divider",
+                      "thread-list"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "Needs attention"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "Unread conversations in your inbox"
+                  },
+                  {
+                    "id": "thread-body",
+                    "component": "Column",
+                    "children": [
+                      "thread-top",
+                      "loading_thread-subject",
+                      "loading_thread-preview"
+                    ]
+                  },
+                  {
+                    "id": "thread-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/threads",
+                      "componentId": "thread-row"
+                    }
+                  },
+                  {
+                    "id": "thread-row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "thread-body",
+                    "action": {
+                      "event": {
+                        "name": "open-thread",
+                        "context": {
+                          "threadId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "thread-top",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "loading_thread-sender",
+                      "loading_thread-when"
+                    ]
+                  },
+                  {
+                    "id": "loading_thread-subject",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_thread-preview",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_thread-sender",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_thread-when",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 28203,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "sub",
+                      "divider",
+                      "thread-list"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "Needs attention"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "Unread conversations in your inbox"
+                  },
+                  {
+                    "id": "thread-body",
+                    "component": "Column",
+                    "children": [
+                      "thread-top",
+                      "loading_thread-subject",
+                      "loading_thread-preview"
+                    ]
+                  },
+                  {
+                    "id": "thread-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/threads",
+                      "componentId": "thread-row"
+                    }
+                  },
+                  {
+                    "id": "thread-row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "thread-body",
+                    "action": {
+                      "event": {
+                        "name": "open-thread",
+                        "context": {
+                          "threadId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "thread-sender",
+                    "component": "Text",
+                    "text": {
+                      "path": "sender"
+                    }
+                  },
+                  {
+                    "id": "thread-top",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "thread-sender",
+                      "loading_thread-when"
+                    ]
+                  },
+                  {
+                    "id": "loading_thread-subject",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_thread-preview",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_thread-when",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 28275,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "sub",
+                      "divider",
+                      "thread-list"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "Needs attention"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "Unread conversations in your inbox"
+                  },
+                  {
+                    "id": "thread-body",
+                    "component": "Column",
+                    "children": [
+                      "thread-top",
+                      "loading_thread-subject",
+                      "loading_thread-preview"
+                    ]
+                  },
+                  {
+                    "id": "thread-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/threads",
+                      "componentId": "thread-row"
+                    }
+                  },
+                  {
+                    "id": "thread-row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "thread-body",
+                    "action": {
+                      "event": {
+                        "name": "open-thread",
+                        "context": {
+                          "threadId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "thread-sender",
+                    "component": "Text",
+                    "text": {
+                      "path": "sender"
+                    }
+                  },
+                  {
+                    "id": "thread-top",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "thread-sender",
+                      "thread-when"
+                    ]
+                  },
+                  {
+                    "id": "thread-when",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "when"
+                    }
+                  },
+                  {
+                    "id": "loading_thread-subject",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_thread-preview",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 28423,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "sub",
+                      "divider",
+                      "thread-list"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "Needs attention"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "Unread conversations in your inbox"
+                  },
+                  {
+                    "id": "thread-body",
+                    "component": "Column",
+                    "children": [
+                      "thread-top",
+                      "thread-subject",
+                      "loading_thread-preview"
+                    ]
+                  },
+                  {
+                    "id": "thread-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/threads",
+                      "componentId": "thread-row"
+                    }
+                  },
+                  {
+                    "id": "thread-row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "thread-body",
+                    "action": {
+                      "event": {
+                        "name": "open-thread",
+                        "context": {
+                          "threadId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "thread-sender",
+                    "component": "Text",
+                    "text": {
+                      "path": "sender"
+                    }
+                  },
+                  {
+                    "id": "thread-subject",
+                    "component": "Text",
+                    "text": {
+                      "path": "subject"
+                    }
+                  },
+                  {
+                    "id": "thread-top",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "thread-sender",
+                      "thread-when"
+                    ]
+                  },
+                  {
+                    "id": "thread-when",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "when"
+                    }
+                  },
+                  {
+                    "id": "loading_thread-preview",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 28501,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "sub",
+                      "divider",
+                      "thread-list"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "Needs attention"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "Unread conversations in your inbox"
+                  },
+                  {
+                    "id": "thread-body",
+                    "component": "Column",
+                    "children": [
+                      "thread-top",
+                      "thread-subject",
+                      "thread-preview"
+                    ]
+                  },
+                  {
+                    "id": "thread-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/threads",
+                      "componentId": "thread-row"
+                    }
+                  },
+                  {
+                    "id": "thread-preview",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "snippet"
+                    }
+                  },
+                  {
+                    "id": "thread-row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "thread-body",
+                    "action": {
+                      "event": {
+                        "name": "open-thread",
+                        "context": {
+                          "threadId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "thread-sender",
+                    "component": "Text",
+                    "text": {
+                      "path": "sender"
+                    }
+                  },
+                  {
+                    "id": "thread-subject",
+                    "component": "Text",
+                    "text": {
+                      "path": "subject"
+                    }
+                  },
+                  {
+                    "id": "thread-top",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "thread-sender",
+                      "thread-when"
+                    ]
+                  },
+                  {
+                    "id": "thread-when",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "when"
+                    }
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "outcome": "completed",
+      "durationMs": 28692
+    }
+  ]
+}
