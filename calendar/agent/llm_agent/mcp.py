@@ -129,10 +129,14 @@ def access_token() -> str:
     except google.auth.exceptions.DefaultCredentialsError as exc:
         raise MissingGoogleCredentialError(
             "No Application Default Credentials. The live agent needs a user credential "
-            "carrying the Calendar scopes; mint one with:\n\n"
-            "  gcloud auth application-default login \\\n"
-            "    --client-id-file=$HOME/.config/a2uiverse/oauth-client.json \\\n"
-            f"    --scopes={','.join(CALENDAR_SCOPES)}\n\n"
+            "carrying the Calendar scopes:\n\n  "
+            + "\n  ".join(CALENDAR_SCOPES)
+            + "\n\n"
+            "Mint it with the command in agent/README.md, 'Setting up the Calendar "
+            "credential'. Do NOT run `gcloud auth application-default login` with only "
+            "these scopes: --scopes REPLACES the granted set, and every Google app in this "
+            "repo shares one credential, so a Calendar-only grant revokes the Gmail "
+            "agent's. The README's command lists the union.\n\n"
             "To run against canned fixture data instead, set TOOL_BACKEND=stub."
         ) from exc
     credentials.refresh(google.auth.transport.requests.Request())

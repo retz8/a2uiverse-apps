@@ -43,7 +43,8 @@ One-time, and outside the agent — it never holds a secret and never runs a con
    ```
 
 2. On that project's consent screen (Google Auth Platform → Data Access), add
-   `gmail.readonly`, `gmail.compose`, and `gmail.modify`.
+   `gmail.readonly`, `gmail.compose`, and `gmail.modify` **alongside** the Calendar scopes.
+   One consent screen serves every Google app in this repo.
 
 3. Mint Application Default Credentials against the project's Desktop client:
 
@@ -53,11 +54,17 @@ One-time, and outside the agent — it never holds a secret and never runs a con
      --scopes=https://www.googleapis.com/auth/gmail.readonly,\
    https://www.googleapis.com/auth/gmail.compose,\
    https://www.googleapis.com/auth/gmail.modify,\
+   https://www.googleapis.com/auth/calendar.readonly,\
+   https://www.googleapis.com/auth/calendar.events,\
    https://www.googleapis.com/auth/cloud-platform
    ```
 
-   `--scopes` **replaces** the granted set rather than adding to it, so list every scope you
-   need in one command.
+   `--scopes` **replaces** the granted set rather than adding to it, and every Google app in
+   this repo reads the same Application Default Credentials. So this command lists the
+   **union of all of them** — Gmail's three and Calendar's two. Running it with only one
+   product's scopes silently revokes the other app's access, and that app then fails at
+   startup with a credential error that names the wrong cause. A third Google app extends
+   this list here **and** in every sibling app's README.
 
 The agent refuses to start on the MCP backend with no usable credential, naming this command
 — it never degrades silently to canned data, because a convincing surface built from stub
