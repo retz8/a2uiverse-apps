@@ -5,11 +5,12 @@ from __future__ import annotations
 from a2a.server.apps import A2AStarletteApplication
 from a2a.server.request_handlers import DefaultRequestHandler
 from a2a.server.tasks import InMemoryTaskStore
-from a2a.types import AgentCapabilities, AgentCard, AgentSkill
+from a2a.types import AgentCapabilities, AgentCard
 from a2ui.a2a.extension import get_a2ui_agent_extension
 from a2ui.schema.constants import VERSION_0_9_1
 from starlette.middleware.cors import CORSMiddleware
 
+from agent_card import APP_DESCRIPTION, APP_NAME, SKILLS
 from catalog_common import supported_catalog_ids
 
 DEFAULT_PORT = 11001
@@ -26,22 +27,15 @@ def build_agent_card(base_url: str) -> AgentCard:
         supported_catalog_ids=supported_catalog_ids(),
     )
     capabilities = AgentCapabilities(streaming=True, extensions=[extension])
-    skill = AgentSkill(
-        id="live_a2ui",
-        name="Live A2UI generator",
-        description="Generates catalog-conformant Primer A2UI surfaces from natural language over GitHub data.",
-        tags=["a2ui", "llm", "github"],
-        examples=["What pull requests need my review?"],
-    )
     return AgentCard(
-        name="Live A2UI Agent",
-        description="Live LLM A2A server generating Primer A2UI surfaces (Gemini via ADK).",
+        name=APP_NAME,
+        description=APP_DESCRIPTION,
         url=base_url,
         version="0.1.0",
         default_input_modes=["text", "text/plain"],
         default_output_modes=["text", "text/plain"],
         capabilities=capabilities,
-        skills=[skill],
+        skills=SKILLS,
     )
 
 
