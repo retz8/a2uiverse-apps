@@ -11,26 +11,26 @@
     {
       "labelId": "SENT",
       "name": "SENT",
-      "threadsTotal": 271,
-      "threadsUnread": 7,
-      "messagesTotal": 402,
-      "messagesUnread": 7
+      "threadsTotal": 0,
+      "threadsUnread": 0,
+      "messagesTotal": 0,
+      "messagesUnread": 0
     },
     {
       "labelId": "INBOX",
       "name": "INBOX",
-      "threadsTotal": 14730,
-      "threadsUnread": 9473,
-      "messagesTotal": 15303,
-      "messagesUnread": 9643
+      "threadsTotal": 0,
+      "threadsUnread": 0,
+      "messagesTotal": 0,
+      "messagesUnread": 0
     },
     {
       "labelId": "IMPORTANT",
       "name": "IMPORTANT",
-      "threadsTotal": 4408,
-      "threadsUnread": 1822,
-      "messagesTotal": 4764,
-      "messagesUnread": 1871
+      "threadsTotal": 0,
+      "threadsUnread": 0,
+      "messagesTotal": 0,
+      "messagesUnread": 0
     },
     {
       "labelId": "TRASH",
@@ -43,18 +43,18 @@
     {
       "labelId": "DRAFT",
       "name": "DRAFT",
-      "threadsTotal": 13,
+      "threadsTotal": 0,
       "threadsUnread": 0,
-      "messagesTotal": 13,
+      "messagesTotal": 0,
       "messagesUnread": 0
     },
     {
       "labelId": "SPAM",
       "name": "SPAM",
-      "threadsTotal": 22,
-      "threadsUnread": 21,
-      "messagesTotal": 22,
-      "messagesUnread": 21
+      "threadsTotal": 0,
+      "threadsUnread": 0,
+      "messagesTotal": 0,
+      "messagesUnread": 0
     },
     {
       "labelId": "STARRED",
@@ -67,10 +67,10 @@
     {
       "labelId": "UNREAD",
       "name": "UNREAD",
-      "threadsTotal": 9480,
-      "threadsUnread": 9480,
-      "messagesTotal": 9650,
-      "messagesUnread": 9650
+      "threadsTotal": 0,
+      "threadsUnread": 0,
+      "messagesTotal": 0,
+      "messagesUnread": 0
     },
     {
       "labelId": "Label_1",
