@@ -1,0 +1,141 @@
+{
+  "name": "rsvp-toggle",
+  "intent": "Accept the quarter planning invite.",
+  "messages": [
+    {
+      "version": "v0.9",
+      "createSurface": {
+        "surfaceId": "rsvp-ev-6",
+        "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/calendar/calendar-catalog/catalogs/v0.9.1/catalog.json",
+        "sendDataModel": true
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateDataModel": {
+        "surfaceId": "rsvp-ev-6",
+        "path": "/",
+        "value": {
+          "summary": "Quarter planning",
+          "when": "Tomorrow, 10:00 – 11:30",
+          "current": "You have not answered yet"
+        }
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateComponents": {
+        "surfaceId": "rsvp-ev-6",
+        "components": [
+          {
+            "id": "root",
+            "component": "Card",
+            "child": "body"
+          },
+          {
+            "id": "body",
+            "component": "Column",
+            "children": [
+              "heading",
+              "when",
+              "current",
+              "actions"
+            ]
+          },
+          {
+            "id": "heading",
+            "component": "Text",
+            "variant": "h3",
+            "text": {
+              "path": "/summary"
+            }
+          },
+          {
+            "id": "when",
+            "component": "Text",
+            "text": {
+              "path": "/when"
+            }
+          },
+          {
+            "id": "current",
+            "component": "Text",
+            "variant": "caption",
+            "text": {
+              "path": "/current"
+            }
+          },
+          {
+            "id": "actions",
+            "component": "Row",
+            "children": [
+              "yes",
+              "maybe",
+              "no"
+            ]
+          },
+          {
+            "id": "yes",
+            "component": "Button",
+            "variant": "primary",
+            "child": "yes-label",
+            "action": {
+              "event": {
+                "name": "rsvp-toggle",
+                "context": {
+                  "eventId": "ev-6",
+                  "responseStatus": "accepted"
+                }
+              }
+            }
+          },
+          {
+            "id": "yes-label",
+            "component": "Text",
+            "text": "Accept"
+          },
+          {
+            "id": "maybe",
+            "component": "Button",
+            "variant": "default",
+            "child": "maybe-label",
+            "action": {
+              "event": {
+                "name": "rsvp-toggle",
+                "context": {
+                  "eventId": "ev-6",
+                  "responseStatus": "tentative"
+                }
+              }
+            }
+          },
+          {
+            "id": "maybe-label",
+            "component": "Text",
+            "text": "Maybe"
+          },
+          {
+            "id": "no",
+            "component": "Button",
+            "variant": "default",
+            "child": "no-label",
+            "action": {
+              "event": {
+                "name": "rsvp-toggle",
+                "context": {
+                  "eventId": "ev-6",
+                  "responseStatus": "declined"
+                }
+              }
+            }
+          },
+          {
+            "id": "no-label",
+            "component": "Text",
+            "text": "Decline"
+          }
+        ]
+      }
+    }
+  ]
+}

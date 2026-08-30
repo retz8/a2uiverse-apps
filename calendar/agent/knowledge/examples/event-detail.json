@@ -1,0 +1,158 @@
+{
+  "name": "event-detail",
+  "intent": "Open the design review.",
+  "messages": [
+    {
+      "version": "v0.9",
+      "createSurface": {
+        "surfaceId": "event-ev-2",
+        "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/calendar/calendar-catalog/catalogs/v0.9.1/catalog.json",
+        "sendDataModel": true
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateDataModel": {
+        "surfaceId": "event-ev-2",
+        "path": "/",
+        "value": {
+          "summary": "Design review — agenda surface",
+          "when": "Today, 11:00 – 12:00",
+          "where": "Room 4B",
+          "note_intro": "Walk through the three fragment layouts.",
+          "note_bring": "Bring the density comparison and the token divergence notes.",
+          "note_close": "We should decide the accent question in this session rather than carrying it another week.",
+          "guests": [
+            {
+              "name": "Alex Bergman",
+              "status": "Accepted"
+            },
+            {
+              "name": "Mei Silva",
+              "status": "No answer yet"
+            },
+            {
+              "name": "Idris Haddad",
+              "status": "Declined"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateComponents": {
+        "surfaceId": "event-ev-2",
+        "components": [
+          {
+            "id": "root",
+            "component": "Card",
+            "child": "body"
+          },
+          {
+            "id": "body",
+            "component": "Column",
+            "children": [
+              "heading",
+              "when",
+              "where",
+              "divider",
+              "note-intro",
+              "note-bring",
+              "note-close",
+              "guests-label",
+              "guest-list"
+            ]
+          },
+          {
+            "id": "heading",
+            "component": "Text",
+            "variant": "h3",
+            "text": {
+              "path": "/summary"
+            }
+          },
+          {
+            "id": "when",
+            "component": "Text",
+            "text": {
+              "path": "/when"
+            }
+          },
+          {
+            "id": "where",
+            "component": "Text",
+            "variant": "caption",
+            "text": {
+              "path": "/where"
+            }
+          },
+          {
+            "id": "divider",
+            "component": "Divider"
+          },
+          {
+            "id": "note-intro",
+            "component": "Text",
+            "text": {
+              "path": "/note_intro"
+            }
+          },
+          {
+            "id": "note-bring",
+            "component": "Text",
+            "text": {
+              "path": "/note_bring"
+            }
+          },
+          {
+            "id": "note-close",
+            "component": "Text",
+            "text": {
+              "path": "/note_close"
+            }
+          },
+          {
+            "id": "guests-label",
+            "component": "Text",
+            "variant": "caption",
+            "text": "Guests"
+          },
+          {
+            "id": "guest-list",
+            "component": "List",
+            "children": {
+              "path": "/guests",
+              "componentId": "guest-row"
+            }
+          },
+          {
+            "id": "guest-row",
+            "component": "Row",
+            "justify": "spaceBetween",
+            "align": "center",
+            "children": [
+              "guest-name",
+              "guest-status"
+            ]
+          },
+          {
+            "id": "guest-name",
+            "component": "Text",
+            "text": {
+              "path": "name"
+            }
+          },
+          {
+            "id": "guest-status",
+            "component": "Text",
+            "variant": "caption",
+            "text": {
+              "path": "status"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

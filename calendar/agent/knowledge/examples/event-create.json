@@ -1,0 +1,161 @@
+{
+  "name": "event-create",
+  "intent": "Put half an hour with the design team on Thursday afternoon.",
+  "messages": [
+    {
+      "version": "v0.9",
+      "createSurface": {
+        "surfaceId": "propose-event",
+        "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/calendar/calendar-catalog/catalogs/v0.9.1/catalog.json",
+        "sendDataModel": true
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateDataModel": {
+        "surfaceId": "propose-event",
+        "path": "/",
+        "value": {
+          "summary": "Design team sync",
+          "when": "Thursday, 14:00 – 14:30",
+          "guests": "Alex Bergman, Mei Silva"
+        }
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateComponents": {
+        "surfaceId": "propose-event",
+        "components": [
+          {
+            "id": "root",
+            "component": "Card",
+            "child": "body"
+          },
+          {
+            "id": "body",
+            "component": "Column",
+            "children": [
+              "heading",
+              "title-field",
+              "when-row",
+              "guests-row",
+              "notice",
+              "actions"
+            ]
+          },
+          {
+            "id": "heading",
+            "component": "Text",
+            "variant": "h3",
+            "text": "Create this event?"
+          },
+          {
+            "id": "title-field",
+            "component": "TextField",
+            "label": "Title",
+            "value": {
+              "path": "/summary"
+            }
+          },
+          {
+            "id": "when-row",
+            "component": "Row",
+            "align": "center",
+            "children": [
+              "when-label",
+              "when-value"
+            ]
+          },
+          {
+            "id": "when-label",
+            "component": "Text",
+            "variant": "caption",
+            "text": "WHEN"
+          },
+          {
+            "id": "when-value",
+            "component": "Text",
+            "text": {
+              "path": "/when"
+            }
+          },
+          {
+            "id": "guests-row",
+            "component": "Row",
+            "align": "center",
+            "children": [
+              "guests-label",
+              "guests-value"
+            ]
+          },
+          {
+            "id": "guests-label",
+            "component": "Text",
+            "variant": "caption",
+            "text": "GUESTS"
+          },
+          {
+            "id": "guests-value",
+            "component": "Text",
+            "text": {
+              "path": "/guests"
+            }
+          },
+          {
+            "id": "notice",
+            "component": "Text",
+            "variant": "caption",
+            "text": "Guests will not be notified — the event appears on their calendar, but no invitation is sent. You will need to tell them yourself."
+          },
+          {
+            "id": "actions",
+            "component": "Row",
+            "children": [
+              "create",
+              "discard"
+            ]
+          },
+          {
+            "id": "create",
+            "component": "Button",
+            "variant": "primary",
+            "child": "create-label",
+            "action": {
+              "event": {
+                "name": "confirm-event",
+                "context": {
+                  "proposalId": "propose-event"
+                }
+              }
+            }
+          },
+          {
+            "id": "create-label",
+            "component": "Text",
+            "text": "Create event"
+          },
+          {
+            "id": "discard",
+            "component": "Button",
+            "variant": "borderless",
+            "child": "discard-label",
+            "action": {
+              "event": {
+                "name": "cancel-event",
+                "context": {
+                  "proposalId": "propose-event"
+                }
+              }
+            }
+          },
+          {
+            "id": "discard-label",
+            "component": "Text",
+            "text": "Discard"
+          }
+        ]
+      }
+    }
+  ]
+}

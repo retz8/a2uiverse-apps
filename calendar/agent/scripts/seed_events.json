@@ -1,0 +1,121 @@
+{
+  "$comment": "The demo calendar's authored corpus (task-2.7 decisions 4 and 5). Dates are OFFSETS from the run date, never absolute: a calendar is dates, and an absolutely-dated seed is an empty agenda a few months later. Times are local to the calendar's own zone. Content is authored, shapes are the API's.",
+  "events": [
+    {
+      "key": "standup",
+      "summary": "Team standup",
+      "dayOffset": 0,
+      "start": "09:30",
+      "end": "09:45",
+      "location": "Meet",
+      "description": "Quick round: what landed yesterday, what is next, anything blocked.",
+      "attendees": [
+        {"email": "priya.nakamura@example.com", "responseStatus": "accepted"},
+        {"email": "jonas.okonkwo@example.com", "responseStatus": "accepted"}
+      ],
+      "selfResponse": "accepted"
+    },
+    {
+      "key": "design-review",
+      "summary": "Design review — agenda surface",
+      "dayOffset": 0,
+      "start": "11:00",
+      "end": "12:00",
+      "location": "Room 4B",
+      "description": "Walk through the three fragment layouts.\n\nBring:\n- the density comparison\n- the token divergence notes\n\nWe should decide the accent question in this session rather than carrying it another week.",
+      "attendees": [
+        {"email": "alex.bergman@example.com", "responseStatus": "accepted"},
+        {"email": "mei.silva@example.com", "responseStatus": "needsAction"},
+        {"email": "idris.haddad@example.com", "responseStatus": "declined"}
+      ],
+      "selfResponse": "needsAction"
+    },
+    {
+      "key": "budget-sync",
+      "summary": "Budget sync",
+      "dayOffset": 0,
+      "start": "11:30",
+      "end": "12:15",
+      "location": "",
+      "description": "Two line items still do not reconcile against the estimate.",
+      "attendees": [{"email": "clara.moreau@example.com", "responseStatus": "accepted"}],
+      "selfResponse": "accepted",
+      "$comment": "Deliberately overlaps design-review: the agenda beat has to surface a real conflict, and a conflict the seed does not contain is one the beat cannot show."
+    },
+    {
+      "key": "focus-block",
+      "summary": "Writing time",
+      "dayOffset": 0,
+      "start": "14:00",
+      "end": "16:00",
+      "location": "",
+      "description": "",
+      "attendees": [],
+      "selfResponse": "accepted",
+      "$comment": "No attendees: a block the user put on their own calendar. It has no invitation and no response, which is a distinct row shape from an invited event."
+    },
+    {
+      "key": "leave",
+      "summary": "Nora out of office",
+      "dayOffset": 1,
+      "allDay": true,
+      "description": "",
+      "attendees": [],
+      "selfResponse": "accepted",
+      "$comment": "All-day: context rather than a commitment. It must not acquire a fabricated midnight start, and must not count as a conflict."
+    },
+    {
+      "key": "planning",
+      "summary": "Quarter planning",
+      "dayOffset": 1,
+      "start": "10:00",
+      "end": "11:30",
+      "location": "Room 2A",
+      "description": "Draft objectives circulated Monday. Read before the session.",
+      "attendees": [
+        {"email": "alex.bergman@example.com", "responseStatus": "accepted"},
+        {"email": "tomas.lindqvist@example.com", "responseStatus": "tentative"},
+        {"email": "hana.tanaka@example.com", "responseStatus": "needsAction"}
+      ],
+      "selfResponse": "needsAction"
+    },
+    {
+      "key": "one-on-one",
+      "summary": "1:1 with Sara",
+      "dayOffset": 2,
+      "start": "15:00",
+      "end": "15:30",
+      "location": "Meet",
+      "description": "",
+      "attendees": [{"email": "sara.vasquez@example.com", "responseStatus": "accepted"}],
+      "selfResponse": "accepted"
+    },
+    {
+      "key": "retro",
+      "summary": "Sprint retro",
+      "dayOffset": 4,
+      "start": "16:00",
+      "end": "17:00",
+      "location": "Room 4B",
+      "description": "What to keep, what to change.",
+      "attendees": [
+        {"email": "priya.nakamura@example.com", "responseStatus": "accepted"},
+        {"email": "jonas.okonkwo@example.com", "responseStatus": "accepted"},
+        {"email": "yuki.novak@example.com", "responseStatus": "accepted"}
+      ],
+      "selfResponse": "accepted"
+    },
+    {
+      "key": "yesterday-sync",
+      "summary": "Vendor sync",
+      "dayOffset": -1,
+      "start": "13:00",
+      "end": "13:45",
+      "location": "",
+      "description": "",
+      "attendees": [{"email": "omar.ferreira@example.com", "responseStatus": "accepted"}],
+      "selfResponse": "accepted",
+      "$comment": "In the past: the agenda beat must not present it as upcoming, and a range query for 'today' must not return it."
+    }
+  ]
+}

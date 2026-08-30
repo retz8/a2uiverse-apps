@@ -1,0 +1,224 @@
+{
+  "name": "agenda-digest",
+  "intent": "What needs my attention today?",
+  "messages": [
+    {
+      "version": "v0.9",
+      "createSurface": {
+        "surfaceId": "needs-attention",
+        "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/calendar/calendar-catalog/catalogs/v0.9.1/catalog.json",
+        "sendDataModel": true
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateDataModel": {
+        "surfaceId": "needs-attention",
+        "path": "/",
+        "value": {
+          "waiting": [
+            {
+              "id": "ev-2",
+              "when": "11:00",
+              "summary": "Design review — agenda surface",
+              "note": "Invitation unanswered"
+            },
+            {
+              "id": "ev-6",
+              "when": "Tomorrow 10:00",
+              "summary": "Quarter planning",
+              "note": "Invitation unanswered"
+            }
+          ],
+          "clashes": [
+            {
+              "id": "ev-2",
+              "when": "11:00 – 12:00",
+              "summary": "Design review — agenda surface",
+              "note": "Overlaps Budget sync"
+            },
+            {
+              "id": "ev-3",
+              "when": "11:30 – 12:15",
+              "summary": "Budget sync",
+              "note": "Overlaps Design review"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateComponents": {
+        "surfaceId": "needs-attention",
+        "components": [
+          {
+            "id": "root",
+            "component": "Card",
+            "child": "body"
+          },
+          {
+            "id": "body",
+            "component": "Column",
+            "children": [
+              "heading",
+              "waiting-label",
+              "waiting-list",
+              "divider",
+              "clash-label",
+              "clash-list"
+            ]
+          },
+          {
+            "id": "heading",
+            "component": "Text",
+            "variant": "h3",
+            "text": "Needs an answer"
+          },
+          {
+            "id": "waiting-label",
+            "component": "Text",
+            "variant": "caption",
+            "text": "2 invitations you have not replied to"
+          },
+          {
+            "id": "waiting-list",
+            "component": "Column",
+            "children": {
+              "path": "/waiting",
+              "componentId": "waiting-row"
+            }
+          },
+          {
+            "id": "waiting-row",
+            "component": "Button",
+            "variant": "borderless",
+            "child": "waiting-body",
+            "action": {
+              "event": {
+                "name": "open-event",
+                "context": {
+                  "eventId": {
+                    "path": "id"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": "waiting-body",
+            "component": "Column",
+            "children": [
+              "waiting-top",
+              "waiting-note"
+            ]
+          },
+          {
+            "id": "waiting-top",
+            "component": "Row",
+            "align": "center",
+            "children": [
+              "waiting-when",
+              "waiting-summary"
+            ]
+          },
+          {
+            "id": "waiting-when",
+            "component": "Text",
+            "text": {
+              "path": "when"
+            }
+          },
+          {
+            "id": "waiting-summary",
+            "component": "Text",
+            "text": {
+              "path": "summary"
+            }
+          },
+          {
+            "id": "waiting-note",
+            "component": "Text",
+            "variant": "caption",
+            "text": {
+              "path": "note"
+            }
+          },
+          {
+            "id": "divider",
+            "component": "Divider"
+          },
+          {
+            "id": "clash-label",
+            "component": "Text",
+            "variant": "caption",
+            "text": "Double-booked today"
+          },
+          {
+            "id": "clash-list",
+            "component": "Column",
+            "children": {
+              "path": "/clashes",
+              "componentId": "clash-row"
+            }
+          },
+          {
+            "id": "clash-row",
+            "component": "Button",
+            "variant": "borderless",
+            "child": "clash-body",
+            "action": {
+              "event": {
+                "name": "open-event",
+                "context": {
+                  "eventId": {
+                    "path": "id"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": "clash-body",
+            "component": "Column",
+            "children": [
+              "clash-top",
+              "clash-note"
+            ]
+          },
+          {
+            "id": "clash-top",
+            "component": "Row",
+            "align": "center",
+            "children": [
+              "clash-when",
+              "clash-summary"
+            ]
+          },
+          {
+            "id": "clash-when",
+            "component": "Text",
+            "text": {
+              "path": "when"
+            }
+          },
+          {
+            "id": "clash-summary",
+            "component": "Text",
+            "text": {
+              "path": "summary"
+            }
+          },
+          {
+            "id": "clash-note",
+            "component": "Text",
+            "variant": "caption",
+            "text": {
+              "path": "note"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
