@@ -1,0 +1,2680 @@
+{
+  "name": "beat-1-agenda-digest",
+  "beat": 1,
+  "title": "Agenda digest",
+  "prompt": "What needs my attention today?",
+  "model": "gemini-3.7-flash",
+  "recordedAt": "2026-08-30T06:13:32+00:00",
+  "contextId": "ff14f378-f15c-48d8-98aa-82a7a94f9fda",
+  "chainedFrom": null,
+  "turns": [
+    {
+      "taskId": "ec01ddb7-b9a6-41b3-8fc3-9abe1eea4596",
+      "kind": "utterance",
+      "prompt": "What needs my attention today?",
+      "action": null,
+      "batches": [
+        {
+          "offsetMs": 15437,
+          "messages": [
+            {
+              "paintMeta": {
+                "surfaceId": "needs-attention",
+                "title": "Needs attention"
+              }
+            }
+          ],
+          "texts": [
+            "\n"
+          ]
+        },
+        {
+          "offsetMs": 15445,
+          "messages": [
+            {
+              "version": "v0.9",
+              "createSurface": {
+                "surfaceId": "needs-attention",
+                "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/calendar/calendar-catalog/catalogs/v0.9.1/catalog.json",
+                "sendDataModel": true
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 15635,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "waiting": [
+                    {
+                      "id": "7nuujj9h9ru89blofii3m5otlo",
+                      "when": "11:00",
+                      "summary": "Design review \u2014 agenda surface",
+                      "note": "Invitation unanswered"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 15707,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "waiting": [
+                    {
+                      "id": "7nuujj9h9ru89blofii3m5otlo",
+                      "when": "11:00",
+                      "summary": "Design review \u2014 agenda surface",
+                      "note": "Invitation unanswered"
+                    },
+                    {
+                      "id": "o49vnbegq501jme5all5bt82eo",
+                      "when": "Tomorrow 10:00",
+                      "summary": "Quarter planning"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 15769,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "waiting": [
+                    {
+                      "id": "7nuujj9h9ru89blofii3m5otlo",
+                      "when": "11:00",
+                      "summary": "Design review \u2014 agenda surface",
+                      "note": "Invitation unanswered"
+                    },
+                    {
+                      "id": "o49vnbegq501jme5all5bt82eo",
+                      "when": "Tomorrow 10:00",
+                      "summary": "Quarter planning",
+                      "note": "Invitation unanswered"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 15835,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "clashes": [
+                    {
+                      "id": "7nuujj9h9ru89blofii3m5otlo",
+                      "when": "11:00 \u2013 12:00",
+                      "summary": "Design review \u2014 agenda surface",
+                      "note": "Overlaps Budget sync"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 15904,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "clashes": [
+                    {
+                      "id": "7nuujj9h9ru89blofii3m5otlo",
+                      "when": "11:00 \u2013 12:00",
+                      "summary": "Design review \u2014 agenda surface",
+                      "note": "Overlaps Budget sync"
+                    },
+                    {
+                      "id": "ev1fmp1rmvhhb260fbebvd7o9o",
+                      "when": "11:30 \u2013 12:15"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 15969,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "clashes": [
+                    {
+                      "id": "7nuujj9h9ru89blofii3m5otlo",
+                      "when": "11:00 \u2013 12:00",
+                      "summary": "Design review \u2014 agenda surface",
+                      "note": "Overlaps Budget sync"
+                    },
+                    {
+                      "id": "ev1fmp1rmvhhb260fbebvd7o9o",
+                      "when": "11:30 \u2013 12:15",
+                      "summary": "Budget sync",
+                      "note": "Overlaps Design review"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 16037,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "path": "/",
+                "value": {
+                  "waiting": [
+                    {
+                      "id": "7nuujj9h9ru89blofii3m5otlo",
+                      "when": "11:00",
+                      "summary": "Design review \u2014 agenda surface",
+                      "note": "Invitation unanswered"
+                    },
+                    {
+                      "id": "o49vnbegq501jme5all5bt82eo",
+                      "when": "Tomorrow 10:00",
+                      "summary": "Quarter planning",
+                      "note": "Invitation unanswered"
+                    }
+                  ],
+                  "clashes": [
+                    {
+                      "id": "7nuujj9h9ru89blofii3m5otlo",
+                      "when": "11:00 \u2013 12:00",
+                      "summary": "Design review \u2014 agenda surface",
+                      "note": "Overlaps Budget sync"
+                    },
+                    {
+                      "id": "ev1fmp1rmvhhb260fbebvd7o9o",
+                      "when": "11:30 \u2013 12:15",
+                      "summary": "Budget sync",
+                      "note": "Overlaps Design review"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 16168,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "loading_body"
+                  },
+                  {
+                    "id": "loading_body",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 16226,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "loading_heading",
+                      "loading_waiting-label",
+                      "loading_waiting-list",
+                      "loading_divider",
+                      "loading_clash-label",
+                      "loading_clash-list"
+                    ]
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "loading_heading",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_waiting-label",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_waiting-list",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_divider",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_clash-label",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_clash-list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 16347,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "loading_waiting-label",
+                      "loading_waiting-list",
+                      "loading_divider",
+                      "loading_clash-label",
+                      "loading_clash-list"
+                    ]
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "Needs an answer"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "loading_waiting-label",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_waiting-list",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_divider",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_clash-label",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_clash-list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 16472,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "waiting-label",
+                      "loading_waiting-list",
+                      "loading_divider",
+                      "loading_clash-label",
+                      "loading_clash-list"
+                    ]
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "Needs an answer"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "waiting-label",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "2 invitations you have not replied to"
+                  },
+                  {
+                    "id": "loading_waiting-list",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_divider",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_clash-label",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_clash-list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 16609,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "waiting-label",
+                      "waiting-list",
+                      "loading_divider",
+                      "loading_clash-label",
+                      "loading_clash-list"
+                    ]
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "Needs an answer"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "waiting-label",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "2 invitations you have not replied to"
+                  },
+                  {
+                    "id": "waiting-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/waiting",
+                      "componentId": "loading_waiting-row"
+                    }
+                  },
+                  {
+                    "id": "loading_divider",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_clash-label",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_clash-list",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_waiting-row",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 16816,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "waiting-label",
+                      "waiting-list",
+                      "loading_divider",
+                      "loading_clash-label",
+                      "loading_clash-list"
+                    ]
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "Needs an answer"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "waiting-label",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "2 invitations you have not replied to"
+                  },
+                  {
+                    "id": "waiting-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/waiting",
+                      "componentId": "waiting-row"
+                    }
+                  },
+                  {
+                    "id": "waiting-row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "loading_waiting-body",
+                    "action": {
+                      "event": {
+                        "name": "open-event",
+                        "context": {
+                          "eventId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "loading_divider",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_clash-label",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_clash-list",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_waiting-body",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 16889,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "waiting-label",
+                      "waiting-list",
+                      "loading_divider",
+                      "loading_clash-label",
+                      "loading_clash-list"
+                    ]
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "Needs an answer"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "waiting-body",
+                    "component": "Column",
+                    "children": [
+                      "loading_waiting-top",
+                      "loading_waiting-note"
+                    ]
+                  },
+                  {
+                    "id": "waiting-label",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "2 invitations you have not replied to"
+                  },
+                  {
+                    "id": "waiting-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/waiting",
+                      "componentId": "waiting-row"
+                    }
+                  },
+                  {
+                    "id": "waiting-row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "waiting-body",
+                    "action": {
+                      "event": {
+                        "name": "open-event",
+                        "context": {
+                          "eventId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "loading_divider",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_clash-label",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_clash-list",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_waiting-top",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_waiting-note",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 17026,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "waiting-label",
+                      "waiting-list",
+                      "loading_divider",
+                      "loading_clash-label",
+                      "loading_clash-list"
+                    ]
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "Needs an answer"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "waiting-body",
+                    "component": "Column",
+                    "children": [
+                      "waiting-top",
+                      "loading_waiting-note"
+                    ]
+                  },
+                  {
+                    "id": "waiting-label",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "2 invitations you have not replied to"
+                  },
+                  {
+                    "id": "waiting-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/waiting",
+                      "componentId": "waiting-row"
+                    }
+                  },
+                  {
+                    "id": "waiting-row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "waiting-body",
+                    "action": {
+                      "event": {
+                        "name": "open-event",
+                        "context": {
+                          "eventId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "waiting-top",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "loading_waiting-when",
+                      "loading_waiting-summary"
+                    ]
+                  },
+                  {
+                    "id": "loading_divider",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_clash-label",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_clash-list",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_waiting-note",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_waiting-when",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_waiting-summary",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 17153,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "waiting-label",
+                      "waiting-list",
+                      "loading_divider",
+                      "loading_clash-label",
+                      "loading_clash-list"
+                    ]
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "Needs an answer"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "waiting-body",
+                    "component": "Column",
+                    "children": [
+                      "waiting-top",
+                      "loading_waiting-note"
+                    ]
+                  },
+                  {
+                    "id": "waiting-label",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "2 invitations you have not replied to"
+                  },
+                  {
+                    "id": "waiting-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/waiting",
+                      "componentId": "waiting-row"
+                    }
+                  },
+                  {
+                    "id": "waiting-row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "waiting-body",
+                    "action": {
+                      "event": {
+                        "name": "open-event",
+                        "context": {
+                          "eventId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "waiting-top",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "waiting-when",
+                      "loading_waiting-summary"
+                    ]
+                  },
+                  {
+                    "id": "waiting-when",
+                    "component": "Text",
+                    "text": {
+                      "path": "when"
+                    }
+                  },
+                  {
+                    "id": "loading_divider",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_clash-label",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_clash-list",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_waiting-note",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_waiting-summary",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 17221,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "waiting-label",
+                      "waiting-list",
+                      "loading_divider",
+                      "loading_clash-label",
+                      "loading_clash-list"
+                    ]
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "Needs an answer"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "waiting-body",
+                    "component": "Column",
+                    "children": [
+                      "waiting-top",
+                      "loading_waiting-note"
+                    ]
+                  },
+                  {
+                    "id": "waiting-label",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "2 invitations you have not replied to"
+                  },
+                  {
+                    "id": "waiting-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/waiting",
+                      "componentId": "waiting-row"
+                    }
+                  },
+                  {
+                    "id": "waiting-row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "waiting-body",
+                    "action": {
+                      "event": {
+                        "name": "open-event",
+                        "context": {
+                          "eventId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "waiting-summary",
+                    "component": "Text",
+                    "text": {
+                      "path": "summary"
+                    }
+                  },
+                  {
+                    "id": "waiting-top",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "waiting-when",
+                      "waiting-summary"
+                    ]
+                  },
+                  {
+                    "id": "waiting-when",
+                    "component": "Text",
+                    "text": {
+                      "path": "when"
+                    }
+                  },
+                  {
+                    "id": "loading_divider",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_clash-label",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_clash-list",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_waiting-note",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 17351,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "waiting-label",
+                      "waiting-list",
+                      "loading_divider",
+                      "loading_clash-label",
+                      "loading_clash-list"
+                    ]
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "Needs an answer"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "waiting-body",
+                    "component": "Column",
+                    "children": [
+                      "waiting-top",
+                      "waiting-note"
+                    ]
+                  },
+                  {
+                    "id": "waiting-label",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "2 invitations you have not replied to"
+                  },
+                  {
+                    "id": "waiting-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/waiting",
+                      "componentId": "waiting-row"
+                    }
+                  },
+                  {
+                    "id": "waiting-note",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "note"
+                    }
+                  },
+                  {
+                    "id": "waiting-row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "waiting-body",
+                    "action": {
+                      "event": {
+                        "name": "open-event",
+                        "context": {
+                          "eventId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "waiting-summary",
+                    "component": "Text",
+                    "text": {
+                      "path": "summary"
+                    }
+                  },
+                  {
+                    "id": "waiting-top",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "waiting-when",
+                      "waiting-summary"
+                    ]
+                  },
+                  {
+                    "id": "waiting-when",
+                    "component": "Text",
+                    "text": {
+                      "path": "when"
+                    }
+                  },
+                  {
+                    "id": "loading_divider",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_clash-label",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_clash-list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 17430,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "waiting-label",
+                      "waiting-list",
+                      "divider",
+                      "loading_clash-label",
+                      "loading_clash-list"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "Needs an answer"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "waiting-body",
+                    "component": "Column",
+                    "children": [
+                      "waiting-top",
+                      "waiting-note"
+                    ]
+                  },
+                  {
+                    "id": "waiting-label",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "2 invitations you have not replied to"
+                  },
+                  {
+                    "id": "waiting-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/waiting",
+                      "componentId": "waiting-row"
+                    }
+                  },
+                  {
+                    "id": "waiting-note",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "note"
+                    }
+                  },
+                  {
+                    "id": "waiting-row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "waiting-body",
+                    "action": {
+                      "event": {
+                        "name": "open-event",
+                        "context": {
+                          "eventId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "waiting-summary",
+                    "component": "Text",
+                    "text": {
+                      "path": "summary"
+                    }
+                  },
+                  {
+                    "id": "waiting-top",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "waiting-when",
+                      "waiting-summary"
+                    ]
+                  },
+                  {
+                    "id": "waiting-when",
+                    "component": "Text",
+                    "text": {
+                      "path": "when"
+                    }
+                  },
+                  {
+                    "id": "loading_clash-label",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_clash-list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 17496,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "waiting-label",
+                      "waiting-list",
+                      "divider",
+                      "clash-label",
+                      "loading_clash-list"
+                    ]
+                  },
+                  {
+                    "id": "clash-label",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "Double-booked today"
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "Needs an answer"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "waiting-body",
+                    "component": "Column",
+                    "children": [
+                      "waiting-top",
+                      "waiting-note"
+                    ]
+                  },
+                  {
+                    "id": "waiting-label",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "2 invitations you have not replied to"
+                  },
+                  {
+                    "id": "waiting-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/waiting",
+                      "componentId": "waiting-row"
+                    }
+                  },
+                  {
+                    "id": "waiting-note",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "note"
+                    }
+                  },
+                  {
+                    "id": "waiting-row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "waiting-body",
+                    "action": {
+                      "event": {
+                        "name": "open-event",
+                        "context": {
+                          "eventId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "waiting-summary",
+                    "component": "Text",
+                    "text": {
+                      "path": "summary"
+                    }
+                  },
+                  {
+                    "id": "waiting-top",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "waiting-when",
+                      "waiting-summary"
+                    ]
+                  },
+                  {
+                    "id": "waiting-when",
+                    "component": "Text",
+                    "text": {
+                      "path": "when"
+                    }
+                  },
+                  {
+                    "id": "loading_clash-list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 17574,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "waiting-label",
+                      "waiting-list",
+                      "divider",
+                      "clash-label",
+                      "clash-list"
+                    ]
+                  },
+                  {
+                    "id": "clash-label",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "Double-booked today"
+                  },
+                  {
+                    "id": "clash-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/clashes"
+                    }
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "Needs an answer"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "waiting-body",
+                    "component": "Column",
+                    "children": [
+                      "waiting-top",
+                      "waiting-note"
+                    ]
+                  },
+                  {
+                    "id": "waiting-label",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "2 invitations you have not replied to"
+                  },
+                  {
+                    "id": "waiting-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/waiting",
+                      "componentId": "waiting-row"
+                    }
+                  },
+                  {
+                    "id": "waiting-note",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "note"
+                    }
+                  },
+                  {
+                    "id": "waiting-row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "waiting-body",
+                    "action": {
+                      "event": {
+                        "name": "open-event",
+                        "context": {
+                          "eventId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "waiting-summary",
+                    "component": "Text",
+                    "text": {
+                      "path": "summary"
+                    }
+                  },
+                  {
+                    "id": "waiting-top",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "waiting-when",
+                      "waiting-summary"
+                    ]
+                  },
+                  {
+                    "id": "waiting-when",
+                    "component": "Text",
+                    "text": {
+                      "path": "when"
+                    }
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 17644,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "waiting-label",
+                      "waiting-list",
+                      "divider",
+                      "clash-label",
+                      "clash-list"
+                    ]
+                  },
+                  {
+                    "id": "clash-label",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "Double-booked today"
+                  },
+                  {
+                    "id": "clash-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/clashes",
+                      "componentId": "loading_clash-row"
+                    }
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "Needs an answer"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "waiting-body",
+                    "component": "Column",
+                    "children": [
+                      "waiting-top",
+                      "waiting-note"
+                    ]
+                  },
+                  {
+                    "id": "waiting-label",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "2 invitations you have not replied to"
+                  },
+                  {
+                    "id": "waiting-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/waiting",
+                      "componentId": "waiting-row"
+                    }
+                  },
+                  {
+                    "id": "waiting-note",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "note"
+                    }
+                  },
+                  {
+                    "id": "waiting-row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "waiting-body",
+                    "action": {
+                      "event": {
+                        "name": "open-event",
+                        "context": {
+                          "eventId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "waiting-summary",
+                    "component": "Text",
+                    "text": {
+                      "path": "summary"
+                    }
+                  },
+                  {
+                    "id": "waiting-top",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "waiting-when",
+                      "waiting-summary"
+                    ]
+                  },
+                  {
+                    "id": "waiting-when",
+                    "component": "Text",
+                    "text": {
+                      "path": "when"
+                    }
+                  },
+                  {
+                    "id": "loading_clash-row",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 17862,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "waiting-label",
+                      "waiting-list",
+                      "divider",
+                      "clash-label",
+                      "clash-list"
+                    ]
+                  },
+                  {
+                    "id": "clash-label",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "Double-booked today"
+                  },
+                  {
+                    "id": "clash-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/clashes",
+                      "componentId": "clash-row"
+                    }
+                  },
+                  {
+                    "id": "clash-row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "loading_clash-body",
+                    "action": {
+                      "event": {
+                        "name": "open-event",
+                        "context": {
+                          "eventId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "Needs an answer"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "waiting-body",
+                    "component": "Column",
+                    "children": [
+                      "waiting-top",
+                      "waiting-note"
+                    ]
+                  },
+                  {
+                    "id": "waiting-label",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "2 invitations you have not replied to"
+                  },
+                  {
+                    "id": "waiting-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/waiting",
+                      "componentId": "waiting-row"
+                    }
+                  },
+                  {
+                    "id": "waiting-note",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "note"
+                    }
+                  },
+                  {
+                    "id": "waiting-row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "waiting-body",
+                    "action": {
+                      "event": {
+                        "name": "open-event",
+                        "context": {
+                          "eventId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "waiting-summary",
+                    "component": "Text",
+                    "text": {
+                      "path": "summary"
+                    }
+                  },
+                  {
+                    "id": "waiting-top",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "waiting-when",
+                      "waiting-summary"
+                    ]
+                  },
+                  {
+                    "id": "waiting-when",
+                    "component": "Text",
+                    "text": {
+                      "path": "when"
+                    }
+                  },
+                  {
+                    "id": "loading_clash-body",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 17988,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "waiting-label",
+                      "waiting-list",
+                      "divider",
+                      "clash-label",
+                      "clash-list"
+                    ]
+                  },
+                  {
+                    "id": "clash-body",
+                    "component": "Column",
+                    "children": [
+                      "loading_clash-top",
+                      "loading_clash-note"
+                    ]
+                  },
+                  {
+                    "id": "clash-label",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "Double-booked today"
+                  },
+                  {
+                    "id": "clash-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/clashes",
+                      "componentId": "clash-row"
+                    }
+                  },
+                  {
+                    "id": "clash-row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "clash-body",
+                    "action": {
+                      "event": {
+                        "name": "open-event",
+                        "context": {
+                          "eventId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "Needs an answer"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "waiting-body",
+                    "component": "Column",
+                    "children": [
+                      "waiting-top",
+                      "waiting-note"
+                    ]
+                  },
+                  {
+                    "id": "waiting-label",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "2 invitations you have not replied to"
+                  },
+                  {
+                    "id": "waiting-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/waiting",
+                      "componentId": "waiting-row"
+                    }
+                  },
+                  {
+                    "id": "waiting-note",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "note"
+                    }
+                  },
+                  {
+                    "id": "waiting-row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "waiting-body",
+                    "action": {
+                      "event": {
+                        "name": "open-event",
+                        "context": {
+                          "eventId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "waiting-summary",
+                    "component": "Text",
+                    "text": {
+                      "path": "summary"
+                    }
+                  },
+                  {
+                    "id": "waiting-top",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "waiting-when",
+                      "waiting-summary"
+                    ]
+                  },
+                  {
+                    "id": "waiting-when",
+                    "component": "Text",
+                    "text": {
+                      "path": "when"
+                    }
+                  },
+                  {
+                    "id": "loading_clash-top",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_clash-note",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 18123,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "waiting-label",
+                      "waiting-list",
+                      "divider",
+                      "clash-label",
+                      "clash-list"
+                    ]
+                  },
+                  {
+                    "id": "clash-body",
+                    "component": "Column",
+                    "children": [
+                      "clash-top",
+                      "loading_clash-note"
+                    ]
+                  },
+                  {
+                    "id": "clash-label",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "Double-booked today"
+                  },
+                  {
+                    "id": "clash-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/clashes",
+                      "componentId": "clash-row"
+                    }
+                  },
+                  {
+                    "id": "clash-row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "clash-body",
+                    "action": {
+                      "event": {
+                        "name": "open-event",
+                        "context": {
+                          "eventId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "clash-top",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "loading_clash-when",
+                      "loading_clash-summary"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "Needs an answer"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "waiting-body",
+                    "component": "Column",
+                    "children": [
+                      "waiting-top",
+                      "waiting-note"
+                    ]
+                  },
+                  {
+                    "id": "waiting-label",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "2 invitations you have not replied to"
+                  },
+                  {
+                    "id": "waiting-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/waiting",
+                      "componentId": "waiting-row"
+                    }
+                  },
+                  {
+                    "id": "waiting-note",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "note"
+                    }
+                  },
+                  {
+                    "id": "waiting-row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "waiting-body",
+                    "action": {
+                      "event": {
+                        "name": "open-event",
+                        "context": {
+                          "eventId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "waiting-summary",
+                    "component": "Text",
+                    "text": {
+                      "path": "summary"
+                    }
+                  },
+                  {
+                    "id": "waiting-top",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "waiting-when",
+                      "waiting-summary"
+                    ]
+                  },
+                  {
+                    "id": "waiting-when",
+                    "component": "Text",
+                    "text": {
+                      "path": "when"
+                    }
+                  },
+                  {
+                    "id": "loading_clash-note",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_clash-when",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_clash-summary",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 18192,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "waiting-label",
+                      "waiting-list",
+                      "divider",
+                      "clash-label",
+                      "clash-list"
+                    ]
+                  },
+                  {
+                    "id": "clash-body",
+                    "component": "Column",
+                    "children": [
+                      "clash-top",
+                      "loading_clash-note"
+                    ]
+                  },
+                  {
+                    "id": "clash-label",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "Double-booked today"
+                  },
+                  {
+                    "id": "clash-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/clashes",
+                      "componentId": "clash-row"
+                    }
+                  },
+                  {
+                    "id": "clash-row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "clash-body",
+                    "action": {
+                      "event": {
+                        "name": "open-event",
+                        "context": {
+                          "eventId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "clash-top",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "clash-when",
+                      "loading_clash-summary"
+                    ]
+                  },
+                  {
+                    "id": "clash-when",
+                    "component": "Text",
+                    "text": {
+                      "path": "when"
+                    }
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "Needs an answer"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "waiting-body",
+                    "component": "Column",
+                    "children": [
+                      "waiting-top",
+                      "waiting-note"
+                    ]
+                  },
+                  {
+                    "id": "waiting-label",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "2 invitations you have not replied to"
+                  },
+                  {
+                    "id": "waiting-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/waiting",
+                      "componentId": "waiting-row"
+                    }
+                  },
+                  {
+                    "id": "waiting-note",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "note"
+                    }
+                  },
+                  {
+                    "id": "waiting-row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "waiting-body",
+                    "action": {
+                      "event": {
+                        "name": "open-event",
+                        "context": {
+                          "eventId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "waiting-summary",
+                    "component": "Text",
+                    "text": {
+                      "path": "summary"
+                    }
+                  },
+                  {
+                    "id": "waiting-top",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "waiting-when",
+                      "waiting-summary"
+                    ]
+                  },
+                  {
+                    "id": "waiting-when",
+                    "component": "Text",
+                    "text": {
+                      "path": "when"
+                    }
+                  },
+                  {
+                    "id": "loading_clash-note",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_clash-summary",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 18335,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "waiting-label",
+                      "waiting-list",
+                      "divider",
+                      "clash-label",
+                      "clash-list"
+                    ]
+                  },
+                  {
+                    "id": "clash-body",
+                    "component": "Column",
+                    "children": [
+                      "clash-top",
+                      "loading_clash-note"
+                    ]
+                  },
+                  {
+                    "id": "clash-label",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "Double-booked today"
+                  },
+                  {
+                    "id": "clash-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/clashes",
+                      "componentId": "clash-row"
+                    }
+                  },
+                  {
+                    "id": "clash-row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "clash-body",
+                    "action": {
+                      "event": {
+                        "name": "open-event",
+                        "context": {
+                          "eventId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "clash-summary",
+                    "component": "Text",
+                    "text": {
+                      "path": "summary"
+                    }
+                  },
+                  {
+                    "id": "clash-top",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "clash-when",
+                      "clash-summary"
+                    ]
+                  },
+                  {
+                    "id": "clash-when",
+                    "component": "Text",
+                    "text": {
+                      "path": "when"
+                    }
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "Needs an answer"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "waiting-body",
+                    "component": "Column",
+                    "children": [
+                      "waiting-top",
+                      "waiting-note"
+                    ]
+                  },
+                  {
+                    "id": "waiting-label",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "2 invitations you have not replied to"
+                  },
+                  {
+                    "id": "waiting-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/waiting",
+                      "componentId": "waiting-row"
+                    }
+                  },
+                  {
+                    "id": "waiting-note",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "note"
+                    }
+                  },
+                  {
+                    "id": "waiting-row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "waiting-body",
+                    "action": {
+                      "event": {
+                        "name": "open-event",
+                        "context": {
+                          "eventId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "waiting-summary",
+                    "component": "Text",
+                    "text": {
+                      "path": "summary"
+                    }
+                  },
+                  {
+                    "id": "waiting-top",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "waiting-when",
+                      "waiting-summary"
+                    ]
+                  },
+                  {
+                    "id": "waiting-when",
+                    "component": "Text",
+                    "text": {
+                      "path": "when"
+                    }
+                  },
+                  {
+                    "id": "loading_clash-note",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 18391,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "waiting-label",
+                      "waiting-list",
+                      "divider",
+                      "clash-label",
+                      "clash-list"
+                    ]
+                  },
+                  {
+                    "id": "clash-body",
+                    "component": "Column",
+                    "children": [
+                      "clash-top",
+                      "clash-note"
+                    ]
+                  },
+                  {
+                    "id": "clash-label",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "Double-booked today"
+                  },
+                  {
+                    "id": "clash-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/clashes",
+                      "componentId": "clash-row"
+                    }
+                  },
+                  {
+                    "id": "clash-note",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "note"
+                    }
+                  },
+                  {
+                    "id": "clash-row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "clash-body",
+                    "action": {
+                      "event": {
+                        "name": "open-event",
+                        "context": {
+                          "eventId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "clash-summary",
+                    "component": "Text",
+                    "text": {
+                      "path": "summary"
+                    }
+                  },
+                  {
+                    "id": "clash-top",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "clash-when",
+                      "clash-summary"
+                    ]
+                  },
+                  {
+                    "id": "clash-when",
+                    "component": "Text",
+                    "text": {
+                      "path": "when"
+                    }
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "Needs an answer"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "waiting-body",
+                    "component": "Column",
+                    "children": [
+                      "waiting-top",
+                      "waiting-note"
+                    ]
+                  },
+                  {
+                    "id": "waiting-label",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "2 invitations you have not replied to"
+                  },
+                  {
+                    "id": "waiting-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/waiting",
+                      "componentId": "waiting-row"
+                    }
+                  },
+                  {
+                    "id": "waiting-note",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "note"
+                    }
+                  },
+                  {
+                    "id": "waiting-row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "waiting-body",
+                    "action": {
+                      "event": {
+                        "name": "open-event",
+                        "context": {
+                          "eventId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "waiting-summary",
+                    "component": "Text",
+                    "text": {
+                      "path": "summary"
+                    }
+                  },
+                  {
+                    "id": "waiting-top",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "waiting-when",
+                      "waiting-summary"
+                    ]
+                  },
+                  {
+                    "id": "waiting-when",
+                    "component": "Text",
+                    "text": {
+                      "path": "when"
+                    }
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "outcome": "completed",
+      "durationMs": 18569
+    }
+  ]
+}

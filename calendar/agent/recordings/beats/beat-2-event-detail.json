@@ -1,0 +1,1514 @@
+{
+  "name": "beat-2-event-detail",
+  "beat": 2,
+  "title": "Event detail",
+  "prompt": "Open the design review.",
+  "model": "gemini-3.7-flash",
+  "recordedAt": "2026-08-30T06:13:32+00:00",
+  "contextId": "ff14f378-f15c-48d8-98aa-82a7a94f9fda",
+  "chainedFrom": "beat-1-agenda-digest",
+  "turns": [
+    {
+      "taskId": "a7614166-85b0-4595-a9f4-ee5036e6bc4b",
+      "kind": "utterance",
+      "prompt": "Open the design review.",
+      "action": null,
+      "batches": [
+        {
+          "offsetMs": 8217,
+          "messages": [
+            {
+              "paintMeta": {
+                "surfaceId": "event-7nuujj9h9ru89blofii3m5otlo",
+                "title": "Design review"
+              }
+            }
+          ],
+          "texts": [
+            "\n"
+          ]
+        },
+        {
+          "offsetMs": 8271,
+          "messages": [
+            {
+              "version": "v0.9",
+              "createSurface": {
+                "surfaceId": "event-7nuujj9h9ru89blofii3m5otlo",
+                "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/calendar/calendar-catalog/catalogs/v0.9.1/catalog.json",
+                "sendDataModel": true
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 8395,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "event-7nuujj9h9ru89blofii3m5otlo",
+                "value": {
+                  "summary": "Design review \u2014 agenda surface"
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 8450,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "event-7nuujj9h9ru89blofii3m5otlo",
+                "value": {
+                  "when": "Today, 11:00 \u2013 12:00",
+                  "where": "Room 4B",
+                  "note_intro": "Walk through the three fragment layouts."
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 8521,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "event-7nuujj9h9ru89blofii3m5otlo",
+                "value": {
+                  "note_bring": "Bring the density comparison and the token divergence notes."
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 8589,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "event-7nuujj9h9ru89blofii3m5otlo",
+                "value": {
+                  "note_close": "We should decide the accent question in this session rather than carrying it another week."
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 8649,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "event-7nuujj9h9ru89blofii3m5otlo",
+                "value": {
+                  "guests": [
+                    {
+                      "name": "Alex Bergman",
+                      "status": "Accepted"
+                    },
+                    {
+                      "name": "Mei Silva",
+                      "status": "No answer yet"
+                    },
+                    {
+                      "name": "Idris Haddad"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 8710,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "event-7nuujj9h9ru89blofii3m5otlo",
+                "path": "/",
+                "value": {
+                  "summary": "Design review \u2014 agenda surface",
+                  "when": "Today, 11:00 \u2013 12:00",
+                  "where": "Room 4B",
+                  "note_intro": "Walk through the three fragment layouts.",
+                  "note_bring": "Bring the density comparison and the token divergence notes.",
+                  "note_close": "We should decide the accent question in this session rather than carrying it another week.",
+                  "guests": [
+                    {
+                      "name": "Alex Bergman",
+                      "status": "Accepted"
+                    },
+                    {
+                      "name": "Mei Silva",
+                      "status": "No answer yet"
+                    },
+                    {
+                      "name": "Idris Haddad",
+                      "status": "Declined"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 8893,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "loading_body"
+                  },
+                  {
+                    "id": "loading_body",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "event-7nuujj9h9ru89blofii3m5otlo"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 8974,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "loading_heading",
+                      "loading_when",
+                      "loading_where",
+                      "loading_divider",
+                      "loading_note-intro",
+                      "loading_note-bring",
+                      "loading_note-close",
+                      "loading_guests-label",
+                      "loading_guest"
+                    ]
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "loading_heading",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_when",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_where",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_divider",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_note-intro",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_note-bring",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_note-close",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_guests-label",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_guest",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "event-7nuujj9h9ru89blofii3m5otlo"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 9027,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "loading_heading",
+                      "loading_when",
+                      "loading_where",
+                      "loading_divider",
+                      "loading_note-intro",
+                      "loading_note-bring",
+                      "loading_note-close",
+                      "loading_guests-label",
+                      "loading_guest-list"
+                    ]
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "loading_heading",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_when",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_where",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_divider",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_note-intro",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_note-bring",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_note-close",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_guests-label",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_guest-list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "event-7nuujj9h9ru89blofii3m5otlo"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 9089,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "loading_when",
+                      "loading_where",
+                      "loading_divider",
+                      "loading_note-intro",
+                      "loading_note-bring",
+                      "loading_note-close",
+                      "loading_guests-label",
+                      "loading_guest-list"
+                    ]
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": {
+                      "path": "/summary"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "loading_when",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_where",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_divider",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_note-intro",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_note-bring",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_note-close",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_guests-label",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_guest-list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "event-7nuujj9h9ru89blofii3m5otlo"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 9209,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "when",
+                      "loading_where",
+                      "loading_divider",
+                      "loading_note-intro",
+                      "loading_note-bring",
+                      "loading_note-close",
+                      "loading_guests-label",
+                      "loading_guest-list"
+                    ]
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": {
+                      "path": "/summary"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "when",
+                    "component": "Text",
+                    "text": {
+                      "path": "/when"
+                    }
+                  },
+                  {
+                    "id": "loading_where",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_divider",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_note-intro",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_note-bring",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_note-close",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_guests-label",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_guest-list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "event-7nuujj9h9ru89blofii3m5otlo"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 9268,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "when",
+                      "where",
+                      "loading_divider",
+                      "loading_note-intro",
+                      "loading_note-bring",
+                      "loading_note-close",
+                      "loading_guests-label",
+                      "loading_guest-list"
+                    ]
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": {
+                      "path": "/summary"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "when",
+                    "component": "Text",
+                    "text": {
+                      "path": "/when"
+                    }
+                  },
+                  {
+                    "id": "where",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/where"
+                    }
+                  },
+                  {
+                    "id": "loading_divider",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_note-intro",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_note-bring",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_note-close",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_guests-label",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_guest-list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "event-7nuujj9h9ru89blofii3m5otlo"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 9340,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "when",
+                      "where",
+                      "divider",
+                      "loading_note-intro",
+                      "loading_note-bring",
+                      "loading_note-close",
+                      "loading_guests-label",
+                      "loading_guest-list"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": {
+                      "path": "/summary"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "when",
+                    "component": "Text",
+                    "text": {
+                      "path": "/when"
+                    }
+                  },
+                  {
+                    "id": "where",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/where"
+                    }
+                  },
+                  {
+                    "id": "loading_note-intro",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_note-bring",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_note-close",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_guests-label",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_guest-list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "event-7nuujj9h9ru89blofii3m5otlo"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 9396,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "when",
+                      "where",
+                      "divider",
+                      "note-intro",
+                      "loading_note-bring",
+                      "loading_note-close",
+                      "loading_guests-label",
+                      "loading_guest-list"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": {
+                      "path": "/summary"
+                    }
+                  },
+                  {
+                    "id": "note-intro",
+                    "component": "Text",
+                    "text": {
+                      "path": "/note_intro"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "when",
+                    "component": "Text",
+                    "text": {
+                      "path": "/when"
+                    }
+                  },
+                  {
+                    "id": "where",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/where"
+                    }
+                  },
+                  {
+                    "id": "loading_note-bring",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_note-close",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_guests-label",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_guest-list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "event-7nuujj9h9ru89blofii3m5otlo"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 9543,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "when",
+                      "where",
+                      "divider",
+                      "note-intro",
+                      "note-bring",
+                      "loading_note-close",
+                      "loading_guests-label",
+                      "loading_guest-list"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": {
+                      "path": "/summary"
+                    }
+                  },
+                  {
+                    "id": "note-bring",
+                    "component": "Text",
+                    "text": {
+                      "path": "/note_bring"
+                    }
+                  },
+                  {
+                    "id": "note-intro",
+                    "component": "Text",
+                    "text": {
+                      "path": "/note_intro"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "when",
+                    "component": "Text",
+                    "text": {
+                      "path": "/when"
+                    }
+                  },
+                  {
+                    "id": "where",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/where"
+                    }
+                  },
+                  {
+                    "id": "loading_note-close",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_guests-label",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_guest-list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "event-7nuujj9h9ru89blofii3m5otlo"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 9599,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "when",
+                      "where",
+                      "divider",
+                      "note-intro",
+                      "note-bring",
+                      "note-close",
+                      "loading_guests-label",
+                      "loading_guest-list"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": {
+                      "path": "/summary"
+                    }
+                  },
+                  {
+                    "id": "note-bring",
+                    "component": "Text",
+                    "text": {
+                      "path": "/note_bring"
+                    }
+                  },
+                  {
+                    "id": "note-close",
+                    "component": "Text",
+                    "text": {
+                      "path": "/note_close"
+                    }
+                  },
+                  {
+                    "id": "note-intro",
+                    "component": "Text",
+                    "text": {
+                      "path": "/note_intro"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "when",
+                    "component": "Text",
+                    "text": {
+                      "path": "/when"
+                    }
+                  },
+                  {
+                    "id": "where",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/where"
+                    }
+                  },
+                  {
+                    "id": "loading_guests-label",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_guest-list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "event-7nuujj9h9ru89blofii3m5otlo"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 9743,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "when",
+                      "where",
+                      "divider",
+                      "note-intro",
+                      "note-bring",
+                      "note-close",
+                      "guests-label",
+                      "loading_guest-list"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "guests-label",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "Guests"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": {
+                      "path": "/summary"
+                    }
+                  },
+                  {
+                    "id": "note-bring",
+                    "component": "Text",
+                    "text": {
+                      "path": "/note_bring"
+                    }
+                  },
+                  {
+                    "id": "note-close",
+                    "component": "Text",
+                    "text": {
+                      "path": "/note_close"
+                    }
+                  },
+                  {
+                    "id": "note-intro",
+                    "component": "Text",
+                    "text": {
+                      "path": "/note_intro"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "when",
+                    "component": "Text",
+                    "text": {
+                      "path": "/when"
+                    }
+                  },
+                  {
+                    "id": "where",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/where"
+                    }
+                  },
+                  {
+                    "id": "loading_guest-list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "event-7nuujj9h9ru89blofii3m5otlo"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 9809,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "when",
+                      "where",
+                      "divider",
+                      "note-intro",
+                      "note-bring",
+                      "note-close",
+                      "guests-label",
+                      "guest-list"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "guest-list",
+                    "component": "List",
+                    "children": {
+                      "path": "/guests",
+                      "componentId": "loading_guest-row"
+                    }
+                  },
+                  {
+                    "id": "guests-label",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "Guests"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": {
+                      "path": "/summary"
+                    }
+                  },
+                  {
+                    "id": "note-bring",
+                    "component": "Text",
+                    "text": {
+                      "path": "/note_bring"
+                    }
+                  },
+                  {
+                    "id": "note-close",
+                    "component": "Text",
+                    "text": {
+                      "path": "/note_close"
+                    }
+                  },
+                  {
+                    "id": "note-intro",
+                    "component": "Text",
+                    "text": {
+                      "path": "/note_intro"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "when",
+                    "component": "Text",
+                    "text": {
+                      "path": "/when"
+                    }
+                  },
+                  {
+                    "id": "where",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/where"
+                    }
+                  },
+                  {
+                    "id": "loading_guest-row",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "event-7nuujj9h9ru89blofii3m5otlo"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 10002,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "when",
+                      "where",
+                      "divider",
+                      "note-intro",
+                      "note-bring",
+                      "note-close",
+                      "guests-label",
+                      "guest-list"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "guest-list",
+                    "component": "List",
+                    "children": {
+                      "path": "/guests",
+                      "componentId": "guest-row"
+                    }
+                  },
+                  {
+                    "id": "guest-row",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "loading_guest-name",
+                      "loading_guest-status"
+                    ]
+                  },
+                  {
+                    "id": "guests-label",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "Guests"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": {
+                      "path": "/summary"
+                    }
+                  },
+                  {
+                    "id": "note-bring",
+                    "component": "Text",
+                    "text": {
+                      "path": "/note_bring"
+                    }
+                  },
+                  {
+                    "id": "note-close",
+                    "component": "Text",
+                    "text": {
+                      "path": "/note_close"
+                    }
+                  },
+                  {
+                    "id": "note-intro",
+                    "component": "Text",
+                    "text": {
+                      "path": "/note_intro"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "when",
+                    "component": "Text",
+                    "text": {
+                      "path": "/when"
+                    }
+                  },
+                  {
+                    "id": "where",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/where"
+                    }
+                  },
+                  {
+                    "id": "loading_guest-name",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_guest-status",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "event-7nuujj9h9ru89blofii3m5otlo"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 10064,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "when",
+                      "where",
+                      "divider",
+                      "note-intro",
+                      "note-bring",
+                      "note-close",
+                      "guests-label",
+                      "guest-list"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "guest-list",
+                    "component": "List",
+                    "children": {
+                      "path": "/guests",
+                      "componentId": "guest-row"
+                    }
+                  },
+                  {
+                    "id": "guest-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "name"
+                    }
+                  },
+                  {
+                    "id": "guest-row",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "guest-name",
+                      "loading_guest-status"
+                    ]
+                  },
+                  {
+                    "id": "guests-label",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "Guests"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": {
+                      "path": "/summary"
+                    }
+                  },
+                  {
+                    "id": "note-bring",
+                    "component": "Text",
+                    "text": {
+                      "path": "/note_bring"
+                    }
+                  },
+                  {
+                    "id": "note-close",
+                    "component": "Text",
+                    "text": {
+                      "path": "/note_close"
+                    }
+                  },
+                  {
+                    "id": "note-intro",
+                    "component": "Text",
+                    "text": {
+                      "path": "/note_intro"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "when",
+                    "component": "Text",
+                    "text": {
+                      "path": "/when"
+                    }
+                  },
+                  {
+                    "id": "where",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/where"
+                    }
+                  },
+                  {
+                    "id": "loading_guest-status",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "event-7nuujj9h9ru89blofii3m5otlo"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 10197,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "when",
+                      "where",
+                      "divider",
+                      "note-intro",
+                      "note-bring",
+                      "note-close",
+                      "guests-label",
+                      "guest-list"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "guest-list",
+                    "component": "List",
+                    "children": {
+                      "path": "/guests",
+                      "componentId": "guest-row"
+                    }
+                  },
+                  {
+                    "id": "guest-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "name"
+                    }
+                  },
+                  {
+                    "id": "guest-row",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "guest-name",
+                      "guest-status"
+                    ]
+                  },
+                  {
+                    "id": "guest-status",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "status"
+                    }
+                  },
+                  {
+                    "id": "guests-label",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "Guests"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": {
+                      "path": "/summary"
+                    }
+                  },
+                  {
+                    "id": "note-bring",
+                    "component": "Text",
+                    "text": {
+                      "path": "/note_bring"
+                    }
+                  },
+                  {
+                    "id": "note-close",
+                    "component": "Text",
+                    "text": {
+                      "path": "/note_close"
+                    }
+                  },
+                  {
+                    "id": "note-intro",
+                    "component": "Text",
+                    "text": {
+                      "path": "/note_intro"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "when",
+                    "component": "Text",
+                    "text": {
+                      "path": "/when"
+                    }
+                  },
+                  {
+                    "id": "where",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/where"
+                    }
+                  }
+                ],
+                "surfaceId": "event-7nuujj9h9ru89blofii3m5otlo"
+              }
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "outcome": "completed",
+      "durationMs": 10397
+    }
+  ]
+}

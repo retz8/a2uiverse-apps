@@ -20,8 +20,10 @@ runs over the result. Do not commit a corpus that fails it.
 
 from __future__ import annotations
 
+import hashlib
 import json
 import os
+import re
 from pathlib import Path
 
 AGENT = Path(__file__).resolve().parent.parent
@@ -117,28 +119,78 @@ def settled_messages(beat_path: Path) -> list[dict]:
     return out
 
 
-def mask_self(value: object) -> object:
-    """Replaces the demo calendar's own address wherever it appears.
+# RFC 2606 reserves these precisely so they cannot belong to anyone. Any address outside them
+# is somebody's, and must not be published.
+ALLOWED_DOMAINS = ("example.com", "example.org", "example.net", "invalid")
 
-    The seed authors every other attendee, so this is the only identifier a capture carries
-    that nobody chose. It is walked over the whole payload rather than the keys we expect,
-    because a value under a key nobody anticipated is exactly the one that would be
-    published — and `test_corpus_is_publishable` fails on it, since
-    `group.calendar.google.com` is not a reserved example domain.
+_ADDRESS = re.compile(r"[\w.+-]+@[\w.-]+\.[a-z]{2,}", re.IGNORECASE)
+
+
+def _stand_in(address: str) -> str:
+    """A stable replacement for one real address.
+
+    The demo calendar's own address becomes `you@example.com` because that is what it is —
+    Google flags it `self`, and it reads as the viewer on every surface. Anything else gets a
+    deterministic stand-in, so re-deriving a corpus produces identical files and a beat still
+    matches its committed baseline.
+    """
+    if SELF_EMAIL and address.lower() == SELF_EMAIL.lower():
+        return "you@example.com"
+    digest = hashlib.sha256(address.lower().encode("utf-8")).hexdigest()[:8]
+    return f"person-{digest}@example.com"
+
+
+def mask(value: object) -> object:
+    """Replaces every address that is not already a reserved example address.
+
+    Masking by RULE rather than by known value, deliberately. The first pass here masked the
+    demo calendar's own address — the identifier we knew about — and shipped `creator.email`,
+    the account that ran the seed script, straight into a fixture. `test_corpus_is_publishable`
+    caught it, which is the whole reason that guard is asserted over the artifact rather than
+    trusted to this function.
+
+    That is the same failure task 2.6 hit from the other direction, and the same fix: do not
+    enumerate what to replace, enumerate what is allowed to survive.
+
+    Walked over the whole payload, keys included, because an address under a key nobody
+    anticipated is exactly the one that would be published.
     """
     if isinstance(value, dict):
-        return {k: mask_self(v) for k, v in value.items()}
+        return {k: mask(v) for k, v in value.items()}
     if isinstance(value, list):
-        return [mask_self(v) for v in value]
-    if isinstance(value, str) and SELF_EMAIL and SELF_EMAIL in value:
-        return value.replace(SELF_EMAIL, SELF_PLACEHOLDER)
+        return [mask(v) for v in value]
+    if isinstance(value, str):
+        return _ADDRESS.sub(
+            lambda m: m.group(0) if m.group(0).lower().endswith(ALLOWED_DOMAINS) else _stand_in(m.group(0)),
+            value,
+        )
     return value
+
+
+def strip_links(value: object) -> object:
+    """Neutralises `htmlLink`, which carries the calendar id base64-encoded in its `eid`.
+
+    Not an address, so `mask` does not see it and the publishability guard does not either —
+    but it is still an identifier bound for a public repo, and nothing on a surface uses it.
+    """
+    if isinstance(value, dict):
+        return {
+            k: ("https://example.com/event" if k == "htmlLink" else strip_links(v))
+            for k, v in value.items()
+        }
+    if isinstance(value, list):
+        return [strip_links(v) for v in value]
+    return value
+
+
+def clean(value: object) -> object:
+    return strip_links(mask(value))
 
 
 def derive_stub() -> None:
     events = richest(CAPTURED / "list_events.jsonl", "events")
     if events:
-        events = mask_self(events)
+        events = clean(events)
         write(STUB / "list-events.json", events, f"{len(events['events'])} events")
 
     event_file = CAPTURED / "get_event.jsonl"
@@ -150,17 +202,17 @@ def derive_stub() -> None:
             except ValueError:
                 continue
             if isinstance(doc, dict) and doc.get("id"):
-                by_id[doc["id"]] = mask_self(doc)
+                by_id[doc["id"]] = clean(doc)
         if by_id:
             write(STUB / "get-event.json", by_id, f"{len(by_id)} events")
 
     calendars = richest(CAPTURED / "list_calendars.jsonl", "calendars")
     if calendars:
-        write(STUB / "list-calendars.json", mask_self(calendars), "calendar list")
+        write(STUB / "list-calendars.json", clean(calendars), "calendar list")
 
     freebusy = richest(CAPTURED / "query_freebusy.jsonl", "busy")
     if freebusy:
-        write(STUB / "query-freebusy.json", mask_self(freebusy), f"{len(freebusy['busy'])} busy")
+        write(STUB / "query-freebusy.json", clean(freebusy), f"{len(freebusy['busy'])} busy")
 
 
 def derive_deterministic() -> None:

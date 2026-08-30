@@ -1,0 +1,274 @@
+[
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "event-7nuujj9h9ru89blofii3m5otlo",
+      "value": {
+        "summary": "Design review \u2014 agenda surface"
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "event-7nuujj9h9ru89blofii3m5otlo",
+      "value": {
+        "when": "Today, 11:00 \u2013 12:00",
+        "where": "Room 4B",
+        "note_intro": "Walk through the three fragment layouts."
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "event-7nuujj9h9ru89blofii3m5otlo",
+      "value": {
+        "note_bring": "Bring the density comparison and the token divergence notes."
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "event-7nuujj9h9ru89blofii3m5otlo",
+      "value": {
+        "note_close": "We should decide the accent question in this session rather than carrying it another week."
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "event-7nuujj9h9ru89blofii3m5otlo",
+      "value": {
+        "guests": [
+          {
+            "name": "Alex Bergman",
+            "status": "Accepted"
+          },
+          {
+            "name": "Mei Silva",
+            "status": "No answer yet"
+          },
+          {
+            "name": "Idris Haddad"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "event-7nuujj9h9ru89blofii3m5otlo",
+      "path": "/",
+      "value": {
+        "summary": "Design review \u2014 agenda surface",
+        "when": "Today, 11:00 \u2013 12:00",
+        "where": "Room 4B",
+        "note_intro": "Walk through the three fragment layouts.",
+        "note_bring": "Bring the density comparison and the token divergence notes.",
+        "note_close": "We should decide the accent question in this session rather than carrying it another week.",
+        "guests": [
+          {
+            "name": "Alex Bergman",
+            "status": "Accepted"
+          },
+          {
+            "name": "Mei Silva",
+            "status": "No answer yet"
+          },
+          {
+            "name": "Idris Haddad",
+            "status": "Declined"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateComponents": {
+      "components": [
+        {
+          "id": "root",
+          "component": "Card",
+          "child": "body"
+        },
+        {
+          "id": "loading_body",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "body",
+          "component": "Column",
+          "children": [
+            "heading",
+            "when",
+            "where",
+            "divider",
+            "note-intro",
+            "note-bring",
+            "note-close",
+            "guests-label",
+            "guest-list"
+          ]
+        },
+        {
+          "id": "loading_heading",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "loading_when",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "loading_where",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "loading_divider",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "loading_note-intro",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "loading_note-bring",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "loading_note-close",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "loading_guests-label",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "loading_guest",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "loading_guest-list",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "heading",
+          "component": "Text",
+          "variant": "h3",
+          "text": {
+            "path": "/summary"
+          }
+        },
+        {
+          "id": "when",
+          "component": "Text",
+          "text": {
+            "path": "/when"
+          }
+        },
+        {
+          "id": "where",
+          "component": "Text",
+          "variant": "caption",
+          "text": {
+            "path": "/where"
+          }
+        },
+        {
+          "id": "divider",
+          "component": "Divider"
+        },
+        {
+          "id": "note-intro",
+          "component": "Text",
+          "text": {
+            "path": "/note_intro"
+          }
+        },
+        {
+          "id": "note-bring",
+          "component": "Text",
+          "text": {
+            "path": "/note_bring"
+          }
+        },
+        {
+          "id": "note-close",
+          "component": "Text",
+          "text": {
+            "path": "/note_close"
+          }
+        },
+        {
+          "id": "guests-label",
+          "component": "Text",
+          "variant": "caption",
+          "text": "Guests"
+        },
+        {
+          "id": "guest-list",
+          "component": "List",
+          "children": {
+            "path": "/guests",
+            "componentId": "guest-row"
+          }
+        },
+        {
+          "id": "loading_guest-row",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "guest-row",
+          "component": "Row",
+          "justify": "spaceBetween",
+          "align": "center",
+          "children": [
+            "guest-name",
+            "guest-status"
+          ]
+        },
+        {
+          "id": "loading_guest-name",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "loading_guest-status",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "guest-name",
+          "component": "Text",
+          "text": {
+            "path": "name"
+          }
+        },
+        {
+          "id": "guest-status",
+          "component": "Text",
+          "variant": "caption",
+          "text": {
+            "path": "status"
+          }
+        }
+      ]
+    }
+  }
+]

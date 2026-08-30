@@ -33,9 +33,11 @@ rewrite.
 
 from __future__ import annotations
 
+import hashlib
 import json
 import logging
 import os
+import re
 from pathlib import Path
 from typing import Any
 
@@ -187,19 +189,67 @@ def capture_payload(tool_name: str, payload: object) -> None:
         logger.debug("payload capture failed for %s", tool_name, exc_info=True)
 
 
-def capture_tool_result(result: Any, tool_name: str = "tool") -> Any:
-    """Records an MCP CallToolResult to the corpus, in record mode. Returns it unchanged.
+# RFC 2606 reserves these precisely so they cannot belong to anyone. On a seeded calendar
+# every authored address is already one of them, so anything outside them is a field Google
+# injected rather than one the seed wrote.
+_ALLOWED_DOMAINS = ("example.com", "example.org", "example.net", "invalid")
 
-    Gmail's counterpart at this seam also pseudonymized, and had to walk every branch of the
-    result because `CallToolResult` carries both `content` and `structuredContent` — the same
-    payload twice, and rewriting one left the other real. Nothing is rewritten here, so that
-    hazard is gone; the result is passed through exactly as the server sent it, and only a
-    copy is written to the corpus.
+_ADDRESS = re.compile(r"[\w.+-]+@[\w.-]+\.[a-z]{2,}", re.IGNORECASE)
+
+
+def _stand_in(address: str) -> str:
+    """A stable replacement, so a re-recorded beat reproduces the same value."""
+    if address.lower() == (os.environ.get(CALENDAR_ID_ENV) or "").lower():
+        return "you@example.com"
+    return f"person-{hashlib.sha256(address.lower().encode()).hexdigest()[:8]}@example.com"
+
+
+def mask_injected_addresses(value: Any) -> Any:
+    """Replaces addresses the seed did not author. Record mode only; see capture_tool_result.
+
+    Task-2.7 decision 4 removed Gmail's pseudonymizer on the grounds that a seeded calendar
+    has nothing real to substitute. The first live run showed one exception: Google stamps
+    `creator.email` with the account that created the event, which is a real person and is not
+    authored by anything in `seed_events.json`. The corpus guard caught it in a fixture.
+
+    So the premise needed narrowing rather than the decision reversing. This is not Gmail's
+    substitution — it does not touch titles, notes, times or attendees, all of which stay
+    exactly as the seed wrote them. It replaces only addresses outside the reserved example
+    domains, which on this calendar means only the fields Google injects.
+
+    It masks by RULE, not by known value. Enumerating what to replace is how both this task
+    and 2.6 leaked; enumerating what may survive is the fix.
+    """
+    if isinstance(value, dict):
+        return {k: mask_injected_addresses(v) for k, v in value.items()}
+    if isinstance(value, list):
+        return [mask_injected_addresses(v) for v in value]
+    if isinstance(value, str):
+        return _ADDRESS.sub(
+            lambda m: m.group(0)
+            if m.group(0).lower().endswith(_ALLOWED_DOMAINS)
+            else _stand_in(m.group(0)),
+            value,
+        )
+    return value
+
+
+def capture_tool_result(result: Any, tool_name: str = "tool") -> Any:
+    """Masks Google-injected addresses and records the result to the corpus, in record mode.
+
+    The masked dict is what is RETURNED, not merely what is captured. That is task 2.6's
+    hard-won lesson applied: `CallToolResult` carries the same payload twice, in `content` and
+    in `structuredContent`, and rewriting one while returning the other is how a clean corpus
+    ends up beside a dirty painted stream. Here there is one dict, it is masked whole, and the
+    corpus is taken from the same object the model reads — so the two cannot disagree.
+
+    Outside record mode nothing is touched: the live agent sees the real calendar.
     """
     if not recording() or not isinstance(result, dict):
         return result
-    capture_payload(tool_name, _corpus_payload(result))
-    return result
+    masked = mask_injected_addresses(result)
+    capture_payload(tool_name, _corpus_payload(masked))
+    return masked
 
 
 def _corpus_payload(result: dict) -> Any:

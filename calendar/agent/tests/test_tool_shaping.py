@@ -16,6 +16,7 @@ from llm_agent.tool_shaping import (
     PROJECTION_NOTE,
     annotate,
     capture_tool_result,
+    mask_injected_addresses,
     pin_calendar,
     recording,
     shape_tool_response,
@@ -205,12 +206,14 @@ class TestPassThrough:
         assert PROJECTION_NOTE in decoded["_payload_notes"]
 
 
-class TestCaptureDoesNotRewrite:
-    """The half of Gmail's boundary that Calendar deliberately does not have.
+class TestCaptureLeavesAuthoredContentAlone:
+    """Authored content passes through untouched, and both branches stay in agreement.
 
-    Gmail had to walk every branch of a CallToolResult because it was substituting, and a
-    branch it missed was a leak. Nothing is substituted here, so the assertion inverts: the
-    result must come back byte-for-byte, both branches included, and only a copy is recorded.
+    Only addresses the seed did not write are masked (see TestInjectedAddressMasking), so for
+    a payload whose addresses are already reserved this seam is a pass-through — which is what
+    keeps decision 4 true of everything the seed controls. What it must never do is rewrite
+    one branch of a CallToolResult and not the other; that is the 2.6 failure, and the
+    agreement assertion below is what stands in its way.
     """
 
     def _result(self) -> dict:
@@ -219,7 +222,8 @@ class TestCaptureDoesNotRewrite:
             "structuredContent": json.loads(json.dumps(PAYLOAD)),
         }
 
-    def test_the_result_is_returned_unchanged(self, monkeypatch, tmp_path):
+    def test_authored_content_is_returned_unchanged(self, monkeypatch, tmp_path):
+        # PAYLOAD's addresses are all reserved, i.e. seed-authored, so nothing should move.
         monkeypatch.setenv("A2UI_RECORD_DIR", str(tmp_path))
         result = self._result()
         assert capture_tool_result(result, "list_events") == self._result()
@@ -243,3 +247,53 @@ class TestCaptureDoesNotRewrite:
     def test_a_non_dict_result_is_passed_through(self, monkeypatch, tmp_path):
         monkeypatch.setenv("A2UI_RECORD_DIR", str(tmp_path))
         assert capture_tool_result("raw", "list_events") == "raw"
+
+
+class TestInjectedAddressMasking:
+    """Decision 4's premise had one exception, and the live run found it.
+
+    A seeded calendar has nothing real to substitute — except that Google stamps
+    `creator.email` with the account that made the event, which no seed file authors. These
+    assert the narrow fix: only addresses outside the reserved domains move, and everything
+    the seed wrote stays exactly as written.
+    """
+
+    def test_an_injected_address_is_replaced(self):
+        out = mask_injected_addresses({"creator": {"email": "someone@a-real-place.edu"}})
+        assert out["creator"]["email"].endswith("@example.com")
+        assert "a-real-place" not in json.dumps(out)
+
+    def test_an_authored_address_survives_untouched(self):
+        # The seed's people must not churn: they are the content, and they are already fake.
+        payload = {"attendees": [{"email": "priya.nakamura@example.com"}]}
+        assert mask_injected_addresses(payload) == payload
+
+    def test_the_demo_calendar_reads_as_the_viewer(self, monkeypatch):
+        monkeypatch.setenv("CALENDAR_ID", "demo@group.calendar.google.com")
+        out = mask_injected_addresses({"organizer": {"email": "demo@group.calendar.google.com"}})
+        assert out["organizer"]["email"] == "you@example.com"
+
+    def test_replacement_is_stable_across_runs(self):
+        # A re-recorded beat has to reproduce the same value or it stops matching its baseline.
+        first = mask_injected_addresses("someone@a-real-place.edu")
+        assert first == mask_injected_addresses("someone@a-real-place.edu")
+
+    def test_nothing_but_addresses_is_touched(self):
+        # Explicitly NOT Gmail's pseudonymizer: titles, notes and times are the authored
+        # content and must survive verbatim.
+        payload = {"summary": "Design review", "description": "Bring the notes.",
+                   "start": {"dateTime": "2026-08-30T11:00:00-04:00"}}
+        assert mask_injected_addresses(payload) == payload
+
+    def test_the_returned_result_is_the_masked_one(self, monkeypatch, tmp_path):
+        # The 2.6 failure, asserted directly: the model must read the same dict the corpus
+        # records, or a clean corpus can sit beside a dirty painted stream.
+        monkeypatch.setenv("A2UI_RECORD_DIR", str(tmp_path))
+        payload = {"events": [{"creator": {"email": "someone@a-real-place.edu"}}]}
+        result = {"content": [{"type": "text", "text": json.dumps(payload)}],
+                  "structuredContent": json.loads(json.dumps(payload))}
+        returned = capture_tool_result(result, "list_events")
+        assert "a-real-place" not in json.dumps(returned)
+        written = (tmp_path / "payloads" / "list_events.jsonl").read_text(encoding="utf-8")
+        assert "a-real-place" not in written
+        assert json.loads(returned["content"][0]["text"]) == returned["structuredContent"]

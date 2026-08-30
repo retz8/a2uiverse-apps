@@ -1,0 +1,431 @@
+[
+  {
+    "version": "v0.9",
+    "createSurface": {
+      "surfaceId": "needs-attention",
+      "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/calendar/calendar-catalog/catalogs/v0.9.1/catalog.json",
+      "sendDataModel": true
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "needs-attention",
+      "value": {
+        "waiting": [
+          {
+            "id": "7nuujj9h9ru89blofii3m5otlo",
+            "when": "11:00",
+            "summary": "Design review \u2014 agenda surface",
+            "note": "Invitation unanswered"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "needs-attention",
+      "value": {
+        "waiting": [
+          {
+            "id": "7nuujj9h9ru89blofii3m5otlo",
+            "when": "11:00",
+            "summary": "Design review \u2014 agenda surface",
+            "note": "Invitation unanswered"
+          },
+          {
+            "id": "o49vnbegq501jme5all5bt82eo",
+            "when": "Tomorrow 10:00",
+            "summary": "Quarter planning"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "needs-attention",
+      "value": {
+        "waiting": [
+          {
+            "id": "7nuujj9h9ru89blofii3m5otlo",
+            "when": "11:00",
+            "summary": "Design review \u2014 agenda surface",
+            "note": "Invitation unanswered"
+          },
+          {
+            "id": "o49vnbegq501jme5all5bt82eo",
+            "when": "Tomorrow 10:00",
+            "summary": "Quarter planning",
+            "note": "Invitation unanswered"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "needs-attention",
+      "value": {
+        "clashes": [
+          {
+            "id": "7nuujj9h9ru89blofii3m5otlo",
+            "when": "11:00 \u2013 12:00",
+            "summary": "Design review \u2014 agenda surface",
+            "note": "Overlaps Budget sync"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "needs-attention",
+      "value": {
+        "clashes": [
+          {
+            "id": "7nuujj9h9ru89blofii3m5otlo",
+            "when": "11:00 \u2013 12:00",
+            "summary": "Design review \u2014 agenda surface",
+            "note": "Overlaps Budget sync"
+          },
+          {
+            "id": "ev1fmp1rmvhhb260fbebvd7o9o",
+            "when": "11:30 \u2013 12:15"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "needs-attention",
+      "value": {
+        "clashes": [
+          {
+            "id": "7nuujj9h9ru89blofii3m5otlo",
+            "when": "11:00 \u2013 12:00",
+            "summary": "Design review \u2014 agenda surface",
+            "note": "Overlaps Budget sync"
+          },
+          {
+            "id": "ev1fmp1rmvhhb260fbebvd7o9o",
+            "when": "11:30 \u2013 12:15",
+            "summary": "Budget sync",
+            "note": "Overlaps Design review"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "needs-attention",
+      "path": "/",
+      "value": {
+        "waiting": [
+          {
+            "id": "7nuujj9h9ru89blofii3m5otlo",
+            "when": "11:00",
+            "summary": "Design review \u2014 agenda surface",
+            "note": "Invitation unanswered"
+          },
+          {
+            "id": "o49vnbegq501jme5all5bt82eo",
+            "when": "Tomorrow 10:00",
+            "summary": "Quarter planning",
+            "note": "Invitation unanswered"
+          }
+        ],
+        "clashes": [
+          {
+            "id": "7nuujj9h9ru89blofii3m5otlo",
+            "when": "11:00 \u2013 12:00",
+            "summary": "Design review \u2014 agenda surface",
+            "note": "Overlaps Budget sync"
+          },
+          {
+            "id": "ev1fmp1rmvhhb260fbebvd7o9o",
+            "when": "11:30 \u2013 12:15",
+            "summary": "Budget sync",
+            "note": "Overlaps Design review"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateComponents": {
+      "components": [
+        {
+          "id": "root",
+          "component": "Card",
+          "child": "body"
+        },
+        {
+          "id": "loading_body",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "body",
+          "component": "Column",
+          "children": [
+            "heading",
+            "waiting-label",
+            "waiting-list",
+            "divider",
+            "clash-label",
+            "clash-list"
+          ]
+        },
+        {
+          "id": "loading_heading",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "loading_waiting-label",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "loading_waiting-list",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "loading_divider",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "loading_clash-label",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "loading_clash-list",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "heading",
+          "component": "Text",
+          "variant": "h3",
+          "text": "Needs an answer"
+        },
+        {
+          "id": "waiting-label",
+          "component": "Text",
+          "variant": "caption",
+          "text": "2 invitations you have not replied to"
+        },
+        {
+          "id": "waiting-list",
+          "component": "Column",
+          "children": {
+            "path": "/waiting",
+            "componentId": "waiting-row"
+          }
+        },
+        {
+          "id": "loading_waiting-row",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "waiting-row",
+          "component": "Button",
+          "variant": "borderless",
+          "child": "waiting-body",
+          "action": {
+            "event": {
+              "name": "open-event",
+              "context": {
+                "eventId": {
+                  "path": "id"
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "loading_waiting-body",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "waiting-body",
+          "component": "Column",
+          "children": [
+            "waiting-top",
+            "waiting-note"
+          ]
+        },
+        {
+          "id": "loading_waiting-top",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "loading_waiting-note",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "waiting-top",
+          "component": "Row",
+          "align": "center",
+          "children": [
+            "waiting-when",
+            "waiting-summary"
+          ]
+        },
+        {
+          "id": "loading_waiting-when",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "loading_waiting-summary",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "waiting-when",
+          "component": "Text",
+          "text": {
+            "path": "when"
+          }
+        },
+        {
+          "id": "waiting-summary",
+          "component": "Text",
+          "text": {
+            "path": "summary"
+          }
+        },
+        {
+          "id": "waiting-note",
+          "component": "Text",
+          "variant": "caption",
+          "text": {
+            "path": "note"
+          }
+        },
+        {
+          "id": "divider",
+          "component": "Divider"
+        },
+        {
+          "id": "clash-label",
+          "component": "Text",
+          "variant": "caption",
+          "text": "Double-booked today"
+        },
+        {
+          "id": "clash-list",
+          "component": "Column",
+          "children": {
+            "path": "/clashes",
+            "componentId": "clash-row"
+          }
+        },
+        {
+          "id": "loading_clash-row",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "clash-row",
+          "component": "Button",
+          "variant": "borderless",
+          "child": "clash-body",
+          "action": {
+            "event": {
+              "name": "open-event",
+              "context": {
+                "eventId": {
+                  "path": "id"
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "loading_clash-body",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "clash-body",
+          "component": "Column",
+          "children": [
+            "clash-top",
+            "clash-note"
+          ]
+        },
+        {
+          "id": "loading_clash-top",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "loading_clash-note",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "clash-top",
+          "component": "Row",
+          "align": "center",
+          "children": [
+            "clash-when",
+            "clash-summary"
+          ]
+        },
+        {
+          "id": "loading_clash-when",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "loading_clash-summary",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "clash-when",
+          "component": "Text",
+          "text": {
+            "path": "when"
+          }
+        },
+        {
+          "id": "clash-summary",
+          "component": "Text",
+          "text": {
+            "path": "summary"
+          }
+        },
+        {
+          "id": "clash-note",
+          "component": "Text",
+          "variant": "caption",
+          "text": {
+            "path": "note"
+          }
+        }
+      ]
+    }
+  }
+]

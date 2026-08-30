@@ -1,0 +1,322 @@
+{
+  "accessRole": "owner",
+  "events": [
+    {
+      "attendees": [
+        {
+          "displayName": "A2UIVerse Demo",
+          "email": "you@example.com",
+          "organizer": true,
+          "responseStatus": "accepted",
+          "self": true
+        },
+        {
+          "email": "priya.nakamura@example.com",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "jonas.okonkwo@example.com",
+          "responseStatus": "accepted"
+        }
+      ],
+      "created": "2026-08-30T06:12:49Z",
+      "creator": {
+        "email": "person-f9ec358f@example.com"
+      },
+      "description": "Quick round: what landed yesterday, what is next, anything blocked.",
+      "end": {
+        "dateTime": "2026-08-30T09:45:00-04:00",
+        "timeZone": "America/New_York"
+      },
+      "eventType": "DEFAULT",
+      "htmlLink": "https://example.com/event",
+      "id": "0aimllp3usofc096dnmon8h36o",
+      "location": "Meet",
+      "organizer": {
+        "displayName": "A2UIVerse Demo",
+        "email": "you@example.com",
+        "self": true
+      },
+      "start": {
+        "dateTime": "2026-08-30T09:30:00-04:00",
+        "timeZone": "America/New_York"
+      },
+      "status": "confirmed",
+      "summary": "Team standup",
+      "updated": "2026-08-30T06:12:49Z"
+    },
+    {
+      "attendees": [
+        {
+          "displayName": "A2UIVerse Demo",
+          "email": "you@example.com",
+          "organizer": true,
+          "responseStatus": "needsAction",
+          "self": true
+        },
+        {
+          "email": "mei.silva@example.com",
+          "responseStatus": "needsAction"
+        },
+        {
+          "email": "idris.haddad@example.com",
+          "responseStatus": "declined"
+        },
+        {
+          "email": "alex.bergman@example.com",
+          "responseStatus": "accepted"
+        }
+      ],
+      "created": "2026-08-30T06:12:50Z",
+      "creator": {
+        "email": "person-f9ec358f@example.com"
+      },
+      "description": "Walk through the three fragment layouts.\n\nBring:\n- the density comparison\n- the token divergence notes\n\nWe should decide the accent question in this session rather than carrying it another week.",
+      "end": {
+        "dateTime": "2026-08-30T12:00:00-04:00",
+        "timeZone": "America/New_York"
+      },
+      "eventType": "DEFAULT",
+      "htmlLink": "https://example.com/event",
+      "id": "7nuujj9h9ru89blofii3m5otlo",
+      "location": "Room 4B",
+      "organizer": {
+        "displayName": "A2UIVerse Demo",
+        "email": "you@example.com",
+        "self": true
+      },
+      "start": {
+        "dateTime": "2026-08-30T11:00:00-04:00",
+        "timeZone": "America/New_York"
+      },
+      "status": "confirmed",
+      "summary": "Design review \u2014 agenda surface",
+      "updated": "2026-08-30T06:12:50Z"
+    },
+    {
+      "attendees": [
+        {
+          "displayName": "A2UIVerse Demo",
+          "email": "you@example.com",
+          "organizer": true,
+          "responseStatus": "accepted",
+          "self": true
+        },
+        {
+          "email": "clara.moreau@example.com",
+          "responseStatus": "accepted"
+        }
+      ],
+      "created": "2026-08-30T06:12:50Z",
+      "creator": {
+        "email": "person-f9ec358f@example.com"
+      },
+      "description": "Two line items still do not reconcile against the estimate.",
+      "end": {
+        "dateTime": "2026-08-30T12:15:00-04:00",
+        "timeZone": "America/New_York"
+      },
+      "eventType": "DEFAULT",
+      "htmlLink": "https://example.com/event",
+      "id": "ev1fmp1rmvhhb260fbebvd7o9o",
+      "organizer": {
+        "displayName": "A2UIVerse Demo",
+        "email": "you@example.com",
+        "self": true
+      },
+      "start": {
+        "dateTime": "2026-08-30T11:30:00-04:00",
+        "timeZone": "America/New_York"
+      },
+      "status": "confirmed",
+      "summary": "Budget sync",
+      "updated": "2026-08-30T06:12:51Z"
+    },
+    {
+      "created": "2026-08-30T06:12:51Z",
+      "creator": {
+        "email": "person-f9ec358f@example.com"
+      },
+      "end": {
+        "dateTime": "2026-08-30T16:00:00-04:00",
+        "timeZone": "America/New_York"
+      },
+      "eventType": "DEFAULT",
+      "htmlLink": "https://example.com/event",
+      "id": "f8v4bvk9phum5uu6o3v1vkmufo",
+      "organizer": {
+        "displayName": "A2UIVerse Demo",
+        "email": "you@example.com",
+        "self": true
+      },
+      "start": {
+        "dateTime": "2026-08-30T14:00:00-04:00",
+        "timeZone": "America/New_York"
+      },
+      "status": "confirmed",
+      "summary": "Writing time",
+      "updated": "2026-08-30T06:12:51Z"
+    },
+    {
+      "created": "2026-08-30T06:12:52Z",
+      "creator": {
+        "email": "person-f9ec358f@example.com"
+      },
+      "end": {
+        "date": "2026-09-01T00:00:00Z"
+      },
+      "eventType": "DEFAULT",
+      "htmlLink": "https://example.com/event",
+      "id": "u58lvgohrum08epueadcs46hg8",
+      "organizer": {
+        "displayName": "A2UIVerse Demo",
+        "email": "you@example.com",
+        "self": true
+      },
+      "start": {
+        "date": "2026-08-31T00:00:00Z"
+      },
+      "status": "confirmed",
+      "summary": "Nora out of office",
+      "updated": "2026-08-30T06:12:52Z"
+    },
+    {
+      "attendees": [
+        {
+          "displayName": "A2UIVerse Demo",
+          "email": "you@example.com",
+          "organizer": true,
+          "responseStatus": "needsAction",
+          "self": true
+        },
+        {
+          "email": "hana.tanaka@example.com",
+          "responseStatus": "needsAction"
+        },
+        {
+          "email": "alex.bergman@example.com",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "tomas.lindqvist@example.com",
+          "responseStatus": "tentative"
+        }
+      ],
+      "created": "2026-08-30T06:12:52Z",
+      "creator": {
+        "email": "person-f9ec358f@example.com"
+      },
+      "description": "Draft objectives circulated Monday. Read before the session.",
+      "end": {
+        "dateTime": "2026-08-31T11:30:00-04:00",
+        "timeZone": "America/New_York"
+      },
+      "eventType": "DEFAULT",
+      "htmlLink": "https://example.com/event",
+      "id": "o49vnbegq501jme5all5bt82eo",
+      "location": "Room 2A",
+      "organizer": {
+        "displayName": "A2UIVerse Demo",
+        "email": "you@example.com",
+        "self": true
+      },
+      "start": {
+        "dateTime": "2026-08-31T10:00:00-04:00",
+        "timeZone": "America/New_York"
+      },
+      "status": "confirmed",
+      "summary": "Quarter planning",
+      "updated": "2026-08-30T06:12:53Z"
+    },
+    {
+      "attendees": [
+        {
+          "displayName": "A2UIVerse Demo",
+          "email": "you@example.com",
+          "organizer": true,
+          "responseStatus": "accepted",
+          "self": true
+        },
+        {
+          "email": "sara.vasquez@example.com",
+          "responseStatus": "accepted"
+        }
+      ],
+      "created": "2026-08-30T06:12:53Z",
+      "creator": {
+        "email": "person-f9ec358f@example.com"
+      },
+      "end": {
+        "dateTime": "2026-09-01T15:30:00-04:00",
+        "timeZone": "America/New_York"
+      },
+      "eventType": "DEFAULT",
+      "htmlLink": "https://example.com/event",
+      "id": "g6mpkdjkkkgrlt8bhvrg9nm9ss",
+      "location": "Meet",
+      "organizer": {
+        "displayName": "A2UIVerse Demo",
+        "email": "you@example.com",
+        "self": true
+      },
+      "start": {
+        "dateTime": "2026-09-01T15:00:00-04:00",
+        "timeZone": "America/New_York"
+      },
+      "status": "confirmed",
+      "summary": "1:1 with Sara",
+      "updated": "2026-08-30T06:12:53Z"
+    },
+    {
+      "attendees": [
+        {
+          "displayName": "A2UIVerse Demo",
+          "email": "you@example.com",
+          "organizer": true,
+          "responseStatus": "accepted",
+          "self": true
+        },
+        {
+          "email": "priya.nakamura@example.com",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "yuki.novak@example.com",
+          "responseStatus": "accepted"
+        },
+        {
+          "email": "jonas.okonkwo@example.com",
+          "responseStatus": "accepted"
+        }
+      ],
+      "created": "2026-08-30T06:12:54Z",
+      "creator": {
+        "email": "person-f9ec358f@example.com"
+      },
+      "description": "What to keep, what to change.",
+      "end": {
+        "dateTime": "2026-09-03T17:00:00-04:00",
+        "timeZone": "America/New_York"
+      },
+      "eventType": "DEFAULT",
+      "htmlLink": "https://example.com/event",
+      "id": "p19cbeepbl5qgm8l6qqo4ptkf4",
+      "location": "Room 4B",
+      "organizer": {
+        "displayName": "A2UIVerse Demo",
+        "email": "you@example.com",
+        "self": true
+      },
+      "start": {
+        "dateTime": "2026-09-03T16:00:00-04:00",
+        "timeZone": "America/New_York"
+      },
+      "status": "confirmed",
+      "summary": "Sprint retro",
+      "updated": "2026-08-30T06:12:54Z"
+    }
+  ],
+  "summary": "A2UIVerse Demo",
+  "timeZone": "America/New_York",
+  "updated": "2026-08-30T06:13:05Z"
+}

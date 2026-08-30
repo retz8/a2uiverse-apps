@@ -1,0 +1,1509 @@
+{
+  "name": "beat-4-rsvp-toggle",
+  "beat": 4,
+  "title": "Invitation response",
+  "prompt": "Accept the quarter planning invite.",
+  "model": "gemini-3.7-flash",
+  "recordedAt": "2026-08-30T06:13:45+00:00",
+  "contextId": "3ed5276b-2959-4141-a126-cea9edb4865c",
+  "chainedFrom": null,
+  "turns": [
+    {
+      "taskId": "c284e541-62a6-48c6-b3f0-1d8b221a02a0",
+      "kind": "utterance",
+      "prompt": "Accept the quarter planning invite.",
+      "action": null,
+      "batches": [
+        {
+          "offsetMs": 10522,
+          "messages": [
+            {
+              "paintMeta": {
+                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo",
+                "title": "Quarter planning"
+              }
+            }
+          ],
+          "texts": [
+            "\n"
+          ]
+        },
+        {
+          "offsetMs": 10580,
+          "messages": [
+            {
+              "version": "v0.9",
+              "createSurface": {
+                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo",
+                "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/calendar/calendar-catalog/catalogs/v0.9.1/catalog.json",
+                "sendDataModel": true
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 10741,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo",
+                "value": {
+                  "summary": "Quarter planning"
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 10796,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo",
+                "value": {
+                  "when": "Monday, August 31, 2026, 10:00 \u2013 11:30 EDT",
+                  "location": "Room 2A"
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 10860,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo",
+                "path": "/",
+                "value": {
+                  "summary": "Quarter planning",
+                  "when": "Monday, August 31, 2026, 10:00 \u2013 11:30 EDT",
+                  "location": "Room 2A",
+                  "current": "Accepted",
+                  "description": "Draft objectives circulated Monday. Read before the session."
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 11039,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "loading_body"
+                  },
+                  {
+                    "id": "loading_body",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 11094,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "loading_heading",
+                      "loading_when",
+                      "loading_location",
+                      "loading_current",
+                      "loading_divider",
+                      "loading_description",
+                      "loading_actions"
+                    ]
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "loading_heading",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_when",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_location",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_current",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_divider",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_description",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 11155,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "loading_when",
+                      "loading_location",
+                      "loading_current",
+                      "loading_divider",
+                      "loading_description",
+                      "loading_actions"
+                    ]
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": {
+                      "path": "/summary"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "loading_when",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_location",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_current",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_divider",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_description",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 11280,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "when",
+                      "loading_location",
+                      "loading_current",
+                      "loading_divider",
+                      "loading_description",
+                      "loading_actions"
+                    ]
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": {
+                      "path": "/summary"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "when",
+                    "component": "Text",
+                    "text": {
+                      "path": "/when"
+                    }
+                  },
+                  {
+                    "id": "loading_location",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_current",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_divider",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_description",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 11335,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "when",
+                      "location",
+                      "loading_current",
+                      "loading_divider",
+                      "loading_description",
+                      "loading_actions"
+                    ]
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": {
+                      "path": "/summary"
+                    }
+                  },
+                  {
+                    "id": "location",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/location"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "when",
+                    "component": "Text",
+                    "text": {
+                      "path": "/when"
+                    }
+                  },
+                  {
+                    "id": "loading_current",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_divider",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_description",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 11462,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "when",
+                      "location",
+                      "current",
+                      "loading_divider",
+                      "loading_description",
+                      "loading_actions"
+                    ]
+                  },
+                  {
+                    "id": "current",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/current"
+                    }
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": {
+                      "path": "/summary"
+                    }
+                  },
+                  {
+                    "id": "location",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/location"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "when",
+                    "component": "Text",
+                    "text": {
+                      "path": "/when"
+                    }
+                  },
+                  {
+                    "id": "loading_divider",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_description",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 11527,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "when",
+                      "location",
+                      "current",
+                      "divider",
+                      "loading_description",
+                      "loading_actions"
+                    ]
+                  },
+                  {
+                    "id": "current",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/current"
+                    }
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": {
+                      "path": "/summary"
+                    }
+                  },
+                  {
+                    "id": "location",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/location"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "when",
+                    "component": "Text",
+                    "text": {
+                      "path": "/when"
+                    }
+                  },
+                  {
+                    "id": "loading_description",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 11584,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "when",
+                      "location",
+                      "current",
+                      "divider",
+                      "description",
+                      "loading_actions"
+                    ]
+                  },
+                  {
+                    "id": "current",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/current"
+                    }
+                  },
+                  {
+                    "id": "description",
+                    "component": "Text",
+                    "text": {
+                      "path": "/description"
+                    }
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": {
+                      "path": "/summary"
+                    }
+                  },
+                  {
+                    "id": "location",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/location"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "when",
+                    "component": "Text",
+                    "text": {
+                      "path": "/when"
+                    }
+                  },
+                  {
+                    "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 11701,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "actions",
+                    "component": "Row",
+                    "children": [
+                      "loading_yes",
+                      "loading_maybe",
+                      "loading_no"
+                    ]
+                  },
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "when",
+                      "location",
+                      "current",
+                      "divider",
+                      "description",
+                      "actions"
+                    ]
+                  },
+                  {
+                    "id": "current",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/current"
+                    }
+                  },
+                  {
+                    "id": "description",
+                    "component": "Text",
+                    "text": {
+                      "path": "/description"
+                    }
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": {
+                      "path": "/summary"
+                    }
+                  },
+                  {
+                    "id": "location",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/location"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "when",
+                    "component": "Text",
+                    "text": {
+                      "path": "/when"
+                    }
+                  },
+                  {
+                    "id": "loading_yes",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_maybe",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_no",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 11912,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "actions",
+                    "component": "Row",
+                    "children": [
+                      "yes",
+                      "loading_maybe",
+                      "loading_no"
+                    ]
+                  },
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "when",
+                      "location",
+                      "current",
+                      "divider",
+                      "description",
+                      "actions"
+                    ]
+                  },
+                  {
+                    "id": "current",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/current"
+                    }
+                  },
+                  {
+                    "id": "description",
+                    "component": "Text",
+                    "text": {
+                      "path": "/description"
+                    }
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": {
+                      "path": "/summary"
+                    }
+                  },
+                  {
+                    "id": "location",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/location"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "when",
+                    "component": "Text",
+                    "text": {
+                      "path": "/when"
+                    }
+                  },
+                  {
+                    "id": "yes",
+                    "component": "Button",
+                    "variant": "primary",
+                    "child": "loading_yes-label",
+                    "action": {
+                      "event": {
+                        "name": "rsvp-toggle",
+                        "context": {
+                          "eventId": "o49vnbegq501jme5all5bt82eo",
+                          "responseStatus": "accepted"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "loading_maybe",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_no",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_yes-label",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 12030,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "actions",
+                    "component": "Row",
+                    "children": [
+                      "yes",
+                      "loading_maybe",
+                      "loading_no"
+                    ]
+                  },
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "when",
+                      "location",
+                      "current",
+                      "divider",
+                      "description",
+                      "actions"
+                    ]
+                  },
+                  {
+                    "id": "current",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/current"
+                    }
+                  },
+                  {
+                    "id": "description",
+                    "component": "Text",
+                    "text": {
+                      "path": "/description"
+                    }
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": {
+                      "path": "/summary"
+                    }
+                  },
+                  {
+                    "id": "location",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/location"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "when",
+                    "component": "Text",
+                    "text": {
+                      "path": "/when"
+                    }
+                  },
+                  {
+                    "id": "yes",
+                    "component": "Button",
+                    "variant": "primary",
+                    "child": "yes-label",
+                    "action": {
+                      "event": {
+                        "name": "rsvp-toggle",
+                        "context": {
+                          "eventId": "o49vnbegq501jme5all5bt82eo",
+                          "responseStatus": "accepted"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "yes-label",
+                    "component": "Text",
+                    "text": "Accepted"
+                  },
+                  {
+                    "id": "loading_maybe",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_no",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 12241,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "actions",
+                    "component": "Row",
+                    "children": [
+                      "yes",
+                      "maybe",
+                      "loading_no"
+                    ]
+                  },
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "when",
+                      "location",
+                      "current",
+                      "divider",
+                      "description",
+                      "actions"
+                    ]
+                  },
+                  {
+                    "id": "current",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/current"
+                    }
+                  },
+                  {
+                    "id": "description",
+                    "component": "Text",
+                    "text": {
+                      "path": "/description"
+                    }
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": {
+                      "path": "/summary"
+                    }
+                  },
+                  {
+                    "id": "location",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/location"
+                    }
+                  },
+                  {
+                    "id": "maybe",
+                    "component": "Button",
+                    "variant": "default",
+                    "child": "loading_maybe-label",
+                    "action": {
+                      "event": {
+                        "name": "rsvp-toggle",
+                        "context": {
+                          "eventId": "o49vnbegq501jme5all5bt82eo",
+                          "responseStatus": "tentative"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "when",
+                    "component": "Text",
+                    "text": {
+                      "path": "/when"
+                    }
+                  },
+                  {
+                    "id": "yes",
+                    "component": "Button",
+                    "variant": "primary",
+                    "child": "yes-label",
+                    "action": {
+                      "event": {
+                        "name": "rsvp-toggle",
+                        "context": {
+                          "eventId": "o49vnbegq501jme5all5bt82eo",
+                          "responseStatus": "accepted"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "yes-label",
+                    "component": "Text",
+                    "text": "Accepted"
+                  },
+                  {
+                    "id": "loading_no",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_maybe-label",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 12302,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "actions",
+                    "component": "Row",
+                    "children": [
+                      "yes",
+                      "maybe",
+                      "loading_no"
+                    ]
+                  },
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "when",
+                      "location",
+                      "current",
+                      "divider",
+                      "description",
+                      "actions"
+                    ]
+                  },
+                  {
+                    "id": "current",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/current"
+                    }
+                  },
+                  {
+                    "id": "description",
+                    "component": "Text",
+                    "text": {
+                      "path": "/description"
+                    }
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": {
+                      "path": "/summary"
+                    }
+                  },
+                  {
+                    "id": "location",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/location"
+                    }
+                  },
+                  {
+                    "id": "maybe",
+                    "component": "Button",
+                    "variant": "default",
+                    "child": "maybe-label",
+                    "action": {
+                      "event": {
+                        "name": "rsvp-toggle",
+                        "context": {
+                          "eventId": "o49vnbegq501jme5all5bt82eo",
+                          "responseStatus": "tentative"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "maybe-label",
+                    "component": "Text",
+                    "text": "Maybe"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "when",
+                    "component": "Text",
+                    "text": {
+                      "path": "/when"
+                    }
+                  },
+                  {
+                    "id": "yes",
+                    "component": "Button",
+                    "variant": "primary",
+                    "child": "yes-label",
+                    "action": {
+                      "event": {
+                        "name": "rsvp-toggle",
+                        "context": {
+                          "eventId": "o49vnbegq501jme5all5bt82eo",
+                          "responseStatus": "accepted"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "yes-label",
+                    "component": "Text",
+                    "text": "Accepted"
+                  },
+                  {
+                    "id": "loading_no",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 12545,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "actions",
+                    "component": "Row",
+                    "children": [
+                      "yes",
+                      "maybe",
+                      "no"
+                    ]
+                  },
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "when",
+                      "location",
+                      "current",
+                      "divider",
+                      "description",
+                      "actions"
+                    ]
+                  },
+                  {
+                    "id": "current",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/current"
+                    }
+                  },
+                  {
+                    "id": "description",
+                    "component": "Text",
+                    "text": {
+                      "path": "/description"
+                    }
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": {
+                      "path": "/summary"
+                    }
+                  },
+                  {
+                    "id": "location",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/location"
+                    }
+                  },
+                  {
+                    "id": "maybe",
+                    "component": "Button",
+                    "variant": "default",
+                    "child": "maybe-label",
+                    "action": {
+                      "event": {
+                        "name": "rsvp-toggle",
+                        "context": {
+                          "eventId": "o49vnbegq501jme5all5bt82eo",
+                          "responseStatus": "tentative"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "maybe-label",
+                    "component": "Text",
+                    "text": "Maybe"
+                  },
+                  {
+                    "id": "no",
+                    "component": "Button",
+                    "variant": "default",
+                    "child": "loading_no-label",
+                    "action": {
+                      "event": {
+                        "name": "rsvp-toggle",
+                        "context": {
+                          "eventId": "o49vnbegq501jme5all5bt82eo",
+                          "responseStatus": "declined"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "when",
+                    "component": "Text",
+                    "text": {
+                      "path": "/when"
+                    }
+                  },
+                  {
+                    "id": "yes",
+                    "component": "Button",
+                    "variant": "primary",
+                    "child": "yes-label",
+                    "action": {
+                      "event": {
+                        "name": "rsvp-toggle",
+                        "context": {
+                          "eventId": "o49vnbegq501jme5all5bt82eo",
+                          "responseStatus": "accepted"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "yes-label",
+                    "component": "Text",
+                    "text": "Accepted"
+                  },
+                  {
+                    "id": "loading_no-label",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 12680,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "actions",
+                    "component": "Row",
+                    "children": [
+                      "yes",
+                      "maybe",
+                      "no"
+                    ]
+                  },
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "when",
+                      "location",
+                      "current",
+                      "divider",
+                      "description",
+                      "actions"
+                    ]
+                  },
+                  {
+                    "id": "current",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/current"
+                    }
+                  },
+                  {
+                    "id": "description",
+                    "component": "Text",
+                    "text": {
+                      "path": "/description"
+                    }
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": {
+                      "path": "/summary"
+                    }
+                  },
+                  {
+                    "id": "location",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/location"
+                    }
+                  },
+                  {
+                    "id": "maybe",
+                    "component": "Button",
+                    "variant": "default",
+                    "child": "maybe-label",
+                    "action": {
+                      "event": {
+                        "name": "rsvp-toggle",
+                        "context": {
+                          "eventId": "o49vnbegq501jme5all5bt82eo",
+                          "responseStatus": "tentative"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "maybe-label",
+                    "component": "Text",
+                    "text": "Maybe"
+                  },
+                  {
+                    "id": "no",
+                    "component": "Button",
+                    "variant": "default",
+                    "child": "no-label",
+                    "action": {
+                      "event": {
+                        "name": "rsvp-toggle",
+                        "context": {
+                          "eventId": "o49vnbegq501jme5all5bt82eo",
+                          "responseStatus": "declined"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "no-label",
+                    "component": "Text",
+                    "text": "Decline"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "when",
+                    "component": "Text",
+                    "text": {
+                      "path": "/when"
+                    }
+                  },
+                  {
+                    "id": "yes",
+                    "component": "Button",
+                    "variant": "primary",
+                    "child": "yes-label",
+                    "action": {
+                      "event": {
+                        "name": "rsvp-toggle",
+                        "context": {
+                          "eventId": "o49vnbegq501jme5all5bt82eo",
+                          "responseStatus": "accepted"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "yes-label",
+                    "component": "Text",
+                    "text": "Accepted"
+                  }
+                ],
+                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
+              }
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "outcome": "completed",
+      "durationMs": 12861
+    }
+  ]
+}

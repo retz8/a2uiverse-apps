@@ -1,0 +1,241 @@
+[
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo",
+      "value": {
+        "summary": "Quarter planning"
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo",
+      "value": {
+        "when": "Monday, August 31, 2026, 10:00 \u2013 11:30 EDT",
+        "location": "Room 2A"
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo",
+      "path": "/",
+      "value": {
+        "summary": "Quarter planning",
+        "when": "Monday, August 31, 2026, 10:00 \u2013 11:30 EDT",
+        "location": "Room 2A",
+        "current": "Accepted",
+        "description": "Draft objectives circulated Monday. Read before the session."
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateComponents": {
+      "components": [
+        {
+          "id": "root",
+          "component": "Card",
+          "child": "body"
+        },
+        {
+          "id": "loading_body",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "body",
+          "component": "Column",
+          "children": [
+            "heading",
+            "when",
+            "location",
+            "current",
+            "divider",
+            "description",
+            "actions"
+          ]
+        },
+        {
+          "id": "loading_heading",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "loading_when",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "loading_location",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "loading_current",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "loading_divider",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "loading_description",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "loading_actions",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "heading",
+          "component": "Text",
+          "variant": "h3",
+          "text": {
+            "path": "/summary"
+          }
+        },
+        {
+          "id": "when",
+          "component": "Text",
+          "text": {
+            "path": "/when"
+          }
+        },
+        {
+          "id": "location",
+          "component": "Text",
+          "variant": "caption",
+          "text": {
+            "path": "/location"
+          }
+        },
+        {
+          "id": "current",
+          "component": "Text",
+          "variant": "caption",
+          "text": {
+            "path": "/current"
+          }
+        },
+        {
+          "id": "divider",
+          "component": "Divider"
+        },
+        {
+          "id": "description",
+          "component": "Text",
+          "text": {
+            "path": "/description"
+          }
+        },
+        {
+          "id": "actions",
+          "component": "Row",
+          "children": [
+            "yes",
+            "maybe",
+            "no"
+          ]
+        },
+        {
+          "id": "loading_yes",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "loading_maybe",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "loading_no",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "yes",
+          "component": "Button",
+          "variant": "primary",
+          "child": "yes-label",
+          "action": {
+            "event": {
+              "name": "rsvp-toggle",
+              "context": {
+                "eventId": "o49vnbegq501jme5all5bt82eo",
+                "responseStatus": "accepted"
+              }
+            }
+          }
+        },
+        {
+          "id": "loading_yes-label",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "yes-label",
+          "component": "Text",
+          "text": "Accepted"
+        },
+        {
+          "id": "maybe",
+          "component": "Button",
+          "variant": "default",
+          "child": "maybe-label",
+          "action": {
+            "event": {
+              "name": "rsvp-toggle",
+              "context": {
+                "eventId": "o49vnbegq501jme5all5bt82eo",
+                "responseStatus": "tentative"
+              }
+            }
+          }
+        },
+        {
+          "id": "loading_maybe-label",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "maybe-label",
+          "component": "Text",
+          "text": "Maybe"
+        },
+        {
+          "id": "no",
+          "component": "Button",
+          "variant": "default",
+          "child": "no-label",
+          "action": {
+            "event": {
+              "name": "rsvp-toggle",
+              "context": {
+                "eventId": "o49vnbegq501jme5all5bt82eo",
+                "responseStatus": "declined"
+              }
+            }
+          }
+        },
+        {
+          "id": "loading_no-label",
+          "component": "Row",
+          "children": []
+        },
+        {
+          "id": "no-label",
+          "component": "Text",
+          "text": "Decline"
+        }
+      ]
+    }
+  }
+]
