@@ -61,6 +61,40 @@
       "required": ["component", "name"],
       "unevaluatedProperties": false
     },
+    "Card": {
+      "type": "object",
+      "description": "A card holding a single child component.",
+      "properties": {
+        "component": {
+          "const": "Card"
+        },
+        "child": {
+          "$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/ComponentId",
+          "description": "The ID of the single child component rendered inside the card."
+        }
+      },
+      "required": ["component", "child"],
+      "unevaluatedProperties": false
+    },
+    "Button": {
+      "type": "object",
+      "description": "A button wrapping a single child component and carrying an action.",
+      "properties": {
+        "component": {
+          "const": "Button"
+        },
+        "child": {
+          "$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/ComponentId",
+          "description": "The ID of the button's label component."
+        },
+        "action": {
+          "$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/Action",
+          "description": "The action performed when the button is activated."
+        }
+      },
+      "required": ["component", "child"],
+      "unevaluatedProperties": false
+    },
     "ConfirmationDialog": {
       "type": "object",
       "description": "A modal confirmation prompt with exactly two buttons.",
@@ -122,6 +156,12 @@
         },
         {
           "$ref": "#/components/Icon"
+        },
+        {
+          "$ref": "#/components/Card"
+        },
+        {
+          "$ref": "#/components/Button"
         },
         {
           "$ref": "#/components/ConfirmationDialog"
