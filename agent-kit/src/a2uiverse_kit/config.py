@@ -26,8 +26,9 @@ CatalogKind = Literal["custom", "basic"]
 BuildResponse = Callable[[dict, str], list[dict]]
 # (prompt, surface_id) -> A2UI message list.
 BuildTextResponse = Callable[[str, str], list[dict]]
-# (payload, metas) -> None, raising on an invalid declared question (see paint_meta).
-QuestionPolicy = Callable[[list[dict], list[dict]], None]
+# (payload, metas-by-surfaceId) -> None, raising on an invalid declared question
+# (see paint_meta's named policies).
+QuestionPolicy = Callable[[list[dict], dict[str, dict]], None]
 # (tool_name, tool_response) -> shaped response, or None to pass through.
 AfterTool = Callable[[str, Any], Any]
 
