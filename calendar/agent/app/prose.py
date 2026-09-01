@@ -1,11 +1,11 @@
-"""System-prompt assembly for the live agent: authored role/workflow + SDK-generated bulk."""
+"""The Calendar agent's authored prompt prose: role, workflow blocks, examples framing.
+
+Pure vendor data — the assembly lives in the kit (`a2uiverse_kit.prompt`), which joins
+the workflow blocks with the domain doc and splices the examples framing under the
+SDK's examples header.
+"""
 
 from __future__ import annotations
-
-from a2ui.schema.manager import A2uiSchemaManager
-
-from llm_agent.catalog import live_schema_manager
-from llm_agent.knowledge import load_brand_guidance, load_domain_knowledge
 
 ROLE_DESCRIPTION = (
     "You are a Google Calendar agent. You turn a natural-language request about the "
@@ -190,28 +190,3 @@ EXAMPLES_FRAMING = (
     "hint about what the current request concerns, and never an event to fall back on. "
     "No example describes any real appointment."
 )
-
-_EXAMPLES_HEADER = "### Examples:\n"
-
-
-def build_system_prompt(schema_manager: A2uiSchemaManager | None = None) -> str:
-    """Assembles the full system instruction via the SDK's generate_system_prompt.
-
-    Authored content is ROLE/WORKFLOW/SCOPE plus the domain doc (joined into the workflow
-    slot, which is the only one that takes free authored prose); the brand doc feeds
-    ui_description, and the full catalog schema and the examples are injected by the SDK
-    (with the examples framing spliced under the SDK's header — it offers no slot for it).
-    """
-    sm = schema_manager or live_schema_manager()
-    prompt = sm.generate_system_prompt(
-        role_description=ROLE_DESCRIPTION,
-        workflow_description="\n\n".join(
-            [WORKFLOW_DESCRIPTION, SHELL_DESCRIPTION, SCOPE_DESCRIPTION, load_domain_knowledge()]
-        ),
-        ui_description=load_brand_guidance(),
-        include_schema=True,
-        include_examples=True,
-    )
-    return prompt.replace(
-        _EXAMPLES_HEADER, _EXAMPLES_HEADER + EXAMPLES_FRAMING + "\n\n", 1
-    )

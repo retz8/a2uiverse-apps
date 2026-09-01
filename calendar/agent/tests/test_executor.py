@@ -17,8 +17,9 @@ OPEN_THREAD = {
 requires_corpus = pytest.mark.skipif(
     not (
         Path(__file__).resolve().parents[1]
-        / "deterministic_agent"
+        / "app"
         / "fixtures"
+        / "deterministic"
         / "agenda-digest.json"
     ).is_file(),
     reason="deterministic corpus not recorded yet (see agent/README.md)",

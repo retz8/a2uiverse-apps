@@ -44,7 +44,7 @@ from typing import Any
 logger = logging.getLogger(__name__)
 
 SHAPE_DUMP_ENV = "TOOL_SHAPE_DUMP"
-RECORD_DIR_ENV = "A2UI_RECORD_DIR"
+from a2uiverse_kit.recorder import RECORD_DIR_ENV  # one definition, kit-owned
 
 # Attached to every shaped payload. The failure it prevents is specific: a field the
 # projection omits is not a field the message lacks.

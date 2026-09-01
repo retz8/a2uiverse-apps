@@ -11,7 +11,7 @@ from __future__ import annotations
 
 import json
 
-from llm_agent.tool_shaping import (
+from app.tool_shaping import (
     EVENT_COUNT_NOTE,
     PROJECTION_NOTE,
     annotate,

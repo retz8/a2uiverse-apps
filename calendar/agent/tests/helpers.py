@@ -9,7 +9,9 @@ from a2a.server.events import EventQueue
 from a2a.types import DataPart, Message, Part, Role
 from a2ui.a2a.parts import get_a2ui_datapart, is_a2ui_part
 
-from deterministic_agent.executor import DeterministicAgentExecutor
+from a2uiverse_kit.executor_deterministic import DeterministicAgentExecutor
+
+from app.responses import build_response, build_text_response
 
 
 def _incoming_message(action: dict) -> Message:
@@ -35,7 +37,9 @@ async def run_executor(action: dict) -> list[dict]:
     queue = MagicMock(spec=EventQueue)
     queue.enqueue_event = AsyncMock()
 
-    await DeterministicAgentExecutor().execute(context, queue)
+    await DeterministicAgentExecutor(build_response, build_text_response).execute(
+        context, queue
+    )
 
     payload: list[dict] = []
     for call in queue.enqueue_event.call_args_list:
@@ -65,7 +69,9 @@ async def run_executor_text(text: str) -> list[dict]:
     queue = MagicMock(spec=EventQueue)
     queue.enqueue_event = AsyncMock()
 
-    await DeterministicAgentExecutor().execute(context, queue)
+    await DeterministicAgentExecutor(build_response, build_text_response).execute(
+        context, queue
+    )
 
     payload: list[dict] = []
     for call in queue.enqueue_event.call_args_list:

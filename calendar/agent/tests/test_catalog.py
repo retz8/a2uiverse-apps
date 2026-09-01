@@ -1,23 +1,23 @@
 import pytest
-from deterministic_agent.catalog import (
-    catalog_json_path,
-    get_catalog,
-    supported_catalog_ids,
-    validate_payload,
-)
+
+from a2uiverse_kit.catalog import catalog_context
+
+from app.config import CONFIG
+
+_ctx = catalog_context(CONFIG)
 
 
 def test_catalog_path_points_at_sibling_package():
-    path = catalog_json_path()
+    path = _ctx.catalog_json_path()
     assert path.is_file()
     assert path.parts[-3:] == ("catalogs", "v0.9.1", "catalog.json")
 
 
-def test_catalog_id_is_the_primer_catalog_url():
-    cid = get_catalog().catalog_id
+def test_catalog_id_is_the_hosted_catalog_url():
+    cid = _ctx.get_catalog().catalog_id
     assert cid.startswith("https://github.com/")
     assert cid.endswith("calendar-catalog/catalogs/v0.9.1/catalog.json")
-    assert supported_catalog_ids() == [cid]
+    assert _ctx.supported_catalog_ids() == [cid]
 
 
 def test_validate_accepts_a_known_good_text_update():
@@ -30,7 +30,7 @@ def test_validate_accepts_a_known_good_text_update():
             },
         }
     ]
-    validate_payload(payload)  # must not raise
+    _ctx.validate_payload(payload)  # must not raise
 
 
 def test_validate_rejects_an_undeclared_property():
@@ -46,4 +46,4 @@ def test_validate_rejects_an_undeclared_property():
         }
     ]
     with pytest.raises(ValueError):
-        validate_payload(payload)
+        _ctx.validate_payload(payload)

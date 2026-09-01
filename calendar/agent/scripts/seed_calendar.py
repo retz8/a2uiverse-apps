@@ -37,7 +37,7 @@ from dotenv import load_dotenv
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from llm_agent.mcp import (  # noqa: E402
+from app.mcp import (  # noqa: E402
     CALENDAR_SCOPES,
     MissingGoogleCredentialError,
     demo_calendar_id,

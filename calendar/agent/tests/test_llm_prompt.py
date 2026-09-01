@@ -13,8 +13,15 @@ from pathlib import Path
 
 from a2ui.schema.constants import A2UI_SCHEMA_BLOCK_END, A2UI_SCHEMA_BLOCK_START
 
-from llm_agent.catalog import EXAMPLES_DIR
-from llm_agent.prompt import build_system_prompt
+from a2uiverse_kit.prompt import build_system_prompt as _build_system_prompt
+
+from app.config import CONFIG
+
+EXAMPLES_DIR = CONFIG.examples_dir
+
+
+def build_system_prompt() -> str:
+    return _build_system_prompt(CONFIG)
 
 _GOLDEN = Path(__file__).resolve().parent / "golden" / "llm_system_prompt.skeleton.txt"
 

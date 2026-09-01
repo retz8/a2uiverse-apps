@@ -12,7 +12,7 @@ import pathlib
 
 import pytest
 
-from llm_agent.tools import (
+from app.tools import (
     STUB_TOOLS,
     create_event,
     get_event,
@@ -22,7 +22,11 @@ from llm_agent.tools import (
 
 requires_corpus = pytest.mark.skipif(
     not (
-        pathlib.Path(__file__).resolve().parents[1] / "llm_agent" / "fixtures" / "list-events.json"
+        pathlib.Path(__file__).resolve().parents[1]
+        / "app"
+        / "fixtures"
+        / "stub"
+        / "list-events.json"
     ).is_file(),
     reason="stub corpus not recorded yet (see agent/README.md)",
 )

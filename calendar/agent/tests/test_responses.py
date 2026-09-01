@@ -11,8 +11,12 @@ from pathlib import Path
 
 import pytest
 
-from deterministic_agent.catalog import validate_payload
-from deterministic_agent.responses import build_response, build_text_response
+from a2uiverse_kit.catalog import catalog_context
+
+from app.config import CONFIG
+from app.responses import build_response, build_text_response
+
+validate_payload = catalog_context(CONFIG).validate_payload
 
 ACTIONS = ("open-event", "confirm-event", "rsvp-toggle", "cancel-event")
 
@@ -22,8 +26,9 @@ ACTIONS = ("open-event", "confirm-event", "rsvp-toggle", "cancel-event")
 requires_corpus = pytest.mark.skipif(
     not (
         Path(__file__).resolve().parents[1]
-        / "deterministic_agent"
+        / "app"
         / "fixtures"
+        / "deterministic"
         / "agenda-digest.json"
     ).is_file(),
     reason="deterministic corpus not recorded yet (see agent/README.md)",

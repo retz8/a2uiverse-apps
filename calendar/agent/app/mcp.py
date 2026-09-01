@@ -38,8 +38,8 @@ import google.auth.exceptions
 import google.auth.transport.requests
 from google.adk.tools.mcp_tool import StreamableHTTPConnectionParams
 
-from llm_agent.guarded_toolset import GuardedMcpToolset
-from llm_agent.tool_shaping import CALENDAR_ID_ENV
+from app.guarded_toolset import GuardedMcpToolset
+from app.tool_shaping import CALENDAR_ID_ENV
 
 CALENDAR_MCP_URL = "https://calendarmcp.googleapis.com/mcp/v1"
 

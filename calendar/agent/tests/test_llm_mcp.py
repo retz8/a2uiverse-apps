@@ -13,7 +13,7 @@ from __future__ import annotations
 
 import pytest
 
-from llm_agent.mcp import (
+from app.mcp import (
     CALENDAR_ID_ENV,
     CALENDAR_MCP_URL,
     CALENDAR_SCOPES,
