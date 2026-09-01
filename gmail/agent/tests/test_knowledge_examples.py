@@ -1,9 +1,9 @@
-"""Conformance gate for the curated GitHub-domain idiom examples in `agent/knowledge/`.
+"""Conformance gate for the curated Gmail-domain idiom examples in `agent/app/knowledge/`.
 
 Each example file is a named-field envelope `{name, intent, messages}` whose `messages`
 is a complete A2UI message sequence in the exact wire format the live agent must emit.
 This test globs the example files and validates every component entry in each sequence
-against the shipped Primer catalog, reusing the deterministic agent's `validate_payload`
+against the shipped Gmail catalog, reusing the deterministic mode's `validate_payload`
 (the same probe the emitted-event conformance test uses). It is the phase spec's L0
 "examples validated against the catalog schema" check, delivered early (task 7.1).
 """
@@ -15,9 +15,13 @@ from pathlib import Path
 
 import pytest
 
-from llm_agent.catalog import validate_surface
+from a2uiverse_kit.catalog import catalog_context
 
-_EXAMPLES_DIR = Path(__file__).resolve().parents[1] / "knowledge" / "examples"
+from app.config import CONFIG
+
+validate_surface = catalog_context(CONFIG).validate_surface
+
+_EXAMPLES_DIR = Path(__file__).resolve().parents[1] / "app" / "knowledge" / "examples"
 _EXAMPLE_FILES = sorted(_EXAMPLES_DIR.glob("*.json"))
 
 # The set is derived: task 7.7 retires each 7.1 example as an approved beat surface supersedes it

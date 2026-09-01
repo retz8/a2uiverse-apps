@@ -15,7 +15,7 @@ OPEN_THREAD = {
 
 # The canned corpus is derived from a live recording run; these skip until one exists.
 requires_corpus = pytest.mark.skipif(
-    not (Path(__file__).resolve().parents[1] / "deterministic_agent" / "fixtures").is_dir(),
+    not (Path(__file__).resolve().parents[1] / "app" / "fixtures" / "deterministic").is_dir(),
     reason="deterministic corpus not recorded yet (see agent/README.md)",
 )
 

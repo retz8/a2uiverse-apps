@@ -9,7 +9,7 @@ from __future__ import annotations
 
 import json
 
-from llm_agent.tool_shaping import (
+from app.tool_shaping import (
     PROJECTION_NOTE,
     THREAD_COUNT_NOTE,
     annotate,

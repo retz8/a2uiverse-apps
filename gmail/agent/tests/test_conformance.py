@@ -2,14 +2,18 @@ from pathlib import Path
 
 import pytest
 
-from deterministic_agent.catalog import validate_payload
-from deterministic_agent.responses import _EVENT_FIXTURES
+from a2uiverse_kit.catalog import catalog_context
+
+from app.config import CONFIG
+from app.responses import _EVENT_FIXTURES
 from tests.helpers import run_executor
+
+validate_payload = catalog_context(CONFIG).validate_payload
 
 
 # The canned corpus is derived from a live recording run; these skip until one exists.
 requires_corpus = pytest.mark.skipif(
-    not (Path(__file__).resolve().parents[1] / "deterministic_agent" / "fixtures").is_dir(),
+    not (Path(__file__).resolve().parents[1] / "app" / "fixtures" / "deterministic").is_dir(),
     reason="deterministic corpus not recorded yet (see agent/README.md)",
 )
 

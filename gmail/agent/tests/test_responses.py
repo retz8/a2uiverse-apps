@@ -11,8 +11,12 @@ from pathlib import Path
 
 import pytest
 
-from deterministic_agent.catalog import validate_payload
-from deterministic_agent.responses import build_response, build_text_response
+from a2uiverse_kit.catalog import catalog_context
+
+from app.config import CONFIG
+from app.responses import build_response, build_text_response
+
+validate_payload = catalog_context(CONFIG).validate_payload
 
 ACTIONS = ("open-thread", "confirm-draft", "label-toggle", "cancel-draft")
 
@@ -20,7 +24,7 @@ ACTIONS = ("open-thread", "confirm-draft", "label-toggle", "cancel-draft")
 # happened and been verified publishable. These skip rather than assert against stand-in data
 # authored to satisfy them — which is the thing decision 11 exists to prevent.
 requires_corpus = pytest.mark.skipif(
-    not (Path(__file__).resolve().parents[1] / "deterministic_agent" / "fixtures").is_dir(),
+    not (Path(__file__).resolve().parents[1] / "app" / "fixtures" / "deterministic").is_dir(),
     reason="deterministic corpus not recorded yet (see agent/README.md)",
 )
 

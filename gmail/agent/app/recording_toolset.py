@@ -21,7 +21,7 @@ from typing import Any
 from google.adk.tools.mcp_tool import McpToolset
 from google.adk.tools.mcp_tool.mcp_tool import McpTool
 
-from llm_agent.tool_shaping import scrub_tool_result
+from app.tool_shaping import scrub_tool_result
 
 
 class RecordingMcpTool(McpTool):

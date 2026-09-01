@@ -10,7 +10,7 @@ from __future__ import annotations
 
 import pytest
 
-from llm_agent.tools import (
+from app.tools import (
     STUB_TOOLS,
     create_draft,
     get_thread,
@@ -23,8 +23,8 @@ from llm_agent.tools import (
 requires_corpus = pytest.mark.skipif(
     not (
         __import__("pathlib").Path(__file__).resolve().parents[1]
-        / "llm_agent"
-        / "fixtures"
+        / "app"
+        / "fixtures" / "stub"
         / "search-threads.json"
     ).is_file(),
     reason="stub corpus not recorded yet (see agent/README.md)",

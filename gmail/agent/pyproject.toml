@@ -5,6 +5,7 @@ description = "A2A servers for the Gmail app: the deterministic composition harn
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
+    "a2uiverse-agent-kit",
     "a2ui-agent-sdk>=0.2.4,<0.3.0",
     "a2a-sdk[http-server]>=0.3.0,<0.4.0",
     "google-adk>=2.5.0,<3.0.0",
@@ -16,6 +17,9 @@ dependencies = [
 
 [tool.uv]
 package = false
+
+[tool.uv.sources]
+a2uiverse-agent-kit = { path = "../../agent-kit", editable = true }
 
 [dependency-groups]
 dev = [

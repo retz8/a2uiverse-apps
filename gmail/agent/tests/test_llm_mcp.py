@@ -13,7 +13,7 @@ from __future__ import annotations
 
 import pytest
 
-from llm_agent.mcp import (
+from app.mcp import (
     GMAIL_MCP_URL,
     GMAIL_SCOPES,
     GMAIL_TOOLS,

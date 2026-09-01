@@ -20,10 +20,10 @@ AGENT = Path(__file__).resolve().parents[1]
 
 # Directories whose contents are committed and therefore published.
 TRACKED_CORPORA = (
-    AGENT / "llm_agent" / "fixtures",
-    AGENT / "deterministic_agent" / "fixtures",
+    AGENT / "app" / "fixtures" / "stub",
+    AGENT / "app" / "fixtures" / "deterministic",
     AGENT / "recordings",
-    AGENT / "knowledge" / "examples",
+    AGENT / "app" / "knowledge" / "examples",
 )
 
 _ADDRESS = re.compile(r"[\w.+-]+@[\w.-]+\.[a-z]{2,}", re.IGNORECASE)
