@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.test/a2uiverse-kit/custom/catalog.json",
+  "catalogId": "https://example.test/a2uiverse-kit/custom/catalog.json",
+  "components": {
+    "Column": {
+      "type": "object",
+      "description": "A layout component that arranges its children vertically.",
+      "properties": {
+        "component": {
+          "const": "Column"
+        },
+        "children": {
+          "description": "Defines the children. Use an array of strings for a fixed set of children, or a template object to generate children from a data list.",
+          "$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/ChildList"
+        },
+        "align": {
+          "type": "string",
+          "description": "Alignment of children along the cross axis.",
+          "enum": ["center", "end", "start", "stretch"],
+          "default": "stretch"
+        }
+      },
+      "required": ["component", "children"],
+      "unevaluatedProperties": false
+    },
+    "Text": {
+      "type": "object",
+      "description": "Displays a run of text.",
+      "properties": {
+        "component": {
+          "const": "Text"
+        },
+        "text": {
+          "$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/DynamicString",
+          "description": "The text content to display."
+        },
+        "variant": {
+          "type": "string",
+          "description": "A hint for the base text style.",
+          "enum": ["h1", "caption", "body"],
+          "default": "body"
+        }
+      },
+      "required": ["component", "text"],
+      "unevaluatedProperties": false
+    },
+    "Icon": {
+      "type": "object",
+      "description": "Displays an icon.",
+      "properties": {
+        "component": {
+          "const": "Icon"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the icon to display.",
+          "enum": ["mail", "alert", "check"]
+        }
+      },
+      "required": ["component", "name"],
+      "unevaluatedProperties": false
+    },
+    "ConfirmationDialog": {
+      "type": "object",
+      "description": "A modal confirmation prompt with exactly two buttons.",
+      "properties": {
+        "component": {
+          "const": "ConfirmationDialog"
+        },
+        "title": {
+          "$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/DynamicString",
+          "description": "The dialog's heading."
+        },
+        "confirmAction": {
+          "$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/Action",
+          "description": "The action performed when the user confirms."
+        },
+        "cancelAction": {
+          "$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/Action",
+          "description": "The action performed when the user cancels."
+        }
+      },
+      "required": ["component", "title", "confirmAction", "cancelAction"],
+      "unevaluatedProperties": false
+    }
+  },
+  "functions": {
+    "required": {
+      "type": "object",
+      "description": "Checks that the value is not null, undefined, or empty.",
+      "properties": {
+        "call": {
+          "const": "required"
+        },
+        "args": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "description": "The value to check."
+            }
+          },
+          "required": ["value"],
+          "additionalProperties": false
+        },
+        "returnType": {
+          "const": "boolean"
+        }
+      },
+      "required": ["call", "args"],
+      "unevaluatedProperties": false
+    }
+  },
+  "$defs": {
+    "anyComponent": {
+      "oneOf": [
+        {
+          "$ref": "#/components/Column"
+        },
+        {
+          "$ref": "#/components/Text"
+        },
+        {
+          "$ref": "#/components/Icon"
+        },
+        {
+          "$ref": "#/components/ConfirmationDialog"
+        }
+      ]
+    },
+    "anyFunction": {
+      "oneOf": [
+        {
+          "$ref": "#/functions/required"
+        }
+      ]
+    }
+  }
+}

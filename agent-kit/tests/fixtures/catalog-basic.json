@@ -1,0 +1,155 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.test/a2uiverse-kit/basic/catalog.json",
+  "catalogId": "https://example.test/a2uiverse-kit/basic/catalog.json",
+  "title": "Kit test catalog (basic kind)",
+  "description": "Minimal allOf-composed catalog mirroring the themed basic catalog's shape: every component $refs ComponentCommon (id REQUIRED) and composes its properties through allOf branches.",
+  "components": {
+    "Column": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/ComponentCommon"
+        },
+        {
+          "$ref": "#/$defs/CatalogComponentCommon"
+        },
+        {
+          "type": "object",
+          "description": "A layout component that arranges its children vertically.",
+          "properties": {
+            "component": {
+              "const": "Column"
+            },
+            "children": {
+              "description": "Defines the children. Use an array of strings for a fixed set of children, or a template object to generate children from a data list.",
+              "$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/ChildList"
+            },
+            "align": {
+              "type": "string",
+              "description": "Alignment of children along the cross axis.",
+              "enum": ["center", "end", "start", "stretch"],
+              "default": "stretch"
+            }
+          },
+          "required": ["component", "children"]
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "Text": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/ComponentCommon"
+        },
+        {
+          "$ref": "#/$defs/CatalogComponentCommon"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "component": {
+              "const": "Text"
+            },
+            "text": {
+              "$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/DynamicString",
+              "description": "The text content to display."
+            },
+            "variant": {
+              "type": "string",
+              "description": "A hint for the base text style.",
+              "enum": ["h1", "caption", "body"],
+              "default": "body"
+            }
+          },
+          "required": ["component", "text"]
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "Icon": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/ComponentCommon"
+        },
+        {
+          "$ref": "#/$defs/CatalogComponentCommon"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "component": {
+              "const": "Icon"
+            },
+            "name": {
+              "type": "string",
+              "description": "The name of the icon to display.",
+              "enum": ["mail", "alert", "check"]
+            }
+          },
+          "required": ["component", "name"]
+        }
+      ],
+      "unevaluatedProperties": false
+    }
+  },
+  "functions": {
+    "required": {
+      "type": "object",
+      "description": "Checks that the value is not null, undefined, or empty.",
+      "properties": {
+        "call": {
+          "const": "required"
+        },
+        "args": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "description": "The value to check."
+            }
+          },
+          "required": ["value"],
+          "additionalProperties": false
+        },
+        "returnType": {
+          "const": "boolean"
+        }
+      },
+      "required": ["call", "args"],
+      "unevaluatedProperties": false
+    }
+  },
+  "$defs": {
+    "CatalogComponentCommon": {
+      "type": "object",
+      "properties": {
+        "weight": {
+          "type": "number",
+          "description": "The relative weight of this component within a Column."
+        }
+      }
+    },
+    "anyComponent": {
+      "oneOf": [
+        {
+          "$ref": "#/components/Column"
+        },
+        {
+          "$ref": "#/components/Text"
+        },
+        {
+          "$ref": "#/components/Icon"
+        }
+      ]
+    },
+    "anyFunction": {
+      "oneOf": [
+        {
+          "$ref": "#/functions/required"
+        }
+      ]
+    }
+  }
+}

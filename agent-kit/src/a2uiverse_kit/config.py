@@ -32,7 +32,9 @@ QuestionPolicy = Callable[[list[dict], list[dict]], None]
 AfterTool = Callable[[str, Any], Any]
 
 
-@dataclass(frozen=True)
+# eq=False keeps identity semantics: a config instance IS the app, and identity
+# hashing lets the kit cache per-config state (catalog context) directly on it.
+@dataclass(frozen=True, eq=False)
 class AgentAppConfig:
     """The whole per-vendor surface of a kit-run agent."""
 

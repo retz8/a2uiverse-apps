@@ -1,0 +1,28 @@
+{
+  "name": "greeting",
+  "intent": "Show me a greeting",
+  "messages": [
+    {
+      "version": "v0.9",
+      "createSurface": {
+        "surfaceId": "s1",
+        "catalogId": "https://example.test/a2uiverse-kit/custom/catalog.json"
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateComponents": {
+        "surfaceId": "s1",
+        "components": [
+          {
+            "id": "root",
+            "component": "Column",
+            "align": "stretch",
+            "children": ["greeting"]
+          },
+          { "id": "greeting", "component": "Text", "text": "hello" }
+        ]
+      }
+    }
+  ]
+}
