@@ -15,9 +15,13 @@ from pathlib import Path
 
 import pytest
 
-from llm_agent.catalog import validate_surface
+from a2uiverse_kit.catalog import catalog_context
 
-_EXAMPLES_DIR = Path(__file__).resolve().parents[1] / "knowledge" / "examples"
+from app.config import CONFIG
+
+validate_surface = catalog_context(CONFIG).validate_surface
+
+_EXAMPLES_DIR = Path(__file__).resolve().parents[1] / "app" / "knowledge" / "examples"
 _EXAMPLE_FILES = sorted(_EXAMPLES_DIR.glob("*.json"))
 
 # The set is derived: task 7.7 retires each 7.1 example as an approved beat surface supersedes it

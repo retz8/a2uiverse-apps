@@ -1,8 +1,12 @@
 import pytest
 
-from deterministic_agent.catalog import validate_payload
-from deterministic_agent.responses import _EVENT_FIXTURES
+from a2uiverse_kit.catalog import catalog_context
+
+from app.config import CONFIG
+from app.responses import _EVENT_FIXTURES
 from tests.helpers import run_executor
+
+validate_payload = catalog_context(CONFIG).validate_payload
 
 
 @pytest.mark.parametrize("event", sorted(_EVENT_FIXTURES))

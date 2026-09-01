@@ -2,11 +2,12 @@
 
 from __future__ import annotations
 
-import json
 from itertools import count
 from pathlib import Path
 
-_FIXTURES_DIR = Path(__file__).resolve().parent / "fixtures"
+from a2uiverse_kit.responses import fallback, load_fixture, stamp_surface
+
+_FIXTURES_DIR = Path(__file__).resolve().parent / "fixtures" / "deterministic"
 _EVENT_FIXTURES = {
     "submit": "submit.json",
     "approve": "approve.json",
@@ -33,8 +34,6 @@ _EVENT_FIXTURES = {
     "panel-toggle": "panel-toggle.json",
     "create-label": "create-label.json",
 }
-# The operation key whose object carries the surfaceId we stamp.
-_OPERATION_KEYS = ("updateComponents", "updateDataModel", "createSurface")
 
 # Demo view labels for the SegmentedControl `change` event: segment indices → names in the
 # `segmentedcontrol-event` fixture. The `change` response is built dynamically from the event's
@@ -128,31 +127,13 @@ def _label_select_response(action: dict, surface_id: str) -> list[dict]:
     ]
 
 
+# The playing machinery is the kit's; the dispatch below is this agent's policy.
 def _load_fixture(name: str) -> list[dict]:
-    with open(_FIXTURES_DIR / name, encoding="utf-8") as f:
-        return json.load(f)
+    return load_fixture(_FIXTURES_DIR, name)
 
 
-def _stamp_surface(messages: list[dict], surface_id: str) -> list[dict]:
-    for msg in messages:
-        for key in _OPERATION_KEYS:
-            if key in msg:
-                msg[key]["surfaceId"] = surface_id
-    return messages
-
-
-def _fallback(name: str, surface_id: str) -> list[dict]:
-    return [
-        {
-            "version": "v0.9",
-            "updateComponents": {
-                "surfaceId": surface_id,
-                "components": [
-                    {"id": "label", "component": "Text", "text": f"Unhandled event: {name}"}
-                ],
-            },
-        }
-    ]
+_stamp_surface = stamp_surface
+_fallback = fallback
 
 
 def build_response(action: dict) -> list[dict]:
@@ -195,13 +176,16 @@ def build_text_response(text: str) -> list[dict]:
     Unlike action responses, a text prompt arrives with no surface to update, so this
     creates one.
     """
-    from deterministic_agent.catalog import get_catalog
+    from a2uiverse_kit.catalog import catalog_context
+
+    from app.config import CONFIG
 
     surface_id = f"chat-{next(_chat_counter)}"
+    catalog_id = catalog_context(CONFIG).get_catalog().catalog_id
     return [
         {
             "version": "v0.9",
-            "createSurface": {"surfaceId": surface_id, "catalogId": get_catalog().catalog_id},
+            "createSurface": {"surfaceId": surface_id, "catalogId": catalog_id},
         },
         {
             "version": "v0.9",

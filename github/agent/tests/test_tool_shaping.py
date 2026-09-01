@@ -10,7 +10,7 @@ from __future__ import annotations
 
 import json
 
-from llm_agent.tool_shaping import PROJECTION_NOTE, annotate, shape_tool_response
+from app.tool_shaping import PROJECTION_NOTE, annotate, shape_tool_response
 
 
 def mcp_response(payload: dict) -> dict:

@@ -12,7 +12,7 @@ import functools
 import json
 from pathlib import Path
 
-_FIXTURES = Path(__file__).resolve().parent / "fixtures"
+_FIXTURES = Path(__file__).resolve().parent / "fixtures" / "stub"
 
 
 @functools.lru_cache(maxsize=1)

@@ -1,4 +1,4 @@
-from llm_agent.tools import STUB_TOOLS, get_pull_request, list_pull_requests
+from app.tools import STUB_TOOLS, get_pull_request, list_pull_requests
 
 
 def test_list_returns_open_prs_with_bindable_fields():

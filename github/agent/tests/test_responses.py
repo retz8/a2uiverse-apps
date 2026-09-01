@@ -1,4 +1,7 @@
-from deterministic_agent.responses import build_response
+from a2uiverse_kit.catalog import catalog_context
+
+from app.config import CONFIG
+from app.responses import build_response
 
 SUBMIT = {"name": "submit", "surfaceId": "button-event", "sourceComponentId": "root", "context": {}}
 SELECT = {
@@ -830,8 +833,9 @@ def test_unknown_event_returns_single_text_fallback_with_surface_echoed():
 
 
 def test_text_prompt_returns_fresh_chat_surface_echoing_the_prompt():
-    from deterministic_agent.catalog import get_catalog
-    from deterministic_agent.responses import build_text_response
+    from app.responses import build_text_response
+
+    get_catalog = catalog_context(CONFIG).get_catalog
 
     msgs = build_text_response("show me open PRs")
     assert len(msgs) == 3
@@ -873,7 +877,7 @@ def test_text_prompt_returns_fresh_chat_surface_echoing_the_prompt():
 
 
 def test_each_text_prompt_gets_its_own_surface():
-    from deterministic_agent.responses import build_text_response
+    from app.responses import build_text_response
 
     first = build_text_response("one")[0]["createSurface"]["surfaceId"]
     second = build_text_response("one")[0]["createSurface"]["surfaceId"]
