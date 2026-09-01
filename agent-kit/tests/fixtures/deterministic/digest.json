@@ -1,0 +1,24 @@
+[
+  {
+    "version": "v0.9",
+    "createSurface": {
+      "surfaceId": "placeholder",
+      "catalogId": "https://example.test/a2uiverse-kit/basic/catalog.json"
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateComponents": {
+      "surfaceId": "placeholder",
+      "components": [
+        {
+          "id": "root",
+          "component": "Column",
+          "align": "stretch",
+          "children": ["greeting"]
+        },
+        { "id": "greeting", "component": "Text", "text": "digest" }
+      ]
+    }
+  }
+]

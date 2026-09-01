@@ -22,10 +22,11 @@ DEFAULT_MODEL = "gemini-3.7-flash"
 
 CatalogKind = Literal["custom", "basic"]
 
-# (action, surface_id) -> A2UI message list — the deterministic executor's contract.
-BuildResponse = Callable[[dict, str], list[dict]]
-# (prompt, surface_id) -> A2UI message list.
-BuildTextResponse = Callable[[str, str], list[dict]]
+# (action) -> A2UI message list — the deterministic executor's contract; the surface
+# id to echo rides inside the action.
+BuildResponse = Callable[[dict], list[dict]]
+# (prompt) -> A2UI message list; text responses mint their own fresh surface ids.
+BuildTextResponse = Callable[[str], list[dict]]
 # (payload, metas-by-surfaceId) -> None, raising on an invalid declared question
 # (see paint_meta's named policies).
 QuestionPolicy = Callable[[list[dict], dict[str, dict]], None]

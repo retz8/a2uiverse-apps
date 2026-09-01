@@ -1,0 +1,9 @@
+[
+  {
+    "version": "v0.9",
+    "updateComponents": {
+      "surfaceId": "placeholder",
+      "components": [{ "id": "label", "component": "Text", "text": "ok" }]
+    }
+  }
+]
