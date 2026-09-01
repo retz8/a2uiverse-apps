@@ -20,7 +20,7 @@
             "align": "stretch",
             "children": ["greeting"]
           },
-          { "id": "greeting", "component": "Text", "text": "hello" }
+          {"id": "greeting", "component": "Text", "text": "hello"}
         ]
       }
     }

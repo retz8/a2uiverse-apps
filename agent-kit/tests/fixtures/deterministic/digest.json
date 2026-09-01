@@ -17,7 +17,7 @@
           "align": "stretch",
           "children": ["greeting"]
         },
-        { "id": "greeting", "component": "Text", "text": "digest" }
+        {"id": "greeting", "component": "Text", "text": "digest"}
       ]
     }
   }
