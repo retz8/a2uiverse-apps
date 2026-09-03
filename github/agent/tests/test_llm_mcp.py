@@ -21,24 +21,17 @@ from app.mcp import (
 )
 
 
-def test_endpoint_is_the_read_only_variant():
-    # Read-only layer 1: write tools never enter the inventory. Dropping the
-    # /readonly suffix would hand the model merge_pull_request and
-    # pull_request_review_write.
-    assert GITHUB_MCP_URL == "https://api.githubcopilot.com/mcp/readonly"
+def test_endpoint_is_the_unrestricted_server():
+    # Task-3.7 decision 1: the agent is another GitHub client acting as the
+    # user — capability is whatever MCP + token allow. The /readonly variant
+    # retired with the write tier.
+    assert GITHUB_MCP_URL == "https://api.githubcopilot.com/mcp/"
 
 
-def test_toolsets_are_pinned_exactly():
-    # Pinned, not inherited from the server default and not "all": the tool
-    # surface is a design decision, so it stays diffable.
-    assert GITHUB_MCP_TOOLSETS == (
-        "context",
-        "repos",
-        "issues",
-        "pull_requests",
-        "users",
-        "notifications",
-    )
+def test_toolset_header_is_an_explicit_all():
+    # Explicit rather than omitted: no header means the server's DEFAULT subset
+    # (which loses the notification tools among others), not the full surface.
+    assert GITHUB_MCP_TOOLSETS == "all"
 
 
 def test_pat_env_var_is_dedicated():
@@ -66,15 +59,13 @@ def test_github_pat_empty_is_treated_as_missing(monkeypatch):
         github_pat()
 
 
-def test_headers_carry_bearer_and_pinned_toolsets():
+def test_headers_carry_bearer_and_the_all_toolsets_header():
     headers = mcp_headers("ghp_example")
     assert headers["Authorization"] == "Bearer ghp_example"
-    assert headers["X-MCP-Toolsets"] == (
-        "context,repos,issues,pull_requests,users,notifications"
-    )
+    assert headers["X-MCP-Toolsets"] == "all"
 
 
-def test_connection_params_use_the_readonly_url_and_pinned_headers(monkeypatch):
+def test_connection_params_use_the_full_url_and_headers(monkeypatch):
     # This is the point where the constants are actually applied: pinning
     # GITHUB_MCP_URL/GITHUB_MCP_TOOLSETS alone proves nothing if
     # build_github_toolset can construct its params some other way.
@@ -85,9 +76,9 @@ def test_connection_params_use_the_readonly_url_and_pinned_headers(monkeypatch):
 
 
 def test_build_toolset_constructs_offline_as_the_kit_wrapper(monkeypatch):
-    # The kit's policy toolset with its no-op hooks (task-3.3 decision 1): no
-    # per-call policy today, but the interception point is standard anatomy and
-    # the write tier (task 3.7) lands its guard on it.
+    # The kit's policy toolset with its no-op hooks (task-3.3 decision 1): the
+    # interception point is standard anatomy. The hooks stay no-op deliberately —
+    # the write tier carries no confinement (task-3.7 decision 1).
     monkeypatch.setenv(PAT_ENV_VAR, "ghp_example")
     toolset = build_github_toolset()
     assert isinstance(toolset, McpToolset)

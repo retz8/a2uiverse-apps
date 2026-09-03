@@ -1,9 +1,9 @@
-"""Stub read-only PR toolset: canned, real-shaped a2ui-project/a2ui data.
+"""Stub PR toolset: canned, real-shaped a2ui-project/a2ui data.
 
 A minimal mirror of the GitHub read surface the demo beats need (a PR-list read and a
-PR-detail read). 7.3 replaces these with the remote read-only MCP toolset; this stub
-exists only so 7.2's definition of done — prompt -> tool call -> data-bound valid
-surface — can be met before MCP. No write tool exists here (read-only invariant).
+PR-detail read). The live agent holds the full MCP surface, writes included; the stub
+stays a read-only pair deliberately (task-3.7 decision 4) — writes are exercised live
+only, and stub/deterministic modes keep their read-only behavior.
 """
 
 from __future__ import annotations

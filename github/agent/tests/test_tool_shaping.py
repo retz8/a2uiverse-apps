@@ -1,6 +1,6 @@
 """Tool-response shaping (task 7.7).
 
-Payload shapes here are taken from real responses of the read-only GitHub MCP server,
+Payload shapes here are taken from real responses of the GitHub MCP server,
 not invented: `search_repositories` genuinely omits `description` for a repository that
 has none, and `get_check_runs` for a2ui#2123 genuinely returned 23 runs — 15 success,
 8 skipped, zero failures — while the surface claimed "All checks have passed".

@@ -8,8 +8,10 @@ from a2a.types import AgentSkill
 APP_NAME = "GitHub"
 
 APP_DESCRIPTION = (
-    "Reads the user's GitHub pull requests: finds the ones that need them, opens one "
-    "to its discussion and reviews, and helps compose review feedback."
+    "Reads and acts on the user's GitHub: finds the pull requests that need them, opens "
+    "one to its discussion and reviews, and posts, reviews, merges, and manages things "
+    "for them — content-bearing actions drafted as a proposal and fired on their "
+    "confirmation."
 )
 
 # The first skill carries the cross-cutting "what needs my attention" examples: every
@@ -52,9 +54,8 @@ SKILLS = [
         id="review_compose",
         name="Composing a review",
         description=(
-            "Helps write review feedback on a pull request, drafted for the user to "
-            "finish and submit themselves; it does not submit reviews or change "
-            "anything on GitHub."
+            "Helps write review feedback on a pull request: drafts the review with the "
+            "user, then submits it on their confirmation."
         ),
         tags=["a2ui", "github", "pull-requests", "review", "compose"],
         examples=[
@@ -62,6 +63,25 @@ SKILLS = [
             "Draft my review comments for #58",
             "Start a review on the streaming fix",
             "Write up my feedback on this pull request",
+        ],
+    ),
+    AgentSkill(
+        id="acting",
+        name="Acting on GitHub",
+        description=(
+            "Performs GitHub actions as the user: comments on issues and pull requests, "
+            "opens issues and pull requests, merges, edits files, and manages "
+            "notifications. Content-bearing actions are drafted as a proposal showing "
+            "where they will land and fire on the user's confirmation; quick toggles "
+            "fire directly."
+        ),
+        tags=["a2ui", "github", "write", "comment", "issue", "merge", "notifications"],
+        examples=[
+            "Comment on that issue that I'll pick it up tomorrow",
+            "Open an issue about the flaky beat test",
+            "Reply to the review comment on #58",
+            "Merge the streaming fix PR",
+            "Mark all my notifications read",
         ],
     ),
 ]

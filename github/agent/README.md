@@ -1,19 +1,10 @@
-# agent/ — A2A servers (deterministic + live)
+# agent/ — the GitHub app's A2A agent
 
-uv-managed Python project (outside the pnpm workspace). The GitHub app's agent, on
-port **11001** in every run mode. Hosts two sibling agent packages that share one
-venv and one test run:
-
-- `deterministic_agent/` — a canned-response A2A server that closes the event
-  round-trip without an LLM — a permanent token-free local-test harness.
-- `llm_agent/` — the live LLM agent: it turns a natural-language prompt into a
-  streamed, catalog-valid, data-bound A2UI surface (Gemini via Google ADK). Reads live
-  GitHub through the official remote GitHub MCP server (read-only). A stub
-  toolset (`llm_agent/tools.py`) remains available behind `TOOL_BACKEND=stub` for work
-  that should not consume GitHub call allowance.
-
-Catalog locate/load is shared by both agents in `catalog_common/`; validation semantics
-stay per-agent (deterministic: non-strict partial probe; live: strict complete-surface).
+uv-managed Python project (outside the pnpm workspace), on port **11001** in every
+run mode. Built on `a2ui-agent-kit` (`../../agent-kit/`, an editable path
+dependency): the kit carries the servers, run modes, recorder, and catalog
+machinery; this project carries what is GitHub's — prompt prose, tool policy,
+fixtures, knowledge docs, and the agent card (`app/`).
 
 ## Setup
 
@@ -30,38 +21,32 @@ uv run pytest
 Tests make zero LLM calls: prompt-assembly snapshot, validator, and the executor
 against a faked model stream. No `GOOGLE_API_KEY` is needed to run the suite.
 
-## Run the deterministic server
+## Run
+
+One entrypoint, three modes:
 
 ```bash
-uv run python -m deterministic_agent --host localhost
+uv run python -m app --mode deterministic   # canned fixtures, no model
+uv run python -m app --mode stub            # model over canned tools
+uv run python -m app --mode live            # model over the live GitHub MCP server
 ```
 
-## Run the live agent
+| Mode | Needs |
+| --- | --- |
+| `deterministic` | nothing |
+| `stub` | `GOOGLE_API_KEY` |
+| `live` | `GOOGLE_API_KEY`, `GITHUB_MCP_PAT` |
 
-Copy `.env.example` to `.env` first (`MODEL_NAME` defaults to
-`gemini-3.7-flash`), pick a scenario, then:
-
-```bash
-uv run python -m llm_agent --host localhost
-```
-
-| Scenario | `TOOL_BACKEND` | Required env |
-| --- | --- | --- |
-| Full agent — live GitHub over MCP | `mcp` (default) | `GOOGLE_API_KEY`, `GITHUB_MCP_PAT` |
-| LLM only — canned tool data, no GitHub calls | `stub` | `GOOGLE_API_KEY` |
-
-- `GITHUB_MCP_PAT` is a fine-grained GitHub PAT with read-only access to public
-  repositories; the agent reads GitHub through the official remote GitHub MCP
-  server and refuses to start if the PAT is missing while `TOOL_BACKEND` is
-  `mcp`.
-- The stub backend returns canned, real-shaped fixture data — useful for
-  prompt/client work that should not consume GitHub call allowance.
+Copy `.env.example` to `.env` first (`MODEL_NAME` defaults to `gemini-3.7-flash`).
 
 > [!IMPORTANT]
-> The agent is **read-only toward GitHub regardless of your PAT's scopes**. It
-> connects to the read-only variant of the remote GitHub MCP server
-> (`llm_agent/mcp.py`), so write tools — merging, reviewing, editing — never
-> enter its tool inventory. A PAT minted with write permissions gains nothing.
+> **The live agent acts as your PAT's user.** It connects to the unrestricted
+> remote GitHub MCP server with the full tool surface — writes included — and can
+> do exactly what the token allows (task-3.7 decision 1): comments, issues,
+> reviews, merges, and file edits land under your name, on any repository the
+> token reaches. Scope `GITHUB_MCP_PAT` to the authority you want the agent to
+> have. Content-bearing writes are proposed on the canvas and fire only on your
+> confirmation; quick reversible toggles fire directly.
 
 ### When the PAT is dead
 
@@ -87,38 +72,16 @@ string GitHub no longer recognises.
 reaches the agent through a host other than `localhost` — with the default, the
 card fetch succeeds but the `message/send` POST targets the wrong host.
 
-### Removing the read-only restriction
-
-Read-only is enforced in layers; granting write access means changing each one
-deliberately:
-
-1. **Endpoint** — in `llm_agent/mcp.py`, change `GITHUB_MCP_URL` from
-   `https://api.githubcopilot.com/mcp/readonly` to the unrestricted
-   `https://api.githubcopilot.com/mcp/`, which serves the write tools.
-2. **Toolset pin** — in the same file, extend `GITHUB_MCP_TOOLSETS` if the
-   write tools you need live outside the pinned six (the unrestricted
-   `pull_requests` toolset already includes merge and review-write).
-3. **PAT** — mint `GITHUB_MCP_PAT` with the write permissions you need; the
-   server can only do what the token allows.
-4. **Prompt** — `llm_agent/prompt.py` tells the model twice that every tool it
-   holds is read-only; rewrite those statements or the model will refuse
-   write-shaped requests.
-5. **Guard tests** — `tests/test_llm_mcp.py` pins the read-only URL and the
-   toolset tuple; update its assertions to the new contract so the suite is
-   green again.
-
 ## Recording live runs
 
 With `A2UI_RECORD_DIR` set, every conversation's streamed A2UI output is captured as the exact
 batch sequence it was sent, one file per conversation; unset, the agent behaves identically and
 writes nothing. `scripts/record_beats.py` drives scripted prompts against an armed agent.
 
-Nothing is scrubbed on the way through, and nothing needs to be: this agent reads public
-repositories through the read-only GitHub MCP server. That is unlike the Gmail agent, where the
-same flag also arms a pseudonymizer.
+Nothing is scrubbed on the way through: this agent's recorded corpus was captured from public
+repository data. That is unlike the Gmail agent, where the same flag also arms a pseudonymizer.
 
 **The beats the canvas replays are not recorded here.** They live in the platform repo
 (`apps/client/recordings/beats/`) and are captured through the composing hub, so they carry the
 shell's paint and the composition stamps alongside this agent's output — see that repo's client
 README. This recorder is for capturing raw agent output on its own.
-
