@@ -1,0 +1,37 @@
+{
+  "name": "create-a2ui-agent",
+  "version": "0.1.0",
+  "description": "Scaffold a new A2UI over A2A vendor app on a2ui-agent-kit: the agent, its catalog package, and the app manifest.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/retz8/a2uiverse-apps.git",
+    "directory": "create-a2ui-agent"
+  },
+  "type": "module",
+  "bin": {
+    "create-a2ui-agent": "./dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "templates"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "prepublishOnly": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@clack/prompts": "^1.7.0",
+    "commander": "^15.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "typescript": "~5.9.3",
+    "vitest": "^4.1.9"
+  }
+}

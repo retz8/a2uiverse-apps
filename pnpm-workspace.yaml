@@ -1,5 +1,6 @@
 packages:
   - "*/*-catalog"
+  - "create-a2ui-agent"
 
 allowBuilds:
   esbuild: true

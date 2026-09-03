@@ -1,0 +1,51 @@
+/*
+ * __DISPLAY_NAME__ product styling over the basic catalog's runtime DOM, scoped to the
+ * Provider's wrapper class. Every var() read carries a fallback: the token definitions live as
+ * inline style on the wrapper, which stylesheet analysis cannot see.
+ *
+ * TODO: the product's own rules where a token cannot reach — row washes, pill buttons, the
+ * caption register. Keep every selector under the wrapper class; nothing here may be global.
+ */
+
+/* Neutralize UA button chrome; rows and action buttons both build on this. */
+.__PACKAGE_NAME__ button {
+  font: inherit;
+  appearance: none;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  border: none;
+  background: none;
+  margin: 0;
+}
+
+/* Action buttons: a lone text child. */
+.__PACKAGE_NAME__ button:has(> .body:only-child) {
+  display: inline-block;
+  width: auto;
+  border-radius: var(--a2ui-button-border-radius, 8px);
+  padding: 0.5rem 1rem;
+  color: var(--a2ui-color-primary, #2f5bea);
+  font-weight: 500;
+}
+
+.__PACKAGE_NAME__ button:has(> .body:only-child):hover {
+  background: var(--a2ui-row-hover, #eef1f6);
+}
+
+/* Captions render as <em>: quiet and upright, never italic. */
+.__PACKAGE_NAME__ em {
+  font-style: normal;
+  color: var(--a2ui-text-caption-color, #5f6673);
+}
+
+/* Inputs: rounded quiet fields. */
+.__PACKAGE_NAME__ input,
+.__PACKAGE_NAME__ textarea {
+  font: inherit;
+  border: 1px solid var(--a2ui-color-border, #d0d4da);
+  border-radius: var(--a2ui-textfield-border-radius, 6px);
+  padding: 0.5rem 0.75rem;
+  background: var(--a2ui-color-input, #ffffff);
+  color: var(--a2ui-color-on-input, #1c1e21);
+}

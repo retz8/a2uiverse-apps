@@ -1,0 +1,10 @@
+[
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "greeting",
+      "path": "/greeting",
+      "value": "Hello again from __DISPLAY_NAME__"
+    }
+  }
+]

@@ -1,0 +1,45 @@
+{
+  "name": "greeting",
+  "intent": "Say hello",
+  "messages": [
+    {
+      "version": "v0.9",
+      "createSurface": {
+        "surfaceId": "greeting",
+        "catalogId": "__CATALOG_ID__",
+        "sendDataModel": true
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateDataModel": {
+        "surfaceId": "greeting",
+        "path": "/",
+        "value": {
+          "greeting": "Hello from __DISPLAY_NAME__",
+          "note": "An example surface: one card, one heading, one action."
+        }
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateComponents": {
+        "surfaceId": "greeting",
+        "components": [
+          {"id": "root", "component": "Card", "child": "body"},
+          {"id": "body", "component": "Column", "children": ["heading", "note", "again"]},
+          {"id": "heading", "component": "Text", "variant": "h3", "text": {"path": "/greeting"}},
+          {"id": "note", "component": "Text", "variant": "caption", "text": {"path": "/note"}},
+          {
+            "id": "again",
+            "component": "Button",
+            "variant": "primary",
+            "child": "again-label",
+            "action": {"event": {"name": "greet", "context": {"source": "greeting"}}}
+          },
+          {"id": "again-label", "component": "Text", "text": "Say it again"}
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "name": "greeting",
+  "intent": "Say hello",
+  "messages": [
+    {
+      "version": "v0.9",
+      "createSurface": {
+        "surfaceId": "greeting",
+        "catalogId": "__CATALOG_ID__",
+        "sendDataModel": true
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateDataModel": {
+        "surfaceId": "greeting",
+        "path": "/",
+        "value": {"greeting": "Hello from __DISPLAY_NAME__"}
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateComponents": {
+        "surfaceId": "greeting",
+        "components": [
+          {"id": "root", "component": "Text", "variant": "h1", "text": {"path": "/greeting"}}
+        ]
+      }
+    }
+  ]
+}

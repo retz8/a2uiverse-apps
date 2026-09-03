@@ -1,0 +1,10 @@
+/*
+ * __DISPLAY_NAME__ product styling, scoped to the Provider's scope element. Keep every
+ * selector under the scope class; nothing here may declare at :root or on the body.
+ *
+ * TODO: the design system's base styles that a component cannot carry itself.
+ */
+.__PACKAGE_NAME__-scope {
+  font-family: -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.5;
+}

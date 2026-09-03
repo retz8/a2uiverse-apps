@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "__CATALOG_ID__",
+  "title": "__DISPLAY_NAME__ Catalog",
+  "description": "The __DISPLAY_NAME__ app catalog: a custom catalog over the product's own design system. Holds the seed Text component until the catalog is designed.",
+  "catalogId": "__CATALOG_ID__",
+  "components": {
+    "Text": {
+      "type": "object",
+      "description": "Displays a run of text.",
+      "properties": {
+        "component": {
+          "const": "Text"
+        },
+        "text": {
+          "$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/DynamicString",
+          "description": "The text content to display."
+        },
+        "variant": {
+          "type": "string",
+          "description": "A hint for the base text style.",
+          "enum": ["h1", "h2", "h3", "body", "caption"],
+          "default": "body"
+        }
+      },
+      "required": ["component", "text"],
+      "unevaluatedProperties": false
+    }
+  },
+  "functions": {},
+  "$defs": {
+    "anyComponent": {
+      "oneOf": [
+        {
+          "$ref": "#/components/Text"
+        }
+      ]
+    }
+  }
+}

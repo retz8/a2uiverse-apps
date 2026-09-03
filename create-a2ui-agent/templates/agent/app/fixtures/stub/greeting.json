@@ -1,0 +1,7 @@
+{
+  "greeting": "Hello from __DISPLAY_NAME__",
+  "facts": [
+    "This is the stub tool's canned answer, read from app/fixtures/stub/greeting.json.",
+    "Replace it with fixtures derived from recorded live payloads, so the canned data stays real-shaped."
+  ]
+}
