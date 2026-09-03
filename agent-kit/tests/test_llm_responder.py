@@ -12,7 +12,7 @@ from types import SimpleNamespace
 
 import pytest
 
-from a2uiverse_kit.responder import AdkLlmResponder, ModelTurnError, _stream_agent_text
+from a2ui_agent_kit.responder import AdkLlmResponder, ModelTurnError, _stream_agent_text
 
 
 def _event(text, partial):
@@ -66,7 +66,7 @@ def _tool_event(calls=(), responses=()):
 async def test_tool_call_turns_are_logged(caplog):
     call = SimpleNamespace(name="list_pull_requests", args={"state": "open"})
     events = [_tool_event(calls=[call]), _event("Hello", partial=None)]
-    with caplog.at_level(logging.INFO, logger="a2uiverse_kit.responder"):
+    with caplog.at_level(logging.INFO, logger="a2ui_agent_kit.responder"):
         chunks = await _collect(events)
     assert chunks == ["Hello"]  # the tool turn yields no text
     logged = "\n".join(r.getMessage() for r in caplog.records)
@@ -78,7 +78,7 @@ async def test_tool_call_turns_are_logged(caplog):
 async def test_tool_result_turns_are_logged(caplog):
     response = SimpleNamespace(name="get_pull_request")
     events = [_tool_event(responses=[response]), _event("Hello", partial=None)]
-    with caplog.at_level(logging.INFO, logger="a2uiverse_kit.responder"):
+    with caplog.at_level(logging.INFO, logger="a2ui_agent_kit.responder"):
         chunks = await _collect(events)
     assert chunks == ["Hello"]
     logged = "\n".join(r.getMessage() for r in caplog.records)
@@ -97,7 +97,7 @@ async def test_tool_calls_are_logged_once_despite_partial_duplicates(caplog):
         get_function_responses=lambda: [],
     )
     events = [partial_call, _tool_event(calls=[call]), _event("Hi", partial=True)]
-    with caplog.at_level(logging.INFO, logger="a2uiverse_kit.responder"):
+    with caplog.at_level(logging.INFO, logger="a2ui_agent_kit.responder"):
         chunks = await _collect(events)
     assert chunks == ["Hi"]
     assert sum("tool call" in r.getMessage() for r in caplog.records) == 1
@@ -110,7 +110,7 @@ async def test_model_error_events_are_logged(caplog):
     err_event = SimpleNamespace(
         content=None, partial=None, error_code="BLOCKED", error_message="safety"
     )
-    with caplog.at_level(logging.WARNING, logger="a2uiverse_kit.responder"):
+    with caplog.at_level(logging.WARNING, logger="a2ui_agent_kit.responder"):
         with pytest.raises(ModelTurnError):  # error-only stream also raises
             await _collect([err_event])
     logged = "\n".join(r.getMessage() for r in caplog.records)
@@ -122,7 +122,7 @@ async def test_stream_with_no_text_logs_the_finish_reason(caplog):
     # A stream that ends with no text at all (e.g. thinking ate the token budget) must
     # say so, with the finish_reason, instead of failing invisibly downstream.
     events = [SimpleNamespace(content=None, partial=None, finish_reason="MAX_TOKENS")]
-    with caplog.at_level(logging.WARNING, logger="a2uiverse_kit.responder"):
+    with caplog.at_level(logging.WARNING, logger="a2ui_agent_kit.responder"):
         chunks = await _collect(events)
     assert chunks == []
     logged = "\n".join(r.getMessage() for r in caplog.records)

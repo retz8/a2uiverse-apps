@@ -1,15 +1,15 @@
 """The mode -> tools mapping and the LlmAgent construction, on this app's config.
 
 The env-driven TOOL_BACKEND switch retired with the kit (task-3.2 / phase decision 5):
-the tool backend is the CLI's --mode flag, resolved by a2uiverse_kit.modes.
+the tool backend is the CLI's --mode flag, resolved by a2ui_agent_kit.modes.
 """
 
 import pytest
 from a2ui.schema.constants import A2UI_SCHEMA_BLOCK_START
 from google.adk.tools.mcp_tool import McpToolset
 
-from a2uiverse_kit.config import DEFAULT_MODEL
-from a2uiverse_kit.modes import build_llm_agent, build_tools, model_name
+from a2ui_agent_kit.config import DEFAULT_MODEL
+from a2ui_agent_kit.modes import build_llm_agent, build_tools, model_name
 
 from app.config import CONFIG
 from app.mcp import MissingDemoCalendarError, MissingGoogleCredentialError
@@ -70,7 +70,7 @@ def test_unknown_mode_is_rejected():
 
 
 def test_backend_choice_is_logged(caplog):
-    with caplog.at_level("INFO", logger="a2uiverse_kit.modes"):
+    with caplog.at_level("INFO", logger="a2ui_agent_kit.modes"):
         build_tools(CONFIG, "stub")
     assert "stub" in caplog.text
 

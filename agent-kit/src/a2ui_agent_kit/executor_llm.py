@@ -23,12 +23,12 @@ from a2ui.parser.parser import parse_response
 from a2ui.parser.streaming_v09 import A2uiStreamParserV09
 from a2ui.schema.constants import VERSION_0_9
 
-from a2uiverse_kit.catalog import catalog_context
-from a2uiverse_kit.config import AgentAppConfig
-from a2uiverse_kit.paint_meta import PaintTitleTagFilter, create_paint_meta_part
-from a2uiverse_kit.recorder import RECORD_DIR_ENV, create_recorder
-from a2uiverse_kit.responder import LlmResponder, ModelTurnError
-from a2uiverse_kit.versions import WIRE_VERSION
+from a2ui_agent_kit.catalog import catalog_context
+from a2ui_agent_kit.config import AgentAppConfig
+from a2ui_agent_kit.paint_meta import PaintTitleTagFilter, create_paint_meta_part
+from a2ui_agent_kit.recorder import RECORD_DIR_ENV, create_recorder
+from a2ui_agent_kit.responder import LlmResponder, ModelTurnError
+from a2ui_agent_kit.versions import WIRE_VERSION
 
 logger = logging.getLogger(__name__)
 

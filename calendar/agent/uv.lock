@@ -26,22 +26,7 @@ http-server = [
 ]
 
 [[package]]
-name = "a2ui-agent-sdk"
-version = "0.2.4"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "a2a-sdk" },
-    { name = "google-adk" },
-    { name = "google-genai" },
-    { name = "jsonschema" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/67/ed/0a67c72a3aa56b95cea95cdc921e208dbf501ccf5bf18aba310953932d62/a2ui_agent_sdk-0.2.4.tar.gz", hash = "sha256:6c92363ca028e5c75a541f913e4bb1e6aef0c217e5c7dc693bb12712069b1e23", size = 279673, upload-time = "2026-06-03T23:09:24.628Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/53/f1/cc3ad505425af8b5495313df3b6842697fcf1edbe879a7ae79dce983cfec/a2ui_agent_sdk-0.2.4-py3-none-any.whl", hash = "sha256:3d768c16b98216df4dbb76930b69e809c256a1d2be159d55461c6bb67b2bedab", size = 85675, upload-time = "2026-06-03T23:09:23.315Z" },
-]
-
-[[package]]
-name = "a2uiverse-agent-kit"
+name = "a2ui-agent-kit"
 version = "0.1.0"
 source = { editable = "../../agent-kit" }
 dependencies = [
@@ -74,13 +59,28 @@ dev = [
 ]
 
 [[package]]
+name = "a2ui-agent-sdk"
+version = "0.2.4"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "a2a-sdk" },
+    { name = "google-adk" },
+    { name = "google-genai" },
+    { name = "jsonschema" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/67/ed/0a67c72a3aa56b95cea95cdc921e208dbf501ccf5bf18aba310953932d62/a2ui_agent_sdk-0.2.4.tar.gz", hash = "sha256:6c92363ca028e5c75a541f913e4bb1e6aef0c217e5c7dc693bb12712069b1e23", size = 279673, upload-time = "2026-06-03T23:09:24.628Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/53/f1/cc3ad505425af8b5495313df3b6842697fcf1edbe879a7ae79dce983cfec/a2ui_agent_sdk-0.2.4-py3-none-any.whl", hash = "sha256:3d768c16b98216df4dbb76930b69e809c256a1d2be159d55461c6bb67b2bedab", size = 85675, upload-time = "2026-06-03T23:09:23.315Z" },
+]
+
+[[package]]
 name = "a2uiverse-calendar-agent"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "a2a-sdk", extra = ["http-server"] },
+    { name = "a2ui-agent-kit" },
     { name = "a2ui-agent-sdk" },
-    { name = "a2uiverse-agent-kit" },
     { name = "click" },
     { name = "google-adk" },
     { name = "mcp" },
@@ -97,8 +97,8 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "a2a-sdk", extras = ["http-server"], specifier = ">=0.3.0,<0.4.0" },
+    { name = "a2ui-agent-kit", editable = "../../agent-kit" },
     { name = "a2ui-agent-sdk", specifier = ">=0.2.4,<0.3.0" },
-    { name = "a2uiverse-agent-kit", editable = "../../agent-kit" },
     { name = "click", specifier = ">=8.1.8" },
     { name = "google-adk", specifier = ">=2.5.0,<3.0.0" },
     { name = "mcp", specifier = ">=1.28.1,<2.0.0" },

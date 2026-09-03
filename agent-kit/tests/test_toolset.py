@@ -14,7 +14,7 @@ import mcp.types as mcp_types
 from google.adk.tools.mcp_tool import McpToolset, StreamableHTTPConnectionParams
 from google.adk.tools.mcp_tool.mcp_tool import McpTool
 
-from a2uiverse_kit.toolset import PolicyMcpTool, PolicyMcpToolset, rewrap
+from a2ui_agent_kit.toolset import PolicyMcpTool, PolicyMcpToolset, rewrap
 
 
 def make_tool(name: str = "t", properties: dict | None = None) -> McpTool:

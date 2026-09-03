@@ -2,10 +2,10 @@
 
 from pathlib import Path
 
-from a2uiverse_kit.executor_deterministic import DeterministicAgentExecutor
-from a2uiverse_kit.responses import fixture_responder
+from a2ui_agent_kit.executor_deterministic import DeterministicAgentExecutor
+from a2ui_agent_kit.responses import fixture_responder
 
-from a2uiverse_kit.testing import run_executor, run_executor_text
+from a2ui_agent_kit.testing import run_executor, run_executor_text
 
 FIXTURES = Path(__file__).resolve().parent / "fixtures" / "deterministic"
 

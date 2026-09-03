@@ -15,7 +15,7 @@ from a2a.server.events import EventQueue
 from a2a.types import DataPart, Message, Part, Role, TextPart
 from a2ui.a2a.parts import get_a2ui_datapart, is_a2ui_part
 
-from a2uiverse_kit.versions import WIRE_VERSION
+from a2ui_agent_kit.versions import WIRE_VERSION
 
 
 def _incoming_message(action: dict) -> Message:

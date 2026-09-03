@@ -4,8 +4,8 @@ from __future__ import annotations
 
 import json
 
-from a2uiverse_kit.corpus import capture_payload, corpus_payload, recording
-from a2uiverse_kit.recorder import RECORD_DIR_ENV
+from a2ui_agent_kit.corpus import capture_payload, corpus_payload, recording
+from a2ui_agent_kit.recorder import RECORD_DIR_ENV
 
 
 class TestRecordingGate:

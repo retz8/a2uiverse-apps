@@ -16,9 +16,9 @@ from a2ui.a2a.extension import get_a2ui_agent_extension
 from a2ui.schema.constants import VERSION_0_9_1
 from starlette.middleware.cors import CORSMiddleware
 
-from a2uiverse_kit.catalog import catalog_context
-from a2uiverse_kit.config import AgentAppConfig
-from a2uiverse_kit.modes import resolve_executor
+from a2ui_agent_kit.catalog import catalog_context
+from a2ui_agent_kit.config import AgentAppConfig
+from a2ui_agent_kit.modes import resolve_executor
 
 CORS_ORIGIN_REGEX = r"^(http://localhost:\d+|https://[a-z0-9-]+\.[a-z]+\.devtunnels\.ms)$"
 

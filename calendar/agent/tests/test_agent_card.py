@@ -8,7 +8,7 @@ The deterministic mode is not a lesser case here. It is the composition harness
 there means the Router ranks the demo against a document nothing else matches.
 """
 
-from a2uiverse_kit.server import build_agent_card
+from a2ui_agent_kit.server import build_agent_card
 
 from app.card import APP_NAME
 from app.config import CONFIG

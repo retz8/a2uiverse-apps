@@ -18,7 +18,7 @@ import os
 
 from google.adk.tools.mcp_tool import StreamableHTTPConnectionParams
 
-from a2uiverse_kit.toolset import PolicyMcpToolset
+from a2ui_agent_kit.toolset import PolicyMcpToolset
 
 # The read-only variant of the official remote server.
 GITHUB_MCP_URL = "https://api.githubcopilot.com/mcp/readonly"

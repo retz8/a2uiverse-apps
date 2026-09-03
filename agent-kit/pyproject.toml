@@ -1,7 +1,7 @@
 [project]
-name = "a2uiverse-agent-kit"
+name = "a2ui-agent-kit"
 version = "0.1.0"
-description = "Shared A2UI+A2A runtime for a2uiverse vendor agents."
+description = "A kit for building A2UI+A2A agents: servers, run modes, recorder, beats, catalog loading, prompt assembly."
 requires-python = ">=3.14"
 dependencies = [
     "a2ui-agent-sdk>=0.2.4,<0.3.0",
@@ -22,7 +22,7 @@ requires = ["uv_build>=0.10.0,<0.11.0"]
 build-backend = "uv_build"
 
 [tool.uv.build-backend]
-module-name = "a2uiverse_kit"
+module-name = "a2ui_agent_kit"
 
 [dependency-groups]
 dev = ["pytest>=9.0.0", "pytest-asyncio>=1.3.0"]

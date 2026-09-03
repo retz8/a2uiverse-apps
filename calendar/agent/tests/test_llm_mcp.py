@@ -110,7 +110,7 @@ def test_no_owned_only_scope_is_relied_on():
 
 
 def test_missing_project_fails_fast_with_the_calendar_binding(monkeypatch):
-    # The credential block itself is the kit's (a2uiverse_kit.google_adc, tested there);
+    # The credential block itself is the kit's (a2ui_agent_kit.google_adc, tested there);
     # this pins the vendor binding — the error speaks as Calendar and names the alternative.
     monkeypatch.delenv("GOOGLE_CLOUD_PROJECT", raising=False)
     with pytest.raises(MissingGoogleCredentialError) as excinfo:

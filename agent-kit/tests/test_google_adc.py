@@ -13,7 +13,7 @@ import google.auth
 import google.auth.exceptions
 import pytest
 
-from a2uiverse_kit.google_adc import (
+from a2ui_agent_kit.google_adc import (
     PROJECT_ENV_VAR,
     MissingGoogleCredentialError,
     access_token,

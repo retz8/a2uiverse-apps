@@ -13,7 +13,7 @@ from pathlib import Path
 import pytest
 from a2a.types import AgentSkill
 
-from a2uiverse_kit.config import AgentAppConfig
+from a2ui_agent_kit.config import AgentAppConfig
 
 FIXTURES_DIR = Path(__file__).resolve().parent / "fixtures"
 
@@ -22,7 +22,7 @@ def _question_policy_for(kind: str):
     # The kit-shipped named policies land with paint_meta; until then the fake
     # configs carry a pass-through so catalog/prompt tests can run.
     try:
-        from a2uiverse_kit import paint_meta
+        from a2ui_agent_kit import paint_meta
     except ImportError:  # pragma: no cover
         return lambda payload, metas: None
     if kind == "basic":

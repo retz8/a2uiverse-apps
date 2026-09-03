@@ -1,5 +1,5 @@
-from a2uiverse_kit.catalog import catalog_context
-from a2uiverse_kit.server import build_agent_card
+from a2ui_agent_kit.catalog import catalog_context
+from a2ui_agent_kit.server import build_agent_card
 
 from app.config import CONFIG
 

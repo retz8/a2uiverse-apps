@@ -18,7 +18,7 @@ from __future__ import annotations
 
 from typing import Any
 
-from a2uiverse_kit.toolset import PolicyMcpTool, PolicyMcpToolset
+from a2ui_agent_kit.toolset import PolicyMcpTool, PolicyMcpToolset
 
 from app.tool_shaping import scrub_tool_result
 

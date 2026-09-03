@@ -20,7 +20,7 @@ than implying more than it does: it stops the invitations, it does not stop the 
 existing. An event created this way is one its attendees do not know about, and the painted
 proposal is required to say so (see `knowledge/calendar-domain.md`).
 
-The credential block is the kit's opt-in Google ADC helper (`a2uiverse_kit.google_adc`):
+The credential block is the kit's opt-in Google ADC helper (`a2ui_agent_kit.google_adc`):
 minted once by a developer outside the agent, read and refreshed by the library, never a
 client secret or a consent flow.
 
@@ -35,8 +35,8 @@ import os
 
 from google.adk.tools.mcp_tool import StreamableHTTPConnectionParams
 
-from a2uiverse_kit import google_adc
-from a2uiverse_kit.google_adc import MissingGoogleCredentialError, mcp_headers
+from a2ui_agent_kit import google_adc
+from a2ui_agent_kit.google_adc import MissingGoogleCredentialError, mcp_headers
 
 from app.guarded_toolset import GuardedMcpToolset
 from app.tool_shaping import CALENDAR_ID_ENV

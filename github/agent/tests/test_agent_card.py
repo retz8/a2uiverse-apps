@@ -4,7 +4,7 @@ capability in the user's vocabulary, each with real examples — and every run m
 the app presents the same document.
 """
 
-from a2uiverse_kit.server import build_agent_card
+from a2ui_agent_kit.server import build_agent_card
 
 from app.config import CONFIG
 

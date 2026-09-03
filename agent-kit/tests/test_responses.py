@@ -4,7 +4,7 @@ from pathlib import Path
 
 import pytest
 
-from a2uiverse_kit.responses import (
+from a2ui_agent_kit.responses import (
     fallback,
     fixture_responder,
     load_fixture,

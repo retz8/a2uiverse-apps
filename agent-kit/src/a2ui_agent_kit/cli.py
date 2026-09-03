@@ -10,8 +10,8 @@ import logging
 
 import click
 
-from a2uiverse_kit.config import AgentAppConfig
-from a2uiverse_kit.modes import MODES
+from a2ui_agent_kit.config import AgentAppConfig
+from a2ui_agent_kit.modes import MODES
 
 
 def build_command(config: AgentAppConfig) -> click.Command:
@@ -39,7 +39,7 @@ def build_command(config: AgentAppConfig) -> click.Command:
         import uvicorn
         from dotenv import load_dotenv
 
-        from a2uiverse_kit.server import build_app
+        from a2ui_agent_kit.server import build_app
 
         # Debug aid: timestamped logs so request/model/stream ordering is unambiguous.
         logging.basicConfig(

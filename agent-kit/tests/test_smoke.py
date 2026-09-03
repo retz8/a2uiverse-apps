@@ -1,5 +1,5 @@
-import a2uiverse_kit
-from a2uiverse_kit import versions
+import a2ui_agent_kit
+from a2ui_agent_kit import versions
 
 
 def test_wire_version():
@@ -7,4 +7,4 @@ def test_wire_version():
 
 
 def test_package_imports():
-    assert a2uiverse_kit.__doc__
+    assert a2ui_agent_kit.__doc__

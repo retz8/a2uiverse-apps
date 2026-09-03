@@ -26,7 +26,7 @@ from a2ui.schema.constants import VERSION_0_9
 from a2ui.schema.manager import A2uiSchemaManager
 from a2ui.schema.validator import analyze_topology, extract_component_ref_fields
 
-from a2uiverse_kit.config import AgentAppConfig
+from a2ui_agent_kit.config import AgentAppConfig
 
 _MISSING = object()
 

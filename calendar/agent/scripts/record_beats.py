@@ -1,7 +1,7 @@
 """Headless beat driver: runs the four beats against a live agent and keeps the streams.
 
 Task 8.1. The agent records what it streams (the kit recorder, armed by
-A2UI_RECORD_DIR); the kit's driver (`a2uiverse_kit.beats`) supplies the mechanics —
+A2UI_RECORD_DIR); the kit's driver (`a2ui_agent_kit.beats`) supplies the mechanics —
 this shim carries only what is Calendar's: the beats, the agent URL, and the
 directories.
 
@@ -19,7 +19,7 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
-from a2uiverse_kit.beats import Turn, main
+from a2ui_agent_kit.beats import Turn, main
 
 AGENT_URL = "http://localhost:11003"
 REPO_ROOT = Path(__file__).resolve().parent.parent

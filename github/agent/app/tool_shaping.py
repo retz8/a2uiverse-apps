@@ -1,7 +1,7 @@
 """GitHub's shaping policy: projection notes, empty-field naming, and counting (task 7.7).
 
 The mechanics — the annotation walker, the shape dump — are the kit's
-(`a2uiverse_kit.tool_shaping`); this module carries what is GitHub's alone.
+(`a2ui_agent_kit.tool_shaping`); this module carries what is GitHub's alone.
 
 The model invents when a payload is silent, and miscounts when a payload makes it
 do arithmetic. Both showed up in task 7.7 on different beats, and prose levers
@@ -30,9 +30,9 @@ from collections import Counter
 from pathlib import Path
 from typing import Any
 
-from a2uiverse_kit import tool_shaping as kit_shaping
-from a2uiverse_kit.tool_shaping import ANNOTATION_KEY as _ANNOTATION_KEY
-from a2uiverse_kit.tool_shaping import PROJECTION_NOTE
+from a2ui_agent_kit import tool_shaping as kit_shaping
+from a2ui_agent_kit.tool_shaping import ANNOTATION_KEY as _ANNOTATION_KEY
+from a2ui_agent_kit.tool_shaping import PROJECTION_NOTE
 
 __all__ = [
     "PROJECTION_NOTE",

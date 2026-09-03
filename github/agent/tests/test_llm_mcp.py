@@ -7,7 +7,7 @@ safe, and every other assertion is over constants and header assembly.
 import pytest
 from google.adk.tools.mcp_tool import McpToolset
 
-from a2uiverse_kit.toolset import PolicyMcpTool, PolicyMcpToolset
+from a2ui_agent_kit.toolset import PolicyMcpTool, PolicyMcpToolset
 
 from app.mcp import (
     GITHUB_MCP_TOOLSETS,

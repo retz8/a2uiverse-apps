@@ -8,7 +8,7 @@ given screen should contain. Both paths come from the app's config.
 
 from __future__ import annotations
 
-from a2uiverse_kit.config import AgentAppConfig
+from a2ui_agent_kit.config import AgentAppConfig
 
 
 def load_brand_guidance(config: AgentAppConfig) -> str:

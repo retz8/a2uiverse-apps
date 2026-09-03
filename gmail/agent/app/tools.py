@@ -16,7 +16,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from a2uiverse_kit.responses import stub_fixture_loader
+from a2ui_agent_kit.responses import stub_fixture_loader
 
 _FIXTURES = Path(__file__).resolve().parent / "fixtures" / "stub"
 

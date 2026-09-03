@@ -2,8 +2,8 @@ import re
 
 from starlette.testclient import TestClient
 
-from a2uiverse_kit.catalog import catalog_context
-from a2uiverse_kit.server import CORS_ORIGIN_REGEX, build_agent_card, build_app
+from a2ui_agent_kit.catalog import catalog_context
+from a2ui_agent_kit.server import CORS_ORIGIN_REGEX, build_agent_card, build_app
 
 from app.config import CONFIG
 

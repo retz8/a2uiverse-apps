@@ -9,9 +9,9 @@ from __future__ import annotations
 
 from a2ui.schema.manager import A2uiSchemaManager
 
-from a2uiverse_kit.catalog import catalog_context
-from a2uiverse_kit.config import AgentAppConfig
-from a2uiverse_kit.knowledge import load_brand_guidance, load_domain_knowledge
+from a2ui_agent_kit.catalog import catalog_context
+from a2ui_agent_kit.config import AgentAppConfig
+from a2ui_agent_kit.knowledge import load_brand_guidance, load_domain_knowledge
 
 # The SDK renders the examples under a bare "### Examples:" header at the end of the
 # prompt, where each example — a request-shaped `intent` plus a complete surface with

@@ -11,7 +11,7 @@ import json
 import os
 from pathlib import Path
 
-from a2uiverse_kit.tool_shaping import (
+from a2ui_agent_kit.tool_shaping import (
     SHAPE_DUMP_ENV,
     describe,
     record_shape,

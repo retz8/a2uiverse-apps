@@ -17,8 +17,8 @@ from itertools import count
 from pathlib import Path
 from typing import Any
 
-from a2uiverse_kit.config import BuildResponse, BuildTextResponse
-from a2uiverse_kit.versions import WIRE_VERSION
+from a2ui_agent_kit.config import BuildResponse, BuildTextResponse
+from a2ui_agent_kit.versions import WIRE_VERSION
 
 # The operation keys whose object carries the surfaceId we stamp.
 _OPERATION_KEYS = ("updateComponents", "updateDataModel", "createSurface")

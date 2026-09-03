@@ -1,7 +1,7 @@
 """Gmail's shaping policy: pseudonymization in record mode, and projection notes.
 
 The mechanics — the annotation walker, the shape dump, the corpus append — are the
-kit's (`a2uiverse_kit.tool_shaping`, `a2uiverse_kit.corpus`); this module carries what is
+kit's (`a2ui_agent_kit.tool_shaping`, `a2ui_agent_kit.corpus`); this module carries what is
 Gmail's alone.
 
 **Pseudonymization, in record mode only (task-2.6 decision 8).** The mailbox is real and
@@ -31,10 +31,10 @@ import re
 from pathlib import Path
 from typing import Any
 
-from a2uiverse_kit import tool_shaping as kit_shaping
-from a2uiverse_kit.corpus import capture_payload, corpus_payload, recording
-from a2uiverse_kit.tool_shaping import ANNOTATION_KEY as _ANNOTATION_KEY
-from a2uiverse_kit.tool_shaping import PROJECTION_NOTE
+from a2ui_agent_kit import tool_shaping as kit_shaping
+from a2ui_agent_kit.corpus import capture_payload, corpus_payload, recording
+from a2ui_agent_kit.tool_shaping import ANNOTATION_KEY as _ANNOTATION_KEY
+from a2ui_agent_kit.tool_shaping import PROJECTION_NOTE
 
 __all__ = [
     "PROJECTION_NOTE",

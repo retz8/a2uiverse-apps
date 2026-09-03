@@ -11,7 +11,7 @@ from __future__ import annotations
 import logging
 import os
 
-from a2uiverse_kit.config import DEFAULT_MODEL, AgentAppConfig
+from a2ui_agent_kit.config import DEFAULT_MODEL, AgentAppConfig
 
 logger = logging.getLogger(__name__)
 
@@ -64,7 +64,7 @@ def build_llm_agent(config: AgentAppConfig, mode: str, model: str | None = None)
     """Constructs the ADK LlmAgent with the assembled system prompt and tools."""
     from google.adk.agents import LlmAgent
 
-    from a2uiverse_kit.prompt import build_system_prompt
+    from a2ui_agent_kit.prompt import build_system_prompt
 
     prompt = build_system_prompt(config)
     # Debug aid: dump the assembled system prompt so it can be inspected verbatim.
@@ -85,12 +85,12 @@ def build_llm_agent(config: AgentAppConfig, mode: str, model: str | None = None)
 def resolve_executor(config: AgentAppConfig, mode: str):
     """The executor for a mode, behind lazy imports (deterministic never imports ADK)."""
     if mode == "deterministic":
-        from a2uiverse_kit.executor_deterministic import DeterministicAgentExecutor
+        from a2ui_agent_kit.executor_deterministic import DeterministicAgentExecutor
 
         return DeterministicAgentExecutor(config.build_response, config.build_text_response)
     if mode in ("stub", "live"):
-        from a2uiverse_kit.executor_llm import LlmAgentExecutor
-        from a2uiverse_kit.responder import AdkLlmResponder
+        from a2ui_agent_kit.executor_llm import LlmAgentExecutor
+        from a2ui_agent_kit.responder import AdkLlmResponder
 
         responder = AdkLlmResponder(
             build_llm_agent(config, mode), app_name=config.responder_app_name

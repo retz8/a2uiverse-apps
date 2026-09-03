@@ -2,7 +2,7 @@
 
 from click.testing import CliRunner
 
-from a2uiverse_kit.cli import build_command
+from a2ui_agent_kit.cli import build_command
 
 
 def test_help_names_the_three_modes(basic_config):
@@ -24,6 +24,6 @@ def test_an_unknown_mode_is_rejected_at_parse_time(basic_config):
 
 
 def test_beats_module_imports():
-    from a2uiverse_kit import beats
+    from a2ui_agent_kit import beats
 
     assert beats.Turn(1, "s", "t", "p").beat == 1

@@ -6,7 +6,7 @@ from pathlib import Path
 import pytest
 from a2a.types import AgentSkill
 
-from a2uiverse_kit.config import DEFAULT_MODEL, AgentAppConfig
+from a2ui_agent_kit.config import DEFAULT_MODEL, AgentAppConfig
 
 
 def _minimal_config(tmp_path: Path) -> AgentAppConfig:

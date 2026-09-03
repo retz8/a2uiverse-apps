@@ -14,8 +14,8 @@ from a2a.utils import new_agent_parts_message, new_task
 from a2a.utils.errors import ServerError
 from a2ui.a2a.parts import create_a2ui_part
 
-from a2uiverse_kit.config import BuildResponse, BuildTextResponse
-from a2uiverse_kit.versions import WIRE_VERSION
+from a2ui_agent_kit.config import BuildResponse, BuildTextResponse
+from a2ui_agent_kit.versions import WIRE_VERSION
 
 
 def _extract_action(context: RequestContext) -> dict | None:

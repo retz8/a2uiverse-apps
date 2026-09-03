@@ -19,7 +19,7 @@ import os
 from pathlib import Path
 from typing import Any
 
-from a2uiverse_kit.recorder import RECORD_DIR_ENV
+from a2ui_agent_kit.recorder import RECORD_DIR_ENV
 
 logger = logging.getLogger(__name__)
 

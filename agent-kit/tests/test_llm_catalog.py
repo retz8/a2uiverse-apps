@@ -10,7 +10,7 @@ import json
 
 import pytest
 
-from a2uiverse_kit.catalog import CatalogContext, catalog_context
+from a2ui_agent_kit.catalog import CatalogContext, catalog_context
 
 
 @pytest.fixture

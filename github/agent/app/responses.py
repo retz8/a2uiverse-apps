@@ -5,7 +5,7 @@ from __future__ import annotations
 from itertools import count
 from pathlib import Path
 
-from a2uiverse_kit.responses import fallback, load_fixture, stamp_surface
+from a2ui_agent_kit.responses import fallback, load_fixture, stamp_surface
 
 _FIXTURES_DIR = Path(__file__).resolve().parent / "fixtures" / "deterministic"
 _EVENT_FIXTURES = {
@@ -176,7 +176,7 @@ def build_text_response(text: str) -> list[dict]:
     Unlike action responses, a text prompt arrives with no surface to update, so this
     creates one.
     """
-    from a2uiverse_kit.catalog import catalog_context
+    from a2ui_agent_kit.catalog import catalog_context
 
     from app.config import CONFIG
 

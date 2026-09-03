@@ -1,4 +1,4 @@
-from a2uiverse_kit.catalog import catalog_context
+from a2ui_agent_kit.catalog import catalog_context
 
 from app.config import CONFIG
 from app.responses import build_response

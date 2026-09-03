@@ -14,21 +14,21 @@ from a2ui.schema.constants import VERSION_0_9
 from pathlib import Path
 import tempfile
 
-from a2uiverse_kit.catalog import catalog_context
-from a2uiverse_kit.executor_llm import (
+from a2ui_agent_kit.catalog import catalog_context
+from a2ui_agent_kit.executor_llm import (
     APOLOGY_TEXT,
     MAX_ATTEMPTS,
     UNAVAILABLE_TEXT,
     LenientA2uiStreamParser,
     LlmAgentExecutor,
 )
-from a2uiverse_kit.recorder import (
+from a2ui_agent_kit.recorder import (
     RECORD_DIR_ENV,
     NullRecorder,
     SessionRecorder,
     create_recorder,
 )
-from a2uiverse_kit.responder import ModelTurnError
+from a2ui_agent_kit.responder import ModelTurnError
 
 from .conftest import make_config
 
@@ -816,7 +816,7 @@ async def test_unexpected_stream_failure_is_logged_with_a_traceback(caplog):
     executor = _executor(responder)
     queue = _FakeQueue()
 
-    with caplog.at_level("WARNING", logger="a2uiverse_kit.executor_llm"):
+    with caplog.at_level("WARNING", logger="a2ui_agent_kit.executor_llm"):
         await executor.execute(_Ctx("list my public repos"), queue)
 
     failures = [r for r in caplog.records if "model stream failed" in r.getMessage()]
@@ -864,7 +864,7 @@ async def test_invalid_surface_logs_the_raw_model_response(caplog):
     executor = _executor(responder)
     queue = _FakeQueue()
 
-    with caplog.at_level("WARNING", logger="a2uiverse_kit.executor_llm"):
+    with caplog.at_level("WARNING", logger="a2ui_agent_kit.executor_llm"):
         await executor.execute(_Ctx("show me open PRs"), queue)
 
     # "oops" is the model's prose preface: it appears in the raw response and nowhere
@@ -978,7 +978,7 @@ async def test_recording_never_changes_what_the_client_receives(tmp_path):
 
 # ---- task 8.5: paint titles, question marker, fork context ----
 
-from a2uiverse_kit.executor_llm import (  # noqa: E402
+from a2ui_agent_kit.executor_llm import (  # noqa: E402
     FORK_CONTEXT_KEY,
     _frame_fork_context,
     _resolve_prompt,

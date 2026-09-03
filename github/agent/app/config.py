@@ -5,8 +5,8 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any
 
-from a2uiverse_kit.config import AgentAppConfig
-from a2uiverse_kit.paint_meta import require_root_component
+from a2ui_agent_kit.config import AgentAppConfig
+from a2ui_agent_kit.paint_meta import require_root_component
 
 from app import prose
 from app.card import APP_DESCRIPTION, APP_NAME, SKILLS

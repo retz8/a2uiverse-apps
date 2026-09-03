@@ -6,8 +6,8 @@ from pathlib import Path
 
 import pytest
 
-from a2uiverse_kit.modes import build_tools, model_name, resolve_executor
-from a2uiverse_kit.server import build_agent_card, build_app
+from a2ui_agent_kit.modes import build_tools, model_name, resolve_executor
+from a2ui_agent_kit.server import build_agent_card, build_app
 
 V091_URI = "https://a2ui.org/a2a-extension/a2ui/v0.9.1"
 
@@ -22,7 +22,7 @@ def test_card_carries_the_config_identity_and_v091_extension(any_config):
 
 
 def test_card_advertises_the_apps_catalog(any_config):
-    from a2uiverse_kit.catalog import catalog_context
+    from a2ui_agent_kit.catalog import catalog_context
 
     card = build_agent_card(any_config, "http://localhost:19999")
     (extension,) = card.capabilities.extensions
@@ -43,7 +43,7 @@ import sys
 sys.path.insert(0, {str(fixtures.parent)!r})
 from tests.conftest import make_config
 from pathlib import Path
-from a2uiverse_kit.server import build_app
+from a2ui_agent_kit.server import build_app
 config = make_config("basic", Path({str(tmp_path)!r}))
 build_app(config, "deterministic", "localhost", 19999)
 assert "google.adk" not in sys.modules, "deterministic mode imported ADK"
@@ -77,7 +77,7 @@ def test_stub_tools_come_from_the_config(basic_config, tmp_path):
 
 
 def test_model_resolution_prefers_env_then_config_then_default(basic_config, tmp_path, monkeypatch):
-    from a2uiverse_kit.config import DEFAULT_MODEL
+    from a2ui_agent_kit.config import DEFAULT_MODEL
 
     from .conftest import make_config
 

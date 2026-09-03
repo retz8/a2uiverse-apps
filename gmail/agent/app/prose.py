@@ -1,6 +1,6 @@
 """The Gmail agent's authored prompt prose: role, workflow blocks, examples framing.
 
-Pure vendor data — the assembly lives in the kit (`a2uiverse_kit.prompt`), which joins
+Pure vendor data — the assembly lives in the kit (`a2ui_agent_kit.prompt`), which joins
 the workflow blocks with the domain doc and splices the examples framing under the
 SDK's examples header.
 """

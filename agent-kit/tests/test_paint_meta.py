@@ -6,7 +6,7 @@ suites, each against its kit-shipped named policy.
 
 import pytest
 
-from a2uiverse_kit.paint_meta import (
+from a2ui_agent_kit.paint_meta import (
     PAINT_META_MIME,
     PaintTitleTagFilter,
     create_paint_meta_part,

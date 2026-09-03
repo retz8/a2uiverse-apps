@@ -6,7 +6,7 @@ import pytest
 from a2a.types import Part, TextPart
 from a2ui.a2a.parts import create_a2ui_part
 
-from a2uiverse_kit.recorder import NullRecorder, SessionRecorder, create_recorder
+from a2ui_agent_kit.recorder import NullRecorder, SessionRecorder, create_recorder
 
 
 def _a2ui_part(surface_id: str) -> Part:

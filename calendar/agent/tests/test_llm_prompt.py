@@ -13,7 +13,7 @@ from pathlib import Path
 
 from a2ui.schema.constants import A2UI_SCHEMA_BLOCK_END, A2UI_SCHEMA_BLOCK_START
 
-from a2uiverse_kit.prompt import build_system_prompt as _build_system_prompt
+from a2ui_agent_kit.prompt import build_system_prompt as _build_system_prompt
 
 from app.config import CONFIG
 

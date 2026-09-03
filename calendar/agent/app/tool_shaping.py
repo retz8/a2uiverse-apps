@@ -1,7 +1,7 @@
 """Calendar's shaping policy: notification suppression, calendar pinning, address masking.
 
 The mechanics — the annotation walker, the shape dump, the corpus append — are the
-kit's (`a2uiverse_kit.tool_shaping`, `a2uiverse_kit.corpus`); this module carries what is
+kit's (`a2ui_agent_kit.tool_shaping`, `a2ui_agent_kit.corpus`); this module carries what is
 Calendar's alone, and it is worth being precise about which of it is a safety boundary.
 
 **Notification suppression, on every call, in every mode (task-2.7 decision 2).** Calendar's
@@ -36,10 +36,10 @@ import re
 from pathlib import Path
 from typing import Any
 
-from a2uiverse_kit import tool_shaping as kit_shaping
-from a2uiverse_kit.corpus import capture_payload, corpus_payload, recording
-from a2uiverse_kit.tool_shaping import ANNOTATION_KEY as _ANNOTATION_KEY
-from a2uiverse_kit.tool_shaping import PROJECTION_NOTE
+from a2ui_agent_kit import tool_shaping as kit_shaping
+from a2ui_agent_kit.corpus import capture_payload, corpus_payload, recording
+from a2ui_agent_kit.tool_shaping import ANNOTATION_KEY as _ANNOTATION_KEY
+from a2ui_agent_kit.tool_shaping import PROJECTION_NOTE
 
 __all__ = [
     "CALENDAR_ID_ENV",

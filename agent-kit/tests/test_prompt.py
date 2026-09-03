@@ -1,7 +1,7 @@
 """Prompt-assembly mechanics: slot mapping, join order, and the examples splice."""
 
-from a2uiverse_kit.knowledge import load_brand_guidance, load_domain_knowledge
-from a2uiverse_kit.prompt import _EXAMPLES_HEADER, build_system_prompt
+from a2ui_agent_kit.knowledge import load_brand_guidance, load_domain_knowledge
+from a2ui_agent_kit.prompt import _EXAMPLES_HEADER, build_system_prompt
 
 
 def test_prompt_carries_role_workflow_domain_and_brand(any_config):

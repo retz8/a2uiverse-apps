@@ -28,7 +28,7 @@ from typing import Any
 
 from a2a.types import DataPart, Part, TextPart
 
-from a2uiverse_kit.versions import WIRE_VERSION
+from a2ui_agent_kit.versions import WIRE_VERSION
 
 logger = logging.getLogger(__name__)
 

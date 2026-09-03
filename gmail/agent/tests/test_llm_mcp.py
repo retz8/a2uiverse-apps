@@ -76,7 +76,7 @@ def test_scopes_cover_both_write_tiers():
 
 
 def test_missing_project_fails_fast_with_the_gmail_binding(monkeypatch):
-    # The credential block itself is the kit's (a2uiverse_kit.google_adc, tested there);
+    # The credential block itself is the kit's (a2ui_agent_kit.google_adc, tested there);
     # this pins the vendor binding — the error speaks as Gmail and names the alternative.
     monkeypatch.delenv("GOOGLE_CLOUD_PROJECT", raising=False)
     with pytest.raises(MissingGoogleCredentialError) as excinfo:

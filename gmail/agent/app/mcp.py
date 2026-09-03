@@ -11,7 +11,7 @@ offers no scope granting the labelling tools without also authorizing trash and 
 permits what this filter withholds. Admitting the destructive tools is a decision for a
 real authority surface (M8), not a scope grant.
 
-The credential block is the kit's opt-in Google ADC helper (`a2uiverse_kit.google_adc`):
+The credential block is the kit's opt-in Google ADC helper (`a2ui_agent_kit.google_adc`):
 minted once by a developer outside the agent, read and refreshed by the library, never a
 client secret or a consent flow.
 """
@@ -20,8 +20,8 @@ from __future__ import annotations
 
 from google.adk.tools.mcp_tool import StreamableHTTPConnectionParams
 
-from a2uiverse_kit import google_adc
-from a2uiverse_kit.google_adc import MissingGoogleCredentialError, mcp_headers
+from a2ui_agent_kit import google_adc
+from a2ui_agent_kit.google_adc import MissingGoogleCredentialError, mcp_headers
 
 from app.recording_toolset import RecordingMcpToolset
 
