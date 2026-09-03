@@ -1,6 +1,8 @@
-"""Shapes Calendar MCP traffic on its way out and on its way back.
+"""Calendar's shaping policy: notification suppression, calendar pinning, address masking.
 
-Three jobs, and it is worth being precise about which of them is a safety boundary.
+The mechanics — the annotation walker, the shape dump, the corpus append — are the
+kit's (`a2uiverse_kit.tool_shaping`, `a2uiverse_kit.corpus`); this module carries what is
+Calendar's alone, and it is worth being precise about which of it is a safety boundary.
 
 **Notification suppression, on every call, in every mode (task-2.7 decision 2).** Calendar's
 writes reach third parties: creating or changing an event mails its attendees and changes
@@ -16,44 +18,47 @@ is not a field the object lacks. This layer never decides what a surface shows -
 Calendar facts of its own and removes nothing. It states what the payload does and does not
 cover.
 
-**Corpus capture, in record mode only.** What the model READ, alongside the A2UI recorder's
-capture of what it PAINTED. `scripts/derive_corpus.py` turns the pair into the stub backend's
-fixtures and the deterministic agent's, so all three run modes come from one live run.
-
 **There is no pseudonymizer here, and that is deliberate (task-2.7 decision 4).** Gmail needed
 one because an account has exactly one mailbox: reading Gmail live means reading real mail, so
 every payload had to be scrubbed before it could reach a public repo. Calendar is not shaped
 like that -- `calendarId` is a first-class parameter and one account holds many calendars, so
 the agent reads a seeded demo calendar whose contents are authored (`scripts/seed_calendar.py`).
 The corpus is clean by construction rather than by a substitution pass whose completeness
-nobody can prove, and the failure mode Gmail hit the hard way -- rewriting one branch of a
-`CallToolResult` while the model read the other -- cannot occur when there is nothing to
-rewrite.
+nobody can prove; the one exception Google injects is handled by `mask_injected_addresses`.
 """
 
 from __future__ import annotations
 
 import hashlib
-import json
 import logging
 import os
 import re
 from pathlib import Path
 from typing import Any
 
+from a2uiverse_kit import tool_shaping as kit_shaping
+from a2uiverse_kit.corpus import capture_payload, corpus_payload, recording
+from a2uiverse_kit.tool_shaping import ANNOTATION_KEY as _ANNOTATION_KEY
+from a2uiverse_kit.tool_shaping import PROJECTION_NOTE
+
+__all__ = [
+    "CALENDAR_ID_ENV",
+    "EVENT_COUNT_NOTE",
+    "PROJECTION_NOTE",
+    "annotate",
+    "capture_payload",
+    "capture_tool_result",
+    "mask_injected_addresses",
+    "pin_calendar",
+    "record_shape",
+    "recording",
+    "shape_tool_response",
+    "suppress_notifications",
+]
+
 logger = logging.getLogger(__name__)
 
-SHAPE_DUMP_ENV = "TOOL_SHAPE_DUMP"
-from a2uiverse_kit.recorder import RECORD_DIR_ENV  # one definition, kit-owned
-
-# Attached to every shaped payload. The failure it prevents is specific: a field the
-# projection omits is not a field the message lacks.
-PROJECTION_NOTE = (
-    "This payload is a projection: it carries only the fields listed above. A field "
-    "that does not appear here was NOT fetched, and its absence is not evidence that "
-    "the underlying object lacks it. Never state or infer a value for a field absent "
-    "from this payload — fetch it, or leave it out of the surface entirely."
-)
+_AGENT_DIR = Path(__file__).resolve().parent.parent  # calendar/agent/
 
 # An event list is a window over a time range, not the calendar. Stating the count explicitly
 # stops the model reporting a day as busier or emptier than the query actually covered.
@@ -62,8 +67,6 @@ EVENT_COUNT_NOTE = (
     "count entries yourself, and do not describe the range as fuller or emptier than it. "
     "It is a count of what the query covered, not of everything on the calendar."
 )
-
-_ANNOTATION_KEY = "_payload_notes"
 
 # ---------------------------------------------------------------------------
 # Notification suppression
@@ -158,37 +161,6 @@ def pin_calendar(args: dict[str, Any], accepts: set[str] | None = None) -> dict[
 # Corpus capture
 # ---------------------------------------------------------------------------
 
-
-def recording() -> str | None:
-    """The record directory when the recorder is armed, else None.
-
-    One switch arms two things: the A2UI stream capture and the MCP payload capture below.
-    They belong together — a recorded run is exactly the run whose payloads become the stub
-    corpus.
-    """
-    return os.environ.get(RECORD_DIR_ENV) or None
-
-
-def capture_payload(tool_name: str, payload: object) -> None:
-    """Appends an MCP payload to the corpus the stub backend is built from.
-
-    The A2UI recorder captures what the model PAINTED; this captures what it READ. Decision
-    11 derives all three run modes from one live run, and the stub backend needs the payload
-    side of it — otherwise the stub would have to be hand-authored, which is the thing that
-    decision exists to prevent.
-    """
-    record_dir = recording()
-    if not record_dir:
-        return
-    try:
-        target = Path(record_dir) / "payloads"
-        target.mkdir(parents=True, exist_ok=True)
-        with (target / f"{tool_name}.jsonl").open("a", encoding="utf-8") as fh:
-            fh.write(json.dumps(payload) + "\n")
-    except (OSError, TypeError, ValueError):
-        logger.debug("payload capture failed for %s", tool_name, exc_info=True)
-
-
 # RFC 2606 reserves these precisely so they cannot belong to anyone. On a seeded calendar
 # every authored address is already one of them, so anything outside them is a field Google
 # injected rather than one the seed wrote.
@@ -248,22 +220,8 @@ def capture_tool_result(result: Any, tool_name: str = "tool") -> Any:
     if not recording() or not isinstance(result, dict):
         return result
     masked = mask_injected_addresses(result)
-    capture_payload(tool_name, _corpus_payload(masked))
+    capture_payload(tool_name, corpus_payload(masked))
     return masked
-
-
-def _corpus_payload(result: dict) -> Any:
-    """The decoded payload to record for the stub corpus, preferring the structured field."""
-    structured = result.get("structuredContent")
-    if isinstance(structured, dict) and structured:
-        return structured
-    for part in result.get("content") or []:
-        if isinstance(part, dict) and isinstance(part.get("text"), str):
-            try:
-                return json.loads(part["text"])
-            except ValueError:
-                continue
-    return {}
 
 
 # ---------------------------------------------------------------------------
@@ -271,37 +229,8 @@ def _corpus_payload(result: dict) -> Any:
 # ---------------------------------------------------------------------------
 
 
-def _dump_path() -> Path:
-    return Path(__file__).resolve().parent.parent / "tool_shapes.dump.jsonl"
-
-
-def _describe(value: Any, depth: int = 0) -> Any:
-    if isinstance(value, dict):
-        if depth >= 2:
-            return sorted(value)
-        return {k: _describe(v, depth + 1) for k, v in value.items()}
-    if isinstance(value, list):
-        return [_describe(value[0], depth + 1)] if value else []
-    return type(value).__name__
-
-
 def record_shape(tool_name: str, args: dict[str, Any], response: Any) -> None:
-    """Appends the payload's SHAPE (never its content) to a dump, when asked.
-
-    A debugging aid for prompt work: it answers "what fields does this tool actually
-    return" without writing the payload itself to a file. It is also how the tool inventory's
-    real argument names get pinned down on the first live run.
-    """
-    if not os.environ.get(SHAPE_DUMP_ENV):
-        return
-    try:
-        line = json.dumps(
-            {"tool": tool_name, "args": sorted(args or {}), "shape": _describe(response)}
-        )
-        with _dump_path().open("a", encoding="utf-8") as fh:
-            fh.write(line + "\n")
-    except (OSError, TypeError, ValueError):
-        logger.debug("tool shape dump failed for %s", tool_name, exc_info=True)
+    return kit_shaping.record_shape(tool_name, args, response, app_dir=_AGENT_DIR)
 
 
 def annotate(payload: Any) -> Any | None:
@@ -319,30 +248,5 @@ def annotate(payload: Any) -> Any | None:
 
 
 def shape_tool_response(response: Any, tool_name: str = "tool") -> Any | None:
-    """The `after_tool_callback` body: projection notes only.
-
-    Returns None to pass the response through untouched, per ADK's callback contract.
-    """
-    if not isinstance(response, dict):
-        return None
-    content = response.get("content")
-    if not isinstance(content, list):
-        return None
-    changed = False
-    parts = []
-    for part in content:
-        text = part.get("text") if isinstance(part, dict) else None
-        if not isinstance(text, str):
-            parts.append(part)
-            continue
-        try:
-            payload = json.loads(text)
-        except ValueError:
-            parts.append(part)
-            continue
-        annotated = annotate(payload)
-        if annotated is not None:
-            payload = annotated
-            changed = True
-        parts.append({**part, "text": json.dumps(payload)})
-    return {**response, "content": parts} if changed else None
+    """The `after_tool_callback` body: projection notes only, via the kit walker."""
+    return kit_shaping.shape_tool_response(response, tool_name, annotate=annotate)

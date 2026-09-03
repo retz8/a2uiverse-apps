@@ -1,17 +1,21 @@
-"""Deterministic-response infrastructure: fixture playing, stamping, visible fallback.
+"""Canned-response infrastructure: fixture playing, stamping, visible fallback.
 
 The kit owns only the machinery. Fixtures, their action maps, and any dynamic
 handlers are the app's: `fixture_responder` builds the standard
 (build_response, build_text_response) pair from an app's fixtures dir and action
-map, and the low-level helpers are exported for an app that composes its own pair
-around them.
+map, `stub_fixture_loader` builds the cached loader an app's stub tools read
+their corpus through, and the low-level helpers are exported for an app that
+composes its own pair around them.
 """
 
 from __future__ import annotations
 
+import functools
 import json
+from collections.abc import Callable
 from itertools import count
 from pathlib import Path
+from typing import Any
 
 from a2uiverse_kit.config import BuildResponse, BuildTextResponse
 from a2uiverse_kit.versions import WIRE_VERSION
@@ -29,6 +33,23 @@ def load_fixture(fixtures_dir: Path, name: str) -> list[dict]:
         )
     with open(path, encoding="utf-8") as f:
         return json.load(f)
+
+
+def stub_fixture_loader(fixtures_dir: Path, *, hint: str) -> Callable[[str], Any]:
+    """A cached loader over an app's stub corpus (`<fixtures_dir>/<name>.json`).
+
+    A missing fixture is a setup problem, so it fails with `hint` — the app's
+    pointer at how its corpus is produced — rather than an opaque file error.
+    """
+
+    @functools.lru_cache(maxsize=16)
+    def fixture(name: str) -> Any:
+        path = fixtures_dir / f"{name}.json"
+        if not path.is_file():
+            raise FileNotFoundError(f"stub fixture {path.name} is missing. {hint}")
+        return json.loads(path.read_text(encoding="utf-8"))
+
+    return fixture
 
 
 def stamp_surface(messages: list[dict], surface_id: str) -> list[dict]:

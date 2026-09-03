@@ -7,6 +7,8 @@ safe, and every other assertion is over constants and header assembly.
 import pytest
 from google.adk.tools.mcp_tool import McpToolset
 
+from a2uiverse_kit.toolset import PolicyMcpTool, PolicyMcpToolset
+
 from app.mcp import (
     GITHUB_MCP_TOOLSETS,
     GITHUB_MCP_URL,
@@ -55,7 +57,7 @@ def test_github_pat_missing_fails_fast_naming_both_knobs(monkeypatch):
         github_pat()
     message = str(excinfo.value)
     assert PAT_ENV_VAR in message
-    assert "TOOL_BACKEND=stub" in message
+    assert "--mode stub" in message
 
 
 def test_github_pat_empty_is_treated_as_missing(monkeypatch):
@@ -82,10 +84,15 @@ def test_connection_params_use_the_readonly_url_and_pinned_headers(monkeypatch):
     assert params.headers == mcp_headers("ghp_example")
 
 
-def test_build_toolset_constructs_offline(monkeypatch):
+def test_build_toolset_constructs_offline_as_the_kit_wrapper(monkeypatch):
+    # The kit's policy toolset with its no-op hooks (task-3.3 decision 1): no
+    # per-call policy today, but the interception point is standard anatomy and
+    # the write tier (task 3.7) lands its guard on it.
     monkeypatch.setenv(PAT_ENV_VAR, "ghp_example")
     toolset = build_github_toolset()
     assert isinstance(toolset, McpToolset)
+    assert isinstance(toolset, PolicyMcpToolset)
+    assert toolset.tool_class is PolicyMcpTool
 
 
 def test_build_toolset_without_pat_fails_fast(monkeypatch):

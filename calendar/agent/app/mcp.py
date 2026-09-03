@@ -20,9 +20,9 @@ than implying more than it does: it stops the invitations, it does not stop the 
 existing. An event created this way is one its attendees do not know about, and the painted
 proposal is required to say so (see `knowledge/calendar-domain.md`).
 
-The credential is Application Default Credentials, minted once by a developer outside the
-agent (`gcloud auth application-default login`). The agent reads it and lets the library
-refresh it; it never sees a client secret and never runs a consent flow.
+The credential block is the kit's opt-in Google ADC helper (`a2uiverse_kit.google_adc`):
+minted once by a developer outside the agent, read and refreshed by the library, never a
+client secret or a consent flow.
 
 The agent reads a **seeded demo calendar**, not the developer's own (task-2.7 decision 4):
 `CALENDAR_ID_ENV` names it, and `scripts/seed_calendar.py` populates it. That is why there is
@@ -33,13 +33,29 @@ from __future__ import annotations
 
 import os
 
-import google.auth
-import google.auth.exceptions
-import google.auth.transport.requests
 from google.adk.tools.mcp_tool import StreamableHTTPConnectionParams
+
+from a2uiverse_kit import google_adc
+from a2uiverse_kit.google_adc import MissingGoogleCredentialError, mcp_headers
 
 from app.guarded_toolset import GuardedMcpToolset
 from app.tool_shaping import CALENDAR_ID_ENV
+
+__all__ = [
+    "CALENDAR_ID_ENV",
+    "CALENDAR_MCP_URL",
+    "CALENDAR_SCOPES",
+    "CALENDAR_TOOLS",
+    "WITHHELD_TOOLS",
+    "MissingDemoCalendarError",
+    "MissingGoogleCredentialError",
+    "access_token",
+    "build_calendar_toolset",
+    "calendar_connection_params",
+    "demo_calendar_id",
+    "mcp_headers",
+    "quota_project",
+]
 
 CALENDAR_MCP_URL = "https://calendarmcp.googleapis.com/mcp/v1"
 
@@ -92,13 +108,6 @@ WITHHELD_TOOLS = (
     "suggest_time",
 )
 
-PROJECT_ENV_VAR = "GOOGLE_CLOUD_PROJECT"
-
-
-
-class MissingGoogleCredentialError(RuntimeError):
-    """Raised when the MCP backend is selected with no usable credential."""
-
 
 class MissingDemoCalendarError(RuntimeError):
     """Raised when the MCP backend is selected with no demo calendar to read."""
@@ -106,14 +115,12 @@ class MissingDemoCalendarError(RuntimeError):
 
 def quota_project() -> str:
     """The project billed for the call, sent as X-Goog-User-Project."""
-    project = os.environ.get(PROJECT_ENV_VAR)
-    if not project:
-        raise MissingGoogleCredentialError(
-            f"{PROJECT_ENV_VAR} is not set. The live agent sends it as the "
-            "X-Goog-User-Project header on every Calendar MCP call; set it in agent/.env. "
-            "To run against canned fixture data instead, set TOOL_BACKEND=stub."
-        )
-    return project
+    return google_adc.quota_project("Calendar")
+
+
+def access_token() -> str:
+    """Mints a fresh access token from ADC, failing fast rather than degrading to canned data."""
+    return google_adc.access_token(CALENDAR_SCOPES, "Calendar")
 
 
 def demo_calendar_id() -> str:
@@ -129,46 +136,9 @@ def demo_calendar_id() -> str:
         raise MissingDemoCalendarError(
             f"{CALENDAR_ID_ENV} is not set. The live agent reads a seeded demo calendar, "
             "never `primary` -- see scripts/seed_calendar.py and agent/README.md. "
-            "To run against canned fixture data instead, set TOOL_BACKEND=stub."
+            "To run against canned fixture data instead, run with --mode stub."
         )
     return calendar_id
-
-
-def access_token() -> str:
-    """Mints a fresh access token from ADC, failing fast rather than degrading to canned data.
-
-    A silent fallback would render a convincing surface from stub fixtures with no signal
-    that it is not live, so the stub is only ever a deliberate choice.
-    """
-    try:
-        credentials, _ = google.auth.default(scopes=list(CALENDAR_SCOPES))
-    except google.auth.exceptions.DefaultCredentialsError as exc:
-        raise MissingGoogleCredentialError(
-            "No Application Default Credentials. The live agent needs a user credential "
-            "carrying the Calendar scopes:\n\n  "
-            + "\n  ".join(CALENDAR_SCOPES)
-            + "\n\n"
-            "Mint it with the command in agent/README.md, 'Setting up the Calendar "
-            "credential'. Do NOT run `gcloud auth application-default login` with only "
-            "these scopes: --scopes REPLACES the granted set, and every Google app in this "
-            "repo shares one credential, so a Calendar-only grant revokes the Gmail "
-            "agent's. The README's command lists the union.\n\n"
-            "To run against canned fixture data instead, set TOOL_BACKEND=stub."
-        ) from exc
-    credentials.refresh(google.auth.transport.requests.Request())
-    if not credentials.token:
-        raise MissingGoogleCredentialError(
-            "Application Default Credentials produced no access token. Re-run "
-            "`gcloud auth application-default login` with the Calendar scopes."
-        )
-    return credentials.token
-
-
-def mcp_headers(token: str, project: str) -> dict[str, str]:
-    return {
-        "Authorization": f"Bearer {token}",
-        "X-Goog-User-Project": project,
-    }
 
 
 def calendar_connection_params() -> StreamableHTTPConnectionParams:

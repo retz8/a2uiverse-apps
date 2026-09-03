@@ -4,6 +4,10 @@ Payload shapes here are taken from real responses of the read-only GitHub MCP se
 not invented: `search_repositories` genuinely omits `description` for a repository that
 has none, and `get_check_runs` for a2ui#2123 genuinely returned 23 runs — 15 success,
 8 skipped, zero failures — while the surface claimed "All checks have passed".
+
+The walker's mechanics are the kit's since task 3.3 (decision 4 normalized this agent's
+one-arg in-place variant onto it); every assertion below runs the real payloads through
+the normalized walker and pins that the shaped output is unchanged.
 """
 
 from __future__ import annotations
@@ -102,25 +106,11 @@ class TestCheckRunTally:
         assert "check_run_tally" not in out["_payload_notes"]
 
 
-class TestPassThrough:
-    def test_non_json_text_parts_are_left_alone(self):
-        response = {"content": [{"type": "text", "text": "not json at all"}]}
-        assert shape_tool_response(response) is None
-
-    def test_a_response_without_content_is_left_alone(self):
-        assert shape_tool_response({"isError": True}) is None
-        assert shape_tool_response("a bare string") is None
-
+class TestAnnotateDeclines:
+    # The walker's own pass-throughs are the kit's tests; these pin the vendor hook.
     def test_a_json_list_payload_is_left_alone(self):
         # annotate() only knows how to describe an object's fields.
         assert shape_tool_response(mcp_response([1, 2, 3])) is None  # type: ignore[arg-type]
-
-    def test_shaping_never_raises(self):
-        class Exploding(dict):
-            def get(self, *_args, **_kwargs):
-                raise RuntimeError("boom")
-
-        assert shape_tool_response(Exploding()) is None
 
     def test_annotate_declines_non_dict_payloads(self):
         assert annotate([1, 2, 3]) is None

@@ -1,7 +1,9 @@
-"""In-process harness: run an executor and reconstruct its emitted A2UI payload.
+"""In-process test harness: run an executor and reconstruct its emitted A2UI payload.
 
-The agents' identical helpers, with the executor injected — the kit's suite builds
-one from a fake config's response pair; a vendor suite builds one from its app's.
+Shipped in the package (not the kit's tests/) so vendor suites import one harness
+instead of carrying byte-identical copies. The executor is injected: the kit's own
+suite builds one from a fake config's response pair; a vendor suite builds one
+from its app's.
 """
 
 from __future__ import annotations

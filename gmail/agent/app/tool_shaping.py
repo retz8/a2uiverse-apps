@@ -1,7 +1,8 @@
-"""Shapes MCP tool responses before the model reads them.
+"""Gmail's shaping policy: pseudonymization in record mode, and projection notes.
 
-Two jobs, both applied inside the encoded text part of an MCP response
-(`{"content": [{"type": "text", "text": "<json>"}], ...}`).
+The mechanics — the annotation walker, the shape dump, the corpus append — are the
+kit's (`a2uiverse_kit.tool_shaping`, `a2uiverse_kit.corpus`); this module carries what is
+Gmail's alone.
 
 **Pseudonymization, in record mode only (task-2.6 decision 8).** The mailbox is real and
 the repositories that hold the fixtures are public, so no real mail may reach a tracked
@@ -26,25 +27,28 @@ from __future__ import annotations
 
 import hashlib
 import json
-import logging
-import os
 import re
 from pathlib import Path
 from typing import Any
 
-logger = logging.getLogger(__name__)
+from a2uiverse_kit import tool_shaping as kit_shaping
+from a2uiverse_kit.corpus import capture_payload, corpus_payload, recording
+from a2uiverse_kit.tool_shaping import ANNOTATION_KEY as _ANNOTATION_KEY
+from a2uiverse_kit.tool_shaping import PROJECTION_NOTE
 
-SHAPE_DUMP_ENV = "TOOL_SHAPE_DUMP"
-from a2uiverse_kit.recorder import RECORD_DIR_ENV  # one definition, kit-owned
+__all__ = [
+    "PROJECTION_NOTE",
+    "THREAD_COUNT_NOTE",
+    "annotate",
+    "capture_payload",
+    "pseudonymize",
+    "record_shape",
+    "recording",
+    "scrub_tool_result",
+    "shape_tool_response",
+]
 
-# Attached to every shaped payload. The failure it prevents is specific: a field the
-# projection omits is not a field the message lacks.
-PROJECTION_NOTE = (
-    "This payload is a projection: it carries only the fields listed above. A field "
-    "that does not appear here was NOT fetched, and its absence is not evidence that "
-    "the underlying object lacks it. Never state or infer a value for a field absent "
-    "from this payload — fetch it, or leave it out of the surface entirely."
-)
+_AGENT_DIR = Path(__file__).resolve().parent.parent  # gmail/agent/
 
 # A thread read returns message metadata, not bodies. Stating the count explicitly stops
 # the model reporting a thread length it inferred from however many entries it rendered.
@@ -52,8 +56,6 @@ THREAD_COUNT_NOTE = (
     "`message_count` is the authoritative number of messages in this thread. Do not "
     "count entries yourself, and do not describe the thread as longer or shorter than it."
 )
-
-_ANNOTATION_KEY = "_payload_notes"
 
 # ---------------------------------------------------------------------------
 # Pseudonymization
@@ -182,90 +184,6 @@ def _is_system_label(value: str) -> bool:
     return value in _SYSTEM_LABELS or value.startswith("CATEGORY_")
 
 
-def recording() -> str | None:
-    """The record directory when the recorder is armed, else None.
-
-    One switch arms three things: the A2UI stream capture, pseudonymization, and the MCP
-    payload capture below. They belong together — a recorded run is exactly the run whose
-    payloads become the stub corpus.
-    """
-    return os.environ.get(RECORD_DIR_ENV) or None
-
-
-def capture_payload(tool_name: str, payload: object) -> None:
-    """Appends a pseudonymized MCP payload to the corpus the stub backend is built from.
-
-    The A2UI recorder captures what the model PAINTED; this captures what it READ. Decision
-    11 derives all three run modes from one live run, and the stub backend needs the payload
-    side of it — otherwise the stub would have to be hand-authored, which is the thing that
-    decision exists to prevent.
-    """
-    record_dir = recording()
-    if not record_dir:
-        return
-    try:
-        target = Path(record_dir) / "payloads"
-        target.mkdir(parents=True, exist_ok=True)
-        with (target / f"{tool_name}.jsonl").open("a", encoding="utf-8") as fh:
-            fh.write(json.dumps(payload) + "\n")
-    except (OSError, TypeError, ValueError):
-        logger.debug("payload capture failed for %s", tool_name, exc_info=True)
-
-
-# ---------------------------------------------------------------------------
-# Shaping
-# ---------------------------------------------------------------------------
-
-
-def _dump_path() -> Path:
-    return Path(__file__).resolve().parent.parent / "tool_shapes.dump.jsonl"
-
-
-def _describe(value: Any, depth: int = 0) -> Any:
-    if isinstance(value, dict):
-        if depth >= 2:
-            return sorted(value)
-        return {k: _describe(v, depth + 1) for k, v in value.items()}
-    if isinstance(value, list):
-        return [_describe(value[0], depth + 1)] if value else []
-    return type(value).__name__
-
-
-def record_shape(tool_name: str, args: dict[str, Any], response: Any) -> None:
-    """Appends the payload's SHAPE (never its content) to a dump, when asked.
-
-    A debugging aid for prompt work: it answers "what fields does this tool actually
-    return" without putting mail in a file.
-    """
-    if not os.environ.get(SHAPE_DUMP_ENV):
-        return
-    try:
-        line = json.dumps(
-            {"tool": tool_name, "args": sorted(args or {}), "shape": _describe(response)}
-        )
-        with _dump_path().open("a", encoding="utf-8") as fh:
-            fh.write(line + "\n")
-    except (OSError, TypeError, ValueError):
-        logger.debug("tool shape dump failed for %s", tool_name, exc_info=True)
-
-
-def annotate(payload: Any) -> Any | None:
-    """Adds projection notes to a decoded payload. Returns None when nothing applies."""
-    if not isinstance(payload, dict):
-        return None
-    notes = [PROJECTION_NOTE]
-    annotated = dict(payload)
-    messages = payload.get("messages")
-    if isinstance(messages, list):
-        annotated["message_count"] = len(messages)
-        notes.append(THREAD_COUNT_NOTE)
-    threads = payload.get("threads")
-    if isinstance(threads, list):
-        annotated["thread_count"] = len(threads)
-    annotated[_ANNOTATION_KEY] = notes
-    return annotated
-
-
 def scrub_tool_result(result: Any, tool_name: str = "tool") -> Any:
     """Pseudonymizes an MCP CallToolResult dict IN FULL, in record mode.
 
@@ -291,7 +209,7 @@ def scrub_tool_result(result: Any, tool_name: str = "tool") -> Any:
             # branch. A key we do not recognise is a key we must not pass through untouched.
             scrubbed[key] = pseudonymize(value, key)
 
-    capture_payload(tool_name, _corpus_payload(scrubbed))
+    capture_payload(tool_name, corpus_payload(scrubbed))
     return scrubbed
 
 
@@ -311,50 +229,38 @@ def _scrub_content_part(part: Any) -> Any:
     return {**part, "text": json.dumps(pseudonymize(payload))}
 
 
-def _corpus_payload(scrubbed: dict) -> Any:
-    """The decoded payload to record for the stub corpus, preferring the structured field."""
-    structured = scrubbed.get("structuredContent")
-    if isinstance(structured, dict) and structured:
-        return structured
-    for part in scrubbed.get("content") or []:
-        if isinstance(part, dict) and isinstance(part.get("text"), str):
-            try:
-                return json.loads(part["text"])
-            except ValueError:
-                continue
-    return {}
+# ---------------------------------------------------------------------------
+# Shaping
+# ---------------------------------------------------------------------------
+
+
+def record_shape(tool_name: str, args: dict[str, Any], response: Any) -> None:
+    return kit_shaping.record_shape(tool_name, args, response, app_dir=_AGENT_DIR)
+
+
+def annotate(payload: Any) -> Any | None:
+    """Adds projection notes to a decoded payload. Returns None when nothing applies."""
+    if not isinstance(payload, dict):
+        return None
+    notes = [PROJECTION_NOTE]
+    annotated = dict(payload)
+    messages = payload.get("messages")
+    if isinstance(messages, list):
+        annotated["message_count"] = len(messages)
+        notes.append(THREAD_COUNT_NOTE)
+    threads = payload.get("threads")
+    if isinstance(threads, list):
+        annotated["thread_count"] = len(threads)
+    annotated[_ANNOTATION_KEY] = notes
+    return annotated
 
 
 def shape_tool_response(response: Any, tool_name: str = "tool") -> Any | None:
-    """The `after_tool_callback` body: projection notes only.
-
-    Returns None to pass the response through untouched, per ADK's callback contract.
+    """The `after_tool_callback` body: projection notes only, via the kit walker.
 
     Pseudonymization deliberately does NOT happen here. It runs inside the tool
     (`scrub_tool_result`), for the reason that module documents, and running it in both
     places would substitute already-substituted values — leaving the recorded corpus and the
     painted stream disagreeing about names that are both fake.
     """
-    if not isinstance(response, dict):
-        return None
-    content = response.get("content")
-    if not isinstance(content, list):
-        return None
-    changed = False
-    parts = []
-    for part in content:
-        text = part.get("text") if isinstance(part, dict) else None
-        if not isinstance(text, str):
-            parts.append(part)
-            continue
-        try:
-            payload = json.loads(text)
-        except ValueError:
-            parts.append(part)
-            continue
-        annotated = annotate(payload)
-        if annotated is not None:
-            payload = annotated
-            changed = True
-        parts.append({**part, "text": json.dumps(payload)})
-    return {**response, "content": parts} if changed else None
+    return kit_shaping.shape_tool_response(response, tool_name, annotate=annotate)

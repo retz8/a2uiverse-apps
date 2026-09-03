@@ -22,7 +22,6 @@ from app.mcp import (
     MissingDemoCalendarError,
     MissingGoogleCredentialError,
     demo_calendar_id,
-    mcp_headers,
     quota_project,
 )
 
@@ -110,17 +109,14 @@ def test_no_owned_only_scope_is_relied_on():
     assert "https://www.googleapis.com/auth/calendar.events.owned" not in CALENDAR_SCOPES
 
 
-def test_headers_carry_the_bearer_token_and_the_quota_project():
-    headers = mcp_headers("token-value", "a-project")
-    assert headers["Authorization"] == "Bearer token-value"
-    assert headers["X-Goog-User-Project"] == "a-project"
-
-
-def test_missing_project_fails_fast_and_names_the_alternative(monkeypatch):
+def test_missing_project_fails_fast_with_the_calendar_binding(monkeypatch):
+    # The credential block itself is the kit's (a2uiverse_kit.google_adc, tested there);
+    # this pins the vendor binding — the error speaks as Calendar and names the alternative.
     monkeypatch.delenv("GOOGLE_CLOUD_PROJECT", raising=False)
     with pytest.raises(MissingGoogleCredentialError) as excinfo:
         quota_project()
-    assert "TOOL_BACKEND=stub" in str(excinfo.value)
+    assert "Calendar" in str(excinfo.value)
+    assert "--mode stub" in str(excinfo.value)
 
 
 def test_missing_demo_calendar_fails_fast_rather_than_reading_primary(monkeypatch):

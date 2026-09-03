@@ -18,7 +18,6 @@ from app.mcp import (
     GMAIL_SCOPES,
     GMAIL_TOOLS,
     MissingGoogleCredentialError,
-    mcp_headers,
     quota_project,
 )
 
@@ -76,14 +75,11 @@ def test_scopes_cover_both_write_tiers():
     assert "https://www.googleapis.com/auth/gmail.modify" in GMAIL_SCOPES
 
 
-def test_headers_carry_the_bearer_token_and_the_quota_project():
-    headers = mcp_headers("token-value", "a-project")
-    assert headers["Authorization"] == "Bearer token-value"
-    assert headers["X-Goog-User-Project"] == "a-project"
-
-
-def test_missing_project_fails_fast_and_names_the_alternative(monkeypatch):
+def test_missing_project_fails_fast_with_the_gmail_binding(monkeypatch):
+    # The credential block itself is the kit's (a2uiverse_kit.google_adc, tested there);
+    # this pins the vendor binding — the error speaks as Gmail and names the alternative.
     monkeypatch.delenv("GOOGLE_CLOUD_PROJECT", raising=False)
     with pytest.raises(MissingGoogleCredentialError) as excinfo:
         quota_project()
-    assert "TOOL_BACKEND=stub" in str(excinfo.value)
+    assert "Gmail" in str(excinfo.value)
+    assert "--mode stub" in str(excinfo.value)

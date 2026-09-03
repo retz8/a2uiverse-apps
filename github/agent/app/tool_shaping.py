@@ -1,4 +1,7 @@
-"""Shapes MCP tool responses before the model reads them.
+"""GitHub's shaping policy: projection notes, empty-field naming, and counting (task 7.7).
+
+The mechanics — the annotation walker, the shape dump — are the kit's
+(`a2uiverse_kit.tool_shaping`); this module carries what is GitHub's alone.
 
 The model invents when a payload is silent, and miscounts when a payload makes it
 do arithmetic. Both showed up in task 7.7 on different beats, and prose levers
@@ -19,34 +22,26 @@ asking it to infer one.
 **This layer never decides what a surface shows.** It adds no GitHub facts of its
 own and removes nothing. It states what the payload does and does not cover, and
 it counts what is already there.
-
-MCP responses arrive as `{"content": [{"type": "text", "text": "<json>"}], ...}`,
-so annotations are applied inside the encoded text part.
 """
 
 from __future__ import annotations
 
-import json
-import logging
-import os
 from collections import Counter
 from pathlib import Path
 from typing import Any
 
-logger = logging.getLogger(__name__)
+from a2uiverse_kit import tool_shaping as kit_shaping
+from a2uiverse_kit.tool_shaping import ANNOTATION_KEY as _ANNOTATION_KEY
+from a2uiverse_kit.tool_shaping import PROJECTION_NOTE
 
-SHAPE_DUMP_ENV = "TOOL_SHAPE_DUMP"
+__all__ = [
+    "PROJECTION_NOTE",
+    "annotate",
+    "record_shape",
+    "shape_tool_response",
+]
 
-# Attached to every shaped payload. The failure it prevents is specific: a field
-# the projection omits is not a field the repository lacks.
-PROJECTION_NOTE = (
-    "This payload is a projection: it carries only the fields listed above. A field "
-    "that does not appear here was NOT fetched, and its absence is not evidence that "
-    "the underlying object lacks it. Never state or infer a value for a field absent "
-    "from this payload — fetch it, or leave it out of the surface entirely."
-)
-
-_ANNOTATION_KEY = "_payload_notes"
+_AGENT_DIR = Path(__file__).resolve().parent.parent  # github/agent/
 
 # `fields_present` describes the ENVELOPE. For a search result the envelope is
 # {total_count, incomplete_results, items} — which says nothing about how thin the
@@ -94,39 +89,8 @@ DIRECTORY_LISTING_NOTE = (
 _EMPTY_VALUES = (None, "", [], {})
 
 
-def _dump_path() -> Path:
-    return Path(__file__).resolve().parent.parent / "tool_shapes.dump.jsonl"
-
-
-def _describe(value: Any, depth: int = 0) -> Any:
-    """A structural sketch of a payload: keys and types, values only when small."""
-    if depth > 3:
-        return "…"
-    if isinstance(value, dict):
-        return {k: _describe(v, depth + 1) for k, v in list(value.items())[:40]}
-    if isinstance(value, list):
-        return {"__list__": len(value), "first": _describe(value[0], depth + 1) if value else None}
-    if isinstance(value, str):
-        return value if len(value) <= 120 else f"<str len={len(value)}>"
-    return value
-
-
 def record_shape(tool_name: str, args: dict[str, Any], response: Any) -> None:
-    """Appends a structural sketch of one tool response. No-op unless enabled.
-
-    Kept (env-gated, off by default) rather than deleted: the shaping rules below are
-    only correct against real payload shapes, and the next rule will need the same look.
-    """
-    if not os.environ.get(SHAPE_DUMP_ENV):
-        return
-    try:
-        line = json.dumps(
-            {"tool": tool_name, "args": args, "shape": _describe(response)}, default=str
-        )
-        with _dump_path().open("a", encoding="utf-8") as fh:
-            fh.write(line + "\n")
-    except Exception:  # instrumentation must never break a turn
-        logger.exception("tool shape dump failed for %s", tool_name)
+    return kit_shaping.record_shape(tool_name, args, response, app_dir=_AGENT_DIR)
 
 
 def _tally_check_runs(runs: list[dict[str, Any]]) -> dict[str, Any]:
@@ -197,34 +161,6 @@ def annotate(payload: Any) -> Any | None:
     return annotated
 
 
-def shape_tool_response(response: Any) -> Any | None:
-    """Annotates the JSON carried in an MCP response's text parts.
-
-    Returns the mutated response when anything changed, otherwise None so the caller
-    passes the original straight through. Never raises: a shaping bug must not cost a
-    live turn, and an unshaped payload is exactly today's behaviour.
-    """
-    try:
-        content = response.get("content") if isinstance(response, dict) else None
-        if not isinstance(content, list):
-            return None
-        changed = False
-        for part in content:
-            if not isinstance(part, dict) or part.get("type") != "text":
-                continue
-            text = part.get("text")
-            if not isinstance(text, str):
-                continue
-            try:
-                payload = json.loads(text)
-            except (ValueError, TypeError):
-                continue  # not JSON — a prose tool result, left untouched
-            annotated = annotate(payload)
-            if annotated is None:
-                continue
-            part["text"] = json.dumps(annotated)
-            changed = True
-        return response if changed else None
-    except Exception:
-        logger.exception("tool response shaping failed; passing the payload through")
-        return None
+def shape_tool_response(response: Any, tool_name: str = "tool") -> Any | None:
+    """The `after_tool_callback` body: annotation only, via the kit walker."""
+    return kit_shaping.shape_tool_response(response, tool_name, annotate=annotate)

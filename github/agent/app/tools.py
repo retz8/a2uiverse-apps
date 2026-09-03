@@ -8,21 +8,24 @@ surface — can be met before MCP. No write tool exists here (read-only invarian
 
 from __future__ import annotations
 
-import functools
-import json
 from pathlib import Path
+
+from a2uiverse_kit.responses import stub_fixture_loader
 
 _FIXTURES = Path(__file__).resolve().parent / "fixtures" / "stub"
 
+_fixture = stub_fixture_loader(
+    _FIXTURES,
+    hint="The stub corpus is checked in with the app; see agent/README.md.",
+)
 
-@functools.lru_cache(maxsize=1)
+
 def _pr_list() -> list[dict]:
-    return json.loads((_FIXTURES / "pr-list.json").read_text(encoding="utf-8"))
+    return _fixture("pr-list")
 
 
-@functools.lru_cache(maxsize=1)
 def _pr_detail() -> dict:
-    return json.loads((_FIXTURES / "pr-detail.json").read_text(encoding="utf-8"))
+    return _fixture("pr-detail")
 
 
 def list_pull_requests(state: str = "open") -> list[dict]:

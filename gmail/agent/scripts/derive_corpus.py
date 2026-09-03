@@ -4,7 +4,7 @@ Task-2.6 decision 11: one live run, three consumers. The pseudonymized MCP paylo
 the stub backend's fixtures; the pseudonymized painted streams become the deterministic
 agent's fixtures. Neither is hand-authored — that is what keeps the canned data real-shaped.
 
-    A2UI_RECORD_DIR=.recordings uv run python -m llm_agent --host localhost
+    A2UI_RECORD_DIR=.recordings uv run python -m app --mode live --host localhost
     uv run python scripts/record_beats.py --beats 1,2,3,4 --model <model>
     uv run python scripts/derive_corpus.py
 
@@ -20,8 +20,8 @@ from pathlib import Path
 AGENT = Path(__file__).resolve().parent.parent
 CAPTURED = AGENT / ".recordings" / "payloads"
 BEATS = AGENT / "recordings" / "beats"
-STUB = AGENT / "llm_agent" / "fixtures"
-DETERMINISTIC = AGENT / "deterministic_agent" / "fixtures"
+STUB = AGENT / "app" / "fixtures" / "stub"
+DETERMINISTIC = AGENT / "app" / "fixtures" / "deterministic"
 
 # Mailbox scale is not content, but it is still a fact about the person that the fixtures do
 # not need: the stub exists so the model can map INBOX/UNREAD correctly, and the label SET is

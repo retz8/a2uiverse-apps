@@ -29,9 +29,9 @@ def _live_toolset():
 def _after_tool(tool_name: str, tool_response: Any) -> Any:
     # The kit's normalized hook carries (tool_name, tool_response); record_shape's
     # args parameter is passed empty, so the env-gated shape dump loses only the
-    # sorted arg names. shape_tool_response here is this agent's one-argument form.
+    # sorted arg names.
     record_shape(tool_name, {}, tool_response)
-    return shape_tool_response(tool_response)
+    return shape_tool_response(tool_response, tool_name)
 
 
 CONFIG = AgentAppConfig(

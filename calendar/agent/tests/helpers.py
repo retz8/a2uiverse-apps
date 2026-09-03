@@ -1,82 +1,21 @@
-"""In-process harness: run the executor and reconstruct its emitted A2UI payload."""
+"""The kit's in-process harness (`a2uiverse_kit.testing`), bound to this app's executor."""
 
 from __future__ import annotations
 
-from unittest.mock import AsyncMock, MagicMock
-
-from a2a.server.agent_execution import RequestContext
-from a2a.server.events import EventQueue
-from a2a.types import DataPart, Message, Part, Role
-from a2ui.a2a.parts import get_a2ui_datapart, is_a2ui_part
-
 from a2uiverse_kit.executor_deterministic import DeterministicAgentExecutor
+from a2uiverse_kit.testing import run_executor as _run_executor
+from a2uiverse_kit.testing import run_executor_text as _run_executor_text
 
 from app.responses import build_response, build_text_response
 
 
-def _incoming_message(action: dict) -> Message:
-    return Message(
-        message_id="test-msg",
-        role=Role.user,
-        parts=[Part(root=DataPart(data={"version": "v0.9", "action": action}))],
-        kind="message",
-    )
-
-
-def _parts_from_event(event) -> list:
-    status = getattr(event, "status", None)
-    message = getattr(status, "message", None) if status is not None else None
-    return list(getattr(message, "parts", []) or [])
+def _executor() -> DeterministicAgentExecutor:
+    return DeterministicAgentExecutor(build_response, build_text_response)
 
 
 async def run_executor(action: dict) -> list[dict]:
-    context = MagicMock(spec=RequestContext)
-    context.message = _incoming_message(action)
-    context.current_task = None
-
-    queue = MagicMock(spec=EventQueue)
-    queue.enqueue_event = AsyncMock()
-
-    await DeterministicAgentExecutor(build_response, build_text_response).execute(
-        context, queue
-    )
-
-    payload: list[dict] = []
-    for call in queue.enqueue_event.call_args_list:
-        event = call.args[0]
-        for part in _parts_from_event(event):
-            if is_a2ui_part(part):
-                payload.append(get_a2ui_datapart(part).data)
-    return payload
-
-
-def _incoming_text_message(text: str) -> Message:
-    from a2a.types import TextPart
-
-    return Message(
-        message_id="test-msg",
-        role=Role.user,
-        parts=[Part(root=TextPart(text=text))],
-        kind="message",
-    )
+    return await _run_executor(_executor(), action)
 
 
 async def run_executor_text(text: str) -> list[dict]:
-    context = MagicMock(spec=RequestContext)
-    context.message = _incoming_text_message(text)
-    context.current_task = None
-
-    queue = MagicMock(spec=EventQueue)
-    queue.enqueue_event = AsyncMock()
-
-    await DeterministicAgentExecutor(build_response, build_text_response).execute(
-        context, queue
-    )
-
-    payload: list[dict] = []
-    for call in queue.enqueue_event.call_args_list:
-        event = call.args[0]
-        for part in _parts_from_event(event):
-            if is_a2ui_part(part):
-                payload.append(get_a2ui_datapart(part).data)
-    return payload
+    return await _run_executor_text(_executor(), text)

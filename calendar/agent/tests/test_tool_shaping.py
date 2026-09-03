@@ -188,18 +188,9 @@ class TestProjectionNote:
         annotated = annotate({"busy": []})
         assert annotated["_payload_notes"] == [PROJECTION_NOTE]
 
-
-class TestPassThrough:
-    def test_a_non_dict_response_is_passed_through(self):
-        assert shape_tool_response("nope") is None
-
-    def test_a_response_without_content_is_passed_through(self):
-        assert shape_tool_response({"structuredContent": {}}) is None
-
-    def test_unparseable_text_is_left_alone(self):
-        assert shape_tool_response({"content": [{"type": "text", "text": "not json"}]}) is None
-
     def test_shaping_adds_notes_without_touching_the_data(self):
+        # The walker's mechanics are the kit's (tested there); this pins what Calendar's
+        # annotate does to a real payload through it.
         shaped = shape_tool_response(_mcp(PAYLOAD))
         decoded = _decoded(shaped)
         assert decoded["events"] == PAYLOAD["events"]

@@ -128,22 +128,6 @@ class TestProjectionNote:
         assert annotate({"threads": [{}, {}]})["thread_count"] == 2
 
 
-class TestPassThrough:
-    def test_a_non_dict_response_is_passed_through(self):
-        assert shape_tool_response("not a dict") is None
-
-    def test_a_response_without_content_is_passed_through(self):
-        assert shape_tool_response({"other": 1}) is None
-
-    def test_unparseable_text_is_left_alone(self):
-        assert shape_tool_response({"content": [{"type": "text", "text": "not json"}]}) is None
-
-    def test_shaping_never_raises(self, monkeypatch, tmp_path):
-        monkeypatch.setenv("A2UI_RECORD_DIR", str(tmp_path))
-        for candidate in (None, 1, [], {}, {"content": None}, {"content": [1, 2]}):
-            shape_tool_response(candidate, "t")
-
-
 class TestScrubIsTheRealBoundary:
     """The regression that made the first recorded corpus unpublishable.
 

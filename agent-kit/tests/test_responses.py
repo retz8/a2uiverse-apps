@@ -4,7 +4,13 @@ from pathlib import Path
 
 import pytest
 
-from a2uiverse_kit.responses import fallback, fixture_responder, load_fixture, stamp_surface
+from a2uiverse_kit.responses import (
+    fallback,
+    fixture_responder,
+    load_fixture,
+    stamp_surface,
+    stub_fixture_loader,
+)
 
 FIXTURES = Path(__file__).resolve().parent / "fixtures" / "deterministic"
 
@@ -57,3 +63,18 @@ def test_fallback_shape():
     messages = fallback("x", "s")
     assert messages[0]["version"] == "v0.9"
     assert messages[0]["updateComponents"]["surfaceId"] == "s"
+
+
+def test_stub_loader_reads_and_caches_named_fixtures(tmp_path):
+    (tmp_path / "list-things.json").write_text('{"things": [1]}', encoding="utf-8")
+    fixture = stub_fixture_loader(tmp_path, hint="see agent/README.md.")
+    assert fixture("list-things") == {"things": [1]}
+    # cached: a rewrite is not re-read within one process
+    (tmp_path / "list-things.json").write_text('{"things": []}', encoding="utf-8")
+    assert fixture("list-things") == {"things": [1]}
+
+
+def test_stub_loader_missing_fixture_fails_with_the_apps_hint(tmp_path):
+    fixture = stub_fixture_loader(tmp_path, hint="see agent/README.md.")
+    with pytest.raises(FileNotFoundError, match="README"):
+        fixture("absent")

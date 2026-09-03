@@ -10,7 +10,7 @@ are the API's own, which is the half of phase decision 1 that teaches the model 
 exist; the values are the seed's.
 
     uv run python scripts/seed_calendar.py
-    A2UI_RECORD_DIR=.recordings uv run python -m llm_agent --host localhost
+    A2UI_RECORD_DIR=.recordings uv run python -m app --mode live --host localhost
     uv run python scripts/record_beats.py --beats 1,2,3,4 --model <model>
     uv run python scripts/derive_corpus.py
 
@@ -20,13 +20,13 @@ runs over the result. Do not commit a corpus that fails it.
 
 from __future__ import annotations
 
-import hashlib
 import json
 import os
-import re
+import sys
 from pathlib import Path
 
 AGENT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(AGENT))
 
 
 def _self_email() -> str:
@@ -47,15 +47,17 @@ def _self_email() -> str:
 
 
 SELF_EMAIL = _self_email()
+# The masking walk is app.tool_shaping's (one definition); its "this address is the viewer"
+# case reads CALENDAR_ID from the environment, so the .env-derived value is exported to it.
+if SELF_EMAIL:
+    os.environ.setdefault("CALENDAR_ID", SELF_EMAIL)
+
+from app.tool_shaping import mask_injected_addresses  # noqa: E402
+
 CAPTURED = AGENT / ".recordings" / "payloads"
 BEATS = AGENT / "recordings" / "beats"
-STUB = AGENT / "llm_agent" / "fixtures"
-DETERMINISTIC = AGENT / "deterministic_agent" / "fixtures"
-
-# The account's own address appears on every event the seed marks the viewer as attending.
-# It is the developer's, not the demo calendar's, so it is the one real string a run against
-# an authored calendar can still emit. Replaced rather than published.
-SELF_PLACEHOLDER = "you@example.com"
+STUB = AGENT / "app" / "fixtures" / "stub"
+DETERMINISTIC = AGENT / "app" / "fixtures" / "deterministic"
 
 
 def richest(path: Path, key: str) -> dict | None:
@@ -119,54 +121,6 @@ def settled_messages(beat_path: Path) -> list[dict]:
     return out
 
 
-# RFC 2606 reserves these precisely so they cannot belong to anyone. Any address outside them
-# is somebody's, and must not be published.
-ALLOWED_DOMAINS = ("example.com", "example.org", "example.net", "invalid")
-
-_ADDRESS = re.compile(r"[\w.+-]+@[\w.-]+\.[a-z]{2,}", re.IGNORECASE)
-
-
-def _stand_in(address: str) -> str:
-    """A stable replacement for one real address.
-
-    The demo calendar's own address becomes `you@example.com` because that is what it is —
-    Google flags it `self`, and it reads as the viewer on every surface. Anything else gets a
-    deterministic stand-in, so re-deriving a corpus produces identical files and a beat still
-    matches its committed baseline.
-    """
-    if SELF_EMAIL and address.lower() == SELF_EMAIL.lower():
-        return "you@example.com"
-    digest = hashlib.sha256(address.lower().encode("utf-8")).hexdigest()[:8]
-    return f"person-{digest}@example.com"
-
-
-def mask(value: object) -> object:
-    """Replaces every address that is not already a reserved example address.
-
-    Masking by RULE rather than by known value, deliberately. The first pass here masked the
-    demo calendar's own address — the identifier we knew about — and shipped `creator.email`,
-    the account that ran the seed script, straight into a fixture. `test_corpus_is_publishable`
-    caught it, which is the whole reason that guard is asserted over the artifact rather than
-    trusted to this function.
-
-    That is the same failure task 2.6 hit from the other direction, and the same fix: do not
-    enumerate what to replace, enumerate what is allowed to survive.
-
-    Walked over the whole payload, keys included, because an address under a key nobody
-    anticipated is exactly the one that would be published.
-    """
-    if isinstance(value, dict):
-        return {k: mask(v) for k, v in value.items()}
-    if isinstance(value, list):
-        return [mask(v) for v in value]
-    if isinstance(value, str):
-        return _ADDRESS.sub(
-            lambda m: m.group(0) if m.group(0).lower().endswith(ALLOWED_DOMAINS) else _stand_in(m.group(0)),
-            value,
-        )
-    return value
-
-
 def strip_links(value: object) -> object:
     """Neutralises `htmlLink`, which carries the calendar id base64-encoded in its `eid`.
 
@@ -184,7 +138,7 @@ def strip_links(value: object) -> object:
 
 
 def clean(value: object) -> object:
-    return strip_links(mask(value))
+    return strip_links(mask_injected_addresses(value))
 
 
 def derive_stub() -> None:

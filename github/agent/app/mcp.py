@@ -16,7 +16,9 @@ from __future__ import annotations
 
 import os
 
-from google.adk.tools.mcp_tool import McpToolset, StreamableHTTPConnectionParams
+from google.adk.tools.mcp_tool import StreamableHTTPConnectionParams
+
+from a2uiverse_kit.toolset import PolicyMcpToolset
 
 # The read-only variant of the official remote server.
 GITHUB_MCP_URL = "https://api.githubcopilot.com/mcp/readonly"
@@ -53,8 +55,8 @@ def github_pat() -> str:
         raise MissingGitHubPatError(
             f"{PAT_ENV_VAR} is not set. The live agent needs a fine-grained "
             "GitHub PAT with read-only access to public repositories; set it in "
-            "agent/.env. To run against canned fixture data instead, set "
-            "TOOL_BACKEND=stub."
+            "agent/.env. To run against canned fixture data instead, run with "
+            "--mode stub."
         )
     return pat
 
@@ -80,10 +82,15 @@ def github_connection_params() -> StreamableHTTPConnectionParams:
     )
 
 
-def build_github_toolset() -> McpToolset:
+def build_github_toolset() -> PolicyMcpToolset:
     """Constructs the read-only GitHub MCP toolset.
 
     Construction is offline: McpToolset stores its connection parameters and
     builds a session manager, connecting only when its tools are first listed.
+
+    The toolset is the kit's policy wrapper with its no-op hooks (task-3.3
+    decision 1): GitHub has no per-call policy today — the endpoint is read-only
+    and the data is public repo data — but the interception point is standard
+    agent anatomy, and the write tier (task 3.7) lands its guard on these hooks.
     """
-    return McpToolset(connection_params=github_connection_params())
+    return PolicyMcpToolset(connection_params=github_connection_params())

@@ -6,7 +6,7 @@ derived from real payloads rather than invented, and carries nothing private, be
 demo calendar holds nothing private to begin with.
 
 The stub exists so client work, prompt iteration and beat replay need not touch Google or
-consume MCP call allowance. It is always an explicit opt-in (`TOOL_BACKEND=stub`).
+consume MCP call allowance. It is always an explicit opt-in (`--mode stub`).
 
 Writes are accepted and acknowledged but change nothing: a stub `create_event` returns an
 event id without an event existing. That is the point -- the round-trip is exercised, the
@@ -15,23 +15,19 @@ calendar is not.
 
 from __future__ import annotations
 
-import functools
-import json
 from pathlib import Path
+
+from a2uiverse_kit.responses import stub_fixture_loader
 
 _FIXTURES = Path(__file__).resolve().parent / "fixtures" / "stub"
 
-
-@functools.lru_cache(maxsize=8)
-def _fixture(name: str) -> dict:
-    path = _FIXTURES / f"{name}.json"
-    if not path.is_file():
-        raise FileNotFoundError(
-            f"stub fixture {path.name} is missing. The stub corpus is derived from a live "
-            "MCP run against the seeded demo calendar with the recorder armed; see "
-            "agent/README.md."
-        )
-    return json.loads(path.read_text(encoding="utf-8"))
+_fixture = stub_fixture_loader(
+    _FIXTURES,
+    hint=(
+        "The stub corpus is derived from a live MCP run against the seeded demo calendar "
+        "with the recorder armed; see agent/README.md."
+    ),
+)
 
 
 def list_events(

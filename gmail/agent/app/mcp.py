@@ -11,21 +11,31 @@ offers no scope granting the labelling tools without also authorizing trash and 
 permits what this filter withholds. Admitting the destructive tools is a decision for a
 real authority surface (M8), not a scope grant.
 
-The credential is Application Default Credentials, minted once by a developer outside the
-agent (`gcloud auth application-default login`). The agent reads it and lets the library
-refresh it; it never sees a client secret and never runs a consent flow.
+The credential block is the kit's opt-in Google ADC helper (`a2uiverse_kit.google_adc`):
+minted once by a developer outside the agent, read and refreshed by the library, never a
+client secret or a consent flow.
 """
 
 from __future__ import annotations
 
-import os
-
-import google.auth
-import google.auth.exceptions
-import google.auth.transport.requests
 from google.adk.tools.mcp_tool import StreamableHTTPConnectionParams
 
+from a2uiverse_kit import google_adc
+from a2uiverse_kit.google_adc import MissingGoogleCredentialError, mcp_headers
+
 from app.recording_toolset import RecordingMcpToolset
+
+__all__ = [
+    "GMAIL_MCP_URL",
+    "GMAIL_SCOPES",
+    "GMAIL_TOOLS",
+    "MissingGoogleCredentialError",
+    "access_token",
+    "build_gmail_toolset",
+    "gmail_connection_params",
+    "mcp_headers",
+    "quota_project",
+]
 
 GMAIL_MCP_URL = "https://gmailmcp.googleapis.com/mcp/v1"
 
@@ -63,60 +73,15 @@ GMAIL_TOOLS = (
 # mark_message_spam, mark_thread_spam, unmark_message_spam, unmark_thread_spam,
 # apply_sensitive_message_label, apply_sensitive_thread_label, update_message_labels.
 
-PROJECT_ENV_VAR = "GOOGLE_CLOUD_PROJECT"
-
-
-class MissingGoogleCredentialError(RuntimeError):
-    """Raised when the MCP backend is selected with no usable credential."""
-
 
 def quota_project() -> str:
     """The project billed for the call, sent as X-Goog-User-Project."""
-    project = os.environ.get(PROJECT_ENV_VAR)
-    if not project:
-        raise MissingGoogleCredentialError(
-            f"{PROJECT_ENV_VAR} is not set. The live agent sends it as the "
-            "X-Goog-User-Project header on every Gmail MCP call; set it in agent/.env. "
-            "To run against canned fixture data instead, set TOOL_BACKEND=stub."
-        )
-    return project
+    return google_adc.quota_project("Gmail")
 
 
 def access_token() -> str:
-    """Mints a fresh access token from ADC, failing fast rather than degrading to canned data.
-
-    A silent fallback would render a convincing surface from stub fixtures with no signal
-    that it is not live, so the stub is only ever a deliberate choice.
-    """
-    try:
-        credentials, _ = google.auth.default(scopes=list(GMAIL_SCOPES))
-    except google.auth.exceptions.DefaultCredentialsError as exc:
-        raise MissingGoogleCredentialError(
-            "No Application Default Credentials. The live agent needs a user credential "
-            "carrying the Gmail scopes:\n\n  "
-            + "\n  ".join(GMAIL_SCOPES)
-            + "\n\n"
-            "Mint it with the command in agent/README.md, 'Setting up the Gmail "
-            "credential'. Do NOT run `gcloud auth application-default login` with only "
-            "these scopes: --scopes REPLACES the granted set, and every Google app in this "
-            "repo shares one credential, so a Gmail-only grant revokes the Calendar "
-            "agent's. The README's command lists the union.\n\n"
-            "To run against canned fixture data instead, set TOOL_BACKEND=stub."
-        ) from exc
-    credentials.refresh(google.auth.transport.requests.Request())
-    if not credentials.token:
-        raise MissingGoogleCredentialError(
-            "Application Default Credentials produced no access token. Re-run "
-            "`gcloud auth application-default login` with the Gmail scopes."
-        )
-    return credentials.token
-
-
-def mcp_headers(token: str, project: str) -> dict[str, str]:
-    return {
-        "Authorization": f"Bearer {token}",
-        "X-Goog-User-Project": project,
-    }
+    """Mints a fresh access token from ADC, failing fast rather than degrading to canned data."""
+    return google_adc.access_token(GMAIL_SCOPES, "Gmail")
 
 
 def gmail_connection_params() -> StreamableHTTPConnectionParams:
