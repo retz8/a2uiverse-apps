@@ -18,3 +18,7 @@ CLAUDE.md
 
 # Template markdown carries __TOKEN__ placeholders that Prettier would rewrite as bold
 create-a2ui-agent/templates/**/*.md
+
+# The catalog-id template is pre-wrapped for the long URL it emits; Prettier judges it by the
+# short placeholder and would join it, leaving every scaffolded catalog unformatted
+create-a2ui-agent/templates/**/catalog-id.ts
