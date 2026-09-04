@@ -11,6 +11,9 @@ importers:
       '@eslint/js':
         specifier: ^9.39.1
         version: 9.39.5
+      create-a2ui-agent:
+        specifier: workspace:*
+        version: link:create-a2ui-agent
       eslint:
         specifier: ^9.39.1
         version: 9.39.5(supports-color@7.2.0)

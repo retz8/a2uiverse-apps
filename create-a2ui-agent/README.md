@@ -37,7 +37,7 @@ defaults where one exists and fails on the rest.
 | `--google-adc` / `--no-google-adc` | wire the kit's Google ADC credential helper into `app/mcp.py`           |
 | `--ecosystem` / `--no-ecosystem`   | emit the kit's paintMeta convention for the A2UIVerse canvas            |
 | `--repo-url <url>`                 | the repository the app lives in (default: the target's git origin)      |
-| `--kit-rev <sha>`                  | the kit commit to pin (default: HEAD of this checkout)                  |
+| `--kit-rev <sha>`                  | the kit commit to pin (default: HEAD, or its newest pushed ancestor)    |
 | `--install` / `--no-install`       | run `uv sync` and `pnpm install` after writing                          |
 
 The scaffolded agent depends on the kit as a git dependency pinned to a commit sha, so a

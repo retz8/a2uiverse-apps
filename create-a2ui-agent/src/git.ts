@@ -31,6 +31,31 @@ export function isPushed(cwd: string, sha: string): boolean {
   return branches !== undefined && branches.length > 0;
 }
 
+/**
+ * The newest ancestor of HEAD that a remote already carries — the newest commit an outside
+ * `uv sync` can actually fetch. HEAD itself when it is pushed; undefined when nothing on this
+ * branch has ever been pushed.
+ */
+export function lastPushedAncestor(cwd: string): string | undefined {
+  const unpushed = git(['rev-list', 'HEAD', '--not', '--remotes'], cwd);
+  if (unpushed === undefined) return undefined;
+  if (unpushed.length === 0) return headSha(cwd);
+  const oldestUnpushed = unpushed.split('\n').filter(Boolean).pop();
+  if (!oldestUnpushed) return undefined;
+  return git(['rev-parse', `${oldestUnpushed}^`], cwd) || undefined;
+}
+
+/** Whether `paths` differ between two commits. Unknown answers count as changed. */
+export function pathsChangedBetween(
+  cwd: string,
+  from: string,
+  to: string,
+  paths: string[],
+): boolean {
+  const changed = git(['diff', '--name-only', from, to, '--', ...paths], cwd);
+  return changed === undefined ? true : changed.length > 0;
+}
+
 export function originUrl(cwd: string): string | undefined {
   return git(['remote', 'get-url', 'origin'], cwd) || undefined;
 }
