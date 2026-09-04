@@ -1,20 +1,18 @@
-# agent/ — A2A servers (deterministic + live)
+# agent/ — the Gmail app's A2A agent
 
-uv-managed Python project (outside the pnpm workspace). The Gmail app's agent, on port
-**11002** in every run mode. Hosts two sibling agent packages that share one venv and one
-test run:
+uv-managed Python project (outside the pnpm workspace), on port **11002** in every
+run mode. Built on `a2ui-agent-kit` (`../../agent-kit/`, an editable path
+dependency): the kit carries the servers, run modes, recorder, and catalog
+machinery; this project carries what is Gmail's — prompt prose, tool policy,
+fixtures, knowledge docs, and the agent card (`app/`).
 
-- `deterministic_agent/` — a canned-response A2A server that closes the event round-trip
-  without an LLM. Here it is the **composition harness**: its text path answers with the
-  canned inbox digest and its action map covers the four beats, so the three-agent composed
-  screen can be driven end to end with no LLM call and no Gmail MCP quota.
-- `llm_agent/` — the live LLM agent: it turns a natural-language prompt into a streamed,
-  catalog-valid, data-bound A2UI surface (Gemini via Google ADK). Reads and writes the real
-  mailbox through Google's Gmail MCP server. A stub toolset (`llm_agent/tools.py`) remains
-  available behind `TOOL_BACKEND=stub` for work that should not touch the mailbox.
-
-Catalog locate/load is shared by both agents in `catalog_common/`; validation semantics stay
-per-agent (deterministic: non-strict partial probe; live: strict complete-surface).
+`deterministic` is the **composition harness**: its text path answers with the canned
+inbox digest and its action map covers the four beats, so the three-agent composed
+screen can be driven end to end with no LLM call and no Gmail MCP quota. `live` turns a
+natural-language prompt into a streamed, catalog-valid, data-bound A2UI surface (Gemini
+via Google ADK), reading and writing the real mailbox through Google's Gmail MCP server.
+`stub` puts the model over canned tool data (`app/tools.py`) for work that should not
+touch the mailbox.
 
 ## Setup
 
@@ -70,24 +68,23 @@ The agent refuses to start on the MCP backend with no usable credential, naming 
 — it never degrades silently to canned data, because a convincing surface built from stub
 fixtures with no signal that it is not live is worse than a failure.
 
-## Run the deterministic server
+## Run
+
+One entrypoint, three modes:
 
 ```bash
-uv run python -m deterministic_agent --host localhost
+uv run python -m app --mode deterministic   # canned fixtures, no model
+uv run python -m app --mode stub            # model over canned tools
+uv run python -m app --mode live            # model over the live Gmail MCP server
 ```
 
-## Run the live agent
+| Mode | Needs |
+| --- | --- |
+| `deterministic` | nothing |
+| `stub` | `GOOGLE_API_KEY` |
+| `live` | `GOOGLE_API_KEY`, ADC, `GOOGLE_CLOUD_PROJECT` |
 
-Copy `.env.example` to `.env` first, then:
-
-```bash
-uv run python -m llm_agent --host localhost
-```
-
-| Scenario | `TOOL_BACKEND` | Needs |
-| --- | --- | --- |
-| Full agent — live Gmail over MCP | `mcp` (default) | `GOOGLE_API_KEY`, ADC, `GOOGLE_CLOUD_PROJECT` |
-| LLM only — canned mailbox data | `stub` | `GOOGLE_API_KEY` |
+Copy `.env.example` to `.env` first.
 
 ### What this agent can and cannot do
 
@@ -96,7 +93,7 @@ the Gmail MCP server exposes no send tool at all — and it **cannot delete or d
 anything, including drafts it created itself.
 
 Of the server's twenty-three tools, twelve are admitted; trashing, spam marking and
-sensitive-label application are withheld by `tool_filter` in `llm_agent/mcp.py`. That
+sensitive-label application are withheld by `tool_filter` in `app/mcp.py`. That
 exclusion is a **single** layer: Gmail has no scope that grants the labelling tools without
 also authorizing trash and spam, so the credential permits what the filter withholds.
 Admitting the destructive tools is a decision for a real authority surface (M8), not
@@ -119,13 +116,13 @@ agent's own fixtures. The beats the canvas replays are recorded in the platform 
 composing hub, and that recorder captures whatever the hub relays without being able to tell
 whether anything was scrubbed. Starting this agent armed is what keeps real mail out of a tracked
 file there; `check:fixtures` in the platform repo is the backstop if it is forgotten. Every Gmail MCP payload passes
-through a deterministic, length-preserving substitution (`llm_agent/tool_shaping.py`) before
+through a deterministic, length-preserving substitution (`app/tool_shaping.py`) before
 the model sees it, so the model paints stand-in names and subjects natively and no real mail
 reaches the recorded stream, the prompt dump, or the model provider. The seed is fixed, so a
 re-recorded beat reproduces the same stand-ins and still matches its committed screenshot
 baseline.
 
 The recorded corpus is what the other two run modes are built from: the pseudonymized MCP
-payloads become `llm_agent/fixtures/` (the stub backend's data) and the pseudonymized painted
-streams become `deterministic_agent/fixtures/`. Neither is hand-authored — that is what keeps
+payloads become `app/fixtures/stub/` (the stub backend's data) and the pseudonymized painted
+streams become `app/fixtures/deterministic/`. Neither is hand-authored — that is what keeps
 the canned data real-shaped.

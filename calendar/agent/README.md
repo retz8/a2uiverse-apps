@@ -1,20 +1,18 @@
-# agent/ — A2A servers (deterministic + live)
+# agent/ — the Google Calendar app's A2A agent
 
-uv-managed Python project (outside the pnpm workspace). The Google Calendar app's agent, on
-port **11003** in every run mode. Hosts two sibling agent packages that share one venv and one
-test run:
+uv-managed Python project (outside the pnpm workspace), on port **11003** in every
+run mode. Built on `a2ui-agent-kit` (`../../agent-kit/`, an editable path
+dependency): the kit carries the servers, run modes, recorder, and catalog
+machinery; this project carries what is Calendar's — prompt prose, tool policy,
+fixtures, knowledge docs, and the agent card (`app/`).
 
-- `deterministic_agent/` — a canned-response A2A server that closes the event round-trip
-  without an LLM. Here it is the **composition harness**: its text path answers with the
-  canned agenda and its action map covers the four beats, so the three-agent composed screen
-  can be driven end to end with no LLM call and no Calendar MCP quota.
-- `llm_agent/` — the live LLM agent: it turns a natural-language prompt into a streamed,
-  catalog-valid, data-bound A2UI surface (Gemini via Google ADK). Reads and writes a real
-  calendar through Google's Calendar MCP server. A stub toolset (`llm_agent/tools.py`) remains
-  available behind `TOOL_BACKEND=stub` for work that should not touch Google at all.
-
-Catalog locate/load is shared by both agents in `catalog_common/`; validation semantics stay
-per-agent (deterministic: non-strict partial probe; live: strict complete-surface).
+`deterministic` is the **composition harness**: its text path answers with the canned
+agenda and its action map covers the four beats, so the three-agent composed screen can
+be driven end to end with no LLM call and no Calendar MCP quota. `live` turns a
+natural-language prompt into a streamed, catalog-valid, data-bound A2UI surface (Gemini
+via Google ADK), reading and writing a real calendar through Google's Calendar MCP
+server. `stub` puts the model over canned tool data (`app/tools.py`) for work that should
+not touch Google at all.
 
 ## Setup
 
@@ -103,24 +101,23 @@ The agent refuses to start on the MCP backend with no usable credential, naming 
 — it never degrades silently to canned data, because a convincing surface built from stub
 fixtures with no signal that it is not live is worse than a failure.
 
-## Run the deterministic server
+## Run
+
+One entrypoint, three modes:
 
 ```bash
-uv run python -m deterministic_agent --host localhost
+uv run python -m app --mode deterministic   # canned fixtures, no model
+uv run python -m app --mode stub            # model over canned tools
+uv run python -m app --mode live            # model over the live Calendar MCP server
 ```
 
-## Run the live agent
+| Mode | Needs |
+| --- | --- |
+| `deterministic` | nothing |
+| `stub` | `GOOGLE_API_KEY` |
+| `live` | `GOOGLE_API_KEY`, ADC, `GOOGLE_CLOUD_PROJECT`, `CALENDAR_ID` |
 
-Copy `.env.example` to `.env` first, then:
-
-```bash
-uv run python -m llm_agent --host localhost
-```
-
-| Scenario | `TOOL_BACKEND` | Needs |
-| --- | --- | --- |
-| Full agent — live Calendar over MCP | `mcp` (default) | `GOOGLE_API_KEY`, ADC, `GOOGLE_CLOUD_PROJECT`, `CALENDAR_ID` |
-| LLM only — canned calendar data | `stub` | `GOOGLE_API_KEY` |
+Copy `.env.example` to `.env` first.
 
 ### What this agent can and cannot do
 
@@ -128,7 +125,7 @@ It reads the calendar, creates an event from a proposal the user confirms, and a
 invitation on the user's behalf. It **cannot delete or cancel** anything, and it **cannot
 change an event that already exists**.
 
-The admitted inventory is pinned by `tool_filter` in `llm_agent/mcp.py`: the reads, event
+The admitted inventory is pinned by `tool_filter` in `app/mcp.py`: the reads, event
 creation, and the attendee-response tool. Deletion and every tool that modifies an existing
 event are withheld.
 
@@ -140,7 +137,7 @@ an event the user does not own. So the credential permits what the filter withho
 The second layer is real, and Gmail had no equivalent. Calendar's writes reach third parties
 — creating an event mails its attendees and changes their calendars, where trashing mail is
 private and reversible — so every outbound call has its notification parameter forced to a
-non-notifying value in `llm_agent/tool_shaping.py`, in every run mode. Stated precisely: **it
+non-notifying value in `app/tool_shaping.py`, in every run mode. Stated precisely: **it
 stops the invitations, it does not stop the event existing.** An event created through this
 agent is one its attendees do not know about, which is why the prompt requires the proposal
 to say so on the surface.
@@ -165,8 +162,8 @@ appended to `.recordings/payloads/`. Unlike the Gmail agent, nothing is rewritte
 through — there is no pseudonymizer, because the demo calendar has nothing to pseudonymize.
 
 The recorded corpus is what the other two run modes are built from: the captured MCP payloads
-become `llm_agent/fixtures/` (the stub backend's data) and the recorded painted streams become
-`deterministic_agent/fixtures/`. Neither is hand-authored — that is what keeps the canned data
+become `app/fixtures/stub/` (the stub backend's data) and the recorded painted streams become
+`app/fixtures/deterministic/`. Neither is hand-authored — that is what keeps the canned data
 real-shaped.
 
 ```bash

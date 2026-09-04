@@ -39,9 +39,9 @@ Or run one by hand — each agent is its own uv project, and its `agent/README.m
 
 ```bash
 cd gmail/agent && uv sync
-uv run python -m deterministic_agent     # no model
-TOOL_BACKEND=stub uv run python -m llm_agent
-uv run python -m llm_agent               # live MCP
+uv run python -m app --mode deterministic  # canned fixtures, no model
+uv run python -m app --mode stub           # model over canned tools
+uv run python -m app --mode live           # model over the live MCP server
 ```
 
 ## Layout

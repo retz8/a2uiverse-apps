@@ -61,8 +61,8 @@ const processor = new MessageProcessor([CATALOG], actionHandler);
 ```
 
 **In the agent** (Python, outside the pnpm workspace), the same contract is
-consumed as the document rather than the code: `agent/catalog_common` locates
-`github-catalog/catalogs/v0.9.1/catalog.json` by path and uses it for
+consumed as the document rather than the code: the agent kit's catalog loader
+locates `github-catalog/catalogs/v0.9.1/catalog.json` by path and uses it for
 prompt assembly and output validation, and the surfaces the agent emits carry
 that document's `catalogId` — the same string as `CATALOG_ID`.
 
