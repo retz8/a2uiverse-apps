@@ -65,6 +65,10 @@ cd <vendor>/agent && uv run pytest   # an agent's own suite — no model calls, 
 
 Catalogs are consumed by the platform straight from this repo as git dependencies (`github:retz8/a2uiverse-apps#path:<vendor>/<vendor>-catalog`); nothing is published to a registry.
 
+## Mock apps
+
+Alongside the vendor apps, this repo holds **mock apps** in their own tier: agents invented so a platform mechanism can be exercised against data whose shape is known and controlled. A mock is built like any other app, but has no MCP behind it — its `live` mode runs the model over an in-repo dataset — and it is not part of the roster. Mocks are excluded from default launcher discovery and from the platform's registry, and are opted into explicitly, so the Router never retrieves over fictional vendors during ordinary work.
+
 ## Status
 
 In development. The platform design lives in the `a2uiverse` repo's `SPEC.md`.

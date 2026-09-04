@@ -9,7 +9,7 @@
 
 This file (`CLAUDE.md`) holds only the **operational rules** not covered elsewhere.
 
-`a2uiverse-apps` holds the **vendor apps** of A2UIVerse — all of them external apps; there are no internal agents. Each app is an A2A agent backed by its vendor's **official public MCP server**, painting its own UI with A2UI, packaged as an A2UIVerse app bundle. A vendor catalog is the A2UI basic catalog themed through its `--a2ui-*` tokens to mimic the vendor's product (GitHub is the exception, on Primer). Every agent runs on one port in one of three modes: `deterministic`, `llm`, `llm` without MCP. This repo is a **downstream consumer** of the A2UI and A2A protocols — not the protocol repo. The protocol, schemas, and standard catalogs live in the sibling fork at `../A2UI/`, which tracks `a2ui-project/a2ui` via its `upstream` remote. Read the spec from the `upstream/main` ref (see §2), not the fork's working tree.
+`a2uiverse-apps` holds the **vendor apps** of A2UIVerse — all of them external apps; there are no internal agents. Each app is an A2A agent backed by its vendor's **official public MCP server**, painting its own UI with A2UI, packaged as an A2UIVerse app bundle. A vendor catalog is the A2UI basic catalog themed through its `--a2ui-*` tokens to mimic the vendor's product (GitHub is the exception, on Primer). Every agent runs on one port in one of three modes: `deterministic`, `stub`, `live`. This repo is a **downstream consumer** of the A2UI and A2A protocols — not the protocol repo. The protocol, schemas, and standard catalogs live in the sibling fork at `../A2UI/`, which tracks `a2ui-project/a2ui` via its `upstream` remote. Read the spec from the `upstream/main` ref (see §2), not the fork's working tree.
 
 ### The one rule
 
@@ -20,6 +20,17 @@ No import, package, or path into `../a2uiverse/`; `@a2uiverse/sdk` is consumed a
 ### Layout
 
 One folder per app: `<vendor>/agent/` (the A2A agent, its own project), `<vendor>/<vendor>-catalog/` (catalog schema + React implementation), and the app manifest at the folder root. Catalogs are packages of the root pnpm workspace, run with Turborepo. Vocabulary (catalog / schema / implementation; "adapter" only for the framework layer) is defined in the `a2ui-sdk-design` skill.
+
+### Mock apps
+
+A **mock app** is not a vendor app. It is an instrument — an agent authored so a platform mechanism can be exercised against data whose shape is known and controlled, rather than against a real vendor that may return anything.
+
+A mock is shaped like any other app: scaffolded by `create-a2ui-agent`, built on the kit, with an agent, a catalog, and a manifest. It differs in two ways.
+
+- **No MCP.** There is no backend behind an invented vendor, so `live` means the model working over an in-repo dataset. The official-public-MCP rule above does not apply to mocks — and does not relax for anything else.
+- **Not in the roster.** Mocks live in their own tier, outside the one-folder-per-app vendor layout, and are excluded from default launcher discovery and from the platform's default registry. They are opted into explicitly. The platform's Router retrieves over the AgentCards in the roster; fictional vendors resident there would be noise in every composition it plans.
+
+Mocks are kept rather than deleted once the work that motivated them lands: they are the only substrate where a mechanism can be re-tested against data guaranteed to be well-formed.
 
 ---
 
