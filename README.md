@@ -67,10 +67,10 @@ Catalogs are consumed by the platform straight from this repo as git dependencie
 
 ## Mock apps
 
-Alongside the vendor apps, this repo holds **mock apps** in their own tier: agents invented so a platform mechanism can be exercised against data whose shape is known and controlled. A mock is built like any other app, but has no MCP behind it — its `live` mode runs the model over an in-repo dataset — and it is not part of the roster. Mocks are excluded from default launcher discovery and from the platform's registry, and are opted into explicitly, so the Router never retrieves over fictional vendors during ordinary work. The opt-in is one variable, read by the platform's launcher and orchestrator alike, run from the platform repo:
+Alongside the vendor apps, this repo holds **mock apps** in their own tier: agents invented so a platform mechanism can be exercised against data whose shape is known and controlled. A mock is built like any other app, but has no MCP behind it — its `live` mode runs the model over an in-repo dataset — and it is not part of the roster. Mocks are excluded from default launcher discovery and from the platform's registry, and are opted into explicitly, so the Router never retrieves over fictional vendors during ordinary work. The opt-in is one flag on the platform's launcher, which hands the directory on to the orchestrator it starts, run from the platform repo:
 
 ```bash
-A2UIVERSE_AGENTS_DIR=../a2uiverse-apps/mocks pnpm dev:all   # the two mocks alone, in place of the vendors
+pnpm dev:all --agents-dir ../a2uiverse-apps/mocks   # the two mocks alone, in place of the vendors
 ```
 
 The tier is `mocks/`, one level below the repo root — which _is_ the quarantine, since discovery only reads the immediate subdirectories of the agents dir and `mocks/` carries no manifest of its own. Mocks take a port band of their own so they can never collide with a vendor, and so a scaffold's sibling-based port suggestion stays correct inside both the tier and the root.
