@@ -1,0 +1,82 @@
+{
+  "name": "open-one-camera",
+  "intent": "Tell me about the Example One (the list surface already exists)",
+  "$comment": "An UPDATE-ONLY turn: no createSurface. The list surface was created earlier in the conversation, so this turn replaces its data model and repaints its components against the id that already exists. Every turn after the first paint has this shape.",
+  "messages": [
+    {
+      "version": "v0.9",
+      "updateDataModel": {
+        "surfaceId": "list",
+        "path": "/",
+        "value": {
+          "detail": {
+            "id": "example-one",
+            "name": "Example One",
+            "price": 1000,
+            "rating": 4.0,
+            "blurb": "An illustrative camera; never show this text."
+          }
+        }
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateComponents": {
+        "surfaceId": "list",
+        "components": [
+          {
+            "id": "root",
+            "component": "Card",
+            "child": "body"
+          },
+          {
+            "id": "body",
+            "component": "Column",
+            "children": ["name", "blurb", "price", "back"]
+          },
+          {
+            "id": "name",
+            "component": "Text",
+            "variant": "h3",
+            "text": {
+              "path": "/detail/name"
+            }
+          },
+          {
+            "id": "blurb",
+            "component": "Text",
+            "text": {
+              "path": "/detail/blurb"
+            }
+          },
+          {
+            "id": "price",
+            "component": "Text",
+            "text": {
+              "path": "/detail/price"
+            }
+          },
+          {
+            "id": "back",
+            "component": "Button",
+            "variant": "primary",
+            "child": "back-label",
+            "action": {
+              "event": {
+                "name": "back-to-list",
+                "context": {
+                  "from": "detail"
+                }
+              }
+            }
+          },
+          {
+            "id": "back-label",
+            "component": "Text",
+            "text": "Back to the list"
+          }
+        ]
+      }
+    }
+  ]
+}

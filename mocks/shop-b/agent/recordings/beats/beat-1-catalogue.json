@@ -1,0 +1,1543 @@
+{
+  "name": "beat-1-catalogue",
+  "beat": 1,
+  "title": "Camera catalogue",
+  "prompt": "What cameras do you have?",
+  "model": "gemini-3.7-flash",
+  "recordedAt": "2026-09-04T09:01:19+00:00",
+  "contextId": "b231c6d2-d7e2-4c68-9c73-8aa12fea5636",
+  "chainedFrom": null,
+  "turns": [
+    {
+      "taskId": "601e0b09-88e9-4315-be7b-a0cdb86c8f37",
+      "kind": "utterance",
+      "prompt": "What cameras do you have?",
+      "action": null,
+      "batches": [
+        {
+          "offsetMs": 10673,
+          "messages": [
+            {
+              "paintMeta": {
+                "surfaceId": "list",
+                "title": "In stock"
+              }
+            }
+          ],
+          "texts": ["\n"]
+        },
+        {
+          "offsetMs": 10919,
+          "messages": [
+            {
+              "version": "v0.9",
+              "createSurface": {
+                "surfaceId": "list",
+                "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/mocks/shop-b/shop-b-catalog/catalogs/v0.9.1/catalog.json",
+                "sendDataModel": true
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 11108,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "list",
+                "value": {
+                  "items": [
+                    {
+                      "id": "verity-a7",
+                      "name": "Verity A7",
+                      "price": 2249,
+                      "rating": 4.7
+                    },
+                    {
+                      "id": "lumen-x100",
+                      "name": "Lumen X100",
+                      "price": 1379
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 11252,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "list",
+                "value": {
+                  "items": [
+                    {
+                      "id": "verity-a7",
+                      "name": "Verity A7",
+                      "price": 2249,
+                      "rating": 4.7
+                    },
+                    {
+                      "id": "lumen-x100",
+                      "name": "Lumen X100",
+                      "price": 1379,
+                      "rating": 4.5
+                    },
+                    {
+                      "id": "orbit-gm3"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 11412,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "list",
+                "value": {
+                  "items": [
+                    {
+                      "id": "verity-a7",
+                      "name": "Verity A7",
+                      "price": 2249,
+                      "rating": 4.7
+                    },
+                    {
+                      "id": "lumen-x100",
+                      "name": "Lumen X100",
+                      "price": 1379,
+                      "rating": 4.5
+                    },
+                    {
+                      "id": "orbit-gm3",
+                      "name": "Orbit GM3",
+                      "price": 899
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 11462,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "list",
+                "value": {
+                  "items": [
+                    {
+                      "id": "verity-a7",
+                      "name": "Verity A7",
+                      "price": 2249,
+                      "rating": 4.7
+                    },
+                    {
+                      "id": "lumen-x100",
+                      "name": "Lumen X100",
+                      "price": 1379,
+                      "rating": 4.5
+                    },
+                    {
+                      "id": "orbit-gm3",
+                      "name": "Orbit GM3",
+                      "price": 899,
+                      "rating": 4.2
+                    },
+                    {
+                      "id": "kestrel-r5"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 11551,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "list",
+                "value": {
+                  "items": [
+                    {
+                      "id": "verity-a7",
+                      "name": "Verity A7",
+                      "price": 2249,
+                      "rating": 4.7
+                    },
+                    {
+                      "id": "lumen-x100",
+                      "name": "Lumen X100",
+                      "price": 1379,
+                      "rating": 4.5
+                    },
+                    {
+                      "id": "orbit-gm3",
+                      "name": "Orbit GM3",
+                      "price": 899,
+                      "rating": 4.2
+                    },
+                    {
+                      "id": "kestrel-r5",
+                      "name": "Kestrel R5",
+                      "price": 3149
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 11688,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "list",
+                "path": "/",
+                "value": {
+                  "items": [
+                    {
+                      "id": "verity-a7",
+                      "name": "Verity A7",
+                      "price": 2249,
+                      "rating": 4.7
+                    },
+                    {
+                      "id": "lumen-x100",
+                      "name": "Lumen X100",
+                      "price": 1379,
+                      "rating": 4.5
+                    },
+                    {
+                      "id": "orbit-gm3",
+                      "name": "Orbit GM3",
+                      "price": 899,
+                      "rating": 4.2
+                    },
+                    {
+                      "id": "kestrel-r5",
+                      "name": "Kestrel R5",
+                      "price": 3149,
+                      "rating": 4.3
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 11986,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "loading_body"
+                  },
+                  {
+                    "id": "loading_body",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "list"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 12049,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": ["title", "loading_sort-row", "loading_rows"]
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "title",
+                    "component": "Text"
+                  },
+                  {
+                    "id": "loading_sort-row",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_rows",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "list"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 12118,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": ["title", "loading_sort-row", "loading_rows"]
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "title",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "In stock"
+                  },
+                  {
+                    "id": "loading_sort-row",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_rows",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "list"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 12263,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": ["title", "sort-row", "loading_rows"]
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "sort-row",
+                    "component": "Row",
+                    "children": ["loading_sort-price", "loading_sort-rating"]
+                  },
+                  {
+                    "id": "title",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "In stock"
+                  },
+                  {
+                    "id": "loading_rows",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_sort-price",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_sort-rating",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "list"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 12469,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": ["title", "sort-row", "loading_rows"]
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "sort-price",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "loading_sort-price-label",
+                    "action": {
+                      "event": {
+                        "name": "sort-cameras",
+                        "context": {
+                          "key": "price"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "sort-row",
+                    "component": "Row",
+                    "children": ["sort-price", "loading_sort-rating"]
+                  },
+                  {
+                    "id": "title",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "In stock"
+                  },
+                  {
+                    "id": "loading_rows",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_sort-price-label",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_sort-rating",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "list"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 12628,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": ["title", "sort-row", "loading_rows"]
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "sort-price",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "sort-price-label",
+                    "action": {
+                      "event": {
+                        "name": "sort-cameras",
+                        "context": {
+                          "key": "price"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "sort-price-label",
+                    "component": "Text",
+                    "text": "Sort by price"
+                  },
+                  {
+                    "id": "sort-row",
+                    "component": "Row",
+                    "children": ["sort-price", "loading_sort-rating"]
+                  },
+                  {
+                    "id": "title",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "In stock"
+                  },
+                  {
+                    "id": "loading_rows",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_sort-rating",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "list"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 12955,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": ["title", "sort-row", "loading_rows"]
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "sort-price",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "sort-price-label",
+                    "action": {
+                      "event": {
+                        "name": "sort-cameras",
+                        "context": {
+                          "key": "price"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "sort-price-label",
+                    "component": "Text",
+                    "text": "Sort by price"
+                  },
+                  {
+                    "id": "sort-rating",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "loading_sort-rating-label",
+                    "action": {
+                      "event": {
+                        "name": "sort-cameras",
+                        "context": {
+                          "key": "rating"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "sort-row",
+                    "component": "Row",
+                    "children": ["sort-price", "sort-rating"]
+                  },
+                  {
+                    "id": "title",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "In stock"
+                  },
+                  {
+                    "id": "loading_rows",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_sort-rating-label",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "list"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 13008,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": ["title", "sort-row", "loading_rows"]
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "sort-price",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "sort-price-label",
+                    "action": {
+                      "event": {
+                        "name": "sort-cameras",
+                        "context": {
+                          "key": "price"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "sort-price-label",
+                    "component": "Text",
+                    "text": "Sort by price"
+                  },
+                  {
+                    "id": "sort-rating",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "sort-rating-label",
+                    "action": {
+                      "event": {
+                        "name": "sort-cameras",
+                        "context": {
+                          "key": "rating"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "sort-rating-label",
+                    "component": "Text",
+                    "text": "Sort by rating"
+                  },
+                  {
+                    "id": "sort-row",
+                    "component": "Row",
+                    "children": ["sort-price", "sort-rating"]
+                  },
+                  {
+                    "id": "title",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "In stock"
+                  },
+                  {
+                    "id": "loading_rows",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "list"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 13195,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": ["title", "sort-row", "rows"]
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "rows",
+                    "component": "List",
+                    "children": {
+                      "path": "/items",
+                      "componentId": "loading_row"
+                    }
+                  },
+                  {
+                    "id": "sort-price",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "sort-price-label",
+                    "action": {
+                      "event": {
+                        "name": "sort-cameras",
+                        "context": {
+                          "key": "price"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "sort-price-label",
+                    "component": "Text",
+                    "text": "Sort by price"
+                  },
+                  {
+                    "id": "sort-rating",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "sort-rating-label",
+                    "action": {
+                      "event": {
+                        "name": "sort-cameras",
+                        "context": {
+                          "key": "rating"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "sort-rating-label",
+                    "component": "Text",
+                    "text": "Sort by rating"
+                  },
+                  {
+                    "id": "sort-row",
+                    "component": "Row",
+                    "children": ["sort-price", "sort-rating"]
+                  },
+                  {
+                    "id": "title",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "In stock"
+                  },
+                  {
+                    "id": "loading_row",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "list"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 13348,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": ["title", "sort-row", "rows"]
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "row",
+                    "component": "Button",
+                    "variant": "borderless"
+                  },
+                  {
+                    "id": "rows",
+                    "component": "List",
+                    "children": {
+                      "path": "/items",
+                      "componentId": "row"
+                    }
+                  },
+                  {
+                    "id": "sort-price",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "sort-price-label",
+                    "action": {
+                      "event": {
+                        "name": "sort-cameras",
+                        "context": {
+                          "key": "price"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "sort-price-label",
+                    "component": "Text",
+                    "text": "Sort by price"
+                  },
+                  {
+                    "id": "sort-rating",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "sort-rating-label",
+                    "action": {
+                      "event": {
+                        "name": "sort-cameras",
+                        "context": {
+                          "key": "rating"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "sort-rating-label",
+                    "component": "Text",
+                    "text": "Sort by rating"
+                  },
+                  {
+                    "id": "sort-row",
+                    "component": "Row",
+                    "children": ["sort-price", "sort-rating"]
+                  },
+                  {
+                    "id": "title",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "In stock"
+                  }
+                ],
+                "surfaceId": "list"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 13412,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": ["title", "sort-row", "rows"]
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "loading_row-body",
+                    "action": {
+                      "event": {
+                        "name": "open-camera"
+                      }
+                    }
+                  },
+                  {
+                    "id": "rows",
+                    "component": "List",
+                    "children": {
+                      "path": "/items",
+                      "componentId": "row"
+                    }
+                  },
+                  {
+                    "id": "sort-price",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "sort-price-label",
+                    "action": {
+                      "event": {
+                        "name": "sort-cameras",
+                        "context": {
+                          "key": "price"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "sort-price-label",
+                    "component": "Text",
+                    "text": "Sort by price"
+                  },
+                  {
+                    "id": "sort-rating",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "sort-rating-label",
+                    "action": {
+                      "event": {
+                        "name": "sort-cameras",
+                        "context": {
+                          "key": "rating"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "sort-rating-label",
+                    "component": "Text",
+                    "text": "Sort by rating"
+                  },
+                  {
+                    "id": "sort-row",
+                    "component": "Row",
+                    "children": ["sort-price", "sort-rating"]
+                  },
+                  {
+                    "id": "title",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "In stock"
+                  },
+                  {
+                    "id": "loading_row-body",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "list"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 13577,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": ["title", "sort-row", "rows"]
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "loading_row-body",
+                    "action": {
+                      "event": {
+                        "name": "open-camera",
+                        "context": {
+                          "cameraId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "rows",
+                    "component": "List",
+                    "children": {
+                      "path": "/items",
+                      "componentId": "row"
+                    }
+                  },
+                  {
+                    "id": "sort-price",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "sort-price-label",
+                    "action": {
+                      "event": {
+                        "name": "sort-cameras",
+                        "context": {
+                          "key": "price"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "sort-price-label",
+                    "component": "Text",
+                    "text": "Sort by price"
+                  },
+                  {
+                    "id": "sort-rating",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "sort-rating-label",
+                    "action": {
+                      "event": {
+                        "name": "sort-cameras",
+                        "context": {
+                          "key": "rating"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "sort-rating-label",
+                    "component": "Text",
+                    "text": "Sort by rating"
+                  },
+                  {
+                    "id": "sort-row",
+                    "component": "Row",
+                    "children": ["sort-price", "sort-rating"]
+                  },
+                  {
+                    "id": "title",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "In stock"
+                  },
+                  {
+                    "id": "loading_row-body",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "list"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 13811,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": ["title", "sort-row", "rows"]
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "row-body",
+                    "action": {
+                      "event": {
+                        "name": "open-camera",
+                        "context": {
+                          "cameraId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "row-body",
+                    "component": "Row",
+                    "children": ["loading_row-name", "loading_row-price", "loading_row-rating"]
+                  },
+                  {
+                    "id": "rows",
+                    "component": "List",
+                    "children": {
+                      "path": "/items",
+                      "componentId": "row"
+                    }
+                  },
+                  {
+                    "id": "sort-price",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "sort-price-label",
+                    "action": {
+                      "event": {
+                        "name": "sort-cameras",
+                        "context": {
+                          "key": "price"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "sort-price-label",
+                    "component": "Text",
+                    "text": "Sort by price"
+                  },
+                  {
+                    "id": "sort-rating",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "sort-rating-label",
+                    "action": {
+                      "event": {
+                        "name": "sort-cameras",
+                        "context": {
+                          "key": "rating"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "sort-rating-label",
+                    "component": "Text",
+                    "text": "Sort by rating"
+                  },
+                  {
+                    "id": "sort-row",
+                    "component": "Row",
+                    "children": ["sort-price", "sort-rating"]
+                  },
+                  {
+                    "id": "title",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "In stock"
+                  },
+                  {
+                    "id": "loading_row-name",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_row-price",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_row-rating",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "list"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 13879,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": ["title", "sort-row", "rows"]
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "row-body",
+                    "action": {
+                      "event": {
+                        "name": "open-camera",
+                        "context": {
+                          "cameraId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "row-body",
+                    "component": "Row",
+                    "children": ["row-name", "loading_row-price", "loading_row-rating"]
+                  },
+                  {
+                    "id": "row-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "name"
+                    }
+                  },
+                  {
+                    "id": "rows",
+                    "component": "List",
+                    "children": {
+                      "path": "/items",
+                      "componentId": "row"
+                    }
+                  },
+                  {
+                    "id": "sort-price",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "sort-price-label",
+                    "action": {
+                      "event": {
+                        "name": "sort-cameras",
+                        "context": {
+                          "key": "price"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "sort-price-label",
+                    "component": "Text",
+                    "text": "Sort by price"
+                  },
+                  {
+                    "id": "sort-rating",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "sort-rating-label",
+                    "action": {
+                      "event": {
+                        "name": "sort-cameras",
+                        "context": {
+                          "key": "rating"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "sort-rating-label",
+                    "component": "Text",
+                    "text": "Sort by rating"
+                  },
+                  {
+                    "id": "sort-row",
+                    "component": "Row",
+                    "children": ["sort-price", "sort-rating"]
+                  },
+                  {
+                    "id": "title",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "In stock"
+                  },
+                  {
+                    "id": "loading_row-price",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_row-rating",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "list"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 14113,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": ["title", "sort-row", "rows"]
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "row-body",
+                    "action": {
+                      "event": {
+                        "name": "open-camera",
+                        "context": {
+                          "cameraId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "row-body",
+                    "component": "Row",
+                    "children": ["row-name", "row-price", "loading_row-rating"]
+                  },
+                  {
+                    "id": "row-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "name"
+                    }
+                  },
+                  {
+                    "id": "row-price",
+                    "component": "Text",
+                    "text": {
+                      "path": "price"
+                    }
+                  },
+                  {
+                    "id": "rows",
+                    "component": "List",
+                    "children": {
+                      "path": "/items",
+                      "componentId": "row"
+                    }
+                  },
+                  {
+                    "id": "sort-price",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "sort-price-label",
+                    "action": {
+                      "event": {
+                        "name": "sort-cameras",
+                        "context": {
+                          "key": "price"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "sort-price-label",
+                    "component": "Text",
+                    "text": "Sort by price"
+                  },
+                  {
+                    "id": "sort-rating",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "sort-rating-label",
+                    "action": {
+                      "event": {
+                        "name": "sort-cameras",
+                        "context": {
+                          "key": "rating"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "sort-rating-label",
+                    "component": "Text",
+                    "text": "Sort by rating"
+                  },
+                  {
+                    "id": "sort-row",
+                    "component": "Row",
+                    "children": ["sort-price", "sort-rating"]
+                  },
+                  {
+                    "id": "title",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "In stock"
+                  },
+                  {
+                    "id": "loading_row-rating",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "list"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 14278,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": ["title", "sort-row", "rows"]
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "row-body",
+                    "action": {
+                      "event": {
+                        "name": "open-camera",
+                        "context": {
+                          "cameraId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "row-body",
+                    "component": "Row",
+                    "children": ["row-name", "row-price", "row-rating"]
+                  },
+                  {
+                    "id": "row-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "name"
+                    }
+                  },
+                  {
+                    "id": "row-price",
+                    "component": "Text",
+                    "text": {
+                      "path": "price"
+                    }
+                  },
+                  {
+                    "id": "row-rating",
+                    "component": "Text",
+                    "text": {
+                      "path": "rating"
+                    }
+                  },
+                  {
+                    "id": "rows",
+                    "component": "List",
+                    "children": {
+                      "path": "/items",
+                      "componentId": "row"
+                    }
+                  },
+                  {
+                    "id": "sort-price",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "sort-price-label",
+                    "action": {
+                      "event": {
+                        "name": "sort-cameras",
+                        "context": {
+                          "key": "price"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "sort-price-label",
+                    "component": "Text",
+                    "text": "Sort by price"
+                  },
+                  {
+                    "id": "sort-rating",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "sort-rating-label",
+                    "action": {
+                      "event": {
+                        "name": "sort-cameras",
+                        "context": {
+                          "key": "rating"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "sort-rating-label",
+                    "component": "Text",
+                    "text": "Sort by rating"
+                  },
+                  {
+                    "id": "sort-row",
+                    "component": "Row",
+                    "children": ["sort-price", "sort-rating"]
+                  },
+                  {
+                    "id": "title",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "In stock"
+                  }
+                ],
+                "surfaceId": "list"
+              }
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "outcome": "completed",
+      "durationMs": 14487
+    }
+  ]
+}

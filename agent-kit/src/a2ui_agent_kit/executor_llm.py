@@ -532,7 +532,16 @@ class LlmAgentExecutor(AgentExecutor):
                     raise stream_error
                 if not payload:
                     raise ValueError("no A2UI surface found in the model response")
-                self._catalog.validate_surface(payload)
+                # Not every valid turn paints a new surface: an update to a live one
+                # — a detail view opened in place, a bound list reordered — carries no
+                # createSurface, and validate_surface requires one by definition. Judging
+                # every turn as a whole surface forced the model to re-create a live
+                # surface to pass validation, which tears down everything bound to it on
+                # the client (task-4.6).
+                if any(isinstance(m, dict) and "createSurface" in m for m in payload):
+                    self._catalog.validate_surface(payload)
+                else:
+                    self._catalog.validate_update(payload)
                 self._question_policy(payload, paint_metas)
             except (ValueError, TypeError) as err:
                 logger.warning(

@@ -1,0 +1,104 @@
+{
+  "name": "catalogue",
+  "intent": "What cameras do you have?",
+  "messages": [
+    {
+      "version": "v0.9",
+      "createSurface": {
+        "surfaceId": "list",
+        "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/mocks/shop-a/shop-a-catalog/catalogs/v0.9.1/catalog.json",
+        "sendDataModel": true
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateDataModel": {
+        "surfaceId": "list",
+        "path": "/",
+        "value": {
+          "items": [
+            {
+              "id": "example-one",
+              "name": "Example One",
+              "price": 1000,
+              "rating": 4.0
+            },
+            {
+              "id": "example-two",
+              "name": "Example Two",
+              "price": 2000,
+              "rating": 4.5
+            }
+          ]
+        }
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateComponents": {
+        "surfaceId": "list",
+        "components": [
+          {
+            "id": "root",
+            "component": "Card",
+            "child": "body"
+          },
+          {
+            "id": "body",
+            "component": "Column",
+            "children": ["title", "rows"]
+          },
+          {
+            "id": "title",
+            "component": "Text",
+            "variant": "h3",
+            "text": "In stock"
+          },
+          {
+            "id": "rows",
+            "component": "List",
+            "children": {
+              "path": "/items",
+              "componentId": "row"
+            }
+          },
+          {
+            "id": "row",
+            "component": "Button",
+            "variant": "borderless",
+            "child": "row-body",
+            "action": {
+              "event": {
+                "name": "open-camera",
+                "context": {
+                  "cameraId": {
+                    "path": "id"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": "row-body",
+            "component": "Row",
+            "children": ["row-name", "row-price"]
+          },
+          {
+            "id": "row-name",
+            "component": "Text",
+            "text": {
+              "path": "name"
+            }
+          },
+          {
+            "id": "row-price",
+            "component": "Text",
+            "text": {
+              "path": "price"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

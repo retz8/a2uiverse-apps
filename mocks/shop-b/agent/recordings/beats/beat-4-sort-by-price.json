@@ -1,0 +1,61 @@
+{
+  "name": "beat-4-sort-by-price",
+  "beat": 4,
+  "title": "Cheapest first",
+  "prompt": "Sort them cheapest first",
+  "model": "gemini-3.7-flash",
+  "recordedAt": "2026-09-04T09:01:19+00:00",
+  "contextId": "b231c6d2-d7e2-4c68-9c73-8aa12fea5636",
+  "chainedFrom": "beat-3-back-to-list",
+  "turns": [
+    {
+      "taskId": "bffa3063-2857-453e-b358-daa63d4a68d1",
+      "kind": "utterance",
+      "prompt": "Sort them cheapest first",
+      "action": null,
+      "batches": [
+        {
+          "offsetMs": 4688,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "list",
+                "path": "/items",
+                "value": [
+                  {
+                    "id": "orbit-gm3",
+                    "name": "Orbit GM3",
+                    "price": 899,
+                    "rating": 4.2
+                  },
+                  {
+                    "id": "lumen-x100",
+                    "name": "Lumen X100",
+                    "price": 1379,
+                    "rating": 4.5
+                  },
+                  {
+                    "id": "verity-a7",
+                    "name": "Verity A7",
+                    "price": 2249,
+                    "rating": 4.7
+                  },
+                  {
+                    "id": "kestrel-r5",
+                    "name": "Kestrel R5",
+                    "price": 3149,
+                    "rating": 4.3
+                  }
+                ]
+              }
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "outcome": "completed",
+      "durationMs": 4942
+    }
+  ]
+}

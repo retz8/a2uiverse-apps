@@ -1,0 +1,50 @@
+{
+  "$comment": "The mock tier's single source of truth (task-4.6 decision 3). Product identity is shared; each store's listing carries its own values, its own subset, and its own order. Every mode of both mock agents derives from this file, so the two stores cannot disagree about what a camera is. Three cameras are stocked by both; lumen-z6 is Shop A's alone and orbit-gm3 is Shop B's alone (decision 2). Each store's authored order matches neither of its sorted orders, so the reorder instrument always moves something and always bumps a generation.",
+  "products": [
+    {
+      "id": "lumen-x100",
+      "name": "Lumen X100",
+      "blurb": "Compact 40MP rangefinder with a fixed 23mm lens and a hybrid viewfinder."
+    },
+    {
+      "id": "lumen-z6",
+      "name": "Lumen Z6",
+      "blurb": "Full-frame all-rounder, 24MP, in-body stabilisation, dual card slots."
+    },
+    {
+      "id": "verity-a7",
+      "name": "Verity A7",
+      "blurb": "33MP full-frame body with the widest native lens mount in the range."
+    },
+    {
+      "id": "kestrel-r5",
+      "name": "Kestrel R5",
+      "blurb": "45MP flagship, 8K capture, weather-sealed magnesium chassis."
+    },
+    {
+      "id": "orbit-gm3",
+      "name": "Orbit GM3",
+      "blurb": "Pocketable micro four-thirds body, 20MP, the lightest in the range."
+    }
+  ],
+  "stores": {
+    "shop-a": {
+      "policy": "Aperture & Co ships insured within two working days. Every body is inspected and graded by hand before listing, and carries a twelve-month workshop warranty. Returns are accepted for thirty days in the condition sold.",
+      "listing": [
+        {"id": "lumen-z6", "price": 1899, "rating": 4.4},
+        {"id": "kestrel-r5", "price": 3299, "rating": 4.9},
+        {"id": "lumen-x100", "price": 1449, "rating": 4.8},
+        {"id": "verity-a7", "price": 2199, "rating": 4.6}
+      ]
+    },
+    "shop-b": {
+      "policy": "Northlight dispatches next day on orders placed before 6pm, free over 500. Prices track supplier feeds and change daily. Unopened returns are accepted for fourteen days; opened bodies are assessed on receipt.",
+      "listing": [
+        {"id": "verity-a7", "price": 2249, "rating": 4.7},
+        {"id": "lumen-x100", "price": 1379, "rating": 4.5},
+        {"id": "orbit-gm3", "price": 899, "rating": 4.2},
+        {"id": "kestrel-r5", "price": 3149, "rating": 4.3}
+      ]
+    }
+  }
+}

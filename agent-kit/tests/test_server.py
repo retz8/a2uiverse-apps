@@ -66,6 +66,33 @@ def test_live_mode_without_a_toolset_factory_is_rejected(basic_config):
         build_tools(basic_config, "live")
 
 
+def test_live_mode_accepts_a_single_toolset_or_a_list_of_plain_tools(tmp_path):
+    """A vendor hands over one MCP toolset; an app with no vendor hands over callables.
+
+    Both reach the ADK agent as a tools list, so the kit does not need to assert that
+    a live backend is an MCP toolset (task-4.6 decision 16).
+    """
+    from .conftest import make_config
+
+    class FakeToolset:  # pragma: no cover - identity only
+        ...
+
+    def list_products():  # pragma: no cover - identity only
+        ...
+
+    def open_product():  # pragma: no cover - identity only
+        ...
+
+    toolset = FakeToolset()
+    one = make_config("basic", tmp_path, live_toolset_factory=lambda: toolset)
+    assert build_tools(one, "live") == [toolset]
+
+    many = make_config(
+        "basic", tmp_path, live_toolset_factory=lambda: [list_products, open_product]
+    )
+    assert build_tools(many, "live") == [list_products, open_product]
+
+
 def test_stub_tools_come_from_the_config(basic_config, tmp_path):
     from .conftest import make_config
 

@@ -1,0 +1,104 @@
+{
+  "name": "beat-2-open-camera",
+  "beat": 2,
+  "title": "One camera",
+  "prompt": "Tell me about the Lumen X100",
+  "model": "gemini-3.7-flash",
+  "recordedAt": "2026-09-04T08:59:57+00:00",
+  "contextId": "13d9c04c-ee3b-471e-975d-b1f95163257f",
+  "chainedFrom": "beat-1-catalogue",
+  "turns": [
+    {
+      "taskId": "7963877b-9ddf-42e4-be46-1fe0ba6e4389",
+      "kind": "utterance",
+      "prompt": "Tell me about the Lumen X100",
+      "action": null,
+      "batches": [
+        {
+          "offsetMs": 6117,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "list",
+                "value": {
+                  "detail": {
+                    "id": "lumen-x100",
+                    "name": "Lumen X100",
+                    "price": 1
+                  }
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 6145,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "list",
+                "value": {
+                  "detail": {
+                    "id": "lumen-x100",
+                    "name": "Lumen X100",
+                    "price": 1449,
+                    "rating": 4.8
+                  }
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 6212,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "list",
+                "value": {
+                  "detail": {
+                    "id": "lumen-x100",
+                    "name": "Lumen X100",
+                    "price": 1449,
+                    "rating": 4.8,
+                    "blurb": "Compact 40MP rangefinder with a fixed 23mm lens and a hybrid viewfinder."
+                  }
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 6271,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "list",
+                "path": "/",
+                "value": {
+                  "detail": {
+                    "id": "lumen-x100",
+                    "name": "Lumen X100",
+                    "price": 1449,
+                    "rating": 4.8,
+                    "blurb": "Compact 40MP rangefinder with a fixed 23mm lens and a hybrid viewfinder."
+                  }
+                }
+              }
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "outcome": "completed",
+      "durationMs": 7545
+    }
+  ]
+}

@@ -309,3 +309,82 @@ def test_validate_surface_rejects_a_template_path_that_is_not_a_list(ctx):
     payload[2]["updateDataModel"]["value"] = {"pulls": "not-a-list"}
     with pytest.raises(ValueError, match="does not resolve to a list"):
         ctx.validate_surface(payload)
+
+
+class TestValidateUpdate:
+    """A turn that changes a surface the client already holds (task-4.6).
+
+    `validate_surface` requires a createSurface and a `root` by definition, so it
+    rejects every in-place update — which forced a live agent to re-create a live
+    surface just to pass validation.
+    """
+
+    def _ctx(self, config):
+        from a2ui_agent_kit.catalog import catalog_context
+
+        return catalog_context(config)
+
+    def test_a_data_only_update_is_valid(self, basic_config):
+        payload = [
+            {
+                "version": "v0.9",
+                "updateDataModel": {"surfaceId": "list", "path": "/items", "value": [{"a": 1}]},
+            }
+        ]
+        self._ctx(basic_config).validate_update(payload)
+
+    def test_a_repaint_without_a_create_is_valid(self, basic_config):
+        payload = [
+            {
+                "version": "v0.9",
+                "updateDataModel": {"surfaceId": "list", "path": "/", "value": {"n": "X"}},
+            },
+            {
+                "version": "v0.9",
+                "updateComponents": {
+                    "surfaceId": "list",
+                    "components": [{"id": "root", "component": "Text", "text": {"path": "/n"}}],
+                },
+            },
+        ]
+        self._ctx(basic_config).validate_update(payload)
+
+    def test_the_same_payload_is_rejected_as_a_whole_surface(self, basic_config):
+        payload = [
+            {
+                "version": "v0.9",
+                "updateDataModel": {"surfaceId": "list", "path": "/items", "value": []},
+            }
+        ]
+        with pytest.raises(ValueError, match="createSurface"):
+            self._ctx(basic_config).validate_surface(payload)
+
+    def test_a_repaint_with_an_unresolvable_binding_is_still_rejected(self, basic_config):
+        payload = [
+            {
+                "version": "v0.9",
+                "updateDataModel": {"surfaceId": "list", "path": "/", "value": {"n": "X"}},
+            },
+            {
+                "version": "v0.9",
+                "updateComponents": {
+                    "surfaceId": "list",
+                    "components": [{"id": "root", "component": "Text", "text": {"path": "/missing"}}],
+                },
+            },
+        ]
+        with pytest.raises(ValueError):
+            self._ctx(basic_config).validate_update(payload)
+
+    def test_an_unknown_component_is_still_rejected(self, basic_config):
+        payload = [
+            {
+                "version": "v0.9",
+                "updateComponents": {
+                    "surfaceId": "list",
+                    "components": [{"id": "root", "component": "NotAComponent"}],
+                },
+            }
+        ]
+        with pytest.raises(ValueError):
+            self._ctx(basic_config).validate_update(payload)

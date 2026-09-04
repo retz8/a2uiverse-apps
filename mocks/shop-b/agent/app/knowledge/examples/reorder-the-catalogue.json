@@ -1,0 +1,28 @@
+{
+  "name": "reorder-the-catalogue",
+  "intent": "Sort them cheapest first (the list surface already exists)",
+  "$comment": "The smallest possible turn: one updateDataModel writing the same cameras back to /items in a new order. No createSurface and no updateComponents \u2014 the components are already right, only the order changed.",
+  "messages": [
+    {
+      "version": "v0.9",
+      "updateDataModel": {
+        "surfaceId": "list",
+        "path": "/items",
+        "value": [
+          {
+            "id": "example-one",
+            "name": "Example One",
+            "price": 1000,
+            "rating": 4.0
+          },
+          {
+            "id": "example-two",
+            "name": "Example Two",
+            "price": 2000,
+            "rating": 4.5
+          }
+        ]
+      }
+    }
+  ]
+}

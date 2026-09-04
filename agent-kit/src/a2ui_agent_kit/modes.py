@@ -39,9 +39,17 @@ def build_tools(config: AgentAppConfig, mode: str) -> list:
             raise ValueError(
                 "--mode live needs a live_toolset_factory on the app config."
             )
-        toolset = config.live_toolset_factory()
-        logger.info("tool backend: live — vendor MCP toolset %s", type(toolset).__name__)
-        return [toolset]
+        produced = config.live_toolset_factory()
+        # A vendor's live backend is one MCP toolset; an app with no vendor behind it —
+        # a mock (task-4.6 decision 16) — has plain callables instead, the way stub
+        # tools already do. "Live means MCP" was an assumption inherited from three
+        # vendors that happened to have one, not something the kit needs to assert.
+        tools = list(produced) if isinstance(produced, (list, tuple)) else [produced]
+        logger.info(
+            "tool backend: live — %s",
+            ", ".join(getattr(t, "__name__", type(t).__name__) for t in tools) or "nothing",
+        )
+        return tools
     raise ValueError(
         f"mode {mode!r} is not a known mode; expected 'deterministic', 'stub' or 'live'."
     )

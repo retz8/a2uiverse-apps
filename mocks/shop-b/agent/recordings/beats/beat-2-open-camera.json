@@ -1,0 +1,101 @@
+{
+  "name": "beat-2-open-camera",
+  "beat": 2,
+  "title": "One camera",
+  "prompt": "Tell me about the Orbit GM3",
+  "model": "gemini-3.7-flash",
+  "recordedAt": "2026-09-04T09:01:19+00:00",
+  "contextId": "b231c6d2-d7e2-4c68-9c73-8aa12fea5636",
+  "chainedFrom": "beat-1-catalogue",
+  "turns": [
+    {
+      "taskId": "6f8a0010-5f61-4eba-9d17-ca97d6d57b9a",
+      "kind": "utterance",
+      "prompt": "Tell me about the Orbit GM3",
+      "action": null,
+      "batches": [
+        {
+          "offsetMs": 5854,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "list",
+                "value": {
+                  "detail": {
+                    "blurb": "Pocketable micro four-thirds body, 20MP, the lightest in the range."
+                  }
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 5949,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "list",
+                "value": {
+                  "detail": {
+                    "blurb": "Pocketable micro four-thirds body, 20MP, the lightest in the range.",
+                    "id": "orbit-gm3",
+                    "name": "Orbit GM3"
+                  }
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 6011,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "list",
+                "value": {
+                  "detail": {
+                    "blurb": "Pocketable micro four-thirds body, 20MP, the lightest in the range.",
+                    "id": "orbit-gm3",
+                    "name": "Orbit GM3",
+                    "price": 899,
+                    "rating": 4.2
+                  }
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 6068,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "list",
+                "path": "/",
+                "value": {
+                  "detail": {
+                    "blurb": "Pocketable micro four-thirds body, 20MP, the lightest in the range.",
+                    "id": "orbit-gm3",
+                    "name": "Orbit GM3",
+                    "price": 899,
+                    "rating": 4.2
+                  }
+                }
+              }
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "outcome": "completed",
+      "durationMs": 7371
+    }
+  ]
+}

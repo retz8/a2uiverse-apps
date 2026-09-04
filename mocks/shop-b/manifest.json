@@ -1,0 +1,13 @@
+{
+  "$comment": "Placeholder until the sdk manifest schema lands (Phase 9); mirrors the orchestrator's registry record.",
+  "id": "shop-b",
+  "displayName": "Shop B",
+  "agent": {
+    "url": "http://localhost:12002",
+    "auth": "none"
+  },
+  "catalog": {
+    "id": "https://github.com/retz8/a2uiverse-apps/blob/main/mocks/shop-b/shop-b-catalog/catalogs/v0.9.1/catalog.json",
+    "package": "shop-b-catalog"
+  }
+}

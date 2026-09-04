@@ -1,0 +1,263 @@
+{
+  "name": "beat-3-back-to-list",
+  "beat": 3,
+  "title": "Back to the catalogue",
+  "prompt": "Take me back to the list",
+  "model": "gemini-3.7-flash",
+  "recordedAt": "2026-09-04T09:01:19+00:00",
+  "contextId": "b231c6d2-d7e2-4c68-9c73-8aa12fea5636",
+  "chainedFrom": "beat-2-open-camera",
+  "turns": [
+    {
+      "taskId": "1ebf2bb0-e03a-47e9-9c87-79d9e01411d7",
+      "kind": "utterance",
+      "prompt": "Take me back to the list",
+      "action": null,
+      "batches": [
+        {
+          "offsetMs": 12601,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "list",
+                "value": {
+                  "items": [
+                    {
+                      "id": "verity-a7",
+                      "name": "Verity A7",
+                      "price": 2249,
+                      "rating": 4.7
+                    },
+                    {
+                      "id": "lumen-x100",
+                      "name": "Lumen X100"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 12678,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "list",
+                "value": {
+                  "items": [
+                    {
+                      "id": "verity-a7",
+                      "name": "Verity A7",
+                      "price": 2249,
+                      "rating": 4.7
+                    },
+                    {
+                      "id": "lumen-x100",
+                      "name": "Lumen X100",
+                      "price": 1379,
+                      "rating": 4.5
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 12753,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "list",
+                "value": {
+                  "items": [
+                    {
+                      "id": "verity-a7",
+                      "name": "Verity A7",
+                      "price": 2249,
+                      "rating": 4.7
+                    },
+                    {
+                      "id": "lumen-x100",
+                      "name": "Lumen X100",
+                      "price": 1379,
+                      "rating": 4.5
+                    },
+                    {
+                      "id": "orbit-gm3",
+                      "name": "Orbit GM3",
+                      "price": 8
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 12829,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "list",
+                "value": {
+                  "items": [
+                    {
+                      "id": "verity-a7",
+                      "name": "Verity A7",
+                      "price": 2249,
+                      "rating": 4.7
+                    },
+                    {
+                      "id": "lumen-x100",
+                      "name": "Lumen X100",
+                      "price": 1379,
+                      "rating": 4.5
+                    },
+                    {
+                      "id": "orbit-gm3",
+                      "name": "Orbit GM3",
+                      "price": 899,
+                      "rating": 4.2
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 12907,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "list",
+                "value": {
+                  "items": [
+                    {
+                      "id": "verity-a7",
+                      "name": "Verity A7",
+                      "price": 2249,
+                      "rating": 4.7
+                    },
+                    {
+                      "id": "lumen-x100",
+                      "name": "Lumen X100",
+                      "price": 1379,
+                      "rating": 4.5
+                    },
+                    {
+                      "id": "orbit-gm3",
+                      "name": "Orbit GM3",
+                      "price": 899,
+                      "rating": 4.2
+                    },
+                    {
+                      "id": "kestrel-r5",
+                      "name": "Kestrel R5",
+                      "price": 3
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 12986,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "list",
+                "value": {
+                  "items": [
+                    {
+                      "id": "verity-a7",
+                      "name": "Verity A7",
+                      "price": 2249,
+                      "rating": 4.7
+                    },
+                    {
+                      "id": "lumen-x100",
+                      "name": "Lumen X100",
+                      "price": 1379,
+                      "rating": 4.5
+                    },
+                    {
+                      "id": "orbit-gm3",
+                      "name": "Orbit GM3",
+                      "price": 899,
+                      "rating": 4.2
+                    },
+                    {
+                      "id": "kestrel-r5",
+                      "name": "Kestrel R5",
+                      "price": 3149,
+                      "rating": 4.3
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 13064,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "list",
+                "path": "/",
+                "value": {
+                  "items": [
+                    {
+                      "id": "verity-a7",
+                      "name": "Verity A7",
+                      "price": 2249,
+                      "rating": 4.7
+                    },
+                    {
+                      "id": "lumen-x100",
+                      "name": "Lumen X100",
+                      "price": 1379,
+                      "rating": 4.5
+                    },
+                    {
+                      "id": "orbit-gm3",
+                      "name": "Orbit GM3",
+                      "price": 899,
+                      "rating": 4.2
+                    },
+                    {
+                      "id": "kestrel-r5",
+                      "name": "Kestrel R5",
+                      "price": 3149,
+                      "rating": 4.3
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "outcome": "completed",
+      "durationMs": 16206
+    }
+  ]
+}

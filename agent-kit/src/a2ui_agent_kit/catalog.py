@@ -310,6 +310,29 @@ class CatalogContext:
         probe = _strip_framework_ids(payload) if self._config.catalog_kind == "custom" else payload
         self.get_catalog().validator.validate(probe, strict_integrity=False)
 
+    def validate_update(self, payload: list[dict]) -> None:
+        """Validates a turn that changes a surface the client already holds.
+
+        Not every valid turn paints a new surface. Opening a detail view in place,
+        reordering a bound list, flipping a toggle — each is an update to a live
+        surface, which the protocol allows and the kit's own prompt prose invites.
+        `validate_surface` cannot judge one: it requires a createSurface and a `root`
+        by definition, so it would reject every such turn (task-4.6).
+
+        So the checks that still mean something are kept and the ones that cannot
+        apply are dropped: component conformance and binding-on-literal-prop always,
+        and binding resolvability whenever the turn repaints components — a repaint
+        carries its own tree and its own data, so its bindings are checkable. What is
+        skipped is exactly what lives on the client: the createSurface, the root, and
+        reachability from it.
+        """
+        messages = payload if isinstance(payload, list) else [payload]
+        components = _components_of(messages)
+        _check_no_bindings_on_literal_props(components, self._component_prop_schemas())
+        self.validate_payload(messages)
+        if components:
+            _check_bindings_resolve(components, _build_data_model(messages))
+
     def validate_surface(self, payload: list[dict] | dict) -> None:
         """Validates a *complete* A2UI surface against the app's catalog, on the live
         agent's own terms.
@@ -339,13 +362,7 @@ class CatalogContext:
         messages = payload if isinstance(payload, list) else [payload]
         catalog = self.live_catalog()
 
-        components: list[dict] = []
-        for message in messages:
-            update = message.get("updateComponents") if isinstance(message, dict) else None
-            if isinstance(update, dict):
-                components.extend(
-                    c for c in update.get("components", []) if isinstance(c, dict)
-                )
+        components = _components_of(messages)
 
         # Pass 0: bindings on non-Dynamic props, with the actionable message.
         _check_no_bindings_on_literal_props(components, self._component_prop_schemas())
@@ -377,6 +394,16 @@ class CatalogContext:
 
         # Pass 3: binding resolvability on the final state.
         _check_bindings_resolve(components, _build_data_model(messages))
+
+
+def _components_of(messages: list[dict]) -> list[dict]:
+    """Every component an `updateComponents` in the payload carries, in order."""
+    components: list[dict] = []
+    for message in messages:
+        update = message.get("updateComponents") if isinstance(message, dict) else None
+        if isinstance(update, dict):
+            components.extend(c for c in update.get("components", []) if isinstance(c, dict))
+    return components
 
 
 @functools.lru_cache(maxsize=None)

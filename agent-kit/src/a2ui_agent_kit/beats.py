@@ -90,18 +90,36 @@ def read_session(record_dir: Path, context_id: str) -> dict | None:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def _messages(turn: dict) -> list[dict]:
+    return [msg for batch in turn.get("batches", []) for msg in batch.get("messages", [])]
+
+
 def turn_is_good(turn: dict) -> tuple[bool, str]:
-    """A usable fixture completed and actually painted a surface."""
+    """A usable fixture completed and delivered A2UI the client can act on."""
     if turn.get("outcome") != "completed":
         return False, f"outcome={turn.get('outcome')}"
-    created = [
-        msg
-        for batch in turn.get("batches", [])
-        for msg in batch.get("messages", [])
-        if "createSurface" in msg
-    ]
+    if not _messages(turn):
+        return False, "no A2UI reached the client"
+    return True, "ok"
+
+
+def group_is_good(turns: list[dict]) -> tuple[bool, str]:
+    """A recorded group must, between its turns, have painted a surface.
+
+    Per turn the requirement is only that A2UI arrived: a turn that updates an
+    existing surface and creates none is an ordinary paint the protocol allows and
+    the prompt prose explicitly invites, and it is the shape both mock instruments
+    take (task-4.6 decision 15). Requiring a `createSurface` of the *group* keeps
+    what the rule was actually protecting — a recording nothing can render — while
+    letting an update-only turn be recorded.
+    """
+    for index, turn in enumerate(turns):
+        ok, why = turn_is_good(turn)
+        if not ok:
+            return False, f"turn {index + 1}: {why}"
+    created = any("createSurface" in msg for turn in turns for msg in _messages(turn))
     if not created:
-        return False, "no createSurface reached the client"
+        return False, "no createSurface reached the client in any turn"
     return True, "ok"
 
 
@@ -159,8 +177,8 @@ def drive(
             session = read_session(record_dir, context_id) if context_id else None
             if failure is None and session is not None:
                 recorded = session["turns"][-len(group) :]
-                verdicts = [turn_is_good(t) for t in recorded]
-                if all(ok for ok, _ in verdicts):
+                group_ok, group_why = group_is_good(recorded)
+                if group_ok:
                     chained_from = None
                     for spec_in_group, turn in zip(group, recorded):
                         path = write_fixture(
@@ -170,9 +188,7 @@ def drive(
                         log(f"  ok  {path}")
                         results.append((spec_in_group, True, "ok"))
                     break
-                failure = "; ".join(
-                    f"beat {t.beat}: {why}" for t, (ok, why) in zip(group, verdicts) if not ok
-                )
+                failure = f"beat {'+'.join(str(t.beat) for t in group)}: {group_why}"
                 log(f"  !! {failure}")
 
             if attempt == MAX_ATTEMPTS_PER_BEAT:

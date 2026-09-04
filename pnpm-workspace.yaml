@@ -1,5 +1,8 @@
 packages:
   - "*/*-catalog"
+  # The mock tier sits one level deeper, which is what keeps it out of the
+  # launcher's default discovery (task-4.6 decision 5).
+  - "mocks/*/*-catalog"
   - "create-a2ui-agent"
 
 allowBuilds:

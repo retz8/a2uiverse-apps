@@ -30,6 +30,8 @@ A mock is shaped like any other app: scaffolded by `create-a2ui-agent`, built on
 - **No MCP.** There is no backend behind an invented vendor, so `live` means the model working over an in-repo dataset. The official-public-MCP rule above does not apply to mocks — and does not relax for anything else.
 - **Not in the roster.** Mocks live in their own tier, outside the one-folder-per-app vendor layout, and are excluded from default launcher discovery and from the platform's default registry. They are opted into explicitly. The platform's Router retrieves over the AgentCards in the roster; fictional vendors resident there would be noise in every composition it plans.
 
+The tier is **`mocks/<id>/`**, mirroring the vendor layout one level down. The depth is the quarantine: discovery reads the immediate subdirectories of the agents dir looking for a `manifest.json`, and `mocks/` has none, so its children are never reached. Opting in is pointing the agents dir at the tier. Mocks take ports from **`12001+`**, a band of their own, so a mock and a vendor can never collide and the scaffold's sibling-based port suggestion stays correct in both places. A mock in this repo takes the kit as a **path dependency**, as the vendor apps do, rather than the scaffold's git pin — an in-repo app on a pinned commit could not exercise a kit change until it was pushed, and the mocks are the tier that finds those changes first.
+
 Mocks are kept rather than deleted once the work that motivated them lands: they are the only substrate where a mechanism can be re-tested against data guaranteed to be well-formed.
 
 ---

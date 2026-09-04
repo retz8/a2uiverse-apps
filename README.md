@@ -69,6 +69,19 @@ Catalogs are consumed by the platform straight from this repo as git dependencie
 
 Alongside the vendor apps, this repo holds **mock apps** in their own tier: agents invented so a platform mechanism can be exercised against data whose shape is known and controlled. A mock is built like any other app, but has no MCP behind it — its `live` mode runs the model over an in-repo dataset — and it is not part of the roster. Mocks are excluded from default launcher discovery and from the platform's registry, and are opted into explicitly, so the Router never retrieves over fictional vendors during ordinary work.
 
+The tier is `mocks/`, one level below the repo root — which _is_ the quarantine, since discovery only reads the immediate subdirectories of the agents dir and `mocks/` carries no manifest of its own. Mocks take a port band of their own so they can never collide with a vendor, and so a scaffold's sibling-based port suggestion stays correct inside both the tier and the root.
+
+| Mock      | Port    | Sells                            | Catalog          |
+| --------- | ------- | -------------------------------- | ---------------- |
+| `shop-a/` | `12001` | Aperture & Co, a boutique dealer | `shop-a-catalog` |
+| `shop-b/` | `12002` | Northlight, an online retailer   | `shop-b-catalog` |
+
+The pair exists for synthesis (milestone M2): two storefronts over one shared product shape, so a merge across them is correct by construction and every remaining hard thing is machinery. Their stock is a single authored artifact, [`mocks/dataset/products.json`](mocks/dataset/products.json), which both read — product identity is shared, while price, rating, stocked subset and listing order are each store's own. Every run mode is built from that file, so no two modes and no two stores can disagree about what a camera is.
+
+Each store carries two instruments, one per half of the absent/invalid split: opening a camera makes the products array stop resolving (free, no re-synthesis), and sorting the catalogue writes the same cameras back in a new order (a generation bump, and a re-synthesis). Both are updates to a surface that already exists; neither creates one.
+
+Being instruments rather than products, mocks are kept rather than deleted once the work that motivated them lands.
+
 ## Status
 
 In development. The platform design lives in the `a2uiverse` repo's `SPEC.md`.

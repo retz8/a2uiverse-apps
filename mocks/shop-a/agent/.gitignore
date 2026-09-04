@@ -1,0 +1,14 @@
+# Python (uv-managed)
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+
+# Secrets
+.env
+
+# Agent debug dumps (rewritten per turn) and raw recordings
+*.dump.json
+*.dump.txt
+*.dump.jsonl
+.recordings/
