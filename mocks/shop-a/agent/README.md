@@ -8,7 +8,7 @@ project carries what is Aperture & Co's — prompt prose, tools, knowledge docs,
 
 **This is a mock, not a vendor app.** There is no shop and no MCP behind it. It exists so
 synthesis can be exercised against data whose shape is known and controlled, and it is
-quarantined from the default roster — see [the tier's README](../../README.md) and the repo
+quarantined from the default roster — see [the repo README's mock-apps section](../../../README.md#mock-apps) and the repo
 CLAUDE.md. Its stock is the tier's shared dataset at [`mocks/dataset/products.json`](../../dataset/products.json),
 which both mock stores read, so the two cannot disagree about what a camera is.
 
