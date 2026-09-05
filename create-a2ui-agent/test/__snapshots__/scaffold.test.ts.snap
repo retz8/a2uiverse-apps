@@ -116,7 +116,7 @@ exports[`basic kind, both opt-ins > writes the expected tree and generated files
 
 exports[`basic kind, both opt-ins > writes the expected tree and generated files > manifest.json 1`] = `
 "{
-  "$comment": "Placeholder until the sdk manifest schema lands (Phase 9); mirrors the orchestrator's registry record.",
+  "$comment": "Placeholder until the sdk manifest schema lands (Phase 10); mirrors the orchestrator's registry record.",
   "id": "acme-mail",
   "displayName": "Acme Mail",
   "agent": {
