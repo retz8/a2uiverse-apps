@@ -4,23 +4,23 @@
   "title": "Compose-and-confirm reply",
   "prompt": "Draft a short reply saying I will get to it this week.",
   "model": "gemini-3.7-flash",
-  "recordedAt": "2026-08-30T04:29:56+00:00",
-  "contextId": "05784a94-7216-4770-a55c-006b842d8160",
+  "recordedAt": "2026-09-05T06:09:10+00:00",
+  "contextId": "7c933a7c-8d7b-417b-9055-d479bf6024b2",
   "chainedFrom": "beat-2-thread-detail",
   "turns": [
     {
-      "taskId": "e8ea61c0-de87-450d-87b8-ca2bd9b8ae8e",
+      "taskId": "243350ad-57d0-4383-8798-0c307d5b13f2",
       "kind": "utterance",
       "prompt": "Draft a short reply saying I will get to it this week.",
       "action": null,
       "batches": [
         {
-          "offsetMs": 7228,
+          "offsetMs": 7058,
           "messages": [
             {
               "paintMeta": {
-                "surfaceId": "draft-1a05077dde2deea4",
-                "title": "Save draft reply",
+                "surfaceId": "draft-1a06f2abedf045ce",
+                "title": "Save reply draft?",
                 "kind": "question"
               }
             }
@@ -30,12 +30,12 @@
           ]
         },
         {
-          "offsetMs": 7267,
+          "offsetMs": 7116,
           "messages": [
             {
               "version": "v0.9",
               "createSurface": {
-                "surfaceId": "draft-1a05077dde2deea4",
+                "surfaceId": "draft-1a06f2abedf045ce",
                 "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/gmail/gmail-catalog/catalogs/v0.9.1/catalog.json",
                 "sendDataModel": true
               }
@@ -44,14 +44,14 @@
           "texts": []
         },
         {
-          "offsetMs": 7387,
+          "offsetMs": 7303,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "draft-1a05077dde2deea4",
+                "surfaceId": "draft-1a06f2abedf045ce",
                 "value": {
-                  "to": "sara.moreau@example.com"
+                  "to": "elin.tanaka@example.com"
                 }
               }
             }
@@ -59,17 +59,32 @@
           "texts": []
         },
         {
-          "offsetMs": 7449,
+          "offsetMs": 7365,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "draft-1a05077dde2deea4",
+                "surfaceId": "draft-1a06f2abedf045ce",
+                "value": {
+                  "subject": "Re: estimate review thread status agenda confirm summ"
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 7432,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "draft-1a06f2abedf045ce",
                 "path": "/",
                 "value": {
-                  "to": "sara.moreau@example.com",
-                  "subject": "Re: status agenda proposal proposal pending pendi",
-                  "body": "Thanks for the update. I will get to it this week."
+                  "to": "elin.tanaka@example.com",
+                  "subject": "Re: estimate review thread status agenda confirm summ",
+                  "body": "I will get to it this week."
                 }
               }
             }
@@ -77,7 +92,7 @@
           "texts": []
         },
         {
-          "offsetMs": 7640,
+          "offsetMs": 7638,
           "messages": [
             {
               "version": "v0.9",
@@ -94,14 +109,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "draft-1a05077dde2deea4"
+                "surfaceId": "draft-1a06f2abedf045ce"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 7699,
+          "offsetMs": 7704,
           "messages": [
             {
               "version": "v0.9",
@@ -149,14 +164,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "draft-1a05077dde2deea4"
+                "surfaceId": "draft-1a06f2abedf045ce"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 7805,
+          "offsetMs": 7824,
           "messages": [
             {
               "version": "v0.9",
@@ -205,14 +220,70 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "draft-1a05077dde2deea4"
+                "surfaceId": "draft-1a06f2abedf045ce"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 7934,
+          "offsetMs": 7896,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "to-row",
+                      "loading_subject-field",
+                      "loading_body-field",
+                      "loading_actions"
+                    ]
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "Save this reply?"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "to-row",
+                    "component": "Row",
+                    "align": "center"
+                  },
+                  {
+                    "id": "loading_subject-field",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_body-field",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "draft-1a06f2abedf045ce"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 7949,
           "messages": [
             {
               "version": "v0.9",
@@ -275,14 +346,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "draft-1a05077dde2deea4"
+                "surfaceId": "draft-1a06f2abedf045ce"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 7987,
+          "offsetMs": 8018,
           "messages": [
             {
               "version": "v0.9",
@@ -294,7 +365,7 @@
                     "children": [
                       "heading",
                       "to-row",
-                      "loading_subject-field",
+                      "subject-field",
                       "loading_body-field",
                       "loading_actions"
                     ]
@@ -311,24 +382,17 @@
                     "child": "body"
                   },
                   {
-                    "id": "to-label",
-                    "component": "Text",
-                    "variant": "caption",
-                    "text": "TO"
+                    "id": "subject-field",
+                    "component": "TextField"
                   },
                   {
                     "id": "to-row",
                     "component": "Row",
                     "align": "center",
                     "children": [
-                      "to-label",
+                      "loading_to-label",
                       "loading_to-value"
                     ]
-                  },
-                  {
-                    "id": "loading_subject-field",
-                    "component": "Row",
-                    "children": []
                   },
                   {
                     "id": "loading_body-field",
@@ -337,6 +401,11 @@
                   },
                   {
                     "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_to-label",
                     "component": "Row",
                     "children": []
                   },
@@ -346,87 +415,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "draft-1a05077dde2deea4"
+                "surfaceId": "draft-1a06f2abedf045ce"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 8119,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "body",
-                    "component": "Column",
-                    "children": [
-                      "heading",
-                      "to-row",
-                      "loading_subject-field",
-                      "loading_body-field",
-                      "loading_actions"
-                    ]
-                  },
-                  {
-                    "id": "heading",
-                    "component": "Text",
-                    "variant": "h3",
-                    "text": "Save this reply?"
-                  },
-                  {
-                    "id": "root",
-                    "component": "Card",
-                    "child": "body"
-                  },
-                  {
-                    "id": "to-label",
-                    "component": "Text",
-                    "variant": "caption",
-                    "text": "TO"
-                  },
-                  {
-                    "id": "to-row",
-                    "component": "Row",
-                    "align": "center",
-                    "children": [
-                      "to-label",
-                      "to-value"
-                    ]
-                  },
-                  {
-                    "id": "to-value",
-                    "component": "Text",
-                    "text": {
-                      "path": "/to"
-                    }
-                  },
-                  {
-                    "id": "loading_subject-field",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_body-field",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_actions",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "draft-1a05077dde2deea4"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 8187,
+          "offsetMs": 8087,
           "messages": [
             {
               "version": "v0.9",
@@ -463,26 +459,13 @@
                     }
                   },
                   {
-                    "id": "to-label",
-                    "component": "Text",
-                    "variant": "caption",
-                    "text": "TO"
-                  },
-                  {
                     "id": "to-row",
                     "component": "Row",
                     "align": "center",
                     "children": [
-                      "to-label",
-                      "to-value"
+                      "loading_to-label",
+                      "loading_to-value"
                     ]
-                  },
-                  {
-                    "id": "to-value",
-                    "component": "Text",
-                    "text": {
-                      "path": "/to"
-                    }
                   },
                   {
                     "id": "loading_body-field",
@@ -493,16 +476,98 @@
                     "id": "loading_actions",
                     "component": "Row",
                     "children": []
+                  },
+                  {
+                    "id": "loading_to-label",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_to-value",
+                    "component": "Row",
+                    "children": []
                   }
                 ],
-                "surfaceId": "draft-1a05077dde2deea4"
+                "surfaceId": "draft-1a06f2abedf045ce"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 8321,
+          "offsetMs": 8150,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "to-row",
+                      "subject-field",
+                      "body-field",
+                      "loading_actions"
+                    ]
+                  },
+                  {
+                    "id": "body-field",
+                    "component": "TextField"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "Save this reply?"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "subject-field",
+                    "component": "TextField",
+                    "label": "Subject",
+                    "value": {
+                      "path": "/subject"
+                    }
+                  },
+                  {
+                    "id": "to-row",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "loading_to-label",
+                      "loading_to-value"
+                    ]
+                  },
+                  {
+                    "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_to-label",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_to-value",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "draft-1a06f2abedf045ce"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 8292,
           "messages": [
             {
               "version": "v0.9",
@@ -548,6 +613,181 @@
                     }
                   },
                   {
+                    "id": "to-row",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "loading_to-label",
+                      "loading_to-value"
+                    ]
+                  },
+                  {
+                    "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_to-label",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_to-value",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "draft-1a06f2abedf045ce"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 8363,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "actions",
+                    "component": "Row",
+                    "children": [
+                      "loading_save",
+                      "loading_cancel"
+                    ]
+                  },
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "to-row",
+                      "subject-field",
+                      "body-field",
+                      "actions"
+                    ]
+                  },
+                  {
+                    "id": "body-field",
+                    "component": "TextField",
+                    "label": "Message",
+                    "variant": "longText",
+                    "value": {
+                      "path": "/body"
+                    }
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "Save this reply?"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "subject-field",
+                    "component": "TextField",
+                    "label": "Subject",
+                    "value": {
+                      "path": "/subject"
+                    }
+                  },
+                  {
+                    "id": "to-row",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "loading_to-label",
+                      "loading_to-value"
+                    ]
+                  },
+                  {
+                    "id": "loading_save",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_cancel",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_to-label",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_to-value",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "draft-1a06f2abedf045ce"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 8501,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "actions",
+                    "component": "Row",
+                    "children": [
+                      "loading_save",
+                      "loading_cancel"
+                    ]
+                  },
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "to-row",
+                      "subject-field",
+                      "body-field",
+                      "actions"
+                    ]
+                  },
+                  {
+                    "id": "body-field",
+                    "component": "TextField",
+                    "label": "Message",
+                    "variant": "longText",
+                    "value": {
+                      "path": "/body"
+                    }
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "Save this reply?"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "subject-field",
+                    "component": "TextField",
+                    "label": "Subject",
+                    "value": {
+                      "path": "/subject"
+                    }
+                  },
+                  {
                     "id": "to-label",
                     "component": "Text",
                     "variant": "caption",
@@ -559,30 +799,33 @@
                     "align": "center",
                     "children": [
                       "to-label",
-                      "to-value"
+                      "loading_to-value"
                     ]
                   },
                   {
-                    "id": "to-value",
-                    "component": "Text",
-                    "text": {
-                      "path": "/to"
-                    }
+                    "id": "loading_save",
+                    "component": "Row",
+                    "children": []
                   },
                   {
-                    "id": "loading_actions",
+                    "id": "loading_cancel",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_to-value",
                     "component": "Row",
                     "children": []
                   }
                 ],
-                "surfaceId": "draft-1a05077dde2deea4"
+                "surfaceId": "draft-1a06f2abedf045ce"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 8451,
+          "offsetMs": 8569,
           "messages": [
             {
               "version": "v0.9",
@@ -668,14 +911,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "draft-1a05077dde2deea4"
+                "surfaceId": "draft-1a06f2abedf045ce"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 8643,
+          "offsetMs": 8846,
           "messages": [
             {
               "version": "v0.9",
@@ -729,7 +972,7 @@
                       "event": {
                         "name": "confirm-draft",
                         "context": {
-                          "threadId": "1a05077dde2deea4"
+                          "threadId": "1a06f2abedf045ce"
                         }
                       }
                     }
@@ -775,14 +1018,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "draft-1a05077dde2deea4"
+                "surfaceId": "draft-1a06f2abedf045ce"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 8765,
+          "offsetMs": 8921,
           "messages": [
             {
               "version": "v0.9",
@@ -793,7 +1036,7 @@
                     "component": "Row",
                     "children": [
                       "save",
-                      "loading_cancel"
+                      "cancel"
                     ]
                   },
                   {
@@ -817,6 +1060,11 @@
                     }
                   },
                   {
+                    "id": "cancel",
+                    "component": "Button",
+                    "variant": "borderless"
+                  },
+                  {
                     "id": "heading",
                     "component": "Text",
                     "variant": "h3",
@@ -831,20 +1079,15 @@
                     "id": "save",
                     "component": "Button",
                     "variant": "primary",
-                    "child": "save-label",
+                    "child": "loading_save-label",
                     "action": {
                       "event": {
                         "name": "confirm-draft",
                         "context": {
-                          "threadId": "1a05077dde2deea4"
+                          "threadId": "1a06f2abedf045ce"
                         }
                       }
                     }
-                  },
-                  {
-                    "id": "save-label",
-                    "component": "Text",
-                    "text": "Save draft"
                   },
                   {
                     "id": "subject-field",
@@ -877,19 +1120,19 @@
                     }
                   },
                   {
-                    "id": "loading_cancel",
+                    "id": "loading_save-label",
                     "component": "Row",
                     "children": []
                   }
                 ],
-                "surfaceId": "draft-1a05077dde2deea4"
+                "surfaceId": "draft-1a06f2abedf045ce"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 8972,
+          "offsetMs": 9131,
           "messages": [
             {
               "version": "v0.9",
@@ -932,7 +1175,128 @@
                       "event": {
                         "name": "cancel-draft",
                         "context": {
-                          "threadId": "1a05077dde2deea4"
+                          "threadId": "1a06f2abedf045ce"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "Save this reply?"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "save",
+                    "component": "Button",
+                    "variant": "primary",
+                    "child": "loading_save-label",
+                    "action": {
+                      "event": {
+                        "name": "confirm-draft",
+                        "context": {
+                          "threadId": "1a06f2abedf045ce"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "subject-field",
+                    "component": "TextField",
+                    "label": "Subject",
+                    "value": {
+                      "path": "/subject"
+                    }
+                  },
+                  {
+                    "id": "to-label",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "TO"
+                  },
+                  {
+                    "id": "to-row",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "to-label",
+                      "to-value"
+                    ]
+                  },
+                  {
+                    "id": "to-value",
+                    "component": "Text",
+                    "text": {
+                      "path": "/to"
+                    }
+                  },
+                  {
+                    "id": "loading_cancel-label",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_save-label",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "draft-1a06f2abedf045ce"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 9296,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "actions",
+                    "component": "Row",
+                    "children": [
+                      "save",
+                      "cancel"
+                    ]
+                  },
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "to-row",
+                      "subject-field",
+                      "body-field",
+                      "actions"
+                    ]
+                  },
+                  {
+                    "id": "body-field",
+                    "component": "TextField",
+                    "label": "Message",
+                    "variant": "longText",
+                    "value": {
+                      "path": "/body"
+                    }
+                  },
+                  {
+                    "id": "cancel",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "loading_cancel-label",
+                    "action": {
+                      "event": {
+                        "name": "cancel-draft",
+                        "context": {
+                          "threadId": "1a06f2abedf045ce"
                         }
                       }
                     }
@@ -957,7 +1321,7 @@
                       "event": {
                         "name": "confirm-draft",
                         "context": {
-                          "threadId": "1a05077dde2deea4"
+                          "threadId": "1a06f2abedf045ce"
                         }
                       }
                     }
@@ -1003,14 +1367,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "draft-1a05077dde2deea4"
+                "surfaceId": "draft-1a06f2abedf045ce"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 9015,
+          "offsetMs": 9369,
           "messages": [
             {
               "version": "v0.9",
@@ -1053,7 +1417,7 @@
                       "event": {
                         "name": "cancel-draft",
                         "context": {
-                          "threadId": "1a05077dde2deea4"
+                          "threadId": "1a06f2abedf045ce"
                         }
                       }
                     }
@@ -1083,7 +1447,7 @@
                       "event": {
                         "name": "confirm-draft",
                         "context": {
-                          "threadId": "1a05077dde2deea4"
+                          "threadId": "1a06f2abedf045ce"
                         }
                       }
                     }
@@ -1124,7 +1488,7 @@
                     }
                   }
                 ],
-                "surfaceId": "draft-1a05077dde2deea4"
+                "surfaceId": "draft-1a06f2abedf045ce"
               }
             }
           ],
@@ -1132,7 +1496,7 @@
         }
       ],
       "outcome": "completed",
-      "durationMs": 9191
+      "durationMs": 9566
     }
   ]
 }

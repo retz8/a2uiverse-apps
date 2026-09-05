@@ -832,48 +832,34 @@ def test_unknown_event_returns_single_text_fallback_with_surface_echoed():
     assert uc["components"][0]["text"] == "Unhandled event: wat"
 
 
-def test_text_prompt_returns_fresh_chat_surface_echoing_the_prompt():
+def test_text_prompt_returns_the_canned_digest():
     from app.responses import build_text_response
 
     get_catalog = catalog_context(CONFIG).get_catalog
 
     msgs = build_text_response("show me open PRs")
-    assert len(msgs) == 3
 
     cs = msgs[0]["createSurface"]
-    assert cs["surfaceId"].startswith("chat-")
+    assert cs["surfaceId"].startswith("notifications-")
     assert cs["catalogId"] == get_catalog().catalog_id
+    assert any("updateComponents" in m for m in msgs)
 
-    uc = msgs[1]["updateComponents"]
-    assert uc["surfaceId"] == cs["surfaceId"]
-    assert uc["components"] == [
-        {
-            "id": "root",
-            "component": "Stack",
-            "direction": "vertical",
-            "gap": "normal",
-            "children": ["echo", "ack"],
-        },
-        {
-            "id": "echo",
-            "component": "Text",
-            "text": '✅ Deterministic agent received: "show me open PRs"',
-        },
-        {
-            "id": "ack",
-            "component": "Button",
-            "child": "label",
-            "variant": "primary",
-            "disabled": {"path": "/submitted"},
-            "action": {"event": {"name": "submit", "context": {}}},
-        },
-        {"id": "label", "component": "Text", "text": "Acknowledge"},
-    ]
+    for message in msgs:
+        for key in ("createSurface", "updateComponents", "updateDataModel"):
+            if key in message and "surfaceId" in message[key]:
+                assert message[key]["surfaceId"] == cs["surfaceId"]
 
-    dm = msgs[2]["updateDataModel"]
-    assert dm["surfaceId"] == cs["surfaceId"]
-    assert dm["path"] == "/"
-    assert dm["value"] == {"submitted": False}
+
+def test_the_text_path_does_not_route_on_the_utterance():
+    # Discriminating here would be a second, worse router; the live modes read intent.
+    from app.responses import build_text_response
+
+    def ops(messages):
+        return [k for m in messages for k in m if k != "version"]
+
+    assert ops(build_text_response("what needs my attention today?")) == ops(
+        build_text_response("something else entirely")
+    )
 
 
 def test_each_text_prompt_gets_its_own_surface():

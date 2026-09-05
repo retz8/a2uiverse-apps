@@ -2,21 +2,30 @@
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "draft-1a05077dde2deea4",
+      "surfaceId": "draft-1a06f2abedf045ce",
       "value": {
-        "to": "sara.moreau@example.com"
+        "to": "elin.tanaka@example.com"
       }
     }
   },
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "draft-1a05077dde2deea4",
+      "surfaceId": "draft-1a06f2abedf045ce",
+      "value": {
+        "subject": "Re: estimate review thread status agenda confirm summ"
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "draft-1a06f2abedf045ce",
       "path": "/",
       "value": {
-        "to": "sara.moreau@example.com",
-        "subject": "Re: status agenda proposal proposal pending pendi",
-        "body": "Thanks for the update. I will get to it this week."
+        "to": "elin.tanaka@example.com",
+        "subject": "Re: estimate review thread status agenda confirm summ",
+        "body": "I will get to it this week."
       }
     }
   },
@@ -30,11 +39,6 @@
           "child": "body"
         },
         {
-          "id": "loading_body",
-          "component": "Row",
-          "children": []
-        },
-        {
           "id": "body",
           "component": "Column",
           "children": [
@@ -44,31 +48,6 @@
             "body-field",
             "actions"
           ]
-        },
-        {
-          "id": "loading_heading",
-          "component": "Row",
-          "children": []
-        },
-        {
-          "id": "loading_to-row",
-          "component": "Row",
-          "children": []
-        },
-        {
-          "id": "loading_subject-field",
-          "component": "Row",
-          "children": []
-        },
-        {
-          "id": "loading_body-field",
-          "component": "Row",
-          "children": []
-        },
-        {
-          "id": "loading_actions",
-          "component": "Row",
-          "children": []
         },
         {
           "id": "heading",
@@ -84,29 +63,6 @@
             "to-label",
             "to-value"
           ]
-        },
-        {
-          "id": "loading_to-label",
-          "component": "Row",
-          "children": []
-        },
-        {
-          "id": "loading_to-value",
-          "component": "Row",
-          "children": []
-        },
-        {
-          "id": "to-label",
-          "component": "Text",
-          "variant": "caption",
-          "text": "TO"
-        },
-        {
-          "id": "to-value",
-          "component": "Text",
-          "text": {
-            "path": "/to"
-          }
         },
         {
           "id": "subject-field",
@@ -134,14 +90,17 @@
           ]
         },
         {
-          "id": "loading_save",
-          "component": "Row",
-          "children": []
+          "id": "to-label",
+          "component": "Text",
+          "variant": "caption",
+          "text": "TO"
         },
         {
-          "id": "loading_cancel",
-          "component": "Row",
-          "children": []
+          "id": "to-value",
+          "component": "Text",
+          "text": {
+            "path": "/to"
+          }
         },
         {
           "id": "save",
@@ -152,20 +111,10 @@
             "event": {
               "name": "confirm-draft",
               "context": {
-                "threadId": "1a05077dde2deea4"
+                "threadId": "1a06f2abedf045ce"
               }
             }
           }
-        },
-        {
-          "id": "loading_save-label",
-          "component": "Row",
-          "children": []
-        },
-        {
-          "id": "save-label",
-          "component": "Text",
-          "text": "Save draft"
         },
         {
           "id": "cancel",
@@ -176,15 +125,15 @@
             "event": {
               "name": "cancel-draft",
               "context": {
-                "threadId": "1a05077dde2deea4"
+                "threadId": "1a06f2abedf045ce"
               }
             }
           }
         },
         {
-          "id": "loading_cancel-label",
-          "component": "Row",
-          "children": []
+          "id": "save-label",
+          "component": "Text",
+          "text": "Save draft"
         },
         {
           "id": "cancel-label",

@@ -46,5 +46,53 @@
     "status": "confirmed",
     "summary": "Design review \u2014 agenda surface",
     "updated": "2026-08-30T06:12:50Z"
+  },
+  "ectktv0lkuauv7g3i8hgpmhelg": {
+    "attendees": [
+      {
+        "displayName": "A2UIVerse Demo",
+        "email": "you@example.com",
+        "organizer": true,
+        "responseStatus": "needsAction",
+        "self": true
+      },
+      {
+        "email": "mei.silva@example.com",
+        "responseStatus": "needsAction"
+      },
+      {
+        "email": "idris.haddad@example.com",
+        "responseStatus": "declined"
+      },
+      {
+        "email": "alex.bergman@example.com",
+        "responseStatus": "accepted"
+      }
+    ],
+    "created": "2026-09-05T06:10:02Z",
+    "creator": {
+      "email": "person-f9ec358f@example.com"
+    },
+    "description": "Walk through the three fragment layouts.\n\nBring:\n- the density comparison\n- the token divergence notes\n\nWe should decide the accent question in this session rather than carrying it another week.",
+    "end": {
+      "dateTime": "2026-09-05T12:00:00-04:00",
+      "timeZone": "America/New_York"
+    },
+    "eventType": "DEFAULT",
+    "htmlLink": "https://example.com/event",
+    "id": "ectktv0lkuauv7g3i8hgpmhelg",
+    "location": "Room 4B",
+    "organizer": {
+      "displayName": "A2UIVerse Demo",
+      "email": "you@example.com",
+      "self": true
+    },
+    "start": {
+      "dateTime": "2026-09-05T11:00:00-04:00",
+      "timeZone": "America/New_York"
+    },
+    "status": "confirmed",
+    "summary": "Design review \u2014 agenda surface",
+    "updated": "2026-09-05T06:10:03Z"
   }
 }

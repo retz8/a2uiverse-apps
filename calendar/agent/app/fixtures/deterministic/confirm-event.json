@@ -12,11 +12,20 @@
     "version": "v0.9",
     "updateDataModel": {
       "surfaceId": "propose-event",
+      "value": {
+        "when": "Thursday, 14:00 \u2013 14:30"
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "propose-event",
       "path": "/",
       "value": {
         "summary": "Design team sync",
         "when": "Thursday, 14:00 \u2013 14:30",
-        "guests": "Alex Bergman, Mei Silva"
+        "guests": "Alex Bergman, Mei Silva, Idris Haddad"
       }
     }
   },
@@ -30,11 +39,6 @@
           "child": "body"
         },
         {
-          "id": "loading_body",
-          "component": "Row",
-          "children": []
-        },
-        {
           "id": "body",
           "component": "Column",
           "children": [
@@ -45,36 +49,6 @@
             "notice",
             "actions"
           ]
-        },
-        {
-          "id": "loading_heading",
-          "component": "Row",
-          "children": []
-        },
-        {
-          "id": "loading_title-field",
-          "component": "Row",
-          "children": []
-        },
-        {
-          "id": "loading_when-row",
-          "component": "Row",
-          "children": []
-        },
-        {
-          "id": "loading_guests-row",
-          "component": "Row",
-          "children": []
-        },
-        {
-          "id": "loading_notice",
-          "component": "Row",
-          "children": []
-        },
-        {
-          "id": "loading_actions",
-          "component": "Row",
-          "children": []
         },
         {
           "id": "heading",
@@ -100,16 +74,6 @@
           ]
         },
         {
-          "id": "loading_when-label",
-          "component": "Row",
-          "children": []
-        },
-        {
-          "id": "loading_when-value",
-          "component": "Row",
-          "children": []
-        },
-        {
           "id": "when-label",
           "component": "Text",
           "variant": "caption",
@@ -130,16 +94,6 @@
             "guests-label",
             "guests-value"
           ]
-        },
-        {
-          "id": "loading_guests-label",
-          "component": "Row",
-          "children": []
-        },
-        {
-          "id": "loading_guests-value",
-          "component": "Row",
-          "children": []
         },
         {
           "id": "guests-label",
@@ -169,16 +123,6 @@
           ]
         },
         {
-          "id": "loading_create",
-          "component": "Row",
-          "children": []
-        },
-        {
-          "id": "loading_discard",
-          "component": "Row",
-          "children": []
-        },
-        {
           "id": "create",
           "component": "Button",
           "variant": "primary",
@@ -191,11 +135,6 @@
               }
             }
           }
-        },
-        {
-          "id": "loading_create-label",
-          "component": "Row",
-          "children": []
         },
         {
           "id": "create-label",
@@ -215,11 +154,6 @@
               }
             }
           }
-        },
-        {
-          "id": "loading_discard-label",
-          "component": "Row",
-          "children": []
         },
         {
           "id": "discard-label",

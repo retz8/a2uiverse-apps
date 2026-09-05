@@ -2,17 +2,17 @@
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "labels",
+      "surfaceId": "labels-list",
       "value": {
         "labels": [
           {
             "id": "Label_1",
             "name": "question agen",
-            "type": "User label",
-            "count": "0 threads"
+            "type": "User label"
           },
           {
-            "id": "INBOX"
+            "id": "INBOX",
+            "name": "INBOX"
           }
         ]
       }
@@ -21,19 +21,21 @@
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "labels",
+      "surfaceId": "labels-list",
       "value": {
         "labels": [
           {
             "id": "Label_1",
             "name": "question agen",
-            "type": "User label",
-            "count": "0 threads"
+            "type": "User label"
           },
           {
             "id": "INBOX",
             "name": "INBOX",
-            "type": "System label"
+            "type": "System"
+          },
+          {
+            "id": "UNREAD"
           }
         ]
       }
@@ -42,20 +44,122 @@
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "labels",
+      "surfaceId": "labels-list",
       "value": {
         "labels": [
           {
             "id": "Label_1",
             "name": "question agen",
-            "type": "User label",
-            "count": "0 threads"
+            "type": "User label"
           },
           {
             "id": "INBOX",
             "name": "INBOX",
-            "type": "System label",
-            "count": "14,730 threads (9,473 unread)"
+            "type": "System"
+          },
+          {
+            "id": "UNREAD",
+            "name": "UNREAD",
+            "type": "System"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "labels-list",
+      "value": {
+        "labels": [
+          {
+            "id": "Label_1",
+            "name": "question agen",
+            "type": "User label"
+          },
+          {
+            "id": "INBOX",
+            "name": "INBOX",
+            "type": "System"
+          },
+          {
+            "id": "UNREAD",
+            "name": "UNREAD",
+            "type": "System"
+          },
+          {
+            "id": "STARRED",
+            "name": "STARRED",
+            "type": "System"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "labels-list",
+      "value": {
+        "labels": [
+          {
+            "id": "Label_1",
+            "name": "question agen",
+            "type": "User label"
+          },
+          {
+            "id": "INBOX",
+            "name": "INBOX",
+            "type": "System"
+          },
+          {
+            "id": "UNREAD",
+            "name": "UNREAD",
+            "type": "System"
+          },
+          {
+            "id": "STARRED",
+            "name": "STARRED",
+            "type": "System"
+          },
+          {
+            "id": "IMPORTANT",
+            "name": "IMPORTANT"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "labels-list",
+      "value": {
+        "labels": [
+          {
+            "id": "Label_1",
+            "name": "question agen",
+            "type": "User label"
+          },
+          {
+            "id": "INBOX",
+            "name": "INBOX",
+            "type": "System"
+          },
+          {
+            "id": "UNREAD",
+            "name": "UNREAD",
+            "type": "System"
+          },
+          {
+            "id": "STARRED",
+            "name": "STARRED",
+            "type": "System"
+          },
+          {
+            "id": "IMPORTANT",
+            "name": "IMPORTANT",
+            "type": "System"
           },
           {
             "id": "SENT",
@@ -68,179 +172,41 @@
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "labels",
+      "surfaceId": "labels-list",
       "value": {
         "labels": [
           {
             "id": "Label_1",
             "name": "question agen",
-            "type": "User label",
-            "count": "0 threads"
+            "type": "User label"
           },
           {
             "id": "INBOX",
             "name": "INBOX",
-            "type": "System label",
-            "count": "14,730 threads (9,473 unread)"
-          },
-          {
-            "id": "SENT",
-            "name": "SENT",
-            "type": "System label",
-            "count": "271 threads (7 unread)"
-          }
-        ]
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "labels",
-      "value": {
-        "labels": [
-          {
-            "id": "Label_1",
-            "name": "question agen",
-            "type": "User label",
-            "count": "0 threads"
-          },
-          {
-            "id": "INBOX",
-            "name": "INBOX",
-            "type": "System label",
-            "count": "14,730 threads (9,473 unread)"
-          },
-          {
-            "id": "SENT",
-            "name": "SENT",
-            "type": "System label",
-            "count": "271 threads (7 unread)"
-          },
-          {
-            "id": "IMPORTANT",
-            "name": "IMPORTANT",
-            "type": "System label"
-          }
-        ]
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "labels",
-      "value": {
-        "labels": [
-          {
-            "id": "Label_1",
-            "name": "question agen",
-            "type": "User label",
-            "count": "0 threads"
-          },
-          {
-            "id": "INBOX",
-            "name": "INBOX",
-            "type": "System label",
-            "count": "14,730 threads (9,473 unread)"
-          },
-          {
-            "id": "SENT",
-            "name": "SENT",
-            "type": "System label",
-            "count": "271 threads (7 unread)"
-          },
-          {
-            "id": "IMPORTANT",
-            "name": "IMPORTANT",
-            "type": "System label",
-            "count": "4,408 threads (1,822 unread)"
-          }
-        ]
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "labels",
-      "value": {
-        "labels": [
-          {
-            "id": "Label_1",
-            "name": "question agen",
-            "type": "User label",
-            "count": "0 threads"
-          },
-          {
-            "id": "INBOX",
-            "name": "INBOX",
-            "type": "System label",
-            "count": "14,730 threads (9,473 unread)"
-          },
-          {
-            "id": "SENT",
-            "name": "SENT",
-            "type": "System label",
-            "count": "271 threads (7 unread)"
-          },
-          {
-            "id": "IMPORTANT",
-            "name": "IMPORTANT",
-            "type": "System label",
-            "count": "4,408 threads (1,822 unread)"
+            "type": "System"
           },
           {
             "id": "UNREAD",
             "name": "UNREAD",
-            "type": "System label",
-            "count": "9,480 threads"
-          },
-          {}
-        ]
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "labels",
-      "value": {
-        "labels": [
-          {
-            "id": "Label_1",
-            "name": "question agen",
-            "type": "User label",
-            "count": "0 threads"
-          },
-          {
-            "id": "INBOX",
-            "name": "INBOX",
-            "type": "System label",
-            "count": "14,730 threads (9,473 unread)"
-          },
-          {
-            "id": "SENT",
-            "name": "SENT",
-            "type": "System label",
-            "count": "271 threads (7 unread)"
-          },
-          {
-            "id": "IMPORTANT",
-            "name": "IMPORTANT",
-            "type": "System label",
-            "count": "4,408 threads (1,822 unread)"
-          },
-          {
-            "id": "UNREAD",
-            "name": "UNREAD",
-            "type": "System label",
-            "count": "9,480 threads"
+            "type": "System"
           },
           {
             "id": "STARRED",
             "name": "STARRED",
-            "type": "System label"
+            "type": "System"
+          },
+          {
+            "id": "IMPORTANT",
+            "name": "IMPORTANT",
+            "type": "System"
+          },
+          {
+            "id": "SENT",
+            "name": "SENT",
+            "type": "System"
+          },
+          {
+            "id": "DRAFT"
           }
         ]
       }
@@ -249,100 +215,43 @@
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "labels",
+      "surfaceId": "labels-list",
       "value": {
         "labels": [
           {
             "id": "Label_1",
             "name": "question agen",
-            "type": "User label",
-            "count": "0 threads"
+            "type": "User label"
           },
           {
             "id": "INBOX",
             "name": "INBOX",
-            "type": "System label",
-            "count": "14,730 threads (9,473 unread)"
-          },
-          {
-            "id": "SENT",
-            "name": "SENT",
-            "type": "System label",
-            "count": "271 threads (7 unread)"
-          },
-          {
-            "id": "IMPORTANT",
-            "name": "IMPORTANT",
-            "type": "System label",
-            "count": "4,408 threads (1,822 unread)"
+            "type": "System"
           },
           {
             "id": "UNREAD",
             "name": "UNREAD",
-            "type": "System label",
-            "count": "9,480 threads"
+            "type": "System"
           },
           {
             "id": "STARRED",
             "name": "STARRED",
-            "type": "System label",
-            "count": "0 threads"
-          },
-          {
-            "id": "DRAFT",
-            "name": "DRAFT"
-          }
-        ]
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "labels",
-      "value": {
-        "labels": [
-          {
-            "id": "Label_1",
-            "name": "question agen",
-            "type": "User label",
-            "count": "0 threads"
-          },
-          {
-            "id": "INBOX",
-            "name": "INBOX",
-            "type": "System label",
-            "count": "14,730 threads (9,473 unread)"
-          },
-          {
-            "id": "SENT",
-            "name": "SENT",
-            "type": "System label",
-            "count": "271 threads (7 unread)"
+            "type": "System"
           },
           {
             "id": "IMPORTANT",
             "name": "IMPORTANT",
-            "type": "System label",
-            "count": "4,408 threads (1,822 unread)"
+            "type": "System"
           },
           {
-            "id": "UNREAD",
-            "name": "UNREAD",
-            "type": "System label",
-            "count": "9,480 threads"
-          },
-          {
-            "id": "STARRED",
-            "name": "STARRED",
-            "type": "System label",
-            "count": "0 threads"
+            "id": "SENT",
+            "name": "SENT",
+            "type": "System"
           },
           {
             "id": "DRAFT",
             "name": "DRAFT",
-            "type": "System label",
-            "count": "13 threads"
+            "type": "System"
           }
         ]
       }
@@ -351,55 +260,48 @@
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "labels",
+      "surfaceId": "labels-list",
       "value": {
         "labels": [
           {
             "id": "Label_1",
             "name": "question agen",
-            "type": "User label",
-            "count": "0 threads"
+            "type": "User label"
           },
           {
             "id": "INBOX",
             "name": "INBOX",
-            "type": "System label",
-            "count": "14,730 threads (9,473 unread)"
-          },
-          {
-            "id": "SENT",
-            "name": "SENT",
-            "type": "System label",
-            "count": "271 threads (7 unread)"
-          },
-          {
-            "id": "IMPORTANT",
-            "name": "IMPORTANT",
-            "type": "System label",
-            "count": "4,408 threads (1,822 unread)"
+            "type": "System"
           },
           {
             "id": "UNREAD",
             "name": "UNREAD",
-            "type": "System label",
-            "count": "9,480 threads"
+            "type": "System"
           },
           {
             "id": "STARRED",
             "name": "STARRED",
-            "type": "System label",
-            "count": "0 threads"
+            "type": "System"
+          },
+          {
+            "id": "IMPORTANT",
+            "name": "IMPORTANT",
+            "type": "System"
+          },
+          {
+            "id": "SENT",
+            "name": "SENT",
+            "type": "System"
           },
           {
             "id": "DRAFT",
             "name": "DRAFT",
-            "type": "System label",
-            "count": "13 threads"
+            "type": "System"
           },
           {
             "id": "SPAM",
             "name": "SPAM",
-            "type": "System label"
+            "type": "System"
           }
         ]
       }
@@ -408,59 +310,52 @@
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "labels",
+      "surfaceId": "labels-list",
       "value": {
         "labels": [
           {
             "id": "Label_1",
             "name": "question agen",
-            "type": "User label",
-            "count": "0 threads"
+            "type": "User label"
           },
           {
             "id": "INBOX",
             "name": "INBOX",
-            "type": "System label",
-            "count": "14,730 threads (9,473 unread)"
-          },
-          {
-            "id": "SENT",
-            "name": "SENT",
-            "type": "System label",
-            "count": "271 threads (7 unread)"
-          },
-          {
-            "id": "IMPORTANT",
-            "name": "IMPORTANT",
-            "type": "System label",
-            "count": "4,408 threads (1,822 unread)"
+            "type": "System"
           },
           {
             "id": "UNREAD",
             "name": "UNREAD",
-            "type": "System label",
-            "count": "9,480 threads"
+            "type": "System"
           },
           {
             "id": "STARRED",
             "name": "STARRED",
-            "type": "System label",
-            "count": "0 threads"
+            "type": "System"
+          },
+          {
+            "id": "IMPORTANT",
+            "name": "IMPORTANT",
+            "type": "System"
+          },
+          {
+            "id": "SENT",
+            "name": "SENT",
+            "type": "System"
           },
           {
             "id": "DRAFT",
             "name": "DRAFT",
-            "type": "System label",
-            "count": "13 threads"
+            "type": "System"
           },
           {
             "id": "SPAM",
             "name": "SPAM",
-            "type": "System label",
-            "count": "22 threads (21 unread)"
+            "type": "System"
           },
           {
-            "id": "TRASH"
+            "id": "TRASH",
+            "name": "TRASH"
           }
         ]
       }
@@ -469,62 +364,56 @@
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "labels",
+      "surfaceId": "labels-list",
       "value": {
         "labels": [
           {
             "id": "Label_1",
             "name": "question agen",
-            "type": "User label",
-            "count": "0 threads"
+            "type": "User label"
           },
           {
             "id": "INBOX",
             "name": "INBOX",
-            "type": "System label",
-            "count": "14,730 threads (9,473 unread)"
-          },
-          {
-            "id": "SENT",
-            "name": "SENT",
-            "type": "System label",
-            "count": "271 threads (7 unread)"
-          },
-          {
-            "id": "IMPORTANT",
-            "name": "IMPORTANT",
-            "type": "System label",
-            "count": "4,408 threads (1,822 unread)"
+            "type": "System"
           },
           {
             "id": "UNREAD",
             "name": "UNREAD",
-            "type": "System label",
-            "count": "9,480 threads"
+            "type": "System"
           },
           {
             "id": "STARRED",
             "name": "STARRED",
-            "type": "System label",
-            "count": "0 threads"
+            "type": "System"
+          },
+          {
+            "id": "IMPORTANT",
+            "name": "IMPORTANT",
+            "type": "System"
+          },
+          {
+            "id": "SENT",
+            "name": "SENT",
+            "type": "System"
           },
           {
             "id": "DRAFT",
             "name": "DRAFT",
-            "type": "System label",
-            "count": "13 threads"
+            "type": "System"
           },
           {
             "id": "SPAM",
             "name": "SPAM",
-            "type": "System label",
-            "count": "22 threads (21 unread)"
+            "type": "System"
           },
           {
             "id": "TRASH",
             "name": "TRASH",
-            "type": "System label",
-            "count": "0 threads"
+            "type": "System"
+          },
+          {
+            "id": "CHAT"
           }
         ]
       }
@@ -533,67 +422,58 @@
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "labels",
+      "surfaceId": "labels-list",
       "value": {
         "labels": [
           {
             "id": "Label_1",
             "name": "question agen",
-            "type": "User label",
-            "count": "0 threads"
+            "type": "User label"
           },
           {
             "id": "INBOX",
             "name": "INBOX",
-            "type": "System label",
-            "count": "14,730 threads (9,473 unread)"
-          },
-          {
-            "id": "SENT",
-            "name": "SENT",
-            "type": "System label",
-            "count": "271 threads (7 unread)"
-          },
-          {
-            "id": "IMPORTANT",
-            "name": "IMPORTANT",
-            "type": "System label",
-            "count": "4,408 threads (1,822 unread)"
+            "type": "System"
           },
           {
             "id": "UNREAD",
             "name": "UNREAD",
-            "type": "System label",
-            "count": "9,480 threads"
+            "type": "System"
           },
           {
             "id": "STARRED",
             "name": "STARRED",
-            "type": "System label",
-            "count": "0 threads"
+            "type": "System"
+          },
+          {
+            "id": "IMPORTANT",
+            "name": "IMPORTANT",
+            "type": "System"
+          },
+          {
+            "id": "SENT",
+            "name": "SENT",
+            "type": "System"
           },
           {
             "id": "DRAFT",
             "name": "DRAFT",
-            "type": "System label",
-            "count": "13 threads"
+            "type": "System"
           },
           {
             "id": "SPAM",
             "name": "SPAM",
-            "type": "System label",
-            "count": "22 threads (21 unread)"
+            "type": "System"
           },
           {
             "id": "TRASH",
             "name": "TRASH",
-            "type": "System label",
-            "count": "0 threads"
+            "type": "System"
           },
           {
             "id": "CHAT",
             "name": "CHAT",
-            "type": "System label"
+            "type": "System"
           }
         ]
       }
@@ -602,69 +482,59 @@
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "labels",
+      "surfaceId": "labels-list",
       "path": "/",
       "value": {
         "labels": [
           {
             "id": "Label_1",
             "name": "question agen",
-            "type": "User label",
-            "count": "0 threads"
+            "type": "User label"
           },
           {
             "id": "INBOX",
             "name": "INBOX",
-            "type": "System label",
-            "count": "14,730 threads (9,473 unread)"
-          },
-          {
-            "id": "SENT",
-            "name": "SENT",
-            "type": "System label",
-            "count": "271 threads (7 unread)"
-          },
-          {
-            "id": "IMPORTANT",
-            "name": "IMPORTANT",
-            "type": "System label",
-            "count": "4,408 threads (1,822 unread)"
+            "type": "System"
           },
           {
             "id": "UNREAD",
             "name": "UNREAD",
-            "type": "System label",
-            "count": "9,480 threads"
+            "type": "System"
           },
           {
             "id": "STARRED",
             "name": "STARRED",
-            "type": "System label",
-            "count": "0 threads"
+            "type": "System"
+          },
+          {
+            "id": "IMPORTANT",
+            "name": "IMPORTANT",
+            "type": "System"
+          },
+          {
+            "id": "SENT",
+            "name": "SENT",
+            "type": "System"
           },
           {
             "id": "DRAFT",
             "name": "DRAFT",
-            "type": "System label",
-            "count": "13 threads"
+            "type": "System"
           },
           {
             "id": "SPAM",
             "name": "SPAM",
-            "type": "System label",
-            "count": "22 threads (21 unread)"
+            "type": "System"
           },
           {
             "id": "TRASH",
             "name": "TRASH",
-            "type": "System label",
-            "count": "0 threads"
+            "type": "System"
           },
           {
             "id": "CHAT",
             "name": "CHAT",
-            "type": "System label",
-            "count": "0 threads"
+            "type": "System"
           }
         ]
       }
@@ -675,132 +545,53 @@
     "updateComponents": {
       "components": [
         {
-          "id": "root",
-          "component": "Card",
-          "child": "body"
-        },
-        {
-          "id": "loading_body",
-          "component": "Row",
-          "children": []
-        },
-        {
           "id": "body",
           "component": "Column",
           "children": [
             "heading",
             "sub",
             "divider",
-            "labels-list"
+            "label-list"
           ]
         },
         {
-          "id": "loading_heading",
-          "component": "Row",
-          "children": []
-        },
-        {
-          "id": "loading_sub",
-          "component": "Row",
-          "children": []
-        },
-        {
-          "id": "loading_divider",
-          "component": "Row",
-          "children": []
-        },
-        {
-          "id": "loading_labels-list",
-          "component": "Row",
-          "children": []
+          "id": "root",
+          "component": "Card",
+          "child": "body"
         },
         {
           "id": "heading",
           "component": "Text",
           "variant": "h3",
-          "text": "Your labels"
+          "text": "Labels"
         },
         {
           "id": "sub",
           "component": "Text",
           "variant": "caption",
-          "text": "1 user label, 9 system labels"
+          "text": "1 custom label and 9 system labels"
         },
         {
           "id": "divider",
           "component": "Divider"
         },
         {
-          "id": "labels-list",
+          "id": "label-list",
           "component": "Column",
           "children": {
-            "path": "/labels",
-            "componentId": "label-row"
+            "componentId": "label-row",
+            "path": "/labels"
           }
-        },
-        {
-          "id": "loading_label-row",
-          "component": "Row",
-          "children": []
         },
         {
           "id": "label-row",
-          "component": "Button",
-          "variant": "borderless",
-          "child": "label-content",
-          "action": {
-            "event": {
-              "name": "search-label",
-              "context": {
-                "labelId": {
-                  "path": "id"
-                }
-              }
-            }
-          }
-        },
-        {
-          "id": "loading_label-content",
-          "component": "Row",
-          "children": []
-        },
-        {
-          "id": "label-content",
           "component": "Row",
           "justify": "spaceBetween",
           "align": "center",
           "children": [
-            "label-left",
-            "label-count"
-          ]
-        },
-        {
-          "id": "loading_label-left",
-          "component": "Row",
-          "children": []
-        },
-        {
-          "id": "loading_label-count",
-          "component": "Row",
-          "children": []
-        },
-        {
-          "id": "label-left",
-          "component": "Column",
-          "children": [
             "label-name",
             "label-type"
           ]
-        },
-        {
-          "id": "loading_label-name",
-          "component": "Row",
-          "children": []
-        },
-        {
-          "id": "loading_label-type",
-          "component": "Row",
-          "children": []
         },
         {
           "id": "label-name",
@@ -815,14 +606,6 @@
           "variant": "caption",
           "text": {
             "path": "type"
-          }
-        },
-        {
-          "id": "label-count",
-          "component": "Text",
-          "variant": "caption",
-          "text": {
-            "path": "count"
           }
         }
       ]

@@ -17,6 +17,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from a2ui_agent_kit.corpus import settled_messages
+
 AGENT = Path(__file__).resolve().parent.parent
 CAPTURED = AGENT / ".recordings" / "payloads"
 BEATS = AGENT / "recordings" / "beats"
@@ -50,45 +52,6 @@ def write(path: Path, payload: object, note: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
     print(f"{path.name:22} <- {note}")
-
-
-def settled_messages(beat_path: Path) -> list[dict]:
-    """A beat's SETTLED A2UI message sequence.
-
-    The recorder captures the stream, so a component can appear several times as it is built
-    up — a half-written component is a valid thing to see mid-stream and an invalid thing to
-    can. Components are merged by id, last write winning, and emitted once.
-    """
-    doc = json.loads(beat_path.read_text(encoding="utf-8"))
-    creates: list[dict] = []
-    data: list[dict] = []
-    components: dict[str, dict] = {}
-    for turn in doc.get("turns", []):
-        for batch in turn.get("batches", []):
-            for message in batch.get("messages", []):
-                if not isinstance(message, dict) or not message.get("version"):
-                    continue
-                if "createSurface" in message:
-                    creates.append(message)
-                elif "updateDataModel" in message:
-                    data.append(message)
-                elif "updateComponents" in message:
-                    for component in message["updateComponents"].get("components", []):
-                        if isinstance(component, dict) and component.get("id"):
-                            components[component["id"]] = {
-                                **components.get(component["id"], {}),
-                                **component,
-                            }
-    out = [*creates, *data]
-    if components:
-        out.append(
-            {
-                "version": "v0.9",
-                "updateComponents": {"components": list(components.values())},
-            }
-        )
-    return out
-
 
 def derive_stub() -> None:
     search = richest(CAPTURED / "search_threads.jsonl", "threads")

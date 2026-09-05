@@ -2,7 +2,7 @@
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo",
+      "surfaceId": "rsvp-96bo794ni061s93l98v7lj1o7k",
       "value": {
         "summary": "Quarter planning"
       }
@@ -11,24 +11,21 @@
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo",
+      "surfaceId": "rsvp-96bo794ni061s93l98v7lj1o7k",
       "value": {
-        "when": "Monday, August 31, 2026, 10:00 \u2013 11:30 EDT",
-        "location": "Room 2A"
+        "when": "September 6, 2026, 10:00 \u2013 11:30"
       }
     }
   },
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo",
+      "surfaceId": "rsvp-96bo794ni061s93l98v7lj1o7k",
       "path": "/",
       "value": {
         "summary": "Quarter planning",
-        "when": "Monday, August 31, 2026, 10:00 \u2013 11:30 EDT",
-        "location": "Room 2A",
-        "current": "Accepted",
-        "description": "Draft objectives circulated Monday. Read before the session."
+        "when": "September 6, 2026, 10:00 \u2013 11:30",
+        "current": "Accepted"
       }
     }
   },
@@ -37,62 +34,19 @@
     "updateComponents": {
       "components": [
         {
-          "id": "root",
-          "component": "Card",
-          "child": "body"
-        },
-        {
-          "id": "loading_body",
-          "component": "Row",
-          "children": []
-        },
-        {
           "id": "body",
           "component": "Column",
           "children": [
             "heading",
             "when",
-            "location",
             "current",
-            "divider",
-            "description",
             "actions"
           ]
         },
         {
-          "id": "loading_heading",
-          "component": "Row",
-          "children": []
-        },
-        {
-          "id": "loading_when",
-          "component": "Row",
-          "children": []
-        },
-        {
-          "id": "loading_location",
-          "component": "Row",
-          "children": []
-        },
-        {
-          "id": "loading_current",
-          "component": "Row",
-          "children": []
-        },
-        {
-          "id": "loading_divider",
-          "component": "Row",
-          "children": []
-        },
-        {
-          "id": "loading_description",
-          "component": "Row",
-          "children": []
-        },
-        {
-          "id": "loading_actions",
-          "component": "Row",
-          "children": []
+          "id": "root",
+          "component": "Card",
+          "child": "body"
         },
         {
           "id": "heading",
@@ -110,30 +64,11 @@
           }
         },
         {
-          "id": "location",
-          "component": "Text",
-          "variant": "caption",
-          "text": {
-            "path": "/location"
-          }
-        },
-        {
           "id": "current",
           "component": "Text",
           "variant": "caption",
           "text": {
             "path": "/current"
-          }
-        },
-        {
-          "id": "divider",
-          "component": "Divider"
-        },
-        {
-          "id": "description",
-          "component": "Text",
-          "text": {
-            "path": "/description"
           }
         },
         {
@@ -146,21 +81,6 @@
           ]
         },
         {
-          "id": "loading_yes",
-          "component": "Row",
-          "children": []
-        },
-        {
-          "id": "loading_maybe",
-          "component": "Row",
-          "children": []
-        },
-        {
-          "id": "loading_no",
-          "component": "Row",
-          "children": []
-        },
-        {
           "id": "yes",
           "component": "Button",
           "variant": "primary",
@@ -169,21 +89,16 @@
             "event": {
               "name": "rsvp-toggle",
               "context": {
-                "eventId": "o49vnbegq501jme5all5bt82eo",
+                "eventId": "96bo794ni061s93l98v7lj1o7k",
                 "responseStatus": "accepted"
               }
             }
           }
         },
         {
-          "id": "loading_yes-label",
-          "component": "Row",
-          "children": []
-        },
-        {
           "id": "yes-label",
           "component": "Text",
-          "text": "Accepted"
+          "text": "Accept"
         },
         {
           "id": "maybe",
@@ -194,16 +109,11 @@
             "event": {
               "name": "rsvp-toggle",
               "context": {
-                "eventId": "o49vnbegq501jme5all5bt82eo",
+                "eventId": "96bo794ni061s93l98v7lj1o7k",
                 "responseStatus": "tentative"
               }
             }
           }
-        },
-        {
-          "id": "loading_maybe-label",
-          "component": "Row",
-          "children": []
         },
         {
           "id": "maybe-label",
@@ -219,16 +129,11 @@
             "event": {
               "name": "rsvp-toggle",
               "context": {
-                "eventId": "o49vnbegq501jme5all5bt82eo",
+                "eventId": "96bo794ni061s93l98v7lj1o7k",
                 "responseStatus": "declined"
               }
             }
           }
-        },
-        {
-          "id": "loading_no-label",
-          "component": "Row",
-          "children": []
         },
         {
           "id": "no-label",

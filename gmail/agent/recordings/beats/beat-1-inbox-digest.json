@@ -2,20 +2,20 @@
   "name": "beat-1-inbox-digest",
   "beat": 1,
   "title": "Inbox digest",
-  "prompt": "What needs my attention today?",
+  "prompt": "What emails need my attention today, especially those waiting on a reply or unread? Provide a brief description of the thread and the time of the latest message, along with an identifier.",
   "model": "gemini-3.7-flash",
-  "recordedAt": "2026-08-30T04:29:56+00:00",
-  "contextId": "05784a94-7216-4770-a55c-006b842d8160",
+  "recordedAt": "2026-09-05T06:09:10+00:00",
+  "contextId": "7c933a7c-8d7b-417b-9055-d479bf6024b2",
   "chainedFrom": null,
   "turns": [
     {
-      "taskId": "6b791a23-e84e-43eb-a1a3-d4640d73a19a",
+      "taskId": "27968532-3743-4623-b1db-21f6e548d687",
       "kind": "utterance",
-      "prompt": "What needs my attention today?",
+      "prompt": "What emails need my attention today, especially those waiting on a reply or unread? Provide a brief description of the thread and the time of the latest message, along with an identifier.",
       "action": null,
       "batches": [
         {
-          "offsetMs": 25436,
+          "offsetMs": 27819,
           "messages": [
             {
               "paintMeta": {
@@ -29,7 +29,7 @@
           ]
         },
         {
-          "offsetMs": 25506,
+          "offsetMs": 27822,
           "messages": [
             {
               "version": "v0.9",
@@ -43,7 +43,7 @@
           "texts": []
         },
         {
-          "offsetMs": 25640,
+          "offsetMs": 28019,
           "messages": [
             {
               "version": "v0.9",
@@ -52,9 +52,9 @@
                 "value": {
                   "threads": [
                     {
-                      "id": "1a05077dde2deea4",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "status agenda proposal proposal pending pendi"
+                      "id": "1a06f2abedf045ce",
+                      "sender": "elin.tanaka@example.com",
+                      "subject": "estimate review thread status agenda confirm summ"
                     }
                   ]
                 }
@@ -64,7 +64,7 @@
           "texts": []
         },
         {
-          "offsetMs": 25728,
+          "offsetMs": 28076,
           "messages": [
             {
               "version": "v0.9",
@@ -73,10 +73,10 @@
                 "value": {
                   "threads": [
                     {
-                      "id": "1a05077dde2deea4",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "status agenda proposal proposal pending pendi",
-                      "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo"
+                      "id": "1a06f2abedf045ce",
+                      "sender": "elin.tanaka@example.com",
+                      "subject": "estimate review thread status agenda confirm summ",
+                      "snippet": "thread review proposal confirm follow estimate status feedback reply proposal question reply draft feedback update schedule question follow estimate feedback revision feedback summary notes section fo"
                     }
                   ]
                 }
@@ -86,7 +86,7 @@
           "texts": []
         },
         {
-          "offsetMs": 25760,
+          "offsetMs": 28136,
           "messages": [
             {
               "version": "v0.9",
@@ -95,11 +95,11 @@
                 "value": {
                   "threads": [
                     {
-                      "id": "1a05077dde2deea4",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "status agenda proposal proposal pending pendi",
-                      "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
-                      "when": "Aug 30, 02:20"
+                      "id": "1a06f2abedf045ce",
+                      "sender": "elin.tanaka@example.com",
+                      "subject": "estimate review thread status agenda confirm summ",
+                      "snippet": "thread review proposal confirm follow estimate status feedback reply proposal question reply draft feedback update schedule question follow estimate feedback revision feedback summary notes section fo",
+                      "time": "2026-09-05 01:24 UTC"
                     }
                   ]
                 }
@@ -109,7 +109,7 @@
           "texts": []
         },
         {
-          "offsetMs": 25826,
+          "offsetMs": 28199,
           "messages": [
             {
               "version": "v0.9",
@@ -118,15 +118,12 @@
                 "value": {
                   "threads": [
                     {
-                      "id": "1a05077dde2deea4",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "status agenda proposal proposal pending pendi",
-                      "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
-                      "when": "Aug 30, 02:20"
-                    },
-                    {
-                      "id": "1a0506754ca907e9",
-                      "sender": "sara.vasquez@example.com"
+                      "id": "1a06f2abedf045ce",
+                      "sender": "elin.tanaka@example.com",
+                      "subject": "estimate review thread status agenda confirm summ",
+                      "snippet": "thread review proposal confirm follow estimate status feedback reply proposal question reply draft feedback update schedule question follow estimate feedback revision feedback summary notes section fo",
+                      "time": "2026-09-05 01:24 UTC",
+                      "idDisplay": "ID: 1a06f2abedf045ce"
                     }
                   ]
                 }
@@ -136,7 +133,7 @@
           "texts": []
         },
         {
-          "offsetMs": 25901,
+          "offsetMs": 28261,
           "messages": [
             {
               "version": "v0.9",
@@ -145,17 +142,15 @@
                 "value": {
                   "threads": [
                     {
-                      "id": "1a05077dde2deea4",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "status agenda proposal proposal pending pendi",
-                      "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
-                      "when": "Aug 30, 02:20"
+                      "id": "1a06f2abedf045ce",
+                      "sender": "elin.tanaka@example.com",
+                      "subject": "estimate review thread status agenda confirm summ",
+                      "snippet": "thread review proposal confirm follow estimate status feedback reply proposal question reply draft feedback update schedule question follow estimate feedback revision feedback summary notes section fo",
+                      "time": "2026-09-05 01:24 UTC",
+                      "idDisplay": "ID: 1a06f2abedf045ce"
                     },
                     {
-                      "id": "1a0506754ca907e9",
-                      "sender": "sara.vasquez@example.com",
-                      "subject": "confirm pending reply status section schedule pending feedback review re",
-                      "snippet": "review reply feedback question agenda pending question section agenda proposal confirm confirm follow status notes note"
+                      "id": "1a06ef027e683325"
                     }
                   ]
                 }
@@ -165,7 +160,7 @@
           "texts": []
         },
         {
-          "offsetMs": 25966,
+          "offsetMs": 28335,
           "messages": [
             {
               "version": "v0.9",
@@ -174,18 +169,17 @@
                 "value": {
                   "threads": [
                     {
-                      "id": "1a05077dde2deea4",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "status agenda proposal proposal pending pendi",
-                      "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
-                      "when": "Aug 30, 02:20"
+                      "id": "1a06f2abedf045ce",
+                      "sender": "elin.tanaka@example.com",
+                      "subject": "estimate review thread status agenda confirm summ",
+                      "snippet": "thread review proposal confirm follow estimate status feedback reply proposal question reply draft feedback update schedule question follow estimate feedback revision feedback summary notes section fo",
+                      "time": "2026-09-05 01:24 UTC",
+                      "idDisplay": "ID: 1a06f2abedf045ce"
                     },
                     {
-                      "id": "1a0506754ca907e9",
-                      "sender": "sara.vasquez@example.com",
-                      "subject": "confirm pending reply status section schedule pending feedback review re",
-                      "snippet": "review reply feedback question agenda pending question section agenda proposal confirm confirm follow status notes note",
-                      "when": "Aug 30, 02:01"
+                      "id": "1a06ef027e683325",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "draft section summary reply agenda meeting pending notes pending estimat"
                     }
                   ]
                 }
@@ -195,7 +189,7 @@
           "texts": []
         },
         {
-          "offsetMs": 26032,
+          "offsetMs": 28470,
           "messages": [
             {
               "version": "v0.9",
@@ -204,21 +198,18 @@
                 "value": {
                   "threads": [
                     {
-                      "id": "1a05077dde2deea4",
+                      "id": "1a06f2abedf045ce",
+                      "sender": "elin.tanaka@example.com",
+                      "subject": "estimate review thread status agenda confirm summ",
+                      "snippet": "thread review proposal confirm follow estimate status feedback reply proposal question reply draft feedback update schedule question follow estimate feedback revision feedback summary notes section fo",
+                      "time": "2026-09-05 01:24 UTC",
+                      "idDisplay": "ID: 1a06f2abedf045ce"
+                    },
+                    {
+                      "id": "1a06ef027e683325",
                       "sender": "sara.moreau@example.com",
-                      "subject": "status agenda proposal proposal pending pendi",
-                      "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
-                      "when": "Aug 30, 02:20"
-                    },
-                    {
-                      "id": "1a0506754ca907e9",
-                      "sender": "sara.vasquez@example.com",
-                      "subject": "confirm pending reply status section schedule pending feedback review re",
-                      "snippet": "review reply feedback question agenda pending question section agenda proposal confirm confirm follow status notes note",
-                      "when": "Aug 30, 02:01"
-                    },
-                    {
-                      "id": "1a05009f2b759fbe"
+                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
+                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu"
                     }
                   ]
                 }
@@ -228,7 +219,7 @@
           "texts": []
         },
         {
-          "offsetMs": 26129,
+          "offsetMs": 28534,
           "messages": [
             {
               "version": "v0.9",
@@ -237,23 +228,19 @@
                 "value": {
                   "threads": [
                     {
-                      "id": "1a05077dde2deea4",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "status agenda proposal proposal pending pendi",
-                      "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
-                      "when": "Aug 30, 02:20"
+                      "id": "1a06f2abedf045ce",
+                      "sender": "elin.tanaka@example.com",
+                      "subject": "estimate review thread status agenda confirm summ",
+                      "snippet": "thread review proposal confirm follow estimate status feedback reply proposal question reply draft feedback update schedule question follow estimate feedback revision feedback summary notes section fo",
+                      "time": "2026-09-05 01:24 UTC",
+                      "idDisplay": "ID: 1a06f2abedf045ce"
                     },
                     {
-                      "id": "1a0506754ca907e9",
-                      "sender": "sara.vasquez@example.com",
-                      "subject": "confirm pending reply status section schedule pending feedback review re",
-                      "snippet": "review reply feedback question agenda pending question section agenda proposal confirm confirm follow status notes note",
-                      "when": "Aug 30, 02:01"
-                    },
-                    {
-                      "id": "1a05009f2b759fbe",
+                      "id": "1a06ef027e683325",
                       "sender": "sara.moreau@example.com",
-                      "subject": "estimate update update reply draft"
+                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
+                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
+                      "time": "2026-09-05 00:20 UTC"
                     }
                   ]
                 }
@@ -263,7 +250,7 @@
           "texts": []
         },
         {
-          "offsetMs": 26178,
+          "offsetMs": 28605,
           "messages": [
             {
               "version": "v0.9",
@@ -272,24 +259,20 @@
                 "value": {
                   "threads": [
                     {
-                      "id": "1a05077dde2deea4",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "status agenda proposal proposal pending pendi",
-                      "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
-                      "when": "Aug 30, 02:20"
+                      "id": "1a06f2abedf045ce",
+                      "sender": "elin.tanaka@example.com",
+                      "subject": "estimate review thread status agenda confirm summ",
+                      "snippet": "thread review proposal confirm follow estimate status feedback reply proposal question reply draft feedback update schedule question follow estimate feedback revision feedback summary notes section fo",
+                      "time": "2026-09-05 01:24 UTC",
+                      "idDisplay": "ID: 1a06f2abedf045ce"
                     },
                     {
-                      "id": "1a0506754ca907e9",
-                      "sender": "sara.vasquez@example.com",
-                      "subject": "confirm pending reply status section schedule pending feedback review re",
-                      "snippet": "review reply feedback question agenda pending question section agenda proposal confirm confirm follow status notes note",
-                      "when": "Aug 30, 02:01"
-                    },
-                    {
-                      "id": "1a05009f2b759fbe",
+                      "id": "1a06ef027e683325",
                       "sender": "sara.moreau@example.com",
-                      "subject": "estimate update update reply draft",
-                      "snippet": "attached question question revision status draft meeting status reply draft reply revision reply proposal update estimate timeline timeline status feedback agenda confirm summary notes follow section a"
+                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
+                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
+                      "time": "2026-09-05 00:20 UTC",
+                      "idDisplay": "ID: 1a06ef027e683325"
                     }
                   ]
                 }
@@ -299,7 +282,7 @@
           "texts": []
         },
         {
-          "offsetMs": 26232,
+          "offsetMs": 28660,
           "messages": [
             {
               "version": "v0.9",
@@ -308,65 +291,23 @@
                 "value": {
                   "threads": [
                     {
-                      "id": "1a05077dde2deea4",
+                      "id": "1a06f2abedf045ce",
+                      "sender": "elin.tanaka@example.com",
+                      "subject": "estimate review thread status agenda confirm summ",
+                      "snippet": "thread review proposal confirm follow estimate status feedback reply proposal question reply draft feedback update schedule question follow estimate feedback revision feedback summary notes section fo",
+                      "time": "2026-09-05 01:24 UTC",
+                      "idDisplay": "ID: 1a06f2abedf045ce"
+                    },
+                    {
+                      "id": "1a06ef027e683325",
                       "sender": "sara.moreau@example.com",
-                      "subject": "status agenda proposal proposal pending pendi",
-                      "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
-                      "when": "Aug 30, 02:20"
+                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
+                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
+                      "time": "2026-09-05 00:20 UTC",
+                      "idDisplay": "ID: 1a06ef027e683325"
                     },
                     {
-                      "id": "1a0506754ca907e9",
-                      "sender": "sara.vasquez@example.com",
-                      "subject": "confirm pending reply status section schedule pending feedback review re",
-                      "snippet": "review reply feedback question agenda pending question section agenda proposal confirm confirm follow status notes note",
-                      "when": "Aug 30, 02:01"
-                    },
-                    {
-                      "id": "1a05009f2b759fbe",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "estimate update update reply draft",
-                      "snippet": "attached question question revision status draft meeting status reply draft reply revision reply proposal update estimate timeline timeline status feedback agenda confirm summary notes follow section a",
-                      "when": "Aug 30, 00:20"
-                    }
-                  ]
-                }
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 26294,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateDataModel": {
-                "surfaceId": "needs-attention",
-                "value": {
-                  "threads": [
-                    {
-                      "id": "1a05077dde2deea4",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "status agenda proposal proposal pending pendi",
-                      "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
-                      "when": "Aug 30, 02:20"
-                    },
-                    {
-                      "id": "1a0506754ca907e9",
-                      "sender": "sara.vasquez@example.com",
-                      "subject": "confirm pending reply status section schedule pending feedback review re",
-                      "snippet": "review reply feedback question agenda pending question section agenda proposal confirm confirm follow status notes note",
-                      "when": "Aug 30, 02:01"
-                    },
-                    {
-                      "id": "1a05009f2b759fbe",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "estimate update update reply draft",
-                      "snippet": "attached question question revision status draft meeting status reply draft reply revision reply proposal update estimate timeline timeline status feedback agenda confirm summary notes follow section a",
-                      "when": "Aug 30, 00:20"
-                    },
-                    {
-                      "id": "1a04de0a0c4cad33",
+                      "id": "1a06dec28a4d6853",
                       "sender": "nora.haddad@example.com"
                     }
                   ]
@@ -377,7 +318,7 @@
           "texts": []
         },
         {
-          "offsetMs": 26368,
+          "offsetMs": 28725,
           "messages": [
             {
               "version": "v0.9",
@@ -386,30 +327,25 @@
                 "value": {
                   "threads": [
                     {
-                      "id": "1a05077dde2deea4",
+                      "id": "1a06f2abedf045ce",
+                      "sender": "elin.tanaka@example.com",
+                      "subject": "estimate review thread status agenda confirm summ",
+                      "snippet": "thread review proposal confirm follow estimate status feedback reply proposal question reply draft feedback update schedule question follow estimate feedback revision feedback summary notes section fo",
+                      "time": "2026-09-05 01:24 UTC",
+                      "idDisplay": "ID: 1a06f2abedf045ce"
+                    },
+                    {
+                      "id": "1a06ef027e683325",
                       "sender": "sara.moreau@example.com",
-                      "subject": "status agenda proposal proposal pending pendi",
-                      "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
-                      "when": "Aug 30, 02:20"
+                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
+                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
+                      "time": "2026-09-05 00:20 UTC",
+                      "idDisplay": "ID: 1a06ef027e683325"
                     },
                     {
-                      "id": "1a0506754ca907e9",
-                      "sender": "sara.vasquez@example.com",
-                      "subject": "confirm pending reply status section schedule pending feedback review re",
-                      "snippet": "review reply feedback question agenda pending question section agenda proposal confirm confirm follow status notes note",
-                      "when": "Aug 30, 02:01"
-                    },
-                    {
-                      "id": "1a05009f2b759fbe",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "estimate update update reply draft",
-                      "snippet": "attached question question revision status draft meeting status reply draft reply revision reply proposal update estimate timeline timeline status feedback agenda confirm summary notes follow section a",
-                      "when": "Aug 30, 00:20"
-                    },
-                    {
-                      "id": "1a04de0a0c4cad33",
+                      "id": "1a06dec28a4d6853",
                       "sender": "nora.haddad@example.com",
-                      "subject": "status update question notes question section status thread confirm draft update review meeting agenda update status question"
+                      "subject": "revision schedule draft question review"
                     }
                   ]
                 }
@@ -419,7 +355,7 @@
           "texts": []
         },
         {
-          "offsetMs": 26443,
+          "offsetMs": 28793,
           "messages": [
             {
               "version": "v0.9",
@@ -428,32 +364,26 @@
                 "value": {
                   "threads": [
                     {
-                      "id": "1a05077dde2deea4",
+                      "id": "1a06f2abedf045ce",
+                      "sender": "elin.tanaka@example.com",
+                      "subject": "estimate review thread status agenda confirm summ",
+                      "snippet": "thread review proposal confirm follow estimate status feedback reply proposal question reply draft feedback update schedule question follow estimate feedback revision feedback summary notes section fo",
+                      "time": "2026-09-05 01:24 UTC",
+                      "idDisplay": "ID: 1a06f2abedf045ce"
+                    },
+                    {
+                      "id": "1a06ef027e683325",
                       "sender": "sara.moreau@example.com",
-                      "subject": "status agenda proposal proposal pending pendi",
-                      "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
-                      "when": "Aug 30, 02:20"
+                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
+                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
+                      "time": "2026-09-05 00:20 UTC",
+                      "idDisplay": "ID: 1a06ef027e683325"
                     },
                     {
-                      "id": "1a0506754ca907e9",
-                      "sender": "sara.vasquez@example.com",
-                      "subject": "confirm pending reply status section schedule pending feedback review re",
-                      "snippet": "review reply feedback question agenda pending question section agenda proposal confirm confirm follow status notes note",
-                      "when": "Aug 30, 02:01"
-                    },
-                    {
-                      "id": "1a05009f2b759fbe",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "estimate update update reply draft",
-                      "snippet": "attached question question revision status draft meeting status reply draft reply revision reply proposal update estimate timeline timeline status feedback agenda confirm summary notes follow section a",
-                      "when": "Aug 30, 00:20"
-                    },
-                    {
-                      "id": "1a04de0a0c4cad33",
+                      "id": "1a06dec28a4d6853",
                       "sender": "nora.haddad@example.com",
-                      "subject": "status update question notes question section status thread confirm draft update review meeting agenda update status question",
-                      "snippet": "estimate revision notes attached attached summary confirm timeline update update timeline feedback revision follow notes feedback feedback status confirm section reply summary review section notes est",
-                      "when": "Aug 29, 14:15"
+                      "subject": "revision schedule draft question review",
+                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting"
                     }
                   ]
                 }
@@ -463,7 +393,7 @@
           "texts": []
         },
         {
-          "offsetMs": 26508,
+          "offsetMs": 28861,
           "messages": [
             {
               "version": "v0.9",
@@ -472,35 +402,27 @@
                 "value": {
                   "threads": [
                     {
-                      "id": "1a05077dde2deea4",
+                      "id": "1a06f2abedf045ce",
+                      "sender": "elin.tanaka@example.com",
+                      "subject": "estimate review thread status agenda confirm summ",
+                      "snippet": "thread review proposal confirm follow estimate status feedback reply proposal question reply draft feedback update schedule question follow estimate feedback revision feedback summary notes section fo",
+                      "time": "2026-09-05 01:24 UTC",
+                      "idDisplay": "ID: 1a06f2abedf045ce"
+                    },
+                    {
+                      "id": "1a06ef027e683325",
                       "sender": "sara.moreau@example.com",
-                      "subject": "status agenda proposal proposal pending pendi",
-                      "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
-                      "when": "Aug 30, 02:20"
+                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
+                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
+                      "time": "2026-09-05 00:20 UTC",
+                      "idDisplay": "ID: 1a06ef027e683325"
                     },
                     {
-                      "id": "1a0506754ca907e9",
-                      "sender": "sara.vasquez@example.com",
-                      "subject": "confirm pending reply status section schedule pending feedback review re",
-                      "snippet": "review reply feedback question agenda pending question section agenda proposal confirm confirm follow status notes note",
-                      "when": "Aug 30, 02:01"
-                    },
-                    {
-                      "id": "1a05009f2b759fbe",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "estimate update update reply draft",
-                      "snippet": "attached question question revision status draft meeting status reply draft reply revision reply proposal update estimate timeline timeline status feedback agenda confirm summary notes follow section a",
-                      "when": "Aug 30, 00:20"
-                    },
-                    {
-                      "id": "1a04de0a0c4cad33",
+                      "id": "1a06dec28a4d6853",
                       "sender": "nora.haddad@example.com",
-                      "subject": "status update question notes question section status thread confirm draft update review meeting agenda update status question",
-                      "snippet": "estimate revision notes attached attached summary confirm timeline update update timeline feedback revision follow notes feedback feedback status confirm section reply summary review section notes est",
-                      "when": "Aug 29, 14:15"
-                    },
-                    {
-                      "id": "1a04b517d4ebb2c1"
+                      "subject": "revision schedule draft question review",
+                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
+                      "time": "2026-09-04 19:36 UTC"
                     }
                   ]
                 }
@@ -510,7 +432,7 @@
           "texts": []
         },
         {
-          "offsetMs": 26583,
+          "offsetMs": 28930,
           "messages": [
             {
               "version": "v0.9",
@@ -519,37 +441,28 @@
                 "value": {
                   "threads": [
                     {
-                      "id": "1a05077dde2deea4",
+                      "id": "1a06f2abedf045ce",
+                      "sender": "elin.tanaka@example.com",
+                      "subject": "estimate review thread status agenda confirm summ",
+                      "snippet": "thread review proposal confirm follow estimate status feedback reply proposal question reply draft feedback update schedule question follow estimate feedback revision feedback summary notes section fo",
+                      "time": "2026-09-05 01:24 UTC",
+                      "idDisplay": "ID: 1a06f2abedf045ce"
+                    },
+                    {
+                      "id": "1a06ef027e683325",
                       "sender": "sara.moreau@example.com",
-                      "subject": "status agenda proposal proposal pending pendi",
-                      "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
-                      "when": "Aug 30, 02:20"
+                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
+                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
+                      "time": "2026-09-05 00:20 UTC",
+                      "idDisplay": "ID: 1a06ef027e683325"
                     },
                     {
-                      "id": "1a0506754ca907e9",
-                      "sender": "sara.vasquez@example.com",
-                      "subject": "confirm pending reply status section schedule pending feedback review re",
-                      "snippet": "review reply feedback question agenda pending question section agenda proposal confirm confirm follow status notes note",
-                      "when": "Aug 30, 02:01"
-                    },
-                    {
-                      "id": "1a05009f2b759fbe",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "estimate update update reply draft",
-                      "snippet": "attached question question revision status draft meeting status reply draft reply revision reply proposal update estimate timeline timeline status feedback agenda confirm summary notes follow section a",
-                      "when": "Aug 30, 00:20"
-                    },
-                    {
-                      "id": "1a04de0a0c4cad33",
+                      "id": "1a06dec28a4d6853",
                       "sender": "nora.haddad@example.com",
-                      "subject": "status update question notes question section status thread confirm draft update review meeting agenda update status question",
-                      "snippet": "estimate revision notes attached attached summary confirm timeline update update timeline feedback revision follow notes feedback feedback status confirm section reply summary review section notes est",
-                      "when": "Aug 29, 14:15"
-                    },
-                    {
-                      "id": "1a04b517d4ebb2c1",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "pending timeline question draft meeting"
+                      "subject": "revision schedule draft question review",
+                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
+                      "time": "2026-09-04 19:36 UTC",
+                      "idDisplay": "ID: 1a06dec28a4d6853"
                     }
                   ]
                 }
@@ -559,7 +472,7 @@
           "texts": []
         },
         {
-          "offsetMs": 26652,
+          "offsetMs": 29057,
           "messages": [
             {
               "version": "v0.9",
@@ -568,38 +481,32 @@
                 "value": {
                   "threads": [
                     {
-                      "id": "1a05077dde2deea4",
+                      "id": "1a06f2abedf045ce",
+                      "sender": "elin.tanaka@example.com",
+                      "subject": "estimate review thread status agenda confirm summ",
+                      "snippet": "thread review proposal confirm follow estimate status feedback reply proposal question reply draft feedback update schedule question follow estimate feedback revision feedback summary notes section fo",
+                      "time": "2026-09-05 01:24 UTC",
+                      "idDisplay": "ID: 1a06f2abedf045ce"
+                    },
+                    {
+                      "id": "1a06ef027e683325",
                       "sender": "sara.moreau@example.com",
-                      "subject": "status agenda proposal proposal pending pendi",
-                      "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
-                      "when": "Aug 30, 02:20"
+                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
+                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
+                      "time": "2026-09-05 00:20 UTC",
+                      "idDisplay": "ID: 1a06ef027e683325"
                     },
                     {
-                      "id": "1a0506754ca907e9",
-                      "sender": "sara.vasquez@example.com",
-                      "subject": "confirm pending reply status section schedule pending feedback review re",
-                      "snippet": "review reply feedback question agenda pending question section agenda proposal confirm confirm follow status notes note",
-                      "when": "Aug 30, 02:01"
-                    },
-                    {
-                      "id": "1a05009f2b759fbe",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "estimate update update reply draft",
-                      "snippet": "attached question question revision status draft meeting status reply draft reply revision reply proposal update estimate timeline timeline status feedback agenda confirm summary notes follow section a",
-                      "when": "Aug 30, 00:20"
-                    },
-                    {
-                      "id": "1a04de0a0c4cad33",
+                      "id": "1a06dec28a4d6853",
                       "sender": "nora.haddad@example.com",
-                      "subject": "status update question notes question section status thread confirm draft update review meeting agenda update status question",
-                      "snippet": "estimate revision notes attached attached summary confirm timeline update update timeline feedback revision follow notes feedback feedback status confirm section reply summary review section notes est",
-                      "when": "Aug 29, 14:15"
+                      "subject": "revision schedule draft question review",
+                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
+                      "time": "2026-09-04 19:36 UTC",
+                      "idDisplay": "ID: 1a06dec28a4d6853"
                     },
                     {
-                      "id": "1a04b517d4ebb2c1",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "pending timeline question draft meeting",
-                      "snippet": "review thread section status draft notes attached estimate section status proposal draft notes estimate update attached question draft timeline review schedule schedule attached attached agenda section"
+                      "id": "1a06d38b96f68239",
+                      "sender": "yuki.nakamura@example.com"
                     }
                   ]
                 }
@@ -609,7 +516,7 @@
           "texts": []
         },
         {
-          "offsetMs": 26716,
+          "offsetMs": 29131,
           "messages": [
             {
               "version": "v0.9",
@@ -618,39 +525,33 @@
                 "value": {
                   "threads": [
                     {
-                      "id": "1a05077dde2deea4",
+                      "id": "1a06f2abedf045ce",
+                      "sender": "elin.tanaka@example.com",
+                      "subject": "estimate review thread status agenda confirm summ",
+                      "snippet": "thread review proposal confirm follow estimate status feedback reply proposal question reply draft feedback update schedule question follow estimate feedback revision feedback summary notes section fo",
+                      "time": "2026-09-05 01:24 UTC",
+                      "idDisplay": "ID: 1a06f2abedf045ce"
+                    },
+                    {
+                      "id": "1a06ef027e683325",
                       "sender": "sara.moreau@example.com",
-                      "subject": "status agenda proposal proposal pending pendi",
-                      "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
-                      "when": "Aug 30, 02:20"
+                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
+                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
+                      "time": "2026-09-05 00:20 UTC",
+                      "idDisplay": "ID: 1a06ef027e683325"
                     },
                     {
-                      "id": "1a0506754ca907e9",
-                      "sender": "sara.vasquez@example.com",
-                      "subject": "confirm pending reply status section schedule pending feedback review re",
-                      "snippet": "review reply feedback question agenda pending question section agenda proposal confirm confirm follow status notes note",
-                      "when": "Aug 30, 02:01"
-                    },
-                    {
-                      "id": "1a05009f2b759fbe",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "estimate update update reply draft",
-                      "snippet": "attached question question revision status draft meeting status reply draft reply revision reply proposal update estimate timeline timeline status feedback agenda confirm summary notes follow section a",
-                      "when": "Aug 30, 00:20"
-                    },
-                    {
-                      "id": "1a04de0a0c4cad33",
+                      "id": "1a06dec28a4d6853",
                       "sender": "nora.haddad@example.com",
-                      "subject": "status update question notes question section status thread confirm draft update review meeting agenda update status question",
-                      "snippet": "estimate revision notes attached attached summary confirm timeline update update timeline feedback revision follow notes feedback feedback status confirm section reply summary review section notes est",
-                      "when": "Aug 29, 14:15"
+                      "subject": "revision schedule draft question review",
+                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
+                      "time": "2026-09-04 19:36 UTC",
+                      "idDisplay": "ID: 1a06dec28a4d6853"
                     },
                     {
-                      "id": "1a04b517d4ebb2c1",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "pending timeline question draft meeting",
-                      "snippet": "review thread section status draft notes attached estimate section status proposal draft notes estimate update attached question draft timeline review schedule schedule attached attached agenda section",
-                      "when": "Aug 29, 02:20"
+                      "id": "1a06d38b96f68239",
+                      "sender": "yuki.nakamura@example.com",
+                      "subject": "agenda reply estimate "
                     }
                   ]
                 }
@@ -660,7 +561,7 @@
           "texts": []
         },
         {
-          "offsetMs": 26792,
+          "offsetMs": 29189,
           "messages": [
             {
               "version": "v0.9",
@@ -669,44 +570,34 @@
                 "value": {
                   "threads": [
                     {
-                      "id": "1a05077dde2deea4",
+                      "id": "1a06f2abedf045ce",
+                      "sender": "elin.tanaka@example.com",
+                      "subject": "estimate review thread status agenda confirm summ",
+                      "snippet": "thread review proposal confirm follow estimate status feedback reply proposal question reply draft feedback update schedule question follow estimate feedback revision feedback summary notes section fo",
+                      "time": "2026-09-05 01:24 UTC",
+                      "idDisplay": "ID: 1a06f2abedf045ce"
+                    },
+                    {
+                      "id": "1a06ef027e683325",
                       "sender": "sara.moreau@example.com",
-                      "subject": "status agenda proposal proposal pending pendi",
-                      "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
-                      "when": "Aug 30, 02:20"
+                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
+                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
+                      "time": "2026-09-05 00:20 UTC",
+                      "idDisplay": "ID: 1a06ef027e683325"
                     },
                     {
-                      "id": "1a0506754ca907e9",
-                      "sender": "sara.vasquez@example.com",
-                      "subject": "confirm pending reply status section schedule pending feedback review re",
-                      "snippet": "review reply feedback question agenda pending question section agenda proposal confirm confirm follow status notes note",
-                      "when": "Aug 30, 02:01"
-                    },
-                    {
-                      "id": "1a05009f2b759fbe",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "estimate update update reply draft",
-                      "snippet": "attached question question revision status draft meeting status reply draft reply revision reply proposal update estimate timeline timeline status feedback agenda confirm summary notes follow section a",
-                      "when": "Aug 30, 00:20"
-                    },
-                    {
-                      "id": "1a04de0a0c4cad33",
+                      "id": "1a06dec28a4d6853",
                       "sender": "nora.haddad@example.com",
-                      "subject": "status update question notes question section status thread confirm draft update review meeting agenda update status question",
-                      "snippet": "estimate revision notes attached attached summary confirm timeline update update timeline feedback revision follow notes feedback feedback status confirm section reply summary review section notes est",
-                      "when": "Aug 29, 14:15"
+                      "subject": "revision schedule draft question review",
+                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
+                      "time": "2026-09-04 19:36 UTC",
+                      "idDisplay": "ID: 1a06dec28a4d6853"
                     },
                     {
-                      "id": "1a04b517d4ebb2c1",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "pending timeline question draft meeting",
-                      "snippet": "review thread section status draft notes attached estimate section status proposal draft notes estimate update attached question draft timeline review schedule schedule attached attached agenda section",
-                      "when": "Aug 29, 02:20"
-                    },
-                    {
-                      "id": "1a04ae39f1c01039",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "draft attached notes confirm pending dr"
+                      "id": "1a06d38b96f68239",
+                      "sender": "yuki.nakamura@example.com",
+                      "subject": "agenda reply estimate ",
+                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta"
                     }
                   ]
                 }
@@ -716,7 +607,7 @@
           "texts": []
         },
         {
-          "offsetMs": 26944,
+          "offsetMs": 29254,
           "messages": [
             {
               "version": "v0.9",
@@ -725,46 +616,35 @@
                 "value": {
                   "threads": [
                     {
-                      "id": "1a05077dde2deea4",
+                      "id": "1a06f2abedf045ce",
+                      "sender": "elin.tanaka@example.com",
+                      "subject": "estimate review thread status agenda confirm summ",
+                      "snippet": "thread review proposal confirm follow estimate status feedback reply proposal question reply draft feedback update schedule question follow estimate feedback revision feedback summary notes section fo",
+                      "time": "2026-09-05 01:24 UTC",
+                      "idDisplay": "ID: 1a06f2abedf045ce"
+                    },
+                    {
+                      "id": "1a06ef027e683325",
                       "sender": "sara.moreau@example.com",
-                      "subject": "status agenda proposal proposal pending pendi",
-                      "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
-                      "when": "Aug 30, 02:20"
+                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
+                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
+                      "time": "2026-09-05 00:20 UTC",
+                      "idDisplay": "ID: 1a06ef027e683325"
                     },
                     {
-                      "id": "1a0506754ca907e9",
-                      "sender": "sara.vasquez@example.com",
-                      "subject": "confirm pending reply status section schedule pending feedback review re",
-                      "snippet": "review reply feedback question agenda pending question section agenda proposal confirm confirm follow status notes note",
-                      "when": "Aug 30, 02:01"
-                    },
-                    {
-                      "id": "1a05009f2b759fbe",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "estimate update update reply draft",
-                      "snippet": "attached question question revision status draft meeting status reply draft reply revision reply proposal update estimate timeline timeline status feedback agenda confirm summary notes follow section a",
-                      "when": "Aug 30, 00:20"
-                    },
-                    {
-                      "id": "1a04de0a0c4cad33",
+                      "id": "1a06dec28a4d6853",
                       "sender": "nora.haddad@example.com",
-                      "subject": "status update question notes question section status thread confirm draft update review meeting agenda update status question",
-                      "snippet": "estimate revision notes attached attached summary confirm timeline update update timeline feedback revision follow notes feedback feedback status confirm section reply summary review section notes est",
-                      "when": "Aug 29, 14:15"
+                      "subject": "revision schedule draft question review",
+                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
+                      "time": "2026-09-04 19:36 UTC",
+                      "idDisplay": "ID: 1a06dec28a4d6853"
                     },
                     {
-                      "id": "1a04b517d4ebb2c1",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "pending timeline question draft meeting",
-                      "snippet": "review thread section status draft notes attached estimate section status proposal draft notes estimate update attached question draft timeline review schedule schedule attached attached agenda section",
-                      "when": "Aug 29, 02:20"
-                    },
-                    {
-                      "id": "1a04ae39f1c01039",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "draft attached notes confirm pending dr",
-                      "snippet": "timeline summary draft agenda confirm confirm section schedule schedule review notes section agenda confirm update schedule question follow estimate feedback revision feedback summary notes section fo",
-                      "when": "Aug 29, 00:20"
+                      "id": "1a06d38b96f68239",
+                      "sender": "yuki.nakamura@example.com",
+                      "subject": "agenda reply estimate ",
+                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
+                      "time": "2026-09-04 16:20 UTC"
                     }
                   ]
                 }
@@ -774,7 +654,1576 @@
           "texts": []
         },
         {
-          "offsetMs": 26993,
+          "offsetMs": 29330,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1a06f2abedf045ce",
+                      "sender": "elin.tanaka@example.com",
+                      "subject": "estimate review thread status agenda confirm summ",
+                      "snippet": "thread review proposal confirm follow estimate status feedback reply proposal question reply draft feedback update schedule question follow estimate feedback revision feedback summary notes section fo",
+                      "time": "2026-09-05 01:24 UTC",
+                      "idDisplay": "ID: 1a06f2abedf045ce"
+                    },
+                    {
+                      "id": "1a06ef027e683325",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
+                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
+                      "time": "2026-09-05 00:20 UTC",
+                      "idDisplay": "ID: 1a06ef027e683325"
+                    },
+                    {
+                      "id": "1a06dec28a4d6853",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "revision schedule draft question review",
+                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
+                      "time": "2026-09-04 19:36 UTC",
+                      "idDisplay": "ID: 1a06dec28a4d6853"
+                    },
+                    {
+                      "id": "1a06d38b96f68239",
+                      "sender": "yuki.nakamura@example.com",
+                      "subject": "agenda reply estimate ",
+                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
+                      "time": "2026-09-04 16:20 UTC",
+                      "idDisplay": "ID: 1a06d38b96f68239"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 29398,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1a06f2abedf045ce",
+                      "sender": "elin.tanaka@example.com",
+                      "subject": "estimate review thread status agenda confirm summ",
+                      "snippet": "thread review proposal confirm follow estimate status feedback reply proposal question reply draft feedback update schedule question follow estimate feedback revision feedback summary notes section fo",
+                      "time": "2026-09-05 01:24 UTC",
+                      "idDisplay": "ID: 1a06f2abedf045ce"
+                    },
+                    {
+                      "id": "1a06ef027e683325",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
+                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
+                      "time": "2026-09-05 00:20 UTC",
+                      "idDisplay": "ID: 1a06ef027e683325"
+                    },
+                    {
+                      "id": "1a06dec28a4d6853",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "revision schedule draft question review",
+                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
+                      "time": "2026-09-04 19:36 UTC",
+                      "idDisplay": "ID: 1a06dec28a4d6853"
+                    },
+                    {
+                      "id": "1a06d38b96f68239",
+                      "sender": "yuki.nakamura@example.com",
+                      "subject": "agenda reply estimate ",
+                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
+                      "time": "2026-09-04 16:20 UTC",
+                      "idDisplay": "ID: 1a06d38b96f68239"
+                    },
+                    {
+                      "id": "1a06d1e51d11c891"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 29455,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1a06f2abedf045ce",
+                      "sender": "elin.tanaka@example.com",
+                      "subject": "estimate review thread status agenda confirm summ",
+                      "snippet": "thread review proposal confirm follow estimate status feedback reply proposal question reply draft feedback update schedule question follow estimate feedback revision feedback summary notes section fo",
+                      "time": "2026-09-05 01:24 UTC",
+                      "idDisplay": "ID: 1a06f2abedf045ce"
+                    },
+                    {
+                      "id": "1a06ef027e683325",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
+                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
+                      "time": "2026-09-05 00:20 UTC",
+                      "idDisplay": "ID: 1a06ef027e683325"
+                    },
+                    {
+                      "id": "1a06dec28a4d6853",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "revision schedule draft question review",
+                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
+                      "time": "2026-09-04 19:36 UTC",
+                      "idDisplay": "ID: 1a06dec28a4d6853"
+                    },
+                    {
+                      "id": "1a06d38b96f68239",
+                      "sender": "yuki.nakamura@example.com",
+                      "subject": "agenda reply estimate ",
+                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
+                      "time": "2026-09-04 16:20 UTC",
+                      "idDisplay": "ID: 1a06d38b96f68239"
+                    },
+                    {
+                      "id": "1a06d1e51d11c891",
+                      "sender": "clara.vasquez@example.com",
+                      "subject": "timeline meeting meeting revie"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 29529,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1a06f2abedf045ce",
+                      "sender": "elin.tanaka@example.com",
+                      "subject": "estimate review thread status agenda confirm summ",
+                      "snippet": "thread review proposal confirm follow estimate status feedback reply proposal question reply draft feedback update schedule question follow estimate feedback revision feedback summary notes section fo",
+                      "time": "2026-09-05 01:24 UTC",
+                      "idDisplay": "ID: 1a06f2abedf045ce"
+                    },
+                    {
+                      "id": "1a06ef027e683325",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
+                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
+                      "time": "2026-09-05 00:20 UTC",
+                      "idDisplay": "ID: 1a06ef027e683325"
+                    },
+                    {
+                      "id": "1a06dec28a4d6853",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "revision schedule draft question review",
+                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
+                      "time": "2026-09-04 19:36 UTC",
+                      "idDisplay": "ID: 1a06dec28a4d6853"
+                    },
+                    {
+                      "id": "1a06d38b96f68239",
+                      "sender": "yuki.nakamura@example.com",
+                      "subject": "agenda reply estimate ",
+                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
+                      "time": "2026-09-04 16:20 UTC",
+                      "idDisplay": "ID: 1a06d38b96f68239"
+                    },
+                    {
+                      "id": "1a06d1e51d11c891",
+                      "sender": "clara.vasquez@example.com",
+                      "subject": "timeline meeting meeting revie",
+                      "snippet": "agenda follow question follow pending pending pending meeting timeline follow meeting pending update follow notes reply status proposal confirm agenda meeting notes summary summary status schedule atta"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 29587,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1a06f2abedf045ce",
+                      "sender": "elin.tanaka@example.com",
+                      "subject": "estimate review thread status agenda confirm summ",
+                      "snippet": "thread review proposal confirm follow estimate status feedback reply proposal question reply draft feedback update schedule question follow estimate feedback revision feedback summary notes section fo",
+                      "time": "2026-09-05 01:24 UTC",
+                      "idDisplay": "ID: 1a06f2abedf045ce"
+                    },
+                    {
+                      "id": "1a06ef027e683325",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
+                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
+                      "time": "2026-09-05 00:20 UTC",
+                      "idDisplay": "ID: 1a06ef027e683325"
+                    },
+                    {
+                      "id": "1a06dec28a4d6853",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "revision schedule draft question review",
+                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
+                      "time": "2026-09-04 19:36 UTC",
+                      "idDisplay": "ID: 1a06dec28a4d6853"
+                    },
+                    {
+                      "id": "1a06d38b96f68239",
+                      "sender": "yuki.nakamura@example.com",
+                      "subject": "agenda reply estimate ",
+                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
+                      "time": "2026-09-04 16:20 UTC",
+                      "idDisplay": "ID: 1a06d38b96f68239"
+                    },
+                    {
+                      "id": "1a06d1e51d11c891",
+                      "sender": "clara.vasquez@example.com",
+                      "subject": "timeline meeting meeting revie",
+                      "snippet": "agenda follow question follow pending pending pending meeting timeline follow meeting pending update follow notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
+                      "time": "2026-09-04 15:51 UTC"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 29656,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1a06f2abedf045ce",
+                      "sender": "elin.tanaka@example.com",
+                      "subject": "estimate review thread status agenda confirm summ",
+                      "snippet": "thread review proposal confirm follow estimate status feedback reply proposal question reply draft feedback update schedule question follow estimate feedback revision feedback summary notes section fo",
+                      "time": "2026-09-05 01:24 UTC",
+                      "idDisplay": "ID: 1a06f2abedf045ce"
+                    },
+                    {
+                      "id": "1a06ef027e683325",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
+                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
+                      "time": "2026-09-05 00:20 UTC",
+                      "idDisplay": "ID: 1a06ef027e683325"
+                    },
+                    {
+                      "id": "1a06dec28a4d6853",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "revision schedule draft question review",
+                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
+                      "time": "2026-09-04 19:36 UTC",
+                      "idDisplay": "ID: 1a06dec28a4d6853"
+                    },
+                    {
+                      "id": "1a06d38b96f68239",
+                      "sender": "yuki.nakamura@example.com",
+                      "subject": "agenda reply estimate ",
+                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
+                      "time": "2026-09-04 16:20 UTC",
+                      "idDisplay": "ID: 1a06d38b96f68239"
+                    },
+                    {
+                      "id": "1a06d1e51d11c891",
+                      "sender": "clara.vasquez@example.com",
+                      "subject": "timeline meeting meeting revie",
+                      "snippet": "agenda follow question follow pending pending pending meeting timeline follow meeting pending update follow notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
+                      "time": "2026-09-04 15:51 UTC",
+                      "idDisplay": "ID: 1a06d1e51d11c891"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 29722,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1a06f2abedf045ce",
+                      "sender": "elin.tanaka@example.com",
+                      "subject": "estimate review thread status agenda confirm summ",
+                      "snippet": "thread review proposal confirm follow estimate status feedback reply proposal question reply draft feedback update schedule question follow estimate feedback revision feedback summary notes section fo",
+                      "time": "2026-09-05 01:24 UTC",
+                      "idDisplay": "ID: 1a06f2abedf045ce"
+                    },
+                    {
+                      "id": "1a06ef027e683325",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
+                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
+                      "time": "2026-09-05 00:20 UTC",
+                      "idDisplay": "ID: 1a06ef027e683325"
+                    },
+                    {
+                      "id": "1a06dec28a4d6853",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "revision schedule draft question review",
+                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
+                      "time": "2026-09-04 19:36 UTC",
+                      "idDisplay": "ID: 1a06dec28a4d6853"
+                    },
+                    {
+                      "id": "1a06d38b96f68239",
+                      "sender": "yuki.nakamura@example.com",
+                      "subject": "agenda reply estimate ",
+                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
+                      "time": "2026-09-04 16:20 UTC",
+                      "idDisplay": "ID: 1a06d38b96f68239"
+                    },
+                    {
+                      "id": "1a06d1e51d11c891",
+                      "sender": "clara.vasquez@example.com",
+                      "subject": "timeline meeting meeting revie",
+                      "snippet": "agenda follow question follow pending pending pending meeting timeline follow meeting pending update follow notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
+                      "time": "2026-09-04 15:51 UTC",
+                      "idDisplay": "ID: 1a06d1e51d11c891"
+                    },
+                    {
+                      "id": "1a06cee261fd278a"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 29788,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1a06f2abedf045ce",
+                      "sender": "elin.tanaka@example.com",
+                      "subject": "estimate review thread status agenda confirm summ",
+                      "snippet": "thread review proposal confirm follow estimate status feedback reply proposal question reply draft feedback update schedule question follow estimate feedback revision feedback summary notes section fo",
+                      "time": "2026-09-05 01:24 UTC",
+                      "idDisplay": "ID: 1a06f2abedf045ce"
+                    },
+                    {
+                      "id": "1a06ef027e683325",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
+                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
+                      "time": "2026-09-05 00:20 UTC",
+                      "idDisplay": "ID: 1a06ef027e683325"
+                    },
+                    {
+                      "id": "1a06dec28a4d6853",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "revision schedule draft question review",
+                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
+                      "time": "2026-09-04 19:36 UTC",
+                      "idDisplay": "ID: 1a06dec28a4d6853"
+                    },
+                    {
+                      "id": "1a06d38b96f68239",
+                      "sender": "yuki.nakamura@example.com",
+                      "subject": "agenda reply estimate ",
+                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
+                      "time": "2026-09-04 16:20 UTC",
+                      "idDisplay": "ID: 1a06d38b96f68239"
+                    },
+                    {
+                      "id": "1a06d1e51d11c891",
+                      "sender": "clara.vasquez@example.com",
+                      "subject": "timeline meeting meeting revie",
+                      "snippet": "agenda follow question follow pending pending pending meeting timeline follow meeting pending update follow notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
+                      "time": "2026-09-04 15:51 UTC",
+                      "idDisplay": "ID: 1a06d1e51d11c891"
+                    },
+                    {
+                      "id": "1a06cee261fd278a",
+                      "sender": "nora.haddad@example.com"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 29856,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1a06f2abedf045ce",
+                      "sender": "elin.tanaka@example.com",
+                      "subject": "estimate review thread status agenda confirm summ",
+                      "snippet": "thread review proposal confirm follow estimate status feedback reply proposal question reply draft feedback update schedule question follow estimate feedback revision feedback summary notes section fo",
+                      "time": "2026-09-05 01:24 UTC",
+                      "idDisplay": "ID: 1a06f2abedf045ce"
+                    },
+                    {
+                      "id": "1a06ef027e683325",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
+                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
+                      "time": "2026-09-05 00:20 UTC",
+                      "idDisplay": "ID: 1a06ef027e683325"
+                    },
+                    {
+                      "id": "1a06dec28a4d6853",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "revision schedule draft question review",
+                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
+                      "time": "2026-09-04 19:36 UTC",
+                      "idDisplay": "ID: 1a06dec28a4d6853"
+                    },
+                    {
+                      "id": "1a06d38b96f68239",
+                      "sender": "yuki.nakamura@example.com",
+                      "subject": "agenda reply estimate ",
+                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
+                      "time": "2026-09-04 16:20 UTC",
+                      "idDisplay": "ID: 1a06d38b96f68239"
+                    },
+                    {
+                      "id": "1a06d1e51d11c891",
+                      "sender": "clara.vasquez@example.com",
+                      "subject": "timeline meeting meeting revie",
+                      "snippet": "agenda follow question follow pending pending pending meeting timeline follow meeting pending update follow notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
+                      "time": "2026-09-04 15:51 UTC",
+                      "idDisplay": "ID: 1a06d1e51d11c891"
+                    },
+                    {
+                      "id": "1a06cee261fd278a",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "thread follow timeline attached schedule timeline update section confirm question attached schedu"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 29924,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1a06f2abedf045ce",
+                      "sender": "elin.tanaka@example.com",
+                      "subject": "estimate review thread status agenda confirm summ",
+                      "snippet": "thread review proposal confirm follow estimate status feedback reply proposal question reply draft feedback update schedule question follow estimate feedback revision feedback summary notes section fo",
+                      "time": "2026-09-05 01:24 UTC",
+                      "idDisplay": "ID: 1a06f2abedf045ce"
+                    },
+                    {
+                      "id": "1a06ef027e683325",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
+                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
+                      "time": "2026-09-05 00:20 UTC",
+                      "idDisplay": "ID: 1a06ef027e683325"
+                    },
+                    {
+                      "id": "1a06dec28a4d6853",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "revision schedule draft question review",
+                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
+                      "time": "2026-09-04 19:36 UTC",
+                      "idDisplay": "ID: 1a06dec28a4d6853"
+                    },
+                    {
+                      "id": "1a06d38b96f68239",
+                      "sender": "yuki.nakamura@example.com",
+                      "subject": "agenda reply estimate ",
+                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
+                      "time": "2026-09-04 16:20 UTC",
+                      "idDisplay": "ID: 1a06d38b96f68239"
+                    },
+                    {
+                      "id": "1a06d1e51d11c891",
+                      "sender": "clara.vasquez@example.com",
+                      "subject": "timeline meeting meeting revie",
+                      "snippet": "agenda follow question follow pending pending pending meeting timeline follow meeting pending update follow notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
+                      "time": "2026-09-04 15:51 UTC",
+                      "idDisplay": "ID: 1a06d1e51d11c891"
+                    },
+                    {
+                      "id": "1a06cee261fd278a",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "thread follow timeline attached schedule timeline update section confirm question attached schedu",
+                      "snippet": "summary reply timeline update reply feedback draft thread thread summary schedule meeting section reply confirm question agenda follow status meeting status proposal timeline reply thread question sect"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 30002,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1a06f2abedf045ce",
+                      "sender": "elin.tanaka@example.com",
+                      "subject": "estimate review thread status agenda confirm summ",
+                      "snippet": "thread review proposal confirm follow estimate status feedback reply proposal question reply draft feedback update schedule question follow estimate feedback revision feedback summary notes section fo",
+                      "time": "2026-09-05 01:24 UTC",
+                      "idDisplay": "ID: 1a06f2abedf045ce"
+                    },
+                    {
+                      "id": "1a06ef027e683325",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
+                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
+                      "time": "2026-09-05 00:20 UTC",
+                      "idDisplay": "ID: 1a06ef027e683325"
+                    },
+                    {
+                      "id": "1a06dec28a4d6853",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "revision schedule draft question review",
+                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
+                      "time": "2026-09-04 19:36 UTC",
+                      "idDisplay": "ID: 1a06dec28a4d6853"
+                    },
+                    {
+                      "id": "1a06d38b96f68239",
+                      "sender": "yuki.nakamura@example.com",
+                      "subject": "agenda reply estimate ",
+                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
+                      "time": "2026-09-04 16:20 UTC",
+                      "idDisplay": "ID: 1a06d38b96f68239"
+                    },
+                    {
+                      "id": "1a06d1e51d11c891",
+                      "sender": "clara.vasquez@example.com",
+                      "subject": "timeline meeting meeting revie",
+                      "snippet": "agenda follow question follow pending pending pending meeting timeline follow meeting pending update follow notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
+                      "time": "2026-09-04 15:51 UTC",
+                      "idDisplay": "ID: 1a06d1e51d11c891"
+                    },
+                    {
+                      "id": "1a06cee261fd278a",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "thread follow timeline attached schedule timeline update section confirm question attached schedu",
+                      "snippet": "summary reply timeline update reply feedback draft thread thread summary schedule meeting section reply confirm question agenda follow status meeting status proposal timeline reply thread question sect",
+                      "time": "2026-09-04 14:57 UTC"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 30068,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1a06f2abedf045ce",
+                      "sender": "elin.tanaka@example.com",
+                      "subject": "estimate review thread status agenda confirm summ",
+                      "snippet": "thread review proposal confirm follow estimate status feedback reply proposal question reply draft feedback update schedule question follow estimate feedback revision feedback summary notes section fo",
+                      "time": "2026-09-05 01:24 UTC",
+                      "idDisplay": "ID: 1a06f2abedf045ce"
+                    },
+                    {
+                      "id": "1a06ef027e683325",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
+                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
+                      "time": "2026-09-05 00:20 UTC",
+                      "idDisplay": "ID: 1a06ef027e683325"
+                    },
+                    {
+                      "id": "1a06dec28a4d6853",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "revision schedule draft question review",
+                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
+                      "time": "2026-09-04 19:36 UTC",
+                      "idDisplay": "ID: 1a06dec28a4d6853"
+                    },
+                    {
+                      "id": "1a06d38b96f68239",
+                      "sender": "yuki.nakamura@example.com",
+                      "subject": "agenda reply estimate ",
+                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
+                      "time": "2026-09-04 16:20 UTC",
+                      "idDisplay": "ID: 1a06d38b96f68239"
+                    },
+                    {
+                      "id": "1a06d1e51d11c891",
+                      "sender": "clara.vasquez@example.com",
+                      "subject": "timeline meeting meeting revie",
+                      "snippet": "agenda follow question follow pending pending pending meeting timeline follow meeting pending update follow notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
+                      "time": "2026-09-04 15:51 UTC",
+                      "idDisplay": "ID: 1a06d1e51d11c891"
+                    },
+                    {
+                      "id": "1a06cee261fd278a",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "thread follow timeline attached schedule timeline update section confirm question attached schedu",
+                      "snippet": "summary reply timeline update reply feedback draft thread thread summary schedule meeting section reply confirm question agenda follow status meeting status proposal timeline reply thread question sect",
+                      "time": "2026-09-04 14:57 UTC",
+                      "idDisplay": "ID: 1a06cee261fd278a"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 30145,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1a06f2abedf045ce",
+                      "sender": "elin.tanaka@example.com",
+                      "subject": "estimate review thread status agenda confirm summ",
+                      "snippet": "thread review proposal confirm follow estimate status feedback reply proposal question reply draft feedback update schedule question follow estimate feedback revision feedback summary notes section fo",
+                      "time": "2026-09-05 01:24 UTC",
+                      "idDisplay": "ID: 1a06f2abedf045ce"
+                    },
+                    {
+                      "id": "1a06ef027e683325",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
+                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
+                      "time": "2026-09-05 00:20 UTC",
+                      "idDisplay": "ID: 1a06ef027e683325"
+                    },
+                    {
+                      "id": "1a06dec28a4d6853",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "revision schedule draft question review",
+                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
+                      "time": "2026-09-04 19:36 UTC",
+                      "idDisplay": "ID: 1a06dec28a4d6853"
+                    },
+                    {
+                      "id": "1a06d38b96f68239",
+                      "sender": "yuki.nakamura@example.com",
+                      "subject": "agenda reply estimate ",
+                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
+                      "time": "2026-09-04 16:20 UTC",
+                      "idDisplay": "ID: 1a06d38b96f68239"
+                    },
+                    {
+                      "id": "1a06d1e51d11c891",
+                      "sender": "clara.vasquez@example.com",
+                      "subject": "timeline meeting meeting revie",
+                      "snippet": "agenda follow question follow pending pending pending meeting timeline follow meeting pending update follow notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
+                      "time": "2026-09-04 15:51 UTC",
+                      "idDisplay": "ID: 1a06d1e51d11c891"
+                    },
+                    {
+                      "id": "1a06cee261fd278a",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "thread follow timeline attached schedule timeline update section confirm question attached schedu",
+                      "snippet": "summary reply timeline update reply feedback draft thread thread summary schedule meeting section reply confirm question agenda follow status meeting status proposal timeline reply thread question sect",
+                      "time": "2026-09-04 14:57 UTC",
+                      "idDisplay": "ID: 1a06cee261fd278a"
+                    },
+                    {
+                      "id": "1a06c8d16ea71568"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 30211,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1a06f2abedf045ce",
+                      "sender": "elin.tanaka@example.com",
+                      "subject": "estimate review thread status agenda confirm summ",
+                      "snippet": "thread review proposal confirm follow estimate status feedback reply proposal question reply draft feedback update schedule question follow estimate feedback revision feedback summary notes section fo",
+                      "time": "2026-09-05 01:24 UTC",
+                      "idDisplay": "ID: 1a06f2abedf045ce"
+                    },
+                    {
+                      "id": "1a06ef027e683325",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
+                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
+                      "time": "2026-09-05 00:20 UTC",
+                      "idDisplay": "ID: 1a06ef027e683325"
+                    },
+                    {
+                      "id": "1a06dec28a4d6853",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "revision schedule draft question review",
+                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
+                      "time": "2026-09-04 19:36 UTC",
+                      "idDisplay": "ID: 1a06dec28a4d6853"
+                    },
+                    {
+                      "id": "1a06d38b96f68239",
+                      "sender": "yuki.nakamura@example.com",
+                      "subject": "agenda reply estimate ",
+                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
+                      "time": "2026-09-04 16:20 UTC",
+                      "idDisplay": "ID: 1a06d38b96f68239"
+                    },
+                    {
+                      "id": "1a06d1e51d11c891",
+                      "sender": "clara.vasquez@example.com",
+                      "subject": "timeline meeting meeting revie",
+                      "snippet": "agenda follow question follow pending pending pending meeting timeline follow meeting pending update follow notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
+                      "time": "2026-09-04 15:51 UTC",
+                      "idDisplay": "ID: 1a06d1e51d11c891"
+                    },
+                    {
+                      "id": "1a06cee261fd278a",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "thread follow timeline attached schedule timeline update section confirm question attached schedu",
+                      "snippet": "summary reply timeline update reply feedback draft thread thread summary schedule meeting section reply confirm question agenda follow status meeting status proposal timeline reply thread question sect",
+                      "time": "2026-09-04 14:57 UTC",
+                      "idDisplay": "ID: 1a06cee261fd278a"
+                    },
+                    {
+                      "id": "1a06c8d16ea71568",
+                      "sender": "clara.ferreira@example.com"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 30273,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1a06f2abedf045ce",
+                      "sender": "elin.tanaka@example.com",
+                      "subject": "estimate review thread status agenda confirm summ",
+                      "snippet": "thread review proposal confirm follow estimate status feedback reply proposal question reply draft feedback update schedule question follow estimate feedback revision feedback summary notes section fo",
+                      "time": "2026-09-05 01:24 UTC",
+                      "idDisplay": "ID: 1a06f2abedf045ce"
+                    },
+                    {
+                      "id": "1a06ef027e683325",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
+                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
+                      "time": "2026-09-05 00:20 UTC",
+                      "idDisplay": "ID: 1a06ef027e683325"
+                    },
+                    {
+                      "id": "1a06dec28a4d6853",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "revision schedule draft question review",
+                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
+                      "time": "2026-09-04 19:36 UTC",
+                      "idDisplay": "ID: 1a06dec28a4d6853"
+                    },
+                    {
+                      "id": "1a06d38b96f68239",
+                      "sender": "yuki.nakamura@example.com",
+                      "subject": "agenda reply estimate ",
+                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
+                      "time": "2026-09-04 16:20 UTC",
+                      "idDisplay": "ID: 1a06d38b96f68239"
+                    },
+                    {
+                      "id": "1a06d1e51d11c891",
+                      "sender": "clara.vasquez@example.com",
+                      "subject": "timeline meeting meeting revie",
+                      "snippet": "agenda follow question follow pending pending pending meeting timeline follow meeting pending update follow notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
+                      "time": "2026-09-04 15:51 UTC",
+                      "idDisplay": "ID: 1a06d1e51d11c891"
+                    },
+                    {
+                      "id": "1a06cee261fd278a",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "thread follow timeline attached schedule timeline update section confirm question attached schedu",
+                      "snippet": "summary reply timeline update reply feedback draft thread thread summary schedule meeting section reply confirm question agenda follow status meeting status proposal timeline reply thread question sect",
+                      "time": "2026-09-04 14:57 UTC",
+                      "idDisplay": "ID: 1a06cee261fd278a"
+                    },
+                    {
+                      "id": "1a06c8d16ea71568",
+                      "sender": "clara.ferreira@example.com",
+                      "subject": "follow reply attached update confirm confirm sche"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 30338,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1a06f2abedf045ce",
+                      "sender": "elin.tanaka@example.com",
+                      "subject": "estimate review thread status agenda confirm summ",
+                      "snippet": "thread review proposal confirm follow estimate status feedback reply proposal question reply draft feedback update schedule question follow estimate feedback revision feedback summary notes section fo",
+                      "time": "2026-09-05 01:24 UTC",
+                      "idDisplay": "ID: 1a06f2abedf045ce"
+                    },
+                    {
+                      "id": "1a06ef027e683325",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
+                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
+                      "time": "2026-09-05 00:20 UTC",
+                      "idDisplay": "ID: 1a06ef027e683325"
+                    },
+                    {
+                      "id": "1a06dec28a4d6853",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "revision schedule draft question review",
+                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
+                      "time": "2026-09-04 19:36 UTC",
+                      "idDisplay": "ID: 1a06dec28a4d6853"
+                    },
+                    {
+                      "id": "1a06d38b96f68239",
+                      "sender": "yuki.nakamura@example.com",
+                      "subject": "agenda reply estimate ",
+                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
+                      "time": "2026-09-04 16:20 UTC",
+                      "idDisplay": "ID: 1a06d38b96f68239"
+                    },
+                    {
+                      "id": "1a06d1e51d11c891",
+                      "sender": "clara.vasquez@example.com",
+                      "subject": "timeline meeting meeting revie",
+                      "snippet": "agenda follow question follow pending pending pending meeting timeline follow meeting pending update follow notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
+                      "time": "2026-09-04 15:51 UTC",
+                      "idDisplay": "ID: 1a06d1e51d11c891"
+                    },
+                    {
+                      "id": "1a06cee261fd278a",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "thread follow timeline attached schedule timeline update section confirm question attached schedu",
+                      "snippet": "summary reply timeline update reply feedback draft thread thread summary schedule meeting section reply confirm question agenda follow status meeting status proposal timeline reply thread question sect",
+                      "time": "2026-09-04 14:57 UTC",
+                      "idDisplay": "ID: 1a06cee261fd278a"
+                    },
+                    {
+                      "id": "1a06c8d16ea71568",
+                      "sender": "clara.ferreira@example.com",
+                      "subject": "follow reply attached update confirm confirm sche",
+                      "snippet": "update notes draft attached summary revision summary attached agenda thread follow summary agenda section update estimate timeline timeline status feedback agenda confirm summary notes follow section "
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 30407,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1a06f2abedf045ce",
+                      "sender": "elin.tanaka@example.com",
+                      "subject": "estimate review thread status agenda confirm summ",
+                      "snippet": "thread review proposal confirm follow estimate status feedback reply proposal question reply draft feedback update schedule question follow estimate feedback revision feedback summary notes section fo",
+                      "time": "2026-09-05 01:24 UTC",
+                      "idDisplay": "ID: 1a06f2abedf045ce"
+                    },
+                    {
+                      "id": "1a06ef027e683325",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
+                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
+                      "time": "2026-09-05 00:20 UTC",
+                      "idDisplay": "ID: 1a06ef027e683325"
+                    },
+                    {
+                      "id": "1a06dec28a4d6853",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "revision schedule draft question review",
+                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
+                      "time": "2026-09-04 19:36 UTC",
+                      "idDisplay": "ID: 1a06dec28a4d6853"
+                    },
+                    {
+                      "id": "1a06d38b96f68239",
+                      "sender": "yuki.nakamura@example.com",
+                      "subject": "agenda reply estimate ",
+                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
+                      "time": "2026-09-04 16:20 UTC",
+                      "idDisplay": "ID: 1a06d38b96f68239"
+                    },
+                    {
+                      "id": "1a06d1e51d11c891",
+                      "sender": "clara.vasquez@example.com",
+                      "subject": "timeline meeting meeting revie",
+                      "snippet": "agenda follow question follow pending pending pending meeting timeline follow meeting pending update follow notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
+                      "time": "2026-09-04 15:51 UTC",
+                      "idDisplay": "ID: 1a06d1e51d11c891"
+                    },
+                    {
+                      "id": "1a06cee261fd278a",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "thread follow timeline attached schedule timeline update section confirm question attached schedu",
+                      "snippet": "summary reply timeline update reply feedback draft thread thread summary schedule meeting section reply confirm question agenda follow status meeting status proposal timeline reply thread question sect",
+                      "time": "2026-09-04 14:57 UTC",
+                      "idDisplay": "ID: 1a06cee261fd278a"
+                    },
+                    {
+                      "id": "1a06c8d16ea71568",
+                      "sender": "clara.ferreira@example.com",
+                      "subject": "follow reply attached update confirm confirm sche",
+                      "snippet": "update notes draft attached summary revision summary attached agenda thread follow summary agenda section update estimate timeline timeline status feedback agenda confirm summary notes follow section ",
+                      "time": "2026-09-04 13:11 UTC"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 30486,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1a06f2abedf045ce",
+                      "sender": "elin.tanaka@example.com",
+                      "subject": "estimate review thread status agenda confirm summ",
+                      "snippet": "thread review proposal confirm follow estimate status feedback reply proposal question reply draft feedback update schedule question follow estimate feedback revision feedback summary notes section fo",
+                      "time": "2026-09-05 01:24 UTC",
+                      "idDisplay": "ID: 1a06f2abedf045ce"
+                    },
+                    {
+                      "id": "1a06ef027e683325",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
+                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
+                      "time": "2026-09-05 00:20 UTC",
+                      "idDisplay": "ID: 1a06ef027e683325"
+                    },
+                    {
+                      "id": "1a06dec28a4d6853",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "revision schedule draft question review",
+                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
+                      "time": "2026-09-04 19:36 UTC",
+                      "idDisplay": "ID: 1a06dec28a4d6853"
+                    },
+                    {
+                      "id": "1a06d38b96f68239",
+                      "sender": "yuki.nakamura@example.com",
+                      "subject": "agenda reply estimate ",
+                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
+                      "time": "2026-09-04 16:20 UTC",
+                      "idDisplay": "ID: 1a06d38b96f68239"
+                    },
+                    {
+                      "id": "1a06d1e51d11c891",
+                      "sender": "clara.vasquez@example.com",
+                      "subject": "timeline meeting meeting revie",
+                      "snippet": "agenda follow question follow pending pending pending meeting timeline follow meeting pending update follow notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
+                      "time": "2026-09-04 15:51 UTC",
+                      "idDisplay": "ID: 1a06d1e51d11c891"
+                    },
+                    {
+                      "id": "1a06cee261fd278a",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "thread follow timeline attached schedule timeline update section confirm question attached schedu",
+                      "snippet": "summary reply timeline update reply feedback draft thread thread summary schedule meeting section reply confirm question agenda follow status meeting status proposal timeline reply thread question sect",
+                      "time": "2026-09-04 14:57 UTC",
+                      "idDisplay": "ID: 1a06cee261fd278a"
+                    },
+                    {
+                      "id": "1a06c8d16ea71568",
+                      "sender": "clara.ferreira@example.com",
+                      "subject": "follow reply attached update confirm confirm sche",
+                      "snippet": "update notes draft attached summary revision summary attached agenda thread follow summary agenda section update estimate timeline timeline status feedback agenda confirm summary notes follow section ",
+                      "time": "2026-09-04 13:11 UTC",
+                      "idDisplay": "ID: 1a06c8d16ea71568"
+                    },
+                    {}
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 30554,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1a06f2abedf045ce",
+                      "sender": "elin.tanaka@example.com",
+                      "subject": "estimate review thread status agenda confirm summ",
+                      "snippet": "thread review proposal confirm follow estimate status feedback reply proposal question reply draft feedback update schedule question follow estimate feedback revision feedback summary notes section fo",
+                      "time": "2026-09-05 01:24 UTC",
+                      "idDisplay": "ID: 1a06f2abedf045ce"
+                    },
+                    {
+                      "id": "1a06ef027e683325",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
+                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
+                      "time": "2026-09-05 00:20 UTC",
+                      "idDisplay": "ID: 1a06ef027e683325"
+                    },
+                    {
+                      "id": "1a06dec28a4d6853",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "revision schedule draft question review",
+                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
+                      "time": "2026-09-04 19:36 UTC",
+                      "idDisplay": "ID: 1a06dec28a4d6853"
+                    },
+                    {
+                      "id": "1a06d38b96f68239",
+                      "sender": "yuki.nakamura@example.com",
+                      "subject": "agenda reply estimate ",
+                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
+                      "time": "2026-09-04 16:20 UTC",
+                      "idDisplay": "ID: 1a06d38b96f68239"
+                    },
+                    {
+                      "id": "1a06d1e51d11c891",
+                      "sender": "clara.vasquez@example.com",
+                      "subject": "timeline meeting meeting revie",
+                      "snippet": "agenda follow question follow pending pending pending meeting timeline follow meeting pending update follow notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
+                      "time": "2026-09-04 15:51 UTC",
+                      "idDisplay": "ID: 1a06d1e51d11c891"
+                    },
+                    {
+                      "id": "1a06cee261fd278a",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "thread follow timeline attached schedule timeline update section confirm question attached schedu",
+                      "snippet": "summary reply timeline update reply feedback draft thread thread summary schedule meeting section reply confirm question agenda follow status meeting status proposal timeline reply thread question sect",
+                      "time": "2026-09-04 14:57 UTC",
+                      "idDisplay": "ID: 1a06cee261fd278a"
+                    },
+                    {
+                      "id": "1a06c8d16ea71568",
+                      "sender": "clara.ferreira@example.com",
+                      "subject": "follow reply attached update confirm confirm sche",
+                      "snippet": "update notes draft attached summary revision summary attached agenda thread follow summary agenda section update estimate timeline timeline status feedback agenda confirm summary notes follow section ",
+                      "time": "2026-09-04 13:11 UTC",
+                      "idDisplay": "ID: 1a06c8d16ea71568"
+                    },
+                    {
+                      "id": "1a06a9c1934e9e83"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 30632,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1a06f2abedf045ce",
+                      "sender": "elin.tanaka@example.com",
+                      "subject": "estimate review thread status agenda confirm summ",
+                      "snippet": "thread review proposal confirm follow estimate status feedback reply proposal question reply draft feedback update schedule question follow estimate feedback revision feedback summary notes section fo",
+                      "time": "2026-09-05 01:24 UTC",
+                      "idDisplay": "ID: 1a06f2abedf045ce"
+                    },
+                    {
+                      "id": "1a06ef027e683325",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
+                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
+                      "time": "2026-09-05 00:20 UTC",
+                      "idDisplay": "ID: 1a06ef027e683325"
+                    },
+                    {
+                      "id": "1a06dec28a4d6853",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "revision schedule draft question review",
+                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
+                      "time": "2026-09-04 19:36 UTC",
+                      "idDisplay": "ID: 1a06dec28a4d6853"
+                    },
+                    {
+                      "id": "1a06d38b96f68239",
+                      "sender": "yuki.nakamura@example.com",
+                      "subject": "agenda reply estimate ",
+                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
+                      "time": "2026-09-04 16:20 UTC",
+                      "idDisplay": "ID: 1a06d38b96f68239"
+                    },
+                    {
+                      "id": "1a06d1e51d11c891",
+                      "sender": "clara.vasquez@example.com",
+                      "subject": "timeline meeting meeting revie",
+                      "snippet": "agenda follow question follow pending pending pending meeting timeline follow meeting pending update follow notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
+                      "time": "2026-09-04 15:51 UTC",
+                      "idDisplay": "ID: 1a06d1e51d11c891"
+                    },
+                    {
+                      "id": "1a06cee261fd278a",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "thread follow timeline attached schedule timeline update section confirm question attached schedu",
+                      "snippet": "summary reply timeline update reply feedback draft thread thread summary schedule meeting section reply confirm question agenda follow status meeting status proposal timeline reply thread question sect",
+                      "time": "2026-09-04 14:57 UTC",
+                      "idDisplay": "ID: 1a06cee261fd278a"
+                    },
+                    {
+                      "id": "1a06c8d16ea71568",
+                      "sender": "clara.ferreira@example.com",
+                      "subject": "follow reply attached update confirm confirm sche",
+                      "snippet": "update notes draft attached summary revision summary attached agenda thread follow summary agenda section update estimate timeline timeline status feedback agenda confirm summary notes follow section ",
+                      "time": "2026-09-04 13:11 UTC",
+                      "idDisplay": "ID: 1a06c8d16ea71568"
+                    },
+                    {
+                      "id": "1a06a9c1934e9e83",
+                      "sender": "priya.nakamura@example.com"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 30701,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1a06f2abedf045ce",
+                      "sender": "elin.tanaka@example.com",
+                      "subject": "estimate review thread status agenda confirm summ",
+                      "snippet": "thread review proposal confirm follow estimate status feedback reply proposal question reply draft feedback update schedule question follow estimate feedback revision feedback summary notes section fo",
+                      "time": "2026-09-05 01:24 UTC",
+                      "idDisplay": "ID: 1a06f2abedf045ce"
+                    },
+                    {
+                      "id": "1a06ef027e683325",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
+                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
+                      "time": "2026-09-05 00:20 UTC",
+                      "idDisplay": "ID: 1a06ef027e683325"
+                    },
+                    {
+                      "id": "1a06dec28a4d6853",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "revision schedule draft question review",
+                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
+                      "time": "2026-09-04 19:36 UTC",
+                      "idDisplay": "ID: 1a06dec28a4d6853"
+                    },
+                    {
+                      "id": "1a06d38b96f68239",
+                      "sender": "yuki.nakamura@example.com",
+                      "subject": "agenda reply estimate ",
+                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
+                      "time": "2026-09-04 16:20 UTC",
+                      "idDisplay": "ID: 1a06d38b96f68239"
+                    },
+                    {
+                      "id": "1a06d1e51d11c891",
+                      "sender": "clara.vasquez@example.com",
+                      "subject": "timeline meeting meeting revie",
+                      "snippet": "agenda follow question follow pending pending pending meeting timeline follow meeting pending update follow notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
+                      "time": "2026-09-04 15:51 UTC",
+                      "idDisplay": "ID: 1a06d1e51d11c891"
+                    },
+                    {
+                      "id": "1a06cee261fd278a",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "thread follow timeline attached schedule timeline update section confirm question attached schedu",
+                      "snippet": "summary reply timeline update reply feedback draft thread thread summary schedule meeting section reply confirm question agenda follow status meeting status proposal timeline reply thread question sect",
+                      "time": "2026-09-04 14:57 UTC",
+                      "idDisplay": "ID: 1a06cee261fd278a"
+                    },
+                    {
+                      "id": "1a06c8d16ea71568",
+                      "sender": "clara.ferreira@example.com",
+                      "subject": "follow reply attached update confirm confirm sche",
+                      "snippet": "update notes draft attached summary revision summary attached agenda thread follow summary agenda section update estimate timeline timeline status feedback agenda confirm summary notes follow section ",
+                      "time": "2026-09-04 13:11 UTC",
+                      "idDisplay": "ID: 1a06c8d16ea71568"
+                    },
+                    {
+                      "id": "1a06a9c1934e9e83",
+                      "sender": "priya.nakamura@example.com",
+                      "subject": "feedback reply summary notes threa"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 30775,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1a06f2abedf045ce",
+                      "sender": "elin.tanaka@example.com",
+                      "subject": "estimate review thread status agenda confirm summ",
+                      "snippet": "thread review proposal confirm follow estimate status feedback reply proposal question reply draft feedback update schedule question follow estimate feedback revision feedback summary notes section fo",
+                      "time": "2026-09-05 01:24 UTC",
+                      "idDisplay": "ID: 1a06f2abedf045ce"
+                    },
+                    {
+                      "id": "1a06ef027e683325",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
+                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
+                      "time": "2026-09-05 00:20 UTC",
+                      "idDisplay": "ID: 1a06ef027e683325"
+                    },
+                    {
+                      "id": "1a06dec28a4d6853",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "revision schedule draft question review",
+                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
+                      "time": "2026-09-04 19:36 UTC",
+                      "idDisplay": "ID: 1a06dec28a4d6853"
+                    },
+                    {
+                      "id": "1a06d38b96f68239",
+                      "sender": "yuki.nakamura@example.com",
+                      "subject": "agenda reply estimate ",
+                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
+                      "time": "2026-09-04 16:20 UTC",
+                      "idDisplay": "ID: 1a06d38b96f68239"
+                    },
+                    {
+                      "id": "1a06d1e51d11c891",
+                      "sender": "clara.vasquez@example.com",
+                      "subject": "timeline meeting meeting revie",
+                      "snippet": "agenda follow question follow pending pending pending meeting timeline follow meeting pending update follow notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
+                      "time": "2026-09-04 15:51 UTC",
+                      "idDisplay": "ID: 1a06d1e51d11c891"
+                    },
+                    {
+                      "id": "1a06cee261fd278a",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "thread follow timeline attached schedule timeline update section confirm question attached schedu",
+                      "snippet": "summary reply timeline update reply feedback draft thread thread summary schedule meeting section reply confirm question agenda follow status meeting status proposal timeline reply thread question sect",
+                      "time": "2026-09-04 14:57 UTC",
+                      "idDisplay": "ID: 1a06cee261fd278a"
+                    },
+                    {
+                      "id": "1a06c8d16ea71568",
+                      "sender": "clara.ferreira@example.com",
+                      "subject": "follow reply attached update confirm confirm sche",
+                      "snippet": "update notes draft attached summary revision summary attached agenda thread follow summary agenda section update estimate timeline timeline status feedback agenda confirm summary notes follow section ",
+                      "time": "2026-09-04 13:11 UTC",
+                      "idDisplay": "ID: 1a06c8d16ea71568"
+                    },
+                    {
+                      "id": "1a06a9c1934e9e83",
+                      "sender": "priya.nakamura@example.com",
+                      "subject": "feedback reply summary notes threa",
+                      "snippet": "notes thread timeline summary status update confirm review schedule notes meeting estimate attached update update update status estimate status reply estimate notes schedule section confirm notes propo"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 30841,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1a06f2abedf045ce",
+                      "sender": "elin.tanaka@example.com",
+                      "subject": "estimate review thread status agenda confirm summ",
+                      "snippet": "thread review proposal confirm follow estimate status feedback reply proposal question reply draft feedback update schedule question follow estimate feedback revision feedback summary notes section fo",
+                      "time": "2026-09-05 01:24 UTC",
+                      "idDisplay": "ID: 1a06f2abedf045ce"
+                    },
+                    {
+                      "id": "1a06ef027e683325",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
+                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
+                      "time": "2026-09-05 00:20 UTC",
+                      "idDisplay": "ID: 1a06ef027e683325"
+                    },
+                    {
+                      "id": "1a06dec28a4d6853",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "revision schedule draft question review",
+                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
+                      "time": "2026-09-04 19:36 UTC",
+                      "idDisplay": "ID: 1a06dec28a4d6853"
+                    },
+                    {
+                      "id": "1a06d38b96f68239",
+                      "sender": "yuki.nakamura@example.com",
+                      "subject": "agenda reply estimate ",
+                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
+                      "time": "2026-09-04 16:20 UTC",
+                      "idDisplay": "ID: 1a06d38b96f68239"
+                    },
+                    {
+                      "id": "1a06d1e51d11c891",
+                      "sender": "clara.vasquez@example.com",
+                      "subject": "timeline meeting meeting revie",
+                      "snippet": "agenda follow question follow pending pending pending meeting timeline follow meeting pending update follow notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
+                      "time": "2026-09-04 15:51 UTC",
+                      "idDisplay": "ID: 1a06d1e51d11c891"
+                    },
+                    {
+                      "id": "1a06cee261fd278a",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "thread follow timeline attached schedule timeline update section confirm question attached schedu",
+                      "snippet": "summary reply timeline update reply feedback draft thread thread summary schedule meeting section reply confirm question agenda follow status meeting status proposal timeline reply thread question sect",
+                      "time": "2026-09-04 14:57 UTC",
+                      "idDisplay": "ID: 1a06cee261fd278a"
+                    },
+                    {
+                      "id": "1a06c8d16ea71568",
+                      "sender": "clara.ferreira@example.com",
+                      "subject": "follow reply attached update confirm confirm sche",
+                      "snippet": "update notes draft attached summary revision summary attached agenda thread follow summary agenda section update estimate timeline timeline status feedback agenda confirm summary notes follow section ",
+                      "time": "2026-09-04 13:11 UTC",
+                      "idDisplay": "ID: 1a06c8d16ea71568"
+                    },
+                    {
+                      "id": "1a06a9c1934e9e83",
+                      "sender": "priya.nakamura@example.com",
+                      "subject": "feedback reply summary notes threa",
+                      "snippet": "notes thread timeline summary status update confirm review schedule notes meeting estimate attached update update update status estimate status reply estimate notes schedule section confirm notes propo",
+                      "time": "2026-09-04 04:09 UTC"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 30908,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1a06f2abedf045ce",
+                      "sender": "elin.tanaka@example.com",
+                      "subject": "estimate review thread status agenda confirm summ",
+                      "snippet": "thread review proposal confirm follow estimate status feedback reply proposal question reply draft feedback update schedule question follow estimate feedback revision feedback summary notes section fo",
+                      "time": "2026-09-05 01:24 UTC",
+                      "idDisplay": "ID: 1a06f2abedf045ce"
+                    },
+                    {
+                      "id": "1a06ef027e683325",
+                      "sender": "sara.moreau@example.com",
+                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
+                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
+                      "time": "2026-09-05 00:20 UTC",
+                      "idDisplay": "ID: 1a06ef027e683325"
+                    },
+                    {
+                      "id": "1a06dec28a4d6853",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "revision schedule draft question review",
+                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
+                      "time": "2026-09-04 19:36 UTC",
+                      "idDisplay": "ID: 1a06dec28a4d6853"
+                    },
+                    {
+                      "id": "1a06d38b96f68239",
+                      "sender": "yuki.nakamura@example.com",
+                      "subject": "agenda reply estimate ",
+                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
+                      "time": "2026-09-04 16:20 UTC",
+                      "idDisplay": "ID: 1a06d38b96f68239"
+                    },
+                    {
+                      "id": "1a06d1e51d11c891",
+                      "sender": "clara.vasquez@example.com",
+                      "subject": "timeline meeting meeting revie",
+                      "snippet": "agenda follow question follow pending pending pending meeting timeline follow meeting pending update follow notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
+                      "time": "2026-09-04 15:51 UTC",
+                      "idDisplay": "ID: 1a06d1e51d11c891"
+                    },
+                    {
+                      "id": "1a06cee261fd278a",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "thread follow timeline attached schedule timeline update section confirm question attached schedu",
+                      "snippet": "summary reply timeline update reply feedback draft thread thread summary schedule meeting section reply confirm question agenda follow status meeting status proposal timeline reply thread question sect",
+                      "time": "2026-09-04 14:57 UTC",
+                      "idDisplay": "ID: 1a06cee261fd278a"
+                    },
+                    {
+                      "id": "1a06c8d16ea71568",
+                      "sender": "clara.ferreira@example.com",
+                      "subject": "follow reply attached update confirm confirm sche",
+                      "snippet": "update notes draft attached summary revision summary attached agenda thread follow summary agenda section update estimate timeline timeline status feedback agenda confirm summary notes follow section ",
+                      "time": "2026-09-04 13:11 UTC",
+                      "idDisplay": "ID: 1a06c8d16ea71568"
+                    },
+                    {
+                      "id": "1a06a9c1934e9e83",
+                      "sender": "priya.nakamura@example.com",
+                      "subject": "feedback reply summary notes threa",
+                      "snippet": "notes thread timeline summary status update confirm review schedule notes meeting estimate attached update update update status estimate status reply estimate notes schedule section confirm notes propo",
+                      "time": "2026-09-04 04:09 UTC",
+                      "idDisplay": "ID: 1a06a9c1934e9e83"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 30984,
           "messages": [
             {
               "version": "v0.9",
@@ -784,46 +2233,68 @@
                 "value": {
                   "threads": [
                     {
-                      "id": "1a05077dde2deea4",
+                      "id": "1a06f2abedf045ce",
+                      "sender": "elin.tanaka@example.com",
+                      "subject": "estimate review thread status agenda confirm summ",
+                      "snippet": "thread review proposal confirm follow estimate status feedback reply proposal question reply draft feedback update schedule question follow estimate feedback revision feedback summary notes section fo",
+                      "time": "2026-09-05 01:24 UTC",
+                      "idDisplay": "ID: 1a06f2abedf045ce"
+                    },
+                    {
+                      "id": "1a06ef027e683325",
                       "sender": "sara.moreau@example.com",
-                      "subject": "status agenda proposal proposal pending pendi",
-                      "snippet": "pending review question feedback estimate section draft reply attached draft draft schedule pending thread update update status estimate status reply estimate notes schedule section confirm notes propo",
-                      "when": "Aug 30, 02:20"
+                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
+                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
+                      "time": "2026-09-05 00:20 UTC",
+                      "idDisplay": "ID: 1a06ef027e683325"
                     },
                     {
-                      "id": "1a0506754ca907e9",
-                      "sender": "sara.vasquez@example.com",
-                      "subject": "confirm pending reply status section schedule pending feedback review re",
-                      "snippet": "review reply feedback question agenda pending question section agenda proposal confirm confirm follow status notes note",
-                      "when": "Aug 30, 02:01"
-                    },
-                    {
-                      "id": "1a05009f2b759fbe",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "estimate update update reply draft",
-                      "snippet": "attached question question revision status draft meeting status reply draft reply revision reply proposal update estimate timeline timeline status feedback agenda confirm summary notes follow section a",
-                      "when": "Aug 30, 00:20"
-                    },
-                    {
-                      "id": "1a04de0a0c4cad33",
+                      "id": "1a06dec28a4d6853",
                       "sender": "nora.haddad@example.com",
-                      "subject": "status update question notes question section status thread confirm draft update review meeting agenda update status question",
-                      "snippet": "estimate revision notes attached attached summary confirm timeline update update timeline feedback revision follow notes feedback feedback status confirm section reply summary review section notes est",
-                      "when": "Aug 29, 14:15"
+                      "subject": "revision schedule draft question review",
+                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
+                      "time": "2026-09-04 19:36 UTC",
+                      "idDisplay": "ID: 1a06dec28a4d6853"
                     },
                     {
-                      "id": "1a04b517d4ebb2c1",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "pending timeline question draft meeting",
-                      "snippet": "review thread section status draft notes attached estimate section status proposal draft notes estimate update attached question draft timeline review schedule schedule attached attached agenda section",
-                      "when": "Aug 29, 02:20"
+                      "id": "1a06d38b96f68239",
+                      "sender": "yuki.nakamura@example.com",
+                      "subject": "agenda reply estimate ",
+                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
+                      "time": "2026-09-04 16:20 UTC",
+                      "idDisplay": "ID: 1a06d38b96f68239"
                     },
                     {
-                      "id": "1a04ae39f1c01039",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "draft attached notes confirm pending dr",
-                      "snippet": "timeline summary draft agenda confirm confirm section schedule schedule review notes section agenda confirm update schedule question follow estimate feedback revision feedback summary notes section fo",
-                      "when": "Aug 29, 00:20"
+                      "id": "1a06d1e51d11c891",
+                      "sender": "clara.vasquez@example.com",
+                      "subject": "timeline meeting meeting revie",
+                      "snippet": "agenda follow question follow pending pending pending meeting timeline follow meeting pending update follow notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
+                      "time": "2026-09-04 15:51 UTC",
+                      "idDisplay": "ID: 1a06d1e51d11c891"
+                    },
+                    {
+                      "id": "1a06cee261fd278a",
+                      "sender": "nora.haddad@example.com",
+                      "subject": "thread follow timeline attached schedule timeline update section confirm question attached schedu",
+                      "snippet": "summary reply timeline update reply feedback draft thread thread summary schedule meeting section reply confirm question agenda follow status meeting status proposal timeline reply thread question sect",
+                      "time": "2026-09-04 14:57 UTC",
+                      "idDisplay": "ID: 1a06cee261fd278a"
+                    },
+                    {
+                      "id": "1a06c8d16ea71568",
+                      "sender": "clara.ferreira@example.com",
+                      "subject": "follow reply attached update confirm confirm sche",
+                      "snippet": "update notes draft attached summary revision summary attached agenda thread follow summary agenda section update estimate timeline timeline status feedback agenda confirm summary notes follow section ",
+                      "time": "2026-09-04 13:11 UTC",
+                      "idDisplay": "ID: 1a06c8d16ea71568"
+                    },
+                    {
+                      "id": "1a06a9c1934e9e83",
+                      "sender": "priya.nakamura@example.com",
+                      "subject": "feedback reply summary notes threa",
+                      "snippet": "notes thread timeline summary status update confirm review schedule notes meeting estimate attached update update update status estimate status reply estimate notes schedule section confirm notes propo",
+                      "time": "2026-09-04 04:09 UTC",
+                      "idDisplay": "ID: 1a06a9c1934e9e83"
                     }
                   ]
                 }
@@ -833,31 +2304,7 @@
           "texts": []
         },
         {
-          "offsetMs": 27126,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "root",
-                    "component": "Card",
-                    "child": "loading_body"
-                  },
-                  {
-                    "id": "loading_body",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "needs-attention"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 27199,
+          "offsetMs": 31115,
           "messages": [
             {
               "version": "v0.9",
@@ -906,7 +2353,7 @@
           "texts": []
         },
         {
-          "offsetMs": 27276,
+          "offsetMs": 31266,
           "messages": [
             {
               "version": "v0.9",
@@ -926,7 +2373,7 @@
                     "id": "heading",
                     "component": "Text",
                     "variant": "h3",
-                    "text": "Needs attention"
+                    "text": "Emails needing attention"
                   },
                   {
                     "id": "root",
@@ -956,7 +2403,7 @@
           "texts": []
         },
         {
-          "offsetMs": 27423,
+          "offsetMs": 31415,
           "messages": [
             {
               "version": "v0.9",
@@ -976,7 +2423,7 @@
                     "id": "heading",
                     "component": "Text",
                     "variant": "h3",
-                    "text": "Needs attention"
+                    "text": "Emails needing attention"
                   },
                   {
                     "id": "root",
@@ -987,7 +2434,7 @@
                     "id": "sub",
                     "component": "Text",
                     "variant": "caption",
-                    "text": "Unread conversations in your inbox"
+                    "text": "Unread and recent threads in your inbox"
                   },
                   {
                     "id": "loading_divider",
@@ -1007,7 +2454,7 @@
           "texts": []
         },
         {
-          "offsetMs": 27501,
+          "offsetMs": 31518,
           "messages": [
             {
               "version": "v0.9",
@@ -1031,7 +2478,7 @@
                     "id": "heading",
                     "component": "Text",
                     "variant": "h3",
-                    "text": "Needs attention"
+                    "text": "Emails needing attention"
                   },
                   {
                     "id": "root",
@@ -1042,7 +2489,7 @@
                     "id": "sub",
                     "component": "Text",
                     "variant": "caption",
-                    "text": "Unread conversations in your inbox"
+                    "text": "Unread and recent threads in your inbox"
                   },
                   {
                     "id": "loading_thread-list",
@@ -1057,7 +2504,7 @@
           "texts": []
         },
         {
-          "offsetMs": 27569,
+          "offsetMs": 31701,
           "messages": [
             {
               "version": "v0.9",
@@ -1081,7 +2528,7 @@
                     "id": "heading",
                     "component": "Text",
                     "variant": "h3",
-                    "text": "Needs attention"
+                    "text": "Emails needing attention"
                   },
                   {
                     "id": "root",
@@ -1092,7 +2539,7 @@
                     "id": "sub",
                     "component": "Text",
                     "variant": "caption",
-                    "text": "Unread conversations in your inbox"
+                    "text": "Unread and recent threads in your inbox"
                   },
                   {
                     "id": "thread-list",
@@ -1115,7 +2562,7 @@
           "texts": []
         },
         {
-          "offsetMs": 27763,
+          "offsetMs": 31937,
           "messages": [
             {
               "version": "v0.9",
@@ -1139,7 +2586,7 @@
                     "id": "heading",
                     "component": "Text",
                     "variant": "h3",
-                    "text": "Needs attention"
+                    "text": "Emails needing attention"
                   },
                   {
                     "id": "root",
@@ -1150,7 +2597,76 @@
                     "id": "sub",
                     "component": "Text",
                     "variant": "caption",
-                    "text": "Unread conversations in your inbox"
+                    "text": "Unread and recent threads in your inbox"
+                  },
+                  {
+                    "id": "thread-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/threads",
+                      "componentId": "thread-row"
+                    }
+                  },
+                  {
+                    "id": "thread-row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "loading_thread-body",
+                    "action": {
+                      "event": {
+                        "name": "open-thread"
+                      }
+                    }
+                  },
+                  {
+                    "id": "loading_thread-body",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 32019,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "sub",
+                      "divider",
+                      "thread-list"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "Emails needing attention"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "Unread and recent threads in your inbox"
                   },
                   {
                     "id": "thread-list",
@@ -1189,7 +2705,7 @@
           "texts": []
         },
         {
-          "offsetMs": 27911,
+          "offsetMs": 32090,
           "messages": [
             {
               "version": "v0.9",
@@ -1213,7 +2729,7 @@
                     "id": "heading",
                     "component": "Text",
                     "variant": "h3",
-                    "text": "Needs attention"
+                    "text": "Emails needing attention"
                   },
                   {
                     "id": "root",
@@ -1224,7 +2740,80 @@
                     "id": "sub",
                     "component": "Text",
                     "variant": "caption",
-                    "text": "Unread conversations in your inbox"
+                    "text": "Unread and recent threads in your inbox"
+                  },
+                  {
+                    "id": "thread-body",
+                    "component": "Column"
+                  },
+                  {
+                    "id": "thread-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/threads",
+                      "componentId": "thread-row"
+                    }
+                  },
+                  {
+                    "id": "thread-row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "thread-body",
+                    "action": {
+                      "event": {
+                        "name": "open-thread",
+                        "context": {
+                          "threadId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 32234,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "sub",
+                      "divider",
+                      "thread-list"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "Emails needing attention"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "Unread and recent threads in your inbox"
                   },
                   {
                     "id": "thread-body",
@@ -1232,7 +2821,8 @@
                     "children": [
                       "loading_thread-top",
                       "loading_thread-subject",
-                      "loading_thread-preview"
+                      "loading_thread-snippet",
+                      "loading_thread-id"
                     ]
                   },
                   {
@@ -1270,7 +2860,12 @@
                     "children": []
                   },
                   {
-                    "id": "loading_thread-preview",
+                    "id": "loading_thread-snippet",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_thread-id",
                     "component": "Row",
                     "children": []
                   }
@@ -1282,7 +2877,7 @@
           "texts": []
         },
         {
-          "offsetMs": 28065,
+          "offsetMs": 32300,
           "messages": [
             {
               "version": "v0.9",
@@ -1306,7 +2901,7 @@
                     "id": "heading",
                     "component": "Text",
                     "variant": "h3",
-                    "text": "Needs attention"
+                    "text": "Emails needing attention"
                   },
                   {
                     "id": "root",
@@ -1317,7 +2912,7 @@
                     "id": "sub",
                     "component": "Text",
                     "variant": "caption",
-                    "text": "Unread conversations in your inbox"
+                    "text": "Unread and recent threads in your inbox"
                   },
                   {
                     "id": "thread-body",
@@ -1325,7 +2920,108 @@
                     "children": [
                       "thread-top",
                       "loading_thread-subject",
-                      "loading_thread-preview"
+                      "loading_thread-snippet",
+                      "loading_thread-id"
+                    ]
+                  },
+                  {
+                    "id": "thread-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/threads",
+                      "componentId": "thread-row"
+                    }
+                  },
+                  {
+                    "id": "thread-row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "thread-body",
+                    "action": {
+                      "event": {
+                        "name": "open-thread",
+                        "context": {
+                          "threadId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "thread-top",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center"
+                  },
+                  {
+                    "id": "loading_thread-subject",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_thread-snippet",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_thread-id",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 32375,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "sub",
+                      "divider",
+                      "thread-list"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "Emails needing attention"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "Unread and recent threads in your inbox"
+                  },
+                  {
+                    "id": "thread-body",
+                    "component": "Column",
+                    "children": [
+                      "thread-top",
+                      "loading_thread-subject",
+                      "loading_thread-snippet",
+                      "loading_thread-id"
                     ]
                   },
                   {
@@ -1359,7 +3055,7 @@
                     "align": "center",
                     "children": [
                       "loading_thread-sender",
-                      "loading_thread-when"
+                      "loading_thread-time"
                     ]
                   },
                   {
@@ -1368,7 +3064,12 @@
                     "children": []
                   },
                   {
-                    "id": "loading_thread-preview",
+                    "id": "loading_thread-snippet",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_thread-id",
                     "component": "Row",
                     "children": []
                   },
@@ -1378,7 +3079,7 @@
                     "children": []
                   },
                   {
-                    "id": "loading_thread-when",
+                    "id": "loading_thread-time",
                     "component": "Row",
                     "children": []
                   }
@@ -1390,7 +3091,7 @@
           "texts": []
         },
         {
-          "offsetMs": 28203,
+          "offsetMs": 32510,
           "messages": [
             {
               "version": "v0.9",
@@ -1414,7 +3115,7 @@
                     "id": "heading",
                     "component": "Text",
                     "variant": "h3",
-                    "text": "Needs attention"
+                    "text": "Emails needing attention"
                   },
                   {
                     "id": "root",
@@ -1425,7 +3126,7 @@
                     "id": "sub",
                     "component": "Text",
                     "variant": "caption",
-                    "text": "Unread conversations in your inbox"
+                    "text": "Unread and recent threads in your inbox"
                   },
                   {
                     "id": "thread-body",
@@ -1433,7 +3134,8 @@
                     "children": [
                       "thread-top",
                       "loading_thread-subject",
-                      "loading_thread-preview"
+                      "loading_thread-snippet",
+                      "loading_thread-id"
                     ]
                   },
                   {
@@ -1474,7 +3176,7 @@
                     "align": "center",
                     "children": [
                       "thread-sender",
-                      "loading_thread-when"
+                      "loading_thread-time"
                     ]
                   },
                   {
@@ -1483,12 +3185,17 @@
                     "children": []
                   },
                   {
-                    "id": "loading_thread-preview",
+                    "id": "loading_thread-snippet",
                     "component": "Row",
                     "children": []
                   },
                   {
-                    "id": "loading_thread-when",
+                    "id": "loading_thread-id",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_thread-time",
                     "component": "Row",
                     "children": []
                   }
@@ -1500,7 +3207,7 @@
           "texts": []
         },
         {
-          "offsetMs": 28275,
+          "offsetMs": 32667,
           "messages": [
             {
               "version": "v0.9",
@@ -1524,7 +3231,7 @@
                     "id": "heading",
                     "component": "Text",
                     "variant": "h3",
-                    "text": "Needs attention"
+                    "text": "Emails needing attention"
                   },
                   {
                     "id": "root",
@@ -1535,7 +3242,7 @@
                     "id": "sub",
                     "component": "Text",
                     "variant": "caption",
-                    "text": "Unread conversations in your inbox"
+                    "text": "Unread and recent threads in your inbox"
                   },
                   {
                     "id": "thread-body",
@@ -1543,7 +3250,8 @@
                     "children": [
                       "thread-top",
                       "loading_thread-subject",
-                      "loading_thread-preview"
+                      "loading_thread-snippet",
+                      "loading_thread-id"
                     ]
                   },
                   {
@@ -1578,22 +3286,22 @@
                     }
                   },
                   {
+                    "id": "thread-time",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "time"
+                    }
+                  },
+                  {
                     "id": "thread-top",
                     "component": "Row",
                     "justify": "spaceBetween",
                     "align": "center",
                     "children": [
                       "thread-sender",
-                      "thread-when"
+                      "thread-time"
                     ]
-                  },
-                  {
-                    "id": "thread-when",
-                    "component": "Text",
-                    "variant": "caption",
-                    "text": {
-                      "path": "when"
-                    }
                   },
                   {
                     "id": "loading_thread-subject",
@@ -1601,7 +3309,12 @@
                     "children": []
                   },
                   {
-                    "id": "loading_thread-preview",
+                    "id": "loading_thread-snippet",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_thread-id",
                     "component": "Row",
                     "children": []
                   }
@@ -1613,7 +3326,7 @@
           "texts": []
         },
         {
-          "offsetMs": 28423,
+          "offsetMs": 32762,
           "messages": [
             {
               "version": "v0.9",
@@ -1637,7 +3350,7 @@
                     "id": "heading",
                     "component": "Text",
                     "variant": "h3",
-                    "text": "Needs attention"
+                    "text": "Emails needing attention"
                   },
                   {
                     "id": "root",
@@ -1648,7 +3361,7 @@
                     "id": "sub",
                     "component": "Text",
                     "variant": "caption",
-                    "text": "Unread conversations in your inbox"
+                    "text": "Unread and recent threads in your inbox"
                   },
                   {
                     "id": "thread-body",
@@ -1656,7 +3369,8 @@
                     "children": [
                       "thread-top",
                       "thread-subject",
-                      "loading_thread-preview"
+                      "loading_thread-snippet",
+                      "loading_thread-id"
                     ]
                   },
                   {
@@ -1698,25 +3412,30 @@
                     }
                   },
                   {
+                    "id": "thread-time",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "time"
+                    }
+                  },
+                  {
                     "id": "thread-top",
                     "component": "Row",
                     "justify": "spaceBetween",
                     "align": "center",
                     "children": [
                       "thread-sender",
-                      "thread-when"
+                      "thread-time"
                     ]
                   },
                   {
-                    "id": "thread-when",
-                    "component": "Text",
-                    "variant": "caption",
-                    "text": {
-                      "path": "when"
-                    }
+                    "id": "loading_thread-snippet",
+                    "component": "Row",
+                    "children": []
                   },
                   {
-                    "id": "loading_thread-preview",
+                    "id": "loading_thread-id",
                     "component": "Row",
                     "children": []
                   }
@@ -1728,7 +3447,7 @@
           "texts": []
         },
         {
-          "offsetMs": 28501,
+          "offsetMs": 32904,
           "messages": [
             {
               "version": "v0.9",
@@ -1752,7 +3471,7 @@
                     "id": "heading",
                     "component": "Text",
                     "variant": "h3",
-                    "text": "Needs attention"
+                    "text": "Emails needing attention"
                   },
                   {
                     "id": "root",
@@ -1763,7 +3482,7 @@
                     "id": "sub",
                     "component": "Text",
                     "variant": "caption",
-                    "text": "Unread conversations in your inbox"
+                    "text": "Unread and recent threads in your inbox"
                   },
                   {
                     "id": "thread-body",
@@ -1771,7 +3490,8 @@
                     "children": [
                       "thread-top",
                       "thread-subject",
-                      "thread-preview"
+                      "thread-snippet",
+                      "loading_thread-id"
                     ]
                   },
                   {
@@ -1783,7 +3503,30 @@
                     }
                   },
                   {
-                    "id": "thread-preview",
+                    "id": "thread-row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "thread-body",
+                    "action": {
+                      "event": {
+                        "name": "open-thread",
+                        "context": {
+                          "threadId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "thread-sender",
+                    "component": "Text",
+                    "text": {
+                      "path": "sender"
+                    }
+                  },
+                  {
+                    "id": "thread-snippet",
                     "component": "Text",
                     "variant": "caption",
                     "text": {
@@ -1791,6 +3534,103 @@
                     }
                   },
                   {
+                    "id": "thread-subject",
+                    "component": "Text",
+                    "text": {
+                      "path": "subject"
+                    }
+                  },
+                  {
+                    "id": "thread-time",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "time"
+                    }
+                  },
+                  {
+                    "id": "thread-top",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "thread-sender",
+                      "thread-time"
+                    ]
+                  },
+                  {
+                    "id": "loading_thread-id",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 32983,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "sub",
+                      "divider",
+                      "thread-list"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "Emails needing attention"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "Unread and recent threads in your inbox"
+                  },
+                  {
+                    "id": "thread-body",
+                    "component": "Column",
+                    "children": [
+                      "thread-top",
+                      "thread-subject",
+                      "thread-snippet",
+                      "thread-id"
+                    ]
+                  },
+                  {
+                    "id": "thread-id",
+                    "component": "Text"
+                  },
+                  {
+                    "id": "thread-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/threads",
+                      "componentId": "thread-row"
+                    }
+                  },
+                  {
                     "id": "thread-row",
                     "component": "Button",
                     "variant": "borderless",
@@ -1814,10 +3654,26 @@
                     }
                   },
                   {
+                    "id": "thread-snippet",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "snippet"
+                    }
+                  },
+                  {
                     "id": "thread-subject",
                     "component": "Text",
                     "text": {
                       "path": "subject"
+                    }
+                  },
+                  {
+                    "id": "thread-time",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "time"
                     }
                   },
                   {
@@ -1827,16 +3683,135 @@
                     "align": "center",
                     "children": [
                       "thread-sender",
-                      "thread-when"
+                      "thread-time"
+                    ]
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 33057,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "sub",
+                      "divider",
+                      "thread-list"
                     ]
                   },
                   {
-                    "id": "thread-when",
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "Emails needing attention"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "Unread and recent threads in your inbox"
+                  },
+                  {
+                    "id": "thread-body",
+                    "component": "Column",
+                    "children": [
+                      "thread-top",
+                      "thread-subject",
+                      "thread-snippet",
+                      "thread-id"
+                    ]
+                  },
+                  {
+                    "id": "thread-id",
                     "component": "Text",
                     "variant": "caption",
                     "text": {
-                      "path": "when"
+                      "path": "idDisplay"
                     }
+                  },
+                  {
+                    "id": "thread-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/threads",
+                      "componentId": "thread-row"
+                    }
+                  },
+                  {
+                    "id": "thread-row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "thread-body",
+                    "action": {
+                      "event": {
+                        "name": "open-thread",
+                        "context": {
+                          "threadId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "thread-sender",
+                    "component": "Text",
+                    "text": {
+                      "path": "sender"
+                    }
+                  },
+                  {
+                    "id": "thread-snippet",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "snippet"
+                    }
+                  },
+                  {
+                    "id": "thread-subject",
+                    "component": "Text",
+                    "text": {
+                      "path": "subject"
+                    }
+                  },
+                  {
+                    "id": "thread-time",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "time"
+                    }
+                  },
+                  {
+                    "id": "thread-top",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "thread-sender",
+                      "thread-time"
+                    ]
                   }
                 ],
                 "surfaceId": "needs-attention"
@@ -1847,7 +3822,7 @@
         }
       ],
       "outcome": "completed",
-      "durationMs": 28692
+      "durationMs": 33272
     }
   ]
 }

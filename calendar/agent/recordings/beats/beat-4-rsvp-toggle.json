@@ -4,22 +4,22 @@
   "title": "Invitation response",
   "prompt": "Accept the quarter planning invite.",
   "model": "gemini-3.7-flash",
-  "recordedAt": "2026-08-30T06:13:45+00:00",
-  "contextId": "3ed5276b-2959-4141-a126-cea9edb4865c",
+  "recordedAt": "2026-09-05T06:11:15+00:00",
+  "contextId": "5df8643b-54f4-4998-97bc-206b6aac9a8e",
   "chainedFrom": null,
   "turns": [
     {
-      "taskId": "c284e541-62a6-48c6-b3f0-1d8b221a02a0",
+      "taskId": "76a164b6-8920-4da9-91dc-7d59aca7bece",
       "kind": "utterance",
       "prompt": "Accept the quarter planning invite.",
       "action": null,
       "batches": [
         {
-          "offsetMs": 10522,
+          "offsetMs": 14575,
           "messages": [
             {
               "paintMeta": {
-                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo",
+                "surfaceId": "rsvp-96bo794ni061s93l98v7lj1o7k",
                 "title": "Quarter planning"
               }
             }
@@ -29,12 +29,12 @@
           ]
         },
         {
-          "offsetMs": 10580,
+          "offsetMs": 14746,
           "messages": [
             {
               "version": "v0.9",
               "createSurface": {
-                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo",
+                "surfaceId": "rsvp-96bo794ni061s93l98v7lj1o7k",
                 "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/calendar/calendar-catalog/catalogs/v0.9.1/catalog.json",
                 "sendDataModel": true
               }
@@ -43,12 +43,12 @@
           "texts": []
         },
         {
-          "offsetMs": 10741,
+          "offsetMs": 14933,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo",
+                "surfaceId": "rsvp-96bo794ni061s93l98v7lj1o7k",
                 "value": {
                   "summary": "Quarter planning"
                 }
@@ -58,15 +58,14 @@
           "texts": []
         },
         {
-          "offsetMs": 10796,
+          "offsetMs": 15006,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo",
+                "surfaceId": "rsvp-96bo794ni061s93l98v7lj1o7k",
                 "value": {
-                  "when": "Monday, August 31, 2026, 10:00 \u2013 11:30 EDT",
-                  "location": "Room 2A"
+                  "when": "September 6, 2026, 10:00 \u2013 11:30"
                 }
               }
             }
@@ -74,19 +73,17 @@
           "texts": []
         },
         {
-          "offsetMs": 10860,
+          "offsetMs": 15073,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo",
+                "surfaceId": "rsvp-96bo794ni061s93l98v7lj1o7k",
                 "path": "/",
                 "value": {
                   "summary": "Quarter planning",
-                  "when": "Monday, August 31, 2026, 10:00 \u2013 11:30 EDT",
-                  "location": "Room 2A",
-                  "current": "Accepted",
-                  "description": "Draft objectives circulated Monday. Read before the session."
+                  "when": "September 6, 2026, 10:00 \u2013 11:30",
+                  "current": "Accepted"
                 }
               }
             }
@@ -94,31 +91,7 @@
           "texts": []
         },
         {
-          "offsetMs": 11039,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "root",
-                    "component": "Card",
-                    "child": "loading_body"
-                  },
-                  {
-                    "id": "loading_body",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 11094,
+          "offsetMs": 15342,
           "messages": [
             {
               "version": "v0.9",
@@ -130,10 +103,7 @@
                     "children": [
                       "loading_heading",
                       "loading_when",
-                      "loading_location",
                       "loading_current",
-                      "loading_divider",
-                      "loading_description",
                       "loading_actions"
                     ]
                   },
@@ -153,22 +123,7 @@
                     "children": []
                   },
                   {
-                    "id": "loading_location",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
                     "id": "loading_current",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_divider",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_description",
                     "component": "Row",
                     "children": []
                   },
@@ -178,14 +133,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
+                "surfaceId": "rsvp-96bo794ni061s93l98v7lj1o7k"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 11155,
+          "offsetMs": 15486,
           "messages": [
             {
               "version": "v0.9",
@@ -197,10 +152,7 @@
                     "children": [
                       "heading",
                       "loading_when",
-                      "loading_location",
                       "loading_current",
-                      "loading_divider",
-                      "loading_description",
                       "loading_actions"
                     ]
                   },
@@ -223,22 +175,7 @@
                     "children": []
                   },
                   {
-                    "id": "loading_location",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
                     "id": "loading_current",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_divider",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_description",
                     "component": "Row",
                     "children": []
                   },
@@ -248,14 +185,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
+                "surfaceId": "rsvp-96bo794ni061s93l98v7lj1o7k"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 11280,
+          "offsetMs": 15562,
           "messages": [
             {
               "version": "v0.9",
@@ -267,10 +204,7 @@
                     "children": [
                       "heading",
                       "when",
-                      "loading_location",
                       "loading_current",
-                      "loading_divider",
-                      "loading_description",
                       "loading_actions"
                     ]
                   },
@@ -280,86 +214,6 @@
                     "variant": "h3",
                     "text": {
                       "path": "/summary"
-                    }
-                  },
-                  {
-                    "id": "root",
-                    "component": "Card",
-                    "child": "body"
-                  },
-                  {
-                    "id": "when",
-                    "component": "Text",
-                    "text": {
-                      "path": "/when"
-                    }
-                  },
-                  {
-                    "id": "loading_location",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_current",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_divider",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_description",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_actions",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 11335,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "body",
-                    "component": "Column",
-                    "children": [
-                      "heading",
-                      "when",
-                      "location",
-                      "loading_current",
-                      "loading_divider",
-                      "loading_description",
-                      "loading_actions"
-                    ]
-                  },
-                  {
-                    "id": "heading",
-                    "component": "Text",
-                    "variant": "h3",
-                    "text": {
-                      "path": "/summary"
-                    }
-                  },
-                  {
-                    "id": "location",
-                    "component": "Text",
-                    "variant": "caption",
-                    "text": {
-                      "path": "/location"
                     }
                   },
                   {
@@ -380,29 +234,19 @@
                     "children": []
                   },
                   {
-                    "id": "loading_divider",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_description",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
                     "id": "loading_actions",
                     "component": "Row",
                     "children": []
                   }
                 ],
-                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
+                "surfaceId": "rsvp-96bo794ni061s93l98v7lj1o7k"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 11462,
+          "offsetMs": 15692,
           "messages": [
             {
               "version": "v0.9",
@@ -414,10 +258,7 @@
                     "children": [
                       "heading",
                       "when",
-                      "location",
                       "current",
-                      "loading_divider",
-                      "loading_description",
                       "loading_actions"
                     ]
                   },
@@ -438,180 +279,6 @@
                     }
                   },
                   {
-                    "id": "location",
-                    "component": "Text",
-                    "variant": "caption",
-                    "text": {
-                      "path": "/location"
-                    }
-                  },
-                  {
-                    "id": "root",
-                    "component": "Card",
-                    "child": "body"
-                  },
-                  {
-                    "id": "when",
-                    "component": "Text",
-                    "text": {
-                      "path": "/when"
-                    }
-                  },
-                  {
-                    "id": "loading_divider",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_description",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_actions",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 11527,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "body",
-                    "component": "Column",
-                    "children": [
-                      "heading",
-                      "when",
-                      "location",
-                      "current",
-                      "divider",
-                      "loading_description",
-                      "loading_actions"
-                    ]
-                  },
-                  {
-                    "id": "current",
-                    "component": "Text",
-                    "variant": "caption",
-                    "text": {
-                      "path": "/current"
-                    }
-                  },
-                  {
-                    "id": "divider",
-                    "component": "Divider"
-                  },
-                  {
-                    "id": "heading",
-                    "component": "Text",
-                    "variant": "h3",
-                    "text": {
-                      "path": "/summary"
-                    }
-                  },
-                  {
-                    "id": "location",
-                    "component": "Text",
-                    "variant": "caption",
-                    "text": {
-                      "path": "/location"
-                    }
-                  },
-                  {
-                    "id": "root",
-                    "component": "Card",
-                    "child": "body"
-                  },
-                  {
-                    "id": "when",
-                    "component": "Text",
-                    "text": {
-                      "path": "/when"
-                    }
-                  },
-                  {
-                    "id": "loading_description",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_actions",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 11584,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "body",
-                    "component": "Column",
-                    "children": [
-                      "heading",
-                      "when",
-                      "location",
-                      "current",
-                      "divider",
-                      "description",
-                      "loading_actions"
-                    ]
-                  },
-                  {
-                    "id": "current",
-                    "component": "Text",
-                    "variant": "caption",
-                    "text": {
-                      "path": "/current"
-                    }
-                  },
-                  {
-                    "id": "description",
-                    "component": "Text",
-                    "text": {
-                      "path": "/description"
-                    }
-                  },
-                  {
-                    "id": "divider",
-                    "component": "Divider"
-                  },
-                  {
-                    "id": "heading",
-                    "component": "Text",
-                    "variant": "h3",
-                    "text": {
-                      "path": "/summary"
-                    }
-                  },
-                  {
-                    "id": "location",
-                    "component": "Text",
-                    "variant": "caption",
-                    "text": {
-                      "path": "/location"
-                    }
-                  },
-                  {
                     "id": "root",
                     "component": "Card",
                     "child": "body"
@@ -629,14 +296,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
+                "surfaceId": "rsvp-96bo794ni061s93l98v7lj1o7k"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 11701,
+          "offsetMs": 15817,
           "messages": [
             {
               "version": "v0.9",
@@ -657,10 +324,7 @@
                     "children": [
                       "heading",
                       "when",
-                      "location",
                       "current",
-                      "divider",
-                      "description",
                       "actions"
                     ]
                   },
@@ -673,30 +337,11 @@
                     }
                   },
                   {
-                    "id": "description",
-                    "component": "Text",
-                    "text": {
-                      "path": "/description"
-                    }
-                  },
-                  {
-                    "id": "divider",
-                    "component": "Divider"
-                  },
-                  {
                     "id": "heading",
                     "component": "Text",
                     "variant": "h3",
                     "text": {
                       "path": "/summary"
-                    }
-                  },
-                  {
-                    "id": "location",
-                    "component": "Text",
-                    "variant": "caption",
-                    "text": {
-                      "path": "/location"
                     }
                   },
                   {
@@ -727,14 +372,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
+                "surfaceId": "rsvp-96bo794ni061s93l98v7lj1o7k"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 11912,
+          "offsetMs": 15954,
           "messages": [
             {
               "version": "v0.9",
@@ -755,10 +400,7 @@
                     "children": [
                       "heading",
                       "when",
-                      "location",
                       "current",
-                      "divider",
-                      "description",
                       "actions"
                     ]
                   },
@@ -771,17 +413,6 @@
                     }
                   },
                   {
-                    "id": "description",
-                    "component": "Text",
-                    "text": {
-                      "path": "/description"
-                    }
-                  },
-                  {
-                    "id": "divider",
-                    "component": "Divider"
-                  },
-                  {
                     "id": "heading",
                     "component": "Text",
                     "variant": "h3",
@@ -790,11 +421,90 @@
                     }
                   },
                   {
-                    "id": "location",
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "when",
+                    "component": "Text",
+                    "text": {
+                      "path": "/when"
+                    }
+                  },
+                  {
+                    "id": "yes",
+                    "component": "Button",
+                    "variant": "primary",
+                    "child": "loading_yes-label",
+                    "action": {
+                      "event": {
+                        "name": "rsvp-toggle"
+                      }
+                    }
+                  },
+                  {
+                    "id": "loading_maybe",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_no",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_yes-label",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "rsvp-96bo794ni061s93l98v7lj1o7k"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 16096,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "actions",
+                    "component": "Row",
+                    "children": [
+                      "yes",
+                      "loading_maybe",
+                      "loading_no"
+                    ]
+                  },
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "when",
+                      "current",
+                      "actions"
+                    ]
+                  },
+                  {
+                    "id": "current",
                     "component": "Text",
                     "variant": "caption",
                     "text": {
-                      "path": "/location"
+                      "path": "/current"
+                    }
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": {
+                      "path": "/summary"
                     }
                   },
                   {
@@ -818,7 +528,7 @@
                       "event": {
                         "name": "rsvp-toggle",
                         "context": {
-                          "eventId": "o49vnbegq501jme5all5bt82eo",
+                          "eventId": "96bo794ni061s93l98v7lj1o7k",
                           "responseStatus": "accepted"
                         }
                       }
@@ -840,14 +550,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
+                "surfaceId": "rsvp-96bo794ni061s93l98v7lj1o7k"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 12030,
+          "offsetMs": 16154,
           "messages": [
             {
               "version": "v0.9",
@@ -868,10 +578,7 @@
                     "children": [
                       "heading",
                       "when",
-                      "location",
                       "current",
-                      "divider",
-                      "description",
                       "actions"
                     ]
                   },
@@ -884,30 +591,11 @@
                     }
                   },
                   {
-                    "id": "description",
-                    "component": "Text",
-                    "text": {
-                      "path": "/description"
-                    }
-                  },
-                  {
-                    "id": "divider",
-                    "component": "Divider"
-                  },
-                  {
                     "id": "heading",
                     "component": "Text",
                     "variant": "h3",
                     "text": {
                       "path": "/summary"
-                    }
-                  },
-                  {
-                    "id": "location",
-                    "component": "Text",
-                    "variant": "caption",
-                    "text": {
-                      "path": "/location"
                     }
                   },
                   {
@@ -931,7 +619,7 @@
                       "event": {
                         "name": "rsvp-toggle",
                         "context": {
-                          "eventId": "o49vnbegq501jme5all5bt82eo",
+                          "eventId": "96bo794ni061s93l98v7lj1o7k",
                           "responseStatus": "accepted"
                         }
                       }
@@ -939,8 +627,7 @@
                   },
                   {
                     "id": "yes-label",
-                    "component": "Text",
-                    "text": "Accepted"
+                    "component": "Text"
                   },
                   {
                     "id": "loading_maybe",
@@ -953,14 +640,105 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
+                "surfaceId": "rsvp-96bo794ni061s93l98v7lj1o7k"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 12241,
+          "offsetMs": 16223,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "actions",
+                    "component": "Row",
+                    "children": [
+                      "yes",
+                      "loading_maybe",
+                      "loading_no"
+                    ]
+                  },
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "when",
+                      "current",
+                      "actions"
+                    ]
+                  },
+                  {
+                    "id": "current",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/current"
+                    }
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": {
+                      "path": "/summary"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "when",
+                    "component": "Text",
+                    "text": {
+                      "path": "/when"
+                    }
+                  },
+                  {
+                    "id": "yes",
+                    "component": "Button",
+                    "variant": "primary",
+                    "child": "yes-label",
+                    "action": {
+                      "event": {
+                        "name": "rsvp-toggle",
+                        "context": {
+                          "eventId": "96bo794ni061s93l98v7lj1o7k",
+                          "responseStatus": "accepted"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "yes-label",
+                    "component": "Text",
+                    "text": "Accept"
+                  },
+                  {
+                    "id": "loading_maybe",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_no",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "rsvp-96bo794ni061s93l98v7lj1o7k"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 16300,
           "messages": [
             {
               "version": "v0.9",
@@ -981,10 +759,7 @@
                     "children": [
                       "heading",
                       "when",
-                      "location",
                       "current",
-                      "divider",
-                      "description",
                       "actions"
                     ]
                   },
@@ -997,15 +772,101 @@
                     }
                   },
                   {
-                    "id": "description",
+                    "id": "heading",
                     "component": "Text",
+                    "variant": "h3",
                     "text": {
-                      "path": "/description"
+                      "path": "/summary"
                     }
                   },
                   {
-                    "id": "divider",
-                    "component": "Divider"
+                    "id": "maybe",
+                    "component": "Button",
+                    "variant": "default",
+                    "child": "loading_maybe-label"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "when",
+                    "component": "Text",
+                    "text": {
+                      "path": "/when"
+                    }
+                  },
+                  {
+                    "id": "yes",
+                    "component": "Button",
+                    "variant": "primary",
+                    "child": "yes-label",
+                    "action": {
+                      "event": {
+                        "name": "rsvp-toggle",
+                        "context": {
+                          "eventId": "96bo794ni061s93l98v7lj1o7k",
+                          "responseStatus": "accepted"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "yes-label",
+                    "component": "Text",
+                    "text": "Accept"
+                  },
+                  {
+                    "id": "loading_no",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_maybe-label",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "rsvp-96bo794ni061s93l98v7lj1o7k"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 16362,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "actions",
+                    "component": "Row",
+                    "children": [
+                      "yes",
+                      "maybe",
+                      "loading_no"
+                    ]
+                  },
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "when",
+                      "current",
+                      "actions"
+                    ]
+                  },
+                  {
+                    "id": "current",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/current"
+                    }
                   },
                   {
                     "id": "heading",
@@ -1016,11 +877,105 @@
                     }
                   },
                   {
-                    "id": "location",
+                    "id": "maybe",
+                    "component": "Button",
+                    "variant": "default",
+                    "child": "loading_maybe-label",
+                    "action": {
+                      "event": {
+                        "name": "rsvp-toggle"
+                      }
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "when",
+                    "component": "Text",
+                    "text": {
+                      "path": "/when"
+                    }
+                  },
+                  {
+                    "id": "yes",
+                    "component": "Button",
+                    "variant": "primary",
+                    "child": "yes-label",
+                    "action": {
+                      "event": {
+                        "name": "rsvp-toggle",
+                        "context": {
+                          "eventId": "96bo794ni061s93l98v7lj1o7k",
+                          "responseStatus": "accepted"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "yes-label",
+                    "component": "Text",
+                    "text": "Accept"
+                  },
+                  {
+                    "id": "loading_no",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_maybe-label",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "rsvp-96bo794ni061s93l98v7lj1o7k"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 16508,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "actions",
+                    "component": "Row",
+                    "children": [
+                      "yes",
+                      "maybe",
+                      "loading_no"
+                    ]
+                  },
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "when",
+                      "current",
+                      "actions"
+                    ]
+                  },
+                  {
+                    "id": "current",
                     "component": "Text",
                     "variant": "caption",
                     "text": {
-                      "path": "/location"
+                      "path": "/current"
+                    }
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": {
+                      "path": "/summary"
                     }
                   },
                   {
@@ -1032,7 +987,7 @@
                       "event": {
                         "name": "rsvp-toggle",
                         "context": {
-                          "eventId": "o49vnbegq501jme5all5bt82eo",
+                          "eventId": "96bo794ni061s93l98v7lj1o7k",
                           "responseStatus": "tentative"
                         }
                       }
@@ -1059,7 +1014,7 @@
                       "event": {
                         "name": "rsvp-toggle",
                         "context": {
-                          "eventId": "o49vnbegq501jme5all5bt82eo",
+                          "eventId": "96bo794ni061s93l98v7lj1o7k",
                           "responseStatus": "accepted"
                         }
                       }
@@ -1068,7 +1023,7 @@
                   {
                     "id": "yes-label",
                     "component": "Text",
-                    "text": "Accepted"
+                    "text": "Accept"
                   },
                   {
                     "id": "loading_no",
@@ -1081,14 +1036,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
+                "surfaceId": "rsvp-96bo794ni061s93l98v7lj1o7k"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 12302,
+          "offsetMs": 16654,
           "messages": [
             {
               "version": "v0.9",
@@ -1109,10 +1064,7 @@
                     "children": [
                       "heading",
                       "when",
-                      "location",
                       "current",
-                      "divider",
-                      "description",
                       "actions"
                     ]
                   },
@@ -1125,30 +1077,11 @@
                     }
                   },
                   {
-                    "id": "description",
-                    "component": "Text",
-                    "text": {
-                      "path": "/description"
-                    }
-                  },
-                  {
-                    "id": "divider",
-                    "component": "Divider"
-                  },
-                  {
                     "id": "heading",
                     "component": "Text",
                     "variant": "h3",
                     "text": {
                       "path": "/summary"
-                    }
-                  },
-                  {
-                    "id": "location",
-                    "component": "Text",
-                    "variant": "caption",
-                    "text": {
-                      "path": "/location"
                     }
                   },
                   {
@@ -1160,7 +1093,7 @@
                       "event": {
                         "name": "rsvp-toggle",
                         "context": {
-                          "eventId": "o49vnbegq501jme5all5bt82eo",
+                          "eventId": "96bo794ni061s93l98v7lj1o7k",
                           "responseStatus": "tentative"
                         }
                       }
@@ -1192,7 +1125,7 @@
                       "event": {
                         "name": "rsvp-toggle",
                         "context": {
-                          "eventId": "o49vnbegq501jme5all5bt82eo",
+                          "eventId": "96bo794ni061s93l98v7lj1o7k",
                           "responseStatus": "accepted"
                         }
                       }
@@ -1201,7 +1134,7 @@
                   {
                     "id": "yes-label",
                     "component": "Text",
-                    "text": "Accepted"
+                    "text": "Accept"
                   },
                   {
                     "id": "loading_no",
@@ -1209,14 +1142,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
+                "surfaceId": "rsvp-96bo794ni061s93l98v7lj1o7k"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 12545,
+          "offsetMs": 16794,
           "messages": [
             {
               "version": "v0.9",
@@ -1237,10 +1170,7 @@
                     "children": [
                       "heading",
                       "when",
-                      "location",
                       "current",
-                      "divider",
-                      "description",
                       "actions"
                     ]
                   },
@@ -1253,30 +1183,11 @@
                     }
                   },
                   {
-                    "id": "description",
-                    "component": "Text",
-                    "text": {
-                      "path": "/description"
-                    }
-                  },
-                  {
-                    "id": "divider",
-                    "component": "Divider"
-                  },
-                  {
                     "id": "heading",
                     "component": "Text",
                     "variant": "h3",
                     "text": {
                       "path": "/summary"
-                    }
-                  },
-                  {
-                    "id": "location",
-                    "component": "Text",
-                    "variant": "caption",
-                    "text": {
-                      "path": "/location"
                     }
                   },
                   {
@@ -1288,7 +1199,124 @@
                       "event": {
                         "name": "rsvp-toggle",
                         "context": {
-                          "eventId": "o49vnbegq501jme5all5bt82eo",
+                          "eventId": "96bo794ni061s93l98v7lj1o7k",
+                          "responseStatus": "tentative"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "maybe-label",
+                    "component": "Text",
+                    "text": "Maybe"
+                  },
+                  {
+                    "id": "no",
+                    "component": "Button",
+                    "variant": "default",
+                    "child": "loading_no-label",
+                    "action": {
+                      "event": {
+                        "name": "rsvp-toggle"
+                      }
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "when",
+                    "component": "Text",
+                    "text": {
+                      "path": "/when"
+                    }
+                  },
+                  {
+                    "id": "yes",
+                    "component": "Button",
+                    "variant": "primary",
+                    "child": "yes-label",
+                    "action": {
+                      "event": {
+                        "name": "rsvp-toggle",
+                        "context": {
+                          "eventId": "96bo794ni061s93l98v7lj1o7k",
+                          "responseStatus": "accepted"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "yes-label",
+                    "component": "Text",
+                    "text": "Accept"
+                  },
+                  {
+                    "id": "loading_no-label",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "rsvp-96bo794ni061s93l98v7lj1o7k"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 16930,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "actions",
+                    "component": "Row",
+                    "children": [
+                      "yes",
+                      "maybe",
+                      "no"
+                    ]
+                  },
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "when",
+                      "current",
+                      "actions"
+                    ]
+                  },
+                  {
+                    "id": "current",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/current"
+                    }
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": {
+                      "path": "/summary"
+                    }
+                  },
+                  {
+                    "id": "maybe",
+                    "component": "Button",
+                    "variant": "default",
+                    "child": "maybe-label",
+                    "action": {
+                      "event": {
+                        "name": "rsvp-toggle",
+                        "context": {
+                          "eventId": "96bo794ni061s93l98v7lj1o7k",
                           "responseStatus": "tentative"
                         }
                       }
@@ -1308,7 +1336,7 @@
                       "event": {
                         "name": "rsvp-toggle",
                         "context": {
-                          "eventId": "o49vnbegq501jme5all5bt82eo",
+                          "eventId": "96bo794ni061s93l98v7lj1o7k",
                           "responseStatus": "declined"
                         }
                       }
@@ -1335,7 +1363,7 @@
                       "event": {
                         "name": "rsvp-toggle",
                         "context": {
-                          "eventId": "o49vnbegq501jme5all5bt82eo",
+                          "eventId": "96bo794ni061s93l98v7lj1o7k",
                           "responseStatus": "accepted"
                         }
                       }
@@ -1344,7 +1372,7 @@
                   {
                     "id": "yes-label",
                     "component": "Text",
-                    "text": "Accepted"
+                    "text": "Accept"
                   },
                   {
                     "id": "loading_no-label",
@@ -1352,14 +1380,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
+                "surfaceId": "rsvp-96bo794ni061s93l98v7lj1o7k"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 12680,
+          "offsetMs": 17069,
           "messages": [
             {
               "version": "v0.9",
@@ -1380,10 +1408,7 @@
                     "children": [
                       "heading",
                       "when",
-                      "location",
                       "current",
-                      "divider",
-                      "description",
                       "actions"
                     ]
                   },
@@ -1396,30 +1421,11 @@
                     }
                   },
                   {
-                    "id": "description",
-                    "component": "Text",
-                    "text": {
-                      "path": "/description"
-                    }
-                  },
-                  {
-                    "id": "divider",
-                    "component": "Divider"
-                  },
-                  {
                     "id": "heading",
                     "component": "Text",
                     "variant": "h3",
                     "text": {
                       "path": "/summary"
-                    }
-                  },
-                  {
-                    "id": "location",
-                    "component": "Text",
-                    "variant": "caption",
-                    "text": {
-                      "path": "/location"
                     }
                   },
                   {
@@ -1431,7 +1437,7 @@
                       "event": {
                         "name": "rsvp-toggle",
                         "context": {
-                          "eventId": "o49vnbegq501jme5all5bt82eo",
+                          "eventId": "96bo794ni061s93l98v7lj1o7k",
                           "responseStatus": "tentative"
                         }
                       }
@@ -1451,7 +1457,7 @@
                       "event": {
                         "name": "rsvp-toggle",
                         "context": {
-                          "eventId": "o49vnbegq501jme5all5bt82eo",
+                          "eventId": "96bo794ni061s93l98v7lj1o7k",
                           "responseStatus": "declined"
                         }
                       }
@@ -1483,7 +1489,7 @@
                       "event": {
                         "name": "rsvp-toggle",
                         "context": {
-                          "eventId": "o49vnbegq501jme5all5bt82eo",
+                          "eventId": "96bo794ni061s93l98v7lj1o7k",
                           "responseStatus": "accepted"
                         }
                       }
@@ -1492,10 +1498,10 @@
                   {
                     "id": "yes-label",
                     "component": "Text",
-                    "text": "Accepted"
+                    "text": "Accept"
                   }
                 ],
-                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
+                "surfaceId": "rsvp-96bo794ni061s93l98v7lj1o7k"
               }
             }
           ],
@@ -1503,7 +1509,7 @@
         }
       ],
       "outcome": "completed",
-      "durationMs": 12861
+      "durationMs": 17263
     }
   ]
 }

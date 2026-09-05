@@ -4,23 +4,23 @@
   "title": "Propose-and-confirm event",
   "prompt": "Put half an hour with the design team on Thursday afternoon.",
   "model": "gemini-3.7-flash",
-  "recordedAt": "2026-08-30T06:13:32+00:00",
-  "contextId": "ff14f378-f15c-48d8-98aa-82a7a94f9fda",
+  "recordedAt": "2026-09-05T06:10:58+00:00",
+  "contextId": "1f5615d9-5590-4b2e-bd94-f10d8b9827a3",
   "chainedFrom": "beat-2-event-detail",
   "turns": [
     {
-      "taskId": "f4c758d8-4b39-469e-b595-4784eb8179de",
+      "taskId": "8a89f673-7bb4-48a5-bb5e-2fd843ff5f67",
       "kind": "utterance",
       "prompt": "Put half an hour with the design team on Thursday afternoon.",
       "action": null,
       "batches": [
         {
-          "offsetMs": 5349,
+          "offsetMs": 6116,
           "messages": [
             {
               "paintMeta": {
                 "surfaceId": "propose-event",
-                "title": "New event",
+                "title": "Create event?",
                 "kind": "question"
               }
             }
@@ -30,7 +30,7 @@
           ]
         },
         {
-          "offsetMs": 5354,
+          "offsetMs": 6248,
           "messages": [
             {
               "version": "v0.9",
@@ -44,7 +44,7 @@
           "texts": []
         },
         {
-          "offsetMs": 5469,
+          "offsetMs": 6371,
           "messages": [
             {
               "version": "v0.9",
@@ -59,7 +59,22 @@
           "texts": []
         },
         {
-          "offsetMs": 5522,
+          "offsetMs": 6438,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "propose-event",
+                "value": {
+                  "when": "Thursday, 14:00 \u2013 14:30"
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 6495,
           "messages": [
             {
               "version": "v0.9",
@@ -69,7 +84,7 @@
                 "value": {
                   "summary": "Design team sync",
                   "when": "Thursday, 14:00 \u2013 14:30",
-                  "guests": "Alex Bergman, Mei Silva"
+                  "guests": "Alex Bergman, Mei Silva, Idris Haddad"
                 }
               }
             }
@@ -77,7 +92,7 @@
           "texts": []
         },
         {
-          "offsetMs": 5710,
+          "offsetMs": 6697,
           "messages": [
             {
               "version": "v0.9",
@@ -101,7 +116,7 @@
           "texts": []
         },
         {
-          "offsetMs": 5773,
+          "offsetMs": 6768,
           "messages": [
             {
               "version": "v0.9",
@@ -162,7 +177,68 @@
           "texts": []
         },
         {
-          "offsetMs": 5833,
+          "offsetMs": 6831,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "loading_title-field",
+                      "loading_when-row",
+                      "loading_guests-row",
+                      "loading_notice",
+                      "loading_actions"
+                    ]
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "loading_title-field",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_when-row",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_guests-row",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_notice",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "propose-event"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 6894,
           "messages": [
             {
               "version": "v0.9",
@@ -224,7 +300,7 @@
           "texts": []
         },
         {
-          "offsetMs": 5962,
+          "offsetMs": 7028,
           "messages": [
             {
               "version": "v0.9",
@@ -289,7 +365,7 @@
           "texts": []
         },
         {
-          "offsetMs": 6083,
+          "offsetMs": 7174,
           "messages": [
             {
               "version": "v0.9",
@@ -368,7 +444,7 @@
           "texts": []
         },
         {
-          "offsetMs": 6151,
+          "offsetMs": 7239,
           "messages": [
             {
               "version": "v0.9",
@@ -448,7 +524,7 @@
           "texts": []
         },
         {
-          "offsetMs": 6287,
+          "offsetMs": 7365,
           "messages": [
             {
               "version": "v0.9",
@@ -530,7 +606,7 @@
           "texts": []
         },
         {
-          "offsetMs": 6412,
+          "offsetMs": 7512,
           "messages": [
             {
               "version": "v0.9",
@@ -626,7 +702,7 @@
           "texts": []
         },
         {
-          "offsetMs": 6478,
+          "offsetMs": 7640,
           "messages": [
             {
               "version": "v0.9",
@@ -723,7 +799,7 @@
           "texts": []
         },
         {
-          "offsetMs": 6611,
+          "offsetMs": 7713,
           "messages": [
             {
               "version": "v0.9",
@@ -822,7 +898,7 @@
           "texts": []
         },
         {
-          "offsetMs": 6672,
+          "offsetMs": 7850,
           "messages": [
             {
               "version": "v0.9",
@@ -872,7 +948,7 @@
                     "id": "notice",
                     "component": "Text",
                     "variant": "caption",
-                    "text": "Guests will not be notified \u2014 the event appears on their calendar, but no"
+                    "text": "Guests will not be notified \u2014 the event appears on their calendar, but no invitation is sent. You will need"
                   },
                   {
                     "id": "root",
@@ -922,12 +998,16 @@
           "texts": []
         },
         {
-          "offsetMs": 6734,
+          "offsetMs": 7927,
           "messages": [
             {
               "version": "v0.9",
               "updateComponents": {
                 "components": [
+                  {
+                    "id": "actions",
+                    "component": "Row"
+                  },
                   {
                     "id": "body",
                     "component": "Column",
@@ -937,7 +1017,7 @@
                       "when-row",
                       "guests-row",
                       "notice",
-                      "loading_actions"
+                      "actions"
                     ]
                   },
                   {
@@ -1008,11 +1088,6 @@
                     "text": {
                       "path": "/when"
                     }
-                  },
-                  {
-                    "id": "loading_actions",
-                    "component": "Row",
-                    "children": []
                   }
                 ],
                 "surfaceId": "propose-event"
@@ -1022,7 +1097,7 @@
           "texts": []
         },
         {
-          "offsetMs": 6807,
+          "offsetMs": 7990,
           "messages": [
             {
               "version": "v0.9",
@@ -1135,7 +1210,120 @@
           "texts": []
         },
         {
-          "offsetMs": 6994,
+          "offsetMs": 8068,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "actions",
+                    "component": "Row",
+                    "children": [
+                      "create",
+                      "loading_discard"
+                    ]
+                  },
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "title-field",
+                      "when-row",
+                      "guests-row",
+                      "notice",
+                      "actions"
+                    ]
+                  },
+                  {
+                    "id": "create",
+                    "component": "Button",
+                    "variant": "primary"
+                  },
+                  {
+                    "id": "guests-label",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "GUESTS"
+                  },
+                  {
+                    "id": "guests-row",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "guests-label",
+                      "guests-value"
+                    ]
+                  },
+                  {
+                    "id": "guests-value",
+                    "component": "Text",
+                    "text": {
+                      "path": "/guests"
+                    }
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "Create this event?"
+                  },
+                  {
+                    "id": "notice",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "Guests will not be notified \u2014 the event appears on their calendar, but no invitation is sent. You will need to tell them yourself."
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "title-field",
+                    "component": "TextField",
+                    "label": "Title",
+                    "value": {
+                      "path": "/summary"
+                    }
+                  },
+                  {
+                    "id": "when-label",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "WHEN"
+                  },
+                  {
+                    "id": "when-row",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "when-label",
+                      "when-value"
+                    ]
+                  },
+                  {
+                    "id": "when-value",
+                    "component": "Text",
+                    "text": {
+                      "path": "/when"
+                    }
+                  },
+                  {
+                    "id": "loading_discard",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "propose-event"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 8215,
           "messages": [
             {
               "version": "v0.9",
@@ -1262,7 +1450,7 @@
           "texts": []
         },
         {
-          "offsetMs": 7117,
+          "offsetMs": 8381,
           "messages": [
             {
               "version": "v0.9",
@@ -1389,7 +1577,7 @@
           "texts": []
         },
         {
-          "offsetMs": 7248,
+          "offsetMs": 8594,
           "messages": [
             {
               "version": "v0.9",
@@ -1530,7 +1718,148 @@
           "texts": []
         },
         {
-          "offsetMs": 7390,
+          "offsetMs": 8673,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "actions",
+                    "component": "Row",
+                    "children": [
+                      "create",
+                      "discard"
+                    ]
+                  },
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "title-field",
+                      "when-row",
+                      "guests-row",
+                      "notice",
+                      "actions"
+                    ]
+                  },
+                  {
+                    "id": "create",
+                    "component": "Button",
+                    "variant": "primary",
+                    "child": "create-label",
+                    "action": {
+                      "event": {
+                        "name": "confirm-event",
+                        "context": {
+                          "proposalId": "propose-event"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "create-label",
+                    "component": "Text",
+                    "text": "Create event"
+                  },
+                  {
+                    "id": "discard",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "discard-label",
+                    "action": {
+                      "event": {
+                        "name": "cancel-event",
+                        "context": {
+                          "proposalId": "propose-event"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "discard-label",
+                    "component": "Text",
+                    "text": ""
+                  },
+                  {
+                    "id": "guests-label",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "GUESTS"
+                  },
+                  {
+                    "id": "guests-row",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "guests-label",
+                      "guests-value"
+                    ]
+                  },
+                  {
+                    "id": "guests-value",
+                    "component": "Text",
+                    "text": {
+                      "path": "/guests"
+                    }
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": "Create this event?"
+                  },
+                  {
+                    "id": "notice",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "Guests will not be notified \u2014 the event appears on their calendar, but no invitation is sent. You will need to tell them yourself."
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "title-field",
+                    "component": "TextField",
+                    "label": "Title",
+                    "value": {
+                      "path": "/summary"
+                    }
+                  },
+                  {
+                    "id": "when-label",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": "WHEN"
+                  },
+                  {
+                    "id": "when-row",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "when-label",
+                      "when-value"
+                    ]
+                  },
+                  {
+                    "id": "when-value",
+                    "component": "Text",
+                    "text": {
+                      "path": "/when"
+                    }
+                  }
+                ],
+                "surfaceId": "propose-event"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 8734,
           "messages": [
             {
               "version": "v0.9",
@@ -1672,7 +2001,7 @@
         }
       ],
       "outcome": "completed",
-      "durationMs": 7516
+      "durationMs": 8864
     }
   ]
 }

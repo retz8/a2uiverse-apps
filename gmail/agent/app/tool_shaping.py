@@ -82,7 +82,9 @@ _ADDRESS_KEYS = frozenset(
 )
 
 # Values under these keys are free prose.
-_TEXT_KEYS = frozenset({"subject", "snippet", "body", "htmlBody", "textBody", "preview"})
+_TEXT_KEYS = frozenset(
+    {"subject", "snippet", "body", "htmlBody", "textBody", "preview", "plaintextBody"}
+)
 
 # Gmail's own labels. Their names are protocol, not content: the agent's logic and the domain
 # doc both key on them, and they say nothing about the person. USER labels are the opposite —
@@ -177,6 +179,12 @@ def pseudonymize(value: Any, key: str | None = None) -> Any:
             return _fake_prose(value)
         if key == "name" and not _is_system_label(value):
             return _fake_prose(value)
+        # Backstop, for the same reason `scrub_tool_result` walks every branch: the key sets
+        # above are the shapes we happen to know, and a payload that carries an address under
+        # a new one leaks it in full. `plaintextBody` was exactly that (task 5.6) — Gmail
+        # returns the body under a key `_TEXT_KEYS` did not list, so a real recipient address
+        # reached a tracked fixture with the pseudonymizer reporting success.
+        return _ADDRESS_IN_TEXT.sub(lambda m: _fake_address(m.group(0)), value)
     return value
 
 

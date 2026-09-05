@@ -2,6 +2,9 @@
   "labels": [
     {
       "labelId": "CHAT",
+      "labelListVisibility": "LABEL_HIDE",
+      "labelType": "SYSTEM",
+      "messageListVisibility": "HIDE",
       "messagesTotal": 0,
       "messagesUnread": 0,
       "name": "CHAT",
@@ -10,6 +13,7 @@
     },
     {
       "labelId": "SENT",
+      "labelType": "SYSTEM",
       "messagesTotal": 0,
       "messagesUnread": 0,
       "name": "SENT",
@@ -18,6 +22,7 @@
     },
     {
       "labelId": "INBOX",
+      "labelType": "SYSTEM",
       "messagesTotal": 0,
       "messagesUnread": 0,
       "name": "INBOX",
@@ -26,6 +31,9 @@
     },
     {
       "labelId": "IMPORTANT",
+      "labelListVisibility": "LABEL_HIDE",
+      "labelType": "SYSTEM",
+      "messageListVisibility": "HIDE",
       "messagesTotal": 0,
       "messagesUnread": 0,
       "name": "IMPORTANT",
@@ -34,6 +42,9 @@
     },
     {
       "labelId": "TRASH",
+      "labelListVisibility": "LABEL_HIDE",
+      "labelType": "SYSTEM",
+      "messageListVisibility": "HIDE",
       "messagesTotal": 0,
       "messagesUnread": 0,
       "name": "TRASH",
@@ -42,6 +53,9 @@
     },
     {
       "labelId": "DRAFT",
+      "labelListVisibility": "LABEL_SHOW",
+      "labelType": "SYSTEM",
+      "messageListVisibility": "HIDE",
       "messagesTotal": 0,
       "messagesUnread": 0,
       "name": "DRAFT",
@@ -50,6 +64,9 @@
     },
     {
       "labelId": "SPAM",
+      "labelListVisibility": "LABEL_HIDE",
+      "labelType": "SYSTEM",
+      "messageListVisibility": "HIDE",
       "messagesTotal": 0,
       "messagesUnread": 0,
       "name": "SPAM",
@@ -58,6 +75,7 @@
     },
     {
       "labelId": "STARRED",
+      "labelType": "SYSTEM",
       "messagesTotal": 0,
       "messagesUnread": 0,
       "name": "STARRED",
@@ -66,6 +84,7 @@
     },
     {
       "labelId": "UNREAD",
+      "labelType": "SYSTEM",
       "messagesTotal": 0,
       "messagesUnread": 0,
       "name": "UNREAD",
@@ -74,6 +93,7 @@
     },
     {
       "labelId": "Label_1",
+      "labelType": "USER",
       "messagesTotal": 0,
       "messagesUnread": 0,
       "name": "question agen",

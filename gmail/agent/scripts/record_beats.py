@@ -29,11 +29,17 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_RECORD_DIR = REPO_ROOT / ".recordings"
 FIXTURE_DIR = REPO_ROOT / "recordings" / "beats"
 
+# The today beat's prompt is the Planner's own request, read from the intent journal of a
+# live composed turn and pinned verbatim (task-5.6 decision 2): in a composed turn a vendor
+# never receives the user's utterance, only this.
 # The four beats (task-2.6 decision 9), one per kind of surface: list, detail, creating
 # write, toggling write. Beats 2 and 3 chain onto beat 1s conversation, so a reply is
 # drafted against a thread the run actually opened.
 BEATS: list[Turn] = [
-    Turn(1, "inbox-digest", "Inbox digest", "What needs my attention today?"),
+    Turn(1, "inbox-digest", "Inbox digest",
+         "What emails need my attention today, especially those waiting on a reply or "
+         "unread? Provide a brief description of the thread and the time of the latest "
+         "message, along with an identifier."),
     Turn(2, "thread-detail", "Thread detail", "Open the most recent one of those.", chains=True),
     Turn(3, "reply-compose", "Compose-and-confirm reply",
          "Draft a short reply saying I will get to it this week.", chains=True),

@@ -1,0 +1,227 @@
+[
+  {
+    "version": "v0.9",
+    "createSurface": {
+      "surfaceId": "prs-needing-attention",
+      "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/github/github-catalog/catalogs/v0.9.1/catalog.json",
+      "sendDataModel": true
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "prs-needing-attention",
+      "value": {
+        "totalCount": 1
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "prs-needing-attention",
+      "value": {
+        "prs": [
+          {
+            "number": 11,
+            "title": "superookie crawler",
+            "meta": "KISA-webpage-development-team/KISA-website-server#11 · opened by dkim1112 · Crawler for superookie.com website"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "prs-needing-attention",
+      "value": {
+        "prs": [
+          {
+            "number": 11,
+            "title": "superookie crawler",
+            "meta": "KISA-webpage-development-team/KISA-website-server#11 · opened by dkim1112 · Crawler for superookie.com website",
+            "updatedAt": "2025-08-10T09:25:10Z"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "prs-needing-attention",
+      "path": "/",
+      "value": {
+        "totalCount": 1,
+        "prs": [
+          {
+            "number": 11,
+            "title": "superookie crawler",
+            "meta": "KISA-webpage-development-team/KISA-website-server#11 · opened by dkim1112 · Crawler for superookie.com website",
+            "updatedAt": "2025-08-10T09:25:10Z",
+            "repository": "KISA-webpage-development-team/KISA-website-server"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateComponents": {
+      "components": [
+        {
+          "id": "root",
+          "component": "Stack",
+          "direction": "vertical",
+          "gap": "normal",
+          "padding": "normal",
+          "children": [
+            "header-stack",
+            "description",
+            "list"
+          ]
+        },
+        {
+          "id": "header-stack",
+          "component": "Stack",
+          "direction": "horizontal",
+          "justify": "space-between",
+          "align": "center",
+          "children": [
+            "header-left",
+            "header-badge"
+          ]
+        },
+        {
+          "id": "header-left",
+          "component": "Stack",
+          "direction": "horizontal",
+          "gap": "condensed",
+          "align": "center",
+          "children": [
+            "header-icon",
+            "title",
+            "count-label"
+          ]
+        },
+        {
+          "id": "header-icon",
+          "component": "Icon",
+          "name": "git-pull-request",
+          "fill": "attention",
+          "accessibility": {
+            "label": "Review Requests"
+          }
+        },
+        {
+          "id": "title",
+          "component": "Heading",
+          "text": "Pull Requests Needing Attention",
+          "as": "h1",
+          "variant": "small"
+        },
+        {
+          "id": "count-label",
+          "component": "CounterLabel",
+          "count": {
+            "path": "/totalCount"
+          },
+          "variant": "primary"
+        },
+        {
+          "id": "header-badge",
+          "component": "Label",
+          "text": "Review Requested",
+          "variant": "attention"
+        },
+        {
+          "id": "description",
+          "component": "Text",
+          "text": "Open pull requests waiting on your review.",
+          "size": "small"
+        },
+        {
+          "id": "list",
+          "component": "ActionList",
+          "role": "listbox",
+          "showDividers": true,
+          "children": {
+            "componentId": "pr-row",
+            "path": "/prs"
+          }
+        },
+        {
+          "id": "pr-row",
+          "component": "ActionList.Item",
+          "children": [
+            "row-lv",
+            "row-title",
+            "row-desc",
+            "row-tv"
+          ],
+          "action": {
+            "event": {
+              "name": "open-pull-request",
+              "context": {
+                "repository": {
+                  "path": "repository"
+                },
+                "number": {
+                  "path": "number"
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "row-lv",
+          "component": "ActionList.LeadingVisual",
+          "children": [
+            "row-icon"
+          ]
+        },
+        {
+          "id": "row-icon",
+          "component": "Icon",
+          "name": "git-pull-request",
+          "fill": "open",
+          "accessibility": {
+            "label": "Open Pull Request"
+          }
+        },
+        {
+          "id": "row-title",
+          "component": "Text",
+          "text": {
+            "path": "title"
+          },
+          "weight": "semibold"
+        },
+        {
+          "id": "row-desc",
+          "component": "ActionList.Description",
+          "text": {
+            "path": "meta"
+          },
+          "variant": "block"
+        },
+        {
+          "id": "row-tv",
+          "component": "ActionList.TrailingVisual",
+          "children": [
+            "row-time"
+          ]
+        },
+        {
+          "id": "row-time",
+          "component": "RelativeTime",
+          "datetime": {
+            "path": "updatedAt"
+          },
+          "format": "relative"
+        }
+      ]
+    }
+  }
+]

@@ -4,23 +4,23 @@
   "title": "Label toggle",
   "prompt": "What labels do I have?",
   "model": "gemini-3.7-flash",
-  "recordedAt": "2026-08-30T04:30:12+00:00",
-  "contextId": "905909b7-9517-4ed2-b294-71b55185a77a",
+  "recordedAt": "2026-09-05T06:09:25+00:00",
+  "contextId": "f98c8be6-7e69-4b85-9d9d-160f0df324b3",
   "chainedFrom": null,
   "turns": [
     {
-      "taskId": "65a8db77-82eb-4080-9e05-a0abf52d8e85",
+      "taskId": "d989d88f-404b-4d03-82ac-d48d043b2501",
       "kind": "utterance",
       "prompt": "What labels do I have?",
       "action": null,
       "batches": [
         {
-          "offsetMs": 13398,
+          "offsetMs": 12979,
           "messages": [
             {
               "paintMeta": {
-                "surfaceId": "labels",
-                "title": "Your labels"
+                "surfaceId": "labels-list",
+                "title": "Labels"
               }
             }
           ],
@@ -29,12 +29,12 @@
           ]
         },
         {
-          "offsetMs": 13417,
+          "offsetMs": 13093,
           "messages": [
             {
               "version": "v0.9",
               "createSurface": {
-                "surfaceId": "labels",
+                "surfaceId": "labels-list",
                 "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/gmail/gmail-catalog/catalogs/v0.9.1/catalog.json",
                 "sendDataModel": true
               }
@@ -43,22 +43,22 @@
           "texts": []
         },
         {
-          "offsetMs": 13582,
+          "offsetMs": 13283,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "labels",
+                "surfaceId": "labels-list",
                 "value": {
                   "labels": [
                     {
                       "id": "Label_1",
                       "name": "question agen",
-                      "type": "User label",
-                      "count": "0 threads"
+                      "type": "User label"
                     },
                     {
-                      "id": "INBOX"
+                      "id": "INBOX",
+                      "name": "INBOX"
                     }
                   ]
                 }
@@ -68,24 +68,26 @@
           "texts": []
         },
         {
-          "offsetMs": 13641,
+          "offsetMs": 13338,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "labels",
+                "surfaceId": "labels-list",
                 "value": {
                   "labels": [
                     {
                       "id": "Label_1",
                       "name": "question agen",
-                      "type": "User label",
-                      "count": "0 threads"
+                      "type": "User label"
                     },
                     {
                       "id": "INBOX",
                       "name": "INBOX",
-                      "type": "System label"
+                      "type": "System"
+                    },
+                    {
+                      "id": "UNREAD"
                     }
                   ]
                 }
@@ -95,25 +97,145 @@
           "texts": []
         },
         {
-          "offsetMs": 13693,
+          "offsetMs": 13398,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "labels",
+                "surfaceId": "labels-list",
                 "value": {
                   "labels": [
                     {
                       "id": "Label_1",
                       "name": "question agen",
-                      "type": "User label",
-                      "count": "0 threads"
+                      "type": "User label"
                     },
                     {
                       "id": "INBOX",
                       "name": "INBOX",
-                      "type": "System label",
-                      "count": "14,730 threads (9,473 unread)"
+                      "type": "System"
+                    },
+                    {
+                      "id": "UNREAD",
+                      "name": "UNREAD",
+                      "type": "System"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 13462,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "labels-list",
+                "value": {
+                  "labels": [
+                    {
+                      "id": "Label_1",
+                      "name": "question agen",
+                      "type": "User label"
+                    },
+                    {
+                      "id": "INBOX",
+                      "name": "INBOX",
+                      "type": "System"
+                    },
+                    {
+                      "id": "UNREAD",
+                      "name": "UNREAD",
+                      "type": "System"
+                    },
+                    {
+                      "id": "STARRED",
+                      "name": "STARRED",
+                      "type": "System"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 13516,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "labels-list",
+                "value": {
+                  "labels": [
+                    {
+                      "id": "Label_1",
+                      "name": "question agen",
+                      "type": "User label"
+                    },
+                    {
+                      "id": "INBOX",
+                      "name": "INBOX",
+                      "type": "System"
+                    },
+                    {
+                      "id": "UNREAD",
+                      "name": "UNREAD",
+                      "type": "System"
+                    },
+                    {
+                      "id": "STARRED",
+                      "name": "STARRED",
+                      "type": "System"
+                    },
+                    {
+                      "id": "IMPORTANT",
+                      "name": "IMPORTANT"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 13587,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "labels-list",
+                "value": {
+                  "labels": [
+                    {
+                      "id": "Label_1",
+                      "name": "question agen",
+                      "type": "User label"
+                    },
+                    {
+                      "id": "INBOX",
+                      "name": "INBOX",
+                      "type": "System"
+                    },
+                    {
+                      "id": "UNREAD",
+                      "name": "UNREAD",
+                      "type": "System"
+                    },
+                    {
+                      "id": "STARRED",
+                      "name": "STARRED",
+                      "type": "System"
+                    },
+                    {
+                      "id": "IMPORTANT",
+                      "name": "IMPORTANT",
+                      "type": "System"
                     },
                     {
                       "id": "SENT",
@@ -127,208 +249,46 @@
           "texts": []
         },
         {
-          "offsetMs": 13763,
+          "offsetMs": 13646,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "labels",
+                "surfaceId": "labels-list",
                 "value": {
                   "labels": [
                     {
                       "id": "Label_1",
                       "name": "question agen",
-                      "type": "User label",
-                      "count": "0 threads"
+                      "type": "User label"
                     },
                     {
                       "id": "INBOX",
                       "name": "INBOX",
-                      "type": "System label",
-                      "count": "14,730 threads (9,473 unread)"
-                    },
-                    {
-                      "id": "SENT",
-                      "name": "SENT",
-                      "type": "System label",
-                      "count": "271 threads (7 unread)"
-                    }
-                  ]
-                }
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 13829,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateDataModel": {
-                "surfaceId": "labels",
-                "value": {
-                  "labels": [
-                    {
-                      "id": "Label_1",
-                      "name": "question agen",
-                      "type": "User label",
-                      "count": "0 threads"
-                    },
-                    {
-                      "id": "INBOX",
-                      "name": "INBOX",
-                      "type": "System label",
-                      "count": "14,730 threads (9,473 unread)"
-                    },
-                    {
-                      "id": "SENT",
-                      "name": "SENT",
-                      "type": "System label",
-                      "count": "271 threads (7 unread)"
-                    },
-                    {
-                      "id": "IMPORTANT",
-                      "name": "IMPORTANT",
-                      "type": "System label"
-                    }
-                  ]
-                }
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 13894,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateDataModel": {
-                "surfaceId": "labels",
-                "value": {
-                  "labels": [
-                    {
-                      "id": "Label_1",
-                      "name": "question agen",
-                      "type": "User label",
-                      "count": "0 threads"
-                    },
-                    {
-                      "id": "INBOX",
-                      "name": "INBOX",
-                      "type": "System label",
-                      "count": "14,730 threads (9,473 unread)"
-                    },
-                    {
-                      "id": "SENT",
-                      "name": "SENT",
-                      "type": "System label",
-                      "count": "271 threads (7 unread)"
-                    },
-                    {
-                      "id": "IMPORTANT",
-                      "name": "IMPORTANT",
-                      "type": "System label",
-                      "count": "4,408 threads (1,822 unread)"
-                    }
-                  ]
-                }
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 13953,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateDataModel": {
-                "surfaceId": "labels",
-                "value": {
-                  "labels": [
-                    {
-                      "id": "Label_1",
-                      "name": "question agen",
-                      "type": "User label",
-                      "count": "0 threads"
-                    },
-                    {
-                      "id": "INBOX",
-                      "name": "INBOX",
-                      "type": "System label",
-                      "count": "14,730 threads (9,473 unread)"
-                    },
-                    {
-                      "id": "SENT",
-                      "name": "SENT",
-                      "type": "System label",
-                      "count": "271 threads (7 unread)"
-                    },
-                    {
-                      "id": "IMPORTANT",
-                      "name": "IMPORTANT",
-                      "type": "System label",
-                      "count": "4,408 threads (1,822 unread)"
+                      "type": "System"
                     },
                     {
                       "id": "UNREAD",
                       "name": "UNREAD",
-                      "type": "System label",
-                      "count": "9,480 threads"
-                    },
-                    {}
-                  ]
-                }
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 14017,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateDataModel": {
-                "surfaceId": "labels",
-                "value": {
-                  "labels": [
-                    {
-                      "id": "Label_1",
-                      "name": "question agen",
-                      "type": "User label",
-                      "count": "0 threads"
-                    },
-                    {
-                      "id": "INBOX",
-                      "name": "INBOX",
-                      "type": "System label",
-                      "count": "14,730 threads (9,473 unread)"
-                    },
-                    {
-                      "id": "SENT",
-                      "name": "SENT",
-                      "type": "System label",
-                      "count": "271 threads (7 unread)"
-                    },
-                    {
-                      "id": "IMPORTANT",
-                      "name": "IMPORTANT",
-                      "type": "System label",
-                      "count": "4,408 threads (1,822 unread)"
-                    },
-                    {
-                      "id": "UNREAD",
-                      "name": "UNREAD",
-                      "type": "System label",
-                      "count": "9,480 threads"
+                      "type": "System"
                     },
                     {
                       "id": "STARRED",
                       "name": "STARRED",
-                      "type": "System label"
+                      "type": "System"
+                    },
+                    {
+                      "id": "IMPORTANT",
+                      "name": "IMPORTANT",
+                      "type": "System"
+                    },
+                    {
+                      "id": "SENT",
+                      "name": "SENT",
+                      "type": "System"
+                    },
+                    {
+                      "id": "DRAFT"
                     }
                   ]
                 }
@@ -338,111 +298,48 @@
           "texts": []
         },
         {
-          "offsetMs": 14070,
+          "offsetMs": 13709,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "labels",
+                "surfaceId": "labels-list",
                 "value": {
                   "labels": [
                     {
                       "id": "Label_1",
                       "name": "question agen",
-                      "type": "User label",
-                      "count": "0 threads"
+                      "type": "User label"
                     },
                     {
                       "id": "INBOX",
                       "name": "INBOX",
-                      "type": "System label",
-                      "count": "14,730 threads (9,473 unread)"
-                    },
-                    {
-                      "id": "SENT",
-                      "name": "SENT",
-                      "type": "System label",
-                      "count": "271 threads (7 unread)"
-                    },
-                    {
-                      "id": "IMPORTANT",
-                      "name": "IMPORTANT",
-                      "type": "System label",
-                      "count": "4,408 threads (1,822 unread)"
+                      "type": "System"
                     },
                     {
                       "id": "UNREAD",
                       "name": "UNREAD",
-                      "type": "System label",
-                      "count": "9,480 threads"
+                      "type": "System"
                     },
                     {
                       "id": "STARRED",
                       "name": "STARRED",
-                      "type": "System label",
-                      "count": "0 threads"
-                    },
-                    {
-                      "id": "DRAFT",
-                      "name": "DRAFT"
-                    }
-                  ]
-                }
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 14134,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateDataModel": {
-                "surfaceId": "labels",
-                "value": {
-                  "labels": [
-                    {
-                      "id": "Label_1",
-                      "name": "question agen",
-                      "type": "User label",
-                      "count": "0 threads"
-                    },
-                    {
-                      "id": "INBOX",
-                      "name": "INBOX",
-                      "type": "System label",
-                      "count": "14,730 threads (9,473 unread)"
-                    },
-                    {
-                      "id": "SENT",
-                      "name": "SENT",
-                      "type": "System label",
-                      "count": "271 threads (7 unread)"
+                      "type": "System"
                     },
                     {
                       "id": "IMPORTANT",
                       "name": "IMPORTANT",
-                      "type": "System label",
-                      "count": "4,408 threads (1,822 unread)"
+                      "type": "System"
                     },
                     {
-                      "id": "UNREAD",
-                      "name": "UNREAD",
-                      "type": "System label",
-                      "count": "9,480 threads"
-                    },
-                    {
-                      "id": "STARRED",
-                      "name": "STARRED",
-                      "type": "System label",
-                      "count": "0 threads"
+                      "id": "SENT",
+                      "name": "SENT",
+                      "type": "System"
                     },
                     {
                       "id": "DRAFT",
                       "name": "DRAFT",
-                      "type": "System label",
-                      "count": "13 threads"
+                      "type": "System"
                     }
                   ]
                 }
@@ -452,60 +349,53 @@
           "texts": []
         },
         {
-          "offsetMs": 14194,
+          "offsetMs": 13787,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "labels",
+                "surfaceId": "labels-list",
                 "value": {
                   "labels": [
                     {
                       "id": "Label_1",
                       "name": "question agen",
-                      "type": "User label",
-                      "count": "0 threads"
+                      "type": "User label"
                     },
                     {
                       "id": "INBOX",
                       "name": "INBOX",
-                      "type": "System label",
-                      "count": "14,730 threads (9,473 unread)"
-                    },
-                    {
-                      "id": "SENT",
-                      "name": "SENT",
-                      "type": "System label",
-                      "count": "271 threads (7 unread)"
-                    },
-                    {
-                      "id": "IMPORTANT",
-                      "name": "IMPORTANT",
-                      "type": "System label",
-                      "count": "4,408 threads (1,822 unread)"
+                      "type": "System"
                     },
                     {
                       "id": "UNREAD",
                       "name": "UNREAD",
-                      "type": "System label",
-                      "count": "9,480 threads"
+                      "type": "System"
                     },
                     {
                       "id": "STARRED",
                       "name": "STARRED",
-                      "type": "System label",
-                      "count": "0 threads"
+                      "type": "System"
+                    },
+                    {
+                      "id": "IMPORTANT",
+                      "name": "IMPORTANT",
+                      "type": "System"
+                    },
+                    {
+                      "id": "SENT",
+                      "name": "SENT",
+                      "type": "System"
                     },
                     {
                       "id": "DRAFT",
                       "name": "DRAFT",
-                      "type": "System label",
-                      "count": "13 threads"
+                      "type": "System"
                     },
                     {
                       "id": "SPAM",
                       "name": "SPAM",
-                      "type": "System label"
+                      "type": "System"
                     }
                   ]
                 }
@@ -515,64 +405,57 @@
           "texts": []
         },
         {
-          "offsetMs": 14266,
+          "offsetMs": 13849,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "labels",
+                "surfaceId": "labels-list",
                 "value": {
                   "labels": [
                     {
                       "id": "Label_1",
                       "name": "question agen",
-                      "type": "User label",
-                      "count": "0 threads"
+                      "type": "User label"
                     },
                     {
                       "id": "INBOX",
                       "name": "INBOX",
-                      "type": "System label",
-                      "count": "14,730 threads (9,473 unread)"
-                    },
-                    {
-                      "id": "SENT",
-                      "name": "SENT",
-                      "type": "System label",
-                      "count": "271 threads (7 unread)"
-                    },
-                    {
-                      "id": "IMPORTANT",
-                      "name": "IMPORTANT",
-                      "type": "System label",
-                      "count": "4,408 threads (1,822 unread)"
+                      "type": "System"
                     },
                     {
                       "id": "UNREAD",
                       "name": "UNREAD",
-                      "type": "System label",
-                      "count": "9,480 threads"
+                      "type": "System"
                     },
                     {
                       "id": "STARRED",
                       "name": "STARRED",
-                      "type": "System label",
-                      "count": "0 threads"
+                      "type": "System"
+                    },
+                    {
+                      "id": "IMPORTANT",
+                      "name": "IMPORTANT",
+                      "type": "System"
+                    },
+                    {
+                      "id": "SENT",
+                      "name": "SENT",
+                      "type": "System"
                     },
                     {
                       "id": "DRAFT",
                       "name": "DRAFT",
-                      "type": "System label",
-                      "count": "13 threads"
+                      "type": "System"
                     },
                     {
                       "id": "SPAM",
                       "name": "SPAM",
-                      "type": "System label",
-                      "count": "22 threads (21 unread)"
+                      "type": "System"
                     },
                     {
-                      "id": "TRASH"
+                      "id": "TRASH",
+                      "name": "TRASH"
                     }
                   ]
                 }
@@ -582,67 +465,61 @@
           "texts": []
         },
         {
-          "offsetMs": 14329,
+          "offsetMs": 13908,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "labels",
+                "surfaceId": "labels-list",
                 "value": {
                   "labels": [
                     {
                       "id": "Label_1",
                       "name": "question agen",
-                      "type": "User label",
-                      "count": "0 threads"
+                      "type": "User label"
                     },
                     {
                       "id": "INBOX",
                       "name": "INBOX",
-                      "type": "System label",
-                      "count": "14,730 threads (9,473 unread)"
-                    },
-                    {
-                      "id": "SENT",
-                      "name": "SENT",
-                      "type": "System label",
-                      "count": "271 threads (7 unread)"
-                    },
-                    {
-                      "id": "IMPORTANT",
-                      "name": "IMPORTANT",
-                      "type": "System label",
-                      "count": "4,408 threads (1,822 unread)"
+                      "type": "System"
                     },
                     {
                       "id": "UNREAD",
                       "name": "UNREAD",
-                      "type": "System label",
-                      "count": "9,480 threads"
+                      "type": "System"
                     },
                     {
                       "id": "STARRED",
                       "name": "STARRED",
-                      "type": "System label",
-                      "count": "0 threads"
+                      "type": "System"
+                    },
+                    {
+                      "id": "IMPORTANT",
+                      "name": "IMPORTANT",
+                      "type": "System"
+                    },
+                    {
+                      "id": "SENT",
+                      "name": "SENT",
+                      "type": "System"
                     },
                     {
                       "id": "DRAFT",
                       "name": "DRAFT",
-                      "type": "System label",
-                      "count": "13 threads"
+                      "type": "System"
                     },
                     {
                       "id": "SPAM",
                       "name": "SPAM",
-                      "type": "System label",
-                      "count": "22 threads (21 unread)"
+                      "type": "System"
                     },
                     {
                       "id": "TRASH",
                       "name": "TRASH",
-                      "type": "System label",
-                      "count": "0 threads"
+                      "type": "System"
+                    },
+                    {
+                      "id": "CHAT"
                     }
                   ]
                 }
@@ -652,72 +529,63 @@
           "texts": []
         },
         {
-          "offsetMs": 14437,
+          "offsetMs": 13972,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "labels",
+                "surfaceId": "labels-list",
                 "value": {
                   "labels": [
                     {
                       "id": "Label_1",
                       "name": "question agen",
-                      "type": "User label",
-                      "count": "0 threads"
+                      "type": "User label"
                     },
                     {
                       "id": "INBOX",
                       "name": "INBOX",
-                      "type": "System label",
-                      "count": "14,730 threads (9,473 unread)"
-                    },
-                    {
-                      "id": "SENT",
-                      "name": "SENT",
-                      "type": "System label",
-                      "count": "271 threads (7 unread)"
-                    },
-                    {
-                      "id": "IMPORTANT",
-                      "name": "IMPORTANT",
-                      "type": "System label",
-                      "count": "4,408 threads (1,822 unread)"
+                      "type": "System"
                     },
                     {
                       "id": "UNREAD",
                       "name": "UNREAD",
-                      "type": "System label",
-                      "count": "9,480 threads"
+                      "type": "System"
                     },
                     {
                       "id": "STARRED",
                       "name": "STARRED",
-                      "type": "System label",
-                      "count": "0 threads"
+                      "type": "System"
+                    },
+                    {
+                      "id": "IMPORTANT",
+                      "name": "IMPORTANT",
+                      "type": "System"
+                    },
+                    {
+                      "id": "SENT",
+                      "name": "SENT",
+                      "type": "System"
                     },
                     {
                       "id": "DRAFT",
                       "name": "DRAFT",
-                      "type": "System label",
-                      "count": "13 threads"
+                      "type": "System"
                     },
                     {
                       "id": "SPAM",
                       "name": "SPAM",
-                      "type": "System label",
-                      "count": "22 threads (21 unread)"
+                      "type": "System"
                     },
                     {
                       "id": "TRASH",
                       "name": "TRASH",
-                      "type": "System label",
-                      "count": "0 threads"
+                      "type": "System"
                     },
                     {
                       "id": "CHAT",
                       "name": "CHAT",
-                      "type": "System label"
+                      "type": "System"
                     }
                   ]
                 }
@@ -727,74 +595,64 @@
           "texts": []
         },
         {
-          "offsetMs": 14445,
+          "offsetMs": 14046,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "labels",
+                "surfaceId": "labels-list",
                 "path": "/",
                 "value": {
                   "labels": [
                     {
                       "id": "Label_1",
                       "name": "question agen",
-                      "type": "User label",
-                      "count": "0 threads"
+                      "type": "User label"
                     },
                     {
                       "id": "INBOX",
                       "name": "INBOX",
-                      "type": "System label",
-                      "count": "14,730 threads (9,473 unread)"
-                    },
-                    {
-                      "id": "SENT",
-                      "name": "SENT",
-                      "type": "System label",
-                      "count": "271 threads (7 unread)"
-                    },
-                    {
-                      "id": "IMPORTANT",
-                      "name": "IMPORTANT",
-                      "type": "System label",
-                      "count": "4,408 threads (1,822 unread)"
+                      "type": "System"
                     },
                     {
                       "id": "UNREAD",
                       "name": "UNREAD",
-                      "type": "System label",
-                      "count": "9,480 threads"
+                      "type": "System"
                     },
                     {
                       "id": "STARRED",
                       "name": "STARRED",
-                      "type": "System label",
-                      "count": "0 threads"
+                      "type": "System"
+                    },
+                    {
+                      "id": "IMPORTANT",
+                      "name": "IMPORTANT",
+                      "type": "System"
+                    },
+                    {
+                      "id": "SENT",
+                      "name": "SENT",
+                      "type": "System"
                     },
                     {
                       "id": "DRAFT",
                       "name": "DRAFT",
-                      "type": "System label",
-                      "count": "13 threads"
+                      "type": "System"
                     },
                     {
                       "id": "SPAM",
                       "name": "SPAM",
-                      "type": "System label",
-                      "count": "22 threads (21 unread)"
+                      "type": "System"
                     },
                     {
                       "id": "TRASH",
                       "name": "TRASH",
-                      "type": "System label",
-                      "count": "0 threads"
+                      "type": "System"
                     },
                     {
                       "id": "CHAT",
                       "name": "CHAT",
-                      "type": "System label",
-                      "count": "0 threads"
+                      "type": "System"
                     }
                   ]
                 }
@@ -804,31 +662,7 @@
           "texts": []
         },
         {
-          "offsetMs": 14602,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "root",
-                    "component": "Card",
-                    "child": "loading_body"
-                  },
-                  {
-                    "id": "loading_body",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "labels"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 14666,
+          "offsetMs": 14175,
           "messages": [
             {
               "version": "v0.9",
@@ -841,7 +675,7 @@
                       "loading_heading",
                       "loading_sub",
                       "loading_divider",
-                      "loading_labels-list"
+                      "loading_label-list"
                     ]
                   },
                   {
@@ -865,19 +699,19 @@
                     "children": []
                   },
                   {
-                    "id": "loading_labels-list",
+                    "id": "loading_label-list",
                     "component": "Row",
                     "children": []
                   }
                 ],
-                "surfaceId": "labels"
+                "surfaceId": "labels-list"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 14807,
+          "offsetMs": 14294,
           "messages": [
             {
               "version": "v0.9",
@@ -890,14 +724,14 @@
                       "heading",
                       "loading_sub",
                       "loading_divider",
-                      "loading_labels-list"
+                      "loading_label-list"
                     ]
                   },
                   {
                     "id": "heading",
                     "component": "Text",
                     "variant": "h3",
-                    "text": "Your labels"
+                    "text": "Labels"
                   },
                   {
                     "id": "root",
@@ -915,19 +749,19 @@
                     "children": []
                   },
                   {
-                    "id": "loading_labels-list",
+                    "id": "loading_label-list",
                     "component": "Row",
                     "children": []
                   }
                 ],
-                "surfaceId": "labels"
+                "surfaceId": "labels-list"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 14868,
+          "offsetMs": 14365,
           "messages": [
             {
               "version": "v0.9",
@@ -940,14 +774,14 @@
                       "heading",
                       "sub",
                       "loading_divider",
-                      "loading_labels-list"
+                      "loading_label-list"
                     ]
                   },
                   {
                     "id": "heading",
                     "component": "Text",
                     "variant": "h3",
-                    "text": "Your labels"
+                    "text": "Labels"
                   },
                   {
                     "id": "root",
@@ -958,7 +792,7 @@
                     "id": "sub",
                     "component": "Text",
                     "variant": "caption",
-                    "text": "1 user label, 9 system labels"
+                    "text": "1 custom label and 9 system labels"
                   },
                   {
                     "id": "loading_divider",
@@ -966,19 +800,19 @@
                     "children": []
                   },
                   {
-                    "id": "loading_labels-list",
+                    "id": "loading_label-list",
                     "component": "Row",
                     "children": []
                   }
                 ],
-                "surfaceId": "labels"
+                "surfaceId": "labels-list"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 14944,
+          "offsetMs": 14454,
           "messages": [
             {
               "version": "v0.9",
@@ -991,7 +825,7 @@
                       "heading",
                       "sub",
                       "divider",
-                      "loading_labels-list"
+                      "loading_label-list"
                     ]
                   },
                   {
@@ -1002,7 +836,7 @@
                     "id": "heading",
                     "component": "Text",
                     "variant": "h3",
-                    "text": "Your labels"
+                    "text": "Labels"
                   },
                   {
                     "id": "root",
@@ -1013,22 +847,22 @@
                     "id": "sub",
                     "component": "Text",
                     "variant": "caption",
-                    "text": "1 user label, 9 system labels"
+                    "text": "1 custom label and 9 system labels"
                   },
                   {
-                    "id": "loading_labels-list",
+                    "id": "loading_label-list",
                     "component": "Row",
                     "children": []
                   }
                 ],
-                "surfaceId": "labels"
+                "surfaceId": "labels-list"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 15032,
+          "offsetMs": 14594,
           "messages": [
             {
               "version": "v0.9",
@@ -1041,7 +875,7 @@
                       "heading",
                       "sub",
                       "divider",
-                      "labels-list"
+                      "label-list"
                     ]
                   },
                   {
@@ -1052,14 +886,14 @@
                     "id": "heading",
                     "component": "Text",
                     "variant": "h3",
-                    "text": "Your labels"
+                    "text": "Labels"
                   },
                   {
-                    "id": "labels-list",
+                    "id": "label-list",
                     "component": "Column",
                     "children": {
-                      "path": "/labels",
-                      "componentId": "loading_label-row"
+                      "componentId": "loading_label-row",
+                      "path": "/labels"
                     }
                   },
                   {
@@ -1071,7 +905,7 @@
                     "id": "sub",
                     "component": "Text",
                     "variant": "caption",
-                    "text": "1 user label, 9 system labels"
+                    "text": "1 custom label and 9 system labels"
                   },
                   {
                     "id": "loading_label-row",
@@ -1079,14 +913,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "labels"
+                "surfaceId": "labels-list"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 15232,
+          "offsetMs": 14800,
           "messages": [
             {
               "version": "v0.9",
@@ -1099,7 +933,7 @@
                       "heading",
                       "sub",
                       "divider",
-                      "labels-list"
+                      "label-list"
                     ]
                   },
                   {
@@ -1110,214 +944,27 @@
                     "id": "heading",
                     "component": "Text",
                     "variant": "h3",
-                    "text": "Your labels"
+                    "text": "Labels"
+                  },
+                  {
+                    "id": "label-list",
+                    "component": "Column",
+                    "children": {
+                      "componentId": "label-row",
+                      "path": "/labels"
+                    }
                   },
                   {
                     "id": "label-row",
-                    "component": "Button",
-                    "variant": "borderless",
-                    "child": "loading_label-content",
-                    "action": {
-                      "event": {
-                        "name": "search-label",
-                        "context": {
-                          "labelId": {
-                            "path": "id"
-                          }
-                        }
-                      }
-                    }
-                  },
-                  {
-                    "id": "labels-list",
-                    "component": "Column",
-                    "children": {
-                      "path": "/labels",
-                      "componentId": "label-row"
-                    }
-                  },
-                  {
-                    "id": "root",
-                    "component": "Card",
-                    "child": "body"
-                  },
-                  {
-                    "id": "sub",
-                    "component": "Text",
-                    "variant": "caption",
-                    "text": "1 user label, 9 system labels"
-                  },
-                  {
-                    "id": "loading_label-content",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "labels"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 15429,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "body",
-                    "component": "Column",
-                    "children": [
-                      "heading",
-                      "sub",
-                      "divider",
-                      "labels-list"
-                    ]
-                  },
-                  {
-                    "id": "divider",
-                    "component": "Divider"
-                  },
-                  {
-                    "id": "heading",
-                    "component": "Text",
-                    "variant": "h3",
-                    "text": "Your labels"
-                  },
-                  {
-                    "id": "label-content",
                     "component": "Row",
                     "justify": "spaceBetween",
                     "align": "center",
-                    "children": [
-                      "loading_label-left",
-                      "loading_label-count"
-                    ]
-                  },
-                  {
-                    "id": "label-row",
-                    "component": "Button",
-                    "variant": "borderless",
-                    "child": "label-content",
-                    "action": {
-                      "event": {
-                        "name": "search-label",
-                        "context": {
-                          "labelId": {
-                            "path": "id"
-                          }
-                        }
-                      }
-                    }
-                  },
-                  {
-                    "id": "labels-list",
-                    "component": "Column",
-                    "children": {
-                      "path": "/labels",
-                      "componentId": "label-row"
-                    }
-                  },
-                  {
-                    "id": "root",
-                    "component": "Card",
-                    "child": "body"
-                  },
-                  {
-                    "id": "sub",
-                    "component": "Text",
-                    "variant": "caption",
-                    "text": "1 user label, 9 system labels"
-                  },
-                  {
-                    "id": "loading_label-left",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_label-count",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "labels"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 15504,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "body",
-                    "component": "Column",
-                    "children": [
-                      "heading",
-                      "sub",
-                      "divider",
-                      "labels-list"
-                    ]
-                  },
-                  {
-                    "id": "divider",
-                    "component": "Divider"
-                  },
-                  {
-                    "id": "heading",
-                    "component": "Text",
-                    "variant": "h3",
-                    "text": "Your labels"
-                  },
-                  {
-                    "id": "label-content",
-                    "component": "Row",
-                    "justify": "spaceBetween",
-                    "align": "center",
-                    "children": [
-                      "label-left",
-                      "loading_label-count"
-                    ]
-                  },
-                  {
-                    "id": "label-left",
-                    "component": "Column",
                     "children": [
                       "loading_label-name",
                       "loading_label-type"
                     ]
                   },
                   {
-                    "id": "label-row",
-                    "component": "Button",
-                    "variant": "borderless",
-                    "child": "label-content",
-                    "action": {
-                      "event": {
-                        "name": "search-label",
-                        "context": {
-                          "labelId": {
-                            "path": "id"
-                          }
-                        }
-                      }
-                    }
-                  },
-                  {
-                    "id": "labels-list",
-                    "component": "Column",
-                    "children": {
-                      "path": "/labels",
-                      "componentId": "label-row"
-                    }
-                  },
-                  {
                     "id": "root",
                     "component": "Card",
                     "child": "body"
@@ -1326,12 +973,7 @@
                     "id": "sub",
                     "component": "Text",
                     "variant": "caption",
-                    "text": "1 user label, 9 system labels"
-                  },
-                  {
-                    "id": "loading_label-count",
-                    "component": "Row",
-                    "children": []
+                    "text": "1 custom label and 9 system labels"
                   },
                   {
                     "id": "loading_label-name",
@@ -1344,14 +986,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "labels"
+                "surfaceId": "labels-list"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 15653,
+          "offsetMs": 14875,
           "messages": [
             {
               "version": "v0.9",
@@ -1364,7 +1006,7 @@
                       "heading",
                       "sub",
                       "divider",
-                      "labels-list"
+                      "label-list"
                     ]
                   },
                   {
@@ -1375,25 +1017,15 @@
                     "id": "heading",
                     "component": "Text",
                     "variant": "h3",
-                    "text": "Your labels"
+                    "text": "Labels"
                   },
                   {
-                    "id": "label-content",
-                    "component": "Row",
-                    "justify": "spaceBetween",
-                    "align": "center",
-                    "children": [
-                      "label-left",
-                      "loading_label-count"
-                    ]
-                  },
-                  {
-                    "id": "label-left",
+                    "id": "label-list",
                     "component": "Column",
-                    "children": [
-                      "label-name",
-                      "loading_label-type"
-                    ]
+                    "children": {
+                      "componentId": "label-row",
+                      "path": "/labels"
+                    }
                   },
                   {
                     "id": "label-name",
@@ -1404,27 +1036,13 @@
                   },
                   {
                     "id": "label-row",
-                    "component": "Button",
-                    "variant": "borderless",
-                    "child": "label-content",
-                    "action": {
-                      "event": {
-                        "name": "search-label",
-                        "context": {
-                          "labelId": {
-                            "path": "id"
-                          }
-                        }
-                      }
-                    }
-                  },
-                  {
-                    "id": "labels-list",
-                    "component": "Column",
-                    "children": {
-                      "path": "/labels",
-                      "componentId": "label-row"
-                    }
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "label-name",
+                      "loading_label-type"
+                    ]
                   },
                   {
                     "id": "root",
@@ -1435,12 +1053,7 @@
                     "id": "sub",
                     "component": "Text",
                     "variant": "caption",
-                    "text": "1 user label, 9 system labels"
-                  },
-                  {
-                    "id": "loading_label-count",
-                    "component": "Row",
-                    "children": []
+                    "text": "1 custom label and 9 system labels"
                   },
                   {
                     "id": "loading_label-type",
@@ -1448,14 +1061,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "labels"
+                "surfaceId": "labels-list"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 15726,
+          "offsetMs": 14957,
           "messages": [
             {
               "version": "v0.9",
@@ -1468,7 +1081,7 @@
                       "heading",
                       "sub",
                       "divider",
-                      "labels-list"
+                      "label-list"
                     ]
                   },
                   {
@@ -1479,25 +1092,15 @@
                     "id": "heading",
                     "component": "Text",
                     "variant": "h3",
-                    "text": "Your labels"
+                    "text": "Labels"
                   },
                   {
-                    "id": "label-content",
-                    "component": "Row",
-                    "justify": "spaceBetween",
-                    "align": "center",
-                    "children": [
-                      "label-left",
-                      "loading_label-count"
-                    ]
-                  },
-                  {
-                    "id": "label-left",
+                    "id": "label-list",
                     "component": "Column",
-                    "children": [
-                      "label-name",
-                      "label-type"
-                    ]
+                    "children": {
+                      "componentId": "label-row",
+                      "path": "/labels"
+                    }
                   },
                   {
                     "id": "label-name",
@@ -1508,35 +1111,18 @@
                   },
                   {
                     "id": "label-row",
-                    "component": "Button",
-                    "variant": "borderless",
-                    "child": "label-content",
-                    "action": {
-                      "event": {
-                        "name": "search-label",
-                        "context": {
-                          "labelId": {
-                            "path": "id"
-                          }
-                        }
-                      }
-                    }
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "label-name",
+                      "label-type"
+                    ]
                   },
                   {
                     "id": "label-type",
                     "component": "Text",
-                    "variant": "caption",
-                    "text": {
-                      "path": "type"
-                    }
-                  },
-                  {
-                    "id": "labels-list",
-                    "component": "Column",
-                    "children": {
-                      "path": "/labels",
-                      "componentId": "label-row"
-                    }
+                    "variant": "caption"
                   },
                   {
                     "id": "root",
@@ -1547,22 +1133,17 @@
                     "id": "sub",
                     "component": "Text",
                     "variant": "caption",
-                    "text": "1 user label, 9 system labels"
-                  },
-                  {
-                    "id": "loading_label-count",
-                    "component": "Row",
-                    "children": []
+                    "text": "1 custom label and 9 system labels"
                   }
                 ],
-                "surfaceId": "labels"
+                "surfaceId": "labels-list"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 15865,
+          "offsetMs": 15028,
           "messages": [
             {
               "version": "v0.9",
@@ -1575,7 +1156,7 @@
                       "heading",
                       "sub",
                       "divider",
-                      "labels-list"
+                      "label-list"
                     ]
                   },
                   {
@@ -1586,33 +1167,15 @@
                     "id": "heading",
                     "component": "Text",
                     "variant": "h3",
-                    "text": "Your labels"
+                    "text": "Labels"
                   },
                   {
-                    "id": "label-content",
-                    "component": "Row",
-                    "justify": "spaceBetween",
-                    "align": "center",
-                    "children": [
-                      "label-left",
-                      "label-count"
-                    ]
-                  },
-                  {
-                    "id": "label-count",
-                    "component": "Text",
-                    "variant": "caption",
-                    "text": {
-                      "path": "count"
-                    }
-                  },
-                  {
-                    "id": "label-left",
+                    "id": "label-list",
                     "component": "Column",
-                    "children": [
-                      "label-name",
-                      "label-type"
-                    ]
+                    "children": {
+                      "componentId": "label-row",
+                      "path": "/labels"
+                    }
                   },
                   {
                     "id": "label-name",
@@ -1623,19 +1186,13 @@
                   },
                   {
                     "id": "label-row",
-                    "component": "Button",
-                    "variant": "borderless",
-                    "child": "label-content",
-                    "action": {
-                      "event": {
-                        "name": "search-label",
-                        "context": {
-                          "labelId": {
-                            "path": "id"
-                          }
-                        }
-                      }
-                    }
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "label-name",
+                      "label-type"
+                    ]
                   },
                   {
                     "id": "label-type",
@@ -1643,14 +1200,6 @@
                     "variant": "caption",
                     "text": {
                       "path": "type"
-                    }
-                  },
-                  {
-                    "id": "labels-list",
-                    "component": "Column",
-                    "children": {
-                      "path": "/labels",
-                      "componentId": "label-row"
                     }
                   },
                   {
@@ -1662,10 +1211,10 @@
                     "id": "sub",
                     "component": "Text",
                     "variant": "caption",
-                    "text": "1 user label, 9 system labels"
+                    "text": "1 custom label and 9 system labels"
                   }
                 ],
-                "surfaceId": "labels"
+                "surfaceId": "labels-list"
               }
             }
           ],
@@ -1673,7 +1222,7 @@
         }
       ],
       "outcome": "completed",
-      "durationMs": 16045
+      "durationMs": 15209
     }
   ]
 }

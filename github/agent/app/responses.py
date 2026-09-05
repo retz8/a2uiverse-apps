@@ -164,63 +164,24 @@ def build_response(action: dict) -> list[dict]:
     return _stamp_surface(_load_fixture(fixture), surface_id)
 
 
-# Each text prompt creates its own surface (chat-1, chat-2, ...): a surfaceId may not be
-# re-created on the client, and the stateless executor cannot know what already exists, so
-# fresh ids keep every turn renderable (responses stack as chat history).
-_chat_counter = count(1)
+# Each text prompt creates its own surface (notifications-1, notifications-2, ...): a surfaceId
+# may not be re-created on the client, and the stateless executor cannot know what already
+# exists, so fresh ids keep every turn renderable.
+_text_counter = count(1)
 
 
 def build_text_response(text: str) -> list[dict]:
-    """Canned chat surface for a plain-text prompt (the 7.4 chat shell's send path).
+    """The recorded today digest, on a fresh surface.
 
-    Unlike action responses, a text prompt arrives with no surface to update, so this
-    creates one.
+    Task 5.6: this used to be a hand-authored echo-and-acknowledge surface carried over from
+    the chat shell this agent was forked from — which left GitHub the one agent whose
+    `deterministic` mode was not the composition harness its siblings are, so a composed screen
+    driven with no model got two real vendor shapes and an echo. It now plays the digest
+    derived from a live run, like Gmail and Calendar.
+
+    The text path does not route: whatever it is asked, it answers with the canned digest —
+    discriminating on the utterance would be a second, worse router, and the live modes are
+    where intent is read.
     """
-    from a2ui_agent_kit.catalog import catalog_context
-
-    from app.config import CONFIG
-
-    surface_id = f"chat-{next(_chat_counter)}"
-    catalog_id = catalog_context(CONFIG).get_catalog().catalog_id
-    return [
-        {
-            "version": "v0.9",
-            "createSurface": {"surfaceId": surface_id, "catalogId": catalog_id},
-        },
-        {
-            "version": "v0.9",
-            "updateComponents": {
-                "surfaceId": surface_id,
-                "components": [
-                    {
-                        "id": "root",
-                        "component": "Stack",
-                        "direction": "vertical",
-                        "gap": "normal",
-                        "children": ["echo", "ack"],
-                    },
-                    {
-                        "id": "echo",
-                        "component": "Text",
-                        "text": f'✅ Deterministic agent received: "{text}"',
-                    },
-                    # The interactive half of the loop: clicking fires the existing `submit`
-                    # event back over A2A; its canned response swaps `label` and flips
-                    # /submitted, which disables the button via the binding below.
-                    {
-                        "id": "ack",
-                        "component": "Button",
-                        "child": "label",
-                        "variant": "primary",
-                        "disabled": {"path": "/submitted"},
-                        "action": {"event": {"name": "submit", "context": {}}},
-                    },
-                    {"id": "label", "component": "Text", "text": "Acknowledge"},
-                ],
-            },
-        },
-        {
-            "version": "v0.9",
-            "updateDataModel": {"surfaceId": surface_id, "path": "/", "value": {"submitted": False}},
-        },
-    ]
+    messages = _load_fixture("notifications.json")
+    return _stamp_surface(messages, f"notifications-{next(_text_counter)}")

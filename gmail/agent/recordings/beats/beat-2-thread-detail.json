@@ -4,23 +4,23 @@
   "title": "Thread detail",
   "prompt": "Open the most recent one of those.",
   "model": "gemini-3.7-flash",
-  "recordedAt": "2026-08-30T04:29:56+00:00",
-  "contextId": "05784a94-7216-4770-a55c-006b842d8160",
+  "recordedAt": "2026-09-05T06:09:10+00:00",
+  "contextId": "7c933a7c-8d7b-417b-9055-d479bf6024b2",
   "chainedFrom": "beat-1-inbox-digest",
   "turns": [
     {
-      "taskId": "b4a4af0b-009e-4511-96f2-544bf15db50c",
+      "taskId": "236ba8d5-61c9-4ffc-ad1c-658aded86c2d",
       "kind": "utterance",
       "prompt": "Open the most recent one of those.",
       "action": null,
       "batches": [
         {
-          "offsetMs": 12399,
+          "offsetMs": 11031,
           "messages": [
             {
               "paintMeta": {
-                "surfaceId": "thread-1a05077dde2deea4",
-                "title": "Thread: status agenda proposal proposal pending pendi"
+                "surfaceId": "thread-1a06f2abedf045ce",
+                "title": "Thread: estimate review thread status agenda confirm summ"
               }
             }
           ],
@@ -29,12 +29,12 @@
           ]
         },
         {
-          "offsetMs": 12472,
+          "offsetMs": 11184,
           "messages": [
             {
               "version": "v0.9",
               "createSurface": {
-                "surfaceId": "thread-1a05077dde2deea4",
+                "surfaceId": "thread-1a06f2abedf045ce",
                 "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/gmail/gmail-catalog/catalogs/v0.9.1/catalog.json",
                 "sendDataModel": true
               }
@@ -43,28 +43,14 @@
           "texts": []
         },
         {
-          "offsetMs": 12593,
+          "offsetMs": 11382,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "thread-1a05077dde2deea4",
+                "surfaceId": "thread-1a06f2abedf045ce",
                 "value": {
-                  "subject": "status agenda proposal proposal pending pendi"
-                }
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 12648,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateDataModel": {
-                "surfaceId": "thread-1a05077dde2deea4",
-                "value": {
+                  "subject": "estimate review thread status agenda confirm summ",
                   "count": "1 message"
                 }
               }
@@ -73,18 +59,18 @@
           "texts": []
         },
         {
-          "offsetMs": 12706,
+          "offsetMs": 11434,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "thread-1a05077dde2deea4",
+                "surfaceId": "thread-1a06f2abedf045ce",
                 "value": {
                   "messages": [
                     {
-                      "id": "1a05077dde2deea4",
-                      "sender": "sara.moreau@example.com",
-                      "when": "Aug 30, 02:20"
+                      "id": "1a06f2abedf045ce",
+                      "sender": "elin.tanaka@example.com",
+                      "when": "2026-09-05 01:24 UTC"
                     }
                   ]
                 }
@@ -94,44 +80,22 @@
           "texts": []
         },
         {
-          "offsetMs": 12999,
+          "offsetMs": 11779,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "thread-1a05077dde2deea4",
-                "value": {
-                  "messages": [
-                    {
-                      "id": "1a05077dde2deea4",
-                      "sender": "sara.moreau@example.com",
-                      "when": "Aug 30, 02:20",
-                      "body": "Your job alert for \uc18c\ud504\ud2b8\uc6e8\uc5b4 \uc5d4\uc9c0\ub2c8\uc5b4 in South Korea\n\nNew jobs match your preferences:\n\n\u2022 Software Engineer- Autonomy \u2014 Seoul Robotics (Seongnam)\n\u2022 Staff Software Development Technology Engineer - Games \u2014 AMD (Seoul Incheon Metropolitan Area)\n\u2022 Forward Deployed Engineer - Seoul \u2014 OpenAI (Seoul)\n\u2022 [\uc2e0\uc785-\uc5f0\uad6c\uc9c1] \ud154\ub808\uc11c\ube44\uc2a4 SW \uc124\uacc4 \u2014 Hyundai MOBIS (Yongin)\n\u2022 [\uc2e0\uc785-\uc5f0\uad6c\uc9c1] \uc790\uc728\uc8fc\ud589 \ud1b5\ud569\uc81c\uc5b4\uae30 \uac1c\ubc1c \u2014 Hyundai MOBIS (Yongin)\n\u2022 Applied Scientist / Research Engineer ($200K\u2013$350K + Equity) \u2014 Harper (Seoul, South Korea)"
-                    }
-                  ]
-                }
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 13058,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateDataModel": {
-                "surfaceId": "thread-1a05077dde2deea4",
+                "surfaceId": "thread-1a06f2abedf045ce",
                 "path": "/",
                 "value": {
-                  "subject": "status agenda proposal proposal pending pendi",
+                  "subject": "estimate review thread status agenda confirm summ",
                   "count": "1 message",
                   "messages": [
                     {
-                      "id": "1a05077dde2deea4",
-                      "sender": "sara.moreau@example.com",
-                      "when": "Aug 30, 02:20",
-                      "body": "Your job alert for \uc18c\ud504\ud2b8\uc6e8\uc5b4 \uc5d4\uc9c0\ub2c8\uc5b4 in South Korea\n\nNew jobs match your preferences:\n\n\u2022 Software Engineer- Autonomy \u2014 Seoul Robotics (Seongnam)\n\u2022 Staff Software Development Technology Engineer - Games \u2014 AMD (Seoul Incheon Metropolitan Area)\n\u2022 Forward Deployed Engineer - Seoul \u2014 OpenAI (Seoul)\n\u2022 [\uc2e0\uc785-\uc5f0\uad6c\uc9c1] \ud154\ub808\uc11c\ube44\uc2a4 SW \uc124\uacc4 \u2014 Hyundai MOBIS (Yongin)\n\u2022 [\uc2e0\uc785-\uc5f0\uad6c\uc9c1] \uc790\uc728\uc8fc\ud589 \ud1b5\ud569\uc81c\uc5b4\uae30 \uac1c\ubc1c \u2014 Hyundai MOBIS (Yongin)\n\u2022 Applied Scientist / Research Engineer ($200K\u2013$350K + Equity) \u2014 Harper (Seoul, South Korea)"
+                      "id": "1a06f2abedf045ce",
+                      "sender": "elin.tanaka@example.com",
+                      "when": "2026-09-05 01:24 UTC",
+                      "body": "section summary feedback update meeting confirm thread section summary schedule pending attached thread review update confirm agenda proposal proposal status meeting timeline timeline agenda estimate update reply confirm feedback update attached schedule proposal update confirm review timeline update attached pending proposal question revision update notes section attached section update feedback pending review confirm schedule proposal estimate notes question update question attached confirm proposal estimate proposal status notes meeting draft schedule proposal summary section notes question revision meeting thread review update thread confirm confirm follow proposal review confirm question notes question agenda agenda notes proposal estimate schedule follow question confirm proposal estimate pending attached update draft notes confirm section attached attached pending reply notes follow notes thread reply estimate feedback pending feedback section proposal follow pr"
                     }
                   ]
                 }
@@ -141,7 +105,7 @@
           "texts": []
         },
         {
-          "offsetMs": 13187,
+          "offsetMs": 11992,
           "messages": [
             {
               "version": "v0.9",
@@ -158,14 +122,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "thread-1a05077dde2deea4"
+                "surfaceId": "thread-1a06f2abedf045ce"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 13241,
+          "offsetMs": 12071,
           "messages": [
             {
               "version": "v0.9",
@@ -213,14 +177,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "thread-1a05077dde2deea4"
+                "surfaceId": "thread-1a06f2abedf045ce"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 13313,
+          "offsetMs": 12139,
           "messages": [
             {
               "version": "v0.9",
@@ -271,14 +235,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "thread-1a05077dde2deea4"
+                "surfaceId": "thread-1a06f2abedf045ce"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 13441,
+          "offsetMs": 12279,
           "messages": [
             {
               "version": "v0.9",
@@ -332,14 +296,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "thread-1a05077dde2deea4"
+                "surfaceId": "thread-1a06f2abedf045ce"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 13507,
+          "offsetMs": 12357,
           "messages": [
             {
               "version": "v0.9",
@@ -392,14 +356,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "thread-1a05077dde2deea4"
+                "surfaceId": "thread-1a06f2abedf045ce"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 13577,
+          "offsetMs": 12516,
           "messages": [
             {
               "version": "v0.9",
@@ -460,19 +424,27 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "thread-1a05077dde2deea4"
+                "surfaceId": "thread-1a06f2abedf045ce"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 13713,
+          "offsetMs": 12660,
           "messages": [
             {
               "version": "v0.9",
               "updateComponents": {
                 "components": [
+                  {
+                    "id": "actions",
+                    "component": "Row",
+                    "children": [
+                      "loading_reply",
+                      "loading_archive"
+                    ]
+                  },
                   {
                     "id": "body",
                     "component": "Column",
@@ -481,7 +453,88 @@
                       "count",
                       "divider",
                       "messages",
-                      "loading_actions"
+                      "actions"
+                    ]
+                  },
+                  {
+                    "id": "count",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/count"
+                    }
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "messages",
+                    "component": "Column",
+                    "children": {
+                      "path": "/messages",
+                      "componentId": "loading_message"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "subject",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": {
+                      "path": "/subject"
+                    }
+                  },
+                  {
+                    "id": "loading_reply",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_archive",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_message",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "thread-1a06f2abedf045ce"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 12814,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "actions",
+                    "component": "Row",
+                    "children": [
+                      "loading_reply",
+                      "loading_archive"
+                    ]
+                  },
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "subject",
+                      "count",
+                      "divider",
+                      "messages",
+                      "actions"
                     ]
                   },
                   {
@@ -526,7 +579,12 @@
                     }
                   },
                   {
-                    "id": "loading_actions",
+                    "id": "loading_reply",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_archive",
                     "component": "Row",
                     "children": []
                   },
@@ -541,19 +599,27 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "thread-1a05077dde2deea4"
+                "surfaceId": "thread-1a06f2abedf045ce"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 13831,
+          "offsetMs": 12985,
           "messages": [
             {
               "version": "v0.9",
               "updateComponents": {
                 "components": [
+                  {
+                    "id": "actions",
+                    "component": "Row",
+                    "children": [
+                      "loading_reply",
+                      "loading_archive"
+                    ]
+                  },
                   {
                     "id": "body",
                     "component": "Column",
@@ -562,7 +628,7 @@
                       "count",
                       "divider",
                       "messages",
-                      "loading_actions"
+                      "actions"
                     ]
                   },
                   {
@@ -617,7 +683,12 @@
                     }
                   },
                   {
-                    "id": "loading_actions",
+                    "id": "loading_reply",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_archive",
                     "component": "Row",
                     "children": []
                   },
@@ -637,19 +708,27 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "thread-1a05077dde2deea4"
+                "surfaceId": "thread-1a06f2abedf045ce"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 13957,
+          "offsetMs": 13069,
           "messages": [
             {
               "version": "v0.9",
               "updateComponents": {
                 "components": [
+                  {
+                    "id": "actions",
+                    "component": "Row",
+                    "children": [
+                      "loading_reply",
+                      "loading_archive"
+                    ]
+                  },
                   {
                     "id": "body",
                     "component": "Column",
@@ -658,7 +737,7 @@
                       "count",
                       "divider",
                       "messages",
-                      "loading_actions"
+                      "actions"
                     ]
                   },
                   {
@@ -678,8 +757,126 @@
                     "component": "Column",
                     "children": [
                       "message-head",
-                      "loading_message-body"
+                      "message-body"
                     ]
+                  },
+                  {
+                    "id": "message-body",
+                    "component": "Text",
+                    "text": {
+                      "path": "body"
+                    }
+                  },
+                  {
+                    "id": "message-head",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "loading_message-sender",
+                      "loading_message-when"
+                    ]
+                  },
+                  {
+                    "id": "messages",
+                    "component": "Column",
+                    "children": {
+                      "path": "/messages",
+                      "componentId": "message"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "subject",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": {
+                      "path": "/subject"
+                    }
+                  },
+                  {
+                    "id": "loading_reply",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_archive",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_message-sender",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_message-when",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "thread-1a06f2abedf045ce"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 13221,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "actions",
+                    "component": "Row",
+                    "children": [
+                      "loading_reply",
+                      "loading_archive"
+                    ]
+                  },
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "subject",
+                      "count",
+                      "divider",
+                      "messages",
+                      "actions"
+                    ]
+                  },
+                  {
+                    "id": "count",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/count"
+                    }
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "message",
+                    "component": "Column",
+                    "children": [
+                      "message-head",
+                      "message-body"
+                    ]
+                  },
+                  {
+                    "id": "message-body",
+                    "component": "Text",
+                    "text": {
+                      "path": "body"
+                    }
                   },
                   {
                     "id": "message-head",
@@ -720,12 +917,12 @@
                     }
                   },
                   {
-                    "id": "loading_actions",
+                    "id": "loading_reply",
                     "component": "Row",
                     "children": []
                   },
                   {
-                    "id": "loading_message-body",
+                    "id": "loading_archive",
                     "component": "Row",
                     "children": []
                   },
@@ -735,218 +932,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "thread-1a05077dde2deea4"
+                "surfaceId": "thread-1a06f2abedf045ce"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 14027,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "body",
-                    "component": "Column",
-                    "children": [
-                      "subject",
-                      "count",
-                      "divider",
-                      "messages",
-                      "loading_actions"
-                    ]
-                  },
-                  {
-                    "id": "count",
-                    "component": "Text",
-                    "variant": "caption",
-                    "text": {
-                      "path": "/count"
-                    }
-                  },
-                  {
-                    "id": "divider",
-                    "component": "Divider"
-                  },
-                  {
-                    "id": "message",
-                    "component": "Column",
-                    "children": [
-                      "message-head",
-                      "loading_message-body"
-                    ]
-                  },
-                  {
-                    "id": "message-head",
-                    "component": "Row",
-                    "justify": "spaceBetween",
-                    "align": "center",
-                    "children": [
-                      "message-sender",
-                      "message-when"
-                    ]
-                  },
-                  {
-                    "id": "message-sender",
-                    "component": "Text",
-                    "text": {
-                      "path": "sender"
-                    }
-                  },
-                  {
-                    "id": "message-when",
-                    "component": "Text",
-                    "variant": "caption",
-                    "text": {
-                      "path": "when"
-                    }
-                  },
-                  {
-                    "id": "messages",
-                    "component": "Column",
-                    "children": {
-                      "path": "/messages",
-                      "componentId": "message"
-                    }
-                  },
-                  {
-                    "id": "root",
-                    "component": "Card",
-                    "child": "body"
-                  },
-                  {
-                    "id": "subject",
-                    "component": "Text",
-                    "variant": "h3",
-                    "text": {
-                      "path": "/subject"
-                    }
-                  },
-                  {
-                    "id": "loading_actions",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_message-body",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "thread-1a05077dde2deea4"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 14092,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "body",
-                    "component": "Column",
-                    "children": [
-                      "subject",
-                      "count",
-                      "divider",
-                      "messages",
-                      "loading_actions"
-                    ]
-                  },
-                  {
-                    "id": "count",
-                    "component": "Text",
-                    "variant": "caption",
-                    "text": {
-                      "path": "/count"
-                    }
-                  },
-                  {
-                    "id": "divider",
-                    "component": "Divider"
-                  },
-                  {
-                    "id": "message",
-                    "component": "Column",
-                    "children": [
-                      "message-head",
-                      "message-body"
-                    ]
-                  },
-                  {
-                    "id": "message-body",
-                    "component": "Text",
-                    "text": {
-                      "path": "body"
-                    }
-                  },
-                  {
-                    "id": "message-head",
-                    "component": "Row",
-                    "justify": "spaceBetween",
-                    "align": "center",
-                    "children": [
-                      "message-sender",
-                      "message-when"
-                    ]
-                  },
-                  {
-                    "id": "message-sender",
-                    "component": "Text",
-                    "text": {
-                      "path": "sender"
-                    }
-                  },
-                  {
-                    "id": "message-when",
-                    "component": "Text",
-                    "variant": "caption",
-                    "text": {
-                      "path": "when"
-                    }
-                  },
-                  {
-                    "id": "messages",
-                    "component": "Column",
-                    "children": {
-                      "path": "/messages",
-                      "componentId": "message"
-                    }
-                  },
-                  {
-                    "id": "root",
-                    "component": "Card",
-                    "child": "body"
-                  },
-                  {
-                    "id": "subject",
-                    "component": "Text",
-                    "variant": "h3",
-                    "text": {
-                      "path": "/subject"
-                    }
-                  },
-                  {
-                    "id": "loading_actions",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "thread-1a05077dde2deea4"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 14224,
+          "offsetMs": 13361,
           "messages": [
             {
               "version": "v0.9",
@@ -1055,14 +1048,263 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "thread-1a05077dde2deea4"
+                "surfaceId": "thread-1a06f2abedf045ce"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 14427,
+          "offsetMs": 13444,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "actions",
+                    "component": "Row",
+                    "children": [
+                      "reply",
+                      "loading_archive"
+                    ]
+                  },
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "subject",
+                      "count",
+                      "divider",
+                      "messages",
+                      "actions"
+                    ]
+                  },
+                  {
+                    "id": "count",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/count"
+                    }
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "message",
+                    "component": "Column",
+                    "children": [
+                      "message-head",
+                      "message-body"
+                    ]
+                  },
+                  {
+                    "id": "message-body",
+                    "component": "Text",
+                    "text": {
+                      "path": "body"
+                    }
+                  },
+                  {
+                    "id": "message-head",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "message-sender",
+                      "message-when"
+                    ]
+                  },
+                  {
+                    "id": "message-sender",
+                    "component": "Text",
+                    "text": {
+                      "path": "sender"
+                    }
+                  },
+                  {
+                    "id": "message-when",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "when"
+                    }
+                  },
+                  {
+                    "id": "messages",
+                    "component": "Column",
+                    "children": {
+                      "path": "/messages",
+                      "componentId": "message"
+                    }
+                  },
+                  {
+                    "id": "reply",
+                    "component": "Button",
+                    "variant": "primary",
+                    "child": "loading_reply-label"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "subject",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": {
+                      "path": "/subject"
+                    }
+                  },
+                  {
+                    "id": "loading_archive",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_reply-label",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "thread-1a06f2abedf045ce"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 13536,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "actions",
+                    "component": "Row",
+                    "children": [
+                      "reply",
+                      "loading_archive"
+                    ]
+                  },
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "subject",
+                      "count",
+                      "divider",
+                      "messages",
+                      "actions"
+                    ]
+                  },
+                  {
+                    "id": "count",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "/count"
+                    }
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "message",
+                    "component": "Column",
+                    "children": [
+                      "message-head",
+                      "message-body"
+                    ]
+                  },
+                  {
+                    "id": "message-body",
+                    "component": "Text",
+                    "text": {
+                      "path": "body"
+                    }
+                  },
+                  {
+                    "id": "message-head",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "message-sender",
+                      "message-when"
+                    ]
+                  },
+                  {
+                    "id": "message-sender",
+                    "component": "Text",
+                    "text": {
+                      "path": "sender"
+                    }
+                  },
+                  {
+                    "id": "message-when",
+                    "component": "Text",
+                    "variant": "caption",
+                    "text": {
+                      "path": "when"
+                    }
+                  },
+                  {
+                    "id": "messages",
+                    "component": "Column",
+                    "children": {
+                      "path": "/messages",
+                      "componentId": "message"
+                    }
+                  },
+                  {
+                    "id": "reply",
+                    "component": "Button",
+                    "variant": "primary",
+                    "child": "loading_reply-label",
+                    "action": {
+                      "event": {
+                        "name": "draft-reply"
+                      }
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "subject",
+                    "component": "Text",
+                    "variant": "h3",
+                    "text": {
+                      "path": "/subject"
+                    }
+                  },
+                  {
+                    "id": "loading_archive",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_reply-label",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "thread-1a06f2abedf045ce"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 13608,
           "messages": [
             {
               "version": "v0.9",
@@ -1156,7 +1398,7 @@
                       "event": {
                         "name": "draft-reply",
                         "context": {
-                          "threadId": "1a05077dde2deea4"
+                          "threadId": "1a06f2abedf045ce"
                         }
                       }
                     }
@@ -1185,14 +1427,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "thread-1a05077dde2deea4"
+                "surfaceId": "thread-1a06f2abedf045ce"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 14490,
+          "offsetMs": 13731,
           "messages": [
             {
               "version": "v0.9",
@@ -1286,7 +1528,7 @@
                       "event": {
                         "name": "draft-reply",
                         "context": {
-                          "threadId": "1a05077dde2deea4"
+                          "threadId": "1a06f2abedf045ce"
                         }
                       }
                     }
@@ -1315,14 +1557,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "thread-1a05077dde2deea4"
+                "surfaceId": "thread-1a06f2abedf045ce"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 14741,
+          "offsetMs": 14024,
           "messages": [
             {
               "version": "v0.9",
@@ -1344,7 +1586,7 @@
                       "event": {
                         "name": "label-toggle",
                         "context": {
-                          "threadId": "1a05077dde2deea4",
+                          "threadId": "1a06f2abedf045ce",
                           "labelId": "INBOX",
                           "add": false
                         }
@@ -1431,7 +1673,7 @@
                       "event": {
                         "name": "draft-reply",
                         "context": {
-                          "threadId": "1a05077dde2deea4"
+                          "threadId": "1a06f2abedf045ce"
                         }
                       }
                     }
@@ -1460,14 +1702,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "thread-1a05077dde2deea4"
+                "surfaceId": "thread-1a06f2abedf045ce"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 14805,
+          "offsetMs": 14176,
           "messages": [
             {
               "version": "v0.9",
@@ -1489,7 +1731,7 @@
                       "event": {
                         "name": "label-toggle",
                         "context": {
-                          "threadId": "1a05077dde2deea4",
+                          "threadId": "1a06f2abedf045ce",
                           "labelId": "INBOX",
                           "add": false
                         }
@@ -1581,7 +1823,7 @@
                       "event": {
                         "name": "draft-reply",
                         "context": {
-                          "threadId": "1a05077dde2deea4"
+                          "threadId": "1a06f2abedf045ce"
                         }
                       }
                     }
@@ -1605,7 +1847,7 @@
                     }
                   }
                 ],
-                "surfaceId": "thread-1a05077dde2deea4"
+                "surfaceId": "thread-1a06f2abedf045ce"
               }
             }
           ],
@@ -1613,7 +1855,7 @@
         }
       ],
       "outcome": "completed",
-      "durationMs": 14983
+      "durationMs": 14362
     }
   ]
 }
