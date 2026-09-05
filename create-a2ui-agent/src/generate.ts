@@ -268,7 +268,7 @@ def build_live_toolset() -> PolicyMcpToolset:
 export function manifestJson(a: ScaffoldAnswers, catalogId: string): string {
   const manifest = {
     $comment:
-      "Placeholder until the sdk manifest schema lands (Phase 9); mirrors the orchestrator's registry record.",
+      "Placeholder until the sdk manifest schema lands (Phase 10); mirrors the orchestrator's registry record.",
     id: a.id,
     displayName: a.displayName,
     agent: {url: `http://localhost:${a.port}`, auth: 'none'},

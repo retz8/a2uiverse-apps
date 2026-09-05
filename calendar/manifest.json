@@ -1,5 +1,5 @@
 {
-  "$comment": "Placeholder until the sdk manifest schema lands (Phase 9); mirrors the orchestrator's registry record.",
+  "$comment": "Placeholder until the sdk manifest schema lands (Phase 10); mirrors the orchestrator's registry record.",
   "id": "calendar",
   "displayName": "Google Calendar",
   "agent": {"url": "http://localhost:11003", "auth": "none"},
