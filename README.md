@@ -13,8 +13,10 @@ These apps depend on `@a2uiverse/sdk` and on the A2UI/A2A protocols. They never 
 | `github/`   | `11001` | GitHub MCP (read-only) | `github-catalog`   |
 | `gmail/`    | `11002` | Gmail MCP              | `gmail-catalog`    |
 | `calendar/` | `11003` | Google Calendar MCP    | `calendar-catalog` |
+| `circleci/` | `11004` | CircleCI MCP (hosted)  | `circleci-catalog` |
+| `linear/`   | `11005` | Linear MCP             | `linear-catalog`   |
 
-Two kinds of catalog, deliberately: `github-catalog` is a full custom catalog over **Primer**, GitHub's real design system; the other two are the A2UI basic catalog under a product theme. The roster will keep both kinds — most apps will be the second, and the platform has to render them side by side without either bleeding into the other.
+Two kinds of catalog, deliberately: `github-catalog` is a full custom catalog over **Primer**, GitHub's real design system; the others are the A2UI basic catalog under a product theme. The roster will keep both kinds — most apps will be the second, and the platform has to render them side by side without either bleeding into the other.
 
 Every agent runs in **three modes**, on the same port:
 

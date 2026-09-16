@@ -35,6 +35,8 @@ mode (`deterministic` · `llm` · `llm` without MCP). Keep this table current.
 | github | 11001 |
 | gmail | 11002 |
 | google-calendar | 11003 |
+| circleci | 11004 |
+| linear | 11005 |
 
 ## Run commands
 
