@@ -1,0 +1,431 @@
+[
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "issue-detail",
+      "value": {
+        "id": "A2U-5",
+        "title": "Say on the canvas when an utterance fails"
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "issue-detail",
+      "value": {
+        "status": "In Progress",
+        "statusType": "started",
+        "priority": "High"
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "issue-detail",
+      "value": {
+        "assignee": "ekkicb71@gmail.com",
+        "labels": "Bug"
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "issue-detail",
+      "value": {
+        "description": "A failed utterance leaves the canvas idle with no word: the palette closes and nothing paints, and the failure shows up only in the orchestrator's log. Found in the CircleCI app's canvas pass (7.2).\n\nThe canvas should say the turn failed, in words, where the answer would have painted."
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "issue-detail",
+      "value": {
+        "pullRequests": [
+          {
+            "title": "Say on the canvas when an utterance fails",
+            "number": "#6"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "issue-detail",
+      "value": {
+        "branch": "ekkicb71/a2u-5-say-on-the-canvas-when-an-utterance-fails"
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "issue-detail",
+      "value": {
+        "comments": [
+          {
+            "author": "GitHub",
+            "when": "Sep 18"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "issue-detail",
+      "value": {
+        "comments": [
+          {
+            "author": "GitHub",
+            "when": "Sep 18",
+            "body": "This comment thread is synced to a corresponding [GitHub issue](https://github.com/retz8/a2uiverse/issues/3). All replies are displayed in both locations."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "issue-detail",
+      "path": "/",
+      "value": {
+        "id": "A2U-5",
+        "title": "Say on the canvas when an utterance fails",
+        "status": "In Progress",
+        "statusType": "started",
+        "priority": "High",
+        "assignee": "ekkicb71@gmail.com",
+        "labels": "Bug",
+        "description": "A failed utterance leaves the canvas idle with no word: the palette closes and nothing paints, and the failure shows up only in the orchestrator's log. Found in the CircleCI app's canvas pass (7.2).\n\nThe canvas should say the turn failed, in words, where the answer would have painted.",
+        "pullRequests": [
+          {
+            "title": "Say on the canvas when an utterance fails",
+            "number": "#6"
+          }
+        ],
+        "branch": "ekkicb71/a2u-5-say-on-the-canvas-when-an-utterance-fails",
+        "comments": [
+          {
+            "author": "GitHub",
+            "when": "Sep 18",
+            "body": "This comment thread is synced to a corresponding [GitHub issue](https://github.com/retz8/a2uiverse/issues/3). All replies are displayed in both locations."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateComponents": {
+      "components": [
+        {
+          "id": "root",
+          "component": "Card",
+          "child": "body"
+        },
+        {
+          "id": "body",
+          "component": "Column",
+          "children": [
+            "identifier",
+            "title",
+            "props",
+            "divider-1",
+            "description",
+            "links",
+            "divider-2",
+            "activity"
+          ]
+        },
+        {
+          "id": "identifier",
+          "component": "Text",
+          "text": {
+            "path": "/id"
+          },
+          "variant": "caption"
+        },
+        {
+          "id": "title",
+          "component": "Text",
+          "text": {
+            "path": "/title"
+          },
+          "variant": "h3"
+        },
+        {
+          "id": "props",
+          "component": "Column",
+          "children": [
+            "status-row",
+            "priority-row",
+            "assignee-row",
+            "labels-row"
+          ]
+        },
+        {
+          "id": "status-row",
+          "component": "Row",
+          "align": "center",
+          "children": [
+            "status-label",
+            "status-value"
+          ]
+        },
+        {
+          "id": "status-label",
+          "component": "Text",
+          "text": "Status",
+          "variant": "caption",
+          "weight": 1
+        },
+        {
+          "id": "status-value",
+          "component": "Row",
+          "align": "center",
+          "children": [
+            "status-icon",
+            "status-name"
+          ]
+        },
+        {
+          "id": "status-icon",
+          "component": "StatusIcon",
+          "status": {
+            "path": "/status"
+          },
+          "type": {
+            "path": "/statusType"
+          }
+        },
+        {
+          "id": "status-name",
+          "component": "Text",
+          "text": {
+            "path": "/status"
+          }
+        },
+        {
+          "id": "priority-row",
+          "component": "Row",
+          "align": "center",
+          "children": [
+            "priority-label",
+            "priority-value"
+          ]
+        },
+        {
+          "id": "priority-label",
+          "component": "Text",
+          "text": "Priority",
+          "variant": "caption",
+          "weight": 1
+        },
+        {
+          "id": "priority-value",
+          "component": "Row",
+          "align": "center",
+          "children": [
+            "priority-icon",
+            "priority-name"
+          ]
+        },
+        {
+          "id": "priority-icon",
+          "component": "PriorityIcon",
+          "priority": {
+            "path": "/priority"
+          }
+        },
+        {
+          "id": "priority-name",
+          "component": "Text",
+          "text": {
+            "path": "/priority"
+          }
+        },
+        {
+          "id": "assignee-row",
+          "component": "Row",
+          "align": "center",
+          "children": [
+            "assignee-label",
+            "assignee-value"
+          ]
+        },
+        {
+          "id": "assignee-label",
+          "component": "Text",
+          "text": "Assignee",
+          "variant": "caption",
+          "weight": 1
+        },
+        {
+          "id": "assignee-value",
+          "component": "Row",
+          "align": "center",
+          "children": [
+            "assignee-name"
+          ]
+        },
+        {
+          "id": "assignee-name",
+          "component": "Text",
+          "text": {
+            "path": "/assignee"
+          }
+        },
+        {
+          "id": "labels-row",
+          "component": "Row",
+          "align": "center",
+          "children": [
+            "labels-label",
+            "labels-value"
+          ]
+        },
+        {
+          "id": "labels-label",
+          "component": "Text",
+          "text": "Labels",
+          "variant": "caption",
+          "weight": 1
+        },
+        {
+          "id": "labels-value",
+          "component": "Row",
+          "align": "center",
+          "children": [
+            "labels-names"
+          ]
+        },
+        {
+          "id": "labels-names",
+          "component": "Text",
+          "text": {
+            "path": "/labels"
+          }
+        },
+        {
+          "id": "divider-1",
+          "component": "Divider"
+        },
+        {
+          "id": "description",
+          "component": "Text",
+          "text": {
+            "path": "/description"
+          }
+        },
+        {
+          "id": "links",
+          "component": "Column",
+          "children": [
+            "pr-list",
+            "branch"
+          ]
+        },
+        {
+          "id": "pr-list",
+          "component": "Column",
+          "children": {
+            "path": "/pullRequests",
+            "componentId": "pr-row"
+          }
+        },
+        {
+          "id": "pr-row",
+          "component": "Row",
+          "align": "center",
+          "children": [
+            "pr-title",
+            "pr-number"
+          ]
+        },
+        {
+          "id": "pr-title",
+          "component": "Text",
+          "text": {
+            "path": "title"
+          },
+          "weight": 1
+        },
+        {
+          "id": "pr-number",
+          "component": "Text",
+          "text": {
+            "path": "number"
+          },
+          "variant": "caption"
+        },
+        {
+          "id": "branch",
+          "component": "Text",
+          "text": {
+            "path": "/branch"
+          },
+          "variant": "caption"
+        },
+        {
+          "id": "divider-2",
+          "component": "Divider"
+        },
+        {
+          "id": "activity",
+          "component": "Column",
+          "children": {
+            "path": "/comments",
+            "componentId": "comment"
+          }
+        },
+        {
+          "id": "comment",
+          "component": "Column",
+          "children": [
+            "comment-meta",
+            "comment-body"
+          ]
+        },
+        {
+          "id": "comment-meta",
+          "component": "Row",
+          "children": [
+            "comment-author",
+            "comment-when"
+          ]
+        },
+        {
+          "id": "comment-author",
+          "component": "Text",
+          "text": {
+            "path": "author"
+          },
+          "variant": "caption"
+        },
+        {
+          "id": "comment-when",
+          "component": "Text",
+          "text": {
+            "path": "when"
+          },
+          "variant": "caption"
+        },
+        {
+          "id": "comment-body",
+          "component": "Text",
+          "text": {
+            "path": "body"
+          }
+        }
+      ]
+    }
+  }
+]

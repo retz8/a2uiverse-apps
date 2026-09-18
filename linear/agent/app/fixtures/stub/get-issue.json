@@ -1,0 +1,80 @@
+{
+  "A2U-5": {
+    "id": "A2U-5",
+    "uuid": "fb78160d-bbd7-4e2e-a7a0-88fea9319656",
+    "title": "Say on the canvas when an utterance fails",
+    "description": "A failed utterance leaves the canvas idle with no word: the palette closes and nothing paints, and the failure shows up only in the orchestrator's log. Found in the CircleCI app's canvas pass (7.2).\n\nThe canvas should say the turn failed, in words, where the answer would have painted.",
+    "priority": {
+      "value": 2,
+      "name": "High"
+    },
+    "url": "https://linear.app/a2uiverse/issue/A2U-5/say-on-the-canvas-when-an-utterance-fails",
+    "gitBranchName": "ekkicb71/a2u-5-say-on-the-canvas-when-an-utterance-fails",
+    "createdAt": "2026-09-18T11:50:56.302Z",
+    "updatedAt": "2026-09-18T12:49:53.679Z",
+    "archivedAt": null,
+    "completedAt": null,
+    "startedAt": "2026-09-18T11:52:45.328Z",
+    "canceledAt": null,
+    "dueDate": null,
+    "slaStartedAt": null,
+    "slaMediumRiskAt": null,
+    "slaHighRiskAt": null,
+    "slaBreachesAt": null,
+    "status": "In Review",
+    "statusType": "started",
+    "labels": [
+      "Bug"
+    ],
+    "attachments": [
+      {
+        "id": "2b460851-7ae7-4a93-a928-9bdbdbaf5206",
+        "title": "Say on the canvas when an utterance fails",
+        "subtitle": null,
+        "url": "https://github.com/retz8/a2uiverse/pull/6"
+      },
+      {
+        "id": "3b45cdb8-b4cd-40f7-ae5f-808de10b0dc6",
+        "title": "#3 Say on the canvas when an utterance fails",
+        "subtitle": null,
+        "url": "https://github.com/retz8/a2uiverse/issues/3"
+      }
+    ],
+    "documents": [],
+    "stateHistory": [
+      {
+        "state": {
+          "id": "d11226d0-cf05-4638-9383-689951e8226e",
+          "name": "Backlog",
+          "type": "backlog"
+        },
+        "startedAt": "2026-09-18T11:50:56.302Z",
+        "endedAt": "2026-09-18T11:52:45.339Z"
+      },
+      {
+        "state": {
+          "id": "00333986-fc79-41ef-919b-7fcb36baf8bd",
+          "name": "In Progress",
+          "type": "started"
+        },
+        "startedAt": "2026-09-18T11:52:45.339Z",
+        "endedAt": "2026-09-18T12:49:53.672Z"
+      },
+      {
+        "state": {
+          "id": "fed6dcbe-050e-486a-9911-bf11efdbba8c",
+          "name": "In Review",
+          "type": "started"
+        },
+        "startedAt": "2026-09-18T12:49:53.672Z",
+        "endedAt": null
+      }
+    ],
+    "createdBy": "ekkicb71@gmail.com",
+    "createdById": "84952ecc-c607-4bc3-8dbc-b8d03029ba59",
+    "assignee": "ekkicb71@gmail.com",
+    "assigneeId": "84952ecc-c607-4bc3-8dbc-b8d03029ba59",
+    "team": "A2uiverse",
+    "teamId": "210dbbff-2acb-4c57-b2be-8369f6177bb9"
+  }
+}

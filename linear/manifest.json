@@ -1,0 +1,13 @@
+{
+  "$comment": "Placeholder until the sdk manifest schema lands (Phase 10); mirrors the orchestrator's registry record.",
+  "id": "linear",
+  "displayName": "Linear",
+  "agent": {
+    "url": "http://localhost:11005",
+    "auth": "none"
+  },
+  "catalog": {
+    "id": "https://github.com/retz8/a2uiverse-apps/blob/main/linear/linear-catalog/catalogs/v0.9.1/catalog.json",
+    "package": "linear-catalog"
+  }
+}

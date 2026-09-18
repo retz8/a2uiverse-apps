@@ -1,0 +1,30 @@
+{
+  "users": [
+    {
+      "id": "84952ecc-c607-4bc3-8dbc-b8d03029ba59",
+      "name": "ekkicb71@gmail.com",
+      "email": "ekkicb71@gmail.com",
+      "displayName": "ekkicb71",
+      "isAdmin": true,
+      "isGuest": false,
+      "isActive": true,
+      "createdAt": "2026-09-18T11:34:01.145Z",
+      "updatedAt": "2026-09-18T11:35:16.614Z",
+      "status": "Offline (last seen 2026-09-18T12:46:52.311Z)"
+    },
+    {
+      "id": "f6631f2d-0b06-4f78-9f95-bc12de0a62b9",
+      "name": "Linear",
+      "email": "linear-ee2c649c-8050-413a-b4ac-2bf9c78de04f@linear.linear.app",
+      "displayName": "linear",
+      "avatarUrl": "https://static.linear.app/assets/avatar/avatar_512.png",
+      "isAdmin": false,
+      "isGuest": false,
+      "isActive": true,
+      "createdAt": "2026-09-18T11:34:01.852Z",
+      "updatedAt": "2026-09-18T11:34:01.978Z",
+      "status": "Offline (last seen 2026-09-18T11:34:01.920Z)"
+    }
+  ],
+  "hasNextPage": false
+}

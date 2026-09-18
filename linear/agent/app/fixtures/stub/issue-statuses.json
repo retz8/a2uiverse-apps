@@ -1,0 +1,37 @@
+[
+  {
+    "id": "fed6dcbe-050e-486a-9911-bf11efdbba8c",
+    "type": "started",
+    "name": "In Review"
+  },
+  {
+    "id": "d11226d0-cf05-4638-9383-689951e8226e",
+    "type": "backlog",
+    "name": "Backlog"
+  },
+  {
+    "id": "d0986393-1b11-4b42-93aa-a4922f07757e",
+    "type": "canceled",
+    "name": "Canceled"
+  },
+  {
+    "id": "5984604a-0e72-4021-8210-65d62ddcb017",
+    "type": "unstarted",
+    "name": "Todo"
+  },
+  {
+    "id": "56c4ca3e-35bb-4b09-9a55-6cc13e0ae166",
+    "type": "completed",
+    "name": "Done"
+  },
+  {
+    "id": "04c994a9-1b7e-467d-ba35-e8055f61297a",
+    "type": "duplicate",
+    "name": "Duplicate"
+  },
+  {
+    "id": "00333986-fc79-41ef-919b-7fcb36baf8bd",
+    "type": "started",
+    "name": "In Progress"
+  }
+]

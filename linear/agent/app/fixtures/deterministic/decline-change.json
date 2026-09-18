@@ -1,0 +1,20 @@
+[
+  {
+    "version": "v0.9",
+    "updateComponents": {
+      "components": [
+        {
+          "id": "root",
+          "component": "Card",
+          "child": "declined"
+        },
+        {
+          "id": "declined",
+          "component": "Text",
+          "variant": "body",
+          "text": "Nothing was changed."
+        }
+      ]
+    }
+  }
+]

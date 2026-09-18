@@ -1,0 +1,345 @@
+{
+  "name": "my-issues",
+  "intent": "What's assigned to me?",
+  "messages": [
+    {
+      "version": "v0.9",
+      "createSurface": {
+        "surfaceId": "my-issues",
+        "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/linear/linear-catalog/catalogs/v0.9.1/catalog.json",
+        "sendDataModel": true
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateDataModel": {
+        "surfaceId": "my-issues",
+        "path": "/",
+        "value": {
+          "team": "Engineering",
+          "started": [
+            {
+              "id": "ENG-212",
+              "title": "Retry webhook deliveries with exponential backoff",
+              "status": "In Progress",
+              "statusType": "started",
+              "priority": "High",
+              "labels": "Improvement",
+              "updated": "Sep 16"
+            }
+          ],
+          "startedCount": "1",
+          "unstarted": [
+            {
+              "id": "ENG-230",
+              "title": "Empty state for the archive view",
+              "status": "Todo",
+              "statusType": "unstarted",
+              "priority": "Medium",
+              "labels": "Feature",
+              "updated": "Sep 12"
+            },
+            {
+              "id": "ENG-198",
+              "title": "Timestamps in exports ignore the workspace time zone",
+              "status": "Todo",
+              "statusType": "unstarted",
+              "priority": "No priority",
+              "labels": "Bug",
+              "updated": "Sep 9"
+            }
+          ],
+          "unstartedCount": "2"
+        }
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateComponents": {
+        "surfaceId": "my-issues",
+        "components": [
+          {
+            "id": "root",
+            "component": "Card",
+            "child": "body"
+          },
+          {
+            "id": "body",
+            "component": "Column",
+            "children": [
+              "heading",
+              "sub",
+              "divider",
+              "started-section",
+              "unstarted-section"
+            ]
+          },
+          {
+            "id": "heading",
+            "component": "Text",
+            "text": "My issues",
+            "variant": "h3"
+          },
+          {
+            "id": "sub",
+            "component": "Text",
+            "text": {
+              "path": "/team"
+            },
+            "variant": "caption"
+          },
+          {
+            "id": "divider",
+            "component": "Divider"
+          },
+          {
+            "id": "started-section",
+            "component": "Column",
+            "children": [
+              "started-head",
+              "started-list"
+            ]
+          },
+          {
+            "id": "unstarted-section",
+            "component": "Column",
+            "children": [
+              "unstarted-head",
+              "unstarted-list"
+            ]
+          },
+          {
+            "id": "started-head",
+            "component": "Row",
+            "align": "center",
+            "children": [
+              "started-head-icon",
+              "started-head-name",
+              "started-head-count"
+            ]
+          },
+          {
+            "id": "started-head-icon",
+            "component": "StatusIcon",
+            "status": "In Progress",
+            "type": "started"
+          },
+          {
+            "id": "started-head-name",
+            "component": "Text",
+            "text": "In Progress"
+          },
+          {
+            "id": "started-head-count",
+            "component": "Text",
+            "text": {
+              "path": "/startedCount"
+            },
+            "variant": "caption"
+          },
+          {
+            "id": "started-list",
+            "component": "Column",
+            "children": {
+              "path": "/started",
+              "componentId": "started-row"
+            }
+          },
+          {
+            "id": "started-row",
+            "component": "Button",
+            "variant": "borderless",
+            "child": "started-line",
+            "action": {
+              "event": {
+                "name": "open-issue",
+                "context": {
+                  "issueId": {
+                    "path": "id"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": "started-line",
+            "component": "Row",
+            "align": "center",
+            "children": [
+              "started-priority",
+              "started-id",
+              "started-status",
+              "started-title",
+              "started-labels",
+              "started-when"
+            ]
+          },
+          {
+            "id": "started-priority",
+            "component": "PriorityIcon",
+            "priority": {
+              "path": "priority"
+            }
+          },
+          {
+            "id": "started-id",
+            "component": "Text",
+            "text": {
+              "path": "id"
+            },
+            "variant": "caption"
+          },
+          {
+            "id": "started-status",
+            "component": "StatusIcon",
+            "status": {
+              "path": "status"
+            },
+            "type": {
+              "path": "statusType"
+            }
+          },
+          {
+            "id": "started-title",
+            "component": "Text",
+            "text": {
+              "path": "title"
+            },
+            "weight": 1
+          },
+          {
+            "id": "started-labels",
+            "component": "Text",
+            "text": {
+              "path": "labels"
+            },
+            "variant": "caption"
+          },
+          {
+            "id": "started-when",
+            "component": "Text",
+            "text": {
+              "path": "updated"
+            },
+            "variant": "caption"
+          },
+          {
+            "id": "unstarted-head",
+            "component": "Row",
+            "align": "center",
+            "children": [
+              "unstarted-head-icon",
+              "unstarted-head-name",
+              "unstarted-head-count"
+            ]
+          },
+          {
+            "id": "unstarted-head-icon",
+            "component": "StatusIcon",
+            "status": "Todo",
+            "type": "unstarted"
+          },
+          {
+            "id": "unstarted-head-name",
+            "component": "Text",
+            "text": "Todo"
+          },
+          {
+            "id": "unstarted-head-count",
+            "component": "Text",
+            "text": {
+              "path": "/unstartedCount"
+            },
+            "variant": "caption"
+          },
+          {
+            "id": "unstarted-list",
+            "component": "Column",
+            "children": {
+              "path": "/unstarted",
+              "componentId": "unstarted-row"
+            }
+          },
+          {
+            "id": "unstarted-row",
+            "component": "Button",
+            "variant": "borderless",
+            "child": "unstarted-line",
+            "action": {
+              "event": {
+                "name": "open-issue",
+                "context": {
+                  "issueId": {
+                    "path": "id"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": "unstarted-line",
+            "component": "Row",
+            "align": "center",
+            "children": [
+              "unstarted-priority",
+              "unstarted-id",
+              "unstarted-status",
+              "unstarted-title",
+              "unstarted-labels",
+              "unstarted-when"
+            ]
+          },
+          {
+            "id": "unstarted-priority",
+            "component": "PriorityIcon",
+            "priority": {
+              "path": "priority"
+            }
+          },
+          {
+            "id": "unstarted-id",
+            "component": "Text",
+            "text": {
+              "path": "id"
+            },
+            "variant": "caption"
+          },
+          {
+            "id": "unstarted-status",
+            "component": "StatusIcon",
+            "status": {
+              "path": "status"
+            },
+            "type": {
+              "path": "statusType"
+            }
+          },
+          {
+            "id": "unstarted-title",
+            "component": "Text",
+            "text": {
+              "path": "title"
+            },
+            "weight": 1
+          },
+          {
+            "id": "unstarted-labels",
+            "component": "Text",
+            "text": {
+              "path": "labels"
+            },
+            "variant": "caption"
+          },
+          {
+            "id": "unstarted-when",
+            "component": "Text",
+            "text": {
+              "path": "updated"
+            },
+            "variant": "caption"
+          }
+        ]
+      }
+    }
+  ]
+}

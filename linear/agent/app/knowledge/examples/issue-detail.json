@@ -1,0 +1,357 @@
+{
+  "name": "issue-detail",
+  "intent": "Open ENG-212",
+  "messages": [
+    {
+      "version": "v0.9",
+      "createSurface": {
+        "surfaceId": "issue-detail",
+        "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/linear/linear-catalog/catalogs/v0.9.1/catalog.json",
+        "sendDataModel": true
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateDataModel": {
+        "surfaceId": "issue-detail",
+        "path": "/",
+        "value": {
+          "id": "ENG-212",
+          "title": "Retry webhook deliveries with exponential backoff",
+          "status": "In Progress",
+          "statusType": "started",
+          "priority": "High",
+          "assignee": "Mira Kovač",
+          "labels": "Improvement",
+          "description": "Failed deliveries are retried once, immediately. Retry up to five times with exponential backoff and jitter, and surface the final failure on the endpoint's page.",
+          "pullRequests": [
+            {
+              "title": "Back off webhook retries exponentially",
+              "number": "#481"
+            }
+          ],
+          "branch": "mira/eng-212-retry-webhook-deliveries-with-exponential-backoff",
+          "comments": [
+            {
+              "author": "dev-okafor",
+              "when": "Sep 15",
+              "body": "Cap the delay at five minutes, or a dead endpoint holds the queue for hours."
+            },
+            {
+              "author": "Mira Kovač",
+              "when": "Sep 16",
+              "body": "Capped at five minutes; jitter is ±20%."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateComponents": {
+        "surfaceId": "issue-detail",
+        "components": [
+          {
+            "id": "root",
+            "component": "Card",
+            "child": "body"
+          },
+          {
+            "id": "body",
+            "component": "Column",
+            "children": [
+              "identifier",
+              "title",
+              "props",
+              "divider-1",
+              "description",
+              "links",
+              "divider-2",
+              "activity"
+            ]
+          },
+          {
+            "id": "identifier",
+            "component": "Text",
+            "text": {
+              "path": "/id"
+            },
+            "variant": "caption"
+          },
+          {
+            "id": "title",
+            "component": "Text",
+            "text": {
+              "path": "/title"
+            },
+            "variant": "h3"
+          },
+          {
+            "id": "props",
+            "component": "Column",
+            "children": [
+              "status-row",
+              "priority-row",
+              "assignee-row",
+              "labels-row"
+            ]
+          },
+          {
+            "id": "status-row",
+            "component": "Row",
+            "align": "center",
+            "children": [
+              "status-label",
+              "status-value"
+            ]
+          },
+          {
+            "id": "status-label",
+            "component": "Text",
+            "text": "Status",
+            "variant": "caption",
+            "weight": 1
+          },
+          {
+            "id": "status-value",
+            "component": "Row",
+            "align": "center",
+            "children": [
+              "status-icon",
+              "status-name"
+            ]
+          },
+          {
+            "id": "status-icon",
+            "component": "StatusIcon",
+            "status": {
+              "path": "/status"
+            },
+            "type": {
+              "path": "/statusType"
+            }
+          },
+          {
+            "id": "status-name",
+            "component": "Text",
+            "text": {
+              "path": "/status"
+            }
+          },
+          {
+            "id": "priority-row",
+            "component": "Row",
+            "align": "center",
+            "children": [
+              "priority-label",
+              "priority-value"
+            ]
+          },
+          {
+            "id": "priority-label",
+            "component": "Text",
+            "text": "Priority",
+            "variant": "caption",
+            "weight": 1
+          },
+          {
+            "id": "priority-value",
+            "component": "Row",
+            "align": "center",
+            "children": [
+              "priority-icon",
+              "priority-name"
+            ]
+          },
+          {
+            "id": "priority-icon",
+            "component": "PriorityIcon",
+            "priority": {
+              "path": "/priority"
+            }
+          },
+          {
+            "id": "priority-name",
+            "component": "Text",
+            "text": {
+              "path": "/priority"
+            }
+          },
+          {
+            "id": "assignee-row",
+            "component": "Row",
+            "align": "center",
+            "children": [
+              "assignee-label",
+              "assignee-value"
+            ]
+          },
+          {
+            "id": "assignee-label",
+            "component": "Text",
+            "text": "Assignee",
+            "variant": "caption",
+            "weight": 1
+          },
+          {
+            "id": "assignee-value",
+            "component": "Row",
+            "align": "center",
+            "children": [
+              "assignee-name"
+            ]
+          },
+          {
+            "id": "assignee-name",
+            "component": "Text",
+            "text": {
+              "path": "/assignee"
+            }
+          },
+          {
+            "id": "labels-row",
+            "component": "Row",
+            "align": "center",
+            "children": [
+              "labels-label",
+              "labels-value"
+            ]
+          },
+          {
+            "id": "labels-label",
+            "component": "Text",
+            "text": "Labels",
+            "variant": "caption",
+            "weight": 1
+          },
+          {
+            "id": "labels-value",
+            "component": "Row",
+            "align": "center",
+            "children": [
+              "labels-names"
+            ]
+          },
+          {
+            "id": "labels-names",
+            "component": "Text",
+            "text": {
+              "path": "/labels"
+            }
+          },
+          {
+            "id": "divider-1",
+            "component": "Divider"
+          },
+          {
+            "id": "description",
+            "component": "Text",
+            "text": {
+              "path": "/description"
+            }
+          },
+          {
+            "id": "links",
+            "component": "Column",
+            "children": [
+              "pr-list",
+              "branch"
+            ]
+          },
+          {
+            "id": "pr-list",
+            "component": "Column",
+            "children": {
+              "path": "/pullRequests",
+              "componentId": "pr-row"
+            }
+          },
+          {
+            "id": "pr-row",
+            "component": "Row",
+            "align": "center",
+            "children": [
+              "pr-title",
+              "pr-number"
+            ]
+          },
+          {
+            "id": "pr-title",
+            "component": "Text",
+            "text": {
+              "path": "title"
+            },
+            "weight": 1
+          },
+          {
+            "id": "pr-number",
+            "component": "Text",
+            "text": {
+              "path": "number"
+            },
+            "variant": "caption"
+          },
+          {
+            "id": "branch",
+            "component": "Text",
+            "text": {
+              "path": "/branch"
+            },
+            "variant": "caption"
+          },
+          {
+            "id": "divider-2",
+            "component": "Divider"
+          },
+          {
+            "id": "activity",
+            "component": "Column",
+            "children": {
+              "path": "/comments",
+              "componentId": "comment"
+            }
+          },
+          {
+            "id": "comment",
+            "component": "Column",
+            "children": [
+              "comment-meta",
+              "comment-body"
+            ]
+          },
+          {
+            "id": "comment-meta",
+            "component": "Row",
+            "children": [
+              "comment-author",
+              "comment-when"
+            ]
+          },
+          {
+            "id": "comment-author",
+            "component": "Text",
+            "text": {
+              "path": "author"
+            },
+            "variant": "caption"
+          },
+          {
+            "id": "comment-when",
+            "component": "Text",
+            "text": {
+              "path": "when"
+            },
+            "variant": "caption"
+          },
+          {
+            "id": "comment-body",
+            "component": "Text",
+            "text": {
+              "path": "body"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

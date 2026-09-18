@@ -1,0 +1,143 @@
+/*
+ * Linear product styling over the basic catalog's runtime DOM, scoped to the Provider's wrapper
+ * class. Upstream ships no classes on Button, Row, Column or caption Text (its CSS-module maps
+ * compile to empty objects), so the hooks are element and structural selectors: a tappable row
+ * is a Button wrapping a classless layout div, an action button is a Button wrapping a lone
+ * `.body` Text, and a caption is a `span > em`.
+ *
+ * Values are Linear's, measured on its web app's documentation screenshots — see provider.tsx.
+ * A status and a priority are drawn by the catalog's two product components, StatusIcon and
+ * PriorityIcon, which carry what they draw as attributes — no basic component can vary a row's
+ * look by data.
+ *
+ * Every var() read carries a fallback: the token definitions live as inline style on the
+ * wrapper, which stylesheet analysis cannot see.
+ */
+
+/* Neutralize UA button chrome; rows and action buttons both build on this. */
+.linear-catalog button {
+  font: inherit;
+  appearance: none;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  border: none;
+  background: none;
+  margin: 0;
+}
+
+/* A tappable row: full width, quiet until hovered — Linear's row wash. */
+.linear-catalog button:has(> div:not([class])) {
+  display: block;
+  width: 100%;
+  border-radius: var(--a2ui-border-radius, 6px);
+  padding: 0.375rem 0.75rem;
+}
+
+.linear-catalog button:has(> div:not([class])):hover {
+  background: var(--a2ui-row-hover, #f6f6f7);
+}
+
+/* The issue title keeps to one line inside a row. */
+.linear-catalog button .body {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* The detail title sits between medium and semibold. */
+.linear-catalog h1,
+.linear-catalog h2,
+.linear-catalog h3,
+.linear-catalog h4,
+.linear-catalog h5 {
+  font-weight: 600;
+}
+
+/* Captions render as <em>: quiet and upright, never italic; identifiers keep even digits. */
+.linear-catalog em {
+  font-style: normal;
+  font-variant-numeric: tabular-nums;
+  color: var(--a2ui-text-caption-color, #5d5d5f);
+}
+
+.linear-catalog a {
+  color: var(--linear-link, #3f60d8);
+}
+
+/* StatusIcon: the workflow-state circle, colored by its tone. */
+.linear-catalog .linear-status,
+.linear-catalog .linear-priority {
+  flex-shrink: 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.linear-catalog .linear-status {
+  color: var(--linear-status-unstarted, #b9b9b9);
+}
+
+.linear-catalog .linear-status[data-tone='backlog'] {
+  color: var(--linear-status-backlog, #959a9f);
+}
+
+.linear-catalog .linear-status[data-tone='started'] {
+  color: var(--linear-status-started, #f0c000);
+}
+
+.linear-catalog .linear-status[data-tone='review'] {
+  color: var(--linear-status-review, #27a644);
+}
+
+.linear-catalog .linear-status[data-tone='completed'] {
+  color: var(--linear-status-completed, #5e6ad3);
+}
+
+.linear-catalog .linear-status[data-tone='canceled'] {
+  color: var(--linear-status-canceled, #96a2b4);
+}
+
+/* PriorityIcon: muted bars; urgent in its own color. */
+.linear-catalog .linear-priority {
+  color: var(--linear-priority, #6d6d6e);
+}
+
+.linear-catalog .linear-priority[data-level='urgent'] {
+  color: var(--linear-priority-urgent, #ff7236);
+}
+
+/* Action buttons: Linear's quiet bordered button; the leading one is the filled primary. */
+.linear-catalog button:has(> .body:only-child) {
+  display: inline-block;
+  width: auto;
+  border-radius: var(--a2ui-button-border-radius, 6px);
+  padding: 0.375rem 0.875rem;
+  border: 1px solid var(--a2ui-color-border, #e0e0e0);
+  color: var(--a2ui-color-on-surface, #1b1b1b);
+  font-weight: 500;
+}
+
+.linear-catalog button:has(> .body:only-child):hover {
+  background: var(--a2ui-row-hover, #f6f6f7);
+}
+
+.linear-catalog button:has(> .body:only-child):first-child {
+  border-color: transparent;
+  background: var(--a2ui-color-primary, #6e78d5);
+  color: var(--a2ui-color-on-primary, #ffffff);
+}
+
+.linear-catalog button:has(> .body:only-child):first-child:hover {
+  filter: brightness(1.08);
+}
+
+/* Inputs: rounded quiet fields. */
+.linear-catalog input,
+.linear-catalog textarea {
+  font: inherit;
+  border: 1px solid var(--a2ui-color-border, #e0e0e0);
+  border-radius: var(--a2ui-textfield-border-radius, 6px);
+  padding: 0.5rem 0.75rem;
+  background: var(--a2ui-color-input, #fcfcfc);
+  color: var(--a2ui-color-on-input, #1b1b1b);
+}

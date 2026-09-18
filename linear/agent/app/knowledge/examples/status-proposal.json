@@ -1,0 +1,195 @@
+{
+  "name": "status-proposal",
+  "intent": "Move ENG-230 to In Progress",
+  "messages": [
+    {
+      "version": "v0.9",
+      "createSurface": {
+        "surfaceId": "status-proposal",
+        "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/linear/linear-catalog/catalogs/v0.9.1/catalog.json",
+        "sendDataModel": true
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateDataModel": {
+        "surfaceId": "status-proposal",
+        "path": "/",
+        "value": {
+          "id": "ENG-230",
+          "title": "Empty state for the archive view",
+          "from": "Todo",
+          "fromType": "unstarted",
+          "to": "In Progress",
+          "toType": "started"
+        }
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateComponents": {
+        "surfaceId": "status-proposal",
+        "components": [
+          {
+            "id": "root",
+            "component": "Card",
+            "child": "body"
+          },
+          {
+            "id": "body",
+            "component": "Column",
+            "children": [
+              "heading",
+              "issue",
+              "change",
+              "actions"
+            ]
+          },
+          {
+            "id": "heading",
+            "component": "Text",
+            "text": "Change this issue's status?",
+            "variant": "h3"
+          },
+          {
+            "id": "issue",
+            "component": "Row",
+            "align": "center",
+            "children": [
+              "issue-id",
+              "issue-title"
+            ]
+          },
+          {
+            "id": "issue-id",
+            "component": "Text",
+            "text": {
+              "path": "/id"
+            },
+            "variant": "caption"
+          },
+          {
+            "id": "issue-title",
+            "component": "Text",
+            "text": {
+              "path": "/title"
+            }
+          },
+          {
+            "id": "change",
+            "component": "Row",
+            "align": "center",
+            "children": [
+              "change-label",
+              "from-icon",
+              "from-name",
+              "arrow",
+              "to-icon",
+              "to-name"
+            ]
+          },
+          {
+            "id": "change-label",
+            "component": "Text",
+            "text": "Status",
+            "variant": "caption",
+            "weight": 1
+          },
+          {
+            "id": "from-icon",
+            "component": "StatusIcon",
+            "status": {
+              "path": "/from"
+            },
+            "type": {
+              "path": "/fromType"
+            }
+          },
+          {
+            "id": "from-name",
+            "component": "Text",
+            "text": {
+              "path": "/from"
+            }
+          },
+          {
+            "id": "arrow",
+            "component": "Text",
+            "text": "→",
+            "variant": "caption"
+          },
+          {
+            "id": "to-icon",
+            "component": "StatusIcon",
+            "status": {
+              "path": "/to"
+            },
+            "type": {
+              "path": "/toType"
+            }
+          },
+          {
+            "id": "to-name",
+            "component": "Text",
+            "text": {
+              "path": "/to"
+            }
+          },
+          {
+            "id": "actions",
+            "component": "Row",
+            "children": [
+              "confirm",
+              "decline"
+            ]
+          },
+          {
+            "id": "confirm",
+            "component": "Button",
+            "variant": "primary",
+            "child": "confirm-label",
+            "action": {
+              "event": {
+                "name": "confirm-change",
+                "context": {
+                  "issueId": {
+                    "path": "/id"
+                  },
+                  "state": {
+                    "path": "/to"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": "confirm-label",
+            "component": "Text",
+            "text": "Move to In Progress"
+          },
+          {
+            "id": "decline",
+            "component": "Button",
+            "variant": "borderless",
+            "child": "decline-label",
+            "action": {
+              "event": {
+                "name": "decline-change",
+                "context": {
+                  "issueId": {
+                    "path": "/id"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": "decline-label",
+            "component": "Text",
+            "text": "Keep as is"
+          }
+        ]
+      }
+    }
+  ]
+}

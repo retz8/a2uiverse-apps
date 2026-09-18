@@ -1,0 +1,26 @@
+{
+  "labels": [
+    {
+      "id": "b4914cc4-3cf4-44e9-8bfe-2263dd3e440f",
+      "name": "Feature",
+      "color": "#BB87FC",
+      "description": null,
+      "archivedAt": null
+    },
+    {
+      "id": "4be7f49e-909c-4e9c-a61a-e96a81948781",
+      "name": "Improvement",
+      "color": "#4EA7FC",
+      "description": null,
+      "archivedAt": null
+    },
+    {
+      "id": "334b2da3-1ad3-4eaa-9106-c606cec01231",
+      "name": "Bug",
+      "color": "#EB5757",
+      "description": null,
+      "archivedAt": null
+    }
+  ],
+  "hasNextPage": false
+}
