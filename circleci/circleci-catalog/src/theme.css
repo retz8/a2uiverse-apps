@@ -6,9 +6,8 @@
  * a Button wrapping a lone `.body` Text, and a caption is a `span > em`.
  *
  * Values are CircleCI's, measured on its web app's documentation screenshots — see
- * provider.tsx. A status cannot be colored per row: its word is data, and neither the word nor
- * an icon name reaches the DOM as anything a selector can read. It is drawn as CircleCI draws
- * its status pill, in one neutral color.
+ * provider.tsx. A status is colored through the catalog's one product component, StatusBadge,
+ * which carries its tone as an attribute — no basic component can vary a row's look by data.
  *
  * Every var() read carries a fallback: the token definitions live as inline style on the
  * wrapper, which stylesheet analysis cannot see.
@@ -38,16 +37,39 @@
   background: var(--a2ui-row-hover, #e8e9eb);
 }
 
-/* The status leads a row: CircleCI's status pill, bold, on the neutral fill. */
-.circleci-catalog button:has(> div:not([class])) div:not([class]) > .body:first-child {
-  display: inline-block;
+/* StatusBadge: CircleCI's status pill, colored by its tone; neutral where no color is sampled. */
+.circleci-catalog .circleci-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
   padding: 0.125rem 0.625rem;
   border-radius: 9999px;
   background: var(--a2ui-color-secondary, #e3e3e3);
   color: var(--a2ui-color-on-secondary, #161616);
   font-weight: 600;
   font-size: var(--a2ui-font-size-s, 0.75rem);
+  line-height: 1.5;
   white-space: nowrap;
+}
+
+.circleci-catalog .circleci-status[data-tone='success'] {
+  background: var(--circleci-status-success-bg, #8bdea4);
+  color: var(--circleci-status-success-fg, #03331a);
+}
+
+.circleci-catalog .circleci-status[data-tone='failed'] {
+  background: var(--circleci-status-failed-bg, #bd4c48);
+  color: var(--circleci-status-failed-fg, #ffffff);
+}
+
+.circleci-catalog .circleci-status[data-tone='running'] {
+  background: var(--circleci-status-running-bg, #135df2);
+  color: var(--circleci-status-running-fg, #ffffff);
+}
+
+.circleci-catalog .circleci-status[data-tone='queued'] {
+  background: var(--circleci-status-queued-bg, #283548);
+  color: var(--circleci-status-queued-fg, #ffffff);
 }
 
 /* Captions render as <em>: quiet and upright, never italic. */

@@ -4,23 +4,23 @@
   "title": "Failed job logs",
   "prompt": "Why did it fail? Show me the failed job's step and the end of its log.",
   "model": "gemini-3.7-flash",
-  "recordedAt": "2026-09-18T10:17:39+00:00",
-  "contextId": "86e393a8-faeb-4939-b4b4-8a42068adcc8",
+  "recordedAt": "2026-09-18T10:41:30+00:00",
+  "contextId": "c7d8823b-6a8a-4399-bd71-5bce29b6673d",
   "chainedFrom": "beat-2-run-detail",
   "turns": [
     {
-      "taskId": "58863569-d9ff-462f-99a8-cf77bee9f828",
+      "taskId": "a4492eaa-0b86-4b26-9374-15adc4997cbf",
       "kind": "utterance",
       "prompt": "Why did it fail? Show me the failed job's step and the end of its log.",
       "action": null,
       "batches": [
         {
-          "offsetMs": 15908,
+          "offsetMs": 12380,
           "messages": [
             {
               "paintMeta": {
                 "surfaceId": "job-failure",
-                "title": "Failure: lint-format"
+                "title": "Job Failure"
               }
             }
           ],
@@ -29,7 +29,7 @@
           ]
         },
         {
-          "offsetMs": 16129,
+          "offsetMs": 12557,
           "messages": [
             {
               "version": "v0.9",
@@ -43,7 +43,7 @@
           "texts": []
         },
         {
-          "offsetMs": 16447,
+          "offsetMs": 12795,
           "messages": [
             {
               "version": "v0.9",
@@ -51,24 +51,7 @@
                 "surfaceId": "job-failure",
                 "value": {
                   "job": {
-                    "id": "05854c56-a8de-4002-8720-ea6da62b6d9b"
-                  }
-                }
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 16513,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateDataModel": {
-                "surfaceId": "job-failure",
-                "value": {
-                  "job": {
-                    "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
+                    "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
                     "name": "lint-format"
                   }
                 }
@@ -78,7 +61,7 @@
           "texts": []
         },
         {
-          "offsetMs": 16586,
+          "offsetMs": 12917,
           "messages": [
             {
               "version": "v0.9",
@@ -86,9 +69,9 @@
                 "surfaceId": "job-failure",
                 "value": {
                   "job": {
-                    "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
+                    "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
                     "name": "lint-format",
-                    "workflowId": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696"
+                    "workflowId": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7"
                   }
                 }
               }
@@ -97,24 +80,7 @@
           "texts": []
         },
         {
-          "offsetMs": 16664,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateDataModel": {
-                "surfaceId": "job-failure",
-                "value": {
-                  "step": {
-                    "name": "Format check"
-                  }
-                }
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 16822,
+          "offsetMs": 12978,
           "messages": [
             {
               "version": "v0.9",
@@ -132,7 +98,7 @@
           "texts": []
         },
         {
-          "offsetMs": 16894,
+          "offsetMs": 13040,
           "messages": [
             {
               "version": "v0.9",
@@ -157,7 +123,35 @@
           "texts": []
         },
         {
-          "offsetMs": 16960,
+          "offsetMs": 13107,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "job-failure",
+                "value": {
+                  "lines": [
+                    {
+                      "text": "$ prettier --check ."
+                    },
+                    {
+                      "text": "Checking formatting..."
+                    },
+                    {
+                      "text": "[warn] scripts/ci-format-demo.mjs"
+                    },
+                    {
+                      "text": "[warn] Code style issues found in the above file. Run"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 13155,
           "messages": [
             {
               "version": "v0.9",
@@ -176,6 +170,9 @@
                     },
                     {
                       "text": "[warn] Code style issues found in the above file. Run Prettier with --write to fix."
+                    },
+                    {
+                      "text": ""
                     }
                   ]
                 }
@@ -185,38 +182,7 @@
           "texts": []
         },
         {
-          "offsetMs": 17036,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateDataModel": {
-                "surfaceId": "job-failure",
-                "value": {
-                  "lines": [
-                    {
-                      "text": "$ prettier --check ."
-                    },
-                    {
-                      "text": "Checking formatting..."
-                    },
-                    {
-                      "text": "[warn] scripts/ci-format-demo.mjs"
-                    },
-                    {
-                      "text": "[warn] Code style issues found in the above file. Run Prettier with --write to fix."
-                    },
-                    {
-                      "text": "[ELIFECYCLE] Command failed with exit code 1."
-                    }
-                  ]
-                }
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 17100,
+          "offsetMs": 13219,
           "messages": [
             {
               "version": "v0.9",
@@ -225,9 +191,9 @@
                 "path": "/",
                 "value": {
                   "job": {
-                    "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
+                    "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
                     "name": "lint-format",
-                    "workflowId": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696"
+                    "workflowId": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7"
                   },
                   "step": {
                     "name": "Format check",
@@ -257,7 +223,7 @@
           "texts": []
         },
         {
-          "offsetMs": 17305,
+          "offsetMs": 13404,
           "messages": [
             {
               "version": "v0.9",
@@ -281,7 +247,7 @@
           "texts": []
         },
         {
-          "offsetMs": 17383,
+          "offsetMs": 13468,
           "messages": [
             {
               "version": "v0.9",
@@ -336,7 +302,7 @@
           "texts": []
         },
         {
-          "offsetMs": 17529,
+          "offsetMs": 13612,
           "messages": [
             {
               "version": "v0.9",
@@ -394,7 +360,7 @@
           "texts": []
         },
         {
-          "offsetMs": 17607,
+          "offsetMs": 13669,
           "messages": [
             {
               "version": "v0.9",
@@ -426,8 +392,7 @@
                   },
                   {
                     "id": "step-row",
-                    "component": "Row",
-                    "justify": "spaceBetween"
+                    "component": "Row"
                   },
                   {
                     "id": "loading_divider",
@@ -452,7 +417,7 @@
           "texts": []
         },
         {
-          "offsetMs": 17677,
+          "offsetMs": 13810,
           "messages": [
             {
               "version": "v0.9",
@@ -524,7 +489,7 @@
           "texts": []
         },
         {
-          "offsetMs": 17820,
+          "offsetMs": 13868,
           "messages": [
             {
               "version": "v0.9",
@@ -598,7 +563,80 @@
           "texts": []
         },
         {
-          "offsetMs": 17958,
+          "offsetMs": 13935,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "step-row",
+                      "loading_divider",
+                      "loading_log",
+                      "loading_actions"
+                    ]
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": {
+                      "path": "/job/name"
+                    },
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "step-exit",
+                    "component": "Text"
+                  },
+                  {
+                    "id": "step-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "/step/name"
+                    }
+                  },
+                  {
+                    "id": "step-row",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "children": [
+                      "step-name",
+                      "step-exit"
+                    ]
+                  },
+                  {
+                    "id": "loading_divider",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_log",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "job-failure"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 14001,
           "messages": [
             {
               "version": "v0.9",
@@ -675,7 +713,7 @@
           "texts": []
         },
         {
-          "offsetMs": 18017,
+          "offsetMs": 14069,
           "messages": [
             {
               "version": "v0.9",
@@ -751,7 +789,7 @@
           "texts": []
         },
         {
-          "offsetMs": 18158,
+          "offsetMs": 14213,
           "messages": [
             {
               "version": "v0.9",
@@ -835,7 +873,93 @@
           "texts": []
         },
         {
-          "offsetMs": 18296,
+          "offsetMs": 14280,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "step-row",
+                      "divider",
+                      "log",
+                      "loading_actions"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": {
+                      "path": "/job/name"
+                    },
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "log",
+                    "component": "Column",
+                    "children": {
+                      "path": "/lines",
+                      "componentId": "log-line"
+                    }
+                  },
+                  {
+                    "id": "log-line",
+                    "component": "Text",
+                    "text": {
+                      "path": "text"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "step-exit",
+                    "component": "Text",
+                    "text": {
+                      "path": "/step/exitCode"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "step-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "/step/name"
+                    }
+                  },
+                  {
+                    "id": "step-row",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "children": [
+                      "step-name",
+                      "step-exit"
+                    ]
+                  },
+                  {
+                    "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "job-failure"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 14342,
           "messages": [
             {
               "version": "v0.9",
@@ -922,7 +1046,7 @@
           "texts": []
         },
         {
-          "offsetMs": 18548,
+          "offsetMs": 14411,
           "messages": [
             {
               "version": "v0.9",
@@ -1016,7 +1140,7 @@
           "texts": []
         },
         {
-          "offsetMs": 18852,
+          "offsetMs": 14830,
           "messages": [
             {
               "version": "v0.9",
@@ -1126,7 +1250,7 @@
           "texts": []
         },
         {
-          "offsetMs": 19033,
+          "offsetMs": 14908,
           "messages": [
             {
               "version": "v0.9",
@@ -1196,8 +1320,7 @@
                   },
                   {
                     "id": "rerun-failed-label",
-                    "component": "Text",
-                    "text": "Rerun"
+                    "component": "Text"
                   },
                   {
                     "id": "root",
@@ -1236,7 +1359,7 @@
           "texts": []
         },
         {
-          "offsetMs": 19107,
+          "offsetMs": 14971,
           "messages": [
             {
               "version": "v0.9",
@@ -1347,7 +1470,7 @@
         }
       ],
       "outcome": "completed",
-      "durationMs": 19324
+      "durationMs": 15151
     }
   ]
 }

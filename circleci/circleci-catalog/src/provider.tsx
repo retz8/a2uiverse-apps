@@ -61,6 +61,22 @@ const STRUCTURE = {
   '--a2ui-choicepicker-chip-border-radius': '6px',
 } as const;
 
+/**
+ * The status pill's colors, one pair per tone, sampled from CircleCI's pipelines dashboard
+ * (Running, Success, the queued job icon) and workflow page (Failed). A status with no sampled
+ * color takes the neutral pair. The pills keep their colors in both appearances.
+ */
+const STATUS = {
+  '--circleci-status-success-bg': '#8bdea4',
+  '--circleci-status-success-fg': '#03331a',
+  '--circleci-status-failed-bg': '#bd4c48',
+  '--circleci-status-failed-fg': '#ffffff',
+  '--circleci-status-running-bg': '#135df2',
+  '--circleci-status-running-fg': '#ffffff',
+  '--circleci-status-queued-bg': '#283548',
+  '--circleci-status-queued-fg': '#ffffff',
+} as const;
+
 /** Light appearance — measured on CircleCI's pipelines, workflow and job pages. */
 const LIGHT = {
   '--a2ui-color-background': '#f7f7f7',
@@ -98,13 +114,13 @@ const DARK_TOKENS = {
   '--a2ui-text-caption-color': '#a3a9b5',
 } as const;
 
-export const TOKENS = {...STRUCTURE, ...LIGHT} as const satisfies Record<
-  `--a2ui-${string}`,
+export const TOKENS = {...STRUCTURE, ...LIGHT, ...STATUS} as const satisfies Record<
+  `--${string}`,
   string
 >;
 
-export const TOKENS_DARK = {...STRUCTURE, ...DARK_TOKENS} as const satisfies Record<
-  `--a2ui-${string}`,
+export const TOKENS_DARK = {...STRUCTURE, ...DARK_TOKENS, ...STATUS} as const satisfies Record<
+  `--${string}`,
   string
 >;
 

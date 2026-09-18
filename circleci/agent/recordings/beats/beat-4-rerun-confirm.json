@@ -4,23 +4,23 @@
   "title": "Rerun confirmed",
   "prompt": "Yes, rerun it.",
   "model": "gemini-3.7-flash",
-  "recordedAt": "2026-09-18T10:17:39+00:00",
-  "contextId": "86e393a8-faeb-4939-b4b4-8a42068adcc8",
+  "recordedAt": "2026-09-18T10:41:30+00:00",
+  "contextId": "c7d8823b-6a8a-4399-bd71-5bce29b6673d",
   "chainedFrom": "beat-4-rerun-proposal",
   "turns": [
     {
-      "taskId": "00b57924-2d5d-4f9e-81b3-478e492ee206",
+      "taskId": "a2c4b1e1-fe18-4474-aac4-4bfd97a67191",
       "kind": "utterance",
       "prompt": "Yes, rerun it.",
       "action": null,
       "batches": [
         {
-          "offsetMs": 20735,
+          "offsetMs": 27389,
           "messages": [
             {
               "paintMeta": {
                 "surfaceId": "run-detail",
-                "title": "Run: ci/failing-format-demo"
+                "title": "Pipeline Run"
               }
             }
           ],
@@ -29,7 +29,7 @@
           ]
         },
         {
-          "offsetMs": 20905,
+          "offsetMs": 27570,
           "messages": [
             {
               "version": "v0.9",
@@ -43,7 +43,7 @@
           "texts": []
         },
         {
-          "offsetMs": 21099,
+          "offsetMs": 27917,
           "messages": [
             {
               "version": "v0.9",
@@ -60,7 +60,7 @@
           "texts": []
         },
         {
-          "offsetMs": 21153,
+          "offsetMs": 28067,
           "messages": [
             {
               "version": "v0.9",
@@ -78,7 +78,7 @@
           "texts": []
         },
         {
-          "offsetMs": 21288,
+          "offsetMs": 28132,
           "messages": [
             {
               "version": "v0.9",
@@ -97,7 +97,7 @@
           "texts": []
         },
         {
-          "offsetMs": 21359,
+          "offsetMs": 28194,
           "messages": [
             {
               "version": "v0.9",
@@ -110,9 +110,10 @@
                     "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
                     "workflows": [
                       {
-                        "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
-                        "name": "verify",
-                        "status": "Running"
+                        "id": "131ad9a2-a72b-4f40-abe4-81e080cf16f7",
+                        "name": "verify (attempt 4)",
+                        "status": "Running",
+                        "when": "Just now"
                       }
                     ]
                   }
@@ -123,7 +124,7 @@
           "texts": []
         },
         {
-          "offsetMs": 21506,
+          "offsetMs": 28259,
           "messages": [
             {
               "version": "v0.9",
@@ -136,15 +137,16 @@
                     "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
                     "workflows": [
                       {
-                        "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
-                        "name": "verify",
+                        "id": "131ad9a2-a72b-4f40-abe4-81e080cf16f7",
+                        "name": "verify (attempt 4)",
                         "status": "Running",
+                        "when": "Just now",
                         "jobs": [
                           {
-                            "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
+                            "id": "f54d48af-19d2-46d8-8c91-2969365f4519",
                             "name": "lint-format",
                             "status": "Running",
-                            "duration": ""
+                            "duration": "running"
                           }
                         ]
                       }
@@ -157,7 +159,7 @@
           "texts": []
         },
         {
-          "offsetMs": 21639,
+          "offsetMs": 28383,
           "messages": [
             {
               "version": "v0.9",
@@ -170,19 +172,19 @@
                     "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
                     "workflows": [
                       {
-                        "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
-                        "name": "verify",
+                        "id": "131ad9a2-a72b-4f40-abe4-81e080cf16f7",
+                        "name": "verify (attempt 4)",
                         "status": "Running",
+                        "when": "Just now",
                         "jobs": [
                           {
-                            "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
+                            "id": "f54d48af-19d2-46d8-8c91-2969365f4519",
                             "name": "lint-format",
                             "status": "Running",
-                            "duration": ""
+                            "duration": "running"
                           },
                           {
-                            "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
-                            "name": "build-typecheck-test"
+                            "id": "68159b82-476b-4f3b-8075-7b4f292123b0"
                           }
                         ]
                       }
@@ -195,7 +197,7 @@
           "texts": []
         },
         {
-          "offsetMs": 21716,
+          "offsetMs": 28450,
           "messages": [
             {
               "version": "v0.9",
@@ -208,111 +210,69 @@
                     "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
                     "workflows": [
                       {
-                        "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
-                        "name": "verify",
+                        "id": "131ad9a2-a72b-4f40-abe4-81e080cf16f7",
+                        "name": "verify (attempt 4)",
                         "status": "Running",
+                        "when": "Just now",
                         "jobs": [
                           {
-                            "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
+                            "id": "f54d48af-19d2-46d8-8c91-2969365f4519",
                             "name": "lint-format",
                             "status": "Running",
-                            "duration": ""
-                          },
-                          {
-                            "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
-                            "name": "build-typecheck-test",
-                            "status": "Success",
-                            "duration": ""
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                }
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 21842,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateDataModel": {
-                "surfaceId": "run-detail",
-                "value": {
-                  "run": {
-                    "id": "8416285e-ff58-4fc1-a237-5db68376f273",
-                    "branch": "ci/failing-format-demo",
-                    "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
-                    "workflows": [
-                      {
-                        "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
-                        "name": "verify",
-                        "status": "Running",
-                        "jobs": [
-                          {
-                            "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
-                            "name": "lint-format",
-                            "status": "Running",
-                            "duration": ""
+                            "duration": "running"
                           },
                           {
                             "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
                             "name": "build-typecheck-test",
                             "status": "Success",
-                            "duration": ""
+                            "duration": "reused"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 28730,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "run-detail",
+                "value": {
+                  "run": {
+                    "id": "8416285e-ff58-4fc1-a237-5db68376f273",
+                    "branch": "ci/failing-format-demo",
+                    "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
+                    "workflows": [
+                      {
+                        "id": "131ad9a2-a72b-4f40-abe4-81e080cf16f7",
+                        "name": "verify (attempt 4)",
+                        "status": "Running",
+                        "when": "Just now",
+                        "jobs": [
+                          {
+                            "id": "f54d48af-19d2-46d8-8c91-2969365f4519",
+                            "name": "lint-format",
+                            "status": "Running",
+                            "duration": "running"
+                          },
+                          {
+                            "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                            "name": "build-typecheck-test",
+                            "status": "Success",
+                            "duration": "reused"
                           }
                         ]
                       },
                       {
-                        "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
-                        "name": "verify"
-                      }
-                    ]
-                  }
-                }
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 21896,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateDataModel": {
-                "surfaceId": "run-detail",
-                "value": {
-                  "run": {
-                    "id": "8416285e-ff58-4fc1-a237-5db68376f273",
-                    "branch": "ci/failing-format-demo",
-                    "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
-                    "workflows": [
-                      {
                         "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
-                        "name": "verify",
-                        "status": "Running",
-                        "jobs": [
-                          {
-                            "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
-                            "name": "lint-format",
-                            "status": "Running",
-                            "duration": ""
-                          },
-                          {
-                            "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
-                            "name": "build-typecheck-test",
-                            "status": "Success",
-                            "duration": ""
-                          }
-                        ]
-                      },
-                      {
-                        "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
-                        "name": "verify",
+                        "name": "verify (attempt 3)",
                         "status": "Failed"
                       }
                     ]
@@ -324,7 +284,7 @@
           "texts": []
         },
         {
-          "offsetMs": 21966,
+          "offsetMs": 28793,
           "messages": [
             {
               "version": "v0.9",
@@ -337,34 +297,83 @@
                     "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
                     "workflows": [
                       {
-                        "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
-                        "name": "verify",
+                        "id": "131ad9a2-a72b-4f40-abe4-81e080cf16f7",
+                        "name": "verify (attempt 4)",
                         "status": "Running",
+                        "when": "Just now",
                         "jobs": [
                           {
-                            "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
+                            "id": "f54d48af-19d2-46d8-8c91-2969365f4519",
                             "name": "lint-format",
                             "status": "Running",
-                            "duration": ""
+                            "duration": "running"
                           },
                           {
                             "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
                             "name": "build-typecheck-test",
                             "status": "Success",
-                            "duration": ""
+                            "duration": "reused"
                           }
                         ]
                       },
                       {
-                        "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
-                        "name": "verify",
+                        "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
+                        "name": "verify (attempt 3)",
                         "status": "Failed",
+                        "when": "Sep 18, 2026, 10:17 UTC"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 28924,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "run-detail",
+                "value": {
+                  "run": {
+                    "id": "8416285e-ff58-4fc1-a237-5db68376f273",
+                    "branch": "ci/failing-format-demo",
+                    "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
+                    "workflows": [
+                      {
+                        "id": "131ad9a2-a72b-4f40-abe4-81e080cf16f7",
+                        "name": "verify (attempt 4)",
+                        "status": "Running",
+                        "when": "Just now",
                         "jobs": [
                           {
-                            "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
+                            "id": "f54d48af-19d2-46d8-8c91-2969365f4519",
+                            "name": "lint-format",
+                            "status": "Running",
+                            "duration": "running"
+                          },
+                          {
+                            "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                            "name": "build-typecheck-test",
+                            "status": "Success",
+                            "duration": "reused"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
+                        "name": "verify (attempt 3)",
+                        "status": "Failed",
+                        "when": "Sep 18, 2026, 10:17 UTC",
+                        "jobs": [
+                          {
+                            "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
                             "name": "lint-format",
                             "status": "Failed",
-                            "duration": "38s"
+                            "duration": "44s"
                           }
                         ]
                       }
@@ -377,7 +386,7 @@
           "texts": []
         },
         {
-          "offsetMs": 22098,
+          "offsetMs": 28983,
           "messages": [
             {
               "version": "v0.9",
@@ -390,38 +399,39 @@
                     "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
                     "workflows": [
                       {
-                        "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
-                        "name": "verify",
+                        "id": "131ad9a2-a72b-4f40-abe4-81e080cf16f7",
+                        "name": "verify (attempt 4)",
                         "status": "Running",
+                        "when": "Just now",
                         "jobs": [
                           {
-                            "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
+                            "id": "f54d48af-19d2-46d8-8c91-2969365f4519",
                             "name": "lint-format",
                             "status": "Running",
-                            "duration": ""
+                            "duration": "running"
                           },
                           {
                             "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
                             "name": "build-typecheck-test",
                             "status": "Success",
-                            "duration": ""
+                            "duration": "reused"
                           }
                         ]
                       },
                       {
-                        "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
-                        "name": "verify",
+                        "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
+                        "name": "verify (attempt 3)",
                         "status": "Failed",
+                        "when": "Sep 18, 2026, 10:17 UTC",
                         "jobs": [
                           {
-                            "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
+                            "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
                             "name": "lint-format",
                             "status": "Failed",
-                            "duration": "38s"
+                            "duration": "44s"
                           },
                           {
-                            "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
-                            "name": "build-typecheck-test"
+                            "id": "68159b82-476b-4f3b-8075-7b4f292123b0"
                           }
                         ]
                       }
@@ -434,7 +444,7 @@
           "texts": []
         },
         {
-          "offsetMs": 22169,
+          "offsetMs": 29046,
           "messages": [
             {
               "version": "v0.9",
@@ -447,40 +457,41 @@
                     "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
                     "workflows": [
                       {
-                        "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
-                        "name": "verify",
+                        "id": "131ad9a2-a72b-4f40-abe4-81e080cf16f7",
+                        "name": "verify (attempt 4)",
                         "status": "Running",
+                        "when": "Just now",
                         "jobs": [
                           {
-                            "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
+                            "id": "f54d48af-19d2-46d8-8c91-2969365f4519",
                             "name": "lint-format",
                             "status": "Running",
-                            "duration": ""
+                            "duration": "running"
                           },
                           {
                             "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
                             "name": "build-typecheck-test",
                             "status": "Success",
-                            "duration": ""
+                            "duration": "reused"
                           }
                         ]
                       },
                       {
-                        "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
-                        "name": "verify",
+                        "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
+                        "name": "verify (attempt 3)",
                         "status": "Failed",
+                        "when": "Sep 18, 2026, 10:17 UTC",
                         "jobs": [
                           {
-                            "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
+                            "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
                             "name": "lint-format",
                             "status": "Failed",
-                            "duration": "38s"
+                            "duration": "44s"
                           },
                           {
                             "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
                             "name": "build-typecheck-test",
-                            "status": "Success",
-                            "duration": ""
+                            "status": "Success"
                           }
                         ]
                       }
@@ -493,7 +504,7 @@
           "texts": []
         },
         {
-          "offsetMs": 22303,
+          "offsetMs": 29117,
           "messages": [
             {
               "version": "v0.9",
@@ -506,46 +517,44 @@
                     "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
                     "workflows": [
                       {
-                        "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
-                        "name": "verify",
+                        "id": "131ad9a2-a72b-4f40-abe4-81e080cf16f7",
+                        "name": "verify (attempt 4)",
                         "status": "Running",
+                        "when": "Just now",
+                        "jobs": [
+                          {
+                            "id": "f54d48af-19d2-46d8-8c91-2969365f4519",
+                            "name": "lint-format",
+                            "status": "Running",
+                            "duration": "running"
+                          },
+                          {
+                            "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                            "name": "build-typecheck-test",
+                            "status": "Success",
+                            "duration": "reused"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
+                        "name": "verify (attempt 3)",
+                        "status": "Failed",
+                        "when": "Sep 18, 2026, 10:17 UTC",
                         "jobs": [
                           {
                             "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
                             "name": "lint-format",
-                            "status": "Running",
-                            "duration": ""
-                          },
-                          {
-                            "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
-                            "name": "build-typecheck-test",
-                            "status": "Success",
-                            "duration": ""
-                          }
-                        ]
-                      },
-                      {
-                        "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
-                        "name": "verify",
-                        "status": "Failed",
-                        "jobs": [
-                          {
-                            "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
-                            "name": "lint-format",
                             "status": "Failed",
-                            "duration": "38s"
+                            "duration": "44s"
                           },
                           {
                             "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
                             "name": "build-typecheck-test",
                             "status": "Success",
-                            "duration": ""
+                            "duration": "reused"
                           }
                         ]
-                      },
-                      {
-                        "id": "5d9db191-66c3-4586-a82e-a5102c54106d",
-                        "name": "verify"
                       }
                     ]
                   }
@@ -556,7 +565,7 @@
           "texts": []
         },
         {
-          "offsetMs": 22381,
+          "offsetMs": 29247,
           "messages": [
             {
               "version": "v0.9",
@@ -569,46 +578,48 @@
                     "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
                     "workflows": [
                       {
-                        "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
-                        "name": "verify",
+                        "id": "131ad9a2-a72b-4f40-abe4-81e080cf16f7",
+                        "name": "verify (attempt 4)",
                         "status": "Running",
+                        "when": "Just now",
                         "jobs": [
                           {
-                            "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
+                            "id": "f54d48af-19d2-46d8-8c91-2969365f4519",
                             "name": "lint-format",
                             "status": "Running",
-                            "duration": ""
+                            "duration": "running"
                           },
                           {
                             "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
                             "name": "build-typecheck-test",
                             "status": "Success",
-                            "duration": ""
+                            "duration": "reused"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
+                        "name": "verify (attempt 3)",
+                        "status": "Failed",
+                        "when": "Sep 18, 2026, 10:17 UTC",
+                        "jobs": [
+                          {
+                            "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
+                            "name": "lint-format",
+                            "status": "Failed",
+                            "duration": "44s"
+                          },
+                          {
+                            "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                            "name": "build-typecheck-test",
+                            "status": "Success",
+                            "duration": "reused"
                           }
                         ]
                       },
                       {
                         "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
-                        "name": "verify",
-                        "status": "Failed",
-                        "jobs": [
-                          {
-                            "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
-                            "name": "lint-format",
-                            "status": "Failed",
-                            "duration": "38s"
-                          },
-                          {
-                            "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
-                            "name": "build-typecheck-test",
-                            "status": "Success",
-                            "duration": ""
-                          }
-                        ]
-                      },
-                      {
-                        "id": "5d9db191-66c3-4586-a82e-a5102c54106d",
-                        "name": "verify",
+                        "name": "verify (attempt 2)",
                         "status": "Failed"
                       }
                     ]
@@ -620,7 +631,7 @@
           "texts": []
         },
         {
-          "offsetMs": 22465,
+          "offsetMs": 29307,
           "messages": [
             {
               "version": "v0.9",
@@ -633,47 +644,709 @@
                     "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
                     "workflows": [
                       {
-                        "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
-                        "name": "verify",
+                        "id": "131ad9a2-a72b-4f40-abe4-81e080cf16f7",
+                        "name": "verify (attempt 4)",
                         "status": "Running",
+                        "when": "Just now",
                         "jobs": [
                           {
-                            "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
+                            "id": "f54d48af-19d2-46d8-8c91-2969365f4519",
                             "name": "lint-format",
                             "status": "Running",
-                            "duration": ""
+                            "duration": "running"
                           },
                           {
                             "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
                             "name": "build-typecheck-test",
                             "status": "Success",
-                            "duration": ""
+                            "duration": "reused"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
+                        "name": "verify (attempt 3)",
+                        "status": "Failed",
+                        "when": "Sep 18, 2026, 10:17 UTC",
+                        "jobs": [
+                          {
+                            "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
+                            "name": "lint-format",
+                            "status": "Failed",
+                            "duration": "44s"
+                          },
+                          {
+                            "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                            "name": "build-typecheck-test",
+                            "status": "Success",
+                            "duration": "reused"
                           }
                         ]
                       },
                       {
                         "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
-                        "name": "verify",
+                        "name": "verify (attempt 2)",
                         "status": "Failed",
+                        "when": "Sep 18, 2026, 10:14 UTC"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 29436,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "run-detail",
+                "value": {
+                  "run": {
+                    "id": "8416285e-ff58-4fc1-a237-5db68376f273",
+                    "branch": "ci/failing-format-demo",
+                    "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
+                    "workflows": [
+                      {
+                        "id": "131ad9a2-a72b-4f40-abe4-81e080cf16f7",
+                        "name": "verify (attempt 4)",
+                        "status": "Running",
+                        "when": "Just now",
                         "jobs": [
                           {
-                            "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
+                            "id": "f54d48af-19d2-46d8-8c91-2969365f4519",
                             "name": "lint-format",
-                            "status": "Failed",
-                            "duration": "38s"
+                            "status": "Running",
+                            "duration": "running"
                           },
                           {
                             "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
                             "name": "build-typecheck-test",
                             "status": "Success",
-                            "duration": ""
+                            "duration": "reused"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
+                        "name": "verify (attempt 3)",
+                        "status": "Failed",
+                        "when": "Sep 18, 2026, 10:17 UTC",
+                        "jobs": [
+                          {
+                            "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
+                            "name": "lint-format",
+                            "status": "Failed",
+                            "duration": "44s"
+                          },
+                          {
+                            "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                            "name": "build-typecheck-test",
+                            "status": "Success",
+                            "duration": "reused"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
+                        "name": "verify (attempt 2)",
+                        "status": "Failed",
+                        "when": "Sep 18, 2026, 10:14 UTC",
+                        "jobs": [
+                          {
+                            "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
+                            "name": "lint-format",
+                            "status": "Failed",
+                            "duration": "39s"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 29500,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "run-detail",
+                "value": {
+                  "run": {
+                    "id": "8416285e-ff58-4fc1-a237-5db68376f273",
+                    "branch": "ci/failing-format-demo",
+                    "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
+                    "workflows": [
+                      {
+                        "id": "131ad9a2-a72b-4f40-abe4-81e080cf16f7",
+                        "name": "verify (attempt 4)",
+                        "status": "Running",
+                        "when": "Just now",
+                        "jobs": [
+                          {
+                            "id": "f54d48af-19d2-46d8-8c91-2969365f4519",
+                            "name": "lint-format",
+                            "status": "Running",
+                            "duration": "running"
+                          },
+                          {
+                            "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                            "name": "build-typecheck-test",
+                            "status": "Success",
+                            "duration": "reused"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
+                        "name": "verify (attempt 3)",
+                        "status": "Failed",
+                        "when": "Sep 18, 2026, 10:17 UTC",
+                        "jobs": [
+                          {
+                            "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
+                            "name": "lint-format",
+                            "status": "Failed",
+                            "duration": "44s"
+                          },
+                          {
+                            "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                            "name": "build-typecheck-test",
+                            "status": "Success",
+                            "duration": "reused"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
+                        "name": "verify (attempt 2)",
+                        "status": "Failed",
+                        "when": "Sep 18, 2026, 10:14 UTC",
+                        "jobs": [
+                          {
+                            "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
+                            "name": "lint-format",
+                            "status": "Failed",
+                            "duration": "39s"
+                          },
+                          {
+                            "id": "68159b82-476b-4f3b-8075-7b4f292123b0"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 29568,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "run-detail",
+                "value": {
+                  "run": {
+                    "id": "8416285e-ff58-4fc1-a237-5db68376f273",
+                    "branch": "ci/failing-format-demo",
+                    "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
+                    "workflows": [
+                      {
+                        "id": "131ad9a2-a72b-4f40-abe4-81e080cf16f7",
+                        "name": "verify (attempt 4)",
+                        "status": "Running",
+                        "when": "Just now",
+                        "jobs": [
+                          {
+                            "id": "f54d48af-19d2-46d8-8c91-2969365f4519",
+                            "name": "lint-format",
+                            "status": "Running",
+                            "duration": "running"
+                          },
+                          {
+                            "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                            "name": "build-typecheck-test",
+                            "status": "Success",
+                            "duration": "reused"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
+                        "name": "verify (attempt 3)",
+                        "status": "Failed",
+                        "when": "Sep 18, 2026, 10:17 UTC",
+                        "jobs": [
+                          {
+                            "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
+                            "name": "lint-format",
+                            "status": "Failed",
+                            "duration": "44s"
+                          },
+                          {
+                            "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                            "name": "build-typecheck-test",
+                            "status": "Success",
+                            "duration": "reused"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
+                        "name": "verify (attempt 2)",
+                        "status": "Failed",
+                        "when": "Sep 18, 2026, 10:14 UTC",
+                        "jobs": [
+                          {
+                            "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
+                            "name": "lint-format",
+                            "status": "Failed",
+                            "duration": "39s"
+                          },
+                          {
+                            "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                            "name": "build-typecheck-test",
+                            "status": "Success"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 29633,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "run-detail",
+                "value": {
+                  "run": {
+                    "id": "8416285e-ff58-4fc1-a237-5db68376f273",
+                    "branch": "ci/failing-format-demo",
+                    "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
+                    "workflows": [
+                      {
+                        "id": "131ad9a2-a72b-4f40-abe4-81e080cf16f7",
+                        "name": "verify (attempt 4)",
+                        "status": "Running",
+                        "when": "Just now",
+                        "jobs": [
+                          {
+                            "id": "f54d48af-19d2-46d8-8c91-2969365f4519",
+                            "name": "lint-format",
+                            "status": "Running",
+                            "duration": "running"
+                          },
+                          {
+                            "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                            "name": "build-typecheck-test",
+                            "status": "Success",
+                            "duration": "reused"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
+                        "name": "verify (attempt 3)",
+                        "status": "Failed",
+                        "when": "Sep 18, 2026, 10:17 UTC",
+                        "jobs": [
+                          {
+                            "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
+                            "name": "lint-format",
+                            "status": "Failed",
+                            "duration": "44s"
+                          },
+                          {
+                            "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                            "name": "build-typecheck-test",
+                            "status": "Success",
+                            "duration": "reused"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
+                        "name": "verify (attempt 2)",
+                        "status": "Failed",
+                        "when": "Sep 18, 2026, 10:14 UTC",
+                        "jobs": [
+                          {
+                            "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
+                            "name": "lint-format",
+                            "status": "Failed",
+                            "duration": "39s"
+                          },
+                          {
+                            "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                            "name": "build-typecheck-test",
+                            "status": "Success",
+                            "duration": "reused"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 29766,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "run-detail",
+                "value": {
+                  "run": {
+                    "id": "8416285e-ff58-4fc1-a237-5db68376f273",
+                    "branch": "ci/failing-format-demo",
+                    "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
+                    "workflows": [
+                      {
+                        "id": "131ad9a2-a72b-4f40-abe4-81e080cf16f7",
+                        "name": "verify (attempt 4)",
+                        "status": "Running",
+                        "when": "Just now",
+                        "jobs": [
+                          {
+                            "id": "f54d48af-19d2-46d8-8c91-2969365f4519",
+                            "name": "lint-format",
+                            "status": "Running",
+                            "duration": "running"
+                          },
+                          {
+                            "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                            "name": "build-typecheck-test",
+                            "status": "Success",
+                            "duration": "reused"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
+                        "name": "verify (attempt 3)",
+                        "status": "Failed",
+                        "when": "Sep 18, 2026, 10:17 UTC",
+                        "jobs": [
+                          {
+                            "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
+                            "name": "lint-format",
+                            "status": "Failed",
+                            "duration": "44s"
+                          },
+                          {
+                            "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                            "name": "build-typecheck-test",
+                            "status": "Success",
+                            "duration": "reused"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
+                        "name": "verify (attempt 2)",
+                        "status": "Failed",
+                        "when": "Sep 18, 2026, 10:14 UTC",
+                        "jobs": [
+                          {
+                            "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
+                            "name": "lint-format",
+                            "status": "Failed",
+                            "duration": "39s"
+                          },
+                          {
+                            "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                            "name": "build-typecheck-test",
+                            "status": "Success",
+                            "duration": "reused"
                           }
                         ]
                       },
                       {
                         "id": "5d9db191-66c3-4586-a82e-a5102c54106d",
-                        "name": "verify",
+                        "name": "verify (attempt 1)"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 29847,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "run-detail",
+                "value": {
+                  "run": {
+                    "id": "8416285e-ff58-4fc1-a237-5db68376f273",
+                    "branch": "ci/failing-format-demo",
+                    "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
+                    "workflows": [
+                      {
+                        "id": "131ad9a2-a72b-4f40-abe4-81e080cf16f7",
+                        "name": "verify (attempt 4)",
+                        "status": "Running",
+                        "when": "Just now",
+                        "jobs": [
+                          {
+                            "id": "f54d48af-19d2-46d8-8c91-2969365f4519",
+                            "name": "lint-format",
+                            "status": "Running",
+                            "duration": "running"
+                          },
+                          {
+                            "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                            "name": "build-typecheck-test",
+                            "status": "Success",
+                            "duration": "reused"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
+                        "name": "verify (attempt 3)",
                         "status": "Failed",
+                        "when": "Sep 18, 2026, 10:17 UTC",
+                        "jobs": [
+                          {
+                            "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
+                            "name": "lint-format",
+                            "status": "Failed",
+                            "duration": "44s"
+                          },
+                          {
+                            "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                            "name": "build-typecheck-test",
+                            "status": "Success",
+                            "duration": "reused"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
+                        "name": "verify (attempt 2)",
+                        "status": "Failed",
+                        "when": "Sep 18, 2026, 10:14 UTC",
+                        "jobs": [
+                          {
+                            "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
+                            "name": "lint-format",
+                            "status": "Failed",
+                            "duration": "39s"
+                          },
+                          {
+                            "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                            "name": "build-typecheck-test",
+                            "status": "Success",
+                            "duration": "reused"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "5d9db191-66c3-4586-a82e-a5102c54106d",
+                        "name": "verify (attempt 1)",
+                        "status": "Failed"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 29920,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "run-detail",
+                "value": {
+                  "run": {
+                    "id": "8416285e-ff58-4fc1-a237-5db68376f273",
+                    "branch": "ci/failing-format-demo",
+                    "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
+                    "workflows": [
+                      {
+                        "id": "131ad9a2-a72b-4f40-abe4-81e080cf16f7",
+                        "name": "verify (attempt 4)",
+                        "status": "Running",
+                        "when": "Just now",
+                        "jobs": [
+                          {
+                            "id": "f54d48af-19d2-46d8-8c91-2969365f4519",
+                            "name": "lint-format",
+                            "status": "Running",
+                            "duration": "running"
+                          },
+                          {
+                            "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                            "name": "build-typecheck-test",
+                            "status": "Success",
+                            "duration": "reused"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
+                        "name": "verify (attempt 3)",
+                        "status": "Failed",
+                        "when": "Sep 18, 2026, 10:17 UTC",
+                        "jobs": [
+                          {
+                            "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
+                            "name": "lint-format",
+                            "status": "Failed",
+                            "duration": "44s"
+                          },
+                          {
+                            "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                            "name": "build-typecheck-test",
+                            "status": "Success",
+                            "duration": "reused"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
+                        "name": "verify (attempt 2)",
+                        "status": "Failed",
+                        "when": "Sep 18, 2026, 10:14 UTC",
+                        "jobs": [
+                          {
+                            "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
+                            "name": "lint-format",
+                            "status": "Failed",
+                            "duration": "39s"
+                          },
+                          {
+                            "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                            "name": "build-typecheck-test",
+                            "status": "Success",
+                            "duration": "reused"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "5d9db191-66c3-4586-a82e-a5102c54106d",
+                        "name": "verify (attempt 1)",
+                        "status": "Failed",
+                        "when": "Sep 18, 2026, 09:58 UTC"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 30063,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "run-detail",
+                "value": {
+                  "run": {
+                    "id": "8416285e-ff58-4fc1-a237-5db68376f273",
+                    "branch": "ci/failing-format-demo",
+                    "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
+                    "workflows": [
+                      {
+                        "id": "131ad9a2-a72b-4f40-abe4-81e080cf16f7",
+                        "name": "verify (attempt 4)",
+                        "status": "Running",
+                        "when": "Just now",
+                        "jobs": [
+                          {
+                            "id": "f54d48af-19d2-46d8-8c91-2969365f4519",
+                            "name": "lint-format",
+                            "status": "Running",
+                            "duration": "running"
+                          },
+                          {
+                            "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                            "name": "build-typecheck-test",
+                            "status": "Success",
+                            "duration": "reused"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
+                        "name": "verify (attempt 3)",
+                        "status": "Failed",
+                        "when": "Sep 18, 2026, 10:17 UTC",
+                        "jobs": [
+                          {
+                            "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
+                            "name": "lint-format",
+                            "status": "Failed",
+                            "duration": "44s"
+                          },
+                          {
+                            "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                            "name": "build-typecheck-test",
+                            "status": "Success",
+                            "duration": "reused"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
+                        "name": "verify (attempt 2)",
+                        "status": "Failed",
+                        "when": "Sep 18, 2026, 10:14 UTC",
+                        "jobs": [
+                          {
+                            "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
+                            "name": "lint-format",
+                            "status": "Failed",
+                            "duration": "39s"
+                          },
+                          {
+                            "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                            "name": "build-typecheck-test",
+                            "status": "Success",
+                            "duration": "reused"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "5d9db191-66c3-4586-a82e-a5102c54106d",
+                        "name": "verify (attempt 1)",
+                        "status": "Failed",
+                        "when": "Sep 18, 2026, 09:58 UTC",
                         "jobs": [
                           {
                             "id": "06897a09-0357-499a-bf68-01fa19f532f2",
@@ -692,7 +1365,7 @@
           "texts": []
         },
         {
-          "offsetMs": 22610,
+          "offsetMs": 30205,
           "messages": [
             {
               "version": "v0.9",
@@ -705,47 +1378,70 @@
                     "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
                     "workflows": [
                       {
-                        "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
-                        "name": "verify",
+                        "id": "131ad9a2-a72b-4f40-abe4-81e080cf16f7",
+                        "name": "verify (attempt 4)",
                         "status": "Running",
+                        "when": "Just now",
                         "jobs": [
                           {
-                            "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
+                            "id": "f54d48af-19d2-46d8-8c91-2969365f4519",
                             "name": "lint-format",
                             "status": "Running",
-                            "duration": ""
+                            "duration": "running"
                           },
                           {
                             "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
                             "name": "build-typecheck-test",
                             "status": "Success",
-                            "duration": ""
+                            "duration": "reused"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
+                        "name": "verify (attempt 3)",
+                        "status": "Failed",
+                        "when": "Sep 18, 2026, 10:17 UTC",
+                        "jobs": [
+                          {
+                            "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
+                            "name": "lint-format",
+                            "status": "Failed",
+                            "duration": "44s"
+                          },
+                          {
+                            "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                            "name": "build-typecheck-test",
+                            "status": "Success",
+                            "duration": "reused"
                           }
                         ]
                       },
                       {
                         "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
-                        "name": "verify",
+                        "name": "verify (attempt 2)",
                         "status": "Failed",
+                        "when": "Sep 18, 2026, 10:14 UTC",
                         "jobs": [
                           {
                             "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
                             "name": "lint-format",
                             "status": "Failed",
-                            "duration": "38s"
+                            "duration": "39s"
                           },
                           {
                             "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
                             "name": "build-typecheck-test",
                             "status": "Success",
-                            "duration": ""
+                            "duration": "reused"
                           }
                         ]
                       },
                       {
                         "id": "5d9db191-66c3-4586-a82e-a5102c54106d",
-                        "name": "verify",
+                        "name": "verify (attempt 1)",
                         "status": "Failed",
+                        "when": "Sep 18, 2026, 09:58 UTC",
                         "jobs": [
                           {
                             "id": "06897a09-0357-499a-bf68-01fa19f532f2",
@@ -768,7 +1464,7 @@
           "texts": []
         },
         {
-          "offsetMs": 22687,
+          "offsetMs": 30268,
           "messages": [
             {
               "version": "v0.9",
@@ -781,47 +1477,70 @@
                     "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
                     "workflows": [
                       {
-                        "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
-                        "name": "verify",
+                        "id": "131ad9a2-a72b-4f40-abe4-81e080cf16f7",
+                        "name": "verify (attempt 4)",
                         "status": "Running",
+                        "when": "Just now",
                         "jobs": [
                           {
-                            "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
+                            "id": "f54d48af-19d2-46d8-8c91-2969365f4519",
                             "name": "lint-format",
                             "status": "Running",
-                            "duration": ""
+                            "duration": "running"
                           },
                           {
                             "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
                             "name": "build-typecheck-test",
                             "status": "Success",
-                            "duration": ""
+                            "duration": "reused"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
+                        "name": "verify (attempt 3)",
+                        "status": "Failed",
+                        "when": "Sep 18, 2026, 10:17 UTC",
+                        "jobs": [
+                          {
+                            "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
+                            "name": "lint-format",
+                            "status": "Failed",
+                            "duration": "44s"
+                          },
+                          {
+                            "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                            "name": "build-typecheck-test",
+                            "status": "Success",
+                            "duration": "reused"
                           }
                         ]
                       },
                       {
                         "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
-                        "name": "verify",
+                        "name": "verify (attempt 2)",
                         "status": "Failed",
+                        "when": "Sep 18, 2026, 10:14 UTC",
                         "jobs": [
                           {
                             "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
                             "name": "lint-format",
                             "status": "Failed",
-                            "duration": "38s"
+                            "duration": "39s"
                           },
                           {
                             "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
                             "name": "build-typecheck-test",
                             "status": "Success",
-                            "duration": ""
+                            "duration": "reused"
                           }
                         ]
                       },
                       {
                         "id": "5d9db191-66c3-4586-a82e-a5102c54106d",
-                        "name": "verify",
+                        "name": "verify (attempt 1)",
                         "status": "Failed",
+                        "when": "Sep 18, 2026, 09:58 UTC",
                         "jobs": [
                           {
                             "id": "06897a09-0357-499a-bf68-01fa19f532f2",
@@ -846,7 +1565,7 @@
           "texts": []
         },
         {
-          "offsetMs": 22778,
+          "offsetMs": 30332,
           "messages": [
             {
               "version": "v0.9",
@@ -860,47 +1579,70 @@
                     "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
                     "workflows": [
                       {
-                        "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
-                        "name": "verify",
+                        "id": "131ad9a2-a72b-4f40-abe4-81e080cf16f7",
+                        "name": "verify (attempt 4)",
                         "status": "Running",
+                        "when": "Just now",
                         "jobs": [
                           {
-                            "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
+                            "id": "f54d48af-19d2-46d8-8c91-2969365f4519",
                             "name": "lint-format",
                             "status": "Running",
-                            "duration": ""
+                            "duration": "running"
                           },
                           {
                             "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
                             "name": "build-typecheck-test",
                             "status": "Success",
-                            "duration": ""
+                            "duration": "reused"
+                          }
+                        ]
+                      },
+                      {
+                        "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
+                        "name": "verify (attempt 3)",
+                        "status": "Failed",
+                        "when": "Sep 18, 2026, 10:17 UTC",
+                        "jobs": [
+                          {
+                            "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
+                            "name": "lint-format",
+                            "status": "Failed",
+                            "duration": "44s"
+                          },
+                          {
+                            "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                            "name": "build-typecheck-test",
+                            "status": "Success",
+                            "duration": "reused"
                           }
                         ]
                       },
                       {
                         "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
-                        "name": "verify",
+                        "name": "verify (attempt 2)",
                         "status": "Failed",
+                        "when": "Sep 18, 2026, 10:14 UTC",
                         "jobs": [
                           {
                             "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
                             "name": "lint-format",
                             "status": "Failed",
-                            "duration": "38s"
+                            "duration": "39s"
                           },
                           {
                             "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
                             "name": "build-typecheck-test",
                             "status": "Success",
-                            "duration": ""
+                            "duration": "reused"
                           }
                         ]
                       },
                       {
                         "id": "5d9db191-66c3-4586-a82e-a5102c54106d",
-                        "name": "verify",
+                        "name": "verify (attempt 1)",
                         "status": "Failed",
+                        "when": "Sep 18, 2026, 09:58 UTC",
                         "jobs": [
                           {
                             "id": "06897a09-0357-499a-bf68-01fa19f532f2",
@@ -925,7 +1667,7 @@
           "texts": []
         },
         {
-          "offsetMs": 22983,
+          "offsetMs": 30543,
           "messages": [
             {
               "version": "v0.9",
@@ -949,7 +1691,7 @@
           "texts": []
         },
         {
-          "offsetMs": 23060,
+          "offsetMs": 30615,
           "messages": [
             {
               "version": "v0.9",
@@ -998,58 +1740,7 @@
           "texts": []
         },
         {
-          "offsetMs": 23125,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "body",
-                    "component": "Column",
-                    "children": [
-                      "heading",
-                      "loading_sub",
-                      "loading_divider",
-                      "loading_wf-list"
-                    ]
-                  },
-                  {
-                    "id": "heading",
-                    "component": "Text",
-                    "text": {
-                      "path": "/run/branch"
-                    }
-                  },
-                  {
-                    "id": "root",
-                    "component": "Card",
-                    "child": "body"
-                  },
-                  {
-                    "id": "loading_sub",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_divider",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_wf-list",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "run-detail"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 23205,
+          "offsetMs": 30873,
           "messages": [
             {
               "version": "v0.9",
@@ -1101,61 +1792,7 @@
           "texts": []
         },
         {
-          "offsetMs": 23269,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "body",
-                    "component": "Column",
-                    "children": [
-                      "heading",
-                      "sub",
-                      "loading_divider",
-                      "loading_wf-list"
-                    ]
-                  },
-                  {
-                    "id": "heading",
-                    "component": "Text",
-                    "text": {
-                      "path": "/run/branch"
-                    },
-                    "variant": "h3"
-                  },
-                  {
-                    "id": "root",
-                    "component": "Card",
-                    "child": "body"
-                  },
-                  {
-                    "id": "sub",
-                    "component": "Text",
-                    "text": {
-                      "path": "/run/summary"
-                    }
-                  },
-                  {
-                    "id": "loading_divider",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_wf-list",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "run-detail"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 23349,
+          "offsetMs": 31003,
           "messages": [
             {
               "version": "v0.9",
@@ -1210,7 +1847,7 @@
           "texts": []
         },
         {
-          "offsetMs": 23431,
+          "offsetMs": 31073,
           "messages": [
             {
               "version": "v0.9",
@@ -1264,63 +1901,7 @@
           "texts": []
         },
         {
-          "offsetMs": 23496,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "body",
-                    "component": "Column",
-                    "children": [
-                      "heading",
-                      "sub",
-                      "divider",
-                      "wf-list"
-                    ]
-                  },
-                  {
-                    "id": "divider",
-                    "component": "Divider"
-                  },
-                  {
-                    "id": "heading",
-                    "component": "Text",
-                    "text": {
-                      "path": "/run/branch"
-                    },
-                    "variant": "h3"
-                  },
-                  {
-                    "id": "root",
-                    "component": "Card",
-                    "child": "body"
-                  },
-                  {
-                    "id": "sub",
-                    "component": "Text",
-                    "text": {
-                      "path": "/run/summary"
-                    },
-                    "variant": "caption"
-                  },
-                  {
-                    "id": "wf-list",
-                    "component": "Column",
-                    "children": {
-                      "path": "/run/workflows"
-                    }
-                  }
-                ],
-                "surfaceId": "run-detail"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 23576,
+          "offsetMs": 31200,
           "messages": [
             {
               "version": "v0.9",
@@ -1382,7 +1963,7 @@
           "texts": []
         },
         {
-          "offsetMs": 23824,
+          "offsetMs": 31330,
           "messages": [
             {
               "version": "v0.9",
@@ -1457,7 +2038,7 @@
           "texts": []
         },
         {
-          "offsetMs": 23984,
+          "offsetMs": 31715,
           "messages": [
             {
               "version": "v0.9",
@@ -1521,7 +2102,8 @@
                     "align": "center",
                     "children": [
                       "loading_wf-status",
-                      "loading_wf-name"
+                      "loading_wf-name",
+                      "loading_wf-when"
                     ]
                   },
                   {
@@ -1538,6 +2120,11 @@
                     "id": "loading_wf-name",
                     "component": "Row",
                     "children": []
+                  },
+                  {
+                    "id": "loading_wf-when",
+                    "component": "Row",
+                    "children": []
                   }
                 ],
                 "surfaceId": "run-detail"
@@ -1547,7 +2134,7 @@
           "texts": []
         },
         {
-          "offsetMs": 24048,
+          "offsetMs": 31786,
           "messages": [
             {
               "version": "v0.9",
@@ -1606,8 +2193,8 @@
                   },
                   {
                     "id": "wf-status",
-                    "component": "Text",
-                    "text": {
+                    "component": "StatusBadge",
+                    "status": {
                       "path": "status"
                     }
                   },
@@ -1618,7 +2205,8 @@
                     "align": "center",
                     "children": [
                       "wf-status",
-                      "loading_wf-name"
+                      "loading_wf-name",
+                      "loading_wf-when"
                     ]
                   },
                   {
@@ -1630,6 +2218,11 @@
                     "id": "loading_wf-name",
                     "component": "Row",
                     "children": []
+                  },
+                  {
+                    "id": "loading_wf-when",
+                    "component": "Row",
+                    "children": []
                   }
                 ],
                 "surfaceId": "run-detail"
@@ -1639,7 +2232,7 @@
           "texts": []
         },
         {
-          "offsetMs": 24206,
+          "offsetMs": 31929,
           "messages": [
             {
               "version": "v0.9",
@@ -1706,8 +2299,8 @@
                   },
                   {
                     "id": "wf-status",
-                    "component": "Text",
-                    "text": {
+                    "component": "StatusBadge",
+                    "status": {
                       "path": "status"
                     }
                   },
@@ -1718,11 +2311,17 @@
                     "align": "center",
                     "children": [
                       "wf-status",
-                      "wf-name"
+                      "wf-name",
+                      "loading_wf-when"
                     ]
                   },
                   {
                     "id": "loading_job-list",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_wf-when",
                     "component": "Row",
                     "children": []
                   }
@@ -1734,7 +2333,7 @@
           "texts": []
         },
         {
-          "offsetMs": 24285,
+          "offsetMs": 32073,
           "messages": [
             {
               "version": "v0.9",
@@ -1763,10 +2362,6 @@
                     "variant": "h3"
                   },
                   {
-                    "id": "job-list",
-                    "component": "Column"
-                  },
-                  {
                     "id": "root",
                     "component": "Card",
                     "child": "body"
@@ -1784,7 +2379,7 @@
                     "component": "Column",
                     "children": [
                       "wf-top",
-                      "job-list"
+                      "loading_job-list"
                     ]
                   },
                   {
@@ -1805,8 +2400,8 @@
                   },
                   {
                     "id": "wf-status",
-                    "component": "Text",
-                    "text": {
+                    "component": "StatusBadge",
+                    "status": {
                       "path": "status"
                     }
                   },
@@ -1817,8 +2412,22 @@
                     "align": "center",
                     "children": [
                       "wf-status",
-                      "wf-name"
+                      "wf-name",
+                      "wf-when"
                     ]
+                  },
+                  {
+                    "id": "wf-when",
+                    "component": "Text",
+                    "text": {
+                      "path": "when"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "loading_job-list",
+                    "component": "Row",
+                    "children": []
                   }
                 ],
                 "surfaceId": "run-detail"
@@ -1828,7 +2437,7 @@
           "texts": []
         },
         {
-          "offsetMs": 24363,
+          "offsetMs": 32308,
           "messages": [
             {
               "version": "v0.9",
@@ -1903,8 +2512,8 @@
                   },
                   {
                     "id": "wf-status",
-                    "component": "Text",
-                    "text": {
+                    "component": "StatusBadge",
+                    "status": {
                       "path": "status"
                     }
                   },
@@ -1915,8 +2524,17 @@
                     "align": "center",
                     "children": [
                       "wf-status",
-                      "wf-name"
+                      "wf-name",
+                      "wf-when"
                     ]
+                  },
+                  {
+                    "id": "wf-when",
+                    "component": "Text",
+                    "text": {
+                      "path": "when"
+                    },
+                    "variant": "caption"
                   },
                   {
                     "id": "loading_job-row",
@@ -1931,7 +2549,130 @@
           "texts": []
         },
         {
-          "offsetMs": 24643,
+          "offsetMs": 32449,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "sub",
+                      "divider",
+                      "wf-list"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/branch"
+                    },
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "job-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "jobs",
+                      "componentId": "job-row"
+                    }
+                  },
+                  {
+                    "id": "job-row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "loading_job-body",
+                    "action": {
+                      "event": {
+                        "name": "open-job"
+                      }
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/summary"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "wf-block",
+                    "component": "Column",
+                    "children": [
+                      "wf-top",
+                      "job-list"
+                    ]
+                  },
+                  {
+                    "id": "wf-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/run/workflows",
+                      "componentId": "wf-block"
+                    }
+                  },
+                  {
+                    "id": "wf-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "name"
+                    },
+                    "variant": "h4"
+                  },
+                  {
+                    "id": "wf-status",
+                    "component": "StatusBadge",
+                    "status": {
+                      "path": "status"
+                    }
+                  },
+                  {
+                    "id": "wf-top",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "wf-status",
+                      "wf-name",
+                      "wf-when"
+                    ]
+                  },
+                  {
+                    "id": "wf-when",
+                    "component": "Text",
+                    "text": {
+                      "path": "when"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "loading_job-body",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "run-detail"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 32518,
           "messages": [
             {
               "version": "v0.9",
@@ -2022,8 +2763,8 @@
                   },
                   {
                     "id": "wf-status",
-                    "component": "Text",
-                    "text": {
+                    "component": "StatusBadge",
+                    "status": {
                       "path": "status"
                     }
                   },
@@ -2034,8 +2775,17 @@
                     "align": "center",
                     "children": [
                       "wf-status",
-                      "wf-name"
+                      "wf-name",
+                      "wf-when"
                     ]
+                  },
+                  {
+                    "id": "wf-when",
+                    "component": "Text",
+                    "text": {
+                      "path": "when"
+                    },
+                    "variant": "caption"
                   },
                   {
                     "id": "loading_job-body",
@@ -2050,7 +2800,7 @@
           "texts": []
         },
         {
-          "offsetMs": 24879,
+          "offsetMs": 32724,
           "messages": [
             {
               "version": "v0.9",
@@ -2152,8 +2902,8 @@
                   },
                   {
                     "id": "wf-status",
-                    "component": "Text",
-                    "text": {
+                    "component": "StatusBadge",
+                    "status": {
                       "path": "status"
                     }
                   },
@@ -2164,8 +2914,17 @@
                     "align": "center",
                     "children": [
                       "wf-status",
-                      "wf-name"
+                      "wf-name",
+                      "wf-when"
                     ]
+                  },
+                  {
+                    "id": "wf-when",
+                    "component": "Text",
+                    "text": {
+                      "path": "when"
+                    },
+                    "variant": "caption"
                   },
                   {
                     "id": "loading_job-status",
@@ -2190,7 +2949,7 @@
           "texts": []
         },
         {
-          "offsetMs": 25054,
+          "offsetMs": 32807,
           "messages": [
             {
               "version": "v0.9",
@@ -2255,8 +3014,8 @@
                   },
                   {
                     "id": "job-status",
-                    "component": "Text",
-                    "text": {
+                    "component": "StatusBadge",
+                    "status": {
                       "path": "status"
                     }
                   },
@@ -2299,8 +3058,8 @@
                   },
                   {
                     "id": "wf-status",
-                    "component": "Text",
-                    "text": {
+                    "component": "StatusBadge",
+                    "status": {
                       "path": "status"
                     }
                   },
@@ -2311,8 +3070,17 @@
                     "align": "center",
                     "children": [
                       "wf-status",
-                      "wf-name"
+                      "wf-name",
+                      "wf-when"
                     ]
+                  },
+                  {
+                    "id": "wf-when",
+                    "component": "Text",
+                    "text": {
+                      "path": "when"
+                    },
+                    "variant": "caption"
                   },
                   {
                     "id": "loading_job-name",
@@ -2332,7 +3100,157 @@
           "texts": []
         },
         {
-          "offsetMs": 25125,
+          "offsetMs": 32881,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "sub",
+                      "divider",
+                      "wf-list"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/branch"
+                    },
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "job-body",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "job-status",
+                      "job-name",
+                      "loading_job-duration"
+                    ]
+                  },
+                  {
+                    "id": "job-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "jobs",
+                      "componentId": "job-row"
+                    }
+                  },
+                  {
+                    "id": "job-name",
+                    "component": "Text"
+                  },
+                  {
+                    "id": "job-row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "job-body",
+                    "action": {
+                      "event": {
+                        "name": "open-job",
+                        "context": {
+                          "jobId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "job-status",
+                    "component": "StatusBadge",
+                    "status": {
+                      "path": "status"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/summary"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "wf-block",
+                    "component": "Column",
+                    "children": [
+                      "wf-top",
+                      "job-list"
+                    ]
+                  },
+                  {
+                    "id": "wf-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/run/workflows",
+                      "componentId": "wf-block"
+                    }
+                  },
+                  {
+                    "id": "wf-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "name"
+                    },
+                    "variant": "h4"
+                  },
+                  {
+                    "id": "wf-status",
+                    "component": "StatusBadge",
+                    "status": {
+                      "path": "status"
+                    }
+                  },
+                  {
+                    "id": "wf-top",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "wf-status",
+                      "wf-name",
+                      "wf-when"
+                    ]
+                  },
+                  {
+                    "id": "wf-when",
+                    "component": "Text",
+                    "text": {
+                      "path": "when"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "loading_job-duration",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "run-detail"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 32956,
           "messages": [
             {
               "version": "v0.9",
@@ -2404,8 +3322,8 @@
                   },
                   {
                     "id": "job-status",
-                    "component": "Text",
-                    "text": {
+                    "component": "StatusBadge",
+                    "status": {
                       "path": "status"
                     }
                   },
@@ -2448,8 +3366,8 @@
                   },
                   {
                     "id": "wf-status",
-                    "component": "Text",
-                    "text": {
+                    "component": "StatusBadge",
+                    "status": {
                       "path": "status"
                     }
                   },
@@ -2460,8 +3378,17 @@
                     "align": "center",
                     "children": [
                       "wf-status",
-                      "wf-name"
+                      "wf-name",
+                      "wf-when"
                     ]
+                  },
+                  {
+                    "id": "wf-when",
+                    "component": "Text",
+                    "text": {
+                      "path": "when"
+                    },
+                    "variant": "caption"
                   },
                   {
                     "id": "loading_job-duration",
@@ -2476,150 +3403,7 @@
           "texts": []
         },
         {
-          "offsetMs": 25201,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "body",
-                    "component": "Column",
-                    "children": [
-                      "heading",
-                      "sub",
-                      "divider",
-                      "wf-list"
-                    ]
-                  },
-                  {
-                    "id": "divider",
-                    "component": "Divider"
-                  },
-                  {
-                    "id": "heading",
-                    "component": "Text",
-                    "text": {
-                      "path": "/run/branch"
-                    },
-                    "variant": "h3"
-                  },
-                  {
-                    "id": "job-body",
-                    "component": "Row",
-                    "justify": "spaceBetween",
-                    "align": "center",
-                    "children": [
-                      "job-status",
-                      "job-name",
-                      "job-duration"
-                    ]
-                  },
-                  {
-                    "id": "job-duration",
-                    "component": "Text"
-                  },
-                  {
-                    "id": "job-list",
-                    "component": "Column",
-                    "children": {
-                      "path": "jobs",
-                      "componentId": "job-row"
-                    }
-                  },
-                  {
-                    "id": "job-name",
-                    "component": "Text",
-                    "text": {
-                      "path": "name"
-                    }
-                  },
-                  {
-                    "id": "job-row",
-                    "component": "Button",
-                    "variant": "borderless",
-                    "child": "job-body",
-                    "action": {
-                      "event": {
-                        "name": "open-job",
-                        "context": {
-                          "jobId": {
-                            "path": "id"
-                          }
-                        }
-                      }
-                    }
-                  },
-                  {
-                    "id": "job-status",
-                    "component": "Text",
-                    "text": {
-                      "path": "status"
-                    }
-                  },
-                  {
-                    "id": "root",
-                    "component": "Card",
-                    "child": "body"
-                  },
-                  {
-                    "id": "sub",
-                    "component": "Text",
-                    "text": {
-                      "path": "/run/summary"
-                    },
-                    "variant": "caption"
-                  },
-                  {
-                    "id": "wf-block",
-                    "component": "Column",
-                    "children": [
-                      "wf-top",
-                      "job-list"
-                    ]
-                  },
-                  {
-                    "id": "wf-list",
-                    "component": "Column",
-                    "children": {
-                      "path": "/run/workflows",
-                      "componentId": "wf-block"
-                    }
-                  },
-                  {
-                    "id": "wf-name",
-                    "component": "Text",
-                    "text": {
-                      "path": "name"
-                    },
-                    "variant": "h4"
-                  },
-                  {
-                    "id": "wf-status",
-                    "component": "Text",
-                    "text": {
-                      "path": "status"
-                    }
-                  },
-                  {
-                    "id": "wf-top",
-                    "component": "Row",
-                    "justify": "spaceBetween",
-                    "align": "center",
-                    "children": [
-                      "wf-status",
-                      "wf-name"
-                    ]
-                  }
-                ],
-                "surfaceId": "run-detail"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 25285,
+          "offsetMs": 33114,
           "messages": [
             {
               "version": "v0.9",
@@ -2699,8 +3483,8 @@
                   },
                   {
                     "id": "job-status",
-                    "component": "Text",
-                    "text": {
+                    "component": "StatusBadge",
+                    "status": {
                       "path": "status"
                     }
                   },
@@ -2743,8 +3527,8 @@
                   },
                   {
                     "id": "wf-status",
-                    "component": "Text",
-                    "text": {
+                    "component": "StatusBadge",
+                    "status": {
                       "path": "status"
                     }
                   },
@@ -2755,8 +3539,17 @@
                     "align": "center",
                     "children": [
                       "wf-status",
-                      "wf-name"
+                      "wf-name",
+                      "wf-when"
                     ]
+                  },
+                  {
+                    "id": "wf-when",
+                    "component": "Text",
+                    "text": {
+                      "path": "when"
+                    },
+                    "variant": "caption"
                   }
                 ],
                 "surfaceId": "run-detail"
@@ -2767,7 +3560,7 @@
         }
       ],
       "outcome": "completed",
-      "durationMs": 25530
+      "durationMs": 33331
     }
   ]
 }

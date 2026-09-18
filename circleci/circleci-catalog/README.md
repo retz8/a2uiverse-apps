@@ -3,16 +3,22 @@
 The CircleCI app's A2UI catalog: the **basic catalog** as schema and implementation,
 under a product theme.
 
-The bundle ships no component mapping of its own. `CATALOG` re-uses `basicCatalog`'s
-implementations and functions from `@a2ui/react` unchanged; the product identity is entirely
-in the `Provider`'s tokens and the scoped theme sheet.
+`CATALOG` re-uses `basicCatalog`'s implementations and functions from `@a2ui/react` unchanged
+and appends one product component, **`StatusBadge`**: a pipeline, workflow or job status drawn as
+CircleCI's status pill in that status's color. The basic catalog cannot vary a row's look by
+data — a text variant is fixed per template — so a per-row colored state needs a component of
+its own (SPEC §9.2). The rest of the product identity is the `Provider`'s tokens and the scoped
+theme sheet.
+
+The pill colors are sampled from CircleCI's pipelines dashboard and workflow page: Running,
+Success, Failed, and the queued icon's slate. A status with no sampled color draws neutral.
 
 ## Shape
 
 | File                           | What it is                                                                                                |
 | ------------------------------ | --------------------------------------------------------------------------------------------------------- |
 | `catalogs/v0.9.1/catalog.json` | Upstream's basic catalog with four identity fields rewritten (`$id`, `catalogId`, `title`, `description`) |
-| `src/catalog.ts`               | The runtime catalog: `basicCatalog`'s components and functions, verbatim                                  |
+| `src/catalog.ts`               | The runtime catalog: `basicCatalog`'s components and functions, verbatim, plus `StatusBadge`              |
 | `src/provider.tsx`             | The token theme, light and dark, sampled from CircleCI's web app                                          |
 | `src/theme.css`                | The product sheet, scoped to the Provider's wrapper: rows, the status pill, buttons                       |
 | `src/catalog.parity.test.ts`   | Schema ↔ runtime lockstep, and the upstream-drift detector                                                |

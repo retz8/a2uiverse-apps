@@ -150,8 +150,8 @@
           },
           {
             "id": "run-status",
-            "component": "Text",
-            "text": {
+            "component": "StatusBadge",
+            "status": {
               "path": "status"
             }
           },
@@ -228,11 +228,10 @@
           },
           {
             "id": "wf-status",
-            "component": "Text",
-            "text": {
+            "component": "StatusBadge",
+            "status": {
               "path": "status"
-            },
-            "variant": "caption"
+            }
           }
         ]
       }

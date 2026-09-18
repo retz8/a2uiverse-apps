@@ -30,21 +30,22 @@ CircleCI's visual language.
 
 CircleCI's pipelines list is scanned down its status column. Build every run row in this order:
 
-1. **Status** — the outcome word, first in the row.
+1. **Status** — its `StatusBadge`, first in the row.
 2. **Branch** — the run's identity for the person; it is what they pushed.
 3. **Commit** — the subject's first line, then the short hash in the caption register.
 4. **When** and **who** — secondary, in the caption register.
 
-A run's workflows sit **under** its row, each a quieter line of its own — name and status in the
-caption register. A run is never flattened into its workflows, and a workflow is never shown
-without the run it belongs to.
+A run's workflows sit **under** its row, each a quieter line of its own — its name in the
+caption register beside its `StatusBadge`. A run is never flattened into its workflows, and a
+workflow is never shown without the run it belongs to.
 
-## Status is one word, in CircleCI's own vocabulary
+## Status is a `StatusBadge`, in CircleCI's own vocabulary
 
-Write a status as the word CircleCI shows: **Success**, **Failed**, **Running**, **Canceled**,
-**On Hold**, **Not Run**, **Queued**, **Error**. Never an icon alone, never a sentence, never a
-color word. The word is the whole signal — the theme draws it as CircleCI's status pill, in one
-color for every status — so it must be first in its row, where the pill is drawn.
+Every status on a surface — a run's, a workflow's, a job's — is a `StatusBadge`, never a `Text`.
+Its `status` is the word CircleCI shows: **Success**, **Failed**, **Running**, **Canceled**,
+**On Hold**, **Not Run**, **Queued**, **Error**. The badge draws CircleCI's pill in that status's
+color; you choose the word, never a color, an icon or a sentence. In a list template, bind
+`status` by relative path so every row carries its own.
 
 ## A tappable row is a borderless `Button` wrapping the row
 
@@ -94,4 +95,4 @@ it.
 
 - Use exactly one heading-weight `Text` for the surface's primary title.
 - Branch names, workflow and job names, and hashes are shown exactly as the payload spells them.
-- Do not bold whole rows; the status word carries the row's weight.
+- Do not bold whole rows; the status badge carries the row's weight.

@@ -23,7 +23,7 @@
     "updateDataModel": {
       "surfaceId": "rerun-proposal",
       "value": {
-        "workflowId": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696"
+        "workflowId": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7"
       }
     }
   },
@@ -36,7 +36,7 @@
         "project": "a2uiverse",
         "branch": "ci/failing-format-demo",
         "workflow": "verify",
-        "workflowId": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
+        "workflowId": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
         "scope": "Only the failed jobs and what depends on them"
       }
     }
@@ -128,19 +128,19 @@
           "variant": "caption"
         },
         {
+          "id": "workflow-value",
+          "component": "Text",
+          "text": {
+            "path": "/workflow"
+          }
+        },
+        {
           "id": "scope",
           "component": "Text",
           "text": {
             "path": "/scope"
           },
           "variant": "caption"
-        },
-        {
-          "id": "workflow-value",
-          "component": "Text",
-          "text": {
-            "path": "/workflow"
-          }
         },
         {
           "id": "actions",

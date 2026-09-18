@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/retz8/a2uiverse-apps/blob/main/circleci/circleci-catalog/catalogs/v0.9.1/catalog.json",
   "title": "CircleCI Catalog",
-  "description": "The CircleCI app catalog: the A2UI basic catalog, rendered through a product theme. Components and functions are the basic catalog's, unchanged.",
+  "description": "The CircleCI app catalog: the A2UI basic catalog, rendered through a product theme, with one product component appended \u2014 StatusBadge. The basic catalog's components and functions are unchanged.",
   "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/circleci/circleci-catalog/catalogs/v0.9.1/catalog.json",
   "components": {
     "Text": {
@@ -796,6 +796,32 @@
             }
           },
           "required": ["component", "value"]
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "StatusBadge": {
+      "type": "object",
+      "description": "A pipeline, workflow or job status, drawn as CircleCI's status pill in that status's color. Use it for every status on a surface, in place of a Text.",
+      "allOf": [
+        {
+          "$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/ComponentCommon"
+        },
+        {
+          "$ref": "#/$defs/CatalogComponentCommon"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "component": {
+              "const": "StatusBadge"
+            },
+            "status": {
+              "$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/DynamicString",
+              "description": "The status as CircleCI names it \u2014 Success, Failed, Running, Queued, Canceled, On Hold, Not Run, Error. Bind it per row in a list template."
+            }
+          },
+          "required": ["component", "status"]
         }
       ],
       "unevaluatedProperties": false

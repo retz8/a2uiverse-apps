@@ -122,8 +122,8 @@
           },
           {
             "id": "wf-status",
-            "component": "Text",
-            "text": {
+            "component": "StatusBadge",
+            "status": {
               "path": "status"
             }
           },
@@ -180,8 +180,8 @@
           },
           {
             "id": "job-status",
-            "component": "Text",
-            "text": {
+            "component": "StatusBadge",
+            "status": {
               "path": "status"
             }
           },

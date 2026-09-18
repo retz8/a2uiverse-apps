@@ -5,18 +5,7 @@
       "surfaceId": "job-failure",
       "value": {
         "job": {
-          "id": "05854c56-a8de-4002-8720-ea6da62b6d9b"
-        }
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "job-failure",
-      "value": {
-        "job": {
-          "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
+          "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
           "name": "lint-format"
         }
       }
@@ -28,20 +17,9 @@
       "surfaceId": "job-failure",
       "value": {
         "job": {
-          "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
+          "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
           "name": "lint-format",
-          "workflowId": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696"
-        }
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "job-failure",
-      "value": {
-        "step": {
-          "name": "Format check"
+          "workflowId": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7"
         }
       }
     }
@@ -93,7 +71,7 @@
             "text": "[warn] scripts/ci-format-demo.mjs"
           },
           {
-            "text": "[warn] Code style issues found in the above file. Run Prettier with --write to fix."
+            "text": "[warn] Code style issues found in the above file. Run"
           }
         ]
       }
@@ -118,7 +96,7 @@
             "text": "[warn] Code style issues found in the above file. Run Prettier with --write to fix."
           },
           {
-            "text": "[ELIFECYCLE] Command failed with exit code 1."
+            "text": ""
           }
         ]
       }
@@ -131,9 +109,9 @@
       "path": "/",
       "value": {
         "job": {
-          "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
+          "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
           "name": "lint-format",
-          "workflowId": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696"
+          "workflowId": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7"
         },
         "step": {
           "name": "Format check",
