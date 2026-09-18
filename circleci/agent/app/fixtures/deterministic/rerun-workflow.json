@@ -1,0 +1,199 @@
+[
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "rerun-proposal",
+      "value": {
+        "project": "a2uiverse",
+        "branch": "ci/failing-format-demo"
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "rerun-proposal",
+      "value": {
+        "workflow": "verify"
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "rerun-proposal",
+      "value": {
+        "workflowId": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696"
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "rerun-proposal",
+      "path": "/",
+      "value": {
+        "project": "a2uiverse",
+        "branch": "ci/failing-format-demo",
+        "workflow": "verify",
+        "workflowId": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
+        "scope": "Only the failed jobs and what depends on them"
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateComponents": {
+      "components": [
+        {
+          "id": "root",
+          "component": "Card",
+          "child": "body"
+        },
+        {
+          "id": "body",
+          "component": "Column",
+          "children": [
+            "heading",
+            "project-row",
+            "branch-row",
+            "workflow-row",
+            "scope",
+            "actions"
+          ]
+        },
+        {
+          "id": "heading",
+          "component": "Text",
+          "text": "Rerun this workflow?",
+          "variant": "h3"
+        },
+        {
+          "id": "project-row",
+          "component": "Row",
+          "justify": "spaceBetween",
+          "children": [
+            "project-label",
+            "project-value"
+          ]
+        },
+        {
+          "id": "project-label",
+          "component": "Text",
+          "text": "Project",
+          "variant": "caption"
+        },
+        {
+          "id": "project-value",
+          "component": "Text",
+          "text": {
+            "path": "/project"
+          }
+        },
+        {
+          "id": "branch-row",
+          "component": "Row",
+          "justify": "spaceBetween",
+          "children": [
+            "branch-label",
+            "branch-value"
+          ]
+        },
+        {
+          "id": "branch-label",
+          "component": "Text",
+          "text": "Branch",
+          "variant": "caption"
+        },
+        {
+          "id": "branch-value",
+          "component": "Text",
+          "text": {
+            "path": "/branch"
+          }
+        },
+        {
+          "id": "workflow-row",
+          "component": "Row",
+          "justify": "spaceBetween",
+          "children": [
+            "workflow-label",
+            "workflow-value"
+          ]
+        },
+        {
+          "id": "workflow-label",
+          "component": "Text",
+          "text": "Workflow",
+          "variant": "caption"
+        },
+        {
+          "id": "scope",
+          "component": "Text",
+          "text": {
+            "path": "/scope"
+          },
+          "variant": "caption"
+        },
+        {
+          "id": "workflow-value",
+          "component": "Text",
+          "text": {
+            "path": "/workflow"
+          }
+        },
+        {
+          "id": "actions",
+          "component": "Row",
+          "children": [
+            "confirm",
+            "decline"
+          ]
+        },
+        {
+          "id": "confirm",
+          "component": "Button",
+          "child": "confirm-label",
+          "action": {
+            "event": {
+              "name": "confirm-rerun",
+              "context": {
+                "workflowId": {
+                  "path": "/workflowId"
+                },
+                "fromFailed": true
+              }
+            }
+          },
+          "variant": "primary"
+        },
+        {
+          "id": "confirm-label",
+          "component": "Text",
+          "text": "Rerun failed jobs"
+        },
+        {
+          "id": "decline",
+          "component": "Button",
+          "child": "decline-label",
+          "action": {
+            "event": {
+              "name": "decline-rerun",
+              "context": {
+                "workflowId": {
+                  "path": "/workflowId"
+                }
+              }
+            }
+          },
+          "variant": "borderless"
+        },
+        {
+          "id": "decline-label",
+          "component": "Text",
+          "text": "Keep as is"
+        }
+      ]
+    }
+  }
+]

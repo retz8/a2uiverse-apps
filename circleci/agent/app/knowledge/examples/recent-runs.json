@@ -1,0 +1,241 @@
+{
+  "name": "recent-runs",
+  "intent": "How are my builds doing?",
+  "messages": [
+    {
+      "version": "v0.9",
+      "createSurface": {
+        "surfaceId": "recent-runs",
+        "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/circleci/circleci-catalog/catalogs/v0.9.1/catalog.json",
+        "sendDataModel": true
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateDataModel": {
+        "surfaceId": "recent-runs",
+        "path": "/",
+        "value": {
+          "project": "acme-web",
+          "runs": [
+            {
+              "id": "run-1",
+              "status": "Failed",
+              "branch": "feature/checkout-redesign",
+              "commit": "9c41e07",
+              "subject": "Move the payment step ahead of the address form",
+              "author": "mira-k",
+              "when": "12 min ago",
+              "workflows": [
+                {
+                  "id": "wf-1",
+                  "name": "build-and-test",
+                  "status": "Failed"
+                }
+              ]
+            },
+            {
+              "id": "run-2",
+              "status": "Running",
+              "branch": "main",
+              "commit": "4f1c2e9",
+              "subject": "Bump the image loader to 3.2",
+              "author": "dev-okafor",
+              "when": "18 min ago",
+              "workflows": [
+                {
+                  "id": "wf-2",
+                  "name": "build-and-test",
+                  "status": "Running"
+                }
+              ]
+            },
+            {
+              "id": "run-3",
+              "status": "Success",
+              "branch": "fix/cart-rounding",
+              "commit": "b72d0aa",
+              "subject": "Round line totals before summing",
+              "author": "mira-k",
+              "when": "1 h ago",
+              "workflows": [
+                {
+                  "id": "wf-3",
+                  "name": "build-and-test",
+                  "status": "Success"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateComponents": {
+        "surfaceId": "recent-runs",
+        "components": [
+          {
+            "id": "root",
+            "component": "Card",
+            "child": "body"
+          },
+          {
+            "id": "body",
+            "component": "Column",
+            "children": [
+              "heading",
+              "sub",
+              "run-list"
+            ]
+          },
+          {
+            "id": "heading",
+            "component": "Text",
+            "text": "Recent pipelines",
+            "variant": "h3"
+          },
+          {
+            "id": "sub",
+            "component": "Text",
+            "text": {
+              "path": "/project"
+            },
+            "variant": "caption"
+          },
+          {
+            "id": "run-list",
+            "component": "Column",
+            "children": {
+              "path": "/runs",
+              "componentId": "run-row"
+            }
+          },
+          {
+            "id": "run-row",
+            "component": "Button",
+            "variant": "borderless",
+            "child": "run-body",
+            "action": {
+              "event": {
+                "name": "open-run",
+                "context": {
+                  "runId": {
+                    "path": "id"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": "run-body",
+            "component": "Column",
+            "children": [
+              "run-top",
+              "run-subject",
+              "run-meta",
+              "run-workflows"
+            ]
+          },
+          {
+            "id": "run-top",
+            "component": "Row",
+            "justify": "spaceBetween",
+            "align": "center",
+            "children": [
+              "run-status",
+              "run-branch",
+              "run-when"
+            ]
+          },
+          {
+            "id": "run-status",
+            "component": "Text",
+            "text": {
+              "path": "status"
+            }
+          },
+          {
+            "id": "run-branch",
+            "component": "Text",
+            "text": {
+              "path": "branch"
+            }
+          },
+          {
+            "id": "run-when",
+            "component": "Text",
+            "text": {
+              "path": "when"
+            },
+            "variant": "caption"
+          },
+          {
+            "id": "run-subject",
+            "component": "Text",
+            "text": {
+              "path": "subject"
+            }
+          },
+          {
+            "id": "run-meta",
+            "component": "Row",
+            "children": [
+              "run-commit",
+              "run-author"
+            ]
+          },
+          {
+            "id": "run-commit",
+            "component": "Text",
+            "text": {
+              "path": "commit"
+            },
+            "variant": "caption"
+          },
+          {
+            "id": "run-author",
+            "component": "Text",
+            "text": {
+              "path": "author"
+            },
+            "variant": "caption"
+          },
+          {
+            "id": "run-workflows",
+            "component": "Column",
+            "children": {
+              "path": "workflows",
+              "componentId": "wf-row"
+            }
+          },
+          {
+            "id": "wf-row",
+            "component": "Row",
+            "justify": "spaceBetween",
+            "children": [
+              "wf-name",
+              "wf-status"
+            ]
+          },
+          {
+            "id": "wf-name",
+            "component": "Text",
+            "text": {
+              "path": "name"
+            },
+            "variant": "caption"
+          },
+          {
+            "id": "wf-status",
+            "component": "Text",
+            "text": {
+              "path": "status"
+            },
+            "variant": "caption"
+          }
+        ]
+      }
+    }
+  ]
+}

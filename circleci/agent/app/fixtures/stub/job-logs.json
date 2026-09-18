@@ -1,0 +1,15 @@
+{
+  "05854c56-a8de-4002-8720-ea6da62b6d9b": {
+    "job": "05854c56-a8de-4002-8720-ea6da62b6d9b",
+    "steps": [
+      {
+        "exit_code": 1,
+        "name": "Format check",
+        "num": 109,
+        "outcome": "failed",
+        "stderr": "\nExited with code exit status 1",
+        "stdout": "$ prettier --check .\nChecking formatting...\n[warn] scripts/ci-format-demo.mjs\n[warn] Code style issues found in the above file. Run Prettier with --write to fix.\n[ELIFECYCLE] Command failed with exit code 1."
+      }
+    ]
+  }
+}

@@ -1,0 +1,1353 @@
+{
+  "name": "beat-3-job-failure",
+  "beat": 3,
+  "title": "Failed job logs",
+  "prompt": "Why did it fail? Show me the failed job's step and the end of its log.",
+  "model": "gemini-3.7-flash",
+  "recordedAt": "2026-09-18T10:17:39+00:00",
+  "contextId": "86e393a8-faeb-4939-b4b4-8a42068adcc8",
+  "chainedFrom": "beat-2-run-detail",
+  "turns": [
+    {
+      "taskId": "58863569-d9ff-462f-99a8-cf77bee9f828",
+      "kind": "utterance",
+      "prompt": "Why did it fail? Show me the failed job's step and the end of its log.",
+      "action": null,
+      "batches": [
+        {
+          "offsetMs": 15908,
+          "messages": [
+            {
+              "paintMeta": {
+                "surfaceId": "job-failure",
+                "title": "Failure: lint-format"
+              }
+            }
+          ],
+          "texts": [
+            "\n"
+          ]
+        },
+        {
+          "offsetMs": 16129,
+          "messages": [
+            {
+              "version": "v0.9",
+              "createSurface": {
+                "surfaceId": "job-failure",
+                "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/circleci/circleci-catalog/catalogs/v0.9.1/catalog.json",
+                "sendDataModel": true
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 16447,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "job-failure",
+                "value": {
+                  "job": {
+                    "id": "05854c56-a8de-4002-8720-ea6da62b6d9b"
+                  }
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 16513,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "job-failure",
+                "value": {
+                  "job": {
+                    "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
+                    "name": "lint-format"
+                  }
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 16586,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "job-failure",
+                "value": {
+                  "job": {
+                    "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
+                    "name": "lint-format",
+                    "workflowId": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696"
+                  }
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 16664,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "job-failure",
+                "value": {
+                  "step": {
+                    "name": "Format check"
+                  }
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 16822,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "job-failure",
+                "value": {
+                  "step": {
+                    "name": "Format check",
+                    "exitCode": "Exited with code 1"
+                  }
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 16894,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "job-failure",
+                "value": {
+                  "lines": [
+                    {
+                      "text": "$ prettier --check ."
+                    },
+                    {
+                      "text": "Checking formatting..."
+                    },
+                    {
+                      "text": "[warn] scripts/ci-format-demo.mjs"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 16960,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "job-failure",
+                "value": {
+                  "lines": [
+                    {
+                      "text": "$ prettier --check ."
+                    },
+                    {
+                      "text": "Checking formatting..."
+                    },
+                    {
+                      "text": "[warn] scripts/ci-format-demo.mjs"
+                    },
+                    {
+                      "text": "[warn] Code style issues found in the above file. Run Prettier with --write to fix."
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 17036,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "job-failure",
+                "value": {
+                  "lines": [
+                    {
+                      "text": "$ prettier --check ."
+                    },
+                    {
+                      "text": "Checking formatting..."
+                    },
+                    {
+                      "text": "[warn] scripts/ci-format-demo.mjs"
+                    },
+                    {
+                      "text": "[warn] Code style issues found in the above file. Run Prettier with --write to fix."
+                    },
+                    {
+                      "text": "[ELIFECYCLE] Command failed with exit code 1."
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 17100,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "job-failure",
+                "path": "/",
+                "value": {
+                  "job": {
+                    "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
+                    "name": "lint-format",
+                    "workflowId": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696"
+                  },
+                  "step": {
+                    "name": "Format check",
+                    "exitCode": "Exited with code 1"
+                  },
+                  "lines": [
+                    {
+                      "text": "$ prettier --check ."
+                    },
+                    {
+                      "text": "Checking formatting..."
+                    },
+                    {
+                      "text": "[warn] scripts/ci-format-demo.mjs"
+                    },
+                    {
+                      "text": "[warn] Code style issues found in the above file. Run Prettier with --write to fix."
+                    },
+                    {
+                      "text": "[ELIFECYCLE] Command failed with exit code 1."
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 17305,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "loading_body"
+                  },
+                  {
+                    "id": "loading_body",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "job-failure"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 17383,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "loading_heading",
+                      "loading_step-row",
+                      "loading_divider",
+                      "loading_log",
+                      "loading_actions"
+                    ]
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "loading_heading",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_step-row",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_divider",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_log",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "job-failure"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 17529,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "loading_step-row",
+                      "loading_divider",
+                      "loading_log",
+                      "loading_actions"
+                    ]
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": {
+                      "path": "/job/name"
+                    },
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "loading_step-row",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_divider",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_log",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "job-failure"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 17607,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "step-row",
+                      "loading_divider",
+                      "loading_log",
+                      "loading_actions"
+                    ]
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": {
+                      "path": "/job/name"
+                    },
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "step-row",
+                    "component": "Row",
+                    "justify": "spaceBetween"
+                  },
+                  {
+                    "id": "loading_divider",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_log",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "job-failure"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 17677,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "step-row",
+                      "loading_divider",
+                      "loading_log",
+                      "loading_actions"
+                    ]
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": {
+                      "path": "/job/name"
+                    },
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "step-row",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "children": [
+                      "loading_step-name",
+                      "loading_step-exit"
+                    ]
+                  },
+                  {
+                    "id": "loading_divider",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_log",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_step-name",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_step-exit",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "job-failure"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 17820,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "step-row",
+                      "loading_divider",
+                      "loading_log",
+                      "loading_actions"
+                    ]
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": {
+                      "path": "/job/name"
+                    },
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "step-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "/step/name"
+                    }
+                  },
+                  {
+                    "id": "step-row",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "children": [
+                      "step-name",
+                      "loading_step-exit"
+                    ]
+                  },
+                  {
+                    "id": "loading_divider",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_log",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_step-exit",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "job-failure"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 17958,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "step-row",
+                      "loading_divider",
+                      "loading_log",
+                      "loading_actions"
+                    ]
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": {
+                      "path": "/job/name"
+                    },
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "step-exit",
+                    "component": "Text",
+                    "text": {
+                      "path": "/step/exitCode"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "step-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "/step/name"
+                    }
+                  },
+                  {
+                    "id": "step-row",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "children": [
+                      "step-name",
+                      "step-exit"
+                    ]
+                  },
+                  {
+                    "id": "loading_divider",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_log",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "job-failure"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 18017,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "step-row",
+                      "divider",
+                      "loading_log",
+                      "loading_actions"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": {
+                      "path": "/job/name"
+                    },
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "step-exit",
+                    "component": "Text",
+                    "text": {
+                      "path": "/step/exitCode"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "step-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "/step/name"
+                    }
+                  },
+                  {
+                    "id": "step-row",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "children": [
+                      "step-name",
+                      "step-exit"
+                    ]
+                  },
+                  {
+                    "id": "loading_log",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "job-failure"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 18158,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "step-row",
+                      "divider",
+                      "log",
+                      "loading_actions"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": {
+                      "path": "/job/name"
+                    },
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "log",
+                    "component": "Column",
+                    "children": {
+                      "path": "/lines",
+                      "componentId": "loading_log-line"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "step-exit",
+                    "component": "Text",
+                    "text": {
+                      "path": "/step/exitCode"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "step-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "/step/name"
+                    }
+                  },
+                  {
+                    "id": "step-row",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "children": [
+                      "step-name",
+                      "step-exit"
+                    ]
+                  },
+                  {
+                    "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_log-line",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "job-failure"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 18296,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "step-row",
+                      "divider",
+                      "log",
+                      "loading_actions"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": {
+                      "path": "/job/name"
+                    },
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "log",
+                    "component": "Column",
+                    "children": {
+                      "path": "/lines",
+                      "componentId": "log-line"
+                    }
+                  },
+                  {
+                    "id": "log-line",
+                    "component": "Text",
+                    "text": {
+                      "path": "text"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "step-exit",
+                    "component": "Text",
+                    "text": {
+                      "path": "/step/exitCode"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "step-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "/step/name"
+                    }
+                  },
+                  {
+                    "id": "step-row",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "children": [
+                      "step-name",
+                      "step-exit"
+                    ]
+                  },
+                  {
+                    "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "job-failure"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 18548,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "actions",
+                    "component": "Row",
+                    "children": [
+                      "loading_rerun-failed"
+                    ]
+                  },
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "step-row",
+                      "divider",
+                      "log",
+                      "actions"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": {
+                      "path": "/job/name"
+                    },
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "log",
+                    "component": "Column",
+                    "children": {
+                      "path": "/lines",
+                      "componentId": "log-line"
+                    }
+                  },
+                  {
+                    "id": "log-line",
+                    "component": "Text",
+                    "text": {
+                      "path": "text"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "step-exit",
+                    "component": "Text",
+                    "text": {
+                      "path": "/step/exitCode"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "step-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "/step/name"
+                    }
+                  },
+                  {
+                    "id": "step-row",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "children": [
+                      "step-name",
+                      "step-exit"
+                    ]
+                  },
+                  {
+                    "id": "loading_rerun-failed",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "job-failure"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 18852,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "actions",
+                    "component": "Row",
+                    "children": [
+                      "rerun-failed"
+                    ]
+                  },
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "step-row",
+                      "divider",
+                      "log",
+                      "actions"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": {
+                      "path": "/job/name"
+                    },
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "log",
+                    "component": "Column",
+                    "children": {
+                      "path": "/lines",
+                      "componentId": "log-line"
+                    }
+                  },
+                  {
+                    "id": "log-line",
+                    "component": "Text",
+                    "text": {
+                      "path": "text"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "rerun-failed",
+                    "component": "Button",
+                    "child": "loading_rerun-failed-label",
+                    "action": {
+                      "event": {
+                        "name": "rerun-workflow",
+                        "context": {
+                          "workflowId": {
+                            "path": "/job/workflowId"
+                          },
+                          "fromFailed": true
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "step-exit",
+                    "component": "Text",
+                    "text": {
+                      "path": "/step/exitCode"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "step-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "/step/name"
+                    }
+                  },
+                  {
+                    "id": "step-row",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "children": [
+                      "step-name",
+                      "step-exit"
+                    ]
+                  },
+                  {
+                    "id": "loading_rerun-failed-label",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "job-failure"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 19033,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "actions",
+                    "component": "Row",
+                    "children": [
+                      "rerun-failed"
+                    ]
+                  },
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "step-row",
+                      "divider",
+                      "log",
+                      "actions"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": {
+                      "path": "/job/name"
+                    },
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "log",
+                    "component": "Column",
+                    "children": {
+                      "path": "/lines",
+                      "componentId": "log-line"
+                    }
+                  },
+                  {
+                    "id": "log-line",
+                    "component": "Text",
+                    "text": {
+                      "path": "text"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "rerun-failed",
+                    "component": "Button",
+                    "child": "rerun-failed-label",
+                    "action": {
+                      "event": {
+                        "name": "rerun-workflow",
+                        "context": {
+                          "workflowId": {
+                            "path": "/job/workflowId"
+                          },
+                          "fromFailed": true
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "rerun-failed-label",
+                    "component": "Text",
+                    "text": "Rerun"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "step-exit",
+                    "component": "Text",
+                    "text": {
+                      "path": "/step/exitCode"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "step-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "/step/name"
+                    }
+                  },
+                  {
+                    "id": "step-row",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "children": [
+                      "step-name",
+                      "step-exit"
+                    ]
+                  }
+                ],
+                "surfaceId": "job-failure"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 19107,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "actions",
+                    "component": "Row",
+                    "children": [
+                      "rerun-failed"
+                    ]
+                  },
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "step-row",
+                      "divider",
+                      "log",
+                      "actions"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": {
+                      "path": "/job/name"
+                    },
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "log",
+                    "component": "Column",
+                    "children": {
+                      "path": "/lines",
+                      "componentId": "log-line"
+                    }
+                  },
+                  {
+                    "id": "log-line",
+                    "component": "Text",
+                    "text": {
+                      "path": "text"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "rerun-failed",
+                    "component": "Button",
+                    "child": "rerun-failed-label",
+                    "action": {
+                      "event": {
+                        "name": "rerun-workflow",
+                        "context": {
+                          "workflowId": {
+                            "path": "/job/workflowId"
+                          },
+                          "fromFailed": true
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "rerun-failed-label",
+                    "component": "Text",
+                    "text": "Rerun from failed"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "step-exit",
+                    "component": "Text",
+                    "text": {
+                      "path": "/step/exitCode"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "step-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "/step/name"
+                    }
+                  },
+                  {
+                    "id": "step-row",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "children": [
+                      "step-name",
+                      "step-exit"
+                    ]
+                  }
+                ],
+                "surfaceId": "job-failure"
+              }
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "outcome": "completed",
+      "durationMs": 19324
+    }
+  ]
+}

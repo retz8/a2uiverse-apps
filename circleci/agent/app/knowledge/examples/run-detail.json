@@ -1,0 +1,258 @@
+{
+  "name": "run-detail",
+  "intent": "Open the latest run on that branch",
+  "messages": [
+    {
+      "version": "v0.9",
+      "createSurface": {
+        "surfaceId": "run-detail",
+        "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/circleci/circleci-catalog/catalogs/v0.9.1/catalog.json",
+        "sendDataModel": true
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateDataModel": {
+        "surfaceId": "run-detail",
+        "path": "/",
+        "value": {
+          "run": {
+            "id": "run-1",
+            "branch": "feature/checkout-redesign",
+            "summary": "9c41e07 \u00b7 Move the payment step ahead of the address form \u00b7 mira-k",
+            "workflows": [
+              {
+                "id": "wf-1",
+                "name": "build-and-test",
+                "status": "Failed",
+                "when": "14 min ago",
+                "jobs": [
+                  {
+                    "id": "job-1",
+                    "name": "unit-tests",
+                    "status": "Failed",
+                    "duration": "2m 41s"
+                  },
+                  {
+                    "id": "job-2",
+                    "name": "lint",
+                    "status": "Success",
+                    "duration": "48s"
+                  },
+                  {
+                    "id": "job-3",
+                    "name": "build",
+                    "status": "Success",
+                    "duration": "1m 12s"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateComponents": {
+        "surfaceId": "run-detail",
+        "components": [
+          {
+            "id": "root",
+            "component": "Card",
+            "child": "body"
+          },
+          {
+            "id": "body",
+            "component": "Column",
+            "children": [
+              "heading",
+              "sub",
+              "divider",
+              "wf-list"
+            ]
+          },
+          {
+            "id": "heading",
+            "component": "Text",
+            "text": {
+              "path": "/run/branch"
+            },
+            "variant": "h3"
+          },
+          {
+            "id": "sub",
+            "component": "Text",
+            "text": {
+              "path": "/run/summary"
+            },
+            "variant": "caption"
+          },
+          {
+            "id": "divider",
+            "component": "Divider"
+          },
+          {
+            "id": "wf-list",
+            "component": "Column",
+            "children": {
+              "path": "/run/workflows",
+              "componentId": "wf-block"
+            }
+          },
+          {
+            "id": "wf-block",
+            "component": "Column",
+            "children": [
+              "wf-top",
+              "job-list",
+              "wf-actions"
+            ]
+          },
+          {
+            "id": "wf-top",
+            "component": "Row",
+            "justify": "spaceBetween",
+            "align": "center",
+            "children": [
+              "wf-status",
+              "wf-name",
+              "wf-when"
+            ]
+          },
+          {
+            "id": "wf-status",
+            "component": "Text",
+            "text": {
+              "path": "status"
+            }
+          },
+          {
+            "id": "wf-name",
+            "component": "Text",
+            "text": {
+              "path": "name"
+            },
+            "variant": "h4"
+          },
+          {
+            "id": "wf-when",
+            "component": "Text",
+            "text": {
+              "path": "when"
+            },
+            "variant": "caption"
+          },
+          {
+            "id": "job-list",
+            "component": "Column",
+            "children": {
+              "path": "jobs",
+              "componentId": "job-row"
+            }
+          },
+          {
+            "id": "job-row",
+            "component": "Button",
+            "variant": "borderless",
+            "child": "job-body",
+            "action": {
+              "event": {
+                "name": "open-job",
+                "context": {
+                  "jobId": {
+                    "path": "id"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": "job-body",
+            "component": "Row",
+            "justify": "spaceBetween",
+            "align": "center",
+            "children": [
+              "job-status",
+              "job-name",
+              "job-duration"
+            ]
+          },
+          {
+            "id": "job-status",
+            "component": "Text",
+            "text": {
+              "path": "status"
+            }
+          },
+          {
+            "id": "job-name",
+            "component": "Text",
+            "text": {
+              "path": "name"
+            }
+          },
+          {
+            "id": "job-duration",
+            "component": "Text",
+            "text": {
+              "path": "duration"
+            },
+            "variant": "caption"
+          },
+          {
+            "id": "wf-actions",
+            "component": "Row",
+            "children": [
+              "rerun-failed",
+              "rerun-all"
+            ]
+          },
+          {
+            "id": "rerun-failed",
+            "component": "Button",
+            "child": "rerun-failed-label",
+            "action": {
+              "event": {
+                "name": "rerun-workflow",
+                "context": {
+                  "workflowId": {
+                    "path": "id"
+                  },
+                  "fromFailed": true
+                }
+              }
+            }
+          },
+          {
+            "id": "rerun-failed-label",
+            "component": "Text",
+            "text": "Rerun from failed"
+          },
+          {
+            "id": "rerun-all",
+            "component": "Button",
+            "variant": "borderless",
+            "child": "rerun-all-label",
+            "action": {
+              "event": {
+                "name": "rerun-workflow",
+                "context": {
+                  "workflowId": {
+                    "path": "id"
+                  },
+                  "fromFailed": false
+                }
+              }
+            }
+          },
+          {
+            "id": "rerun-all-label",
+            "component": "Text",
+            "text": "Rerun from start"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,171 @@
+{
+  "05854c56-a8de-4002-8720-ea6da62b6d9b": {
+    "attributes": {
+      "ended_at": "2026-09-18T10:14:43.052Z",
+      "name": "lint-format",
+      "outcome": "failed",
+      "parallel_executions": [
+        {
+          "steps": [
+            {
+              "command": "",
+              "ended_at": "2026-09-18T10:14:05.785Z",
+              "name": "Spin up environment",
+              "num": 0,
+              "outcome": "succeeded",
+              "phase": "ended",
+              "started_at": "2026-09-18T10:14:03.935Z",
+              "stderr_bytes": 0,
+              "stdout_bytes": 1905,
+              "type": "spinup_environment"
+            },
+            {
+              "command": "",
+              "ended_at": "2026-09-18T10:14:05.983Z",
+              "name": "Preparing environment variables",
+              "num": 99,
+              "outcome": "succeeded",
+              "phase": "ended",
+              "started_at": "2026-09-18T10:14:05.975Z",
+              "stderr_bytes": 0,
+              "stdout_bytes": 1314,
+              "type": "print_env"
+            },
+            {
+              "command": "",
+              "ended_at": "2026-09-18T10:14:07.598Z",
+              "name": "Checkout code",
+              "num": 101,
+              "outcome": "succeeded",
+              "phase": "ended",
+              "started_at": "2026-09-18T10:14:06.086Z",
+              "stderr_bytes": 0,
+              "stdout_bytes": 17889,
+              "type": "checkout"
+            },
+            {
+              "command": "#!/bin/bash -eo pipefail\nsudo corepack enable",
+              "ended_at": "2026-09-18T10:14:07.763Z",
+              "exit_code": 0,
+              "name": "Enable Corepack",
+              "num": 102,
+              "outcome": "succeeded",
+              "phase": "ended",
+              "started_at": "2026-09-18T10:14:07.651Z",
+              "stderr_bytes": 0,
+              "stdout_bytes": 4,
+              "type": "run"
+            },
+            {
+              "command": "#!/bin/bash -eo pipefail\npnpm config set store-dir ~/.pnpm-store",
+              "ended_at": "2026-09-18T10:14:09.22Z",
+              "exit_code": 0,
+              "name": "Point pnpm at a cacheable store",
+              "num": 103,
+              "outcome": "succeeded",
+              "phase": "ended",
+              "started_at": "2026-09-18T10:14:07.823Z",
+              "stderr_bytes": 0,
+              "stdout_bytes": 0,
+              "type": "run"
+            },
+            {
+              "command": "",
+              "ended_at": "2026-09-18T10:14:22.223Z",
+              "name": "Restoring cache",
+              "num": 104,
+              "outcome": "succeeded",
+              "phase": "ended",
+              "started_at": "2026-09-18T10:14:09.274Z",
+              "stderr_bytes": 0,
+              "stdout_bytes": 477,
+              "type": "restore_cache"
+            },
+            {
+              "command": "#!/bin/bash -eo pipefail\npnpm install --frozen-lockfile",
+              "ended_at": "2026-09-18T10:14:28.468Z",
+              "exit_code": 0,
+              "name": "Install",
+              "num": 105,
+              "outcome": "succeeded",
+              "phase": "ended",
+              "started_at": "2026-09-18T10:14:22.271Z",
+              "stderr_bytes": 0,
+              "stdout_bytes": 1004,
+              "type": "run"
+            },
+            {
+              "command": "",
+              "ended_at": "2026-09-18T10:14:28.603Z",
+              "name": "Saving cache",
+              "num": 106,
+              "outcome": "succeeded",
+              "phase": "ended",
+              "started_at": "2026-09-18T10:14:28.513Z",
+              "stderr_bytes": 0,
+              "stdout_bytes": 225,
+              "type": "save_cache"
+            },
+            {
+              "command": "#!/bin/bash -eo pipefail\npnpm test:scripts",
+              "ended_at": "2026-09-18T10:14:29.572Z",
+              "exit_code": 0,
+              "name": "Script tests",
+              "num": 107,
+              "outcome": "succeeded",
+              "phase": "ended",
+              "started_at": "2026-09-18T10:14:28.648Z",
+              "stderr_bytes": 0,
+              "stdout_bytes": 1339,
+              "type": "run"
+            },
+            {
+              "command": "#!/bin/bash -eo pipefail\npnpm lint",
+              "ended_at": "2026-09-18T10:14:36.561Z",
+              "exit_code": 0,
+              "name": "Lint",
+              "num": 108,
+              "outcome": "succeeded",
+              "phase": "ended",
+              "started_at": "2026-09-18T10:14:29.632Z",
+              "stderr_bytes": 0,
+              "stdout_bytes": 9180,
+              "type": "run"
+            },
+            {
+              "command": "#!/bin/bash -eo pipefail\npnpm format:check",
+              "ended_at": "2026-09-18T10:14:42.549Z",
+              "exit_code": 1,
+              "name": "Format check",
+              "num": 109,
+              "outcome": "failed",
+              "phase": "ended",
+              "started_at": "2026-09-18T10:14:36.604Z",
+              "stderr_bytes": 34,
+              "stdout_bytes": 233,
+              "type": "run"
+            }
+          ]
+        }
+      ],
+      "phase": "ended",
+      "started_at": "2026-09-18T10:14:04.543Z",
+      "type": "build"
+    },
+    "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
+    "references": {
+      "pipeline": {
+        "id": "8416285e-ff58-4fc1-a237-5db68376f273"
+      },
+      "project": {
+        "id": "5475943e-db5e-4b4a-937b-4d64f8f05d3c"
+      },
+      "user": {
+        "id": "ed4b3ffc-d7f1-4fd1-8f8b-1e7555b8aca5"
+      },
+      "workflow": {
+        "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696"
+      }
+    }
+  }
+}

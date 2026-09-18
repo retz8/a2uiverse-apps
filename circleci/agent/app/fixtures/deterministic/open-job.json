@@ -1,0 +1,265 @@
+[
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "job-failure",
+      "value": {
+        "job": {
+          "id": "05854c56-a8de-4002-8720-ea6da62b6d9b"
+        }
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "job-failure",
+      "value": {
+        "job": {
+          "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
+          "name": "lint-format"
+        }
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "job-failure",
+      "value": {
+        "job": {
+          "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
+          "name": "lint-format",
+          "workflowId": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696"
+        }
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "job-failure",
+      "value": {
+        "step": {
+          "name": "Format check"
+        }
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "job-failure",
+      "value": {
+        "step": {
+          "name": "Format check",
+          "exitCode": "Exited with code 1"
+        }
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "job-failure",
+      "value": {
+        "lines": [
+          {
+            "text": "$ prettier --check ."
+          },
+          {
+            "text": "Checking formatting..."
+          },
+          {
+            "text": "[warn] scripts/ci-format-demo.mjs"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "job-failure",
+      "value": {
+        "lines": [
+          {
+            "text": "$ prettier --check ."
+          },
+          {
+            "text": "Checking formatting..."
+          },
+          {
+            "text": "[warn] scripts/ci-format-demo.mjs"
+          },
+          {
+            "text": "[warn] Code style issues found in the above file. Run Prettier with --write to fix."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "job-failure",
+      "value": {
+        "lines": [
+          {
+            "text": "$ prettier --check ."
+          },
+          {
+            "text": "Checking formatting..."
+          },
+          {
+            "text": "[warn] scripts/ci-format-demo.mjs"
+          },
+          {
+            "text": "[warn] Code style issues found in the above file. Run Prettier with --write to fix."
+          },
+          {
+            "text": "[ELIFECYCLE] Command failed with exit code 1."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "job-failure",
+      "path": "/",
+      "value": {
+        "job": {
+          "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
+          "name": "lint-format",
+          "workflowId": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696"
+        },
+        "step": {
+          "name": "Format check",
+          "exitCode": "Exited with code 1"
+        },
+        "lines": [
+          {
+            "text": "$ prettier --check ."
+          },
+          {
+            "text": "Checking formatting..."
+          },
+          {
+            "text": "[warn] scripts/ci-format-demo.mjs"
+          },
+          {
+            "text": "[warn] Code style issues found in the above file. Run Prettier with --write to fix."
+          },
+          {
+            "text": "[ELIFECYCLE] Command failed with exit code 1."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateComponents": {
+      "components": [
+        {
+          "id": "root",
+          "component": "Card",
+          "child": "body"
+        },
+        {
+          "id": "body",
+          "component": "Column",
+          "children": [
+            "heading",
+            "step-row",
+            "divider",
+            "log",
+            "actions"
+          ]
+        },
+        {
+          "id": "heading",
+          "component": "Text",
+          "text": {
+            "path": "/job/name"
+          },
+          "variant": "h3"
+        },
+        {
+          "id": "step-row",
+          "component": "Row",
+          "justify": "spaceBetween",
+          "children": [
+            "step-name",
+            "step-exit"
+          ]
+        },
+        {
+          "id": "step-name",
+          "component": "Text",
+          "text": {
+            "path": "/step/name"
+          }
+        },
+        {
+          "id": "step-exit",
+          "component": "Text",
+          "text": {
+            "path": "/step/exitCode"
+          },
+          "variant": "caption"
+        },
+        {
+          "id": "divider",
+          "component": "Divider"
+        },
+        {
+          "id": "log",
+          "component": "Column",
+          "children": {
+            "path": "/lines",
+            "componentId": "log-line"
+          }
+        },
+        {
+          "id": "log-line",
+          "component": "Text",
+          "text": {
+            "path": "text"
+          },
+          "variant": "caption"
+        },
+        {
+          "id": "actions",
+          "component": "Row",
+          "children": [
+            "rerun-failed"
+          ]
+        },
+        {
+          "id": "rerun-failed",
+          "component": "Button",
+          "child": "rerun-failed-label",
+          "action": {
+            "event": {
+              "name": "rerun-workflow",
+              "context": {
+                "workflowId": {
+                  "path": "/job/workflowId"
+                },
+                "fromFailed": true
+              }
+            }
+          }
+        },
+        {
+          "id": "rerun-failed-label",
+          "component": "Text",
+          "text": "Rerun from failed"
+        }
+      ]
+    }
+  }
+]

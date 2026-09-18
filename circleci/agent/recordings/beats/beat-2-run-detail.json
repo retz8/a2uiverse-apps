@@ -1,0 +1,3760 @@
+{
+  "name": "beat-2-run-detail",
+  "beat": 2,
+  "title": "Run detail",
+  "prompt": "Open the most recent failed run.",
+  "model": "gemini-3.7-flash",
+  "recordedAt": "2026-09-18T10:17:39+00:00",
+  "contextId": "86e393a8-faeb-4939-b4b4-8a42068adcc8",
+  "chainedFrom": "beat-1-recent-runs",
+  "turns": [
+    {
+      "taskId": "15b0aa8b-7c42-4d1a-aff1-b68c81de0f9a",
+      "kind": "utterance",
+      "prompt": "Open the most recent failed run.",
+      "action": null,
+      "batches": [
+        {
+          "offsetMs": 16481,
+          "messages": [
+            {
+              "paintMeta": {
+                "surfaceId": "run-detail",
+                "title": "Run: ci/failing-format-demo"
+              }
+            }
+          ],
+          "texts": [
+            "\n"
+          ]
+        },
+        {
+          "offsetMs": 16598,
+          "messages": [
+            {
+              "version": "v0.9",
+              "createSurface": {
+                "surfaceId": "run-detail",
+                "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/circleci/circleci-catalog/catalogs/v0.9.1/catalog.json",
+                "sendDataModel": true
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 16791,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "run-detail",
+                "value": {
+                  "run": {
+                    "id": "8416285e-ff58-4fc1-a237-5db68376f273"
+                  }
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 16854,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "run-detail",
+                "value": {
+                  "run": {
+                    "id": "8416285e-ff58-4fc1-a237-5db68376f273",
+                    "branch": "ci/failing-format-demo"
+                  }
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 17117,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "run-detail",
+                "value": {
+                  "run": {
+                    "id": "8416285e-ff58-4fc1-a237-5db68376f273",
+                    "branch": "ci/failing-format-demo",
+                    "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8"
+                  }
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 17171,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "run-detail",
+                "value": {
+                  "run": {
+                    "id": "8416285e-ff58-4fc1-a237-5db68376f273",
+                    "branch": "ci/failing-format-demo",
+                    "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
+                    "workflows": [
+                      {
+                        "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
+                        "name": "verify",
+                        "status": "Failed"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 17254,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "run-detail",
+                "value": {
+                  "run": {
+                    "id": "8416285e-ff58-4fc1-a237-5db68376f273",
+                    "branch": "ci/failing-format-demo",
+                    "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
+                    "workflows": [
+                      {
+                        "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
+                        "name": "verify",
+                        "status": "Failed",
+                        "jobs": [
+                          {
+                            "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
+                            "name": "lint-format",
+                            "status": "Failed",
+                            "duration": "38s"
+                          },
+                          {}
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 17326,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "run-detail",
+                "value": {
+                  "run": {
+                    "id": "8416285e-ff58-4fc1-a237-5db68376f273",
+                    "branch": "ci/failing-format-demo",
+                    "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
+                    "workflows": [
+                      {
+                        "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
+                        "name": "verify",
+                        "status": "Failed",
+                        "jobs": [
+                          {
+                            "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
+                            "name": "lint-format",
+                            "status": "Failed",
+                            "duration": "38s"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 17392,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "run-detail",
+                "value": {
+                  "run": {
+                    "id": "8416285e-ff58-4fc1-a237-5db68376f273",
+                    "branch": "ci/failing-format-demo",
+                    "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
+                    "workflows": [
+                      {
+                        "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
+                        "name": "verify",
+                        "status": "Failed",
+                        "jobs": [
+                          {
+                            "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
+                            "name": "lint-format",
+                            "status": "Failed",
+                            "duration": "38s"
+                          },
+                          {
+                            "id": "68159b82-476b-4f3b-8075-7b4f292123b0"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 17454,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "run-detail",
+                "value": {
+                  "run": {
+                    "id": "8416285e-ff58-4fc1-a237-5db68376f273",
+                    "branch": "ci/failing-format-demo",
+                    "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
+                    "workflows": [
+                      {
+                        "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
+                        "name": "verify",
+                        "status": "Failed",
+                        "jobs": [
+                          {
+                            "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
+                            "name": "lint-format",
+                            "status": "Failed",
+                            "duration": "38s"
+                          },
+                          {
+                            "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                            "name": "build-typecheck-test",
+                            "status": "Success",
+                            "duration": ""
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 17600,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "run-detail",
+                "value": {
+                  "run": {
+                    "id": "8416285e-ff58-4fc1-a237-5db68376f273",
+                    "branch": "ci/failing-format-demo",
+                    "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
+                    "workflows": [
+                      {
+                        "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
+                        "name": "verify",
+                        "status": "Failed",
+                        "jobs": [
+                          {
+                            "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
+                            "name": "lint-format",
+                            "status": "Failed",
+                            "duration": "38s"
+                          },
+                          {
+                            "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                            "name": "build-typecheck-test",
+                            "status": "Success",
+                            "duration": ""
+                          }
+                        ]
+                      },
+                      {
+                        "id": "5d9db191-66c3-4586-a82e-a5102c54106d"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 17679,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "run-detail",
+                "value": {
+                  "run": {
+                    "id": "8416285e-ff58-4fc1-a237-5db68376f273",
+                    "branch": "ci/failing-format-demo",
+                    "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
+                    "workflows": [
+                      {
+                        "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
+                        "name": "verify",
+                        "status": "Failed",
+                        "jobs": [
+                          {
+                            "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
+                            "name": "lint-format",
+                            "status": "Failed",
+                            "duration": "38s"
+                          },
+                          {
+                            "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                            "name": "build-typecheck-test",
+                            "status": "Success",
+                            "duration": ""
+                          }
+                        ]
+                      },
+                      {
+                        "id": "5d9db191-66c3-4586-a82e-a5102c54106d",
+                        "name": "verify",
+                        "status": "Failed"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 17762,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "run-detail",
+                "value": {
+                  "run": {
+                    "id": "8416285e-ff58-4fc1-a237-5db68376f273",
+                    "branch": "ci/failing-format-demo",
+                    "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
+                    "workflows": [
+                      {
+                        "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
+                        "name": "verify",
+                        "status": "Failed",
+                        "jobs": [
+                          {
+                            "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
+                            "name": "lint-format",
+                            "status": "Failed",
+                            "duration": "38s"
+                          },
+                          {
+                            "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                            "name": "build-typecheck-test",
+                            "status": "Success",
+                            "duration": ""
+                          }
+                        ]
+                      },
+                      {
+                        "id": "5d9db191-66c3-4586-a82e-a5102c54106d",
+                        "name": "verify",
+                        "status": "Failed",
+                        "jobs": [
+                          {
+                            "id": "06897a09-0357-499a-bf68-01fa19f532f2",
+                            "name": "lint-format",
+                            "status": "Failed",
+                            "duration": "39s"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 17891,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "run-detail",
+                "value": {
+                  "run": {
+                    "id": "8416285e-ff58-4fc1-a237-5db68376f273",
+                    "branch": "ci/failing-format-demo",
+                    "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
+                    "workflows": [
+                      {
+                        "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
+                        "name": "verify",
+                        "status": "Failed",
+                        "jobs": [
+                          {
+                            "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
+                            "name": "lint-format",
+                            "status": "Failed",
+                            "duration": "38s"
+                          },
+                          {
+                            "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                            "name": "build-typecheck-test",
+                            "status": "Success",
+                            "duration": ""
+                          }
+                        ]
+                      },
+                      {
+                        "id": "5d9db191-66c3-4586-a82e-a5102c54106d",
+                        "name": "verify",
+                        "status": "Failed",
+                        "jobs": [
+                          {
+                            "id": "06897a09-0357-499a-bf68-01fa19f532f2",
+                            "name": "lint-format",
+                            "status": "Failed",
+                            "duration": "39s"
+                          },
+                          {
+                            "id": "68159b82-476b-4f3b-8075-7b4f292123b0"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 17946,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "run-detail",
+                "value": {
+                  "run": {
+                    "id": "8416285e-ff58-4fc1-a237-5db68376f273",
+                    "branch": "ci/failing-format-demo",
+                    "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
+                    "workflows": [
+                      {
+                        "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
+                        "name": "verify",
+                        "status": "Failed",
+                        "jobs": [
+                          {
+                            "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
+                            "name": "lint-format",
+                            "status": "Failed",
+                            "duration": "38s"
+                          },
+                          {
+                            "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                            "name": "build-typecheck-test",
+                            "status": "Success",
+                            "duration": ""
+                          }
+                        ]
+                      },
+                      {
+                        "id": "5d9db191-66c3-4586-a82e-a5102c54106d",
+                        "name": "verify",
+                        "status": "Failed",
+                        "jobs": [
+                          {
+                            "id": "06897a09-0357-499a-bf68-01fa19f532f2",
+                            "name": "lint-format",
+                            "status": "Failed",
+                            "duration": "39s"
+                          },
+                          {
+                            "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                            "name": "build-typecheck-test",
+                            "status": "Success"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 18016,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "run-detail",
+                "path": "/",
+                "value": {
+                  "run": {
+                    "id": "8416285e-ff58-4fc1-a237-5db68376f273",
+                    "branch": "ci/failing-format-demo",
+                    "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
+                    "workflows": [
+                      {
+                        "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
+                        "name": "verify",
+                        "status": "Failed",
+                        "jobs": [
+                          {
+                            "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
+                            "name": "lint-format",
+                            "status": "Failed",
+                            "duration": "38s"
+                          },
+                          {
+                            "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                            "name": "build-typecheck-test",
+                            "status": "Success",
+                            "duration": ""
+                          }
+                        ]
+                      },
+                      {
+                        "id": "5d9db191-66c3-4586-a82e-a5102c54106d",
+                        "name": "verify",
+                        "status": "Failed",
+                        "jobs": [
+                          {
+                            "id": "06897a09-0357-499a-bf68-01fa19f532f2",
+                            "name": "lint-format",
+                            "status": "Failed",
+                            "duration": "39s"
+                          },
+                          {
+                            "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                            "name": "build-typecheck-test",
+                            "status": "Success",
+                            "duration": "2m 13s"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 18191,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "loading_body"
+                  },
+                  {
+                    "id": "loading_body",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "run-detail"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 18268,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "loading_heading",
+                      "loading_sub",
+                      "loading_divider",
+                      "loading_wf-list"
+                    ]
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "loading_heading",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_sub",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_divider",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_wf-list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "run-detail"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 18412,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "loading_sub",
+                      "loading_divider",
+                      "loading_wf-list"
+                    ]
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/branch"
+                    },
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "loading_sub",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_divider",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_wf-list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "run-detail"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 18484,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "sub",
+                      "loading_divider",
+                      "loading_wf-list"
+                    ]
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/branch"
+                    },
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/summary"
+                    }
+                  },
+                  {
+                    "id": "loading_divider",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_wf-list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "run-detail"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 18550,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "sub",
+                      "loading_divider",
+                      "loading_wf-list"
+                    ]
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/branch"
+                    },
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/summary"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "loading_divider",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_wf-list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "run-detail"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 18623,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "sub",
+                      "divider",
+                      "loading_wf-list"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/branch"
+                    },
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/summary"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "loading_wf-list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "run-detail"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 18699,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "sub",
+                      "divider",
+                      "wf-list"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/branch"
+                    },
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/summary"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "wf-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/run/workflows"
+                    }
+                  }
+                ],
+                "surfaceId": "run-detail"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 18757,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "sub",
+                      "divider",
+                      "wf-list"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/branch"
+                    },
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/summary"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "wf-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/run/workflows",
+                      "componentId": "loading_wf-block"
+                    }
+                  },
+                  {
+                    "id": "loading_wf-block",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "run-detail"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 18894,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "sub",
+                      "divider",
+                      "wf-list"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/branch"
+                    },
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/summary"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "wf-block",
+                    "component": "Column",
+                    "children": [
+                      "loading_wf-top",
+                      "loading_job-list",
+                      "loading_wf-actions"
+                    ]
+                  },
+                  {
+                    "id": "wf-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/run/workflows",
+                      "componentId": "wf-block"
+                    }
+                  },
+                  {
+                    "id": "loading_wf-top",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_job-list",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_wf-actions",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "run-detail"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 19109,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "sub",
+                      "divider",
+                      "wf-list"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/branch"
+                    },
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/summary"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "wf-block",
+                    "component": "Column",
+                    "children": [
+                      "wf-top",
+                      "loading_job-list",
+                      "loading_wf-actions"
+                    ]
+                  },
+                  {
+                    "id": "wf-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/run/workflows",
+                      "componentId": "wf-block"
+                    }
+                  },
+                  {
+                    "id": "wf-top",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "loading_wf-status",
+                      "loading_wf-name"
+                    ]
+                  },
+                  {
+                    "id": "loading_job-list",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_wf-actions",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_wf-status",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_wf-name",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "run-detail"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 19181,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "sub",
+                      "divider",
+                      "wf-list"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/branch"
+                    },
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/summary"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "wf-block",
+                    "component": "Column",
+                    "children": [
+                      "wf-top",
+                      "loading_job-list",
+                      "loading_wf-actions"
+                    ]
+                  },
+                  {
+                    "id": "wf-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/run/workflows",
+                      "componentId": "wf-block"
+                    }
+                  },
+                  {
+                    "id": "wf-status",
+                    "component": "Text",
+                    "text": {
+                      "path": "status"
+                    }
+                  },
+                  {
+                    "id": "wf-top",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "wf-status",
+                      "loading_wf-name"
+                    ]
+                  },
+                  {
+                    "id": "loading_job-list",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_wf-actions",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_wf-name",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "run-detail"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 19265,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "sub",
+                      "divider",
+                      "wf-list"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/branch"
+                    },
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/summary"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "wf-block",
+                    "component": "Column",
+                    "children": [
+                      "wf-top",
+                      "loading_job-list",
+                      "loading_wf-actions"
+                    ]
+                  },
+                  {
+                    "id": "wf-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/run/workflows",
+                      "componentId": "wf-block"
+                    }
+                  },
+                  {
+                    "id": "wf-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "name"
+                    }
+                  },
+                  {
+                    "id": "wf-status",
+                    "component": "Text",
+                    "text": {
+                      "path": "status"
+                    }
+                  },
+                  {
+                    "id": "wf-top",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "wf-status",
+                      "wf-name"
+                    ]
+                  },
+                  {
+                    "id": "loading_job-list",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_wf-actions",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "run-detail"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 19325,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "sub",
+                      "divider",
+                      "wf-list"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/branch"
+                    },
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/summary"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "wf-block",
+                    "component": "Column",
+                    "children": [
+                      "wf-top",
+                      "loading_job-list",
+                      "loading_wf-actions"
+                    ]
+                  },
+                  {
+                    "id": "wf-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/run/workflows",
+                      "componentId": "wf-block"
+                    }
+                  },
+                  {
+                    "id": "wf-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "name"
+                    },
+                    "variant": "h4"
+                  },
+                  {
+                    "id": "wf-status",
+                    "component": "Text",
+                    "text": {
+                      "path": "status"
+                    }
+                  },
+                  {
+                    "id": "wf-top",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "wf-status",
+                      "wf-name"
+                    ]
+                  },
+                  {
+                    "id": "loading_job-list",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_wf-actions",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "run-detail"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 19411,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "sub",
+                      "divider",
+                      "wf-list"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/branch"
+                    },
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "job-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "jobs"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/summary"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "wf-block",
+                    "component": "Column",
+                    "children": [
+                      "wf-top",
+                      "job-list",
+                      "loading_wf-actions"
+                    ]
+                  },
+                  {
+                    "id": "wf-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/run/workflows",
+                      "componentId": "wf-block"
+                    }
+                  },
+                  {
+                    "id": "wf-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "name"
+                    },
+                    "variant": "h4"
+                  },
+                  {
+                    "id": "wf-status",
+                    "component": "Text",
+                    "text": {
+                      "path": "status"
+                    }
+                  },
+                  {
+                    "id": "wf-top",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "wf-status",
+                      "wf-name"
+                    ]
+                  },
+                  {
+                    "id": "loading_wf-actions",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "run-detail"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 19565,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "sub",
+                      "divider",
+                      "wf-list"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/branch"
+                    },
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "job-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "jobs",
+                      "componentId": "loading_job-row"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/summary"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "wf-block",
+                    "component": "Column",
+                    "children": [
+                      "wf-top",
+                      "job-list",
+                      "loading_wf-actions"
+                    ]
+                  },
+                  {
+                    "id": "wf-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/run/workflows",
+                      "componentId": "wf-block"
+                    }
+                  },
+                  {
+                    "id": "wf-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "name"
+                    },
+                    "variant": "h4"
+                  },
+                  {
+                    "id": "wf-status",
+                    "component": "Text",
+                    "text": {
+                      "path": "status"
+                    }
+                  },
+                  {
+                    "id": "wf-top",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "wf-status",
+                      "wf-name"
+                    ]
+                  },
+                  {
+                    "id": "loading_job-row",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_wf-actions",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "run-detail"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 19733,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "sub",
+                      "divider",
+                      "wf-list"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/branch"
+                    },
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "job-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "jobs",
+                      "componentId": "job-row"
+                    }
+                  },
+                  {
+                    "id": "job-row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "loading_job-body",
+                    "action": {
+                      "event": {
+                        "name": "open-job"
+                      }
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/summary"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "wf-block",
+                    "component": "Column",
+                    "children": [
+                      "wf-top",
+                      "job-list",
+                      "loading_wf-actions"
+                    ]
+                  },
+                  {
+                    "id": "wf-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/run/workflows",
+                      "componentId": "wf-block"
+                    }
+                  },
+                  {
+                    "id": "wf-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "name"
+                    },
+                    "variant": "h4"
+                  },
+                  {
+                    "id": "wf-status",
+                    "component": "Text",
+                    "text": {
+                      "path": "status"
+                    }
+                  },
+                  {
+                    "id": "wf-top",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "wf-status",
+                      "wf-name"
+                    ]
+                  },
+                  {
+                    "id": "loading_job-body",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_wf-actions",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "run-detail"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 19838,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "sub",
+                      "divider",
+                      "wf-list"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/branch"
+                    },
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "job-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "jobs",
+                      "componentId": "job-row"
+                    }
+                  },
+                  {
+                    "id": "job-row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "loading_job-body",
+                    "action": {
+                      "event": {
+                        "name": "open-job",
+                        "context": {
+                          "jobId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/summary"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "wf-block",
+                    "component": "Column",
+                    "children": [
+                      "wf-top",
+                      "job-list",
+                      "loading_wf-actions"
+                    ]
+                  },
+                  {
+                    "id": "wf-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/run/workflows",
+                      "componentId": "wf-block"
+                    }
+                  },
+                  {
+                    "id": "wf-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "name"
+                    },
+                    "variant": "h4"
+                  },
+                  {
+                    "id": "wf-status",
+                    "component": "Text",
+                    "text": {
+                      "path": "status"
+                    }
+                  },
+                  {
+                    "id": "wf-top",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "wf-status",
+                      "wf-name"
+                    ]
+                  },
+                  {
+                    "id": "loading_job-body",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_wf-actions",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "run-detail"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 19893,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "sub",
+                      "divider",
+                      "wf-list"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/branch"
+                    },
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "job-body",
+                    "component": "Row"
+                  },
+                  {
+                    "id": "job-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "jobs",
+                      "componentId": "job-row"
+                    }
+                  },
+                  {
+                    "id": "job-row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "job-body",
+                    "action": {
+                      "event": {
+                        "name": "open-job",
+                        "context": {
+                          "jobId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/summary"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "wf-block",
+                    "component": "Column",
+                    "children": [
+                      "wf-top",
+                      "job-list",
+                      "loading_wf-actions"
+                    ]
+                  },
+                  {
+                    "id": "wf-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/run/workflows",
+                      "componentId": "wf-block"
+                    }
+                  },
+                  {
+                    "id": "wf-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "name"
+                    },
+                    "variant": "h4"
+                  },
+                  {
+                    "id": "wf-status",
+                    "component": "Text",
+                    "text": {
+                      "path": "status"
+                    }
+                  },
+                  {
+                    "id": "wf-top",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "wf-status",
+                      "wf-name"
+                    ]
+                  },
+                  {
+                    "id": "loading_wf-actions",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "run-detail"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 20061,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "sub",
+                      "divider",
+                      "wf-list"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/branch"
+                    },
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "job-body",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "loading_job-status",
+                      "loading_job-name",
+                      "loading_job-duration"
+                    ]
+                  },
+                  {
+                    "id": "job-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "jobs",
+                      "componentId": "job-row"
+                    }
+                  },
+                  {
+                    "id": "job-row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "job-body",
+                    "action": {
+                      "event": {
+                        "name": "open-job",
+                        "context": {
+                          "jobId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/summary"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "wf-block",
+                    "component": "Column",
+                    "children": [
+                      "wf-top",
+                      "job-list",
+                      "loading_wf-actions"
+                    ]
+                  },
+                  {
+                    "id": "wf-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/run/workflows",
+                      "componentId": "wf-block"
+                    }
+                  },
+                  {
+                    "id": "wf-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "name"
+                    },
+                    "variant": "h4"
+                  },
+                  {
+                    "id": "wf-status",
+                    "component": "Text",
+                    "text": {
+                      "path": "status"
+                    }
+                  },
+                  {
+                    "id": "wf-top",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "wf-status",
+                      "wf-name"
+                    ]
+                  },
+                  {
+                    "id": "loading_job-status",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_job-name",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_job-duration",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_wf-actions",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "run-detail"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 20206,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "sub",
+                      "divider",
+                      "wf-list"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/branch"
+                    },
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "job-body",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "job-status",
+                      "loading_job-name",
+                      "loading_job-duration"
+                    ]
+                  },
+                  {
+                    "id": "job-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "jobs",
+                      "componentId": "job-row"
+                    }
+                  },
+                  {
+                    "id": "job-row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "job-body",
+                    "action": {
+                      "event": {
+                        "name": "open-job",
+                        "context": {
+                          "jobId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "job-status",
+                    "component": "Text",
+                    "text": {
+                      "path": "status"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/summary"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "wf-block",
+                    "component": "Column",
+                    "children": [
+                      "wf-top",
+                      "job-list",
+                      "loading_wf-actions"
+                    ]
+                  },
+                  {
+                    "id": "wf-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/run/workflows",
+                      "componentId": "wf-block"
+                    }
+                  },
+                  {
+                    "id": "wf-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "name"
+                    },
+                    "variant": "h4"
+                  },
+                  {
+                    "id": "wf-status",
+                    "component": "Text",
+                    "text": {
+                      "path": "status"
+                    }
+                  },
+                  {
+                    "id": "wf-top",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "wf-status",
+                      "wf-name"
+                    ]
+                  },
+                  {
+                    "id": "loading_job-name",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_job-duration",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_wf-actions",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "run-detail"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 20290,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "sub",
+                      "divider",
+                      "wf-list"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/branch"
+                    },
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "job-body",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "job-status",
+                      "job-name",
+                      "loading_job-duration"
+                    ]
+                  },
+                  {
+                    "id": "job-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "jobs",
+                      "componentId": "job-row"
+                    }
+                  },
+                  {
+                    "id": "job-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "name"
+                    }
+                  },
+                  {
+                    "id": "job-row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "job-body",
+                    "action": {
+                      "event": {
+                        "name": "open-job",
+                        "context": {
+                          "jobId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "job-status",
+                    "component": "Text",
+                    "text": {
+                      "path": "status"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/summary"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "wf-block",
+                    "component": "Column",
+                    "children": [
+                      "wf-top",
+                      "job-list",
+                      "loading_wf-actions"
+                    ]
+                  },
+                  {
+                    "id": "wf-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/run/workflows",
+                      "componentId": "wf-block"
+                    }
+                  },
+                  {
+                    "id": "wf-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "name"
+                    },
+                    "variant": "h4"
+                  },
+                  {
+                    "id": "wf-status",
+                    "component": "Text",
+                    "text": {
+                      "path": "status"
+                    }
+                  },
+                  {
+                    "id": "wf-top",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "wf-status",
+                      "wf-name"
+                    ]
+                  },
+                  {
+                    "id": "loading_job-duration",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_wf-actions",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "run-detail"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 20496,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "sub",
+                      "divider",
+                      "wf-list"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/branch"
+                    },
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "job-body",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "job-status",
+                      "job-name",
+                      "job-duration"
+                    ]
+                  },
+                  {
+                    "id": "job-duration",
+                    "component": "Text",
+                    "text": {
+                      "path": "duration"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "job-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "jobs",
+                      "componentId": "job-row"
+                    }
+                  },
+                  {
+                    "id": "job-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "name"
+                    }
+                  },
+                  {
+                    "id": "job-row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "job-body",
+                    "action": {
+                      "event": {
+                        "name": "open-job",
+                        "context": {
+                          "jobId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "job-status",
+                    "component": "Text",
+                    "text": {
+                      "path": "status"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/summary"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "wf-block",
+                    "component": "Column",
+                    "children": [
+                      "wf-top",
+                      "job-list",
+                      "loading_wf-actions"
+                    ]
+                  },
+                  {
+                    "id": "wf-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/run/workflows",
+                      "componentId": "wf-block"
+                    }
+                  },
+                  {
+                    "id": "wf-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "name"
+                    },
+                    "variant": "h4"
+                  },
+                  {
+                    "id": "wf-status",
+                    "component": "Text",
+                    "text": {
+                      "path": "status"
+                    }
+                  },
+                  {
+                    "id": "wf-top",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "wf-status",
+                      "wf-name"
+                    ]
+                  },
+                  {
+                    "id": "loading_wf-actions",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "run-detail"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 20658,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "sub",
+                      "divider",
+                      "wf-list"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/branch"
+                    },
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "job-body",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "job-status",
+                      "job-name",
+                      "job-duration"
+                    ]
+                  },
+                  {
+                    "id": "job-duration",
+                    "component": "Text",
+                    "text": {
+                      "path": "duration"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "job-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "jobs",
+                      "componentId": "job-row"
+                    }
+                  },
+                  {
+                    "id": "job-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "name"
+                    }
+                  },
+                  {
+                    "id": "job-row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "job-body",
+                    "action": {
+                      "event": {
+                        "name": "open-job",
+                        "context": {
+                          "jobId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "job-status",
+                    "component": "Text",
+                    "text": {
+                      "path": "status"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/summary"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "wf-actions",
+                    "component": "Row",
+                    "children": [
+                      "loading_rerun-failed",
+                      "loading_rerun-all"
+                    ]
+                  },
+                  {
+                    "id": "wf-block",
+                    "component": "Column",
+                    "children": [
+                      "wf-top",
+                      "job-list",
+                      "wf-actions"
+                    ]
+                  },
+                  {
+                    "id": "wf-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/run/workflows",
+                      "componentId": "wf-block"
+                    }
+                  },
+                  {
+                    "id": "wf-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "name"
+                    },
+                    "variant": "h4"
+                  },
+                  {
+                    "id": "wf-status",
+                    "component": "Text",
+                    "text": {
+                      "path": "status"
+                    }
+                  },
+                  {
+                    "id": "wf-top",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "wf-status",
+                      "wf-name"
+                    ]
+                  },
+                  {
+                    "id": "loading_rerun-failed",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_rerun-all",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "run-detail"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 20885,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "sub",
+                      "divider",
+                      "wf-list"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/branch"
+                    },
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "job-body",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "job-status",
+                      "job-name",
+                      "job-duration"
+                    ]
+                  },
+                  {
+                    "id": "job-duration",
+                    "component": "Text",
+                    "text": {
+                      "path": "duration"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "job-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "jobs",
+                      "componentId": "job-row"
+                    }
+                  },
+                  {
+                    "id": "job-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "name"
+                    }
+                  },
+                  {
+                    "id": "job-row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "job-body",
+                    "action": {
+                      "event": {
+                        "name": "open-job",
+                        "context": {
+                          "jobId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "job-status",
+                    "component": "Text",
+                    "text": {
+                      "path": "status"
+                    }
+                  },
+                  {
+                    "id": "rerun-failed",
+                    "component": "Button",
+                    "child": "loading_rerun-failed-label",
+                    "action": {
+                      "event": {
+                        "name": "rerun-workflow",
+                        "context": {
+                          "workflowId": {
+                            "path": "id"
+                          },
+                          "fromFailed": true
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/summary"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "wf-actions",
+                    "component": "Row",
+                    "children": [
+                      "rerun-failed",
+                      "loading_rerun-all"
+                    ]
+                  },
+                  {
+                    "id": "wf-block",
+                    "component": "Column",
+                    "children": [
+                      "wf-top",
+                      "job-list",
+                      "wf-actions"
+                    ]
+                  },
+                  {
+                    "id": "wf-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/run/workflows",
+                      "componentId": "wf-block"
+                    }
+                  },
+                  {
+                    "id": "wf-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "name"
+                    },
+                    "variant": "h4"
+                  },
+                  {
+                    "id": "wf-status",
+                    "component": "Text",
+                    "text": {
+                      "path": "status"
+                    }
+                  },
+                  {
+                    "id": "wf-top",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "wf-status",
+                      "wf-name"
+                    ]
+                  },
+                  {
+                    "id": "loading_rerun-failed-label",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_rerun-all",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "run-detail"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 21060,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "sub",
+                      "divider",
+                      "wf-list"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/branch"
+                    },
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "job-body",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "job-status",
+                      "job-name",
+                      "job-duration"
+                    ]
+                  },
+                  {
+                    "id": "job-duration",
+                    "component": "Text",
+                    "text": {
+                      "path": "duration"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "job-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "jobs",
+                      "componentId": "job-row"
+                    }
+                  },
+                  {
+                    "id": "job-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "name"
+                    }
+                  },
+                  {
+                    "id": "job-row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "job-body",
+                    "action": {
+                      "event": {
+                        "name": "open-job",
+                        "context": {
+                          "jobId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "job-status",
+                    "component": "Text",
+                    "text": {
+                      "path": "status"
+                    }
+                  },
+                  {
+                    "id": "rerun-failed",
+                    "component": "Button",
+                    "child": "rerun-failed-label",
+                    "action": {
+                      "event": {
+                        "name": "rerun-workflow",
+                        "context": {
+                          "workflowId": {
+                            "path": "id"
+                          },
+                          "fromFailed": true
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "rerun-failed-label",
+                    "component": "Text",
+                    "text": "Rerun from failed"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/summary"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "wf-actions",
+                    "component": "Row",
+                    "children": [
+                      "rerun-failed",
+                      "loading_rerun-all"
+                    ]
+                  },
+                  {
+                    "id": "wf-block",
+                    "component": "Column",
+                    "children": [
+                      "wf-top",
+                      "job-list",
+                      "wf-actions"
+                    ]
+                  },
+                  {
+                    "id": "wf-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/run/workflows",
+                      "componentId": "wf-block"
+                    }
+                  },
+                  {
+                    "id": "wf-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "name"
+                    },
+                    "variant": "h4"
+                  },
+                  {
+                    "id": "wf-status",
+                    "component": "Text",
+                    "text": {
+                      "path": "status"
+                    }
+                  },
+                  {
+                    "id": "wf-top",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "wf-status",
+                      "wf-name"
+                    ]
+                  },
+                  {
+                    "id": "loading_rerun-all",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "run-detail"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 21223,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "sub",
+                      "divider",
+                      "wf-list"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/branch"
+                    },
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "job-body",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "job-status",
+                      "job-name",
+                      "job-duration"
+                    ]
+                  },
+                  {
+                    "id": "job-duration",
+                    "component": "Text",
+                    "text": {
+                      "path": "duration"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "job-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "jobs",
+                      "componentId": "job-row"
+                    }
+                  },
+                  {
+                    "id": "job-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "name"
+                    }
+                  },
+                  {
+                    "id": "job-row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "job-body",
+                    "action": {
+                      "event": {
+                        "name": "open-job",
+                        "context": {
+                          "jobId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "job-status",
+                    "component": "Text",
+                    "text": {
+                      "path": "status"
+                    }
+                  },
+                  {
+                    "id": "rerun-all",
+                    "component": "Button"
+                  },
+                  {
+                    "id": "rerun-failed",
+                    "component": "Button",
+                    "child": "rerun-failed-label",
+                    "action": {
+                      "event": {
+                        "name": "rerun-workflow",
+                        "context": {
+                          "workflowId": {
+                            "path": "id"
+                          },
+                          "fromFailed": true
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "rerun-failed-label",
+                    "component": "Text",
+                    "text": "Rerun from failed"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/summary"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "wf-actions",
+                    "component": "Row",
+                    "children": [
+                      "rerun-failed",
+                      "rerun-all"
+                    ]
+                  },
+                  {
+                    "id": "wf-block",
+                    "component": "Column",
+                    "children": [
+                      "wf-top",
+                      "job-list",
+                      "wf-actions"
+                    ]
+                  },
+                  {
+                    "id": "wf-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/run/workflows",
+                      "componentId": "wf-block"
+                    }
+                  },
+                  {
+                    "id": "wf-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "name"
+                    },
+                    "variant": "h4"
+                  },
+                  {
+                    "id": "wf-status",
+                    "component": "Text",
+                    "text": {
+                      "path": "status"
+                    }
+                  },
+                  {
+                    "id": "wf-top",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "wf-status",
+                      "wf-name"
+                    ]
+                  }
+                ],
+                "surfaceId": "run-detail"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 21451,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "sub",
+                      "divider",
+                      "wf-list"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/branch"
+                    },
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "job-body",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "job-status",
+                      "job-name",
+                      "job-duration"
+                    ]
+                  },
+                  {
+                    "id": "job-duration",
+                    "component": "Text",
+                    "text": {
+                      "path": "duration"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "job-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "jobs",
+                      "componentId": "job-row"
+                    }
+                  },
+                  {
+                    "id": "job-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "name"
+                    }
+                  },
+                  {
+                    "id": "job-row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "job-body",
+                    "action": {
+                      "event": {
+                        "name": "open-job",
+                        "context": {
+                          "jobId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "job-status",
+                    "component": "Text",
+                    "text": {
+                      "path": "status"
+                    }
+                  },
+                  {
+                    "id": "rerun-all",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "loading_rerun-all-label",
+                    "action": {
+                      "event": {
+                        "name": "rerun-workflow",
+                        "context": {
+                          "workflowId": {
+                            "path": "id"
+                          },
+                          "fromFailed": false
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "rerun-failed",
+                    "component": "Button",
+                    "child": "rerun-failed-label",
+                    "action": {
+                      "event": {
+                        "name": "rerun-workflow",
+                        "context": {
+                          "workflowId": {
+                            "path": "id"
+                          },
+                          "fromFailed": true
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "rerun-failed-label",
+                    "component": "Text",
+                    "text": "Rerun from failed"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/summary"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "wf-actions",
+                    "component": "Row",
+                    "children": [
+                      "rerun-failed",
+                      "rerun-all"
+                    ]
+                  },
+                  {
+                    "id": "wf-block",
+                    "component": "Column",
+                    "children": [
+                      "wf-top",
+                      "job-list",
+                      "wf-actions"
+                    ]
+                  },
+                  {
+                    "id": "wf-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/run/workflows",
+                      "componentId": "wf-block"
+                    }
+                  },
+                  {
+                    "id": "wf-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "name"
+                    },
+                    "variant": "h4"
+                  },
+                  {
+                    "id": "wf-status",
+                    "component": "Text",
+                    "text": {
+                      "path": "status"
+                    }
+                  },
+                  {
+                    "id": "wf-top",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "wf-status",
+                      "wf-name"
+                    ]
+                  },
+                  {
+                    "id": "loading_rerun-all-label",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "run-detail"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 21596,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "sub",
+                      "divider",
+                      "wf-list"
+                    ]
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/branch"
+                    },
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "job-body",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "job-status",
+                      "job-name",
+                      "job-duration"
+                    ]
+                  },
+                  {
+                    "id": "job-duration",
+                    "component": "Text",
+                    "text": {
+                      "path": "duration"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "job-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "jobs",
+                      "componentId": "job-row"
+                    }
+                  },
+                  {
+                    "id": "job-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "name"
+                    }
+                  },
+                  {
+                    "id": "job-row",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "job-body",
+                    "action": {
+                      "event": {
+                        "name": "open-job",
+                        "context": {
+                          "jobId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "job-status",
+                    "component": "Text",
+                    "text": {
+                      "path": "status"
+                    }
+                  },
+                  {
+                    "id": "rerun-all",
+                    "component": "Button",
+                    "variant": "borderless",
+                    "child": "rerun-all-label",
+                    "action": {
+                      "event": {
+                        "name": "rerun-workflow",
+                        "context": {
+                          "workflowId": {
+                            "path": "id"
+                          },
+                          "fromFailed": false
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "rerun-all-label",
+                    "component": "Text",
+                    "text": "Rerun from start"
+                  },
+                  {
+                    "id": "rerun-failed",
+                    "component": "Button",
+                    "child": "rerun-failed-label",
+                    "action": {
+                      "event": {
+                        "name": "rerun-workflow",
+                        "context": {
+                          "workflowId": {
+                            "path": "id"
+                          },
+                          "fromFailed": true
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "rerun-failed-label",
+                    "component": "Text",
+                    "text": "Rerun from failed"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": {
+                      "path": "/run/summary"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "wf-actions",
+                    "component": "Row",
+                    "children": [
+                      "rerun-failed",
+                      "rerun-all"
+                    ]
+                  },
+                  {
+                    "id": "wf-block",
+                    "component": "Column",
+                    "children": [
+                      "wf-top",
+                      "job-list",
+                      "wf-actions"
+                    ]
+                  },
+                  {
+                    "id": "wf-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/run/workflows",
+                      "componentId": "wf-block"
+                    }
+                  },
+                  {
+                    "id": "wf-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "name"
+                    },
+                    "variant": "h4"
+                  },
+                  {
+                    "id": "wf-status",
+                    "component": "Text",
+                    "text": {
+                      "path": "status"
+                    }
+                  },
+                  {
+                    "id": "wf-top",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "align": "center",
+                    "children": [
+                      "wf-status",
+                      "wf-name"
+                    ]
+                  }
+                ],
+                "surfaceId": "run-detail"
+              }
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "outcome": "completed",
+      "durationMs": 21800
+    }
+  ]
+}

@@ -1,0 +1,150 @@
+{
+  "name": "job-failure",
+  "intent": "Why did the build fail?",
+  "messages": [
+    {
+      "version": "v0.9",
+      "createSurface": {
+        "surfaceId": "job-failure",
+        "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/circleci/circleci-catalog/catalogs/v0.9.1/catalog.json",
+        "sendDataModel": true
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateDataModel": {
+        "surfaceId": "job-failure",
+        "path": "/",
+        "value": {
+          "job": {
+            "id": "job-1",
+            "name": "unit-tests",
+            "workflowId": "wf-1"
+          },
+          "step": {
+            "name": "Run the test suite",
+            "exitCode": "Exited with code 1"
+          },
+          "lines": [
+            {
+              "text": "FAIL src/checkout/payment.test.ts > renders the payment step first"
+            },
+            {
+              "text": "AssertionError: expected 'address' to be 'payment'"
+            },
+            {
+              "text": "Test Files  1 failed | 41 passed (42)"
+            },
+            {
+              "text": "Tests  1 failed | 318 passed (319)"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "version": "v0.9",
+      "updateComponents": {
+        "surfaceId": "job-failure",
+        "components": [
+          {
+            "id": "root",
+            "component": "Card",
+            "child": "body"
+          },
+          {
+            "id": "body",
+            "component": "Column",
+            "children": [
+              "heading",
+              "step-row",
+              "divider",
+              "log",
+              "actions"
+            ]
+          },
+          {
+            "id": "heading",
+            "component": "Text",
+            "text": {
+              "path": "/job/name"
+            },
+            "variant": "h3"
+          },
+          {
+            "id": "step-row",
+            "component": "Row",
+            "justify": "spaceBetween",
+            "children": [
+              "step-name",
+              "step-exit"
+            ]
+          },
+          {
+            "id": "step-name",
+            "component": "Text",
+            "text": {
+              "path": "/step/name"
+            }
+          },
+          {
+            "id": "step-exit",
+            "component": "Text",
+            "text": {
+              "path": "/step/exitCode"
+            },
+            "variant": "caption"
+          },
+          {
+            "id": "divider",
+            "component": "Divider"
+          },
+          {
+            "id": "log",
+            "component": "Column",
+            "children": {
+              "path": "/lines",
+              "componentId": "log-line"
+            }
+          },
+          {
+            "id": "log-line",
+            "component": "Text",
+            "text": {
+              "path": "text"
+            },
+            "variant": "caption"
+          },
+          {
+            "id": "actions",
+            "component": "Row",
+            "children": [
+              "rerun-failed"
+            ]
+          },
+          {
+            "id": "rerun-failed",
+            "component": "Button",
+            "child": "rerun-failed-label",
+            "action": {
+              "event": {
+                "name": "rerun-workflow",
+                "context": {
+                  "workflowId": {
+                    "path": "/job/workflowId"
+                  },
+                  "fromFailed": true
+                }
+              }
+            }
+          },
+          {
+            "id": "rerun-failed-label",
+            "component": "Text",
+            "text": "Rerun from failed"
+          }
+        ]
+      }
+    }
+  ]
+}

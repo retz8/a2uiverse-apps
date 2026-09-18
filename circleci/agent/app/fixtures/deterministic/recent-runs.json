@@ -1,0 +1,965 @@
+[
+  {
+    "version": "v0.9",
+    "createSurface": {
+      "surfaceId": "recent-runs",
+      "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/circleci/circleci-catalog/catalogs/v0.9.1/catalog.json",
+      "sendDataModel": true
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "recent-runs",
+      "value": {
+        "project": "a2uiverse"
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "recent-runs",
+      "value": {
+        "runs": [
+          {
+            "id": "8416285e-ff58-4fc1-a237-5db68376f273",
+            "status": "Failed",
+            "branch": "ci/failing-format-demo",
+            "commit": "5756c6c"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "recent-runs",
+      "value": {
+        "runs": [
+          {
+            "id": "8416285e-ff58-4fc1-a237-5db68376f273",
+            "status": "Failed",
+            "branch": "ci/failing-format-demo",
+            "commit": "5756c6c",
+            "subject": "chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats",
+            "author": "retz8"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "recent-runs",
+      "value": {
+        "runs": [
+          {
+            "id": "8416285e-ff58-4fc1-a237-5db68376f273",
+            "status": "Failed",
+            "branch": "ci/failing-format-demo",
+            "commit": "5756c6c",
+            "subject": "chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats",
+            "author": "retz8",
+            "workflows": [
+              {
+                "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
+                "name": "verify",
+                "status": "Failed"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "recent-runs",
+      "value": {
+        "runs": [
+          {
+            "id": "8416285e-ff58-4fc1-a237-5db68376f273",
+            "status": "Failed",
+            "branch": "ci/failing-format-demo",
+            "commit": "5756c6c",
+            "subject": "chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats",
+            "author": "retz8",
+            "workflows": [
+              {
+                "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
+                "name": "verify",
+                "status": "Failed"
+              },
+              {
+                "id": "5d9db191-66c3-4586-a82e-a5102c54106d"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "recent-runs",
+      "value": {
+        "runs": [
+          {
+            "id": "8416285e-ff58-4fc1-a237-5db68376f273",
+            "status": "Failed",
+            "branch": "ci/failing-format-demo",
+            "commit": "5756c6c",
+            "subject": "chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats",
+            "author": "retz8",
+            "workflows": [
+              {
+                "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
+                "name": "verify",
+                "status": "Failed"
+              },
+              {
+                "id": "5d9db191-66c3-4586-a82e-a5102c54106d",
+                "name": "verify",
+                "status": "Failed"
+              }
+            ]
+          },
+          {}
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "recent-runs",
+      "value": {
+        "runs": [
+          {
+            "id": "8416285e-ff58-4fc1-a237-5db68376f273",
+            "status": "Failed",
+            "branch": "ci/failing-format-demo",
+            "commit": "5756c6c",
+            "subject": "chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats",
+            "author": "retz8",
+            "workflows": [
+              {
+                "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
+                "name": "verify",
+                "status": "Failed"
+              },
+              {
+                "id": "5d9db191-66c3-4586-a82e-a5102c54106d",
+                "name": "verify",
+                "status": "Failed"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "recent-runs",
+      "value": {
+        "runs": [
+          {
+            "id": "8416285e-ff58-4fc1-a237-5db68376f273",
+            "status": "Failed",
+            "branch": "ci/failing-format-demo",
+            "commit": "5756c6c",
+            "subject": "chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats",
+            "author": "retz8",
+            "workflows": [
+              {
+                "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
+                "name": "verify",
+                "status": "Failed"
+              },
+              {
+                "id": "5d9db191-66c3-4586-a82e-a5102c54106d",
+                "name": "verify",
+                "status": "Failed"
+              }
+            ]
+          },
+          {
+            "id": "a3fa92f7-a1c4-4543-83cf-8c9d9a15f728",
+            "status": "Success"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "recent-runs",
+      "value": {
+        "runs": [
+          {
+            "id": "8416285e-ff58-4fc1-a237-5db68376f273",
+            "status": "Failed",
+            "branch": "ci/failing-format-demo",
+            "commit": "5756c6c",
+            "subject": "chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats",
+            "author": "retz8",
+            "workflows": [
+              {
+                "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
+                "name": "verify",
+                "status": "Failed"
+              },
+              {
+                "id": "5d9db191-66c3-4586-a82e-a5102c54106d",
+                "name": "verify",
+                "status": "Failed"
+              }
+            ]
+          },
+          {
+            "id": "a3fa92f7-a1c4-4543-83cf-8c9d9a15f728",
+            "status": "Success",
+            "branch": "main",
+            "commit": "6b59996"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "recent-runs",
+      "value": {
+        "runs": [
+          {
+            "id": "8416285e-ff58-4fc1-a237-5db68376f273",
+            "status": "Failed",
+            "branch": "ci/failing-format-demo",
+            "commit": "5756c6c",
+            "subject": "chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats",
+            "author": "retz8",
+            "workflows": [
+              {
+                "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
+                "name": "verify",
+                "status": "Failed"
+              },
+              {
+                "id": "5d9db191-66c3-4586-a82e-a5102c54106d",
+                "name": "verify",
+                "status": "Failed"
+              }
+            ]
+          },
+          {
+            "id": "a3fa92f7-a1c4-4543-83cf-8c9d9a15f728",
+            "status": "Success",
+            "branch": "main",
+            "commit": "6b59996",
+            "subject": "chore: CircleCI pipeline \u2014 pnpm verify's gates as two parallel jobs in one workflow, on every branch",
+            "author": "retz8"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "recent-runs",
+      "value": {
+        "runs": [
+          {
+            "id": "8416285e-ff58-4fc1-a237-5db68376f273",
+            "status": "Failed",
+            "branch": "ci/failing-format-demo",
+            "commit": "5756c6c",
+            "subject": "chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats",
+            "author": "retz8",
+            "workflows": [
+              {
+                "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
+                "name": "verify",
+                "status": "Failed"
+              },
+              {
+                "id": "5d9db191-66c3-4586-a82e-a5102c54106d",
+                "name": "verify",
+                "status": "Failed"
+              }
+            ]
+          },
+          {
+            "id": "a3fa92f7-a1c4-4543-83cf-8c9d9a15f728",
+            "status": "Success",
+            "branch": "main",
+            "commit": "6b59996",
+            "subject": "chore: CircleCI pipeline \u2014 pnpm verify's gates as two parallel jobs in one workflow, on every branch",
+            "author": "retz8",
+            "workflows": [
+              {
+                "id": "f79e6242-d705-4065-bc65-faaf4008a23f",
+                "name": "verify",
+                "status": "Success"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "recent-runs",
+      "value": {
+        "runs": [
+          {
+            "id": "8416285e-ff58-4fc1-a237-5db68376f273",
+            "status": "Failed",
+            "branch": "ci/failing-format-demo",
+            "commit": "5756c6c",
+            "subject": "chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats",
+            "author": "retz8",
+            "workflows": [
+              {
+                "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
+                "name": "verify",
+                "status": "Failed"
+              },
+              {
+                "id": "5d9db191-66c3-4586-a82e-a5102c54106d",
+                "name": "verify",
+                "status": "Failed"
+              }
+            ]
+          },
+          {
+            "id": "a3fa92f7-a1c4-4543-83cf-8c9d9a15f728",
+            "status": "Success",
+            "branch": "main",
+            "commit": "6b59996",
+            "subject": "chore: CircleCI pipeline \u2014 pnpm verify's gates as two parallel jobs in one workflow, on every branch",
+            "author": "retz8",
+            "workflows": [
+              {
+                "id": "f79e6242-d705-4065-bc65-faaf4008a23f",
+                "name": "verify",
+                "status": "Success"
+              }
+            ]
+          },
+          {
+            "id": "049d9bbc-6b53-46b7-a307-3819daaa7f92",
+            "status": "Canceled"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "recent-runs",
+      "value": {
+        "runs": [
+          {
+            "id": "8416285e-ff58-4fc1-a237-5db68376f273",
+            "status": "Failed",
+            "branch": "ci/failing-format-demo",
+            "commit": "5756c6c",
+            "subject": "chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats",
+            "author": "retz8",
+            "workflows": [
+              {
+                "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
+                "name": "verify",
+                "status": "Failed"
+              },
+              {
+                "id": "5d9db191-66c3-4586-a82e-a5102c54106d",
+                "name": "verify",
+                "status": "Failed"
+              }
+            ]
+          },
+          {
+            "id": "a3fa92f7-a1c4-4543-83cf-8c9d9a15f728",
+            "status": "Success",
+            "branch": "main",
+            "commit": "6b59996",
+            "subject": "chore: CircleCI pipeline \u2014 pnpm verify's gates as two parallel jobs in one workflow, on every branch",
+            "author": "retz8",
+            "workflows": [
+              {
+                "id": "f79e6242-d705-4065-bc65-faaf4008a23f",
+                "name": "verify",
+                "status": "Success"
+              }
+            ]
+          },
+          {
+            "id": "049d9bbc-6b53-46b7-a307-3819daaa7f92",
+            "status": "Canceled",
+            "branch": "circleci-project-setup",
+            "commit": "a26cae1"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "recent-runs",
+      "value": {
+        "runs": [
+          {
+            "id": "8416285e-ff58-4fc1-a237-5db68376f273",
+            "status": "Failed",
+            "branch": "ci/failing-format-demo",
+            "commit": "5756c6c",
+            "subject": "chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats",
+            "author": "retz8",
+            "workflows": [
+              {
+                "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
+                "name": "verify",
+                "status": "Failed"
+              },
+              {
+                "id": "5d9db191-66c3-4586-a82e-a5102c54106d",
+                "name": "verify",
+                "status": "Failed"
+              }
+            ]
+          },
+          {
+            "id": "a3fa92f7-a1c4-4543-83cf-8c9d9a15f728",
+            "status": "Success",
+            "branch": "main",
+            "commit": "6b59996",
+            "subject": "chore: CircleCI pipeline \u2014 pnpm verify's gates as two parallel jobs in one workflow, on every branch",
+            "author": "retz8",
+            "workflows": [
+              {
+                "id": "f79e6242-d705-4065-bc65-faaf4008a23f",
+                "name": "verify",
+                "status": "Success"
+              }
+            ]
+          },
+          {
+            "id": "049d9bbc-6b53-46b7-a307-3819daaa7f92",
+            "status": "Canceled",
+            "branch": "circleci-project-setup",
+            "commit": "a26cae1",
+            "subject": "CircleCI Commit",
+            "author": "Jioh In"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "recent-runs",
+      "value": {
+        "runs": [
+          {
+            "id": "8416285e-ff58-4fc1-a237-5db68376f273",
+            "status": "Failed",
+            "branch": "ci/failing-format-demo",
+            "commit": "5756c6c",
+            "subject": "chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats",
+            "author": "retz8",
+            "workflows": [
+              {
+                "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
+                "name": "verify",
+                "status": "Failed"
+              },
+              {
+                "id": "5d9db191-66c3-4586-a82e-a5102c54106d",
+                "name": "verify",
+                "status": "Failed"
+              }
+            ]
+          },
+          {
+            "id": "a3fa92f7-a1c4-4543-83cf-8c9d9a15f728",
+            "status": "Success",
+            "branch": "main",
+            "commit": "6b59996",
+            "subject": "chore: CircleCI pipeline \u2014 pnpm verify's gates as two parallel jobs in one workflow, on every branch",
+            "author": "retz8",
+            "workflows": [
+              {
+                "id": "f79e6242-d705-4065-bc65-faaf4008a23f",
+                "name": "verify",
+                "status": "Success"
+              }
+            ]
+          },
+          {
+            "id": "049d9bbc-6b53-46b7-a307-3819daaa7f92",
+            "status": "Canceled",
+            "branch": "circleci-project-setup",
+            "commit": "a26cae1",
+            "subject": "CircleCI Commit",
+            "author": "Jioh In",
+            "workflows": [
+              {
+                "id": "3901822b-782c-4fb7-9b58-9cfcc344ae47",
+                "name": "build-and-test",
+                "status": "Canceled"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "recent-runs",
+      "value": {
+        "runs": [
+          {
+            "id": "8416285e-ff58-4fc1-a237-5db68376f273",
+            "status": "Failed",
+            "branch": "ci/failing-format-demo",
+            "commit": "5756c6c",
+            "subject": "chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats",
+            "author": "retz8",
+            "workflows": [
+              {
+                "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
+                "name": "verify",
+                "status": "Failed"
+              },
+              {
+                "id": "5d9db191-66c3-4586-a82e-a5102c54106d",
+                "name": "verify",
+                "status": "Failed"
+              }
+            ]
+          },
+          {
+            "id": "a3fa92f7-a1c4-4543-83cf-8c9d9a15f728",
+            "status": "Success",
+            "branch": "main",
+            "commit": "6b59996",
+            "subject": "chore: CircleCI pipeline \u2014 pnpm verify's gates as two parallel jobs in one workflow, on every branch",
+            "author": "retz8",
+            "workflows": [
+              {
+                "id": "f79e6242-d705-4065-bc65-faaf4008a23f",
+                "name": "verify",
+                "status": "Success"
+              }
+            ]
+          },
+          {
+            "id": "049d9bbc-6b53-46b7-a307-3819daaa7f92",
+            "status": "Canceled",
+            "branch": "circleci-project-setup",
+            "commit": "a26cae1",
+            "subject": "CircleCI Commit",
+            "author": "Jioh In",
+            "workflows": [
+              {
+                "id": "3901822b-782c-4fb7-9b58-9cfcc344ae47",
+                "name": "build-and-test",
+                "status": "Canceled"
+              }
+            ]
+          },
+          {
+            "id": "1546a84b-a9f1-419a-bbde-4132ebfdf726",
+            "status": "Success"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "recent-runs",
+      "value": {
+        "runs": [
+          {
+            "id": "8416285e-ff58-4fc1-a237-5db68376f273",
+            "status": "Failed",
+            "branch": "ci/failing-format-demo",
+            "commit": "5756c6c",
+            "subject": "chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats",
+            "author": "retz8",
+            "workflows": [
+              {
+                "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
+                "name": "verify",
+                "status": "Failed"
+              },
+              {
+                "id": "5d9db191-66c3-4586-a82e-a5102c54106d",
+                "name": "verify",
+                "status": "Failed"
+              }
+            ]
+          },
+          {
+            "id": "a3fa92f7-a1c4-4543-83cf-8c9d9a15f728",
+            "status": "Success",
+            "branch": "main",
+            "commit": "6b59996",
+            "subject": "chore: CircleCI pipeline \u2014 pnpm verify's gates as two parallel jobs in one workflow, on every branch",
+            "author": "retz8",
+            "workflows": [
+              {
+                "id": "f79e6242-d705-4065-bc65-faaf4008a23f",
+                "name": "verify",
+                "status": "Success"
+              }
+            ]
+          },
+          {
+            "id": "049d9bbc-6b53-46b7-a307-3819daaa7f92",
+            "status": "Canceled",
+            "branch": "circleci-project-setup",
+            "commit": "a26cae1",
+            "subject": "CircleCI Commit",
+            "author": "Jioh In",
+            "workflows": [
+              {
+                "id": "3901822b-782c-4fb7-9b58-9cfcc344ae47",
+                "name": "build-and-test",
+                "status": "Canceled"
+              }
+            ]
+          },
+          {
+            "id": "1546a84b-a9f1-419a-bbde-4132ebfdf726",
+            "status": "Success",
+            "branch": "main",
+            "commit": "18dcfbb"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "recent-runs",
+      "value": {
+        "runs": [
+          {
+            "id": "8416285e-ff58-4fc1-a237-5db68376f273",
+            "status": "Failed",
+            "branch": "ci/failing-format-demo",
+            "commit": "5756c6c",
+            "subject": "chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats",
+            "author": "retz8",
+            "workflows": [
+              {
+                "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
+                "name": "verify",
+                "status": "Failed"
+              },
+              {
+                "id": "5d9db191-66c3-4586-a82e-a5102c54106d",
+                "name": "verify",
+                "status": "Failed"
+              }
+            ]
+          },
+          {
+            "id": "a3fa92f7-a1c4-4543-83cf-8c9d9a15f728",
+            "status": "Success",
+            "branch": "main",
+            "commit": "6b59996",
+            "subject": "chore: CircleCI pipeline \u2014 pnpm verify's gates as two parallel jobs in one workflow, on every branch",
+            "author": "retz8",
+            "workflows": [
+              {
+                "id": "f79e6242-d705-4065-bc65-faaf4008a23f",
+                "name": "verify",
+                "status": "Success"
+              }
+            ]
+          },
+          {
+            "id": "049d9bbc-6b53-46b7-a307-3819daaa7f92",
+            "status": "Canceled",
+            "branch": "circleci-project-setup",
+            "commit": "a26cae1",
+            "subject": "CircleCI Commit",
+            "author": "Jioh In",
+            "workflows": [
+              {
+                "id": "3901822b-782c-4fb7-9b58-9cfcc344ae47",
+                "name": "build-and-test",
+                "status": "Canceled"
+              }
+            ]
+          },
+          {
+            "id": "1546a84b-a9f1-419a-bbde-4132ebfdf726",
+            "status": "Success",
+            "branch": "main",
+            "commit": "18dcfbb",
+            "subject": "docs(phase-7): 7.2 handoff \u2014 the CircleCI app's binding decisions, verified MCP facts, setup, open threads",
+            "author": "retz8"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "recent-runs",
+      "path": "/",
+      "value": {
+        "project": "a2uiverse",
+        "runs": [
+          {
+            "id": "8416285e-ff58-4fc1-a237-5db68376f273",
+            "status": "Failed",
+            "branch": "ci/failing-format-demo",
+            "commit": "5756c6c",
+            "subject": "chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats",
+            "author": "retz8",
+            "workflows": [
+              {
+                "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
+                "name": "verify",
+                "status": "Failed"
+              },
+              {
+                "id": "5d9db191-66c3-4586-a82e-a5102c54106d",
+                "name": "verify",
+                "status": "Failed"
+              }
+            ]
+          },
+          {
+            "id": "a3fa92f7-a1c4-4543-83cf-8c9d9a15f728",
+            "status": "Success",
+            "branch": "main",
+            "commit": "6b59996",
+            "subject": "chore: CircleCI pipeline \u2014 pnpm verify's gates as two parallel jobs in one workflow, on every branch",
+            "author": "retz8",
+            "workflows": [
+              {
+                "id": "f79e6242-d705-4065-bc65-faaf4008a23f",
+                "name": "verify",
+                "status": "Success"
+              }
+            ]
+          },
+          {
+            "id": "049d9bbc-6b53-46b7-a307-3819daaa7f92",
+            "status": "Canceled",
+            "branch": "circleci-project-setup",
+            "commit": "a26cae1",
+            "subject": "CircleCI Commit",
+            "author": "Jioh In",
+            "workflows": [
+              {
+                "id": "3901822b-782c-4fb7-9b58-9cfcc344ae47",
+                "name": "build-and-test",
+                "status": "Canceled"
+              }
+            ]
+          },
+          {
+            "id": "1546a84b-a9f1-419a-bbde-4132ebfdf726",
+            "status": "Success",
+            "branch": "main",
+            "commit": "18dcfbb",
+            "subject": "docs(phase-7): 7.2 handoff \u2014 the CircleCI app's binding decisions, verified MCP facts, setup, open threads",
+            "author": "retz8",
+            "workflows": [
+              {
+                "id": "89d5d243-cb19-4753-81f7-06e1bc9bea7b",
+                "name": "generate-config",
+                "status": "Success"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateComponents": {
+      "components": [
+        {
+          "id": "root",
+          "component": "Card",
+          "child": "body"
+        },
+        {
+          "id": "body",
+          "component": "Column",
+          "children": [
+            "heading",
+            "sub",
+            "run-list"
+          ]
+        },
+        {
+          "id": "heading",
+          "component": "Text",
+          "text": "Recent pipelines",
+          "variant": "h3"
+        },
+        {
+          "id": "sub",
+          "component": "Text",
+          "text": {
+            "path": "/project"
+          },
+          "variant": "caption"
+        },
+        {
+          "id": "run-list",
+          "component": "Column",
+          "children": {
+            "path": "/runs",
+            "componentId": "run-row"
+          }
+        },
+        {
+          "id": "run-row",
+          "component": "Button",
+          "variant": "borderless",
+          "child": "run-body",
+          "action": {
+            "event": {
+              "name": "open-run",
+              "context": {
+                "runId": {
+                  "path": "id"
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "run-body",
+          "component": "Column",
+          "children": [
+            "run-top",
+            "run-subject",
+            "run-meta",
+            "run-workflows"
+          ]
+        },
+        {
+          "id": "run-top",
+          "component": "Row",
+          "justify": "spaceBetween",
+          "align": "center",
+          "children": [
+            "run-status",
+            "run-branch"
+          ]
+        },
+        {
+          "id": "run-status",
+          "component": "Text",
+          "text": {
+            "path": "status"
+          }
+        },
+        {
+          "id": "run-branch",
+          "component": "Text",
+          "text": {
+            "path": "branch"
+          }
+        },
+        {
+          "id": "run-subject",
+          "component": "Text",
+          "text": {
+            "path": "subject"
+          }
+        },
+        {
+          "id": "run-meta",
+          "component": "Row",
+          "children": [
+            "run-commit",
+            "run-author"
+          ]
+        },
+        {
+          "id": "run-commit",
+          "component": "Text",
+          "text": {
+            "path": "commit"
+          },
+          "variant": "caption"
+        },
+        {
+          "id": "run-author",
+          "component": "Text",
+          "text": {
+            "path": "author"
+          },
+          "variant": "caption"
+        },
+        {
+          "id": "run-workflows",
+          "component": "Column",
+          "children": {
+            "path": "workflows",
+            "componentId": "wf-row"
+          }
+        },
+        {
+          "id": "wf-row",
+          "component": "Row",
+          "justify": "spaceBetween",
+          "children": [
+            "wf-name",
+            "wf-status"
+          ]
+        },
+        {
+          "id": "wf-name",
+          "component": "Text",
+          "text": {
+            "path": "name"
+          },
+          "variant": "caption"
+        },
+        {
+          "id": "wf-status",
+          "component": "Text",
+          "text": {
+            "path": "status"
+          },
+          "variant": "caption"
+        }
+      ]
+    }
+  }
+]

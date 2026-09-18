@@ -1,0 +1,176 @@
+{
+  "runs": [
+    {
+      "attributes": {
+        "created_at": "2026-09-18T09:58:41.799Z",
+        "current_outcome": "failed",
+        "phase": "ended"
+      },
+      "id": "8416285e-ff58-4fc1-a237-5db68376f273",
+      "references": {
+        "event": {
+          "attributes": {
+            "action": "push",
+            "type": "push",
+            "vcs": {
+              "branch": "ci/failing-format-demo",
+              "commit": {
+                "author": {
+                  "login": "retz8",
+                  "name": "retz8"
+                },
+                "subject": "chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats",
+                "url": "https://github.com/retz8/a2uiverse/commit/5756c6cc61df1d1222f2916d2a52d1027b9227d3"
+              },
+              "origin_repository_url": "https://github.com/retz8/a2uiverse",
+              "revision": "5756c6cc61df1d1222f2916d2a52d1027b9227d3",
+              "tag": ""
+            }
+          }
+        },
+        "project": {
+          "id": "5475943e-db5e-4b4a-937b-4d64f8f05d3c"
+        },
+        "trigger": {
+          "attributes": {
+            "event_source": {
+              "type": "webhook"
+            }
+          }
+        },
+        "user": {
+          "id": "ed4b3ffc-d7f1-4fd1-8f8b-1e7555b8aca5"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "created_at": "2026-09-18T09:50:47.995Z",
+        "current_outcome": "succeeded",
+        "phase": "ended"
+      },
+      "id": "a3fa92f7-a1c4-4543-83cf-8c9d9a15f728",
+      "references": {
+        "event": {
+          "attributes": {
+            "action": "push",
+            "type": "push",
+            "vcs": {
+              "branch": "main",
+              "commit": {
+                "author": {
+                  "login": "retz8",
+                  "name": "retz8"
+                },
+                "subject": "chore: CircleCI pipeline \u2014 pnpm verify's gates as two parallel jobs in one workflow, on every branch\n\nCo-Authored-By: Claude Opus 5 <noreply@anthropic.com>",
+                "url": "https://github.com/retz8/a2uiverse/commit/6b59996d37104d169e87d845c98bd039f38b1ae2"
+              },
+              "origin_repository_url": "https://github.com/retz8/a2uiverse",
+              "revision": "6b59996d37104d169e87d845c98bd039f38b1ae2",
+              "tag": ""
+            }
+          }
+        },
+        "project": {
+          "id": "5475943e-db5e-4b4a-937b-4d64f8f05d3c"
+        },
+        "trigger": {
+          "attributes": {
+            "event_source": {
+              "type": "webhook"
+            }
+          }
+        },
+        "user": {
+          "id": "ed4b3ffc-d7f1-4fd1-8f8b-1e7555b8aca5"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "created_at": "2026-09-18T09:33:14.441Z",
+        "current_outcome": "canceled",
+        "phase": "ended"
+      },
+      "id": "049d9bbc-6b53-46b7-a307-3819daaa7f92",
+      "references": {
+        "event": {
+          "attributes": {
+            "action": "push",
+            "type": "push",
+            "vcs": {
+              "branch": "circleci-project-setup",
+              "commit": {
+                "author": {
+                  "login": "Jioh In",
+                  "name": "Jioh In"
+                },
+                "subject": "CircleCI Commit",
+                "url": "https://github.com/retz8/a2uiverse/commit/a26cae18d49fe7c9ebf5cfa527da7532f332f50a"
+              },
+              "origin_repository_url": "https://github.com/retz8/a2uiverse",
+              "revision": "a26cae18d49fe7c9ebf5cfa527da7532f332f50a",
+              "tag": ""
+            }
+          }
+        },
+        "project": {
+          "id": "5475943e-db5e-4b4a-937b-4d64f8f05d3c"
+        },
+        "trigger": {
+          "attributes": {
+            "event_source": {
+              "type": "webhook"
+            }
+          }
+        },
+        "user": {
+          "id": "ed4b3ffc-d7f1-4fd1-8f8b-1e7555b8aca5"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "created_at": "2026-09-18T09:32:09.613Z",
+        "current_outcome": "succeeded",
+        "phase": "ended"
+      },
+      "id": "1546a84b-a9f1-419a-bbde-4132ebfdf726",
+      "references": {
+        "event": {
+          "attributes": {
+            "action": "api",
+            "type": "api",
+            "vcs": {
+              "branch": "main",
+              "commit": {
+                "author": {
+                  "login": "retz8",
+                  "name": "retz8"
+                },
+                "subject": "docs(phase-7): 7.2 handoff \u2014 the CircleCI app's binding decisions, verified MCP facts, setup, open threads",
+                "url": "https://github.com/retz8/a2uiverse/commit/18dcfbbaba219dbc80ebdbdf57ee53786ba3ae33"
+              },
+              "origin_repository_url": "https://github.com/retz8/a2uiverse",
+              "revision": "18dcfbbaba219dbc80ebdbdf57ee53786ba3ae33",
+              "tag": ""
+            }
+          }
+        },
+        "project": {
+          "id": "5475943e-db5e-4b4a-937b-4d64f8f05d3c"
+        },
+        "trigger": {
+          "attributes": {
+            "event_source": {
+              "type": "api,inference"
+            }
+          }
+        },
+        "user": {
+          "id": "ed4b3ffc-d7f1-4fd1-8f8b-1e7555b8aca5"
+        }
+      }
+    }
+  ]
+}
