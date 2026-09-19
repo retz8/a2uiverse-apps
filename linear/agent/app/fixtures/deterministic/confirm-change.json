@@ -4,7 +4,8 @@
     "updateDataModel": {
       "surfaceId": "issue-detail",
       "value": {
-        "id": "A2U-5"
+        "id": "A2U-5",
+        "title": "Say on the canvas when an utterance fails"
       }
     }
   },
@@ -13,9 +14,9 @@
     "updateDataModel": {
       "surfaceId": "issue-detail",
       "value": {
-        "title": "Say on the canvas when an utterance fails",
         "status": "In Progress",
-        "statusType": "started"
+        "statusType": "started",
+        "priority": "High"
       }
     }
   },
@@ -24,16 +25,7 @@
     "updateDataModel": {
       "surfaceId": "issue-detail",
       "value": {
-        "priority": "High",
-        "assignee": "Jioh In"
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "issue-detail",
-      "value": {
+        "assignee": "Jioh In",
         "labels": "Bug"
       }
     }
@@ -79,6 +71,21 @@
           {
             "author": "GitHub",
             "when": "Sep 18"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "issue-detail",
+      "value": {
+        "comments": [
+          {
+            "author": "GitHub",
+            "when": "Sep 18",
+            "body": "This comment thread is synced to a corresponding [GitHub issue](https://github.com/retz8/a2uiverse/issues/3). All replies are displayed in both locations."
           }
         ]
       }
@@ -308,15 +315,15 @@
           }
         },
         {
-          "id": "divider-1",
-          "component": "Divider"
-        },
-        {
           "id": "description",
           "component": "Text",
           "text": {
             "path": "/description"
           }
+        },
+        {
+          "id": "divider-1",
+          "component": "Divider"
         },
         {
           "id": "links",

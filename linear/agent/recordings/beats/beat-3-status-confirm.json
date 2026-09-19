@@ -4,23 +4,23 @@
   "title": "Status change confirmed",
   "prompt": "Yes, move it.",
   "model": "gemini-3.7-flash",
-  "recordedAt": "2026-09-19T09:30:45+00:00",
-  "contextId": "982ad172-11f8-445d-bbac-a3392dbaf74d",
+  "recordedAt": "2026-09-19T11:01:09+00:00",
+  "contextId": "5c892892-b4d2-47fe-a7a5-38ea90383d85",
   "chainedFrom": "beat-3-status-proposal",
   "turns": [
     {
-      "taskId": "269ef2dc-1399-45f2-a88a-ffa3513dfc8f",
+      "taskId": "9c364a28-f95b-4fd9-8b0f-96b9d14c2e61",
       "kind": "utterance",
       "prompt": "Yes, move it.",
       "action": null,
       "batches": [
         {
-          "offsetMs": 13934,
+          "offsetMs": 19693,
           "messages": [
             {
               "paintMeta": {
                 "surfaceId": "issue-detail",
-                "title": "A2U-5 \u00b7 Say on the canvas when an utterance fails"
+                "title": "A2U-5"
               }
             }
           ],
@@ -29,7 +29,7 @@
           ]
         },
         {
-          "offsetMs": 14407,
+          "offsetMs": 20002,
           "messages": [
             {
               "version": "v0.9",
@@ -43,14 +43,15 @@
           "texts": []
         },
         {
-          "offsetMs": 14702,
+          "offsetMs": 20449,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
                 "surfaceId": "issue-detail",
                 "value": {
-                  "id": "A2U-5"
+                  "id": "A2U-5",
+                  "title": "Say on the canvas when an utterance fails"
                 }
               }
             }
@@ -58,16 +59,16 @@
           "texts": []
         },
         {
-          "offsetMs": 14850,
+          "offsetMs": 20625,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
                 "surfaceId": "issue-detail",
                 "value": {
-                  "title": "Say on the canvas when an utterance fails",
                   "status": "In Progress",
-                  "statusType": "started"
+                  "statusType": "started",
+                  "priority": "High"
                 }
               }
             }
@@ -75,29 +76,14 @@
           "texts": []
         },
         {
-          "offsetMs": 15027,
+          "offsetMs": 20785,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
                 "surfaceId": "issue-detail",
                 "value": {
-                  "priority": "High",
-                  "assignee": "Jioh In"
-                }
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 15181,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateDataModel": {
-                "surfaceId": "issue-detail",
-                "value": {
+                  "assignee": "Jioh In",
                   "labels": "Bug"
                 }
               }
@@ -106,7 +92,7 @@
           "texts": []
         },
         {
-          "offsetMs": 15645,
+          "offsetMs": 21225,
           "messages": [
             {
               "version": "v0.9",
@@ -121,7 +107,7 @@
           "texts": []
         },
         {
-          "offsetMs": 15800,
+          "offsetMs": 21559,
           "messages": [
             {
               "version": "v0.9",
@@ -141,7 +127,7 @@
           "texts": []
         },
         {
-          "offsetMs": 16092,
+          "offsetMs": 21699,
           "messages": [
             {
               "version": "v0.9",
@@ -156,7 +142,7 @@
           "texts": []
         },
         {
-          "offsetMs": 16254,
+          "offsetMs": 22003,
           "messages": [
             {
               "version": "v0.9",
@@ -176,7 +162,28 @@
           "texts": []
         },
         {
-          "offsetMs": 16439,
+          "offsetMs": 22154,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "issue-detail",
+                "value": {
+                  "comments": [
+                    {
+                      "author": "GitHub",
+                      "when": "Sep 18",
+                      "body": "This comment thread is synced to a corresponding [GitHub issue](https://github.com/retz8/a2uiverse/issues/3). All replies are displayed in both locations."
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 22307,
           "messages": [
             {
               "version": "v0.9",
@@ -213,7 +220,7 @@
           "texts": []
         },
         {
-          "offsetMs": 16948,
+          "offsetMs": 22796,
           "messages": [
             {
               "version": "v0.9",
@@ -237,7 +244,7 @@
           "texts": []
         },
         {
-          "offsetMs": 17094,
+          "offsetMs": 22949,
           "messages": [
             {
               "version": "v0.9",
@@ -310,79 +317,7 @@
           "texts": []
         },
         {
-          "offsetMs": 17245,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "body",
-                    "component": "Column",
-                    "children": [
-                      "identifier",
-                      "loading_title",
-                      "loading_props",
-                      "loading_divider-1",
-                      "loading_description",
-                      "loading_links",
-                      "loading_divider-2",
-                      "loading_activity"
-                    ]
-                  },
-                  {
-                    "id": "identifier",
-                    "component": "Text"
-                  },
-                  {
-                    "id": "root",
-                    "component": "Card",
-                    "child": "body"
-                  },
-                  {
-                    "id": "loading_title",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_props",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_divider-1",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_description",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_links",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_divider-2",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_activity",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "issue-detail"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 17397,
+          "offsetMs": 23104,
           "messages": [
             {
               "version": "v0.9",
@@ -458,7 +393,7 @@
           "texts": []
         },
         {
-          "offsetMs": 17720,
+          "offsetMs": 23433,
           "messages": [
             {
               "version": "v0.9",
@@ -537,7 +472,7 @@
           "texts": []
         },
         {
-          "offsetMs": 18258,
+          "offsetMs": 23766,
           "messages": [
             {
               "version": "v0.9",
@@ -641,7 +576,110 @@
           "texts": []
         },
         {
-          "offsetMs": 18568,
+          "offsetMs": 23938,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "identifier",
+                      "title",
+                      "props",
+                      "loading_divider-1",
+                      "loading_description",
+                      "loading_links",
+                      "loading_divider-2",
+                      "loading_activity"
+                    ]
+                  },
+                  {
+                    "id": "identifier",
+                    "component": "Text",
+                    "text": {
+                      "path": "/id"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "props",
+                    "component": "Column",
+                    "children": [
+                      "status-row",
+                      "loading_priority-row",
+                      "loading_assignee-row",
+                      "loading_labels-row"
+                    ]
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "status-row",
+                    "component": "Row"
+                  },
+                  {
+                    "id": "title",
+                    "component": "Text",
+                    "text": {
+                      "path": "/title"
+                    },
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "loading_divider-1",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_description",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_links",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_divider-2",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_activity",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_priority-row",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_assignee-row",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_labels-row",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "issue-detail"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 24290,
           "messages": [
             {
               "version": "v0.9",
@@ -759,7 +797,7 @@
           "texts": []
         },
         {
-          "offsetMs": 18894,
+          "offsetMs": 24643,
           "messages": [
             {
               "version": "v0.9",
@@ -879,7 +917,7 @@
           "texts": []
         },
         {
-          "offsetMs": 19059,
+          "offsetMs": 24972,
           "messages": [
             {
               "version": "v0.9",
@@ -1013,7 +1051,7 @@
           "texts": []
         },
         {
-          "offsetMs": 19286,
+          "offsetMs": 25279,
           "messages": [
             {
               "version": "v0.9",
@@ -1152,7 +1190,7 @@
           "texts": []
         },
         {
-          "offsetMs": 19539,
+          "offsetMs": 25434,
           "messages": [
             {
               "version": "v0.9",
@@ -1293,7 +1331,7 @@
           "texts": []
         },
         {
-          "offsetMs": 19919,
+          "offsetMs": 25930,
           "messages": [
             {
               "version": "v0.9",
@@ -1448,7 +1486,7 @@
           "texts": []
         },
         {
-          "offsetMs": 20256,
+          "offsetMs": 26240,
           "messages": [
             {
               "version": "v0.9",
@@ -1605,7 +1643,7 @@
           "texts": []
         },
         {
-          "offsetMs": 20609,
+          "offsetMs": 26539,
           "messages": [
             {
               "version": "v0.9",
@@ -1776,7 +1814,7 @@
           "texts": []
         },
         {
-          "offsetMs": 20936,
+          "offsetMs": 26705,
           "messages": [
             {
               "version": "v0.9",
@@ -1949,7 +1987,7 @@
           "texts": []
         },
         {
-          "offsetMs": 21115,
+          "offsetMs": 27083,
           "messages": [
             {
               "version": "v0.9",
@@ -2124,7 +2162,182 @@
           "texts": []
         },
         {
-          "offsetMs": 21432,
+          "offsetMs": 27236,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "assignee-row",
+                    "component": "Row",
+                    "align": "center"
+                  },
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "identifier",
+                      "title",
+                      "props",
+                      "loading_divider-1",
+                      "loading_description",
+                      "loading_links",
+                      "loading_divider-2",
+                      "loading_activity"
+                    ]
+                  },
+                  {
+                    "id": "identifier",
+                    "component": "Text",
+                    "text": {
+                      "path": "/id"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "priority-icon",
+                    "component": "PriorityIcon",
+                    "priority": {
+                      "path": "/priority"
+                    }
+                  },
+                  {
+                    "id": "priority-label",
+                    "component": "Text",
+                    "text": "Priority",
+                    "variant": "caption",
+                    "weight": 1
+                  },
+                  {
+                    "id": "priority-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "/priority"
+                    }
+                  },
+                  {
+                    "id": "priority-row",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "priority-label",
+                      "priority-value"
+                    ]
+                  },
+                  {
+                    "id": "priority-value",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "priority-icon",
+                      "priority-name"
+                    ]
+                  },
+                  {
+                    "id": "props",
+                    "component": "Column",
+                    "children": [
+                      "status-row",
+                      "priority-row",
+                      "assignee-row",
+                      "loading_labels-row"
+                    ]
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "status-icon",
+                    "component": "StatusIcon",
+                    "status": {
+                      "path": "/status"
+                    },
+                    "type": {
+                      "path": "/statusType"
+                    }
+                  },
+                  {
+                    "id": "status-label",
+                    "component": "Text",
+                    "text": "Status",
+                    "variant": "caption",
+                    "weight": 1
+                  },
+                  {
+                    "id": "status-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "/status"
+                    }
+                  },
+                  {
+                    "id": "status-row",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "status-label",
+                      "status-value"
+                    ]
+                  },
+                  {
+                    "id": "status-value",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "status-icon",
+                      "status-name"
+                    ]
+                  },
+                  {
+                    "id": "title",
+                    "component": "Text",
+                    "text": {
+                      "path": "/title"
+                    },
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "loading_divider-1",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_description",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_links",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_divider-2",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_activity",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_labels-row",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "issue-detail"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 27413,
           "messages": [
             {
               "version": "v0.9",
@@ -2313,7 +2526,7 @@
           "texts": []
         },
         {
-          "offsetMs": 21577,
+          "offsetMs": 27568,
           "messages": [
             {
               "version": "v0.9",
@@ -2321,8 +2534,7 @@
                 "components": [
                   {
                     "id": "assignee-label",
-                    "component": "Text",
-                    "text": "Assignee"
+                    "component": "Text"
                   },
                   {
                     "id": "assignee-row",
@@ -2502,7 +2714,7 @@
           "texts": []
         },
         {
-          "offsetMs": 21740,
+          "offsetMs": 27779,
           "messages": [
             {
               "version": "v0.9",
@@ -2693,7 +2905,197 @@
           "texts": []
         },
         {
-          "offsetMs": 22057,
+          "offsetMs": 27952,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "assignee-label",
+                    "component": "Text",
+                    "text": "Assignee",
+                    "variant": "caption",
+                    "weight": 1
+                  },
+                  {
+                    "id": "assignee-row",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "assignee-label",
+                      "assignee-value"
+                    ]
+                  },
+                  {
+                    "id": "assignee-value",
+                    "component": "Row"
+                  },
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "identifier",
+                      "title",
+                      "props",
+                      "loading_divider-1",
+                      "loading_description",
+                      "loading_links",
+                      "loading_divider-2",
+                      "loading_activity"
+                    ]
+                  },
+                  {
+                    "id": "identifier",
+                    "component": "Text",
+                    "text": {
+                      "path": "/id"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "priority-icon",
+                    "component": "PriorityIcon",
+                    "priority": {
+                      "path": "/priority"
+                    }
+                  },
+                  {
+                    "id": "priority-label",
+                    "component": "Text",
+                    "text": "Priority",
+                    "variant": "caption",
+                    "weight": 1
+                  },
+                  {
+                    "id": "priority-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "/priority"
+                    }
+                  },
+                  {
+                    "id": "priority-row",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "priority-label",
+                      "priority-value"
+                    ]
+                  },
+                  {
+                    "id": "priority-value",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "priority-icon",
+                      "priority-name"
+                    ]
+                  },
+                  {
+                    "id": "props",
+                    "component": "Column",
+                    "children": [
+                      "status-row",
+                      "priority-row",
+                      "assignee-row",
+                      "loading_labels-row"
+                    ]
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "status-icon",
+                    "component": "StatusIcon",
+                    "status": {
+                      "path": "/status"
+                    },
+                    "type": {
+                      "path": "/statusType"
+                    }
+                  },
+                  {
+                    "id": "status-label",
+                    "component": "Text",
+                    "text": "Status",
+                    "variant": "caption",
+                    "weight": 1
+                  },
+                  {
+                    "id": "status-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "/status"
+                    }
+                  },
+                  {
+                    "id": "status-row",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "status-label",
+                      "status-value"
+                    ]
+                  },
+                  {
+                    "id": "status-value",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "status-icon",
+                      "status-name"
+                    ]
+                  },
+                  {
+                    "id": "title",
+                    "component": "Text",
+                    "text": {
+                      "path": "/title"
+                    },
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "loading_divider-1",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_description",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_links",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_divider-2",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_activity",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_labels-row",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "issue-detail"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 28102,
           "messages": [
             {
               "version": "v0.9",
@@ -2892,7 +3294,205 @@
           "texts": []
         },
         {
-          "offsetMs": 22212,
+          "offsetMs": 28272,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "assignee-label",
+                    "component": "Text",
+                    "text": "Assignee",
+                    "variant": "caption",
+                    "weight": 1
+                  },
+                  {
+                    "id": "assignee-name",
+                    "component": "Text"
+                  },
+                  {
+                    "id": "assignee-row",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "assignee-label",
+                      "assignee-value"
+                    ]
+                  },
+                  {
+                    "id": "assignee-value",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "assignee-name"
+                    ]
+                  },
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "identifier",
+                      "title",
+                      "props",
+                      "loading_divider-1",
+                      "loading_description",
+                      "loading_links",
+                      "loading_divider-2",
+                      "loading_activity"
+                    ]
+                  },
+                  {
+                    "id": "identifier",
+                    "component": "Text",
+                    "text": {
+                      "path": "/id"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "priority-icon",
+                    "component": "PriorityIcon",
+                    "priority": {
+                      "path": "/priority"
+                    }
+                  },
+                  {
+                    "id": "priority-label",
+                    "component": "Text",
+                    "text": "Priority",
+                    "variant": "caption",
+                    "weight": 1
+                  },
+                  {
+                    "id": "priority-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "/priority"
+                    }
+                  },
+                  {
+                    "id": "priority-row",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "priority-label",
+                      "priority-value"
+                    ]
+                  },
+                  {
+                    "id": "priority-value",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "priority-icon",
+                      "priority-name"
+                    ]
+                  },
+                  {
+                    "id": "props",
+                    "component": "Column",
+                    "children": [
+                      "status-row",
+                      "priority-row",
+                      "assignee-row",
+                      "loading_labels-row"
+                    ]
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "status-icon",
+                    "component": "StatusIcon",
+                    "status": {
+                      "path": "/status"
+                    },
+                    "type": {
+                      "path": "/statusType"
+                    }
+                  },
+                  {
+                    "id": "status-label",
+                    "component": "Text",
+                    "text": "Status",
+                    "variant": "caption",
+                    "weight": 1
+                  },
+                  {
+                    "id": "status-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "/status"
+                    }
+                  },
+                  {
+                    "id": "status-row",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "status-label",
+                      "status-value"
+                    ]
+                  },
+                  {
+                    "id": "status-value",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "status-icon",
+                      "status-name"
+                    ]
+                  },
+                  {
+                    "id": "title",
+                    "component": "Text",
+                    "text": {
+                      "path": "/title"
+                    },
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "loading_divider-1",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_description",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_links",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_divider-2",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_activity",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_labels-row",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "issue-detail"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 28462,
           "messages": [
             {
               "version": "v0.9",
@@ -3093,207 +3693,7 @@
           "texts": []
         },
         {
-          "offsetMs": 22379,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "assignee-label",
-                    "component": "Text",
-                    "text": "Assignee",
-                    "variant": "caption",
-                    "weight": 1
-                  },
-                  {
-                    "id": "assignee-name",
-                    "component": "Text",
-                    "text": {
-                      "path": "/assignee"
-                    }
-                  },
-                  {
-                    "id": "assignee-row",
-                    "component": "Row",
-                    "align": "center",
-                    "children": [
-                      "assignee-label",
-                      "assignee-value"
-                    ]
-                  },
-                  {
-                    "id": "assignee-value",
-                    "component": "Row",
-                    "align": "center",
-                    "children": [
-                      "assignee-name"
-                    ]
-                  },
-                  {
-                    "id": "body",
-                    "component": "Column",
-                    "children": [
-                      "identifier",
-                      "title",
-                      "props",
-                      "loading_divider-1",
-                      "loading_description",
-                      "loading_links",
-                      "loading_divider-2",
-                      "loading_activity"
-                    ]
-                  },
-                  {
-                    "id": "identifier",
-                    "component": "Text",
-                    "text": {
-                      "path": "/id"
-                    },
-                    "variant": "caption"
-                  },
-                  {
-                    "id": "labels-row",
-                    "component": "Row"
-                  },
-                  {
-                    "id": "priority-icon",
-                    "component": "PriorityIcon",
-                    "priority": {
-                      "path": "/priority"
-                    }
-                  },
-                  {
-                    "id": "priority-label",
-                    "component": "Text",
-                    "text": "Priority",
-                    "variant": "caption",
-                    "weight": 1
-                  },
-                  {
-                    "id": "priority-name",
-                    "component": "Text",
-                    "text": {
-                      "path": "/priority"
-                    }
-                  },
-                  {
-                    "id": "priority-row",
-                    "component": "Row",
-                    "align": "center",
-                    "children": [
-                      "priority-label",
-                      "priority-value"
-                    ]
-                  },
-                  {
-                    "id": "priority-value",
-                    "component": "Row",
-                    "align": "center",
-                    "children": [
-                      "priority-icon",
-                      "priority-name"
-                    ]
-                  },
-                  {
-                    "id": "props",
-                    "component": "Column",
-                    "children": [
-                      "status-row",
-                      "priority-row",
-                      "assignee-row",
-                      "labels-row"
-                    ]
-                  },
-                  {
-                    "id": "root",
-                    "component": "Card",
-                    "child": "body"
-                  },
-                  {
-                    "id": "status-icon",
-                    "component": "StatusIcon",
-                    "status": {
-                      "path": "/status"
-                    },
-                    "type": {
-                      "path": "/statusType"
-                    }
-                  },
-                  {
-                    "id": "status-label",
-                    "component": "Text",
-                    "text": "Status",
-                    "variant": "caption",
-                    "weight": 1
-                  },
-                  {
-                    "id": "status-name",
-                    "component": "Text",
-                    "text": {
-                      "path": "/status"
-                    }
-                  },
-                  {
-                    "id": "status-row",
-                    "component": "Row",
-                    "align": "center",
-                    "children": [
-                      "status-label",
-                      "status-value"
-                    ]
-                  },
-                  {
-                    "id": "status-value",
-                    "component": "Row",
-                    "align": "center",
-                    "children": [
-                      "status-icon",
-                      "status-name"
-                    ]
-                  },
-                  {
-                    "id": "title",
-                    "component": "Text",
-                    "text": {
-                      "path": "/title"
-                    },
-                    "variant": "h3"
-                  },
-                  {
-                    "id": "loading_divider-1",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_description",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_links",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_divider-2",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_activity",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "issue-detail"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 22755,
+          "offsetMs": 28822,
           "messages": [
             {
               "version": "v0.9",
@@ -3508,7 +3908,7 @@
           "texts": []
         },
         {
-          "offsetMs": 23059,
+          "offsetMs": 29151,
           "messages": [
             {
               "version": "v0.9",
@@ -3725,7 +4125,7 @@
           "texts": []
         },
         {
-          "offsetMs": 23408,
+          "offsetMs": 29475,
           "messages": [
             {
               "version": "v0.9",
@@ -3950,7 +4350,7 @@
           "texts": []
         },
         {
-          "offsetMs": 23592,
+          "offsetMs": 29636,
           "messages": [
             {
               "version": "v0.9",
@@ -4177,7 +4577,7 @@
           "texts": []
         },
         {
-          "offsetMs": 23774,
+          "offsetMs": 29938,
           "messages": [
             {
               "version": "v0.9",
@@ -4222,11 +4622,15 @@
                       "title",
                       "props",
                       "divider-1",
-                      "loading_description",
+                      "description",
                       "loading_links",
                       "loading_divider-2",
                       "loading_activity"
                     ]
+                  },
+                  {
+                    "id": "description",
+                    "component": "Text"
                   },
                   {
                     "id": "divider-1",
@@ -4376,11 +4780,6 @@
                     "variant": "h3"
                   },
                   {
-                    "id": "loading_description",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
                     "id": "loading_links",
                     "component": "Row",
                     "children": []
@@ -4403,7 +4802,7 @@
           "texts": []
         },
         {
-          "offsetMs": 23937,
+          "offsetMs": 30130,
           "messages": [
             {
               "version": "v0.9",
@@ -4631,234 +5030,7 @@
           "texts": []
         },
         {
-          "offsetMs": 24094,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "assignee-label",
-                    "component": "Text",
-                    "text": "Assignee",
-                    "variant": "caption",
-                    "weight": 1
-                  },
-                  {
-                    "id": "assignee-name",
-                    "component": "Text",
-                    "text": {
-                      "path": "/assignee"
-                    }
-                  },
-                  {
-                    "id": "assignee-row",
-                    "component": "Row",
-                    "align": "center",
-                    "children": [
-                      "assignee-label",
-                      "assignee-value"
-                    ]
-                  },
-                  {
-                    "id": "assignee-value",
-                    "component": "Row",
-                    "align": "center",
-                    "children": [
-                      "assignee-name"
-                    ]
-                  },
-                  {
-                    "id": "body",
-                    "component": "Column",
-                    "children": [
-                      "identifier",
-                      "title",
-                      "props",
-                      "divider-1",
-                      "description",
-                      "links",
-                      "loading_divider-2",
-                      "loading_activity"
-                    ]
-                  },
-                  {
-                    "id": "description",
-                    "component": "Text",
-                    "text": {
-                      "path": "/description"
-                    }
-                  },
-                  {
-                    "id": "divider-1",
-                    "component": "Divider"
-                  },
-                  {
-                    "id": "identifier",
-                    "component": "Text",
-                    "text": {
-                      "path": "/id"
-                    },
-                    "variant": "caption"
-                  },
-                  {
-                    "id": "labels-label",
-                    "component": "Text",
-                    "text": "Labels",
-                    "variant": "caption",
-                    "weight": 1
-                  },
-                  {
-                    "id": "labels-names",
-                    "component": "Text",
-                    "text": {
-                      "path": "/labels"
-                    }
-                  },
-                  {
-                    "id": "labels-row",
-                    "component": "Row",
-                    "align": "center",
-                    "children": [
-                      "labels-label",
-                      "labels-value"
-                    ]
-                  },
-                  {
-                    "id": "labels-value",
-                    "component": "Row",
-                    "align": "center",
-                    "children": [
-                      "labels-names"
-                    ]
-                  },
-                  {
-                    "id": "links",
-                    "component": "Column"
-                  },
-                  {
-                    "id": "priority-icon",
-                    "component": "PriorityIcon",
-                    "priority": {
-                      "path": "/priority"
-                    }
-                  },
-                  {
-                    "id": "priority-label",
-                    "component": "Text",
-                    "text": "Priority",
-                    "variant": "caption",
-                    "weight": 1
-                  },
-                  {
-                    "id": "priority-name",
-                    "component": "Text",
-                    "text": {
-                      "path": "/priority"
-                    }
-                  },
-                  {
-                    "id": "priority-row",
-                    "component": "Row",
-                    "align": "center",
-                    "children": [
-                      "priority-label",
-                      "priority-value"
-                    ]
-                  },
-                  {
-                    "id": "priority-value",
-                    "component": "Row",
-                    "align": "center",
-                    "children": [
-                      "priority-icon",
-                      "priority-name"
-                    ]
-                  },
-                  {
-                    "id": "props",
-                    "component": "Column",
-                    "children": [
-                      "status-row",
-                      "priority-row",
-                      "assignee-row",
-                      "labels-row"
-                    ]
-                  },
-                  {
-                    "id": "root",
-                    "component": "Card",
-                    "child": "body"
-                  },
-                  {
-                    "id": "status-icon",
-                    "component": "StatusIcon",
-                    "status": {
-                      "path": "/status"
-                    },
-                    "type": {
-                      "path": "/statusType"
-                    }
-                  },
-                  {
-                    "id": "status-label",
-                    "component": "Text",
-                    "text": "Status",
-                    "variant": "caption",
-                    "weight": 1
-                  },
-                  {
-                    "id": "status-name",
-                    "component": "Text",
-                    "text": {
-                      "path": "/status"
-                    }
-                  },
-                  {
-                    "id": "status-row",
-                    "component": "Row",
-                    "align": "center",
-                    "children": [
-                      "status-label",
-                      "status-value"
-                    ]
-                  },
-                  {
-                    "id": "status-value",
-                    "component": "Row",
-                    "align": "center",
-                    "children": [
-                      "status-icon",
-                      "status-name"
-                    ]
-                  },
-                  {
-                    "id": "title",
-                    "component": "Text",
-                    "text": {
-                      "path": "/title"
-                    },
-                    "variant": "h3"
-                  },
-                  {
-                    "id": "loading_divider-2",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_activity",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "issue-detail"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 24251,
+          "offsetMs": 30468,
           "messages": [
             {
               "version": "v0.9",
@@ -5099,7 +5271,7 @@
           "texts": []
         },
         {
-          "offsetMs": 24609,
+          "offsetMs": 30797,
           "messages": [
             {
               "version": "v0.9",
@@ -5348,7 +5520,7 @@
           "texts": []
         },
         {
-          "offsetMs": 24947,
+          "offsetMs": 31133,
           "messages": [
             {
               "version": "v0.9",
@@ -5611,7 +5783,7 @@
           "texts": []
         },
         {
-          "offsetMs": 25269,
+          "offsetMs": 31319,
           "messages": [
             {
               "version": "v0.9",
@@ -5877,275 +6049,7 @@
           "texts": []
         },
         {
-          "offsetMs": 25479,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "assignee-label",
-                    "component": "Text",
-                    "text": "Assignee",
-                    "variant": "caption",
-                    "weight": 1
-                  },
-                  {
-                    "id": "assignee-name",
-                    "component": "Text",
-                    "text": {
-                      "path": "/assignee"
-                    }
-                  },
-                  {
-                    "id": "assignee-row",
-                    "component": "Row",
-                    "align": "center",
-                    "children": [
-                      "assignee-label",
-                      "assignee-value"
-                    ]
-                  },
-                  {
-                    "id": "assignee-value",
-                    "component": "Row",
-                    "align": "center",
-                    "children": [
-                      "assignee-name"
-                    ]
-                  },
-                  {
-                    "id": "body",
-                    "component": "Column",
-                    "children": [
-                      "identifier",
-                      "title",
-                      "props",
-                      "divider-1",
-                      "description",
-                      "links",
-                      "loading_divider-2",
-                      "loading_activity"
-                    ]
-                  },
-                  {
-                    "id": "description",
-                    "component": "Text",
-                    "text": {
-                      "path": "/description"
-                    }
-                  },
-                  {
-                    "id": "divider-1",
-                    "component": "Divider"
-                  },
-                  {
-                    "id": "identifier",
-                    "component": "Text",
-                    "text": {
-                      "path": "/id"
-                    },
-                    "variant": "caption"
-                  },
-                  {
-                    "id": "labels-label",
-                    "component": "Text",
-                    "text": "Labels",
-                    "variant": "caption",
-                    "weight": 1
-                  },
-                  {
-                    "id": "labels-names",
-                    "component": "Text",
-                    "text": {
-                      "path": "/labels"
-                    }
-                  },
-                  {
-                    "id": "labels-row",
-                    "component": "Row",
-                    "align": "center",
-                    "children": [
-                      "labels-label",
-                      "labels-value"
-                    ]
-                  },
-                  {
-                    "id": "labels-value",
-                    "component": "Row",
-                    "align": "center",
-                    "children": [
-                      "labels-names"
-                    ]
-                  },
-                  {
-                    "id": "links",
-                    "component": "Column",
-                    "children": [
-                      "pr-list",
-                      "loading_branch"
-                    ]
-                  },
-                  {
-                    "id": "pr-list",
-                    "component": "Column",
-                    "children": {
-                      "path": "/pullRequests",
-                      "componentId": "pr-row"
-                    }
-                  },
-                  {
-                    "id": "pr-number",
-                    "component": "Text",
-                    "text": {
-                      "path": "number"
-                    }
-                  },
-                  {
-                    "id": "pr-row",
-                    "component": "Row",
-                    "align": "center",
-                    "children": [
-                      "pr-title",
-                      "pr-number"
-                    ]
-                  },
-                  {
-                    "id": "pr-title",
-                    "component": "Text",
-                    "text": {
-                      "path": "title"
-                    },
-                    "weight": 1
-                  },
-                  {
-                    "id": "priority-icon",
-                    "component": "PriorityIcon",
-                    "priority": {
-                      "path": "/priority"
-                    }
-                  },
-                  {
-                    "id": "priority-label",
-                    "component": "Text",
-                    "text": "Priority",
-                    "variant": "caption",
-                    "weight": 1
-                  },
-                  {
-                    "id": "priority-name",
-                    "component": "Text",
-                    "text": {
-                      "path": "/priority"
-                    }
-                  },
-                  {
-                    "id": "priority-row",
-                    "component": "Row",
-                    "align": "center",
-                    "children": [
-                      "priority-label",
-                      "priority-value"
-                    ]
-                  },
-                  {
-                    "id": "priority-value",
-                    "component": "Row",
-                    "align": "center",
-                    "children": [
-                      "priority-icon",
-                      "priority-name"
-                    ]
-                  },
-                  {
-                    "id": "props",
-                    "component": "Column",
-                    "children": [
-                      "status-row",
-                      "priority-row",
-                      "assignee-row",
-                      "labels-row"
-                    ]
-                  },
-                  {
-                    "id": "root",
-                    "component": "Card",
-                    "child": "body"
-                  },
-                  {
-                    "id": "status-icon",
-                    "component": "StatusIcon",
-                    "status": {
-                      "path": "/status"
-                    },
-                    "type": {
-                      "path": "/statusType"
-                    }
-                  },
-                  {
-                    "id": "status-label",
-                    "component": "Text",
-                    "text": "Status",
-                    "variant": "caption",
-                    "weight": 1
-                  },
-                  {
-                    "id": "status-name",
-                    "component": "Text",
-                    "text": {
-                      "path": "/status"
-                    }
-                  },
-                  {
-                    "id": "status-row",
-                    "component": "Row",
-                    "align": "center",
-                    "children": [
-                      "status-label",
-                      "status-value"
-                    ]
-                  },
-                  {
-                    "id": "status-value",
-                    "component": "Row",
-                    "align": "center",
-                    "children": [
-                      "status-icon",
-                      "status-name"
-                    ]
-                  },
-                  {
-                    "id": "title",
-                    "component": "Text",
-                    "text": {
-                      "path": "/title"
-                    },
-                    "variant": "h3"
-                  },
-                  {
-                    "id": "loading_divider-2",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_activity",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_branch",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "issue-detail"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 25650,
+          "offsetMs": 31629,
           "messages": [
             {
               "version": "v0.9",
@@ -6414,278 +6318,7 @@
           "texts": []
         },
         {
-          "offsetMs": 25857,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "assignee-label",
-                    "component": "Text",
-                    "text": "Assignee",
-                    "variant": "caption",
-                    "weight": 1
-                  },
-                  {
-                    "id": "assignee-name",
-                    "component": "Text",
-                    "text": {
-                      "path": "/assignee"
-                    }
-                  },
-                  {
-                    "id": "assignee-row",
-                    "component": "Row",
-                    "align": "center",
-                    "children": [
-                      "assignee-label",
-                      "assignee-value"
-                    ]
-                  },
-                  {
-                    "id": "assignee-value",
-                    "component": "Row",
-                    "align": "center",
-                    "children": [
-                      "assignee-name"
-                    ]
-                  },
-                  {
-                    "id": "body",
-                    "component": "Column",
-                    "children": [
-                      "identifier",
-                      "title",
-                      "props",
-                      "divider-1",
-                      "description",
-                      "links",
-                      "loading_divider-2",
-                      "loading_activity"
-                    ]
-                  },
-                  {
-                    "id": "branch",
-                    "component": "Text",
-                    "text": {
-                      "path": "/branch"
-                    }
-                  },
-                  {
-                    "id": "description",
-                    "component": "Text",
-                    "text": {
-                      "path": "/description"
-                    }
-                  },
-                  {
-                    "id": "divider-1",
-                    "component": "Divider"
-                  },
-                  {
-                    "id": "identifier",
-                    "component": "Text",
-                    "text": {
-                      "path": "/id"
-                    },
-                    "variant": "caption"
-                  },
-                  {
-                    "id": "labels-label",
-                    "component": "Text",
-                    "text": "Labels",
-                    "variant": "caption",
-                    "weight": 1
-                  },
-                  {
-                    "id": "labels-names",
-                    "component": "Text",
-                    "text": {
-                      "path": "/labels"
-                    }
-                  },
-                  {
-                    "id": "labels-row",
-                    "component": "Row",
-                    "align": "center",
-                    "children": [
-                      "labels-label",
-                      "labels-value"
-                    ]
-                  },
-                  {
-                    "id": "labels-value",
-                    "component": "Row",
-                    "align": "center",
-                    "children": [
-                      "labels-names"
-                    ]
-                  },
-                  {
-                    "id": "links",
-                    "component": "Column",
-                    "children": [
-                      "pr-list",
-                      "branch"
-                    ]
-                  },
-                  {
-                    "id": "pr-list",
-                    "component": "Column",
-                    "children": {
-                      "path": "/pullRequests",
-                      "componentId": "pr-row"
-                    }
-                  },
-                  {
-                    "id": "pr-number",
-                    "component": "Text",
-                    "text": {
-                      "path": "number"
-                    },
-                    "variant": "caption"
-                  },
-                  {
-                    "id": "pr-row",
-                    "component": "Row",
-                    "align": "center",
-                    "children": [
-                      "pr-title",
-                      "pr-number"
-                    ]
-                  },
-                  {
-                    "id": "pr-title",
-                    "component": "Text",
-                    "text": {
-                      "path": "title"
-                    },
-                    "weight": 1
-                  },
-                  {
-                    "id": "priority-icon",
-                    "component": "PriorityIcon",
-                    "priority": {
-                      "path": "/priority"
-                    }
-                  },
-                  {
-                    "id": "priority-label",
-                    "component": "Text",
-                    "text": "Priority",
-                    "variant": "caption",
-                    "weight": 1
-                  },
-                  {
-                    "id": "priority-name",
-                    "component": "Text",
-                    "text": {
-                      "path": "/priority"
-                    }
-                  },
-                  {
-                    "id": "priority-row",
-                    "component": "Row",
-                    "align": "center",
-                    "children": [
-                      "priority-label",
-                      "priority-value"
-                    ]
-                  },
-                  {
-                    "id": "priority-value",
-                    "component": "Row",
-                    "align": "center",
-                    "children": [
-                      "priority-icon",
-                      "priority-name"
-                    ]
-                  },
-                  {
-                    "id": "props",
-                    "component": "Column",
-                    "children": [
-                      "status-row",
-                      "priority-row",
-                      "assignee-row",
-                      "labels-row"
-                    ]
-                  },
-                  {
-                    "id": "root",
-                    "component": "Card",
-                    "child": "body"
-                  },
-                  {
-                    "id": "status-icon",
-                    "component": "StatusIcon",
-                    "status": {
-                      "path": "/status"
-                    },
-                    "type": {
-                      "path": "/statusType"
-                    }
-                  },
-                  {
-                    "id": "status-label",
-                    "component": "Text",
-                    "text": "Status",
-                    "variant": "caption",
-                    "weight": 1
-                  },
-                  {
-                    "id": "status-name",
-                    "component": "Text",
-                    "text": {
-                      "path": "/status"
-                    }
-                  },
-                  {
-                    "id": "status-row",
-                    "component": "Row",
-                    "align": "center",
-                    "children": [
-                      "status-label",
-                      "status-value"
-                    ]
-                  },
-                  {
-                    "id": "status-value",
-                    "component": "Row",
-                    "align": "center",
-                    "children": [
-                      "status-icon",
-                      "status-name"
-                    ]
-                  },
-                  {
-                    "id": "title",
-                    "component": "Text",
-                    "text": {
-                      "path": "/title"
-                    },
-                    "variant": "h3"
-                  },
-                  {
-                    "id": "loading_divider-2",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_activity",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "issue-detail"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 26051,
+          "offsetMs": 32125,
           "messages": [
             {
               "version": "v0.9",
@@ -6957,7 +6590,7 @@
           "texts": []
         },
         {
-          "offsetMs": 26221,
+          "offsetMs": 32297,
           "messages": [
             {
               "version": "v0.9",
@@ -7228,7 +6861,7 @@
           "texts": []
         },
         {
-          "offsetMs": 26589,
+          "offsetMs": 32611,
           "messages": [
             {
               "version": "v0.9",
@@ -7507,7 +7140,7 @@
           "texts": []
         },
         {
-          "offsetMs": 26916,
+          "offsetMs": 32920,
           "messages": [
             {
               "version": "v0.9",
@@ -7799,7 +7432,7 @@
           "texts": []
         },
         {
-          "offsetMs": 27285,
+          "offsetMs": 33289,
           "messages": [
             {
               "version": "v0.9",
@@ -8104,7 +7737,314 @@
           "texts": []
         },
         {
-          "offsetMs": 27623,
+          "offsetMs": 33462,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "activity",
+                    "component": "Column",
+                    "children": {
+                      "path": "/comments",
+                      "componentId": "comment"
+                    }
+                  },
+                  {
+                    "id": "assignee-label",
+                    "component": "Text",
+                    "text": "Assignee",
+                    "variant": "caption",
+                    "weight": 1
+                  },
+                  {
+                    "id": "assignee-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "/assignee"
+                    }
+                  },
+                  {
+                    "id": "assignee-row",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "assignee-label",
+                      "assignee-value"
+                    ]
+                  },
+                  {
+                    "id": "assignee-value",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "assignee-name"
+                    ]
+                  },
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "identifier",
+                      "title",
+                      "props",
+                      "divider-1",
+                      "description",
+                      "links",
+                      "divider-2",
+                      "activity"
+                    ]
+                  },
+                  {
+                    "id": "branch",
+                    "component": "Text",
+                    "text": {
+                      "path": "/branch"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "comment",
+                    "component": "Column",
+                    "children": [
+                      "comment-meta",
+                      "loading_comment-body"
+                    ]
+                  },
+                  {
+                    "id": "comment-author",
+                    "component": "Text",
+                    "text": {
+                      "path": "author"
+                    }
+                  },
+                  {
+                    "id": "comment-meta",
+                    "component": "Row",
+                    "children": [
+                      "comment-author",
+                      "loading_comment-when"
+                    ]
+                  },
+                  {
+                    "id": "description",
+                    "component": "Text",
+                    "text": {
+                      "path": "/description"
+                    }
+                  },
+                  {
+                    "id": "divider-1",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "divider-2",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "identifier",
+                    "component": "Text",
+                    "text": {
+                      "path": "/id"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "labels-label",
+                    "component": "Text",
+                    "text": "Labels",
+                    "variant": "caption",
+                    "weight": 1
+                  },
+                  {
+                    "id": "labels-names",
+                    "component": "Text",
+                    "text": {
+                      "path": "/labels"
+                    }
+                  },
+                  {
+                    "id": "labels-row",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "labels-label",
+                      "labels-value"
+                    ]
+                  },
+                  {
+                    "id": "labels-value",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "labels-names"
+                    ]
+                  },
+                  {
+                    "id": "links",
+                    "component": "Column",
+                    "children": [
+                      "pr-list",
+                      "branch"
+                    ]
+                  },
+                  {
+                    "id": "pr-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/pullRequests",
+                      "componentId": "pr-row"
+                    }
+                  },
+                  {
+                    "id": "pr-number",
+                    "component": "Text",
+                    "text": {
+                      "path": "number"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "pr-row",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "pr-title",
+                      "pr-number"
+                    ]
+                  },
+                  {
+                    "id": "pr-title",
+                    "component": "Text",
+                    "text": {
+                      "path": "title"
+                    },
+                    "weight": 1
+                  },
+                  {
+                    "id": "priority-icon",
+                    "component": "PriorityIcon",
+                    "priority": {
+                      "path": "/priority"
+                    }
+                  },
+                  {
+                    "id": "priority-label",
+                    "component": "Text",
+                    "text": "Priority",
+                    "variant": "caption",
+                    "weight": 1
+                  },
+                  {
+                    "id": "priority-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "/priority"
+                    }
+                  },
+                  {
+                    "id": "priority-row",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "priority-label",
+                      "priority-value"
+                    ]
+                  },
+                  {
+                    "id": "priority-value",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "priority-icon",
+                      "priority-name"
+                    ]
+                  },
+                  {
+                    "id": "props",
+                    "component": "Column",
+                    "children": [
+                      "status-row",
+                      "priority-row",
+                      "assignee-row",
+                      "labels-row"
+                    ]
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "status-icon",
+                    "component": "StatusIcon",
+                    "status": {
+                      "path": "/status"
+                    },
+                    "type": {
+                      "path": "/statusType"
+                    }
+                  },
+                  {
+                    "id": "status-label",
+                    "component": "Text",
+                    "text": "Status",
+                    "variant": "caption",
+                    "weight": 1
+                  },
+                  {
+                    "id": "status-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "/status"
+                    }
+                  },
+                  {
+                    "id": "status-row",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "status-label",
+                      "status-value"
+                    ]
+                  },
+                  {
+                    "id": "status-value",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "status-icon",
+                      "status-name"
+                    ]
+                  },
+                  {
+                    "id": "title",
+                    "component": "Text",
+                    "text": {
+                      "path": "/title"
+                    },
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "loading_comment-body",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_comment-when",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "issue-detail"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 33633,
           "messages": [
             {
               "version": "v0.9",
@@ -8412,7 +8352,317 @@
           "texts": []
         },
         {
-          "offsetMs": 27962,
+          "offsetMs": 33790,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "activity",
+                    "component": "Column",
+                    "children": {
+                      "path": "/comments",
+                      "componentId": "comment"
+                    }
+                  },
+                  {
+                    "id": "assignee-label",
+                    "component": "Text",
+                    "text": "Assignee",
+                    "variant": "caption",
+                    "weight": 1
+                  },
+                  {
+                    "id": "assignee-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "/assignee"
+                    }
+                  },
+                  {
+                    "id": "assignee-row",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "assignee-label",
+                      "assignee-value"
+                    ]
+                  },
+                  {
+                    "id": "assignee-value",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "assignee-name"
+                    ]
+                  },
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "identifier",
+                      "title",
+                      "props",
+                      "divider-1",
+                      "description",
+                      "links",
+                      "divider-2",
+                      "activity"
+                    ]
+                  },
+                  {
+                    "id": "branch",
+                    "component": "Text",
+                    "text": {
+                      "path": "/branch"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "comment",
+                    "component": "Column",
+                    "children": [
+                      "comment-meta",
+                      "loading_comment-body"
+                    ]
+                  },
+                  {
+                    "id": "comment-author",
+                    "component": "Text",
+                    "text": {
+                      "path": "author"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "comment-meta",
+                    "component": "Row",
+                    "children": [
+                      "comment-author",
+                      "comment-when"
+                    ]
+                  },
+                  {
+                    "id": "comment-when",
+                    "component": "Text",
+                    "text": {
+                      "path": "when"
+                    }
+                  },
+                  {
+                    "id": "description",
+                    "component": "Text",
+                    "text": {
+                      "path": "/description"
+                    }
+                  },
+                  {
+                    "id": "divider-1",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "divider-2",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "identifier",
+                    "component": "Text",
+                    "text": {
+                      "path": "/id"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "labels-label",
+                    "component": "Text",
+                    "text": "Labels",
+                    "variant": "caption",
+                    "weight": 1
+                  },
+                  {
+                    "id": "labels-names",
+                    "component": "Text",
+                    "text": {
+                      "path": "/labels"
+                    }
+                  },
+                  {
+                    "id": "labels-row",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "labels-label",
+                      "labels-value"
+                    ]
+                  },
+                  {
+                    "id": "labels-value",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "labels-names"
+                    ]
+                  },
+                  {
+                    "id": "links",
+                    "component": "Column",
+                    "children": [
+                      "pr-list",
+                      "branch"
+                    ]
+                  },
+                  {
+                    "id": "pr-list",
+                    "component": "Column",
+                    "children": {
+                      "path": "/pullRequests",
+                      "componentId": "pr-row"
+                    }
+                  },
+                  {
+                    "id": "pr-number",
+                    "component": "Text",
+                    "text": {
+                      "path": "number"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "pr-row",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "pr-title",
+                      "pr-number"
+                    ]
+                  },
+                  {
+                    "id": "pr-title",
+                    "component": "Text",
+                    "text": {
+                      "path": "title"
+                    },
+                    "weight": 1
+                  },
+                  {
+                    "id": "priority-icon",
+                    "component": "PriorityIcon",
+                    "priority": {
+                      "path": "/priority"
+                    }
+                  },
+                  {
+                    "id": "priority-label",
+                    "component": "Text",
+                    "text": "Priority",
+                    "variant": "caption",
+                    "weight": 1
+                  },
+                  {
+                    "id": "priority-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "/priority"
+                    }
+                  },
+                  {
+                    "id": "priority-row",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "priority-label",
+                      "priority-value"
+                    ]
+                  },
+                  {
+                    "id": "priority-value",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "priority-icon",
+                      "priority-name"
+                    ]
+                  },
+                  {
+                    "id": "props",
+                    "component": "Column",
+                    "children": [
+                      "status-row",
+                      "priority-row",
+                      "assignee-row",
+                      "labels-row"
+                    ]
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "status-icon",
+                    "component": "StatusIcon",
+                    "status": {
+                      "path": "/status"
+                    },
+                    "type": {
+                      "path": "/statusType"
+                    }
+                  },
+                  {
+                    "id": "status-label",
+                    "component": "Text",
+                    "text": "Status",
+                    "variant": "caption",
+                    "weight": 1
+                  },
+                  {
+                    "id": "status-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "/status"
+                    }
+                  },
+                  {
+                    "id": "status-row",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "status-label",
+                      "status-value"
+                    ]
+                  },
+                  {
+                    "id": "status-value",
+                    "component": "Row",
+                    "align": "center",
+                    "children": [
+                      "status-icon",
+                      "status-name"
+                    ]
+                  },
+                  {
+                    "id": "title",
+                    "component": "Text",
+                    "text": {
+                      "path": "/title"
+                    },
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "loading_comment-body",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "issue-detail"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 33973,
           "messages": [
             {
               "version": "v0.9",
@@ -8723,7 +8973,7 @@
           "texts": []
         },
         {
-          "offsetMs": 28136,
+          "offsetMs": 34142,
           "messages": [
             {
               "version": "v0.9",
@@ -9037,7 +9287,7 @@
         }
       ],
       "outcome": "completed",
-      "durationMs": 28409
+      "durationMs": 34401
     }
   ]
 }

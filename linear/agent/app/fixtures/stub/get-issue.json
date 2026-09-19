@@ -11,7 +11,7 @@
     "url": "https://linear.app/a2uiverse/issue/A2U-5/say-on-the-canvas-when-an-utterance-fails",
     "gitBranchName": "ekkicb71/a2u-5-say-on-the-canvas-when-an-utterance-fails",
     "createdAt": "2026-09-18T11:50:56.302Z",
-    "updatedAt": "2026-09-19T09:30:22.936Z",
+    "updatedAt": "2026-09-19T11:00:43.443Z",
     "archivedAt": null,
     "completedAt": null,
     "startedAt": "2026-09-18T11:52:45.328Z",
@@ -94,6 +94,105 @@
           "type": "started"
         },
         "startedAt": "2026-09-19T09:30:22.931Z",
+        "endedAt": "2026-09-19T10:54:24.101Z"
+      },
+      {
+        "state": {
+          "id": "fed6dcbe-050e-486a-9911-bf11efdbba8c",
+          "name": "In Review",
+          "type": "started"
+        },
+        "startedAt": "2026-09-19T10:54:24.101Z",
+        "endedAt": "2026-09-19T10:56:12.760Z"
+      },
+      {
+        "state": {
+          "id": "00333986-fc79-41ef-919b-7fcb36baf8bd",
+          "name": "In Progress",
+          "type": "started"
+        },
+        "startedAt": "2026-09-19T10:56:12.760Z",
+        "endedAt": "2026-09-19T10:58:36.782Z"
+      },
+      {
+        "state": {
+          "id": "fed6dcbe-050e-486a-9911-bf11efdbba8c",
+          "name": "In Review",
+          "type": "started"
+        },
+        "startedAt": "2026-09-19T10:58:36.782Z",
+        "endedAt": "2026-09-19T11:00:43.358Z"
+      },
+      {
+        "state": {
+          "id": "00333986-fc79-41ef-919b-7fcb36baf8bd",
+          "name": "In Progress",
+          "type": "started"
+        },
+        "startedAt": "2026-09-19T11:00:43.358Z",
+        "endedAt": null
+      }
+    ],
+    "createdBy": "Jioh In",
+    "createdById": "84952ecc-c607-4bc3-8dbc-b8d03029ba59",
+    "assignee": "Jioh In",
+    "assigneeId": "84952ecc-c607-4bc3-8dbc-b8d03029ba59",
+    "team": "A2uiverse",
+    "teamId": "210dbbff-2acb-4c57-b2be-8369f6177bb9"
+  },
+  "A2U-7": {
+    "id": "A2U-7",
+    "uuid": "13bdf881-856c-459d-8a13-a9cf0a632860",
+    "title": "Shell-action report hangs through the tunnel",
+    "description": "Through the dev tunnel, a shell-action report can hang as a fetch for 100 s or fail with \"Failed to fetch\" about 110 s after the press, while every utterance through the same tunnel arrives at once. Seen three times in 6.6. The report is a streaming `message/send` the orchestrator answers in milliseconds; what the tunnel does with it is the open question.",
+    "priority": {
+      "value": 4,
+      "name": "Low"
+    },
+    "url": "https://linear.app/a2uiverse/issue/A2U-7/shell-action-report-hangs-through-the-tunnel",
+    "gitBranchName": "ekkicb71/a2u-7-shell-action-report-hangs-through-the-tunnel",
+    "createdAt": "2026-09-18T11:51:35.154Z",
+    "updatedAt": "2026-09-19T10:53:09.783Z",
+    "archivedAt": null,
+    "completedAt": null,
+    "startedAt": "2026-09-19T10:53:09.760Z",
+    "canceledAt": null,
+    "dueDate": null,
+    "slaStartedAt": null,
+    "slaMediumRiskAt": null,
+    "slaHighRiskAt": null,
+    "slaBreachesAt": null,
+    "status": "In Progress",
+    "statusType": "started",
+    "labels": [
+      "Bug"
+    ],
+    "attachments": [
+      {
+        "id": "ca92e1d3-e3ca-4721-8a86-4d2751b68bae",
+        "title": "#5 Shell-action report hangs through the tunnel",
+        "subtitle": null,
+        "url": "https://github.com/retz8/a2uiverse/issues/5"
+      }
+    ],
+    "documents": [],
+    "stateHistory": [
+      {
+        "state": {
+          "id": "d11226d0-cf05-4638-9383-689951e8226e",
+          "name": "Backlog",
+          "type": "backlog"
+        },
+        "startedAt": "2026-09-18T11:51:35.154Z",
+        "endedAt": "2026-09-19T10:53:09.775Z"
+      },
+      {
+        "state": {
+          "id": "00333986-fc79-41ef-919b-7fcb36baf8bd",
+          "name": "In Progress",
+          "type": "started"
+        },
+        "startedAt": "2026-09-19T10:53:09.775Z",
         "endedAt": null
       }
     ],
@@ -163,60 +262,6 @@
           "type": "started"
         },
         "startedAt": "2026-09-18T11:53:06.305Z",
-        "endedAt": null
-      }
-    ],
-    "createdBy": "Jioh In",
-    "createdById": "84952ecc-c607-4bc3-8dbc-b8d03029ba59",
-    "assignee": "Jioh In",
-    "assigneeId": "84952ecc-c607-4bc3-8dbc-b8d03029ba59",
-    "team": "A2uiverse",
-    "teamId": "210dbbff-2acb-4c57-b2be-8369f6177bb9"
-  },
-  "A2U-7": {
-    "id": "A2U-7",
-    "uuid": "13bdf881-856c-459d-8a13-a9cf0a632860",
-    "title": "Shell-action report hangs through the tunnel",
-    "description": "Through the dev tunnel, a shell-action report can hang as a fetch for 100 s or fail with \"Failed to fetch\" about 110 s after the press, while every utterance through the same tunnel arrives at once. Seen three times in 6.6. The report is a streaming `message/send` the orchestrator answers in milliseconds; what the tunnel does with it is the open question.",
-    "priority": {
-      "value": 4,
-      "name": "Low"
-    },
-    "url": "https://linear.app/a2uiverse/issue/A2U-7/shell-action-report-hangs-through-the-tunnel",
-    "gitBranchName": "ekkicb71/a2u-7-shell-action-report-hangs-through-the-tunnel",
-    "createdAt": "2026-09-18T11:51:35.154Z",
-    "updatedAt": "2026-09-18T11:51:35.154Z",
-    "archivedAt": null,
-    "completedAt": null,
-    "startedAt": null,
-    "canceledAt": null,
-    "dueDate": null,
-    "slaStartedAt": null,
-    "slaMediumRiskAt": null,
-    "slaHighRiskAt": null,
-    "slaBreachesAt": null,
-    "status": "Backlog",
-    "statusType": "backlog",
-    "labels": [
-      "Bug"
-    ],
-    "attachments": [
-      {
-        "id": "ca92e1d3-e3ca-4721-8a86-4d2751b68bae",
-        "title": "#5 Shell-action report hangs through the tunnel",
-        "subtitle": null,
-        "url": "https://github.com/retz8/a2uiverse/issues/5"
-      }
-    ],
-    "documents": [],
-    "stateHistory": [
-      {
-        "state": {
-          "id": "d11226d0-cf05-4638-9383-689951e8226e",
-          "name": "Backlog",
-          "type": "backlog"
-        },
-        "startedAt": "2026-09-18T11:51:35.154Z",
         "endedAt": null
       }
     ],
