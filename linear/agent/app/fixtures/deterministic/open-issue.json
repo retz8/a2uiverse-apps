@@ -4,8 +4,7 @@
     "updateDataModel": {
       "surfaceId": "issue-detail",
       "value": {
-        "id": "A2U-5",
-        "title": "Say on the canvas when an utterance fails"
+        "id": "A2U-5"
       }
     }
   },
@@ -14,8 +13,8 @@
     "updateDataModel": {
       "surfaceId": "issue-detail",
       "value": {
-        "status": "In Progress",
-        "statusType": "started"
+        "title": "Say on the canvas when an utterance fails",
+        "status": "In Review"
       }
     }
   },
@@ -24,8 +23,17 @@
     "updateDataModel": {
       "surfaceId": "issue-detail",
       "value": {
+        "statusType": "started",
         "priority": "High",
-        "assignee": "Jioh In",
+        "assignee": "Jioh In"
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "issue-detail",
+      "value": {
         "labels": "Bug"
       }
     }
@@ -84,7 +92,7 @@
       "value": {
         "id": "A2U-5",
         "title": "Say on the canvas when an utterance fails",
-        "status": "In Progress",
+        "status": "In Review",
         "statusType": "started",
         "priority": "High",
         "assignee": "Jioh In",

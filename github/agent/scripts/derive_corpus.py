@@ -1,6 +1,6 @@
 """Derives the deterministic corpus from a recorded live run.
 
-Task 5.6. GitHub's `deterministic` mode answers a plain-text prompt with the today digest,
+Task 5.6. GitHub's `deterministic` mode answers a plain-text prompt with its one recorded answer,
 and that fixture is derived here rather than authored — the same rule Gmail's and Calendar's
 derive scripts hold, and what keeps the canned data real-shaped.
 
@@ -9,7 +9,7 @@ regenerated here, and there is no pseudonymization step: GitHub's payloads are p
 repository data, which is why this agent has no `test_corpus_is_publishable`.
 
     A2UI_RECORD_DIR=.recordings uv run python -m app --mode live --host localhost
-    uv run python scripts/record_beats.py --beats 8 --model <model>
+    uv run python scripts/record_beats.py --beats 9 --model <model>
     uv run python scripts/derive_corpus.py
 """
 
@@ -25,8 +25,9 @@ AGENT = Path(__file__).resolve().parent.parent
 BEATS = AGENT / "recordings" / "beats"
 DETERMINISTIC = AGENT / "app" / "fixtures" / "deterministic"
 
-# The today beat, and the fixture the text path plays.
-SOURCE = "beat-8-notifications.json"
+# The work-status beat (task 7.8; the today beat, 8, stays recorded), and the fixture the text
+# path plays.
+SOURCE = "beat-9-work-status.json"
 TARGET = "notifications.json"
 
 

@@ -4,23 +4,23 @@
   "title": "Rerun proposed",
   "prompt": "Rerun only the failed jobs of that workflow.",
   "model": "gemini-3.7-flash",
-  "recordedAt": "2026-09-18T10:41:30+00:00",
-  "contextId": "c7d8823b-6a8a-4399-bd71-5bce29b6673d",
+  "recordedAt": "2026-09-19T09:30:54+00:00",
+  "contextId": "03103136-0360-4a1c-aaf5-857c83b77468",
   "chainedFrom": "beat-3-job-failure",
   "turns": [
     {
-      "taskId": "8689e4f0-feb7-4072-9b5d-9588d2bcdac7",
+      "taskId": "a97ad661-6bdf-43fb-830a-f0cc1ca6a6df",
       "kind": "utterance",
       "prompt": "Rerun only the failed jobs of that workflow.",
       "action": null,
       "batches": [
         {
-          "offsetMs": 8531,
+          "offsetMs": 6444,
           "messages": [
             {
               "paintMeta": {
                 "surfaceId": "rerun-proposal",
-                "title": "Rerun workflow",
+                "title": "Rerun Workflow",
                 "kind": "question"
               }
             }
@@ -30,7 +30,7 @@
           ]
         },
         {
-          "offsetMs": 8671,
+          "offsetMs": 6732,
           "messages": [
             {
               "version": "v0.9",
@@ -44,15 +44,14 @@
           "texts": []
         },
         {
-          "offsetMs": 8857,
+          "offsetMs": 7095,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
                 "surfaceId": "rerun-proposal",
                 "value": {
-                  "project": "a2uiverse",
-                  "branch": "ci/failing-format-demo"
+                  "project": "a2uiverse"
                 }
               }
             }
@@ -60,13 +59,14 @@
           "texts": []
         },
         {
-          "offsetMs": 8919,
+          "offsetMs": 7275,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
                 "surfaceId": "rerun-proposal",
                 "value": {
+                  "branch": "synthesizer-effort-apart-from-planner",
                   "workflow": "verify"
                 }
               }
@@ -75,14 +75,14 @@
           "texts": []
         },
         {
-          "offsetMs": 8978,
+          "offsetMs": 7600,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
                 "surfaceId": "rerun-proposal",
                 "value": {
-                  "workflowId": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7"
+                  "workflowId": "6da68785-d209-4441-95a9-174080b2428c"
                 }
               }
             }
@@ -90,7 +90,7 @@
           "texts": []
         },
         {
-          "offsetMs": 9038,
+          "offsetMs": 7753,
           "messages": [
             {
               "version": "v0.9",
@@ -99,9 +99,9 @@
                 "path": "/",
                 "value": {
                   "project": "a2uiverse",
-                  "branch": "ci/failing-format-demo",
+                  "branch": "synthesizer-effort-apart-from-planner",
                   "workflow": "verify",
-                  "workflowId": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
+                  "workflowId": "6da68785-d209-4441-95a9-174080b2428c",
                   "scope": "Only the failed jobs and what depends on them"
                 }
               }
@@ -110,7 +110,7 @@
           "texts": []
         },
         {
-          "offsetMs": 9347,
+          "offsetMs": 8200,
           "messages": [
             {
               "version": "v0.9",
@@ -134,7 +134,7 @@
           "texts": []
         },
         {
-          "offsetMs": 9425,
+          "offsetMs": 8351,
           "messages": [
             {
               "version": "v0.9",
@@ -195,7 +195,7 @@
           "texts": []
         },
         {
-          "offsetMs": 9502,
+          "offsetMs": 8514,
           "messages": [
             {
               "version": "v0.9",
@@ -257,7 +257,7 @@
           "texts": []
         },
         {
-          "offsetMs": 9692,
+          "offsetMs": 8670,
           "messages": [
             {
               "version": "v0.9",
@@ -318,7 +318,7 @@
           "texts": []
         },
         {
-          "offsetMs": 9830,
+          "offsetMs": 9018,
           "messages": [
             {
               "version": "v0.9",
@@ -343,11 +343,15 @@
                     "variant": "h3"
                   },
                   {
+                    "id": "project-label",
+                    "component": "Text"
+                  },
+                  {
                     "id": "project-row",
                     "component": "Row",
                     "justify": "spaceBetween",
                     "children": [
-                      "loading_project-label",
+                      "project-label",
                       "loading_project-value"
                     ]
                   },
@@ -377,11 +381,6 @@
                     "children": []
                   },
                   {
-                    "id": "loading_project-label",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
                     "id": "loading_project-value",
                     "component": "Row",
                     "children": []
@@ -394,7 +393,7 @@
           "texts": []
         },
         {
-          "offsetMs": 9925,
+          "offsetMs": 9213,
           "messages": [
             {
               "version": "v0.9",
@@ -471,7 +470,7 @@
           "texts": []
         },
         {
-          "offsetMs": 10159,
+          "offsetMs": 9545,
           "messages": [
             {
               "version": "v0.9",
@@ -550,86 +549,7 @@
           "texts": []
         },
         {
-          "offsetMs": 10226,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "body",
-                    "component": "Column",
-                    "children": [
-                      "heading",
-                      "project-row",
-                      "branch-row",
-                      "loading_workflow-row",
-                      "loading_scope",
-                      "loading_actions"
-                    ]
-                  },
-                  {
-                    "id": "branch-row",
-                    "component": "Row",
-                    "justify": "spaceBetween"
-                  },
-                  {
-                    "id": "heading",
-                    "component": "Text",
-                    "text": "Rerun this workflow?",
-                    "variant": "h3"
-                  },
-                  {
-                    "id": "project-label",
-                    "component": "Text",
-                    "text": "Project",
-                    "variant": "caption"
-                  },
-                  {
-                    "id": "project-row",
-                    "component": "Row",
-                    "justify": "spaceBetween",
-                    "children": [
-                      "project-label",
-                      "project-value"
-                    ]
-                  },
-                  {
-                    "id": "project-value",
-                    "component": "Text",
-                    "text": {
-                      "path": "/project"
-                    }
-                  },
-                  {
-                    "id": "root",
-                    "component": "Card",
-                    "child": "body"
-                  },
-                  {
-                    "id": "loading_workflow-row",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_scope",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_actions",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "rerun-proposal"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 10380,
+          "offsetMs": 9856,
           "messages": [
             {
               "version": "v0.9",
@@ -722,7 +642,100 @@
           "texts": []
         },
         {
-          "offsetMs": 10519,
+          "offsetMs": 10010,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "project-row",
+                      "branch-row",
+                      "loading_workflow-row",
+                      "loading_scope",
+                      "loading_actions"
+                    ]
+                  },
+                  {
+                    "id": "branch-label",
+                    "component": "Text",
+                    "text": "Branch"
+                  },
+                  {
+                    "id": "branch-row",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "children": [
+                      "branch-label",
+                      "loading_branch-value"
+                    ]
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": "Rerun this workflow?",
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "project-label",
+                    "component": "Text",
+                    "text": "Project",
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "project-row",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "children": [
+                      "project-label",
+                      "project-value"
+                    ]
+                  },
+                  {
+                    "id": "project-value",
+                    "component": "Text",
+                    "text": {
+                      "path": "/project"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "loading_workflow-row",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_scope",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_branch-value",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "rerun-proposal"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 10191,
           "messages": [
             {
               "version": "v0.9",
@@ -816,7 +829,7 @@
           "texts": []
         },
         {
-          "offsetMs": 10589,
+          "offsetMs": 10346,
           "messages": [
             {
               "version": "v0.9",
@@ -912,7 +925,7 @@
           "texts": []
         },
         {
-          "offsetMs": 10664,
+          "offsetMs": 10434,
           "messages": [
             {
               "version": "v0.9",
@@ -1007,7 +1020,7 @@
           "texts": []
         },
         {
-          "offsetMs": 10795,
+          "offsetMs": 10575,
           "messages": [
             {
               "version": "v0.9",
@@ -1117,7 +1130,116 @@
           "texts": []
         },
         {
-          "offsetMs": 10875,
+          "offsetMs": 10727,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "project-row",
+                      "branch-row",
+                      "workflow-row",
+                      "loading_scope",
+                      "loading_actions"
+                    ]
+                  },
+                  {
+                    "id": "branch-label",
+                    "component": "Text",
+                    "text": "Branch",
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "branch-row",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "children": [
+                      "branch-label",
+                      "branch-value"
+                    ]
+                  },
+                  {
+                    "id": "branch-value",
+                    "component": "Text",
+                    "text": {
+                      "path": "/branch"
+                    }
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": "Rerun this workflow?",
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "project-label",
+                    "component": "Text",
+                    "text": "Project",
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "project-row",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "children": [
+                      "project-label",
+                      "project-value"
+                    ]
+                  },
+                  {
+                    "id": "project-value",
+                    "component": "Text",
+                    "text": {
+                      "path": "/project"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "workflow-label",
+                    "component": "Text"
+                  },
+                  {
+                    "id": "workflow-row",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "children": [
+                      "workflow-label",
+                      "loading_workflow-value"
+                    ]
+                  },
+                  {
+                    "id": "loading_scope",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_workflow-value",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "rerun-proposal"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 10874,
           "messages": [
             {
               "version": "v0.9",
@@ -1228,7 +1350,7 @@
           "texts": []
         },
         {
-          "offsetMs": 10992,
+          "offsetMs": 11178,
           "messages": [
             {
               "version": "v0.9",
@@ -1341,7 +1463,7 @@
           "texts": []
         },
         {
-          "offsetMs": 11146,
+          "offsetMs": 11318,
           "messages": [
             {
               "version": "v0.9",
@@ -1456,7 +1578,7 @@
           "texts": []
         },
         {
-          "offsetMs": 11210,
+          "offsetMs": 11511,
           "messages": [
             {
               "version": "v0.9",
@@ -1572,7 +1694,7 @@
           "texts": []
         },
         {
-          "offsetMs": 11348,
+          "offsetMs": 11672,
           "messages": [
             {
               "version": "v0.9",
@@ -1701,7 +1823,135 @@
           "texts": []
         },
         {
-          "offsetMs": 11638,
+          "offsetMs": 11831,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "actions",
+                    "component": "Row",
+                    "children": [
+                      "confirm",
+                      "loading_decline"
+                    ]
+                  },
+                  {
+                    "id": "body",
+                    "component": "Column",
+                    "children": [
+                      "heading",
+                      "project-row",
+                      "branch-row",
+                      "workflow-row",
+                      "scope",
+                      "actions"
+                    ]
+                  },
+                  {
+                    "id": "branch-label",
+                    "component": "Text",
+                    "text": "Branch",
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "branch-row",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "children": [
+                      "branch-label",
+                      "branch-value"
+                    ]
+                  },
+                  {
+                    "id": "branch-value",
+                    "component": "Text",
+                    "text": {
+                      "path": "/branch"
+                    }
+                  },
+                  {
+                    "id": "confirm",
+                    "component": "Button"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": "Rerun this workflow?",
+                    "variant": "h3"
+                  },
+                  {
+                    "id": "project-label",
+                    "component": "Text",
+                    "text": "Project",
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "project-row",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "children": [
+                      "project-label",
+                      "project-value"
+                    ]
+                  },
+                  {
+                    "id": "project-value",
+                    "component": "Text",
+                    "text": {
+                      "path": "/project"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Card",
+                    "child": "body"
+                  },
+                  {
+                    "id": "scope",
+                    "component": "Text",
+                    "text": {
+                      "path": "/scope"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "workflow-label",
+                    "component": "Text",
+                    "text": "Workflow",
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "workflow-row",
+                    "component": "Row",
+                    "justify": "spaceBetween",
+                    "children": [
+                      "workflow-label",
+                      "workflow-value"
+                    ]
+                  },
+                  {
+                    "id": "workflow-value",
+                    "component": "Text",
+                    "text": {
+                      "path": "/workflow"
+                    }
+                  },
+                  {
+                    "id": "loading_decline",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "rerun-proposal"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 12545,
           "messages": [
             {
               "version": "v0.9",
@@ -1847,7 +2097,7 @@
           "texts": []
         },
         {
-          "offsetMs": 11704,
+          "offsetMs": 12705,
           "messages": [
             {
               "version": "v0.9",
@@ -1993,7 +2243,7 @@
           "texts": []
         },
         {
-          "offsetMs": 11772,
+          "offsetMs": 12851,
           "messages": [
             {
               "version": "v0.9",
@@ -2144,7 +2394,7 @@
           "texts": []
         },
         {
-          "offsetMs": 11926,
+          "offsetMs": 13153,
           "messages": [
             {
               "version": "v0.9",
@@ -2305,7 +2555,7 @@
           "texts": []
         },
         {
-          "offsetMs": 12004,
+          "offsetMs": 13310,
           "messages": [
             {
               "version": "v0.9",
@@ -2467,7 +2717,7 @@
           "texts": []
         },
         {
-          "offsetMs": 12087,
+          "offsetMs": 13465,
           "messages": [
             {
               "version": "v0.9",
@@ -2630,7 +2880,7 @@
         }
       ],
       "outcome": "completed",
-      "durationMs": 12276
+      "durationMs": 13729
     }
   ]
 }

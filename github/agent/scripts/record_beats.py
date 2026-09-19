@@ -30,9 +30,9 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_RECORD_DIR = REPO_ROOT / ".recordings"
 FIXTURE_DIR = REPO_ROOT / "recordings" / "beats"
 
-# The today beat's prompt is the Planner's own request, read from the intent journal of a
-# live composed turn and pinned verbatim (task-5.6 decision 2): in a composed turn a vendor
-# never receives the user's utterance, only this.
+# The today beat's and the work-status beat's prompts are the Planner's own requests, read from
+# the intent journal of a live composed turn and pinned verbatim (task-5.6 decision 2, task-7.8
+# decision 7): in a composed turn a vendor never receives the user's utterance, only this.
 BEATS: list[Turn] = [
     Turn(1, "pr-list", "PR list", "Show me the open pull requests on a2ui-project/a2ui that need review."),
     Turn(2, "pr-detail", "PR detail", "Open a2ui-project/a2ui#2123."),
@@ -46,6 +46,10 @@ BEATS: list[Turn] = [
     Turn(8, "notifications", "Viewer-centric, ambiguous scope",
          "What pull requests need my attention today? Provide a brief description, and "
          "the time it was last updated, along with an identifier."),
+    Turn(9, "work-status", "Work status",
+         "Show my open pull requests and active branches as a compact list. For each, include the "
+         "title, repository, PR number, branch name, review status, and the full date and time it "
+         "was last updated."),
 ]
 
 

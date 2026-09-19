@@ -5,7 +5,8 @@
       "surfaceId": "run-detail",
       "value": {
         "run": {
-          "id": "8416285e-ff58-4fc1-a237-5db68376f273"
+          "id": "8a6c87c2-978c-4f4b-a304-dc17e50b726c",
+          "branch": "synthesizer-effort-apart-from-planner"
         }
       }
     }
@@ -16,8 +17,9 @@
       "surfaceId": "run-detail",
       "value": {
         "run": {
-          "id": "8416285e-ff58-4fc1-a237-5db68376f273",
-          "branch": "ci/failing-format-demo"
+          "id": "8a6c87c2-978c-4f4b-a304-dc17e50b726c",
+          "branch": "synthesizer-effort-apart-from-planner",
+          "summary": "d5b8057 \u00b7 chore: note where the Synthesizer's effort would rise apart from the Planner's \u00b7 retz8"
         }
       }
     }
@@ -28,28 +30,15 @@
       "surfaceId": "run-detail",
       "value": {
         "run": {
-          "id": "8416285e-ff58-4fc1-a237-5db68376f273",
-          "branch": "ci/failing-format-demo",
-          "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8"
-        }
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "run-detail",
-      "value": {
-        "run": {
-          "id": "8416285e-ff58-4fc1-a237-5db68376f273",
-          "branch": "ci/failing-format-demo",
-          "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
+          "id": "8a6c87c2-978c-4f4b-a304-dc17e50b726c",
+          "branch": "synthesizer-effort-apart-from-planner",
+          "summary": "d5b8057 \u00b7 chore: note where the Synthesizer's effort would rise apart from the Planner's \u00b7 retz8",
           "workflows": [
             {
-              "id": "131ad9a2-a72b-4f40-abe4-81e080cf16f7",
-              "name": "verify (attempt 4)",
+              "id": "12a5795f-7280-429f-9e13-e63272cfd5f9",
+              "name": "verify",
               "status": "Running",
-              "when": "Just now"
+              "when": "2026-09-19 09:30:32 UTC"
             }
           ]
         }
@@ -62,53 +51,21 @@
       "surfaceId": "run-detail",
       "value": {
         "run": {
-          "id": "8416285e-ff58-4fc1-a237-5db68376f273",
-          "branch": "ci/failing-format-demo",
-          "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
+          "id": "8a6c87c2-978c-4f4b-a304-dc17e50b726c",
+          "branch": "synthesizer-effort-apart-from-planner",
+          "summary": "d5b8057 \u00b7 chore: note where the Synthesizer's effort would rise apart from the Planner's \u00b7 retz8",
           "workflows": [
             {
-              "id": "131ad9a2-a72b-4f40-abe4-81e080cf16f7",
-              "name": "verify (attempt 4)",
+              "id": "12a5795f-7280-429f-9e13-e63272cfd5f9",
+              "name": "verify",
               "status": "Running",
-              "when": "Just now",
+              "when": "2026-09-19 09:30:32 UTC",
               "jobs": [
                 {
-                  "id": "f54d48af-19d2-46d8-8c91-2969365f4519",
+                  "id": "cb27eb95-da70-428d-bb35-c5d8706447f0",
                   "name": "lint-format",
                   "status": "Running",
-                  "duration": "running"
-                }
-              ]
-            }
-          ]
-        }
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "run-detail",
-      "value": {
-        "run": {
-          "id": "8416285e-ff58-4fc1-a237-5db68376f273",
-          "branch": "ci/failing-format-demo",
-          "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
-          "workflows": [
-            {
-              "id": "131ad9a2-a72b-4f40-abe4-81e080cf16f7",
-              "name": "verify (attempt 4)",
-              "status": "Running",
-              "when": "Just now",
-              "jobs": [
-                {
-                  "id": "f54d48af-19d2-46d8-8c91-2969365f4519",
-                  "name": "lint-format",
-                  "status": "Running",
-                  "duration": "running"
-                },
-                {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0"
+                  "duration": "In progress"
                 }
               ]
             }
@@ -123,261 +80,24 @@
       "surfaceId": "run-detail",
       "value": {
         "run": {
-          "id": "8416285e-ff58-4fc1-a237-5db68376f273",
-          "branch": "ci/failing-format-demo",
-          "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
+          "id": "8a6c87c2-978c-4f4b-a304-dc17e50b726c",
+          "branch": "synthesizer-effort-apart-from-planner",
+          "summary": "d5b8057 \u00b7 chore: note where the Synthesizer's effort would rise apart from the Planner's \u00b7 retz8",
           "workflows": [
             {
-              "id": "131ad9a2-a72b-4f40-abe4-81e080cf16f7",
-              "name": "verify (attempt 4)",
+              "id": "12a5795f-7280-429f-9e13-e63272cfd5f9",
+              "name": "verify",
               "status": "Running",
-              "when": "Just now",
+              "when": "2026-09-19 09:30:32 UTC",
               "jobs": [
                 {
-                  "id": "f54d48af-19d2-46d8-8c91-2969365f4519",
+                  "id": "cb27eb95-da70-428d-bb35-c5d8706447f0",
                   "name": "lint-format",
                   "status": "Running",
-                  "duration": "running"
+                  "duration": "In progress"
                 },
                 {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
-                  "name": "build-typecheck-test",
-                  "status": "Success",
-                  "duration": "reused"
-                }
-              ]
-            }
-          ]
-        }
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "run-detail",
-      "value": {
-        "run": {
-          "id": "8416285e-ff58-4fc1-a237-5db68376f273",
-          "branch": "ci/failing-format-demo",
-          "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
-          "workflows": [
-            {
-              "id": "131ad9a2-a72b-4f40-abe4-81e080cf16f7",
-              "name": "verify (attempt 4)",
-              "status": "Running",
-              "when": "Just now",
-              "jobs": [
-                {
-                  "id": "f54d48af-19d2-46d8-8c91-2969365f4519",
-                  "name": "lint-format",
-                  "status": "Running",
-                  "duration": "running"
-                },
-                {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
-                  "name": "build-typecheck-test",
-                  "status": "Success",
-                  "duration": "reused"
-                }
-              ]
-            },
-            {
-              "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
-              "name": "verify (attempt 3)",
-              "status": "Failed"
-            }
-          ]
-        }
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "run-detail",
-      "value": {
-        "run": {
-          "id": "8416285e-ff58-4fc1-a237-5db68376f273",
-          "branch": "ci/failing-format-demo",
-          "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
-          "workflows": [
-            {
-              "id": "131ad9a2-a72b-4f40-abe4-81e080cf16f7",
-              "name": "verify (attempt 4)",
-              "status": "Running",
-              "when": "Just now",
-              "jobs": [
-                {
-                  "id": "f54d48af-19d2-46d8-8c91-2969365f4519",
-                  "name": "lint-format",
-                  "status": "Running",
-                  "duration": "running"
-                },
-                {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
-                  "name": "build-typecheck-test",
-                  "status": "Success",
-                  "duration": "reused"
-                }
-              ]
-            },
-            {
-              "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
-              "name": "verify (attempt 3)",
-              "status": "Failed",
-              "when": "Sep 18, 2026, 10:17 UTC"
-            }
-          ]
-        }
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "run-detail",
-      "value": {
-        "run": {
-          "id": "8416285e-ff58-4fc1-a237-5db68376f273",
-          "branch": "ci/failing-format-demo",
-          "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
-          "workflows": [
-            {
-              "id": "131ad9a2-a72b-4f40-abe4-81e080cf16f7",
-              "name": "verify (attempt 4)",
-              "status": "Running",
-              "when": "Just now",
-              "jobs": [
-                {
-                  "id": "f54d48af-19d2-46d8-8c91-2969365f4519",
-                  "name": "lint-format",
-                  "status": "Running",
-                  "duration": "running"
-                },
-                {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
-                  "name": "build-typecheck-test",
-                  "status": "Success",
-                  "duration": "reused"
-                }
-              ]
-            },
-            {
-              "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
-              "name": "verify (attempt 3)",
-              "status": "Failed",
-              "when": "Sep 18, 2026, 10:17 UTC",
-              "jobs": [
-                {
-                  "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
-                  "name": "lint-format",
-                  "status": "Failed",
-                  "duration": "44s"
-                }
-              ]
-            }
-          ]
-        }
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "run-detail",
-      "value": {
-        "run": {
-          "id": "8416285e-ff58-4fc1-a237-5db68376f273",
-          "branch": "ci/failing-format-demo",
-          "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
-          "workflows": [
-            {
-              "id": "131ad9a2-a72b-4f40-abe4-81e080cf16f7",
-              "name": "verify (attempt 4)",
-              "status": "Running",
-              "when": "Just now",
-              "jobs": [
-                {
-                  "id": "f54d48af-19d2-46d8-8c91-2969365f4519",
-                  "name": "lint-format",
-                  "status": "Running",
-                  "duration": "running"
-                },
-                {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
-                  "name": "build-typecheck-test",
-                  "status": "Success",
-                  "duration": "reused"
-                }
-              ]
-            },
-            {
-              "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
-              "name": "verify (attempt 3)",
-              "status": "Failed",
-              "when": "Sep 18, 2026, 10:17 UTC",
-              "jobs": [
-                {
-                  "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
-                  "name": "lint-format",
-                  "status": "Failed",
-                  "duration": "44s"
-                },
-                {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0"
-                }
-              ]
-            }
-          ]
-        }
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "run-detail",
-      "value": {
-        "run": {
-          "id": "8416285e-ff58-4fc1-a237-5db68376f273",
-          "branch": "ci/failing-format-demo",
-          "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
-          "workflows": [
-            {
-              "id": "131ad9a2-a72b-4f40-abe4-81e080cf16f7",
-              "name": "verify (attempt 4)",
-              "status": "Running",
-              "when": "Just now",
-              "jobs": [
-                {
-                  "id": "f54d48af-19d2-46d8-8c91-2969365f4519",
-                  "name": "lint-format",
-                  "status": "Running",
-                  "duration": "running"
-                },
-                {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
-                  "name": "build-typecheck-test",
-                  "status": "Success",
-                  "duration": "reused"
-                }
-              ]
-            },
-            {
-              "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
-              "name": "verify (attempt 3)",
-              "status": "Failed",
-              "when": "Sep 18, 2026, 10:17 UTC",
-              "jobs": [
-                {
-                  "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
-                  "name": "lint-format",
-                  "status": "Failed",
-                  "duration": "44s"
-                },
-                {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                  "id": "ec7c4e03-38bc-4d1b-b682-e2e2f56eb98b",
                   "name": "build-typecheck-test",
                   "status": "Success"
                 }
@@ -394,47 +114,27 @@
       "surfaceId": "run-detail",
       "value": {
         "run": {
-          "id": "8416285e-ff58-4fc1-a237-5db68376f273",
-          "branch": "ci/failing-format-demo",
-          "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
+          "id": "8a6c87c2-978c-4f4b-a304-dc17e50b726c",
+          "branch": "synthesizer-effort-apart-from-planner",
+          "summary": "d5b8057 \u00b7 chore: note where the Synthesizer's effort would rise apart from the Planner's \u00b7 retz8",
           "workflows": [
             {
-              "id": "131ad9a2-a72b-4f40-abe4-81e080cf16f7",
-              "name": "verify (attempt 4)",
+              "id": "12a5795f-7280-429f-9e13-e63272cfd5f9",
+              "name": "verify",
               "status": "Running",
-              "when": "Just now",
+              "when": "2026-09-19 09:30:32 UTC",
               "jobs": [
                 {
-                  "id": "f54d48af-19d2-46d8-8c91-2969365f4519",
+                  "id": "cb27eb95-da70-428d-bb35-c5d8706447f0",
                   "name": "lint-format",
                   "status": "Running",
-                  "duration": "running"
+                  "duration": "In progress"
                 },
                 {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                  "id": "ec7c4e03-38bc-4d1b-b682-e2e2f56eb98b",
                   "name": "build-typecheck-test",
                   "status": "Success",
-                  "duration": "reused"
-                }
-              ]
-            },
-            {
-              "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
-              "name": "verify (attempt 3)",
-              "status": "Failed",
-              "when": "Sep 18, 2026, 10:17 UTC",
-              "jobs": [
-                {
-                  "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
-                  "name": "lint-format",
-                  "status": "Failed",
-                  "duration": "44s"
-                },
-                {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
-                  "name": "build-typecheck-test",
-                  "status": "Success",
-                  "duration": "reused"
+                  "duration": "Reused"
                 }
               ]
             }
@@ -449,53 +149,33 @@
       "surfaceId": "run-detail",
       "value": {
         "run": {
-          "id": "8416285e-ff58-4fc1-a237-5db68376f273",
-          "branch": "ci/failing-format-demo",
-          "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
+          "id": "8a6c87c2-978c-4f4b-a304-dc17e50b726c",
+          "branch": "synthesizer-effort-apart-from-planner",
+          "summary": "d5b8057 \u00b7 chore: note where the Synthesizer's effort would rise apart from the Planner's \u00b7 retz8",
           "workflows": [
             {
-              "id": "131ad9a2-a72b-4f40-abe4-81e080cf16f7",
-              "name": "verify (attempt 4)",
+              "id": "12a5795f-7280-429f-9e13-e63272cfd5f9",
+              "name": "verify",
               "status": "Running",
-              "when": "Just now",
+              "when": "2026-09-19 09:30:32 UTC",
               "jobs": [
                 {
-                  "id": "f54d48af-19d2-46d8-8c91-2969365f4519",
+                  "id": "cb27eb95-da70-428d-bb35-c5d8706447f0",
                   "name": "lint-format",
                   "status": "Running",
-                  "duration": "running"
+                  "duration": "In progress"
                 },
                 {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                  "id": "ec7c4e03-38bc-4d1b-b682-e2e2f56eb98b",
                   "name": "build-typecheck-test",
                   "status": "Success",
-                  "duration": "reused"
+                  "duration": "Reused"
                 }
               ]
             },
             {
-              "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
-              "name": "verify (attempt 3)",
-              "status": "Failed",
-              "when": "Sep 18, 2026, 10:17 UTC",
-              "jobs": [
-                {
-                  "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
-                  "name": "lint-format",
-                  "status": "Failed",
-                  "duration": "44s"
-                },
-                {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
-                  "name": "build-typecheck-test",
-                  "status": "Success",
-                  "duration": "reused"
-                }
-              ]
-            },
-            {
-              "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
-              "name": "verify (attempt 2)",
+              "id": "6da68785-d209-4441-95a9-174080b2428c",
+              "name": "verify",
               "status": "Failed"
             }
           ]
@@ -509,55 +189,35 @@
       "surfaceId": "run-detail",
       "value": {
         "run": {
-          "id": "8416285e-ff58-4fc1-a237-5db68376f273",
-          "branch": "ci/failing-format-demo",
-          "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
+          "id": "8a6c87c2-978c-4f4b-a304-dc17e50b726c",
+          "branch": "synthesizer-effort-apart-from-planner",
+          "summary": "d5b8057 \u00b7 chore: note where the Synthesizer's effort would rise apart from the Planner's \u00b7 retz8",
           "workflows": [
             {
-              "id": "131ad9a2-a72b-4f40-abe4-81e080cf16f7",
-              "name": "verify (attempt 4)",
+              "id": "12a5795f-7280-429f-9e13-e63272cfd5f9",
+              "name": "verify",
               "status": "Running",
-              "when": "Just now",
+              "when": "2026-09-19 09:30:32 UTC",
               "jobs": [
                 {
-                  "id": "f54d48af-19d2-46d8-8c91-2969365f4519",
+                  "id": "cb27eb95-da70-428d-bb35-c5d8706447f0",
                   "name": "lint-format",
                   "status": "Running",
-                  "duration": "running"
+                  "duration": "In progress"
                 },
                 {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                  "id": "ec7c4e03-38bc-4d1b-b682-e2e2f56eb98b",
                   "name": "build-typecheck-test",
                   "status": "Success",
-                  "duration": "reused"
+                  "duration": "Reused"
                 }
               ]
             },
             {
-              "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
-              "name": "verify (attempt 3)",
+              "id": "6da68785-d209-4441-95a9-174080b2428c",
+              "name": "verify",
               "status": "Failed",
-              "when": "Sep 18, 2026, 10:17 UTC",
-              "jobs": [
-                {
-                  "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
-                  "name": "lint-format",
-                  "status": "Failed",
-                  "duration": "44s"
-                },
-                {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
-                  "name": "build-typecheck-test",
-                  "status": "Success",
-                  "duration": "reused"
-                }
-              ]
-            },
-            {
-              "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
-              "name": "verify (attempt 2)",
-              "status": "Failed",
-              "when": "Sep 18, 2026, 10:14 UTC"
+              "when": "2026-09-19 07:07:26 UTC"
             }
           ]
         }
@@ -570,61 +230,41 @@
       "surfaceId": "run-detail",
       "value": {
         "run": {
-          "id": "8416285e-ff58-4fc1-a237-5db68376f273",
-          "branch": "ci/failing-format-demo",
-          "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
+          "id": "8a6c87c2-978c-4f4b-a304-dc17e50b726c",
+          "branch": "synthesizer-effort-apart-from-planner",
+          "summary": "d5b8057 \u00b7 chore: note where the Synthesizer's effort would rise apart from the Planner's \u00b7 retz8",
           "workflows": [
             {
-              "id": "131ad9a2-a72b-4f40-abe4-81e080cf16f7",
-              "name": "verify (attempt 4)",
+              "id": "12a5795f-7280-429f-9e13-e63272cfd5f9",
+              "name": "verify",
               "status": "Running",
-              "when": "Just now",
+              "when": "2026-09-19 09:30:32 UTC",
               "jobs": [
                 {
-                  "id": "f54d48af-19d2-46d8-8c91-2969365f4519",
+                  "id": "cb27eb95-da70-428d-bb35-c5d8706447f0",
                   "name": "lint-format",
                   "status": "Running",
-                  "duration": "running"
+                  "duration": "In progress"
                 },
                 {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                  "id": "ec7c4e03-38bc-4d1b-b682-e2e2f56eb98b",
                   "name": "build-typecheck-test",
                   "status": "Success",
-                  "duration": "reused"
+                  "duration": "Reused"
                 }
               ]
             },
             {
-              "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
-              "name": "verify (attempt 3)",
+              "id": "6da68785-d209-4441-95a9-174080b2428c",
+              "name": "verify",
               "status": "Failed",
-              "when": "Sep 18, 2026, 10:17 UTC",
+              "when": "2026-09-19 07:07:26 UTC",
               "jobs": [
                 {
-                  "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
+                  "id": "4b5fd10b-e26a-48db-b138-cf0fa64e8c9d",
                   "name": "lint-format",
                   "status": "Failed",
-                  "duration": "44s"
-                },
-                {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
-                  "name": "build-typecheck-test",
-                  "status": "Success",
-                  "duration": "reused"
-                }
-              ]
-            },
-            {
-              "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
-              "name": "verify (attempt 2)",
-              "status": "Failed",
-              "when": "Sep 18, 2026, 10:14 UTC",
-              "jobs": [
-                {
-                  "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
-                  "name": "lint-format",
-                  "status": "Failed",
-                  "duration": "39s"
+                  "duration": "41s"
                 }
               ]
             }
@@ -639,64 +279,44 @@
       "surfaceId": "run-detail",
       "value": {
         "run": {
-          "id": "8416285e-ff58-4fc1-a237-5db68376f273",
-          "branch": "ci/failing-format-demo",
-          "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
+          "id": "8a6c87c2-978c-4f4b-a304-dc17e50b726c",
+          "branch": "synthesizer-effort-apart-from-planner",
+          "summary": "d5b8057 \u00b7 chore: note where the Synthesizer's effort would rise apart from the Planner's \u00b7 retz8",
           "workflows": [
             {
-              "id": "131ad9a2-a72b-4f40-abe4-81e080cf16f7",
-              "name": "verify (attempt 4)",
+              "id": "12a5795f-7280-429f-9e13-e63272cfd5f9",
+              "name": "verify",
               "status": "Running",
-              "when": "Just now",
+              "when": "2026-09-19 09:30:32 UTC",
               "jobs": [
                 {
-                  "id": "f54d48af-19d2-46d8-8c91-2969365f4519",
+                  "id": "cb27eb95-da70-428d-bb35-c5d8706447f0",
                   "name": "lint-format",
                   "status": "Running",
-                  "duration": "running"
+                  "duration": "In progress"
                 },
                 {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                  "id": "ec7c4e03-38bc-4d1b-b682-e2e2f56eb98b",
                   "name": "build-typecheck-test",
                   "status": "Success",
-                  "duration": "reused"
+                  "duration": "Reused"
                 }
               ]
             },
             {
-              "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
-              "name": "verify (attempt 3)",
+              "id": "6da68785-d209-4441-95a9-174080b2428c",
+              "name": "verify",
               "status": "Failed",
-              "when": "Sep 18, 2026, 10:17 UTC",
+              "when": "2026-09-19 07:07:26 UTC",
               "jobs": [
                 {
-                  "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
+                  "id": "4b5fd10b-e26a-48db-b138-cf0fa64e8c9d",
                   "name": "lint-format",
                   "status": "Failed",
-                  "duration": "44s"
+                  "duration": "41s"
                 },
                 {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
-                  "name": "build-typecheck-test",
-                  "status": "Success",
-                  "duration": "reused"
-                }
-              ]
-            },
-            {
-              "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
-              "name": "verify (attempt 2)",
-              "status": "Failed",
-              "when": "Sep 18, 2026, 10:14 UTC",
-              "jobs": [
-                {
-                  "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
-                  "name": "lint-format",
-                  "status": "Failed",
-                  "duration": "39s"
-                },
-                {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0"
+                  "id": "ec7c4e03-38bc-4d1b-b682-e2e2f56eb98b"
                 }
               ]
             }
@@ -711,64 +331,44 @@
       "surfaceId": "run-detail",
       "value": {
         "run": {
-          "id": "8416285e-ff58-4fc1-a237-5db68376f273",
-          "branch": "ci/failing-format-demo",
-          "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
+          "id": "8a6c87c2-978c-4f4b-a304-dc17e50b726c",
+          "branch": "synthesizer-effort-apart-from-planner",
+          "summary": "d5b8057 \u00b7 chore: note where the Synthesizer's effort would rise apart from the Planner's \u00b7 retz8",
           "workflows": [
             {
-              "id": "131ad9a2-a72b-4f40-abe4-81e080cf16f7",
-              "name": "verify (attempt 4)",
+              "id": "12a5795f-7280-429f-9e13-e63272cfd5f9",
+              "name": "verify",
               "status": "Running",
-              "when": "Just now",
+              "when": "2026-09-19 09:30:32 UTC",
               "jobs": [
                 {
-                  "id": "f54d48af-19d2-46d8-8c91-2969365f4519",
+                  "id": "cb27eb95-da70-428d-bb35-c5d8706447f0",
                   "name": "lint-format",
                   "status": "Running",
-                  "duration": "running"
+                  "duration": "In progress"
                 },
                 {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                  "id": "ec7c4e03-38bc-4d1b-b682-e2e2f56eb98b",
                   "name": "build-typecheck-test",
                   "status": "Success",
-                  "duration": "reused"
+                  "duration": "Reused"
                 }
               ]
             },
             {
-              "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
-              "name": "verify (attempt 3)",
+              "id": "6da68785-d209-4441-95a9-174080b2428c",
+              "name": "verify",
               "status": "Failed",
-              "when": "Sep 18, 2026, 10:17 UTC",
+              "when": "2026-09-19 07:07:26 UTC",
               "jobs": [
                 {
-                  "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
+                  "id": "4b5fd10b-e26a-48db-b138-cf0fa64e8c9d",
                   "name": "lint-format",
                   "status": "Failed",
-                  "duration": "44s"
+                  "duration": "41s"
                 },
                 {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
-                  "name": "build-typecheck-test",
-                  "status": "Success",
-                  "duration": "reused"
-                }
-              ]
-            },
-            {
-              "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
-              "name": "verify (attempt 2)",
-              "status": "Failed",
-              "when": "Sep 18, 2026, 10:14 UTC",
-              "jobs": [
-                {
-                  "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
-                  "name": "lint-format",
-                  "status": "Failed",
-                  "duration": "39s"
-                },
-                {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                  "id": "ec7c4e03-38bc-4d1b-b682-e2e2f56eb98b",
                   "name": "build-typecheck-test",
                   "status": "Success"
                 }
@@ -785,584 +385,47 @@
       "surfaceId": "run-detail",
       "value": {
         "run": {
-          "id": "8416285e-ff58-4fc1-a237-5db68376f273",
-          "branch": "ci/failing-format-demo",
-          "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
+          "id": "8a6c87c2-978c-4f4b-a304-dc17e50b726c",
+          "branch": "synthesizer-effort-apart-from-planner",
+          "summary": "d5b8057 \u00b7 chore: note where the Synthesizer's effort would rise apart from the Planner's \u00b7 retz8",
           "workflows": [
             {
-              "id": "131ad9a2-a72b-4f40-abe4-81e080cf16f7",
-              "name": "verify (attempt 4)",
+              "id": "12a5795f-7280-429f-9e13-e63272cfd5f9",
+              "name": "verify",
               "status": "Running",
-              "when": "Just now",
+              "when": "2026-09-19 09:30:32 UTC",
               "jobs": [
                 {
-                  "id": "f54d48af-19d2-46d8-8c91-2969365f4519",
+                  "id": "cb27eb95-da70-428d-bb35-c5d8706447f0",
                   "name": "lint-format",
                   "status": "Running",
-                  "duration": "running"
+                  "duration": "In progress"
                 },
                 {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                  "id": "ec7c4e03-38bc-4d1b-b682-e2e2f56eb98b",
                   "name": "build-typecheck-test",
                   "status": "Success",
-                  "duration": "reused"
+                  "duration": "Reused"
                 }
               ]
             },
             {
-              "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
-              "name": "verify (attempt 3)",
+              "id": "6da68785-d209-4441-95a9-174080b2428c",
+              "name": "verify",
               "status": "Failed",
-              "when": "Sep 18, 2026, 10:17 UTC",
+              "when": "2026-09-19 07:07:26 UTC",
               "jobs": [
                 {
-                  "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
+                  "id": "4b5fd10b-e26a-48db-b138-cf0fa64e8c9d",
                   "name": "lint-format",
                   "status": "Failed",
-                  "duration": "44s"
+                  "duration": "41s"
                 },
                 {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                  "id": "ec7c4e03-38bc-4d1b-b682-e2e2f56eb98b",
                   "name": "build-typecheck-test",
                   "status": "Success",
-                  "duration": "reused"
-                }
-              ]
-            },
-            {
-              "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
-              "name": "verify (attempt 2)",
-              "status": "Failed",
-              "when": "Sep 18, 2026, 10:14 UTC",
-              "jobs": [
-                {
-                  "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
-                  "name": "lint-format",
-                  "status": "Failed",
-                  "duration": "39s"
-                },
-                {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
-                  "name": "build-typecheck-test",
-                  "status": "Success",
-                  "duration": "reused"
-                }
-              ]
-            }
-          ]
-        }
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "run-detail",
-      "value": {
-        "run": {
-          "id": "8416285e-ff58-4fc1-a237-5db68376f273",
-          "branch": "ci/failing-format-demo",
-          "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
-          "workflows": [
-            {
-              "id": "131ad9a2-a72b-4f40-abe4-81e080cf16f7",
-              "name": "verify (attempt 4)",
-              "status": "Running",
-              "when": "Just now",
-              "jobs": [
-                {
-                  "id": "f54d48af-19d2-46d8-8c91-2969365f4519",
-                  "name": "lint-format",
-                  "status": "Running",
-                  "duration": "running"
-                },
-                {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
-                  "name": "build-typecheck-test",
-                  "status": "Success",
-                  "duration": "reused"
-                }
-              ]
-            },
-            {
-              "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
-              "name": "verify (attempt 3)",
-              "status": "Failed",
-              "when": "Sep 18, 2026, 10:17 UTC",
-              "jobs": [
-                {
-                  "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
-                  "name": "lint-format",
-                  "status": "Failed",
-                  "duration": "44s"
-                },
-                {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
-                  "name": "build-typecheck-test",
-                  "status": "Success",
-                  "duration": "reused"
-                }
-              ]
-            },
-            {
-              "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
-              "name": "verify (attempt 2)",
-              "status": "Failed",
-              "when": "Sep 18, 2026, 10:14 UTC",
-              "jobs": [
-                {
-                  "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
-                  "name": "lint-format",
-                  "status": "Failed",
-                  "duration": "39s"
-                },
-                {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
-                  "name": "build-typecheck-test",
-                  "status": "Success",
-                  "duration": "reused"
-                }
-              ]
-            },
-            {
-              "id": "5d9db191-66c3-4586-a82e-a5102c54106d",
-              "name": "verify (attempt 1)"
-            }
-          ]
-        }
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "run-detail",
-      "value": {
-        "run": {
-          "id": "8416285e-ff58-4fc1-a237-5db68376f273",
-          "branch": "ci/failing-format-demo",
-          "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
-          "workflows": [
-            {
-              "id": "131ad9a2-a72b-4f40-abe4-81e080cf16f7",
-              "name": "verify (attempt 4)",
-              "status": "Running",
-              "when": "Just now",
-              "jobs": [
-                {
-                  "id": "f54d48af-19d2-46d8-8c91-2969365f4519",
-                  "name": "lint-format",
-                  "status": "Running",
-                  "duration": "running"
-                },
-                {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
-                  "name": "build-typecheck-test",
-                  "status": "Success",
-                  "duration": "reused"
-                }
-              ]
-            },
-            {
-              "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
-              "name": "verify (attempt 3)",
-              "status": "Failed",
-              "when": "Sep 18, 2026, 10:17 UTC",
-              "jobs": [
-                {
-                  "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
-                  "name": "lint-format",
-                  "status": "Failed",
-                  "duration": "44s"
-                },
-                {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
-                  "name": "build-typecheck-test",
-                  "status": "Success",
-                  "duration": "reused"
-                }
-              ]
-            },
-            {
-              "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
-              "name": "verify (attempt 2)",
-              "status": "Failed",
-              "when": "Sep 18, 2026, 10:14 UTC",
-              "jobs": [
-                {
-                  "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
-                  "name": "lint-format",
-                  "status": "Failed",
-                  "duration": "39s"
-                },
-                {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
-                  "name": "build-typecheck-test",
-                  "status": "Success",
-                  "duration": "reused"
-                }
-              ]
-            },
-            {
-              "id": "5d9db191-66c3-4586-a82e-a5102c54106d",
-              "name": "verify (attempt 1)",
-              "status": "Failed"
-            }
-          ]
-        }
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "run-detail",
-      "value": {
-        "run": {
-          "id": "8416285e-ff58-4fc1-a237-5db68376f273",
-          "branch": "ci/failing-format-demo",
-          "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
-          "workflows": [
-            {
-              "id": "131ad9a2-a72b-4f40-abe4-81e080cf16f7",
-              "name": "verify (attempt 4)",
-              "status": "Running",
-              "when": "Just now",
-              "jobs": [
-                {
-                  "id": "f54d48af-19d2-46d8-8c91-2969365f4519",
-                  "name": "lint-format",
-                  "status": "Running",
-                  "duration": "running"
-                },
-                {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
-                  "name": "build-typecheck-test",
-                  "status": "Success",
-                  "duration": "reused"
-                }
-              ]
-            },
-            {
-              "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
-              "name": "verify (attempt 3)",
-              "status": "Failed",
-              "when": "Sep 18, 2026, 10:17 UTC",
-              "jobs": [
-                {
-                  "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
-                  "name": "lint-format",
-                  "status": "Failed",
-                  "duration": "44s"
-                },
-                {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
-                  "name": "build-typecheck-test",
-                  "status": "Success",
-                  "duration": "reused"
-                }
-              ]
-            },
-            {
-              "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
-              "name": "verify (attempt 2)",
-              "status": "Failed",
-              "when": "Sep 18, 2026, 10:14 UTC",
-              "jobs": [
-                {
-                  "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
-                  "name": "lint-format",
-                  "status": "Failed",
-                  "duration": "39s"
-                },
-                {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
-                  "name": "build-typecheck-test",
-                  "status": "Success",
-                  "duration": "reused"
-                }
-              ]
-            },
-            {
-              "id": "5d9db191-66c3-4586-a82e-a5102c54106d",
-              "name": "verify (attempt 1)",
-              "status": "Failed",
-              "when": "Sep 18, 2026, 09:58 UTC"
-            }
-          ]
-        }
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "run-detail",
-      "value": {
-        "run": {
-          "id": "8416285e-ff58-4fc1-a237-5db68376f273",
-          "branch": "ci/failing-format-demo",
-          "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
-          "workflows": [
-            {
-              "id": "131ad9a2-a72b-4f40-abe4-81e080cf16f7",
-              "name": "verify (attempt 4)",
-              "status": "Running",
-              "when": "Just now",
-              "jobs": [
-                {
-                  "id": "f54d48af-19d2-46d8-8c91-2969365f4519",
-                  "name": "lint-format",
-                  "status": "Running",
-                  "duration": "running"
-                },
-                {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
-                  "name": "build-typecheck-test",
-                  "status": "Success",
-                  "duration": "reused"
-                }
-              ]
-            },
-            {
-              "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
-              "name": "verify (attempt 3)",
-              "status": "Failed",
-              "when": "Sep 18, 2026, 10:17 UTC",
-              "jobs": [
-                {
-                  "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
-                  "name": "lint-format",
-                  "status": "Failed",
-                  "duration": "44s"
-                },
-                {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
-                  "name": "build-typecheck-test",
-                  "status": "Success",
-                  "duration": "reused"
-                }
-              ]
-            },
-            {
-              "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
-              "name": "verify (attempt 2)",
-              "status": "Failed",
-              "when": "Sep 18, 2026, 10:14 UTC",
-              "jobs": [
-                {
-                  "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
-                  "name": "lint-format",
-                  "status": "Failed",
-                  "duration": "39s"
-                },
-                {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
-                  "name": "build-typecheck-test",
-                  "status": "Success",
-                  "duration": "reused"
-                }
-              ]
-            },
-            {
-              "id": "5d9db191-66c3-4586-a82e-a5102c54106d",
-              "name": "verify (attempt 1)",
-              "status": "Failed",
-              "when": "Sep 18, 2026, 09:58 UTC",
-              "jobs": [
-                {
-                  "id": "06897a09-0357-499a-bf68-01fa19f532f2",
-                  "name": "lint-format",
-                  "status": "Failed",
-                  "duration": "39s"
-                }
-              ]
-            }
-          ]
-        }
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "run-detail",
-      "value": {
-        "run": {
-          "id": "8416285e-ff58-4fc1-a237-5db68376f273",
-          "branch": "ci/failing-format-demo",
-          "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
-          "workflows": [
-            {
-              "id": "131ad9a2-a72b-4f40-abe4-81e080cf16f7",
-              "name": "verify (attempt 4)",
-              "status": "Running",
-              "when": "Just now",
-              "jobs": [
-                {
-                  "id": "f54d48af-19d2-46d8-8c91-2969365f4519",
-                  "name": "lint-format",
-                  "status": "Running",
-                  "duration": "running"
-                },
-                {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
-                  "name": "build-typecheck-test",
-                  "status": "Success",
-                  "duration": "reused"
-                }
-              ]
-            },
-            {
-              "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
-              "name": "verify (attempt 3)",
-              "status": "Failed",
-              "when": "Sep 18, 2026, 10:17 UTC",
-              "jobs": [
-                {
-                  "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
-                  "name": "lint-format",
-                  "status": "Failed",
-                  "duration": "44s"
-                },
-                {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
-                  "name": "build-typecheck-test",
-                  "status": "Success",
-                  "duration": "reused"
-                }
-              ]
-            },
-            {
-              "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
-              "name": "verify (attempt 2)",
-              "status": "Failed",
-              "when": "Sep 18, 2026, 10:14 UTC",
-              "jobs": [
-                {
-                  "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
-                  "name": "lint-format",
-                  "status": "Failed",
-                  "duration": "39s"
-                },
-                {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
-                  "name": "build-typecheck-test",
-                  "status": "Success",
-                  "duration": "reused"
-                }
-              ]
-            },
-            {
-              "id": "5d9db191-66c3-4586-a82e-a5102c54106d",
-              "name": "verify (attempt 1)",
-              "status": "Failed",
-              "when": "Sep 18, 2026, 09:58 UTC",
-              "jobs": [
-                {
-                  "id": "06897a09-0357-499a-bf68-01fa19f532f2",
-                  "name": "lint-format",
-                  "status": "Failed",
-                  "duration": "39s"
-                },
-                {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
-                  "name": "build-typecheck-test"
-                }
-              ]
-            }
-          ]
-        }
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "run-detail",
-      "value": {
-        "run": {
-          "id": "8416285e-ff58-4fc1-a237-5db68376f273",
-          "branch": "ci/failing-format-demo",
-          "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
-          "workflows": [
-            {
-              "id": "131ad9a2-a72b-4f40-abe4-81e080cf16f7",
-              "name": "verify (attempt 4)",
-              "status": "Running",
-              "when": "Just now",
-              "jobs": [
-                {
-                  "id": "f54d48af-19d2-46d8-8c91-2969365f4519",
-                  "name": "lint-format",
-                  "status": "Running",
-                  "duration": "running"
-                },
-                {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
-                  "name": "build-typecheck-test",
-                  "status": "Success",
-                  "duration": "reused"
-                }
-              ]
-            },
-            {
-              "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
-              "name": "verify (attempt 3)",
-              "status": "Failed",
-              "when": "Sep 18, 2026, 10:17 UTC",
-              "jobs": [
-                {
-                  "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
-                  "name": "lint-format",
-                  "status": "Failed",
-                  "duration": "44s"
-                },
-                {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
-                  "name": "build-typecheck-test",
-                  "status": "Success",
-                  "duration": "reused"
-                }
-              ]
-            },
-            {
-              "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
-              "name": "verify (attempt 2)",
-              "status": "Failed",
-              "when": "Sep 18, 2026, 10:14 UTC",
-              "jobs": [
-                {
-                  "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
-                  "name": "lint-format",
-                  "status": "Failed",
-                  "duration": "39s"
-                },
-                {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
-                  "name": "build-typecheck-test",
-                  "status": "Success",
-                  "duration": "reused"
-                }
-              ]
-            },
-            {
-              "id": "5d9db191-66c3-4586-a82e-a5102c54106d",
-              "name": "verify (attempt 1)",
-              "status": "Failed",
-              "when": "Sep 18, 2026, 09:58 UTC",
-              "jobs": [
-                {
-                  "id": "06897a09-0357-499a-bf68-01fa19f532f2",
-                  "name": "lint-format",
-                  "status": "Failed",
-                  "duration": "39s"
-                },
-                {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
-                  "name": "build-typecheck-test",
-                  "status": "Success",
-                  "duration": "2m 13s"
+                  "duration": "2m 28s"
                 }
               ]
             }
@@ -1378,87 +441,47 @@
       "path": "/",
       "value": {
         "run": {
-          "id": "8416285e-ff58-4fc1-a237-5db68376f273",
-          "branch": "ci/failing-format-demo",
-          "summary": "5756c6c \u00b7 chore: deliberately misformatted file \u2014 a failing CircleCI run for the CircleCI app's recorded beats \u00b7 retz8",
+          "id": "8a6c87c2-978c-4f4b-a304-dc17e50b726c",
+          "branch": "synthesizer-effort-apart-from-planner",
+          "summary": "d5b8057 \u00b7 chore: note where the Synthesizer's effort would rise apart from the Planner's \u00b7 retz8",
           "workflows": [
             {
-              "id": "131ad9a2-a72b-4f40-abe4-81e080cf16f7",
-              "name": "verify (attempt 4)",
+              "id": "12a5795f-7280-429f-9e13-e63272cfd5f9",
+              "name": "verify",
               "status": "Running",
-              "when": "Just now",
+              "when": "2026-09-19 09:30:32 UTC",
               "jobs": [
                 {
-                  "id": "f54d48af-19d2-46d8-8c91-2969365f4519",
+                  "id": "cb27eb95-da70-428d-bb35-c5d8706447f0",
                   "name": "lint-format",
                   "status": "Running",
-                  "duration": "running"
+                  "duration": "In progress"
                 },
                 {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                  "id": "ec7c4e03-38bc-4d1b-b682-e2e2f56eb98b",
                   "name": "build-typecheck-test",
                   "status": "Success",
-                  "duration": "reused"
+                  "duration": "Reused"
                 }
               ]
             },
             {
-              "id": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
-              "name": "verify (attempt 3)",
+              "id": "6da68785-d209-4441-95a9-174080b2428c",
+              "name": "verify",
               "status": "Failed",
-              "when": "Sep 18, 2026, 10:17 UTC",
+              "when": "2026-09-19 07:07:26 UTC",
               "jobs": [
                 {
-                  "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
+                  "id": "4b5fd10b-e26a-48db-b138-cf0fa64e8c9d",
                   "name": "lint-format",
                   "status": "Failed",
-                  "duration": "44s"
+                  "duration": "41s"
                 },
                 {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
+                  "id": "ec7c4e03-38bc-4d1b-b682-e2e2f56eb98b",
                   "name": "build-typecheck-test",
                   "status": "Success",
-                  "duration": "reused"
-                }
-              ]
-            },
-            {
-              "id": "3eceed7a-52b7-4c66-8cd8-37fe32dc6696",
-              "name": "verify (attempt 2)",
-              "status": "Failed",
-              "when": "Sep 18, 2026, 10:14 UTC",
-              "jobs": [
-                {
-                  "id": "05854c56-a8de-4002-8720-ea6da62b6d9b",
-                  "name": "lint-format",
-                  "status": "Failed",
-                  "duration": "39s"
-                },
-                {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
-                  "name": "build-typecheck-test",
-                  "status": "Success",
-                  "duration": "reused"
-                }
-              ]
-            },
-            {
-              "id": "5d9db191-66c3-4586-a82e-a5102c54106d",
-              "name": "verify (attempt 1)",
-              "status": "Failed",
-              "when": "Sep 18, 2026, 09:58 UTC",
-              "jobs": [
-                {
-                  "id": "06897a09-0357-499a-bf68-01fa19f532f2",
-                  "name": "lint-format",
-                  "status": "Failed",
-                  "duration": "39s"
-                },
-                {
-                  "id": "68159b82-476b-4f3b-8075-7b4f292123b0",
-                  "name": "build-typecheck-test",
-                  "status": "Success",
-                  "duration": "2m 13s"
+                  "duration": "2m 28s"
                 }
               ]
             }
@@ -1472,11 +495,6 @@
     "updateComponents": {
       "components": [
         {
-          "id": "root",
-          "component": "Card",
-          "child": "body"
-        },
-        {
           "id": "body",
           "component": "Column",
           "children": [
@@ -1485,6 +503,11 @@
             "divider",
             "wf-list"
           ]
+        },
+        {
+          "id": "root",
+          "component": "Card",
+          "child": "body"
         },
         {
           "id": "heading",

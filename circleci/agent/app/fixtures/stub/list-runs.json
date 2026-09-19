@@ -2,6 +2,350 @@
   "runs": [
     {
       "attributes": {
+        "created_at": "2026-09-19T07:07:26.781Z",
+        "current_outcome": "failed",
+        "phase": "ended"
+      },
+      "id": "8a6c87c2-978c-4f4b-a304-dc17e50b726c",
+      "references": {
+        "event": {
+          "attributes": {
+            "action": "push",
+            "type": "push",
+            "vcs": {
+              "branch": "synthesizer-effort-apart-from-planner",
+              "commit": {
+                "author": {
+                  "login": "retz8",
+                  "name": "retz8"
+                },
+                "subject": "chore: note where the Synthesizer's effort would rise apart from the Planner's",
+                "url": "https://github.com/retz8/a2uiverse/commit/d5b805770947440d9959fd8a91fd458480a942c6"
+              },
+              "origin_repository_url": "https://github.com/retz8/a2uiverse",
+              "revision": "d5b805770947440d9959fd8a91fd458480a942c6",
+              "tag": ""
+            }
+          }
+        },
+        "project": {
+          "id": "5475943e-db5e-4b4a-937b-4d64f8f05d3c"
+        },
+        "trigger": {
+          "attributes": {
+            "event_source": {
+              "type": "webhook"
+            }
+          }
+        },
+        "user": {
+          "id": "ed4b3ffc-d7f1-4fd1-8f8b-1e7555b8aca5"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "created_at": "2026-09-19T04:26:23.973Z",
+        "current_outcome": "succeeded",
+        "phase": "ended"
+      },
+      "id": "5ece85fb-6b42-41c0-bd55-5fe2f866a645",
+      "references": {
+        "event": {
+          "attributes": {
+            "action": "push",
+            "type": "push",
+            "vcs": {
+              "branch": "main",
+              "commit": {
+                "author": {
+                  "login": "retz8",
+                  "name": "retz8"
+                },
+                "subject": "docs(phase-7): 7.5 done \u2014 the spec's mark rule: a relation that is absent keeps the link it made, no core when no single group is largest; the mark rule in the shell catalog; the placement rule in both validators, so 7.7 drops v0.6 intake and gains the host's navigation handler and app-name lookup through one relay; the shell-catalog, synthesis, orchestrator and client design records follow",
+                "url": "https://github.com/retz8/a2uiverse/commit/50336fe2572787f5afb78f86ced4e5a64ad66dfd"
+              },
+              "origin_repository_url": "https://github.com/retz8/a2uiverse",
+              "revision": "50336fe2572787f5afb78f86ced4e5a64ad66dfd",
+              "tag": ""
+            }
+          }
+        },
+        "project": {
+          "id": "5475943e-db5e-4b4a-937b-4d64f8f05d3c"
+        },
+        "trigger": {
+          "attributes": {
+            "event_source": {
+              "type": "webhook"
+            }
+          }
+        },
+        "user": {
+          "id": "ed4b3ffc-d7f1-4fd1-8f8b-1e7555b8aca5"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "created_at": "2026-09-19T00:38:19.59Z",
+        "current_outcome": "succeeded",
+        "phase": "ended"
+      },
+      "id": "7def6ee0-5e17-4b20-ac64-752cdcea8516",
+      "references": {
+        "event": {
+          "attributes": {
+            "action": "push",
+            "type": "push",
+            "vcs": {
+              "branch": "main",
+              "commit": {
+                "author": {
+                  "login": "retz8",
+                  "name": "retz8"
+                },
+                "subject": "docs(phase-7): 7.3 done \u2014 the Linear app checked live on the canvas through the tunnel: my issues, an issue's detail with its linked pull request and branch, a status change proposed then confirmed; the deterministic pass and, after the Markdown and email changes, the comment read as text and the real address nowhere; the empirical check's captured responses and six findings recorded",
+                "url": "https://github.com/retz8/a2uiverse/commit/350afd544b6a22f20058abb2538032ccd61930ca"
+              },
+              "origin_repository_url": "https://github.com/retz8/a2uiverse",
+              "revision": "350afd544b6a22f20058abb2538032ccd61930ca",
+              "tag": ""
+            }
+          }
+        },
+        "project": {
+          "id": "5475943e-db5e-4b4a-937b-4d64f8f05d3c"
+        },
+        "trigger": {
+          "attributes": {
+            "event_source": {
+              "type": "webhook"
+            }
+          }
+        },
+        "user": {
+          "id": "ed4b3ffc-d7f1-4fd1-8f8b-1e7555b8aca5"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "created_at": "2026-09-18T11:52:56.494Z",
+        "current_outcome": "succeeded",
+        "phase": "ended"
+      },
+      "id": "8ccc8586-fb31-49f8-96aa-daa8642abdb0",
+      "references": {
+        "event": {
+          "attributes": {
+            "action": "push",
+            "type": "push",
+            "vcs": {
+              "branch": "status-line-names-the-workflow",
+              "commit": {
+                "author": {
+                  "login": "retz8",
+                  "name": "retz8"
+                },
+                "subject": "chore: note where the status line reads an action's raw id",
+                "url": "https://github.com/retz8/a2uiverse/commit/d50e4dba5790c9faf470d2dc5e7639139374d155"
+              },
+              "origin_repository_url": "https://github.com/retz8/a2uiverse",
+              "revision": "d50e4dba5790c9faf470d2dc5e7639139374d155",
+              "tag": ""
+            }
+          }
+        },
+        "project": {
+          "id": "5475943e-db5e-4b4a-937b-4d64f8f05d3c"
+        },
+        "trigger": {
+          "attributes": {
+            "event_source": {
+              "type": "webhook"
+            }
+          }
+        },
+        "user": {
+          "id": "ed4b3ffc-d7f1-4fd1-8f8b-1e7555b8aca5"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "created_at": "2026-09-18T11:52:36.47Z",
+        "current_outcome": "succeeded",
+        "phase": "ended"
+      },
+      "id": "6039cf16-6db3-4974-af2b-517f8ce26c2a",
+      "references": {
+        "event": {
+          "attributes": {
+            "action": "push",
+            "type": "push",
+            "vcs": {
+              "branch": "ekkicb71/a2u-5-say-on-the-canvas-when-an-utterance-fails",
+              "commit": {
+                "author": {
+                  "login": "retz8",
+                  "name": "retz8"
+                },
+                "subject": "chore: note where a failed utterance goes unreported (A2U-5)",
+                "url": "https://github.com/retz8/a2uiverse/commit/377621c37f7c8cc598149359e29f401eec3f17e7"
+              },
+              "origin_repository_url": "https://github.com/retz8/a2uiverse",
+              "revision": "377621c37f7c8cc598149359e29f401eec3f17e7",
+              "tag": ""
+            }
+          }
+        },
+        "project": {
+          "id": "5475943e-db5e-4b4a-937b-4d64f8f05d3c"
+        },
+        "trigger": {
+          "attributes": {
+            "event_source": {
+              "type": "webhook"
+            }
+          }
+        },
+        "user": {
+          "id": "ed4b3ffc-d7f1-4fd1-8f8b-1e7555b8aca5"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "created_at": "2026-09-18T11:02:19.537Z",
+        "current_outcome": "succeeded",
+        "phase": "ended"
+      },
+      "id": "6d496b8b-567d-469b-b33a-16162082ba8c",
+      "references": {
+        "event": {
+          "attributes": {
+            "action": "push",
+            "type": "push",
+            "vcs": {
+              "branch": "main",
+              "commit": {
+                "author": {
+                  "login": "retz8",
+                  "name": "retz8"
+                },
+                "subject": "docs(phase-7): 7.2 and 7.11 done \u2014 the CircleCI fragment checked live on the canvas through the tunnel: recent runs, a failed run's jobs, a failed job's log, a rerun proposed then confirmed and repainted as a new workflow in its run, every status a pill in the sampled colors; the deterministic pass not run, three findings recorded",
+                "url": "https://github.com/retz8/a2uiverse/commit/539c9f09dcce11d4fc05fc52add00708c1cccad4"
+              },
+              "origin_repository_url": "https://github.com/retz8/a2uiverse",
+              "revision": "539c9f09dcce11d4fc05fc52add00708c1cccad4",
+              "tag": ""
+            }
+          }
+        },
+        "project": {
+          "id": "5475943e-db5e-4b4a-937b-4d64f8f05d3c"
+        },
+        "trigger": {
+          "attributes": {
+            "event_source": {
+              "type": "webhook"
+            }
+          }
+        },
+        "user": {
+          "id": "ed4b3ffc-d7f1-4fd1-8f8b-1e7555b8aca5"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "created_at": "2026-09-18T10:47:53.904Z",
+        "current_outcome": "succeeded",
+        "phase": "ended"
+      },
+      "id": "f11dd3e4-df57-4ef7-b21a-3e3ea55a6ddc",
+      "references": {
+        "event": {
+          "attributes": {
+            "action": "push",
+            "type": "push",
+            "vcs": {
+              "branch": "main",
+              "commit": {
+                "author": {
+                  "login": "retz8",
+                  "name": "retz8"
+                },
+                "subject": "docs(phase-7): 7.2 and 7.11 handoffs \u2014 main pushed",
+                "url": "https://github.com/retz8/a2uiverse/commit/a11d124197403f04f0a39bd48ac74b5835ff75af"
+              },
+              "origin_repository_url": "https://github.com/retz8/a2uiverse",
+              "revision": "a11d124197403f04f0a39bd48ac74b5835ff75af",
+              "tag": ""
+            }
+          }
+        },
+        "project": {
+          "id": "5475943e-db5e-4b4a-937b-4d64f8f05d3c"
+        },
+        "trigger": {
+          "attributes": {
+            "event_source": {
+              "type": "webhook"
+            }
+          }
+        },
+        "user": {
+          "id": "ed4b3ffc-d7f1-4fd1-8f8b-1e7555b8aca5"
+        }
+      }
+    },
+    {
+      "attributes": {
+        "created_at": "2026-09-18T10:47:41.161Z",
+        "current_outcome": "succeeded",
+        "phase": "ended"
+      },
+      "id": "8b50e632-803a-4ff4-acd2-af4d67c58121",
+      "references": {
+        "event": {
+          "attributes": {
+            "action": "push",
+            "type": "push",
+            "vcs": {
+              "branch": "main",
+              "commit": {
+                "author": {
+                  "login": "retz8",
+                  "name": "retz8"
+                },
+                "subject": "docs(phase-7): 7.2 and 7.11 handoffs \u2014 StatusBadge built; its colors checked in 7.2's canvas pass",
+                "url": "https://github.com/retz8/a2uiverse/commit/4721a7b335f04b98dda0bf803bb677dc8abe2b5c"
+              },
+              "origin_repository_url": "https://github.com/retz8/a2uiverse",
+              "revision": "4721a7b335f04b98dda0bf803bb677dc8abe2b5c",
+              "tag": ""
+            }
+          }
+        },
+        "project": {
+          "id": "5475943e-db5e-4b4a-937b-4d64f8f05d3c"
+        },
+        "trigger": {
+          "attributes": {
+            "event_source": {
+              "type": "webhook"
+            }
+          }
+        },
+        "user": {
+          "id": "ed4b3ffc-d7f1-4fd1-8f8b-1e7555b8aca5"
+        }
+      }
+    },
+    {
+      "attributes": {
         "created_at": "2026-09-18T09:58:41.799Z",
         "current_outcome": "failed",
         "phase": "ended"
@@ -78,92 +422,6 @@
           "attributes": {
             "event_source": {
               "type": "webhook"
-            }
-          }
-        },
-        "user": {
-          "id": "ed4b3ffc-d7f1-4fd1-8f8b-1e7555b8aca5"
-        }
-      }
-    },
-    {
-      "attributes": {
-        "created_at": "2026-09-18T09:33:14.441Z",
-        "current_outcome": "canceled",
-        "phase": "ended"
-      },
-      "id": "049d9bbc-6b53-46b7-a307-3819daaa7f92",
-      "references": {
-        "event": {
-          "attributes": {
-            "action": "push",
-            "type": "push",
-            "vcs": {
-              "branch": "circleci-project-setup",
-              "commit": {
-                "author": {
-                  "login": "Jioh In",
-                  "name": "Jioh In"
-                },
-                "subject": "CircleCI Commit",
-                "url": "https://github.com/retz8/a2uiverse/commit/a26cae18d49fe7c9ebf5cfa527da7532f332f50a"
-              },
-              "origin_repository_url": "https://github.com/retz8/a2uiverse",
-              "revision": "a26cae18d49fe7c9ebf5cfa527da7532f332f50a",
-              "tag": ""
-            }
-          }
-        },
-        "project": {
-          "id": "5475943e-db5e-4b4a-937b-4d64f8f05d3c"
-        },
-        "trigger": {
-          "attributes": {
-            "event_source": {
-              "type": "webhook"
-            }
-          }
-        },
-        "user": {
-          "id": "ed4b3ffc-d7f1-4fd1-8f8b-1e7555b8aca5"
-        }
-      }
-    },
-    {
-      "attributes": {
-        "created_at": "2026-09-18T09:32:09.613Z",
-        "current_outcome": "succeeded",
-        "phase": "ended"
-      },
-      "id": "1546a84b-a9f1-419a-bbde-4132ebfdf726",
-      "references": {
-        "event": {
-          "attributes": {
-            "action": "api",
-            "type": "api",
-            "vcs": {
-              "branch": "main",
-              "commit": {
-                "author": {
-                  "login": "retz8",
-                  "name": "retz8"
-                },
-                "subject": "docs(phase-7): 7.2 handoff \u2014 the CircleCI app's binding decisions, verified MCP facts, setup, open threads",
-                "url": "https://github.com/retz8/a2uiverse/commit/18dcfbbaba219dbc80ebdbdf57ee53786ba3ae33"
-              },
-              "origin_repository_url": "https://github.com/retz8/a2uiverse",
-              "revision": "18dcfbbaba219dbc80ebdbdf57ee53786ba3ae33",
-              "tag": ""
-            }
-          }
-        },
-        "project": {
-          "id": "5475943e-db5e-4b4a-937b-4d64f8f05d3c"
-        },
-        "trigger": {
-          "attributes": {
-            "event_source": {
-              "type": "api,inference"
             }
           }
         },

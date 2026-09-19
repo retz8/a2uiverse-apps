@@ -21,14 +21,14 @@
     "updateDataModel": {
       "surfaceId": "my-issues",
       "value": {
-        "started": [
+        "issues": [
           {
             "id": "A2U-5",
             "title": "Say on the canvas when an utterance fails",
-            "status": "In Progress",
+            "status": "In Review",
             "statusType": "started",
             "priority": "High",
-            "labels": "Bug"
+            "link": "PR #6"
           }
         ]
       }
@@ -39,15 +39,15 @@
     "updateDataModel": {
       "surfaceId": "my-issues",
       "value": {
-        "started": [
+        "issues": [
           {
             "id": "A2U-5",
             "title": "Say on the canvas when an utterance fails",
-            "status": "In Progress",
+            "status": "In Review",
             "statusType": "started",
             "priority": "High",
-            "labels": "Bug",
-            "updated": "Sep 18"
+            "link": "PR #6",
+            "updatedAt": "Sep 19, 2026, 00:16:20 UTC"
           },
           {
             "id": "A2U-6"
@@ -61,15 +61,15 @@
     "updateDataModel": {
       "surfaceId": "my-issues",
       "value": {
-        "started": [
+        "issues": [
           {
             "id": "A2U-5",
             "title": "Say on the canvas when an utterance fails",
-            "status": "In Progress",
+            "status": "In Review",
             "statusType": "started",
             "priority": "High",
-            "labels": "Bug",
-            "updated": "Sep 18"
+            "link": "PR #6",
+            "updatedAt": "Sep 19, 2026, 00:16:20 UTC"
           },
           {
             "id": "A2U-6",
@@ -84,15 +84,15 @@
     "updateDataModel": {
       "surfaceId": "my-issues",
       "value": {
-        "started": [
+        "issues": [
           {
             "id": "A2U-5",
             "title": "Say on the canvas when an utterance fails",
-            "status": "In Progress",
+            "status": "In Review",
             "statusType": "started",
             "priority": "High",
-            "labels": "Bug",
-            "updated": "Sep 18"
+            "link": "PR #6",
+            "updatedAt": "Sep 19, 2026, 00:16:20 UTC"
           },
           {
             "id": "A2U-6",
@@ -110,15 +110,15 @@
     "updateDataModel": {
       "surfaceId": "my-issues",
       "value": {
-        "started": [
+        "issues": [
           {
             "id": "A2U-5",
             "title": "Say on the canvas when an utterance fails",
-            "status": "In Progress",
+            "status": "In Review",
             "statusType": "started",
             "priority": "High",
-            "labels": "Bug",
-            "updated": "Sep 18"
+            "link": "PR #6",
+            "updatedAt": "Sep 19, 2026, 00:16:20 UTC"
           },
           {
             "id": "A2U-6",
@@ -126,8 +126,7 @@
             "status": "In Progress",
             "statusType": "started",
             "priority": "Medium",
-            "labels": "Improvement",
-            "updated": "Sep 18"
+            "link": "PR #7"
           }
         ]
       }
@@ -138,7 +137,26 @@
     "updateDataModel": {
       "surfaceId": "my-issues",
       "value": {
-        "startedCount": "2"
+        "issues": [
+          {
+            "id": "A2U-5",
+            "title": "Say on the canvas when an utterance fails",
+            "status": "In Review",
+            "statusType": "started",
+            "priority": "High",
+            "link": "PR #6",
+            "updatedAt": "Sep 19, 2026, 00:16:20 UTC"
+          },
+          {
+            "id": "A2U-6",
+            "title": "Name the workflow, not its id, in the confirm status line",
+            "status": "In Progress",
+            "statusType": "started",
+            "priority": "Medium",
+            "link": "PR #7",
+            "updatedAt": "Sep 18, 2026, 11:53:06 UTC"
+          }
+        ]
       }
     }
   },
@@ -147,7 +165,57 @@
     "updateDataModel": {
       "surfaceId": "my-issues",
       "value": {
-        "backlog": [
+        "issues": [
+          {
+            "id": "A2U-5",
+            "title": "Say on the canvas when an utterance fails",
+            "status": "In Review",
+            "statusType": "started",
+            "priority": "High",
+            "link": "PR #6",
+            "updatedAt": "Sep 19, 2026, 00:16:20 UTC"
+          },
+          {
+            "id": "A2U-6",
+            "title": "Name the workflow, not its id, in the confirm status line",
+            "status": "In Progress",
+            "statusType": "started",
+            "priority": "Medium",
+            "link": "PR #7",
+            "updatedAt": "Sep 18, 2026, 11:53:06 UTC"
+          },
+          {
+            "id": "A2U-7",
+            "title": "Shell-action report hangs through the tunnel"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "my-issues",
+      "value": {
+        "issues": [
+          {
+            "id": "A2U-5",
+            "title": "Say on the canvas when an utterance fails",
+            "status": "In Review",
+            "statusType": "started",
+            "priority": "High",
+            "link": "PR #6",
+            "updatedAt": "Sep 19, 2026, 00:16:20 UTC"
+          },
+          {
+            "id": "A2U-6",
+            "title": "Name the workflow, not its id, in the confirm status line",
+            "status": "In Progress",
+            "statusType": "started",
+            "priority": "Medium",
+            "link": "PR #7",
+            "updatedAt": "Sep 18, 2026, 11:53:06 UTC"
+          },
           {
             "id": "A2U-7",
             "title": "Shell-action report hangs through the tunnel",
@@ -164,15 +232,69 @@
     "updateDataModel": {
       "surfaceId": "my-issues",
       "value": {
-        "backlog": [
+        "issues": [
+          {
+            "id": "A2U-5",
+            "title": "Say on the canvas when an utterance fails",
+            "status": "In Review",
+            "statusType": "started",
+            "priority": "High",
+            "link": "PR #6",
+            "updatedAt": "Sep 19, 2026, 00:16:20 UTC"
+          },
+          {
+            "id": "A2U-6",
+            "title": "Name the workflow, not its id, in the confirm status line",
+            "status": "In Progress",
+            "statusType": "started",
+            "priority": "Medium",
+            "link": "PR #7",
+            "updatedAt": "Sep 18, 2026, 11:53:06 UTC"
+          },
           {
             "id": "A2U-7",
             "title": "Shell-action report hangs through the tunnel",
             "status": "Backlog",
             "statusType": "backlog",
             "priority": "Low",
-            "labels": "Bug",
-            "updated": "Sep 18"
+            "link": "ekkicb71/a2u-7-shell-action-report-hangs-through-the-tunnel"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "my-issues",
+      "value": {
+        "issues": [
+          {
+            "id": "A2U-5",
+            "title": "Say on the canvas when an utterance fails",
+            "status": "In Review",
+            "statusType": "started",
+            "priority": "High",
+            "link": "PR #6",
+            "updatedAt": "Sep 19, 2026, 00:16:20 UTC"
+          },
+          {
+            "id": "A2U-6",
+            "title": "Name the workflow, not its id, in the confirm status line",
+            "status": "In Progress",
+            "statusType": "started",
+            "priority": "Medium",
+            "link": "PR #7",
+            "updatedAt": "Sep 18, 2026, 11:53:06 UTC"
+          },
+          {
+            "id": "A2U-7",
+            "title": "Shell-action report hangs through the tunnel",
+            "status": "Backlog",
+            "statusType": "backlog",
+            "priority": "Low",
+            "link": "ekkicb71/a2u-7-shell-action-report-hangs-through-the-tunnel",
+            "updatedAt": "Sep 18, 2026, 11:51:35 UTC"
           }
         ]
       }
@@ -185,15 +307,15 @@
       "path": "/",
       "value": {
         "team": "A2uiverse",
-        "started": [
+        "issues": [
           {
             "id": "A2U-5",
             "title": "Say on the canvas when an utterance fails",
-            "status": "In Progress",
+            "status": "In Review",
             "statusType": "started",
             "priority": "High",
-            "labels": "Bug",
-            "updated": "Sep 18"
+            "link": "PR #6",
+            "updatedAt": "Sep 19, 2026, 00:16:20 UTC"
           },
           {
             "id": "A2U-6",
@@ -201,23 +323,19 @@
             "status": "In Progress",
             "statusType": "started",
             "priority": "Medium",
-            "labels": "Improvement",
-            "updated": "Sep 18"
-          }
-        ],
-        "startedCount": "2",
-        "backlog": [
+            "link": "PR #7",
+            "updatedAt": "Sep 18, 2026, 11:53:06 UTC"
+          },
           {
             "id": "A2U-7",
             "title": "Shell-action report hangs through the tunnel",
             "status": "Backlog",
             "statusType": "backlog",
             "priority": "Low",
-            "labels": "Bug",
-            "updated": "Sep 18"
+            "link": "ekkicb71/a2u-7-shell-action-report-hangs-through-the-tunnel",
+            "updatedAt": "Sep 18, 2026, 11:51:35 UTC"
           }
-        ],
-        "backlogCount": "1"
+        ]
       }
     }
   },
@@ -226,20 +344,19 @@
     "updateComponents": {
       "components": [
         {
-          "id": "root",
-          "component": "Card",
-          "child": "body"
-        },
-        {
           "id": "body",
           "component": "Column",
           "children": [
             "heading",
             "sub",
             "divider",
-            "started-section",
-            "backlog-section"
+            "issue-list"
           ]
+        },
+        {
+          "id": "root",
+          "component": "Card",
+          "child": "body"
         },
         {
           "id": "heading",
@@ -260,55 +377,18 @@
           "component": "Divider"
         },
         {
-          "id": "started-section",
-          "component": "Column",
-          "children": [
-            "started-head",
-            "started-list"
-          ]
-        },
-        {
-          "id": "started-head",
-          "component": "Row",
-          "align": "center",
-          "children": [
-            "started-head-icon",
-            "started-head-name",
-            "started-head-count"
-          ]
-        },
-        {
-          "id": "started-head-icon",
-          "component": "StatusIcon",
-          "status": "In Progress",
-          "type": "started"
-        },
-        {
-          "id": "started-head-name",
-          "component": "Text",
-          "text": "In Progress"
-        },
-        {
-          "id": "started-head-count",
-          "component": "Text",
-          "text": {
-            "path": "/startedCount"
-          },
-          "variant": "caption"
-        },
-        {
-          "id": "started-list",
+          "id": "issue-list",
           "component": "Column",
           "children": {
-            "path": "/started",
-            "componentId": "started-row"
+            "path": "/issues",
+            "componentId": "issue-row"
           }
         },
         {
-          "id": "started-row",
+          "id": "issue-row",
           "component": "Button",
           "variant": "borderless",
-          "child": "started-line",
+          "child": "issue-line",
           "action": {
             "event": {
               "name": "open-issue",
@@ -321,27 +401,27 @@
           }
         },
         {
-          "id": "started-line",
+          "id": "issue-line",
           "component": "Row",
           "align": "center",
           "children": [
-            "started-priority",
-            "started-id",
-            "started-status",
-            "started-title",
-            "started-labels",
-            "started-when"
+            "issue-priority",
+            "issue-id",
+            "issue-status",
+            "issue-title",
+            "issue-link",
+            "issue-updated"
           ]
         },
         {
-          "id": "started-priority",
+          "id": "issue-priority",
           "component": "PriorityIcon",
           "priority": {
             "path": "priority"
           }
         },
         {
-          "id": "started-id",
+          "id": "issue-id",
           "component": "Text",
           "text": {
             "path": "id"
@@ -349,7 +429,7 @@
           "variant": "caption"
         },
         {
-          "id": "started-status",
+          "id": "issue-status",
           "component": "StatusIcon",
           "status": {
             "path": "status"
@@ -359,7 +439,7 @@
           }
         },
         {
-          "id": "started-title",
+          "id": "issue-title",
           "component": "Text",
           "text": {
             "path": "title"
@@ -367,141 +447,18 @@
           "weight": 1
         },
         {
-          "id": "started-labels",
+          "id": "issue-link",
           "component": "Text",
           "text": {
-            "path": "labels"
+            "path": "link"
           },
           "variant": "caption"
         },
         {
-          "id": "started-when",
+          "id": "issue-updated",
           "component": "Text",
           "text": {
-            "path": "updated"
-          },
-          "variant": "caption"
-        },
-        {
-          "id": "backlog-section",
-          "component": "Column",
-          "children": [
-            "backlog-head",
-            "backlog-list"
-          ]
-        },
-        {
-          "id": "backlog-head",
-          "component": "Row",
-          "align": "center",
-          "children": [
-            "backlog-head-icon",
-            "backlog-head-name",
-            "backlog-head-count"
-          ]
-        },
-        {
-          "id": "backlog-head-icon",
-          "component": "StatusIcon",
-          "status": "Backlog",
-          "type": "backlog"
-        },
-        {
-          "id": "backlog-head-name",
-          "component": "Text",
-          "text": "Backlog"
-        },
-        {
-          "id": "backlog-head-count",
-          "component": "Text",
-          "text": {
-            "path": "/backlogCount"
-          },
-          "variant": "caption"
-        },
-        {
-          "id": "backlog-list",
-          "component": "Column",
-          "children": {
-            "path": "/backlog",
-            "componentId": "backlog-row"
-          }
-        },
-        {
-          "id": "backlog-row",
-          "component": "Button",
-          "variant": "borderless",
-          "child": "backlog-line",
-          "action": {
-            "event": {
-              "name": "open-issue",
-              "context": {
-                "issueId": {
-                  "path": "id"
-                }
-              }
-            }
-          }
-        },
-        {
-          "id": "backlog-line",
-          "component": "Row",
-          "align": "center",
-          "children": [
-            "backlog-priority",
-            "backlog-id",
-            "backlog-status",
-            "backlog-title",
-            "backlog-labels",
-            "backlog-when"
-          ]
-        },
-        {
-          "id": "backlog-priority",
-          "component": "PriorityIcon",
-          "priority": {
-            "path": "priority"
-          }
-        },
-        {
-          "id": "backlog-id",
-          "component": "Text",
-          "text": {
-            "path": "id"
-          },
-          "variant": "caption"
-        },
-        {
-          "id": "backlog-status",
-          "component": "StatusIcon",
-          "status": {
-            "path": "status"
-          },
-          "type": {
-            "path": "statusType"
-          }
-        },
-        {
-          "id": "backlog-title",
-          "component": "Text",
-          "text": {
-            "path": "title"
-          },
-          "weight": 1
-        },
-        {
-          "id": "backlog-labels",
-          "component": "Text",
-          "text": {
-            "path": "labels"
-          },
-          "variant": "caption"
-        },
-        {
-          "id": "backlog-when",
-          "component": "Text",
-          "text": {
-            "path": "updated"
+            "path": "updatedAt"
           },
           "variant": "caption"
         }

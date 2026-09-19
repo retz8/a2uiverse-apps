@@ -14,7 +14,8 @@
       "surfaceId": "issue-detail",
       "value": {
         "title": "Say on the canvas when an utterance fails",
-        "status": "In Review"
+        "status": "In Progress",
+        "statusType": "started"
       }
     }
   },
@@ -23,8 +24,8 @@
     "updateDataModel": {
       "surfaceId": "issue-detail",
       "value": {
-        "statusType": "started",
-        "priority": "High"
+        "priority": "High",
+        "assignee": "Jioh In"
       }
     }
   },
@@ -33,7 +34,6 @@
     "updateDataModel": {
       "surfaceId": "issue-detail",
       "value": {
-        "assignee": "Jioh In",
         "labels": "Bug"
       }
     }
@@ -92,7 +92,7 @@
       "value": {
         "id": "A2U-5",
         "title": "Say on the canvas when an utterance fails",
-        "status": "In Review",
+        "status": "In Progress",
         "statusType": "started",
         "priority": "High",
         "assignee": "Jioh In",

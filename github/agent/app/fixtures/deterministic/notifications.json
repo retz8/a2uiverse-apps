@@ -2,7 +2,7 @@
   {
     "version": "v0.9",
     "createSurface": {
-      "surfaceId": "prs-needing-attention",
+      "surfaceId": "my-open-prs",
       "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/github/github-catalog/catalogs/v0.9.1/catalog.json",
       "sendDataModel": true
     }
@@ -10,22 +10,14 @@
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "prs-needing-attention",
-      "value": {
-        "totalCount": 1
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "prs-needing-attention",
+      "surfaceId": "my-open-prs",
       "value": {
         "prs": [
           {
-            "number": 11,
-            "title": "superookie crawler",
-            "meta": "KISA-webpage-development-team/KISA-website-server#11 · opened by dkim1112 · Crawler for superookie.com website"
+            "number": 8,
+            "title": "Give the Synthesizer more thinking effort than the Planner",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#8"
           }
         ]
       }
@@ -34,14 +26,16 @@
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "prs-needing-attention",
+      "surfaceId": "my-open-prs",
       "value": {
         "prs": [
           {
-            "number": 11,
-            "title": "superookie crawler",
-            "meta": "KISA-webpage-development-team/KISA-website-server#11 · opened by dkim1112 · Crawler for superookie.com website",
-            "updatedAt": "2025-08-10T09:25:10Z"
+            "number": 8,
+            "title": "Give the Synthesizer more thinking effort than the Planner",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#8",
+            "branch": "synthesizer-effort-apart-from-planner",
+            "reviewStatus": "No reviews"
           }
         ]
       }
@@ -50,17 +44,1174 @@
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "prs-needing-attention",
+      "surfaceId": "my-open-prs",
+      "value": {
+        "prs": [
+          {
+            "number": 8,
+            "title": "Give the Synthesizer more thinking effort than the Planner",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#8",
+            "branch": "synthesizer-effort-apart-from-planner",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:26Z"
+          },
+          {}
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "my-open-prs",
+      "value": {
+        "prs": [
+          {
+            "number": 8,
+            "title": "Give the Synthesizer more thinking effort than the Planner",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#8",
+            "branch": "synthesizer-effort-apart-from-planner",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:26Z"
+          },
+          {
+            "number": 7
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "my-open-prs",
+      "value": {
+        "prs": [
+          {
+            "number": 8,
+            "title": "Give the Synthesizer more thinking effort than the Planner",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#8",
+            "branch": "synthesizer-effort-apart-from-planner",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:26Z"
+          },
+          {
+            "number": 7,
+            "title": "Name the workflow, not its id, in the confirm status line",
+            "repository": "retz8/a2uiverse"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "my-open-prs",
+      "value": {
+        "prs": [
+          {
+            "number": 8,
+            "title": "Give the Synthesizer more thinking effort than the Planner",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#8",
+            "branch": "synthesizer-effort-apart-from-planner",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:26Z"
+          },
+          {
+            "number": 7,
+            "title": "Name the workflow, not its id, in the confirm status line",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#7"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "my-open-prs",
+      "value": {
+        "prs": [
+          {
+            "number": 8,
+            "title": "Give the Synthesizer more thinking effort than the Planner",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#8",
+            "branch": "synthesizer-effort-apart-from-planner",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:26Z"
+          },
+          {
+            "number": 7,
+            "title": "Name the workflow, not its id, in the confirm status line",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#7",
+            "branch": "status-line-names-the-workflow",
+            "reviewStatus": "No reviews"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "my-open-prs",
+      "value": {
+        "prs": [
+          {
+            "number": 8,
+            "title": "Give the Synthesizer more thinking effort than the Planner",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#8",
+            "branch": "synthesizer-effort-apart-from-planner",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:26Z"
+          },
+          {
+            "number": 7,
+            "title": "Name the workflow, not its id, in the confirm status line",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#7",
+            "branch": "status-line-names-the-workflow",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:34Z"
+          },
+          {}
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "my-open-prs",
+      "value": {
+        "prs": [
+          {
+            "number": 8,
+            "title": "Give the Synthesizer more thinking effort than the Planner",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#8",
+            "branch": "synthesizer-effort-apart-from-planner",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:26Z"
+          },
+          {
+            "number": 7,
+            "title": "Name the workflow, not its id, in the confirm status line",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#7",
+            "branch": "status-line-names-the-workflow",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:34Z"
+          },
+          {
+            "number": 6,
+            "title": "Say on the canvas when an utterance fails"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "my-open-prs",
+      "value": {
+        "prs": [
+          {
+            "number": 8,
+            "title": "Give the Synthesizer more thinking effort than the Planner",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#8",
+            "branch": "synthesizer-effort-apart-from-planner",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:26Z"
+          },
+          {
+            "number": 7,
+            "title": "Name the workflow, not its id, in the confirm status line",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#7",
+            "branch": "status-line-names-the-workflow",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:34Z"
+          },
+          {
+            "number": 6,
+            "title": "Say on the canvas when an utterance fails",
+            "repository": "retz8/a2uiverse"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "my-open-prs",
+      "value": {
+        "prs": [
+          {
+            "number": 8,
+            "title": "Give the Synthesizer more thinking effort than the Planner",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#8",
+            "branch": "synthesizer-effort-apart-from-planner",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:26Z"
+          },
+          {
+            "number": 7,
+            "title": "Name the workflow, not its id, in the confirm status line",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#7",
+            "branch": "status-line-names-the-workflow",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:34Z"
+          },
+          {
+            "number": 6,
+            "title": "Say on the canvas when an utterance fails",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#6"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "my-open-prs",
+      "value": {
+        "prs": [
+          {
+            "number": 8,
+            "title": "Give the Synthesizer more thinking effort than the Planner",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#8",
+            "branch": "synthesizer-effort-apart-from-planner",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:26Z"
+          },
+          {
+            "number": 7,
+            "title": "Name the workflow, not its id, in the confirm status line",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#7",
+            "branch": "status-line-names-the-workflow",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:34Z"
+          },
+          {
+            "number": 6,
+            "title": "Say on the canvas when an utterance fails",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#6",
+            "branch": "ekkicb71/a2u-5-say-on-the-canvas-when-an-utterance-fails",
+            "reviewStatus": "No reviews"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "my-open-prs",
+      "value": {
+        "prs": [
+          {
+            "number": 8,
+            "title": "Give the Synthesizer more thinking effort than the Planner",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#8",
+            "branch": "synthesizer-effort-apart-from-planner",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:26Z"
+          },
+          {
+            "number": 7,
+            "title": "Name the workflow, not its id, in the confirm status line",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#7",
+            "branch": "status-line-names-the-workflow",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:34Z"
+          },
+          {
+            "number": 6,
+            "title": "Say on the canvas when an utterance fails",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#6",
+            "branch": "ekkicb71/a2u-5-say-on-the-canvas-when-an-utterance-fails",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:33Z"
+          },
+          {
+            "number": 2639
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "my-open-prs",
+      "value": {
+        "prs": [
+          {
+            "number": 8,
+            "title": "Give the Synthesizer more thinking effort than the Planner",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#8",
+            "branch": "synthesizer-effort-apart-from-planner",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:26Z"
+          },
+          {
+            "number": 7,
+            "title": "Name the workflow, not its id, in the confirm status line",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#7",
+            "branch": "status-line-names-the-workflow",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:34Z"
+          },
+          {
+            "number": 6,
+            "title": "Say on the canvas when an utterance fails",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#6",
+            "branch": "ekkicb71/a2u-5-say-on-the-canvas-when-an-utterance-fails",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:33Z"
+          },
+          {
+            "number": 2639,
+            "title": "fix(react): ship working basic catalog styles from the published package"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "my-open-prs",
+      "value": {
+        "prs": [
+          {
+            "number": 8,
+            "title": "Give the Synthesizer more thinking effort than the Planner",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#8",
+            "branch": "synthesizer-effort-apart-from-planner",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:26Z"
+          },
+          {
+            "number": 7,
+            "title": "Name the workflow, not its id, in the confirm status line",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#7",
+            "branch": "status-line-names-the-workflow",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:34Z"
+          },
+          {
+            "number": 6,
+            "title": "Say on the canvas when an utterance fails",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#6",
+            "branch": "ekkicb71/a2u-5-say-on-the-canvas-when-an-utterance-fails",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:33Z"
+          },
+          {
+            "number": 2639,
+            "title": "fix(react): ship working basic catalog styles from the published package",
+            "repository": "a2ui-project/a2ui"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "my-open-prs",
+      "value": {
+        "prs": [
+          {
+            "number": 8,
+            "title": "Give the Synthesizer more thinking effort than the Planner",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#8",
+            "branch": "synthesizer-effort-apart-from-planner",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:26Z"
+          },
+          {
+            "number": 7,
+            "title": "Name the workflow, not its id, in the confirm status line",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#7",
+            "branch": "status-line-names-the-workflow",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:34Z"
+          },
+          {
+            "number": 6,
+            "title": "Say on the canvas when an utterance fails",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#6",
+            "branch": "ekkicb71/a2u-5-say-on-the-canvas-when-an-utterance-fails",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:33Z"
+          },
+          {
+            "number": 2639,
+            "title": "fix(react): ship working basic catalog styles from the published package",
+            "repository": "a2ui-project/a2ui",
+            "prRef": "a2ui-project/a2ui#2639",
+            "branch": "fix/react-basic-catalog-styles"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "my-open-prs",
+      "value": {
+        "prs": [
+          {
+            "number": 8,
+            "title": "Give the Synthesizer more thinking effort than the Planner",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#8",
+            "branch": "synthesizer-effort-apart-from-planner",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:26Z"
+          },
+          {
+            "number": 7,
+            "title": "Name the workflow, not its id, in the confirm status line",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#7",
+            "branch": "status-line-names-the-workflow",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:34Z"
+          },
+          {
+            "number": 6,
+            "title": "Say on the canvas when an utterance fails",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#6",
+            "branch": "ekkicb71/a2u-5-say-on-the-canvas-when-an-utterance-fails",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:33Z"
+          },
+          {
+            "number": 2639,
+            "title": "fix(react): ship working basic catalog styles from the published package",
+            "repository": "a2ui-project/a2ui",
+            "prRef": "a2ui-project/a2ui#2639",
+            "branch": "fix/react-basic-catalog-styles",
+            "reviewStatus": "Commented"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "my-open-prs",
+      "value": {
+        "prs": [
+          {
+            "number": 8,
+            "title": "Give the Synthesizer more thinking effort than the Planner",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#8",
+            "branch": "synthesizer-effort-apart-from-planner",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:26Z"
+          },
+          {
+            "number": 7,
+            "title": "Name the workflow, not its id, in the confirm status line",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#7",
+            "branch": "status-line-names-the-workflow",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:34Z"
+          },
+          {
+            "number": 6,
+            "title": "Say on the canvas when an utterance fails",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#6",
+            "branch": "ekkicb71/a2u-5-say-on-the-canvas-when-an-utterance-fails",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:33Z"
+          },
+          {
+            "number": 2639,
+            "title": "fix(react): ship working basic catalog styles from the published package",
+            "repository": "a2ui-project/a2ui",
+            "prRef": "a2ui-project/a2ui#2639",
+            "branch": "fix/react-basic-catalog-styles",
+            "reviewStatus": "Commented",
+            "updatedAt": "2026-09-12T15:15:21Z"
+          },
+          {
+            "number": 2531
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "my-open-prs",
+      "value": {
+        "prs": [
+          {
+            "number": 8,
+            "title": "Give the Synthesizer more thinking effort than the Planner",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#8",
+            "branch": "synthesizer-effort-apart-from-planner",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:26Z"
+          },
+          {
+            "number": 7,
+            "title": "Name the workflow, not its id, in the confirm status line",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#7",
+            "branch": "status-line-names-the-workflow",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:34Z"
+          },
+          {
+            "number": 6,
+            "title": "Say on the canvas when an utterance fails",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#6",
+            "branch": "ekkicb71/a2u-5-say-on-the-canvas-when-an-utterance-fails",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:33Z"
+          },
+          {
+            "number": 2639,
+            "title": "fix(react): ship working basic catalog styles from the published package",
+            "repository": "a2ui-project/a2ui",
+            "prRef": "a2ui-project/a2ui#2639",
+            "branch": "fix/react-basic-catalog-styles",
+            "reviewStatus": "Commented",
+            "updatedAt": "2026-09-12T15:15:21Z"
+          },
+          {
+            "number": 2531,
+            "title": "fix(web_core): classify dynamic unions nested inside wider unions as DYNAMIC"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "my-open-prs",
+      "value": {
+        "prs": [
+          {
+            "number": 8,
+            "title": "Give the Synthesizer more thinking effort than the Planner",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#8",
+            "branch": "synthesizer-effort-apart-from-planner",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:26Z"
+          },
+          {
+            "number": 7,
+            "title": "Name the workflow, not its id, in the confirm status line",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#7",
+            "branch": "status-line-names-the-workflow",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:34Z"
+          },
+          {
+            "number": 6,
+            "title": "Say on the canvas when an utterance fails",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#6",
+            "branch": "ekkicb71/a2u-5-say-on-the-canvas-when-an-utterance-fails",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:33Z"
+          },
+          {
+            "number": 2639,
+            "title": "fix(react): ship working basic catalog styles from the published package",
+            "repository": "a2ui-project/a2ui",
+            "prRef": "a2ui-project/a2ui#2639",
+            "branch": "fix/react-basic-catalog-styles",
+            "reviewStatus": "Commented",
+            "updatedAt": "2026-09-12T15:15:21Z"
+          },
+          {
+            "number": 2531,
+            "title": "fix(web_core): classify dynamic unions nested inside wider unions as DYNAMIC",
+            "repository": "a2ui-project/a2ui"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "my-open-prs",
+      "value": {
+        "prs": [
+          {
+            "number": 8,
+            "title": "Give the Synthesizer more thinking effort than the Planner",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#8",
+            "branch": "synthesizer-effort-apart-from-planner",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:26Z"
+          },
+          {
+            "number": 7,
+            "title": "Name the workflow, not its id, in the confirm status line",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#7",
+            "branch": "status-line-names-the-workflow",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:34Z"
+          },
+          {
+            "number": 6,
+            "title": "Say on the canvas when an utterance fails",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#6",
+            "branch": "ekkicb71/a2u-5-say-on-the-canvas-when-an-utterance-fails",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:33Z"
+          },
+          {
+            "number": 2639,
+            "title": "fix(react): ship working basic catalog styles from the published package",
+            "repository": "a2ui-project/a2ui",
+            "prRef": "a2ui-project/a2ui#2639",
+            "branch": "fix/react-basic-catalog-styles",
+            "reviewStatus": "Commented",
+            "updatedAt": "2026-09-12T15:15:21Z"
+          },
+          {
+            "number": 2531,
+            "title": "fix(web_core): classify dynamic unions nested inside wider unions as DYNAMIC",
+            "repository": "a2ui-project/a2ui",
+            "prRef": "a2ui-project/a2ui#2531"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "my-open-prs",
+      "value": {
+        "prs": [
+          {
+            "number": 8,
+            "title": "Give the Synthesizer more thinking effort than the Planner",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#8",
+            "branch": "synthesizer-effort-apart-from-planner",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:26Z"
+          },
+          {
+            "number": 7,
+            "title": "Name the workflow, not its id, in the confirm status line",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#7",
+            "branch": "status-line-names-the-workflow",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:34Z"
+          },
+          {
+            "number": 6,
+            "title": "Say on the canvas when an utterance fails",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#6",
+            "branch": "ekkicb71/a2u-5-say-on-the-canvas-when-an-utterance-fails",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:33Z"
+          },
+          {
+            "number": 2639,
+            "title": "fix(react): ship working basic catalog styles from the published package",
+            "repository": "a2ui-project/a2ui",
+            "prRef": "a2ui-project/a2ui#2639",
+            "branch": "fix/react-basic-catalog-styles",
+            "reviewStatus": "Commented",
+            "updatedAt": "2026-09-12T15:15:21Z"
+          },
+          {
+            "number": 2531,
+            "title": "fix(web_core): classify dynamic unions nested inside wider unions as DYNAMIC",
+            "repository": "a2ui-project/a2ui",
+            "prRef": "a2ui-project/a2ui#2531",
+            "branch": "fix/web_core-nested-dynamic-union-scrape",
+            "reviewStatus": "Changes requested"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "my-open-prs",
+      "value": {
+        "prs": [
+          {
+            "number": 8,
+            "title": "Give the Synthesizer more thinking effort than the Planner",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#8",
+            "branch": "synthesizer-effort-apart-from-planner",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:26Z"
+          },
+          {
+            "number": 7,
+            "title": "Name the workflow, not its id, in the confirm status line",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#7",
+            "branch": "status-line-names-the-workflow",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:34Z"
+          },
+          {
+            "number": 6,
+            "title": "Say on the canvas when an utterance fails",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#6",
+            "branch": "ekkicb71/a2u-5-say-on-the-canvas-when-an-utterance-fails",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:33Z"
+          },
+          {
+            "number": 2639,
+            "title": "fix(react): ship working basic catalog styles from the published package",
+            "repository": "a2ui-project/a2ui",
+            "prRef": "a2ui-project/a2ui#2639",
+            "branch": "fix/react-basic-catalog-styles",
+            "reviewStatus": "Commented",
+            "updatedAt": "2026-09-12T15:15:21Z"
+          },
+          {
+            "number": 2531,
+            "title": "fix(web_core): classify dynamic unions nested inside wider unions as DYNAMIC",
+            "repository": "a2ui-project/a2ui",
+            "prRef": "a2ui-project/a2ui#2531",
+            "branch": "fix/web_core-nested-dynamic-union-scrape",
+            "reviewStatus": "Changes requested",
+            "updatedAt": "2026-09-14T01:08:02Z"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "my-open-prs",
+      "value": {
+        "prs": [
+          {
+            "number": 8,
+            "title": "Give the Synthesizer more thinking effort than the Planner",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#8",
+            "branch": "synthesizer-effort-apart-from-planner",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:26Z"
+          },
+          {
+            "number": 7,
+            "title": "Name the workflow, not its id, in the confirm status line",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#7",
+            "branch": "status-line-names-the-workflow",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:34Z"
+          },
+          {
+            "number": 6,
+            "title": "Say on the canvas when an utterance fails",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#6",
+            "branch": "ekkicb71/a2u-5-say-on-the-canvas-when-an-utterance-fails",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:33Z"
+          },
+          {
+            "number": 2639,
+            "title": "fix(react): ship working basic catalog styles from the published package",
+            "repository": "a2ui-project/a2ui",
+            "prRef": "a2ui-project/a2ui#2639",
+            "branch": "fix/react-basic-catalog-styles",
+            "reviewStatus": "Commented",
+            "updatedAt": "2026-09-12T15:15:21Z"
+          },
+          {
+            "number": 2531,
+            "title": "fix(web_core): classify dynamic unions nested inside wider unions as DYNAMIC",
+            "repository": "a2ui-project/a2ui",
+            "prRef": "a2ui-project/a2ui#2531",
+            "branch": "fix/web_core-nested-dynamic-union-scrape",
+            "reviewStatus": "Changes requested",
+            "updatedAt": "2026-09-14T01:08:02Z"
+          },
+          {
+            "number": 2529
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "my-open-prs",
+      "value": {
+        "prs": [
+          {
+            "number": 8,
+            "title": "Give the Synthesizer more thinking effort than the Planner",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#8",
+            "branch": "synthesizer-effort-apart-from-planner",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:26Z"
+          },
+          {
+            "number": 7,
+            "title": "Name the workflow, not its id, in the confirm status line",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#7",
+            "branch": "status-line-names-the-workflow",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:34Z"
+          },
+          {
+            "number": 6,
+            "title": "Say on the canvas when an utterance fails",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#6",
+            "branch": "ekkicb71/a2u-5-say-on-the-canvas-when-an-utterance-fails",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:33Z"
+          },
+          {
+            "number": 2639,
+            "title": "fix(react): ship working basic catalog styles from the published package",
+            "repository": "a2ui-project/a2ui",
+            "prRef": "a2ui-project/a2ui#2639",
+            "branch": "fix/react-basic-catalog-styles",
+            "reviewStatus": "Commented",
+            "updatedAt": "2026-09-12T15:15:21Z"
+          },
+          {
+            "number": 2531,
+            "title": "fix(web_core): classify dynamic unions nested inside wider unions as DYNAMIC",
+            "repository": "a2ui-project/a2ui",
+            "prRef": "a2ui-project/a2ui#2531",
+            "branch": "fix/web_core-nested-dynamic-union-scrape",
+            "reviewStatus": "Changes requested",
+            "updatedAt": "2026-09-14T01:08:02Z"
+          },
+          {
+            "number": 2529,
+            "title": "fix(web_core): make the setter for a binding-only prop callable",
+            "repository": "a2ui-project/a2ui"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "my-open-prs",
+      "value": {
+        "prs": [
+          {
+            "number": 8,
+            "title": "Give the Synthesizer more thinking effort than the Planner",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#8",
+            "branch": "synthesizer-effort-apart-from-planner",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:26Z"
+          },
+          {
+            "number": 7,
+            "title": "Name the workflow, not its id, in the confirm status line",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#7",
+            "branch": "status-line-names-the-workflow",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:34Z"
+          },
+          {
+            "number": 6,
+            "title": "Say on the canvas when an utterance fails",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#6",
+            "branch": "ekkicb71/a2u-5-say-on-the-canvas-when-an-utterance-fails",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:33Z"
+          },
+          {
+            "number": 2639,
+            "title": "fix(react): ship working basic catalog styles from the published package",
+            "repository": "a2ui-project/a2ui",
+            "prRef": "a2ui-project/a2ui#2639",
+            "branch": "fix/react-basic-catalog-styles",
+            "reviewStatus": "Commented",
+            "updatedAt": "2026-09-12T15:15:21Z"
+          },
+          {
+            "number": 2531,
+            "title": "fix(web_core): classify dynamic unions nested inside wider unions as DYNAMIC",
+            "repository": "a2ui-project/a2ui",
+            "prRef": "a2ui-project/a2ui#2531",
+            "branch": "fix/web_core-nested-dynamic-union-scrape",
+            "reviewStatus": "Changes requested",
+            "updatedAt": "2026-09-14T01:08:02Z"
+          },
+          {
+            "number": 2529,
+            "title": "fix(web_core): make the setter for a binding-only prop callable",
+            "repository": "a2ui-project/a2ui",
+            "prRef": "a2ui-project/a2ui#2529"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "my-open-prs",
+      "value": {
+        "prs": [
+          {
+            "number": 8,
+            "title": "Give the Synthesizer more thinking effort than the Planner",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#8",
+            "branch": "synthesizer-effort-apart-from-planner",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:26Z"
+          },
+          {
+            "number": 7,
+            "title": "Name the workflow, not its id, in the confirm status line",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#7",
+            "branch": "status-line-names-the-workflow",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:34Z"
+          },
+          {
+            "number": 6,
+            "title": "Say on the canvas when an utterance fails",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#6",
+            "branch": "ekkicb71/a2u-5-say-on-the-canvas-when-an-utterance-fails",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:33Z"
+          },
+          {
+            "number": 2639,
+            "title": "fix(react): ship working basic catalog styles from the published package",
+            "repository": "a2ui-project/a2ui",
+            "prRef": "a2ui-project/a2ui#2639",
+            "branch": "fix/react-basic-catalog-styles",
+            "reviewStatus": "Commented",
+            "updatedAt": "2026-09-12T15:15:21Z"
+          },
+          {
+            "number": 2531,
+            "title": "fix(web_core): classify dynamic unions nested inside wider unions as DYNAMIC",
+            "repository": "a2ui-project/a2ui",
+            "prRef": "a2ui-project/a2ui#2531",
+            "branch": "fix/web_core-nested-dynamic-union-scrape",
+            "reviewStatus": "Changes requested",
+            "updatedAt": "2026-09-14T01:08:02Z"
+          },
+          {
+            "number": 2529,
+            "title": "fix(web_core): make the setter for a binding-only prop callable",
+            "repository": "a2ui-project/a2ui",
+            "prRef": "a2ui-project/a2ui#2529",
+            "branch": "fix/web_core-binding-only-prop-setter",
+            "reviewStatus": "Changes requested"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "my-open-prs",
+      "value": {
+        "prs": [
+          {
+            "number": 8,
+            "title": "Give the Synthesizer more thinking effort than the Planner",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#8",
+            "branch": "synthesizer-effort-apart-from-planner",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:26Z"
+          },
+          {
+            "number": 7,
+            "title": "Name the workflow, not its id, in the confirm status line",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#7",
+            "branch": "status-line-names-the-workflow",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:34Z"
+          },
+          {
+            "number": 6,
+            "title": "Say on the canvas when an utterance fails",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#6",
+            "branch": "ekkicb71/a2u-5-say-on-the-canvas-when-an-utterance-fails",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:33Z"
+          },
+          {
+            "number": 2639,
+            "title": "fix(react): ship working basic catalog styles from the published package",
+            "repository": "a2ui-project/a2ui",
+            "prRef": "a2ui-project/a2ui#2639",
+            "branch": "fix/react-basic-catalog-styles",
+            "reviewStatus": "Commented",
+            "updatedAt": "2026-09-12T15:15:21Z"
+          },
+          {
+            "number": 2531,
+            "title": "fix(web_core): classify dynamic unions nested inside wider unions as DYNAMIC",
+            "repository": "a2ui-project/a2ui",
+            "prRef": "a2ui-project/a2ui#2531",
+            "branch": "fix/web_core-nested-dynamic-union-scrape",
+            "reviewStatus": "Changes requested",
+            "updatedAt": "2026-09-14T01:08:02Z"
+          },
+          {
+            "number": 2529,
+            "title": "fix(web_core): make the setter for a binding-only prop callable",
+            "repository": "a2ui-project/a2ui",
+            "prRef": "a2ui-project/a2ui#2529",
+            "branch": "fix/web_core-binding-only-prop-setter",
+            "reviewStatus": "Changes requested",
+            "updatedAt": "2026-09-14T01:08:00Z"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "my-open-prs",
       "path": "/",
       "value": {
-        "totalCount": 1,
         "prs": [
           {
-            "number": 11,
-            "title": "superookie crawler",
-            "meta": "KISA-webpage-development-team/KISA-website-server#11 · opened by dkim1112 · Crawler for superookie.com website",
-            "updatedAt": "2025-08-10T09:25:10Z",
-            "repository": "KISA-webpage-development-team/KISA-website-server"
+            "number": 8,
+            "title": "Give the Synthesizer more thinking effort than the Planner",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#8",
+            "branch": "synthesizer-effort-apart-from-planner",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:26Z"
+          },
+          {
+            "number": 7,
+            "title": "Name the workflow, not its id, in the confirm status line",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#7",
+            "branch": "status-line-names-the-workflow",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:34Z"
+          },
+          {
+            "number": 6,
+            "title": "Say on the canvas when an utterance fails",
+            "repository": "retz8/a2uiverse",
+            "prRef": "retz8/a2uiverse#6",
+            "branch": "ekkicb71/a2u-5-say-on-the-canvas-when-an-utterance-fails",
+            "reviewStatus": "No reviews",
+            "updatedAt": "2026-09-19T07:07:33Z"
+          },
+          {
+            "number": 2639,
+            "title": "fix(react): ship working basic catalog styles from the published package",
+            "repository": "a2ui-project/a2ui",
+            "prRef": "a2ui-project/a2ui#2639",
+            "branch": "fix/react-basic-catalog-styles",
+            "reviewStatus": "Commented",
+            "updatedAt": "2026-09-12T15:15:21Z"
+          },
+          {
+            "number": 2531,
+            "title": "fix(web_core): classify dynamic unions nested inside wider unions as DYNAMIC",
+            "repository": "a2ui-project/a2ui",
+            "prRef": "a2ui-project/a2ui#2531",
+            "branch": "fix/web_core-nested-dynamic-union-scrape",
+            "reviewStatus": "Changes requested",
+            "updatedAt": "2026-09-14T01:08:02Z"
+          },
+          {
+            "number": 2529,
+            "title": "fix(web_core): make the setter for a binding-only prop callable",
+            "repository": "a2ui-project/a2ui",
+            "prRef": "a2ui-project/a2ui#2529",
+            "branch": "fix/web_core-binding-only-prop-setter",
+            "reviewStatus": "Changes requested",
+            "updatedAt": "2026-09-14T01:08:00Z"
           }
         ]
       }
@@ -77,69 +1228,62 @@
           "gap": "normal",
           "padding": "normal",
           "children": [
-            "header-stack",
-            "description",
+            "ph",
             "list"
           ]
         },
         {
-          "id": "header-stack",
-          "component": "Stack",
-          "direction": "horizontal",
-          "justify": "space-between",
-          "align": "center",
+          "id": "ph",
+          "component": "PageHeader",
+          "aria-label": "Open Pull Requests Header",
           "children": [
-            "header-left",
-            "header-badge"
+            "ph-ta"
           ]
         },
         {
-          "id": "header-left",
-          "component": "Stack",
-          "direction": "horizontal",
-          "gap": "condensed",
-          "align": "center",
+          "id": "ph-ta",
+          "component": "PageHeader.TitleArea",
+          "variant": "medium",
           "children": [
-            "header-icon",
-            "title",
-            "count-label"
+            "ph-lv",
+            "ph-title",
+            "ph-tv"
           ]
         },
         {
-          "id": "header-icon",
+          "id": "ph-lv",
+          "component": "PageHeader.LeadingVisual",
+          "children": [
+            "ph-icon"
+          ]
+        },
+        {
+          "id": "ph-icon",
           "component": "Icon",
           "name": "git-pull-request",
-          "fill": "attention",
+          "fill": "open",
           "accessibility": {
-            "label": "Review Requests"
+            "label": "Open Pull Requests"
           }
         },
         {
-          "id": "title",
-          "component": "Heading",
-          "text": "Pull Requests Needing Attention",
-          "as": "h1",
-          "variant": "small"
+          "id": "ph-title",
+          "component": "PageHeader.Title",
+          "text": "My Open Pull Requests",
+          "as": "h1"
         },
         {
-          "id": "count-label",
+          "id": "ph-tv",
+          "component": "PageHeader.TrailingVisual",
+          "children": [
+            "ph-count"
+          ]
+        },
+        {
+          "id": "ph-count",
           "component": "CounterLabel",
-          "count": {
-            "path": "/totalCount"
-          },
+          "count": 6,
           "variant": "primary"
-        },
-        {
-          "id": "header-badge",
-          "component": "Label",
-          "text": "Review Requested",
-          "variant": "attention"
-        },
-        {
-          "id": "description",
-          "component": "Text",
-          "text": "Open pull requests waiting on your review.",
-          "size": "small"
         },
         {
           "id": "list",
@@ -147,18 +1291,16 @@
           "role": "listbox",
           "showDividers": true,
           "children": {
-            "componentId": "pr-row",
+            "componentId": "pr-item",
             "path": "/prs"
           }
         },
         {
-          "id": "pr-row",
+          "id": "pr-item",
           "component": "ActionList.Item",
           "children": [
-            "row-lv",
-            "row-title",
-            "row-desc",
-            "row-tv"
+            "item-lv",
+            "item-content"
           ],
           "action": {
             "event": {
@@ -175,23 +1317,30 @@
           }
         },
         {
-          "id": "row-lv",
+          "id": "item-lv",
           "component": "ActionList.LeadingVisual",
           "children": [
-            "row-icon"
+            "item-icon"
           ]
         },
         {
-          "id": "row-icon",
+          "id": "item-icon",
           "component": "Icon",
           "name": "git-pull-request",
-          "fill": "open",
-          "accessibility": {
-            "label": "Open Pull Request"
-          }
+          "fill": "open"
         },
         {
-          "id": "row-title",
+          "id": "item-content",
+          "component": "Stack",
+          "direction": "vertical",
+          "gap": "condensed",
+          "children": [
+            "item-title",
+            "item-meta"
+          ]
+        },
+        {
+          "id": "item-title",
           "component": "Text",
           "text": {
             "path": "title"
@@ -199,27 +1348,72 @@
           "weight": "semibold"
         },
         {
-          "id": "row-desc",
-          "component": "ActionList.Description",
-          "text": {
-            "path": "meta"
-          },
-          "variant": "block"
-        },
-        {
-          "id": "row-tv",
-          "component": "ActionList.TrailingVisual",
+          "id": "item-meta",
+          "component": "Stack",
+          "direction": "horizontal",
+          "gap": "condensed",
+          "align": "center",
+          "wrap": "wrap",
           "children": [
-            "row-time"
+            "meta-ref",
+            "meta-branch",
+            "meta-review",
+            "meta-sep",
+            "meta-updated-label",
+            "meta-time"
           ]
         },
         {
-          "id": "row-time",
+          "id": "meta-ref",
+          "component": "Text",
+          "text": {
+            "path": "prRef"
+          },
+          "size": "small",
+          "weight": "medium"
+        },
+        {
+          "id": "meta-branch",
+          "component": "BranchName",
+          "text": {
+            "path": "branch"
+          },
+          "as": "span"
+        },
+        {
+          "id": "meta-review",
+          "component": "Label",
+          "text": {
+            "path": "reviewStatus"
+          },
+          "size": "small",
+          "variant": "secondary"
+        },
+        {
+          "id": "meta-sep",
+          "component": "Text",
+          "text": "•",
+          "size": "small"
+        },
+        {
+          "id": "meta-updated-label",
+          "component": "Text",
+          "text": "Updated:",
+          "size": "small"
+        },
+        {
+          "id": "meta-time",
           "component": "RelativeTime",
           "datetime": {
             "path": "updatedAt"
           },
-          "format": "relative"
+          "format": "datetime",
+          "month": "short",
+          "day": "numeric",
+          "year": "numeric",
+          "hour": "numeric",
+          "minute": "2-digit",
+          "second": "2-digit"
         }
       ]
     }

@@ -10,7 +10,7 @@ The agent must already be running, armed:
     uv run python scripts/record_beats.py --model gemini-3.7-flash
 
 Beat 2 opens A2U-5, the issue whose pull request Linear linked by its branch name, and beat 3
-really moves it to In Review in the workspace — it is the change the beat records.
+really moves it to In Progress in the workspace — it is the change the beat records.
 """
 
 from __future__ import annotations
@@ -26,14 +26,19 @@ DEFAULT_RECORD_DIR = REPO_ROOT / ".recordings"
 FIXTURE_DIR = REPO_ROOT / "recordings" / "beats"
 
 # The three beats (task-7.3 decision 10): the user's issues, one issue opened, and a status
-# change proposed then confirmed. Beats 2-3 chain onto beat 1's conversation, so each acts on
+# change proposed then confirmed. Beat 1's prompt is the Planner's own request for the
+# work-status turn, read from the intent journal of a live composed turn and pinned verbatim
+# (task-7.8 decision 7): in a composed turn a vendor never receives the user's utterance, only this. Beats 2-3 chain onto beat 1's conversation, so each acts on
 # the issue the previous turn actually painted. Beat 3 is two turns, the proposal and its
 # confirm, kept as two fixtures under one beat number. The kit retries a chain as a whole, so a
 # retried run proposes the change again against the issue as it then stands.
 BEATS: list[Turn] = [
-    Turn(1, "my-issues", "My issues", "What's assigned to me in Linear?"),
+    Turn(1, "my-issues", "My issues",
+         "Show my in-progress and assigned issues as a compact list. For each issue, include its "
+         "identifier, title, status, priority, linked branch or pull request, and the full date "
+         "and time it was last updated."),
     Turn(2, "issue-detail", "Issue detail", "Open A2U-5.", chains=True),
-    Turn(3, "status-proposal", "Status change proposed", "Move it to In Review.", chains=True),
+    Turn(3, "status-proposal", "Status change proposed", "Move it to In Progress.", chains=True),
     Turn(3, "status-confirm", "Status change confirmed", "Yes, move it.", chains=True),
 ]
 

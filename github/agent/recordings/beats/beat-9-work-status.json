@@ -1,0 +1,5536 @@
+{
+  "name": "beat-9-work-status",
+  "beat": 9,
+  "title": "Work status",
+  "prompt": "Show my open pull requests and active branches as a compact list. For each, include the title, repository, PR number, branch name, review status, and the full date and time it was last updated.",
+  "model": "gemini-3.7-flash",
+  "recordedAt": "2026-09-19T09:28:30+00:00",
+  "contextId": "73a98925-e53f-4bd3-a148-4871a6d275ae",
+  "chainedFrom": null,
+  "turns": [
+    {
+      "taskId": "32639735-4fff-4b2b-88e7-865fb80bd916",
+      "kind": "utterance",
+      "prompt": "Show my open pull requests and active branches as a compact list. For each, include the title, repository, PR number, branch name, review status, and the full date and time it was last updated.",
+      "action": null,
+      "batches": [
+        {
+          "offsetMs": 39007,
+          "messages": [
+            {
+              "paintMeta": {
+                "surfaceId": "my-open-prs",
+                "title": "My Open Pull Requests"
+              }
+            }
+          ],
+          "texts": [
+            "\n"
+          ]
+        },
+        {
+          "offsetMs": 39166,
+          "messages": [
+            {
+              "version": "v0.9",
+              "createSurface": {
+                "surfaceId": "my-open-prs",
+                "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/github/github-catalog/catalogs/v0.9.1/catalog.json",
+                "sendDataModel": true
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 39790,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "root",
+                    "component": "Stack",
+                    "direction": "vertical",
+                    "gap": "normal",
+                    "padding": "normal",
+                    "children": [
+                      "loading_ph",
+                      "loading_list"
+                    ]
+                  },
+                  {
+                    "id": "loading_ph",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "my-open-prs"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 40095,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "ph",
+                    "component": "PageHeader",
+                    "aria-label": "Open Pull Requests Header",
+                    "children": [
+                      "loading_ph-ta"
+                    ]
+                  },
+                  {
+                    "id": "root",
+                    "component": "Stack",
+                    "direction": "vertical",
+                    "gap": "normal",
+                    "padding": "normal",
+                    "children": [
+                      "ph",
+                      "loading_list"
+                    ]
+                  },
+                  {
+                    "id": "loading_ph-ta",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "my-open-prs"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 40323,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "ph",
+                    "component": "PageHeader",
+                    "aria-label": "Open Pull Requests Header",
+                    "children": [
+                      "ph-ta"
+                    ]
+                  },
+                  {
+                    "id": "ph-ta",
+                    "component": "PageHeader.TitleArea",
+                    "variant": "medium",
+                    "children": [
+                      "loading_ph-lv",
+                      "loading_ph-title",
+                      "loading_ph-tv"
+                    ]
+                  },
+                  {
+                    "id": "root",
+                    "component": "Stack",
+                    "direction": "vertical",
+                    "gap": "normal",
+                    "padding": "normal",
+                    "children": [
+                      "ph",
+                      "loading_list"
+                    ]
+                  },
+                  {
+                    "id": "loading_ph-lv",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_ph-title",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_ph-tv",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "my-open-prs"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 40498,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "ph",
+                    "component": "PageHeader",
+                    "aria-label": "Open Pull Requests Header",
+                    "children": [
+                      "ph-ta"
+                    ]
+                  },
+                  {
+                    "id": "ph-lv",
+                    "component": "PageHeader.LeadingVisual"
+                  },
+                  {
+                    "id": "ph-ta",
+                    "component": "PageHeader.TitleArea",
+                    "variant": "medium",
+                    "children": [
+                      "ph-lv",
+                      "loading_ph-title",
+                      "loading_ph-tv"
+                    ]
+                  },
+                  {
+                    "id": "root",
+                    "component": "Stack",
+                    "direction": "vertical",
+                    "gap": "normal",
+                    "padding": "normal",
+                    "children": [
+                      "ph",
+                      "loading_list"
+                    ]
+                  },
+                  {
+                    "id": "loading_ph-title",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_ph-tv",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "my-open-prs"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 40679,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "ph",
+                    "component": "PageHeader",
+                    "aria-label": "Open Pull Requests Header",
+                    "children": [
+                      "ph-ta"
+                    ]
+                  },
+                  {
+                    "id": "ph-lv",
+                    "component": "PageHeader.LeadingVisual",
+                    "children": [
+                      "loading_ph-icon"
+                    ]
+                  },
+                  {
+                    "id": "ph-ta",
+                    "component": "PageHeader.TitleArea",
+                    "variant": "medium",
+                    "children": [
+                      "ph-lv",
+                      "loading_ph-title",
+                      "loading_ph-tv"
+                    ]
+                  },
+                  {
+                    "id": "root",
+                    "component": "Stack",
+                    "direction": "vertical",
+                    "gap": "normal",
+                    "padding": "normal",
+                    "children": [
+                      "ph",
+                      "loading_list"
+                    ]
+                  },
+                  {
+                    "id": "loading_ph-icon",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_ph-title",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_ph-tv",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "my-open-prs"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 40993,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "ph",
+                    "component": "PageHeader",
+                    "aria-label": "Open Pull Requests Header",
+                    "children": [
+                      "ph-ta"
+                    ]
+                  },
+                  {
+                    "id": "ph-icon",
+                    "component": "Icon",
+                    "name": "git-pull-request",
+                    "fill": "open",
+                    "accessibility": {
+                      "label": "Open Pull Requests"
+                    }
+                  },
+                  {
+                    "id": "ph-lv",
+                    "component": "PageHeader.LeadingVisual",
+                    "children": [
+                      "ph-icon"
+                    ]
+                  },
+                  {
+                    "id": "ph-ta",
+                    "component": "PageHeader.TitleArea",
+                    "variant": "medium",
+                    "children": [
+                      "ph-lv",
+                      "loading_ph-title",
+                      "loading_ph-tv"
+                    ]
+                  },
+                  {
+                    "id": "root",
+                    "component": "Stack",
+                    "direction": "vertical",
+                    "gap": "normal",
+                    "padding": "normal",
+                    "children": [
+                      "ph",
+                      "loading_list"
+                    ]
+                  },
+                  {
+                    "id": "loading_ph-title",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_ph-tv",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "my-open-prs"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 41266,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "ph",
+                    "component": "PageHeader",
+                    "aria-label": "Open Pull Requests Header",
+                    "children": [
+                      "ph-ta"
+                    ]
+                  },
+                  {
+                    "id": "ph-icon",
+                    "component": "Icon",
+                    "name": "git-pull-request",
+                    "fill": "open",
+                    "accessibility": {
+                      "label": "Open Pull Requests"
+                    }
+                  },
+                  {
+                    "id": "ph-lv",
+                    "component": "PageHeader.LeadingVisual",
+                    "children": [
+                      "ph-icon"
+                    ]
+                  },
+                  {
+                    "id": "ph-ta",
+                    "component": "PageHeader.TitleArea",
+                    "variant": "medium",
+                    "children": [
+                      "ph-lv",
+                      "ph-title",
+                      "loading_ph-tv"
+                    ]
+                  },
+                  {
+                    "id": "ph-title",
+                    "component": "PageHeader.Title",
+                    "text": "My Open Pull Requests",
+                    "as": "h1"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Stack",
+                    "direction": "vertical",
+                    "gap": "normal",
+                    "padding": "normal",
+                    "children": [
+                      "ph",
+                      "loading_list"
+                    ]
+                  },
+                  {
+                    "id": "loading_ph-tv",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "my-open-prs"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 41592,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "ph",
+                    "component": "PageHeader",
+                    "aria-label": "Open Pull Requests Header",
+                    "children": [
+                      "ph-ta"
+                    ]
+                  },
+                  {
+                    "id": "ph-icon",
+                    "component": "Icon",
+                    "name": "git-pull-request",
+                    "fill": "open",
+                    "accessibility": {
+                      "label": "Open Pull Requests"
+                    }
+                  },
+                  {
+                    "id": "ph-lv",
+                    "component": "PageHeader.LeadingVisual",
+                    "children": [
+                      "ph-icon"
+                    ]
+                  },
+                  {
+                    "id": "ph-ta",
+                    "component": "PageHeader.TitleArea",
+                    "variant": "medium",
+                    "children": [
+                      "ph-lv",
+                      "ph-title",
+                      "ph-tv"
+                    ]
+                  },
+                  {
+                    "id": "ph-title",
+                    "component": "PageHeader.Title",
+                    "text": "My Open Pull Requests",
+                    "as": "h1"
+                  },
+                  {
+                    "id": "ph-tv",
+                    "component": "PageHeader.TrailingVisual",
+                    "children": [
+                      "loading_ph-count"
+                    ]
+                  },
+                  {
+                    "id": "root",
+                    "component": "Stack",
+                    "direction": "vertical",
+                    "gap": "normal",
+                    "padding": "normal",
+                    "children": [
+                      "ph",
+                      "loading_list"
+                    ]
+                  },
+                  {
+                    "id": "loading_ph-count",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "my-open-prs"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 41887,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "ph",
+                    "component": "PageHeader",
+                    "aria-label": "Open Pull Requests Header",
+                    "children": [
+                      "ph-ta"
+                    ]
+                  },
+                  {
+                    "id": "ph-count",
+                    "component": "CounterLabel",
+                    "count": 6,
+                    "variant": "primary"
+                  },
+                  {
+                    "id": "ph-icon",
+                    "component": "Icon",
+                    "name": "git-pull-request",
+                    "fill": "open",
+                    "accessibility": {
+                      "label": "Open Pull Requests"
+                    }
+                  },
+                  {
+                    "id": "ph-lv",
+                    "component": "PageHeader.LeadingVisual",
+                    "children": [
+                      "ph-icon"
+                    ]
+                  },
+                  {
+                    "id": "ph-ta",
+                    "component": "PageHeader.TitleArea",
+                    "variant": "medium",
+                    "children": [
+                      "ph-lv",
+                      "ph-title",
+                      "ph-tv"
+                    ]
+                  },
+                  {
+                    "id": "ph-title",
+                    "component": "PageHeader.Title",
+                    "text": "My Open Pull Requests",
+                    "as": "h1"
+                  },
+                  {
+                    "id": "ph-tv",
+                    "component": "PageHeader.TrailingVisual",
+                    "children": [
+                      "ph-count"
+                    ]
+                  },
+                  {
+                    "id": "root",
+                    "component": "Stack",
+                    "direction": "vertical",
+                    "gap": "normal",
+                    "padding": "normal",
+                    "children": [
+                      "ph",
+                      "loading_list"
+                    ]
+                  },
+                  {
+                    "id": "loading_list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "my-open-prs"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 42066,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "list",
+                    "component": "ActionList",
+                    "role": "listbox",
+                    "showDividers": true,
+                    "children": {
+                      "componentId": "loading_pr-item",
+                      "path": "/prs"
+                    }
+                  },
+                  {
+                    "id": "ph",
+                    "component": "PageHeader",
+                    "aria-label": "Open Pull Requests Header",
+                    "children": [
+                      "ph-ta"
+                    ]
+                  },
+                  {
+                    "id": "ph-count",
+                    "component": "CounterLabel",
+                    "count": 6,
+                    "variant": "primary"
+                  },
+                  {
+                    "id": "ph-icon",
+                    "component": "Icon",
+                    "name": "git-pull-request",
+                    "fill": "open",
+                    "accessibility": {
+                      "label": "Open Pull Requests"
+                    }
+                  },
+                  {
+                    "id": "ph-lv",
+                    "component": "PageHeader.LeadingVisual",
+                    "children": [
+                      "ph-icon"
+                    ]
+                  },
+                  {
+                    "id": "ph-ta",
+                    "component": "PageHeader.TitleArea",
+                    "variant": "medium",
+                    "children": [
+                      "ph-lv",
+                      "ph-title",
+                      "ph-tv"
+                    ]
+                  },
+                  {
+                    "id": "ph-title",
+                    "component": "PageHeader.Title",
+                    "text": "My Open Pull Requests",
+                    "as": "h1"
+                  },
+                  {
+                    "id": "ph-tv",
+                    "component": "PageHeader.TrailingVisual",
+                    "children": [
+                      "ph-count"
+                    ]
+                  },
+                  {
+                    "id": "root",
+                    "component": "Stack",
+                    "direction": "vertical",
+                    "gap": "normal",
+                    "padding": "normal",
+                    "children": [
+                      "ph",
+                      "list"
+                    ]
+                  },
+                  {
+                    "id": "loading_pr-item",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "my-open-prs"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 42613,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "list",
+                    "component": "ActionList",
+                    "role": "listbox",
+                    "showDividers": true,
+                    "children": {
+                      "componentId": "pr-item",
+                      "path": "/prs"
+                    }
+                  },
+                  {
+                    "id": "ph",
+                    "component": "PageHeader",
+                    "aria-label": "Open Pull Requests Header",
+                    "children": [
+                      "ph-ta"
+                    ]
+                  },
+                  {
+                    "id": "ph-count",
+                    "component": "CounterLabel",
+                    "count": 6,
+                    "variant": "primary"
+                  },
+                  {
+                    "id": "ph-icon",
+                    "component": "Icon",
+                    "name": "git-pull-request",
+                    "fill": "open",
+                    "accessibility": {
+                      "label": "Open Pull Requests"
+                    }
+                  },
+                  {
+                    "id": "ph-lv",
+                    "component": "PageHeader.LeadingVisual",
+                    "children": [
+                      "ph-icon"
+                    ]
+                  },
+                  {
+                    "id": "ph-ta",
+                    "component": "PageHeader.TitleArea",
+                    "variant": "medium",
+                    "children": [
+                      "ph-lv",
+                      "ph-title",
+                      "ph-tv"
+                    ]
+                  },
+                  {
+                    "id": "ph-title",
+                    "component": "PageHeader.Title",
+                    "text": "My Open Pull Requests",
+                    "as": "h1"
+                  },
+                  {
+                    "id": "ph-tv",
+                    "component": "PageHeader.TrailingVisual",
+                    "children": [
+                      "ph-count"
+                    ]
+                  },
+                  {
+                    "id": "pr-item",
+                    "component": "ActionList.Item",
+                    "children": [
+                      "loading_item-lv",
+                      "loading_item-content"
+                    ],
+                    "action": {
+                      "event": {
+                        "name": "open-pull-request",
+                        "context": {
+                          "repository": {
+                            "path": "repository"
+                          },
+                          "number": {
+                            "path": "number"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Stack",
+                    "direction": "vertical",
+                    "gap": "normal",
+                    "padding": "normal",
+                    "children": [
+                      "ph",
+                      "list"
+                    ]
+                  },
+                  {
+                    "id": "loading_item-lv",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_item-content",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "my-open-prs"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 42792,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "item-lv",
+                    "component": "ActionList.LeadingVisual"
+                  },
+                  {
+                    "id": "list",
+                    "component": "ActionList",
+                    "role": "listbox",
+                    "showDividers": true,
+                    "children": {
+                      "componentId": "pr-item",
+                      "path": "/prs"
+                    }
+                  },
+                  {
+                    "id": "ph",
+                    "component": "PageHeader",
+                    "aria-label": "Open Pull Requests Header",
+                    "children": [
+                      "ph-ta"
+                    ]
+                  },
+                  {
+                    "id": "ph-count",
+                    "component": "CounterLabel",
+                    "count": 6,
+                    "variant": "primary"
+                  },
+                  {
+                    "id": "ph-icon",
+                    "component": "Icon",
+                    "name": "git-pull-request",
+                    "fill": "open",
+                    "accessibility": {
+                      "label": "Open Pull Requests"
+                    }
+                  },
+                  {
+                    "id": "ph-lv",
+                    "component": "PageHeader.LeadingVisual",
+                    "children": [
+                      "ph-icon"
+                    ]
+                  },
+                  {
+                    "id": "ph-ta",
+                    "component": "PageHeader.TitleArea",
+                    "variant": "medium",
+                    "children": [
+                      "ph-lv",
+                      "ph-title",
+                      "ph-tv"
+                    ]
+                  },
+                  {
+                    "id": "ph-title",
+                    "component": "PageHeader.Title",
+                    "text": "My Open Pull Requests",
+                    "as": "h1"
+                  },
+                  {
+                    "id": "ph-tv",
+                    "component": "PageHeader.TrailingVisual",
+                    "children": [
+                      "ph-count"
+                    ]
+                  },
+                  {
+                    "id": "pr-item",
+                    "component": "ActionList.Item",
+                    "children": [
+                      "item-lv",
+                      "loading_item-content"
+                    ],
+                    "action": {
+                      "event": {
+                        "name": "open-pull-request",
+                        "context": {
+                          "repository": {
+                            "path": "repository"
+                          },
+                          "number": {
+                            "path": "number"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Stack",
+                    "direction": "vertical",
+                    "gap": "normal",
+                    "padding": "normal",
+                    "children": [
+                      "ph",
+                      "list"
+                    ]
+                  },
+                  {
+                    "id": "loading_item-content",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "my-open-prs"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 42964,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "item-lv",
+                    "component": "ActionList.LeadingVisual",
+                    "children": [
+                      "loading_item-icon"
+                    ]
+                  },
+                  {
+                    "id": "list",
+                    "component": "ActionList",
+                    "role": "listbox",
+                    "showDividers": true,
+                    "children": {
+                      "componentId": "pr-item",
+                      "path": "/prs"
+                    }
+                  },
+                  {
+                    "id": "ph",
+                    "component": "PageHeader",
+                    "aria-label": "Open Pull Requests Header",
+                    "children": [
+                      "ph-ta"
+                    ]
+                  },
+                  {
+                    "id": "ph-count",
+                    "component": "CounterLabel",
+                    "count": 6,
+                    "variant": "primary"
+                  },
+                  {
+                    "id": "ph-icon",
+                    "component": "Icon",
+                    "name": "git-pull-request",
+                    "fill": "open",
+                    "accessibility": {
+                      "label": "Open Pull Requests"
+                    }
+                  },
+                  {
+                    "id": "ph-lv",
+                    "component": "PageHeader.LeadingVisual",
+                    "children": [
+                      "ph-icon"
+                    ]
+                  },
+                  {
+                    "id": "ph-ta",
+                    "component": "PageHeader.TitleArea",
+                    "variant": "medium",
+                    "children": [
+                      "ph-lv",
+                      "ph-title",
+                      "ph-tv"
+                    ]
+                  },
+                  {
+                    "id": "ph-title",
+                    "component": "PageHeader.Title",
+                    "text": "My Open Pull Requests",
+                    "as": "h1"
+                  },
+                  {
+                    "id": "ph-tv",
+                    "component": "PageHeader.TrailingVisual",
+                    "children": [
+                      "ph-count"
+                    ]
+                  },
+                  {
+                    "id": "pr-item",
+                    "component": "ActionList.Item",
+                    "children": [
+                      "item-lv",
+                      "loading_item-content"
+                    ],
+                    "action": {
+                      "event": {
+                        "name": "open-pull-request",
+                        "context": {
+                          "repository": {
+                            "path": "repository"
+                          },
+                          "number": {
+                            "path": "number"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Stack",
+                    "direction": "vertical",
+                    "gap": "normal",
+                    "padding": "normal",
+                    "children": [
+                      "ph",
+                      "list"
+                    ]
+                  },
+                  {
+                    "id": "loading_item-icon",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_item-content",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "my-open-prs"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 43301,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "item-icon",
+                    "component": "Icon",
+                    "name": "git-pull-request",
+                    "fill": "open"
+                  },
+                  {
+                    "id": "item-lv",
+                    "component": "ActionList.LeadingVisual",
+                    "children": [
+                      "item-icon"
+                    ]
+                  },
+                  {
+                    "id": "list",
+                    "component": "ActionList",
+                    "role": "listbox",
+                    "showDividers": true,
+                    "children": {
+                      "componentId": "pr-item",
+                      "path": "/prs"
+                    }
+                  },
+                  {
+                    "id": "ph",
+                    "component": "PageHeader",
+                    "aria-label": "Open Pull Requests Header",
+                    "children": [
+                      "ph-ta"
+                    ]
+                  },
+                  {
+                    "id": "ph-count",
+                    "component": "CounterLabel",
+                    "count": 6,
+                    "variant": "primary"
+                  },
+                  {
+                    "id": "ph-icon",
+                    "component": "Icon",
+                    "name": "git-pull-request",
+                    "fill": "open",
+                    "accessibility": {
+                      "label": "Open Pull Requests"
+                    }
+                  },
+                  {
+                    "id": "ph-lv",
+                    "component": "PageHeader.LeadingVisual",
+                    "children": [
+                      "ph-icon"
+                    ]
+                  },
+                  {
+                    "id": "ph-ta",
+                    "component": "PageHeader.TitleArea",
+                    "variant": "medium",
+                    "children": [
+                      "ph-lv",
+                      "ph-title",
+                      "ph-tv"
+                    ]
+                  },
+                  {
+                    "id": "ph-title",
+                    "component": "PageHeader.Title",
+                    "text": "My Open Pull Requests",
+                    "as": "h1"
+                  },
+                  {
+                    "id": "ph-tv",
+                    "component": "PageHeader.TrailingVisual",
+                    "children": [
+                      "ph-count"
+                    ]
+                  },
+                  {
+                    "id": "pr-item",
+                    "component": "ActionList.Item",
+                    "children": [
+                      "item-lv",
+                      "loading_item-content"
+                    ],
+                    "action": {
+                      "event": {
+                        "name": "open-pull-request",
+                        "context": {
+                          "repository": {
+                            "path": "repository"
+                          },
+                          "number": {
+                            "path": "number"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Stack",
+                    "direction": "vertical",
+                    "gap": "normal",
+                    "padding": "normal",
+                    "children": [
+                      "ph",
+                      "list"
+                    ]
+                  },
+                  {
+                    "id": "loading_item-content",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "my-open-prs"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 43625,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "item-content",
+                    "component": "Stack",
+                    "direction": "vertical",
+                    "gap": "condensed",
+                    "children": [
+                      "loading_item-title",
+                      "loading_item-meta"
+                    ]
+                  },
+                  {
+                    "id": "item-icon",
+                    "component": "Icon",
+                    "name": "git-pull-request",
+                    "fill": "open"
+                  },
+                  {
+                    "id": "item-lv",
+                    "component": "ActionList.LeadingVisual",
+                    "children": [
+                      "item-icon"
+                    ]
+                  },
+                  {
+                    "id": "list",
+                    "component": "ActionList",
+                    "role": "listbox",
+                    "showDividers": true,
+                    "children": {
+                      "componentId": "pr-item",
+                      "path": "/prs"
+                    }
+                  },
+                  {
+                    "id": "ph",
+                    "component": "PageHeader",
+                    "aria-label": "Open Pull Requests Header",
+                    "children": [
+                      "ph-ta"
+                    ]
+                  },
+                  {
+                    "id": "ph-count",
+                    "component": "CounterLabel",
+                    "count": 6,
+                    "variant": "primary"
+                  },
+                  {
+                    "id": "ph-icon",
+                    "component": "Icon",
+                    "name": "git-pull-request",
+                    "fill": "open",
+                    "accessibility": {
+                      "label": "Open Pull Requests"
+                    }
+                  },
+                  {
+                    "id": "ph-lv",
+                    "component": "PageHeader.LeadingVisual",
+                    "children": [
+                      "ph-icon"
+                    ]
+                  },
+                  {
+                    "id": "ph-ta",
+                    "component": "PageHeader.TitleArea",
+                    "variant": "medium",
+                    "children": [
+                      "ph-lv",
+                      "ph-title",
+                      "ph-tv"
+                    ]
+                  },
+                  {
+                    "id": "ph-title",
+                    "component": "PageHeader.Title",
+                    "text": "My Open Pull Requests",
+                    "as": "h1"
+                  },
+                  {
+                    "id": "ph-tv",
+                    "component": "PageHeader.TrailingVisual",
+                    "children": [
+                      "ph-count"
+                    ]
+                  },
+                  {
+                    "id": "pr-item",
+                    "component": "ActionList.Item",
+                    "children": [
+                      "item-lv",
+                      "item-content"
+                    ],
+                    "action": {
+                      "event": {
+                        "name": "open-pull-request",
+                        "context": {
+                          "repository": {
+                            "path": "repository"
+                          },
+                          "number": {
+                            "path": "number"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Stack",
+                    "direction": "vertical",
+                    "gap": "normal",
+                    "padding": "normal",
+                    "children": [
+                      "ph",
+                      "list"
+                    ]
+                  },
+                  {
+                    "id": "loading_item-title",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_item-meta",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "my-open-prs"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 43921,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "item-content",
+                    "component": "Stack",
+                    "direction": "vertical",
+                    "gap": "condensed",
+                    "children": [
+                      "item-title",
+                      "loading_item-meta"
+                    ]
+                  },
+                  {
+                    "id": "item-icon",
+                    "component": "Icon",
+                    "name": "git-pull-request",
+                    "fill": "open"
+                  },
+                  {
+                    "id": "item-lv",
+                    "component": "ActionList.LeadingVisual",
+                    "children": [
+                      "item-icon"
+                    ]
+                  },
+                  {
+                    "id": "item-title",
+                    "component": "Text",
+                    "text": {
+                      "path": "title"
+                    },
+                    "weight": "semibold"
+                  },
+                  {
+                    "id": "list",
+                    "component": "ActionList",
+                    "role": "listbox",
+                    "showDividers": true,
+                    "children": {
+                      "componentId": "pr-item",
+                      "path": "/prs"
+                    }
+                  },
+                  {
+                    "id": "ph",
+                    "component": "PageHeader",
+                    "aria-label": "Open Pull Requests Header",
+                    "children": [
+                      "ph-ta"
+                    ]
+                  },
+                  {
+                    "id": "ph-count",
+                    "component": "CounterLabel",
+                    "count": 6,
+                    "variant": "primary"
+                  },
+                  {
+                    "id": "ph-icon",
+                    "component": "Icon",
+                    "name": "git-pull-request",
+                    "fill": "open",
+                    "accessibility": {
+                      "label": "Open Pull Requests"
+                    }
+                  },
+                  {
+                    "id": "ph-lv",
+                    "component": "PageHeader.LeadingVisual",
+                    "children": [
+                      "ph-icon"
+                    ]
+                  },
+                  {
+                    "id": "ph-ta",
+                    "component": "PageHeader.TitleArea",
+                    "variant": "medium",
+                    "children": [
+                      "ph-lv",
+                      "ph-title",
+                      "ph-tv"
+                    ]
+                  },
+                  {
+                    "id": "ph-title",
+                    "component": "PageHeader.Title",
+                    "text": "My Open Pull Requests",
+                    "as": "h1"
+                  },
+                  {
+                    "id": "ph-tv",
+                    "component": "PageHeader.TrailingVisual",
+                    "children": [
+                      "ph-count"
+                    ]
+                  },
+                  {
+                    "id": "pr-item",
+                    "component": "ActionList.Item",
+                    "children": [
+                      "item-lv",
+                      "item-content"
+                    ],
+                    "action": {
+                      "event": {
+                        "name": "open-pull-request",
+                        "context": {
+                          "repository": {
+                            "path": "repository"
+                          },
+                          "number": {
+                            "path": "number"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Stack",
+                    "direction": "vertical",
+                    "gap": "normal",
+                    "padding": "normal",
+                    "children": [
+                      "ph",
+                      "list"
+                    ]
+                  },
+                  {
+                    "id": "loading_item-meta",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "my-open-prs"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 44063,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "item-content",
+                    "component": "Stack",
+                    "direction": "vertical",
+                    "gap": "condensed",
+                    "children": [
+                      "item-title",
+                      "item-meta"
+                    ]
+                  },
+                  {
+                    "id": "item-icon",
+                    "component": "Icon",
+                    "name": "git-pull-request",
+                    "fill": "open"
+                  },
+                  {
+                    "id": "item-lv",
+                    "component": "ActionList.LeadingVisual",
+                    "children": [
+                      "item-icon"
+                    ]
+                  },
+                  {
+                    "id": "item-meta",
+                    "component": "Stack",
+                    "direction": "horizontal"
+                  },
+                  {
+                    "id": "item-title",
+                    "component": "Text",
+                    "text": {
+                      "path": "title"
+                    },
+                    "weight": "semibold"
+                  },
+                  {
+                    "id": "list",
+                    "component": "ActionList",
+                    "role": "listbox",
+                    "showDividers": true,
+                    "children": {
+                      "componentId": "pr-item",
+                      "path": "/prs"
+                    }
+                  },
+                  {
+                    "id": "ph",
+                    "component": "PageHeader",
+                    "aria-label": "Open Pull Requests Header",
+                    "children": [
+                      "ph-ta"
+                    ]
+                  },
+                  {
+                    "id": "ph-count",
+                    "component": "CounterLabel",
+                    "count": 6,
+                    "variant": "primary"
+                  },
+                  {
+                    "id": "ph-icon",
+                    "component": "Icon",
+                    "name": "git-pull-request",
+                    "fill": "open",
+                    "accessibility": {
+                      "label": "Open Pull Requests"
+                    }
+                  },
+                  {
+                    "id": "ph-lv",
+                    "component": "PageHeader.LeadingVisual",
+                    "children": [
+                      "ph-icon"
+                    ]
+                  },
+                  {
+                    "id": "ph-ta",
+                    "component": "PageHeader.TitleArea",
+                    "variant": "medium",
+                    "children": [
+                      "ph-lv",
+                      "ph-title",
+                      "ph-tv"
+                    ]
+                  },
+                  {
+                    "id": "ph-title",
+                    "component": "PageHeader.Title",
+                    "text": "My Open Pull Requests",
+                    "as": "h1"
+                  },
+                  {
+                    "id": "ph-tv",
+                    "component": "PageHeader.TrailingVisual",
+                    "children": [
+                      "ph-count"
+                    ]
+                  },
+                  {
+                    "id": "pr-item",
+                    "component": "ActionList.Item",
+                    "children": [
+                      "item-lv",
+                      "item-content"
+                    ],
+                    "action": {
+                      "event": {
+                        "name": "open-pull-request",
+                        "context": {
+                          "repository": {
+                            "path": "repository"
+                          },
+                          "number": {
+                            "path": "number"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Stack",
+                    "direction": "vertical",
+                    "gap": "normal",
+                    "padding": "normal",
+                    "children": [
+                      "ph",
+                      "list"
+                    ]
+                  }
+                ],
+                "surfaceId": "my-open-prs"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 44250,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "item-content",
+                    "component": "Stack",
+                    "direction": "vertical",
+                    "gap": "condensed",
+                    "children": [
+                      "item-title",
+                      "item-meta"
+                    ]
+                  },
+                  {
+                    "id": "item-icon",
+                    "component": "Icon",
+                    "name": "git-pull-request",
+                    "fill": "open"
+                  },
+                  {
+                    "id": "item-lv",
+                    "component": "ActionList.LeadingVisual",
+                    "children": [
+                      "item-icon"
+                    ]
+                  },
+                  {
+                    "id": "item-meta",
+                    "component": "Stack",
+                    "direction": "horizontal",
+                    "gap": "condensed",
+                    "align": "center",
+                    "wrap": "wrap"
+                  },
+                  {
+                    "id": "item-title",
+                    "component": "Text",
+                    "text": {
+                      "path": "title"
+                    },
+                    "weight": "semibold"
+                  },
+                  {
+                    "id": "list",
+                    "component": "ActionList",
+                    "role": "listbox",
+                    "showDividers": true,
+                    "children": {
+                      "componentId": "pr-item",
+                      "path": "/prs"
+                    }
+                  },
+                  {
+                    "id": "ph",
+                    "component": "PageHeader",
+                    "aria-label": "Open Pull Requests Header",
+                    "children": [
+                      "ph-ta"
+                    ]
+                  },
+                  {
+                    "id": "ph-count",
+                    "component": "CounterLabel",
+                    "count": 6,
+                    "variant": "primary"
+                  },
+                  {
+                    "id": "ph-icon",
+                    "component": "Icon",
+                    "name": "git-pull-request",
+                    "fill": "open",
+                    "accessibility": {
+                      "label": "Open Pull Requests"
+                    }
+                  },
+                  {
+                    "id": "ph-lv",
+                    "component": "PageHeader.LeadingVisual",
+                    "children": [
+                      "ph-icon"
+                    ]
+                  },
+                  {
+                    "id": "ph-ta",
+                    "component": "PageHeader.TitleArea",
+                    "variant": "medium",
+                    "children": [
+                      "ph-lv",
+                      "ph-title",
+                      "ph-tv"
+                    ]
+                  },
+                  {
+                    "id": "ph-title",
+                    "component": "PageHeader.Title",
+                    "text": "My Open Pull Requests",
+                    "as": "h1"
+                  },
+                  {
+                    "id": "ph-tv",
+                    "component": "PageHeader.TrailingVisual",
+                    "children": [
+                      "ph-count"
+                    ]
+                  },
+                  {
+                    "id": "pr-item",
+                    "component": "ActionList.Item",
+                    "children": [
+                      "item-lv",
+                      "item-content"
+                    ],
+                    "action": {
+                      "event": {
+                        "name": "open-pull-request",
+                        "context": {
+                          "repository": {
+                            "path": "repository"
+                          },
+                          "number": {
+                            "path": "number"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Stack",
+                    "direction": "vertical",
+                    "gap": "normal",
+                    "padding": "normal",
+                    "children": [
+                      "ph",
+                      "list"
+                    ]
+                  }
+                ],
+                "surfaceId": "my-open-prs"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 44471,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "item-content",
+                    "component": "Stack",
+                    "direction": "vertical",
+                    "gap": "condensed",
+                    "children": [
+                      "item-title",
+                      "item-meta"
+                    ]
+                  },
+                  {
+                    "id": "item-icon",
+                    "component": "Icon",
+                    "name": "git-pull-request",
+                    "fill": "open"
+                  },
+                  {
+                    "id": "item-lv",
+                    "component": "ActionList.LeadingVisual",
+                    "children": [
+                      "item-icon"
+                    ]
+                  },
+                  {
+                    "id": "item-meta",
+                    "component": "Stack",
+                    "direction": "horizontal",
+                    "gap": "condensed",
+                    "align": "center",
+                    "wrap": "wrap",
+                    "children": [
+                      "loading_meta-ref",
+                      "loading_meta-branch",
+                      "loading_meta-review",
+                      "loading_meta-sep",
+                      "loading_meta-updated-label",
+                      "loading_meta-time"
+                    ]
+                  },
+                  {
+                    "id": "item-title",
+                    "component": "Text",
+                    "text": {
+                      "path": "title"
+                    },
+                    "weight": "semibold"
+                  },
+                  {
+                    "id": "list",
+                    "component": "ActionList",
+                    "role": "listbox",
+                    "showDividers": true,
+                    "children": {
+                      "componentId": "pr-item",
+                      "path": "/prs"
+                    }
+                  },
+                  {
+                    "id": "ph",
+                    "component": "PageHeader",
+                    "aria-label": "Open Pull Requests Header",
+                    "children": [
+                      "ph-ta"
+                    ]
+                  },
+                  {
+                    "id": "ph-count",
+                    "component": "CounterLabel",
+                    "count": 6,
+                    "variant": "primary"
+                  },
+                  {
+                    "id": "ph-icon",
+                    "component": "Icon",
+                    "name": "git-pull-request",
+                    "fill": "open",
+                    "accessibility": {
+                      "label": "Open Pull Requests"
+                    }
+                  },
+                  {
+                    "id": "ph-lv",
+                    "component": "PageHeader.LeadingVisual",
+                    "children": [
+                      "ph-icon"
+                    ]
+                  },
+                  {
+                    "id": "ph-ta",
+                    "component": "PageHeader.TitleArea",
+                    "variant": "medium",
+                    "children": [
+                      "ph-lv",
+                      "ph-title",
+                      "ph-tv"
+                    ]
+                  },
+                  {
+                    "id": "ph-title",
+                    "component": "PageHeader.Title",
+                    "text": "My Open Pull Requests",
+                    "as": "h1"
+                  },
+                  {
+                    "id": "ph-tv",
+                    "component": "PageHeader.TrailingVisual",
+                    "children": [
+                      "ph-count"
+                    ]
+                  },
+                  {
+                    "id": "pr-item",
+                    "component": "ActionList.Item",
+                    "children": [
+                      "item-lv",
+                      "item-content"
+                    ],
+                    "action": {
+                      "event": {
+                        "name": "open-pull-request",
+                        "context": {
+                          "repository": {
+                            "path": "repository"
+                          },
+                          "number": {
+                            "path": "number"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Stack",
+                    "direction": "vertical",
+                    "gap": "normal",
+                    "padding": "normal",
+                    "children": [
+                      "ph",
+                      "list"
+                    ]
+                  },
+                  {
+                    "id": "loading_meta-ref",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_meta-branch",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_meta-review",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_meta-sep",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_meta-updated-label",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_meta-time",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "my-open-prs"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 44560,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "item-content",
+                    "component": "Stack",
+                    "direction": "vertical",
+                    "gap": "condensed",
+                    "children": [
+                      "item-title",
+                      "item-meta"
+                    ]
+                  },
+                  {
+                    "id": "item-icon",
+                    "component": "Icon",
+                    "name": "git-pull-request",
+                    "fill": "open"
+                  },
+                  {
+                    "id": "item-lv",
+                    "component": "ActionList.LeadingVisual",
+                    "children": [
+                      "item-icon"
+                    ]
+                  },
+                  {
+                    "id": "item-meta",
+                    "component": "Stack",
+                    "direction": "horizontal",
+                    "gap": "condensed",
+                    "align": "center",
+                    "wrap": "wrap",
+                    "children": [
+                      "meta-ref",
+                      "loading_meta-branch",
+                      "loading_meta-review",
+                      "loading_meta-sep",
+                      "loading_meta-updated-label",
+                      "loading_meta-time"
+                    ]
+                  },
+                  {
+                    "id": "item-title",
+                    "component": "Text",
+                    "text": {
+                      "path": "title"
+                    },
+                    "weight": "semibold"
+                  },
+                  {
+                    "id": "list",
+                    "component": "ActionList",
+                    "role": "listbox",
+                    "showDividers": true,
+                    "children": {
+                      "componentId": "pr-item",
+                      "path": "/prs"
+                    }
+                  },
+                  {
+                    "id": "meta-ref",
+                    "component": "Text",
+                    "text": {
+                      "path": "prRef"
+                    },
+                    "size": "small"
+                  },
+                  {
+                    "id": "ph",
+                    "component": "PageHeader",
+                    "aria-label": "Open Pull Requests Header",
+                    "children": [
+                      "ph-ta"
+                    ]
+                  },
+                  {
+                    "id": "ph-count",
+                    "component": "CounterLabel",
+                    "count": 6,
+                    "variant": "primary"
+                  },
+                  {
+                    "id": "ph-icon",
+                    "component": "Icon",
+                    "name": "git-pull-request",
+                    "fill": "open",
+                    "accessibility": {
+                      "label": "Open Pull Requests"
+                    }
+                  },
+                  {
+                    "id": "ph-lv",
+                    "component": "PageHeader.LeadingVisual",
+                    "children": [
+                      "ph-icon"
+                    ]
+                  },
+                  {
+                    "id": "ph-ta",
+                    "component": "PageHeader.TitleArea",
+                    "variant": "medium",
+                    "children": [
+                      "ph-lv",
+                      "ph-title",
+                      "ph-tv"
+                    ]
+                  },
+                  {
+                    "id": "ph-title",
+                    "component": "PageHeader.Title",
+                    "text": "My Open Pull Requests",
+                    "as": "h1"
+                  },
+                  {
+                    "id": "ph-tv",
+                    "component": "PageHeader.TrailingVisual",
+                    "children": [
+                      "ph-count"
+                    ]
+                  },
+                  {
+                    "id": "pr-item",
+                    "component": "ActionList.Item",
+                    "children": [
+                      "item-lv",
+                      "item-content"
+                    ],
+                    "action": {
+                      "event": {
+                        "name": "open-pull-request",
+                        "context": {
+                          "repository": {
+                            "path": "repository"
+                          },
+                          "number": {
+                            "path": "number"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Stack",
+                    "direction": "vertical",
+                    "gap": "normal",
+                    "padding": "normal",
+                    "children": [
+                      "ph",
+                      "list"
+                    ]
+                  },
+                  {
+                    "id": "loading_meta-branch",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_meta-review",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_meta-sep",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_meta-updated-label",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_meta-time",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "my-open-prs"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 44707,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "item-content",
+                    "component": "Stack",
+                    "direction": "vertical",
+                    "gap": "condensed",
+                    "children": [
+                      "item-title",
+                      "item-meta"
+                    ]
+                  },
+                  {
+                    "id": "item-icon",
+                    "component": "Icon",
+                    "name": "git-pull-request",
+                    "fill": "open"
+                  },
+                  {
+                    "id": "item-lv",
+                    "component": "ActionList.LeadingVisual",
+                    "children": [
+                      "item-icon"
+                    ]
+                  },
+                  {
+                    "id": "item-meta",
+                    "component": "Stack",
+                    "direction": "horizontal",
+                    "gap": "condensed",
+                    "align": "center",
+                    "wrap": "wrap",
+                    "children": [
+                      "meta-ref",
+                      "loading_meta-branch",
+                      "loading_meta-review",
+                      "loading_meta-sep",
+                      "loading_meta-updated-label",
+                      "loading_meta-time"
+                    ]
+                  },
+                  {
+                    "id": "item-title",
+                    "component": "Text",
+                    "text": {
+                      "path": "title"
+                    },
+                    "weight": "semibold"
+                  },
+                  {
+                    "id": "list",
+                    "component": "ActionList",
+                    "role": "listbox",
+                    "showDividers": true,
+                    "children": {
+                      "componentId": "pr-item",
+                      "path": "/prs"
+                    }
+                  },
+                  {
+                    "id": "meta-ref",
+                    "component": "Text",
+                    "text": {
+                      "path": "prRef"
+                    },
+                    "size": "small",
+                    "weight": "medium"
+                  },
+                  {
+                    "id": "ph",
+                    "component": "PageHeader",
+                    "aria-label": "Open Pull Requests Header",
+                    "children": [
+                      "ph-ta"
+                    ]
+                  },
+                  {
+                    "id": "ph-count",
+                    "component": "CounterLabel",
+                    "count": 6,
+                    "variant": "primary"
+                  },
+                  {
+                    "id": "ph-icon",
+                    "component": "Icon",
+                    "name": "git-pull-request",
+                    "fill": "open",
+                    "accessibility": {
+                      "label": "Open Pull Requests"
+                    }
+                  },
+                  {
+                    "id": "ph-lv",
+                    "component": "PageHeader.LeadingVisual",
+                    "children": [
+                      "ph-icon"
+                    ]
+                  },
+                  {
+                    "id": "ph-ta",
+                    "component": "PageHeader.TitleArea",
+                    "variant": "medium",
+                    "children": [
+                      "ph-lv",
+                      "ph-title",
+                      "ph-tv"
+                    ]
+                  },
+                  {
+                    "id": "ph-title",
+                    "component": "PageHeader.Title",
+                    "text": "My Open Pull Requests",
+                    "as": "h1"
+                  },
+                  {
+                    "id": "ph-tv",
+                    "component": "PageHeader.TrailingVisual",
+                    "children": [
+                      "ph-count"
+                    ]
+                  },
+                  {
+                    "id": "pr-item",
+                    "component": "ActionList.Item",
+                    "children": [
+                      "item-lv",
+                      "item-content"
+                    ],
+                    "action": {
+                      "event": {
+                        "name": "open-pull-request",
+                        "context": {
+                          "repository": {
+                            "path": "repository"
+                          },
+                          "number": {
+                            "path": "number"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Stack",
+                    "direction": "vertical",
+                    "gap": "normal",
+                    "padding": "normal",
+                    "children": [
+                      "ph",
+                      "list"
+                    ]
+                  },
+                  {
+                    "id": "loading_meta-branch",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_meta-review",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_meta-sep",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_meta-updated-label",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_meta-time",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "my-open-prs"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 44866,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "item-content",
+                    "component": "Stack",
+                    "direction": "vertical",
+                    "gap": "condensed",
+                    "children": [
+                      "item-title",
+                      "item-meta"
+                    ]
+                  },
+                  {
+                    "id": "item-icon",
+                    "component": "Icon",
+                    "name": "git-pull-request",
+                    "fill": "open"
+                  },
+                  {
+                    "id": "item-lv",
+                    "component": "ActionList.LeadingVisual",
+                    "children": [
+                      "item-icon"
+                    ]
+                  },
+                  {
+                    "id": "item-meta",
+                    "component": "Stack",
+                    "direction": "horizontal",
+                    "gap": "condensed",
+                    "align": "center",
+                    "wrap": "wrap",
+                    "children": [
+                      "meta-ref",
+                      "meta-branch",
+                      "loading_meta-review",
+                      "loading_meta-sep",
+                      "loading_meta-updated-label",
+                      "loading_meta-time"
+                    ]
+                  },
+                  {
+                    "id": "item-title",
+                    "component": "Text",
+                    "text": {
+                      "path": "title"
+                    },
+                    "weight": "semibold"
+                  },
+                  {
+                    "id": "list",
+                    "component": "ActionList",
+                    "role": "listbox",
+                    "showDividers": true,
+                    "children": {
+                      "componentId": "pr-item",
+                      "path": "/prs"
+                    }
+                  },
+                  {
+                    "id": "meta-branch",
+                    "component": "BranchName",
+                    "text": {
+                      "path": "branch"
+                    }
+                  },
+                  {
+                    "id": "meta-ref",
+                    "component": "Text",
+                    "text": {
+                      "path": "prRef"
+                    },
+                    "size": "small",
+                    "weight": "medium"
+                  },
+                  {
+                    "id": "ph",
+                    "component": "PageHeader",
+                    "aria-label": "Open Pull Requests Header",
+                    "children": [
+                      "ph-ta"
+                    ]
+                  },
+                  {
+                    "id": "ph-count",
+                    "component": "CounterLabel",
+                    "count": 6,
+                    "variant": "primary"
+                  },
+                  {
+                    "id": "ph-icon",
+                    "component": "Icon",
+                    "name": "git-pull-request",
+                    "fill": "open",
+                    "accessibility": {
+                      "label": "Open Pull Requests"
+                    }
+                  },
+                  {
+                    "id": "ph-lv",
+                    "component": "PageHeader.LeadingVisual",
+                    "children": [
+                      "ph-icon"
+                    ]
+                  },
+                  {
+                    "id": "ph-ta",
+                    "component": "PageHeader.TitleArea",
+                    "variant": "medium",
+                    "children": [
+                      "ph-lv",
+                      "ph-title",
+                      "ph-tv"
+                    ]
+                  },
+                  {
+                    "id": "ph-title",
+                    "component": "PageHeader.Title",
+                    "text": "My Open Pull Requests",
+                    "as": "h1"
+                  },
+                  {
+                    "id": "ph-tv",
+                    "component": "PageHeader.TrailingVisual",
+                    "children": [
+                      "ph-count"
+                    ]
+                  },
+                  {
+                    "id": "pr-item",
+                    "component": "ActionList.Item",
+                    "children": [
+                      "item-lv",
+                      "item-content"
+                    ],
+                    "action": {
+                      "event": {
+                        "name": "open-pull-request",
+                        "context": {
+                          "repository": {
+                            "path": "repository"
+                          },
+                          "number": {
+                            "path": "number"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Stack",
+                    "direction": "vertical",
+                    "gap": "normal",
+                    "padding": "normal",
+                    "children": [
+                      "ph",
+                      "list"
+                    ]
+                  },
+                  {
+                    "id": "loading_meta-review",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_meta-sep",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_meta-updated-label",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_meta-time",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "my-open-prs"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 45021,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "item-content",
+                    "component": "Stack",
+                    "direction": "vertical",
+                    "gap": "condensed",
+                    "children": [
+                      "item-title",
+                      "item-meta"
+                    ]
+                  },
+                  {
+                    "id": "item-icon",
+                    "component": "Icon",
+                    "name": "git-pull-request",
+                    "fill": "open"
+                  },
+                  {
+                    "id": "item-lv",
+                    "component": "ActionList.LeadingVisual",
+                    "children": [
+                      "item-icon"
+                    ]
+                  },
+                  {
+                    "id": "item-meta",
+                    "component": "Stack",
+                    "direction": "horizontal",
+                    "gap": "condensed",
+                    "align": "center",
+                    "wrap": "wrap",
+                    "children": [
+                      "meta-ref",
+                      "meta-branch",
+                      "loading_meta-review",
+                      "loading_meta-sep",
+                      "loading_meta-updated-label",
+                      "loading_meta-time"
+                    ]
+                  },
+                  {
+                    "id": "item-title",
+                    "component": "Text",
+                    "text": {
+                      "path": "title"
+                    },
+                    "weight": "semibold"
+                  },
+                  {
+                    "id": "list",
+                    "component": "ActionList",
+                    "role": "listbox",
+                    "showDividers": true,
+                    "children": {
+                      "componentId": "pr-item",
+                      "path": "/prs"
+                    }
+                  },
+                  {
+                    "id": "meta-branch",
+                    "component": "BranchName",
+                    "text": {
+                      "path": "branch"
+                    },
+                    "as": "span"
+                  },
+                  {
+                    "id": "meta-ref",
+                    "component": "Text",
+                    "text": {
+                      "path": "prRef"
+                    },
+                    "size": "small",
+                    "weight": "medium"
+                  },
+                  {
+                    "id": "ph",
+                    "component": "PageHeader",
+                    "aria-label": "Open Pull Requests Header",
+                    "children": [
+                      "ph-ta"
+                    ]
+                  },
+                  {
+                    "id": "ph-count",
+                    "component": "CounterLabel",
+                    "count": 6,
+                    "variant": "primary"
+                  },
+                  {
+                    "id": "ph-icon",
+                    "component": "Icon",
+                    "name": "git-pull-request",
+                    "fill": "open",
+                    "accessibility": {
+                      "label": "Open Pull Requests"
+                    }
+                  },
+                  {
+                    "id": "ph-lv",
+                    "component": "PageHeader.LeadingVisual",
+                    "children": [
+                      "ph-icon"
+                    ]
+                  },
+                  {
+                    "id": "ph-ta",
+                    "component": "PageHeader.TitleArea",
+                    "variant": "medium",
+                    "children": [
+                      "ph-lv",
+                      "ph-title",
+                      "ph-tv"
+                    ]
+                  },
+                  {
+                    "id": "ph-title",
+                    "component": "PageHeader.Title",
+                    "text": "My Open Pull Requests",
+                    "as": "h1"
+                  },
+                  {
+                    "id": "ph-tv",
+                    "component": "PageHeader.TrailingVisual",
+                    "children": [
+                      "ph-count"
+                    ]
+                  },
+                  {
+                    "id": "pr-item",
+                    "component": "ActionList.Item",
+                    "children": [
+                      "item-lv",
+                      "item-content"
+                    ],
+                    "action": {
+                      "event": {
+                        "name": "open-pull-request",
+                        "context": {
+                          "repository": {
+                            "path": "repository"
+                          },
+                          "number": {
+                            "path": "number"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Stack",
+                    "direction": "vertical",
+                    "gap": "normal",
+                    "padding": "normal",
+                    "children": [
+                      "ph",
+                      "list"
+                    ]
+                  },
+                  {
+                    "id": "loading_meta-review",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_meta-sep",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_meta-updated-label",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_meta-time",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "my-open-prs"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 45207,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "item-content",
+                    "component": "Stack",
+                    "direction": "vertical",
+                    "gap": "condensed",
+                    "children": [
+                      "item-title",
+                      "item-meta"
+                    ]
+                  },
+                  {
+                    "id": "item-icon",
+                    "component": "Icon",
+                    "name": "git-pull-request",
+                    "fill": "open"
+                  },
+                  {
+                    "id": "item-lv",
+                    "component": "ActionList.LeadingVisual",
+                    "children": [
+                      "item-icon"
+                    ]
+                  },
+                  {
+                    "id": "item-meta",
+                    "component": "Stack",
+                    "direction": "horizontal",
+                    "gap": "condensed",
+                    "align": "center",
+                    "wrap": "wrap",
+                    "children": [
+                      "meta-ref",
+                      "meta-branch",
+                      "meta-review",
+                      "loading_meta-sep",
+                      "loading_meta-updated-label",
+                      "loading_meta-time"
+                    ]
+                  },
+                  {
+                    "id": "item-title",
+                    "component": "Text",
+                    "text": {
+                      "path": "title"
+                    },
+                    "weight": "semibold"
+                  },
+                  {
+                    "id": "list",
+                    "component": "ActionList",
+                    "role": "listbox",
+                    "showDividers": true,
+                    "children": {
+                      "componentId": "pr-item",
+                      "path": "/prs"
+                    }
+                  },
+                  {
+                    "id": "meta-branch",
+                    "component": "BranchName",
+                    "text": {
+                      "path": "branch"
+                    },
+                    "as": "span"
+                  },
+                  {
+                    "id": "meta-ref",
+                    "component": "Text",
+                    "text": {
+                      "path": "prRef"
+                    },
+                    "size": "small",
+                    "weight": "medium"
+                  },
+                  {
+                    "id": "meta-review",
+                    "component": "Label",
+                    "text": {
+                      "path": "reviewStatus"
+                    }
+                  },
+                  {
+                    "id": "ph",
+                    "component": "PageHeader",
+                    "aria-label": "Open Pull Requests Header",
+                    "children": [
+                      "ph-ta"
+                    ]
+                  },
+                  {
+                    "id": "ph-count",
+                    "component": "CounterLabel",
+                    "count": 6,
+                    "variant": "primary"
+                  },
+                  {
+                    "id": "ph-icon",
+                    "component": "Icon",
+                    "name": "git-pull-request",
+                    "fill": "open",
+                    "accessibility": {
+                      "label": "Open Pull Requests"
+                    }
+                  },
+                  {
+                    "id": "ph-lv",
+                    "component": "PageHeader.LeadingVisual",
+                    "children": [
+                      "ph-icon"
+                    ]
+                  },
+                  {
+                    "id": "ph-ta",
+                    "component": "PageHeader.TitleArea",
+                    "variant": "medium",
+                    "children": [
+                      "ph-lv",
+                      "ph-title",
+                      "ph-tv"
+                    ]
+                  },
+                  {
+                    "id": "ph-title",
+                    "component": "PageHeader.Title",
+                    "text": "My Open Pull Requests",
+                    "as": "h1"
+                  },
+                  {
+                    "id": "ph-tv",
+                    "component": "PageHeader.TrailingVisual",
+                    "children": [
+                      "ph-count"
+                    ]
+                  },
+                  {
+                    "id": "pr-item",
+                    "component": "ActionList.Item",
+                    "children": [
+                      "item-lv",
+                      "item-content"
+                    ],
+                    "action": {
+                      "event": {
+                        "name": "open-pull-request",
+                        "context": {
+                          "repository": {
+                            "path": "repository"
+                          },
+                          "number": {
+                            "path": "number"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Stack",
+                    "direction": "vertical",
+                    "gap": "normal",
+                    "padding": "normal",
+                    "children": [
+                      "ph",
+                      "list"
+                    ]
+                  },
+                  {
+                    "id": "loading_meta-sep",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_meta-updated-label",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_meta-time",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "my-open-prs"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 45308,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "item-content",
+                    "component": "Stack",
+                    "direction": "vertical",
+                    "gap": "condensed",
+                    "children": [
+                      "item-title",
+                      "item-meta"
+                    ]
+                  },
+                  {
+                    "id": "item-icon",
+                    "component": "Icon",
+                    "name": "git-pull-request",
+                    "fill": "open"
+                  },
+                  {
+                    "id": "item-lv",
+                    "component": "ActionList.LeadingVisual",
+                    "children": [
+                      "item-icon"
+                    ]
+                  },
+                  {
+                    "id": "item-meta",
+                    "component": "Stack",
+                    "direction": "horizontal",
+                    "gap": "condensed",
+                    "align": "center",
+                    "wrap": "wrap",
+                    "children": [
+                      "meta-ref",
+                      "meta-branch",
+                      "meta-review",
+                      "loading_meta-sep",
+                      "loading_meta-updated-label",
+                      "loading_meta-time"
+                    ]
+                  },
+                  {
+                    "id": "item-title",
+                    "component": "Text",
+                    "text": {
+                      "path": "title"
+                    },
+                    "weight": "semibold"
+                  },
+                  {
+                    "id": "list",
+                    "component": "ActionList",
+                    "role": "listbox",
+                    "showDividers": true,
+                    "children": {
+                      "componentId": "pr-item",
+                      "path": "/prs"
+                    }
+                  },
+                  {
+                    "id": "meta-branch",
+                    "component": "BranchName",
+                    "text": {
+                      "path": "branch"
+                    },
+                    "as": "span"
+                  },
+                  {
+                    "id": "meta-ref",
+                    "component": "Text",
+                    "text": {
+                      "path": "prRef"
+                    },
+                    "size": "small",
+                    "weight": "medium"
+                  },
+                  {
+                    "id": "meta-review",
+                    "component": "Label",
+                    "text": {
+                      "path": "reviewStatus"
+                    },
+                    "size": "small",
+                    "variant": "secondary"
+                  },
+                  {
+                    "id": "ph",
+                    "component": "PageHeader",
+                    "aria-label": "Open Pull Requests Header",
+                    "children": [
+                      "ph-ta"
+                    ]
+                  },
+                  {
+                    "id": "ph-count",
+                    "component": "CounterLabel",
+                    "count": 6,
+                    "variant": "primary"
+                  },
+                  {
+                    "id": "ph-icon",
+                    "component": "Icon",
+                    "name": "git-pull-request",
+                    "fill": "open",
+                    "accessibility": {
+                      "label": "Open Pull Requests"
+                    }
+                  },
+                  {
+                    "id": "ph-lv",
+                    "component": "PageHeader.LeadingVisual",
+                    "children": [
+                      "ph-icon"
+                    ]
+                  },
+                  {
+                    "id": "ph-ta",
+                    "component": "PageHeader.TitleArea",
+                    "variant": "medium",
+                    "children": [
+                      "ph-lv",
+                      "ph-title",
+                      "ph-tv"
+                    ]
+                  },
+                  {
+                    "id": "ph-title",
+                    "component": "PageHeader.Title",
+                    "text": "My Open Pull Requests",
+                    "as": "h1"
+                  },
+                  {
+                    "id": "ph-tv",
+                    "component": "PageHeader.TrailingVisual",
+                    "children": [
+                      "ph-count"
+                    ]
+                  },
+                  {
+                    "id": "pr-item",
+                    "component": "ActionList.Item",
+                    "children": [
+                      "item-lv",
+                      "item-content"
+                    ],
+                    "action": {
+                      "event": {
+                        "name": "open-pull-request",
+                        "context": {
+                          "repository": {
+                            "path": "repository"
+                          },
+                          "number": {
+                            "path": "number"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Stack",
+                    "direction": "vertical",
+                    "gap": "normal",
+                    "padding": "normal",
+                    "children": [
+                      "ph",
+                      "list"
+                    ]
+                  },
+                  {
+                    "id": "loading_meta-sep",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_meta-updated-label",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_meta-time",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "my-open-prs"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 45662,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "item-content",
+                    "component": "Stack",
+                    "direction": "vertical",
+                    "gap": "condensed",
+                    "children": [
+                      "item-title",
+                      "item-meta"
+                    ]
+                  },
+                  {
+                    "id": "item-icon",
+                    "component": "Icon",
+                    "name": "git-pull-request",
+                    "fill": "open"
+                  },
+                  {
+                    "id": "item-lv",
+                    "component": "ActionList.LeadingVisual",
+                    "children": [
+                      "item-icon"
+                    ]
+                  },
+                  {
+                    "id": "item-meta",
+                    "component": "Stack",
+                    "direction": "horizontal",
+                    "gap": "condensed",
+                    "align": "center",
+                    "wrap": "wrap",
+                    "children": [
+                      "meta-ref",
+                      "meta-branch",
+                      "meta-review",
+                      "meta-sep",
+                      "loading_meta-updated-label",
+                      "loading_meta-time"
+                    ]
+                  },
+                  {
+                    "id": "item-title",
+                    "component": "Text",
+                    "text": {
+                      "path": "title"
+                    },
+                    "weight": "semibold"
+                  },
+                  {
+                    "id": "list",
+                    "component": "ActionList",
+                    "role": "listbox",
+                    "showDividers": true,
+                    "children": {
+                      "componentId": "pr-item",
+                      "path": "/prs"
+                    }
+                  },
+                  {
+                    "id": "meta-branch",
+                    "component": "BranchName",
+                    "text": {
+                      "path": "branch"
+                    },
+                    "as": "span"
+                  },
+                  {
+                    "id": "meta-ref",
+                    "component": "Text",
+                    "text": {
+                      "path": "prRef"
+                    },
+                    "size": "small",
+                    "weight": "medium"
+                  },
+                  {
+                    "id": "meta-review",
+                    "component": "Label",
+                    "text": {
+                      "path": "reviewStatus"
+                    },
+                    "size": "small",
+                    "variant": "secondary"
+                  },
+                  {
+                    "id": "meta-sep",
+                    "component": "Text",
+                    "text": "\u2022",
+                    "size": "small"
+                  },
+                  {
+                    "id": "ph",
+                    "component": "PageHeader",
+                    "aria-label": "Open Pull Requests Header",
+                    "children": [
+                      "ph-ta"
+                    ]
+                  },
+                  {
+                    "id": "ph-count",
+                    "component": "CounterLabel",
+                    "count": 6,
+                    "variant": "primary"
+                  },
+                  {
+                    "id": "ph-icon",
+                    "component": "Icon",
+                    "name": "git-pull-request",
+                    "fill": "open",
+                    "accessibility": {
+                      "label": "Open Pull Requests"
+                    }
+                  },
+                  {
+                    "id": "ph-lv",
+                    "component": "PageHeader.LeadingVisual",
+                    "children": [
+                      "ph-icon"
+                    ]
+                  },
+                  {
+                    "id": "ph-ta",
+                    "component": "PageHeader.TitleArea",
+                    "variant": "medium",
+                    "children": [
+                      "ph-lv",
+                      "ph-title",
+                      "ph-tv"
+                    ]
+                  },
+                  {
+                    "id": "ph-title",
+                    "component": "PageHeader.Title",
+                    "text": "My Open Pull Requests",
+                    "as": "h1"
+                  },
+                  {
+                    "id": "ph-tv",
+                    "component": "PageHeader.TrailingVisual",
+                    "children": [
+                      "ph-count"
+                    ]
+                  },
+                  {
+                    "id": "pr-item",
+                    "component": "ActionList.Item",
+                    "children": [
+                      "item-lv",
+                      "item-content"
+                    ],
+                    "action": {
+                      "event": {
+                        "name": "open-pull-request",
+                        "context": {
+                          "repository": {
+                            "path": "repository"
+                          },
+                          "number": {
+                            "path": "number"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Stack",
+                    "direction": "vertical",
+                    "gap": "normal",
+                    "padding": "normal",
+                    "children": [
+                      "ph",
+                      "list"
+                    ]
+                  },
+                  {
+                    "id": "loading_meta-updated-label",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_meta-time",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "my-open-prs"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 46015,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "item-content",
+                    "component": "Stack",
+                    "direction": "vertical",
+                    "gap": "condensed",
+                    "children": [
+                      "item-title",
+                      "item-meta"
+                    ]
+                  },
+                  {
+                    "id": "item-icon",
+                    "component": "Icon",
+                    "name": "git-pull-request",
+                    "fill": "open"
+                  },
+                  {
+                    "id": "item-lv",
+                    "component": "ActionList.LeadingVisual",
+                    "children": [
+                      "item-icon"
+                    ]
+                  },
+                  {
+                    "id": "item-meta",
+                    "component": "Stack",
+                    "direction": "horizontal",
+                    "gap": "condensed",
+                    "align": "center",
+                    "wrap": "wrap",
+                    "children": [
+                      "meta-ref",
+                      "meta-branch",
+                      "meta-review",
+                      "meta-sep",
+                      "meta-updated-label",
+                      "loading_meta-time"
+                    ]
+                  },
+                  {
+                    "id": "item-title",
+                    "component": "Text",
+                    "text": {
+                      "path": "title"
+                    },
+                    "weight": "semibold"
+                  },
+                  {
+                    "id": "list",
+                    "component": "ActionList",
+                    "role": "listbox",
+                    "showDividers": true,
+                    "children": {
+                      "componentId": "pr-item",
+                      "path": "/prs"
+                    }
+                  },
+                  {
+                    "id": "meta-branch",
+                    "component": "BranchName",
+                    "text": {
+                      "path": "branch"
+                    },
+                    "as": "span"
+                  },
+                  {
+                    "id": "meta-ref",
+                    "component": "Text",
+                    "text": {
+                      "path": "prRef"
+                    },
+                    "size": "small",
+                    "weight": "medium"
+                  },
+                  {
+                    "id": "meta-review",
+                    "component": "Label",
+                    "text": {
+                      "path": "reviewStatus"
+                    },
+                    "size": "small",
+                    "variant": "secondary"
+                  },
+                  {
+                    "id": "meta-sep",
+                    "component": "Text",
+                    "text": "\u2022",
+                    "size": "small"
+                  },
+                  {
+                    "id": "meta-updated-label",
+                    "component": "Text",
+                    "text": "Updated:",
+                    "size": "small"
+                  },
+                  {
+                    "id": "ph",
+                    "component": "PageHeader",
+                    "aria-label": "Open Pull Requests Header",
+                    "children": [
+                      "ph-ta"
+                    ]
+                  },
+                  {
+                    "id": "ph-count",
+                    "component": "CounterLabel",
+                    "count": 6,
+                    "variant": "primary"
+                  },
+                  {
+                    "id": "ph-icon",
+                    "component": "Icon",
+                    "name": "git-pull-request",
+                    "fill": "open",
+                    "accessibility": {
+                      "label": "Open Pull Requests"
+                    }
+                  },
+                  {
+                    "id": "ph-lv",
+                    "component": "PageHeader.LeadingVisual",
+                    "children": [
+                      "ph-icon"
+                    ]
+                  },
+                  {
+                    "id": "ph-ta",
+                    "component": "PageHeader.TitleArea",
+                    "variant": "medium",
+                    "children": [
+                      "ph-lv",
+                      "ph-title",
+                      "ph-tv"
+                    ]
+                  },
+                  {
+                    "id": "ph-title",
+                    "component": "PageHeader.Title",
+                    "text": "My Open Pull Requests",
+                    "as": "h1"
+                  },
+                  {
+                    "id": "ph-tv",
+                    "component": "PageHeader.TrailingVisual",
+                    "children": [
+                      "ph-count"
+                    ]
+                  },
+                  {
+                    "id": "pr-item",
+                    "component": "ActionList.Item",
+                    "children": [
+                      "item-lv",
+                      "item-content"
+                    ],
+                    "action": {
+                      "event": {
+                        "name": "open-pull-request",
+                        "context": {
+                          "repository": {
+                            "path": "repository"
+                          },
+                          "number": {
+                            "path": "number"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Stack",
+                    "direction": "vertical",
+                    "gap": "normal",
+                    "padding": "normal",
+                    "children": [
+                      "ph",
+                      "list"
+                    ]
+                  },
+                  {
+                    "id": "loading_meta-time",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "my-open-prs"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 46118,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "item-content",
+                    "component": "Stack",
+                    "direction": "vertical",
+                    "gap": "condensed",
+                    "children": [
+                      "item-title",
+                      "item-meta"
+                    ]
+                  },
+                  {
+                    "id": "item-icon",
+                    "component": "Icon",
+                    "name": "git-pull-request",
+                    "fill": "open"
+                  },
+                  {
+                    "id": "item-lv",
+                    "component": "ActionList.LeadingVisual",
+                    "children": [
+                      "item-icon"
+                    ]
+                  },
+                  {
+                    "id": "item-meta",
+                    "component": "Stack",
+                    "direction": "horizontal",
+                    "gap": "condensed",
+                    "align": "center",
+                    "wrap": "wrap",
+                    "children": [
+                      "meta-ref",
+                      "meta-branch",
+                      "meta-review",
+                      "meta-sep",
+                      "meta-updated-label",
+                      "meta-time"
+                    ]
+                  },
+                  {
+                    "id": "item-title",
+                    "component": "Text",
+                    "text": {
+                      "path": "title"
+                    },
+                    "weight": "semibold"
+                  },
+                  {
+                    "id": "list",
+                    "component": "ActionList",
+                    "role": "listbox",
+                    "showDividers": true,
+                    "children": {
+                      "componentId": "pr-item",
+                      "path": "/prs"
+                    }
+                  },
+                  {
+                    "id": "meta-branch",
+                    "component": "BranchName",
+                    "text": {
+                      "path": "branch"
+                    },
+                    "as": "span"
+                  },
+                  {
+                    "id": "meta-ref",
+                    "component": "Text",
+                    "text": {
+                      "path": "prRef"
+                    },
+                    "size": "small",
+                    "weight": "medium"
+                  },
+                  {
+                    "id": "meta-review",
+                    "component": "Label",
+                    "text": {
+                      "path": "reviewStatus"
+                    },
+                    "size": "small",
+                    "variant": "secondary"
+                  },
+                  {
+                    "id": "meta-sep",
+                    "component": "Text",
+                    "text": "\u2022",
+                    "size": "small"
+                  },
+                  {
+                    "id": "meta-time",
+                    "component": "RelativeTime",
+                    "datetime": {
+                      "path": "updatedAt"
+                    }
+                  },
+                  {
+                    "id": "meta-updated-label",
+                    "component": "Text",
+                    "text": "Updated:",
+                    "size": "small"
+                  },
+                  {
+                    "id": "ph",
+                    "component": "PageHeader",
+                    "aria-label": "Open Pull Requests Header",
+                    "children": [
+                      "ph-ta"
+                    ]
+                  },
+                  {
+                    "id": "ph-count",
+                    "component": "CounterLabel",
+                    "count": 6,
+                    "variant": "primary"
+                  },
+                  {
+                    "id": "ph-icon",
+                    "component": "Icon",
+                    "name": "git-pull-request",
+                    "fill": "open",
+                    "accessibility": {
+                      "label": "Open Pull Requests"
+                    }
+                  },
+                  {
+                    "id": "ph-lv",
+                    "component": "PageHeader.LeadingVisual",
+                    "children": [
+                      "ph-icon"
+                    ]
+                  },
+                  {
+                    "id": "ph-ta",
+                    "component": "PageHeader.TitleArea",
+                    "variant": "medium",
+                    "children": [
+                      "ph-lv",
+                      "ph-title",
+                      "ph-tv"
+                    ]
+                  },
+                  {
+                    "id": "ph-title",
+                    "component": "PageHeader.Title",
+                    "text": "My Open Pull Requests",
+                    "as": "h1"
+                  },
+                  {
+                    "id": "ph-tv",
+                    "component": "PageHeader.TrailingVisual",
+                    "children": [
+                      "ph-count"
+                    ]
+                  },
+                  {
+                    "id": "pr-item",
+                    "component": "ActionList.Item",
+                    "children": [
+                      "item-lv",
+                      "item-content"
+                    ],
+                    "action": {
+                      "event": {
+                        "name": "open-pull-request",
+                        "context": {
+                          "repository": {
+                            "path": "repository"
+                          },
+                          "number": {
+                            "path": "number"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Stack",
+                    "direction": "vertical",
+                    "gap": "normal",
+                    "padding": "normal",
+                    "children": [
+                      "ph",
+                      "list"
+                    ]
+                  }
+                ],
+                "surfaceId": "my-open-prs"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 46282,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "item-content",
+                    "component": "Stack",
+                    "direction": "vertical",
+                    "gap": "condensed",
+                    "children": [
+                      "item-title",
+                      "item-meta"
+                    ]
+                  },
+                  {
+                    "id": "item-icon",
+                    "component": "Icon",
+                    "name": "git-pull-request",
+                    "fill": "open"
+                  },
+                  {
+                    "id": "item-lv",
+                    "component": "ActionList.LeadingVisual",
+                    "children": [
+                      "item-icon"
+                    ]
+                  },
+                  {
+                    "id": "item-meta",
+                    "component": "Stack",
+                    "direction": "horizontal",
+                    "gap": "condensed",
+                    "align": "center",
+                    "wrap": "wrap",
+                    "children": [
+                      "meta-ref",
+                      "meta-branch",
+                      "meta-review",
+                      "meta-sep",
+                      "meta-updated-label",
+                      "meta-time"
+                    ]
+                  },
+                  {
+                    "id": "item-title",
+                    "component": "Text",
+                    "text": {
+                      "path": "title"
+                    },
+                    "weight": "semibold"
+                  },
+                  {
+                    "id": "list",
+                    "component": "ActionList",
+                    "role": "listbox",
+                    "showDividers": true,
+                    "children": {
+                      "componentId": "pr-item",
+                      "path": "/prs"
+                    }
+                  },
+                  {
+                    "id": "meta-branch",
+                    "component": "BranchName",
+                    "text": {
+                      "path": "branch"
+                    },
+                    "as": "span"
+                  },
+                  {
+                    "id": "meta-ref",
+                    "component": "Text",
+                    "text": {
+                      "path": "prRef"
+                    },
+                    "size": "small",
+                    "weight": "medium"
+                  },
+                  {
+                    "id": "meta-review",
+                    "component": "Label",
+                    "text": {
+                      "path": "reviewStatus"
+                    },
+                    "size": "small",
+                    "variant": "secondary"
+                  },
+                  {
+                    "id": "meta-sep",
+                    "component": "Text",
+                    "text": "\u2022",
+                    "size": "small"
+                  },
+                  {
+                    "id": "meta-time",
+                    "component": "RelativeTime",
+                    "datetime": {
+                      "path": "updatedAt"
+                    },
+                    "format": "datetime",
+                    "month": "short",
+                    "day": "numeric"
+                  },
+                  {
+                    "id": "meta-updated-label",
+                    "component": "Text",
+                    "text": "Updated:",
+                    "size": "small"
+                  },
+                  {
+                    "id": "ph",
+                    "component": "PageHeader",
+                    "aria-label": "Open Pull Requests Header",
+                    "children": [
+                      "ph-ta"
+                    ]
+                  },
+                  {
+                    "id": "ph-count",
+                    "component": "CounterLabel",
+                    "count": 6,
+                    "variant": "primary"
+                  },
+                  {
+                    "id": "ph-icon",
+                    "component": "Icon",
+                    "name": "git-pull-request",
+                    "fill": "open",
+                    "accessibility": {
+                      "label": "Open Pull Requests"
+                    }
+                  },
+                  {
+                    "id": "ph-lv",
+                    "component": "PageHeader.LeadingVisual",
+                    "children": [
+                      "ph-icon"
+                    ]
+                  },
+                  {
+                    "id": "ph-ta",
+                    "component": "PageHeader.TitleArea",
+                    "variant": "medium",
+                    "children": [
+                      "ph-lv",
+                      "ph-title",
+                      "ph-tv"
+                    ]
+                  },
+                  {
+                    "id": "ph-title",
+                    "component": "PageHeader.Title",
+                    "text": "My Open Pull Requests",
+                    "as": "h1"
+                  },
+                  {
+                    "id": "ph-tv",
+                    "component": "PageHeader.TrailingVisual",
+                    "children": [
+                      "ph-count"
+                    ]
+                  },
+                  {
+                    "id": "pr-item",
+                    "component": "ActionList.Item",
+                    "children": [
+                      "item-lv",
+                      "item-content"
+                    ],
+                    "action": {
+                      "event": {
+                        "name": "open-pull-request",
+                        "context": {
+                          "repository": {
+                            "path": "repository"
+                          },
+                          "number": {
+                            "path": "number"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Stack",
+                    "direction": "vertical",
+                    "gap": "normal",
+                    "padding": "normal",
+                    "children": [
+                      "ph",
+                      "list"
+                    ]
+                  }
+                ],
+                "surfaceId": "my-open-prs"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 46616,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "item-content",
+                    "component": "Stack",
+                    "direction": "vertical",
+                    "gap": "condensed",
+                    "children": [
+                      "item-title",
+                      "item-meta"
+                    ]
+                  },
+                  {
+                    "id": "item-icon",
+                    "component": "Icon",
+                    "name": "git-pull-request",
+                    "fill": "open"
+                  },
+                  {
+                    "id": "item-lv",
+                    "component": "ActionList.LeadingVisual",
+                    "children": [
+                      "item-icon"
+                    ]
+                  },
+                  {
+                    "id": "item-meta",
+                    "component": "Stack",
+                    "direction": "horizontal",
+                    "gap": "condensed",
+                    "align": "center",
+                    "wrap": "wrap",
+                    "children": [
+                      "meta-ref",
+                      "meta-branch",
+                      "meta-review",
+                      "meta-sep",
+                      "meta-updated-label",
+                      "meta-time"
+                    ]
+                  },
+                  {
+                    "id": "item-title",
+                    "component": "Text",
+                    "text": {
+                      "path": "title"
+                    },
+                    "weight": "semibold"
+                  },
+                  {
+                    "id": "list",
+                    "component": "ActionList",
+                    "role": "listbox",
+                    "showDividers": true,
+                    "children": {
+                      "componentId": "pr-item",
+                      "path": "/prs"
+                    }
+                  },
+                  {
+                    "id": "meta-branch",
+                    "component": "BranchName",
+                    "text": {
+                      "path": "branch"
+                    },
+                    "as": "span"
+                  },
+                  {
+                    "id": "meta-ref",
+                    "component": "Text",
+                    "text": {
+                      "path": "prRef"
+                    },
+                    "size": "small",
+                    "weight": "medium"
+                  },
+                  {
+                    "id": "meta-review",
+                    "component": "Label",
+                    "text": {
+                      "path": "reviewStatus"
+                    },
+                    "size": "small",
+                    "variant": "secondary"
+                  },
+                  {
+                    "id": "meta-sep",
+                    "component": "Text",
+                    "text": "\u2022",
+                    "size": "small"
+                  },
+                  {
+                    "id": "meta-time",
+                    "component": "RelativeTime",
+                    "datetime": {
+                      "path": "updatedAt"
+                    },
+                    "format": "datetime",
+                    "month": "short",
+                    "day": "numeric",
+                    "year": "numeric",
+                    "hour": "numeric",
+                    "minute": "2-digit",
+                    "second": "2-digit"
+                  },
+                  {
+                    "id": "meta-updated-label",
+                    "component": "Text",
+                    "text": "Updated:",
+                    "size": "small"
+                  },
+                  {
+                    "id": "ph",
+                    "component": "PageHeader",
+                    "aria-label": "Open Pull Requests Header",
+                    "children": [
+                      "ph-ta"
+                    ]
+                  },
+                  {
+                    "id": "ph-count",
+                    "component": "CounterLabel",
+                    "count": 6,
+                    "variant": "primary"
+                  },
+                  {
+                    "id": "ph-icon",
+                    "component": "Icon",
+                    "name": "git-pull-request",
+                    "fill": "open",
+                    "accessibility": {
+                      "label": "Open Pull Requests"
+                    }
+                  },
+                  {
+                    "id": "ph-lv",
+                    "component": "PageHeader.LeadingVisual",
+                    "children": [
+                      "ph-icon"
+                    ]
+                  },
+                  {
+                    "id": "ph-ta",
+                    "component": "PageHeader.TitleArea",
+                    "variant": "medium",
+                    "children": [
+                      "ph-lv",
+                      "ph-title",
+                      "ph-tv"
+                    ]
+                  },
+                  {
+                    "id": "ph-title",
+                    "component": "PageHeader.Title",
+                    "text": "My Open Pull Requests",
+                    "as": "h1"
+                  },
+                  {
+                    "id": "ph-tv",
+                    "component": "PageHeader.TrailingVisual",
+                    "children": [
+                      "ph-count"
+                    ]
+                  },
+                  {
+                    "id": "pr-item",
+                    "component": "ActionList.Item",
+                    "children": [
+                      "item-lv",
+                      "item-content"
+                    ],
+                    "action": {
+                      "event": {
+                        "name": "open-pull-request",
+                        "context": {
+                          "repository": {
+                            "path": "repository"
+                          },
+                          "number": {
+                            "path": "number"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Stack",
+                    "direction": "vertical",
+                    "gap": "normal",
+                    "padding": "normal",
+                    "children": [
+                      "ph",
+                      "list"
+                    ]
+                  }
+                ],
+                "surfaceId": "my-open-prs"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 47020,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "my-open-prs",
+                "value": {
+                  "prs": [
+                    {
+                      "number": 8,
+                      "title": "Give the Synthesizer more thinking effort than the Planner",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#8"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 47212,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "my-open-prs",
+                "value": {
+                  "prs": [
+                    {
+                      "number": 8,
+                      "title": "Give the Synthesizer more thinking effort than the Planner",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#8",
+                      "branch": "synthesizer-effort-apart-from-planner",
+                      "reviewStatus": "No reviews"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 47376,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "my-open-prs",
+                "value": {
+                  "prs": [
+                    {
+                      "number": 8,
+                      "title": "Give the Synthesizer more thinking effort than the Planner",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#8",
+                      "branch": "synthesizer-effort-apart-from-planner",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:26Z"
+                    },
+                    {}
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 47559,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "my-open-prs",
+                "value": {
+                  "prs": [
+                    {
+                      "number": 8,
+                      "title": "Give the Synthesizer more thinking effort than the Planner",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#8",
+                      "branch": "synthesizer-effort-apart-from-planner",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:26Z"
+                    },
+                    {
+                      "number": 7
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 47709,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "my-open-prs",
+                "value": {
+                  "prs": [
+                    {
+                      "number": 8,
+                      "title": "Give the Synthesizer more thinking effort than the Planner",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#8",
+                      "branch": "synthesizer-effort-apart-from-planner",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:26Z"
+                    },
+                    {
+                      "number": 7,
+                      "title": "Name the workflow, not its id, in the confirm status line",
+                      "repository": "retz8/a2uiverse"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 47869,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "my-open-prs",
+                "value": {
+                  "prs": [
+                    {
+                      "number": 8,
+                      "title": "Give the Synthesizer more thinking effort than the Planner",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#8",
+                      "branch": "synthesizer-effort-apart-from-planner",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:26Z"
+                    },
+                    {
+                      "number": 7,
+                      "title": "Name the workflow, not its id, in the confirm status line",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#7"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 48017,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "my-open-prs",
+                "value": {
+                  "prs": [
+                    {
+                      "number": 8,
+                      "title": "Give the Synthesizer more thinking effort than the Planner",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#8",
+                      "branch": "synthesizer-effort-apart-from-planner",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:26Z"
+                    },
+                    {
+                      "number": 7,
+                      "title": "Name the workflow, not its id, in the confirm status line",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#7",
+                      "branch": "status-line-names-the-workflow",
+                      "reviewStatus": "No reviews"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 48182,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "my-open-prs",
+                "value": {
+                  "prs": [
+                    {
+                      "number": 8,
+                      "title": "Give the Synthesizer more thinking effort than the Planner",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#8",
+                      "branch": "synthesizer-effort-apart-from-planner",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:26Z"
+                    },
+                    {
+                      "number": 7,
+                      "title": "Name the workflow, not its id, in the confirm status line",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#7",
+                      "branch": "status-line-names-the-workflow",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:34Z"
+                    },
+                    {}
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 48290,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "my-open-prs",
+                "value": {
+                  "prs": [
+                    {
+                      "number": 8,
+                      "title": "Give the Synthesizer more thinking effort than the Planner",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#8",
+                      "branch": "synthesizer-effort-apart-from-planner",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:26Z"
+                    },
+                    {
+                      "number": 7,
+                      "title": "Name the workflow, not its id, in the confirm status line",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#7",
+                      "branch": "status-line-names-the-workflow",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:34Z"
+                    },
+                    {
+                      "number": 6,
+                      "title": "Say on the canvas when an utterance fails"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 48455,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "my-open-prs",
+                "value": {
+                  "prs": [
+                    {
+                      "number": 8,
+                      "title": "Give the Synthesizer more thinking effort than the Planner",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#8",
+                      "branch": "synthesizer-effort-apart-from-planner",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:26Z"
+                    },
+                    {
+                      "number": 7,
+                      "title": "Name the workflow, not its id, in the confirm status line",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#7",
+                      "branch": "status-line-names-the-workflow",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:34Z"
+                    },
+                    {
+                      "number": 6,
+                      "title": "Say on the canvas when an utterance fails",
+                      "repository": "retz8/a2uiverse"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 48610,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "my-open-prs",
+                "value": {
+                  "prs": [
+                    {
+                      "number": 8,
+                      "title": "Give the Synthesizer more thinking effort than the Planner",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#8",
+                      "branch": "synthesizer-effort-apart-from-planner",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:26Z"
+                    },
+                    {
+                      "number": 7,
+                      "title": "Name the workflow, not its id, in the confirm status line",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#7",
+                      "branch": "status-line-names-the-workflow",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:34Z"
+                    },
+                    {
+                      "number": 6,
+                      "title": "Say on the canvas when an utterance fails",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#6"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 48768,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "my-open-prs",
+                "value": {
+                  "prs": [
+                    {
+                      "number": 8,
+                      "title": "Give the Synthesizer more thinking effort than the Planner",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#8",
+                      "branch": "synthesizer-effort-apart-from-planner",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:26Z"
+                    },
+                    {
+                      "number": 7,
+                      "title": "Name the workflow, not its id, in the confirm status line",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#7",
+                      "branch": "status-line-names-the-workflow",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:34Z"
+                    },
+                    {
+                      "number": 6,
+                      "title": "Say on the canvas when an utterance fails",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#6",
+                      "branch": "ekkicb71/a2u-5-say-on-the-canvas-when-an-utterance-fails",
+                      "reviewStatus": "No reviews"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 49075,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "my-open-prs",
+                "value": {
+                  "prs": [
+                    {
+                      "number": 8,
+                      "title": "Give the Synthesizer more thinking effort than the Planner",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#8",
+                      "branch": "synthesizer-effort-apart-from-planner",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:26Z"
+                    },
+                    {
+                      "number": 7,
+                      "title": "Name the workflow, not its id, in the confirm status line",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#7",
+                      "branch": "status-line-names-the-workflow",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:34Z"
+                    },
+                    {
+                      "number": 6,
+                      "title": "Say on the canvas when an utterance fails",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#6",
+                      "branch": "ekkicb71/a2u-5-say-on-the-canvas-when-an-utterance-fails",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:33Z"
+                    },
+                    {
+                      "number": 2639
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 49152,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "my-open-prs",
+                "value": {
+                  "prs": [
+                    {
+                      "number": 8,
+                      "title": "Give the Synthesizer more thinking effort than the Planner",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#8",
+                      "branch": "synthesizer-effort-apart-from-planner",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:26Z"
+                    },
+                    {
+                      "number": 7,
+                      "title": "Name the workflow, not its id, in the confirm status line",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#7",
+                      "branch": "status-line-names-the-workflow",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:34Z"
+                    },
+                    {
+                      "number": 6,
+                      "title": "Say on the canvas when an utterance fails",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#6",
+                      "branch": "ekkicb71/a2u-5-say-on-the-canvas-when-an-utterance-fails",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:33Z"
+                    },
+                    {
+                      "number": 2639,
+                      "title": "fix(react): ship working basic catalog styles from the published package"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 49321,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "my-open-prs",
+                "value": {
+                  "prs": [
+                    {
+                      "number": 8,
+                      "title": "Give the Synthesizer more thinking effort than the Planner",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#8",
+                      "branch": "synthesizer-effort-apart-from-planner",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:26Z"
+                    },
+                    {
+                      "number": 7,
+                      "title": "Name the workflow, not its id, in the confirm status line",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#7",
+                      "branch": "status-line-names-the-workflow",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:34Z"
+                    },
+                    {
+                      "number": 6,
+                      "title": "Say on the canvas when an utterance fails",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#6",
+                      "branch": "ekkicb71/a2u-5-say-on-the-canvas-when-an-utterance-fails",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:33Z"
+                    },
+                    {
+                      "number": 2639,
+                      "title": "fix(react): ship working basic catalog styles from the published package",
+                      "repository": "a2ui-project/a2ui"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 49393,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "my-open-prs",
+                "value": {
+                  "prs": [
+                    {
+                      "number": 8,
+                      "title": "Give the Synthesizer more thinking effort than the Planner",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#8",
+                      "branch": "synthesizer-effort-apart-from-planner",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:26Z"
+                    },
+                    {
+                      "number": 7,
+                      "title": "Name the workflow, not its id, in the confirm status line",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#7",
+                      "branch": "status-line-names-the-workflow",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:34Z"
+                    },
+                    {
+                      "number": 6,
+                      "title": "Say on the canvas when an utterance fails",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#6",
+                      "branch": "ekkicb71/a2u-5-say-on-the-canvas-when-an-utterance-fails",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:33Z"
+                    },
+                    {
+                      "number": 2639,
+                      "title": "fix(react): ship working basic catalog styles from the published package",
+                      "repository": "a2ui-project/a2ui",
+                      "prRef": "a2ui-project/a2ui#2639",
+                      "branch": "fix/react-basic-catalog-styles"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 49489,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "my-open-prs",
+                "value": {
+                  "prs": [
+                    {
+                      "number": 8,
+                      "title": "Give the Synthesizer more thinking effort than the Planner",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#8",
+                      "branch": "synthesizer-effort-apart-from-planner",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:26Z"
+                    },
+                    {
+                      "number": 7,
+                      "title": "Name the workflow, not its id, in the confirm status line",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#7",
+                      "branch": "status-line-names-the-workflow",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:34Z"
+                    },
+                    {
+                      "number": 6,
+                      "title": "Say on the canvas when an utterance fails",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#6",
+                      "branch": "ekkicb71/a2u-5-say-on-the-canvas-when-an-utterance-fails",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:33Z"
+                    },
+                    {
+                      "number": 2639,
+                      "title": "fix(react): ship working basic catalog styles from the published package",
+                      "repository": "a2ui-project/a2ui",
+                      "prRef": "a2ui-project/a2ui#2639",
+                      "branch": "fix/react-basic-catalog-styles",
+                      "reviewStatus": "Commented"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 49650,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "my-open-prs",
+                "value": {
+                  "prs": [
+                    {
+                      "number": 8,
+                      "title": "Give the Synthesizer more thinking effort than the Planner",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#8",
+                      "branch": "synthesizer-effort-apart-from-planner",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:26Z"
+                    },
+                    {
+                      "number": 7,
+                      "title": "Name the workflow, not its id, in the confirm status line",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#7",
+                      "branch": "status-line-names-the-workflow",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:34Z"
+                    },
+                    {
+                      "number": 6,
+                      "title": "Say on the canvas when an utterance fails",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#6",
+                      "branch": "ekkicb71/a2u-5-say-on-the-canvas-when-an-utterance-fails",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:33Z"
+                    },
+                    {
+                      "number": 2639,
+                      "title": "fix(react): ship working basic catalog styles from the published package",
+                      "repository": "a2ui-project/a2ui",
+                      "prRef": "a2ui-project/a2ui#2639",
+                      "branch": "fix/react-basic-catalog-styles",
+                      "reviewStatus": "Commented",
+                      "updatedAt": "2026-09-12T15:15:21Z"
+                    },
+                    {
+                      "number": 2531
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 49807,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "my-open-prs",
+                "value": {
+                  "prs": [
+                    {
+                      "number": 8,
+                      "title": "Give the Synthesizer more thinking effort than the Planner",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#8",
+                      "branch": "synthesizer-effort-apart-from-planner",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:26Z"
+                    },
+                    {
+                      "number": 7,
+                      "title": "Name the workflow, not its id, in the confirm status line",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#7",
+                      "branch": "status-line-names-the-workflow",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:34Z"
+                    },
+                    {
+                      "number": 6,
+                      "title": "Say on the canvas when an utterance fails",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#6",
+                      "branch": "ekkicb71/a2u-5-say-on-the-canvas-when-an-utterance-fails",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:33Z"
+                    },
+                    {
+                      "number": 2639,
+                      "title": "fix(react): ship working basic catalog styles from the published package",
+                      "repository": "a2ui-project/a2ui",
+                      "prRef": "a2ui-project/a2ui#2639",
+                      "branch": "fix/react-basic-catalog-styles",
+                      "reviewStatus": "Commented",
+                      "updatedAt": "2026-09-12T15:15:21Z"
+                    },
+                    {
+                      "number": 2531,
+                      "title": "fix(web_core): classify dynamic unions nested inside wider unions as DYNAMIC"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 49964,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "my-open-prs",
+                "value": {
+                  "prs": [
+                    {
+                      "number": 8,
+                      "title": "Give the Synthesizer more thinking effort than the Planner",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#8",
+                      "branch": "synthesizer-effort-apart-from-planner",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:26Z"
+                    },
+                    {
+                      "number": 7,
+                      "title": "Name the workflow, not its id, in the confirm status line",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#7",
+                      "branch": "status-line-names-the-workflow",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:34Z"
+                    },
+                    {
+                      "number": 6,
+                      "title": "Say on the canvas when an utterance fails",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#6",
+                      "branch": "ekkicb71/a2u-5-say-on-the-canvas-when-an-utterance-fails",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:33Z"
+                    },
+                    {
+                      "number": 2639,
+                      "title": "fix(react): ship working basic catalog styles from the published package",
+                      "repository": "a2ui-project/a2ui",
+                      "prRef": "a2ui-project/a2ui#2639",
+                      "branch": "fix/react-basic-catalog-styles",
+                      "reviewStatus": "Commented",
+                      "updatedAt": "2026-09-12T15:15:21Z"
+                    },
+                    {
+                      "number": 2531,
+                      "title": "fix(web_core): classify dynamic unions nested inside wider unions as DYNAMIC",
+                      "repository": "a2ui-project/a2ui"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 50140,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "my-open-prs",
+                "value": {
+                  "prs": [
+                    {
+                      "number": 8,
+                      "title": "Give the Synthesizer more thinking effort than the Planner",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#8",
+                      "branch": "synthesizer-effort-apart-from-planner",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:26Z"
+                    },
+                    {
+                      "number": 7,
+                      "title": "Name the workflow, not its id, in the confirm status line",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#7",
+                      "branch": "status-line-names-the-workflow",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:34Z"
+                    },
+                    {
+                      "number": 6,
+                      "title": "Say on the canvas when an utterance fails",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#6",
+                      "branch": "ekkicb71/a2u-5-say-on-the-canvas-when-an-utterance-fails",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:33Z"
+                    },
+                    {
+                      "number": 2639,
+                      "title": "fix(react): ship working basic catalog styles from the published package",
+                      "repository": "a2ui-project/a2ui",
+                      "prRef": "a2ui-project/a2ui#2639",
+                      "branch": "fix/react-basic-catalog-styles",
+                      "reviewStatus": "Commented",
+                      "updatedAt": "2026-09-12T15:15:21Z"
+                    },
+                    {
+                      "number": 2531,
+                      "title": "fix(web_core): classify dynamic unions nested inside wider unions as DYNAMIC",
+                      "repository": "a2ui-project/a2ui",
+                      "prRef": "a2ui-project/a2ui#2531"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 50291,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "my-open-prs",
+                "value": {
+                  "prs": [
+                    {
+                      "number": 8,
+                      "title": "Give the Synthesizer more thinking effort than the Planner",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#8",
+                      "branch": "synthesizer-effort-apart-from-planner",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:26Z"
+                    },
+                    {
+                      "number": 7,
+                      "title": "Name the workflow, not its id, in the confirm status line",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#7",
+                      "branch": "status-line-names-the-workflow",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:34Z"
+                    },
+                    {
+                      "number": 6,
+                      "title": "Say on the canvas when an utterance fails",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#6",
+                      "branch": "ekkicb71/a2u-5-say-on-the-canvas-when-an-utterance-fails",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:33Z"
+                    },
+                    {
+                      "number": 2639,
+                      "title": "fix(react): ship working basic catalog styles from the published package",
+                      "repository": "a2ui-project/a2ui",
+                      "prRef": "a2ui-project/a2ui#2639",
+                      "branch": "fix/react-basic-catalog-styles",
+                      "reviewStatus": "Commented",
+                      "updatedAt": "2026-09-12T15:15:21Z"
+                    },
+                    {
+                      "number": 2531,
+                      "title": "fix(web_core): classify dynamic unions nested inside wider unions as DYNAMIC",
+                      "repository": "a2ui-project/a2ui",
+                      "prRef": "a2ui-project/a2ui#2531",
+                      "branch": "fix/web_core-nested-dynamic-union-scrape",
+                      "reviewStatus": "Changes requested"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 50455,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "my-open-prs",
+                "value": {
+                  "prs": [
+                    {
+                      "number": 8,
+                      "title": "Give the Synthesizer more thinking effort than the Planner",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#8",
+                      "branch": "synthesizer-effort-apart-from-planner",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:26Z"
+                    },
+                    {
+                      "number": 7,
+                      "title": "Name the workflow, not its id, in the confirm status line",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#7",
+                      "branch": "status-line-names-the-workflow",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:34Z"
+                    },
+                    {
+                      "number": 6,
+                      "title": "Say on the canvas when an utterance fails",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#6",
+                      "branch": "ekkicb71/a2u-5-say-on-the-canvas-when-an-utterance-fails",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:33Z"
+                    },
+                    {
+                      "number": 2639,
+                      "title": "fix(react): ship working basic catalog styles from the published package",
+                      "repository": "a2ui-project/a2ui",
+                      "prRef": "a2ui-project/a2ui#2639",
+                      "branch": "fix/react-basic-catalog-styles",
+                      "reviewStatus": "Commented",
+                      "updatedAt": "2026-09-12T15:15:21Z"
+                    },
+                    {
+                      "number": 2531,
+                      "title": "fix(web_core): classify dynamic unions nested inside wider unions as DYNAMIC",
+                      "repository": "a2ui-project/a2ui",
+                      "prRef": "a2ui-project/a2ui#2531",
+                      "branch": "fix/web_core-nested-dynamic-union-scrape",
+                      "reviewStatus": "Changes requested",
+                      "updatedAt": "2026-09-14T01:08:02Z"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 50622,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "my-open-prs",
+                "value": {
+                  "prs": [
+                    {
+                      "number": 8,
+                      "title": "Give the Synthesizer more thinking effort than the Planner",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#8",
+                      "branch": "synthesizer-effort-apart-from-planner",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:26Z"
+                    },
+                    {
+                      "number": 7,
+                      "title": "Name the workflow, not its id, in the confirm status line",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#7",
+                      "branch": "status-line-names-the-workflow",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:34Z"
+                    },
+                    {
+                      "number": 6,
+                      "title": "Say on the canvas when an utterance fails",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#6",
+                      "branch": "ekkicb71/a2u-5-say-on-the-canvas-when-an-utterance-fails",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:33Z"
+                    },
+                    {
+                      "number": 2639,
+                      "title": "fix(react): ship working basic catalog styles from the published package",
+                      "repository": "a2ui-project/a2ui",
+                      "prRef": "a2ui-project/a2ui#2639",
+                      "branch": "fix/react-basic-catalog-styles",
+                      "reviewStatus": "Commented",
+                      "updatedAt": "2026-09-12T15:15:21Z"
+                    },
+                    {
+                      "number": 2531,
+                      "title": "fix(web_core): classify dynamic unions nested inside wider unions as DYNAMIC",
+                      "repository": "a2ui-project/a2ui",
+                      "prRef": "a2ui-project/a2ui#2531",
+                      "branch": "fix/web_core-nested-dynamic-union-scrape",
+                      "reviewStatus": "Changes requested",
+                      "updatedAt": "2026-09-14T01:08:02Z"
+                    },
+                    {
+                      "number": 2529
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 50780,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "my-open-prs",
+                "value": {
+                  "prs": [
+                    {
+                      "number": 8,
+                      "title": "Give the Synthesizer more thinking effort than the Planner",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#8",
+                      "branch": "synthesizer-effort-apart-from-planner",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:26Z"
+                    },
+                    {
+                      "number": 7,
+                      "title": "Name the workflow, not its id, in the confirm status line",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#7",
+                      "branch": "status-line-names-the-workflow",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:34Z"
+                    },
+                    {
+                      "number": 6,
+                      "title": "Say on the canvas when an utterance fails",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#6",
+                      "branch": "ekkicb71/a2u-5-say-on-the-canvas-when-an-utterance-fails",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:33Z"
+                    },
+                    {
+                      "number": 2639,
+                      "title": "fix(react): ship working basic catalog styles from the published package",
+                      "repository": "a2ui-project/a2ui",
+                      "prRef": "a2ui-project/a2ui#2639",
+                      "branch": "fix/react-basic-catalog-styles",
+                      "reviewStatus": "Commented",
+                      "updatedAt": "2026-09-12T15:15:21Z"
+                    },
+                    {
+                      "number": 2531,
+                      "title": "fix(web_core): classify dynamic unions nested inside wider unions as DYNAMIC",
+                      "repository": "a2ui-project/a2ui",
+                      "prRef": "a2ui-project/a2ui#2531",
+                      "branch": "fix/web_core-nested-dynamic-union-scrape",
+                      "reviewStatus": "Changes requested",
+                      "updatedAt": "2026-09-14T01:08:02Z"
+                    },
+                    {
+                      "number": 2529,
+                      "title": "fix(web_core): make the setter for a binding-only prop callable",
+                      "repository": "a2ui-project/a2ui"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 50937,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "my-open-prs",
+                "value": {
+                  "prs": [
+                    {
+                      "number": 8,
+                      "title": "Give the Synthesizer more thinking effort than the Planner",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#8",
+                      "branch": "synthesizer-effort-apart-from-planner",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:26Z"
+                    },
+                    {
+                      "number": 7,
+                      "title": "Name the workflow, not its id, in the confirm status line",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#7",
+                      "branch": "status-line-names-the-workflow",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:34Z"
+                    },
+                    {
+                      "number": 6,
+                      "title": "Say on the canvas when an utterance fails",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#6",
+                      "branch": "ekkicb71/a2u-5-say-on-the-canvas-when-an-utterance-fails",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:33Z"
+                    },
+                    {
+                      "number": 2639,
+                      "title": "fix(react): ship working basic catalog styles from the published package",
+                      "repository": "a2ui-project/a2ui",
+                      "prRef": "a2ui-project/a2ui#2639",
+                      "branch": "fix/react-basic-catalog-styles",
+                      "reviewStatus": "Commented",
+                      "updatedAt": "2026-09-12T15:15:21Z"
+                    },
+                    {
+                      "number": 2531,
+                      "title": "fix(web_core): classify dynamic unions nested inside wider unions as DYNAMIC",
+                      "repository": "a2ui-project/a2ui",
+                      "prRef": "a2ui-project/a2ui#2531",
+                      "branch": "fix/web_core-nested-dynamic-union-scrape",
+                      "reviewStatus": "Changes requested",
+                      "updatedAt": "2026-09-14T01:08:02Z"
+                    },
+                    {
+                      "number": 2529,
+                      "title": "fix(web_core): make the setter for a binding-only prop callable",
+                      "repository": "a2ui-project/a2ui",
+                      "prRef": "a2ui-project/a2ui#2529"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 51123,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "my-open-prs",
+                "value": {
+                  "prs": [
+                    {
+                      "number": 8,
+                      "title": "Give the Synthesizer more thinking effort than the Planner",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#8",
+                      "branch": "synthesizer-effort-apart-from-planner",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:26Z"
+                    },
+                    {
+                      "number": 7,
+                      "title": "Name the workflow, not its id, in the confirm status line",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#7",
+                      "branch": "status-line-names-the-workflow",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:34Z"
+                    },
+                    {
+                      "number": 6,
+                      "title": "Say on the canvas when an utterance fails",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#6",
+                      "branch": "ekkicb71/a2u-5-say-on-the-canvas-when-an-utterance-fails",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:33Z"
+                    },
+                    {
+                      "number": 2639,
+                      "title": "fix(react): ship working basic catalog styles from the published package",
+                      "repository": "a2ui-project/a2ui",
+                      "prRef": "a2ui-project/a2ui#2639",
+                      "branch": "fix/react-basic-catalog-styles",
+                      "reviewStatus": "Commented",
+                      "updatedAt": "2026-09-12T15:15:21Z"
+                    },
+                    {
+                      "number": 2531,
+                      "title": "fix(web_core): classify dynamic unions nested inside wider unions as DYNAMIC",
+                      "repository": "a2ui-project/a2ui",
+                      "prRef": "a2ui-project/a2ui#2531",
+                      "branch": "fix/web_core-nested-dynamic-union-scrape",
+                      "reviewStatus": "Changes requested",
+                      "updatedAt": "2026-09-14T01:08:02Z"
+                    },
+                    {
+                      "number": 2529,
+                      "title": "fix(web_core): make the setter for a binding-only prop callable",
+                      "repository": "a2ui-project/a2ui",
+                      "prRef": "a2ui-project/a2ui#2529",
+                      "branch": "fix/web_core-binding-only-prop-setter",
+                      "reviewStatus": "Changes requested"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 51280,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "my-open-prs",
+                "value": {
+                  "prs": [
+                    {
+                      "number": 8,
+                      "title": "Give the Synthesizer more thinking effort than the Planner",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#8",
+                      "branch": "synthesizer-effort-apart-from-planner",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:26Z"
+                    },
+                    {
+                      "number": 7,
+                      "title": "Name the workflow, not its id, in the confirm status line",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#7",
+                      "branch": "status-line-names-the-workflow",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:34Z"
+                    },
+                    {
+                      "number": 6,
+                      "title": "Say on the canvas when an utterance fails",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#6",
+                      "branch": "ekkicb71/a2u-5-say-on-the-canvas-when-an-utterance-fails",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:33Z"
+                    },
+                    {
+                      "number": 2639,
+                      "title": "fix(react): ship working basic catalog styles from the published package",
+                      "repository": "a2ui-project/a2ui",
+                      "prRef": "a2ui-project/a2ui#2639",
+                      "branch": "fix/react-basic-catalog-styles",
+                      "reviewStatus": "Commented",
+                      "updatedAt": "2026-09-12T15:15:21Z"
+                    },
+                    {
+                      "number": 2531,
+                      "title": "fix(web_core): classify dynamic unions nested inside wider unions as DYNAMIC",
+                      "repository": "a2ui-project/a2ui",
+                      "prRef": "a2ui-project/a2ui#2531",
+                      "branch": "fix/web_core-nested-dynamic-union-scrape",
+                      "reviewStatus": "Changes requested",
+                      "updatedAt": "2026-09-14T01:08:02Z"
+                    },
+                    {
+                      "number": 2529,
+                      "title": "fix(web_core): make the setter for a binding-only prop callable",
+                      "repository": "a2ui-project/a2ui",
+                      "prRef": "a2ui-project/a2ui#2529",
+                      "branch": "fix/web_core-binding-only-prop-setter",
+                      "reviewStatus": "Changes requested",
+                      "updatedAt": "2026-09-14T01:08:00Z"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 51449,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "my-open-prs",
+                "path": "/",
+                "value": {
+                  "prs": [
+                    {
+                      "number": 8,
+                      "title": "Give the Synthesizer more thinking effort than the Planner",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#8",
+                      "branch": "synthesizer-effort-apart-from-planner",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:26Z"
+                    },
+                    {
+                      "number": 7,
+                      "title": "Name the workflow, not its id, in the confirm status line",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#7",
+                      "branch": "status-line-names-the-workflow",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:34Z"
+                    },
+                    {
+                      "number": 6,
+                      "title": "Say on the canvas when an utterance fails",
+                      "repository": "retz8/a2uiverse",
+                      "prRef": "retz8/a2uiverse#6",
+                      "branch": "ekkicb71/a2u-5-say-on-the-canvas-when-an-utterance-fails",
+                      "reviewStatus": "No reviews",
+                      "updatedAt": "2026-09-19T07:07:33Z"
+                    },
+                    {
+                      "number": 2639,
+                      "title": "fix(react): ship working basic catalog styles from the published package",
+                      "repository": "a2ui-project/a2ui",
+                      "prRef": "a2ui-project/a2ui#2639",
+                      "branch": "fix/react-basic-catalog-styles",
+                      "reviewStatus": "Commented",
+                      "updatedAt": "2026-09-12T15:15:21Z"
+                    },
+                    {
+                      "number": 2531,
+                      "title": "fix(web_core): classify dynamic unions nested inside wider unions as DYNAMIC",
+                      "repository": "a2ui-project/a2ui",
+                      "prRef": "a2ui-project/a2ui#2531",
+                      "branch": "fix/web_core-nested-dynamic-union-scrape",
+                      "reviewStatus": "Changes requested",
+                      "updatedAt": "2026-09-14T01:08:02Z"
+                    },
+                    {
+                      "number": 2529,
+                      "title": "fix(web_core): make the setter for a binding-only prop callable",
+                      "repository": "a2ui-project/a2ui",
+                      "prRef": "a2ui-project/a2ui#2529",
+                      "branch": "fix/web_core-binding-only-prop-setter",
+                      "reviewStatus": "Changes requested",
+                      "updatedAt": "2026-09-14T01:08:00Z"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "outcome": "completed",
+      "durationMs": 51612
+    }
+  ]
+}

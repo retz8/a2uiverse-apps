@@ -29,11 +29,14 @@ FIXTURE_DIR = REPO_ROOT / "recordings" / "beats"
 # logs, and a rerun proposed then confirmed. Beats 2-4 chain onto beat 1's conversation, so
 # each acts on the run the previous turn actually painted. Beat 4 is two turns, the proposal
 # and its confirm, kept as two fixtures under one beat number. The kit retries a chain as a
-# whole, so a retried run reruns the workflow again on CircleCI.
+# whole, so a retried run reruns the workflow again on CircleCI. Beat 1's prompt is the
+# Planner's own request for the work-status turn, read from the intent journal of a live
+# composed turn and pinned verbatim (task-7.8 decision 7).
 BEATS: list[Turn] = [
     Turn(1, "recent-runs", "Recent runs",
-         "How are my recent CircleCI pipeline runs doing? Show each run's branch, commit, "
-         "outcome and its workflows."),
+         "Show recent pipeline runs for my branches and commits as a compact list. For each run, "
+         "include the repository, branch name, commit hash or message, build status, and the full "
+         "date and time of the run."),
     Turn(2, "run-detail", "Run detail",
          "Open the most recent failed run.", chains=True),
     Turn(3, "job-failure", "Failed job logs",

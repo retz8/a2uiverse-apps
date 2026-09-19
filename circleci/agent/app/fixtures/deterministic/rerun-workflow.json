@@ -4,8 +4,7 @@
     "updateDataModel": {
       "surfaceId": "rerun-proposal",
       "value": {
-        "project": "a2uiverse",
-        "branch": "ci/failing-format-demo"
+        "project": "a2uiverse"
       }
     }
   },
@@ -14,6 +13,7 @@
     "updateDataModel": {
       "surfaceId": "rerun-proposal",
       "value": {
+        "branch": "synthesizer-effort-apart-from-planner",
         "workflow": "verify"
       }
     }
@@ -23,7 +23,7 @@
     "updateDataModel": {
       "surfaceId": "rerun-proposal",
       "value": {
-        "workflowId": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7"
+        "workflowId": "6da68785-d209-4441-95a9-174080b2428c"
       }
     }
   },
@@ -34,9 +34,9 @@
       "path": "/",
       "value": {
         "project": "a2uiverse",
-        "branch": "ci/failing-format-demo",
+        "branch": "synthesizer-effort-apart-from-planner",
         "workflow": "verify",
-        "workflowId": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7",
+        "workflowId": "6da68785-d209-4441-95a9-174080b2428c",
         "scope": "Only the failed jobs and what depends on them"
       }
     }

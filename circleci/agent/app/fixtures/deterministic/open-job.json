@@ -5,7 +5,7 @@
       "surfaceId": "job-failure",
       "value": {
         "job": {
-          "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
+          "id": "4b5fd10b-e26a-48db-b138-cf0fa64e8c9d",
           "name": "lint-format"
         }
       }
@@ -17,9 +17,9 @@
       "surfaceId": "job-failure",
       "value": {
         "job": {
-          "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
+          "id": "4b5fd10b-e26a-48db-b138-cf0fa64e8c9d",
           "name": "lint-format",
-          "workflowId": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7"
+          "workflowId": "6da68785-d209-4441-95a9-174080b2428c"
         }
       }
     }
@@ -49,7 +49,7 @@
             "text": "Checking formatting..."
           },
           {
-            "text": "[warn] scripts/ci-format-demo.mjs"
+            "text": "[warn] apps/orchestrator/src/config.ts"
           }
         ]
       }
@@ -68,10 +68,10 @@
             "text": "Checking formatting..."
           },
           {
-            "text": "[warn] scripts/ci-format-demo.mjs"
+            "text": "[warn] apps/orchestrator/src/config.ts"
           },
           {
-            "text": "[warn] Code style issues found in the above file. Run"
+            "text": "[warn] Code style issues found in the above file."
           }
         ]
       }
@@ -90,7 +90,7 @@
             "text": "Checking formatting..."
           },
           {
-            "text": "[warn] scripts/ci-format-demo.mjs"
+            "text": "[warn] apps/orchestrator/src/config.ts"
           },
           {
             "text": "[warn] Code style issues found in the above file. Run Prettier with --write to fix."
@@ -106,12 +106,37 @@
     "version": "v0.9",
     "updateDataModel": {
       "surfaceId": "job-failure",
+      "value": {
+        "lines": [
+          {
+            "text": "$ prettier --check ."
+          },
+          {
+            "text": "Checking formatting..."
+          },
+          {
+            "text": "[warn] apps/orchestrator/src/config.ts"
+          },
+          {
+            "text": "[warn] Code style issues found in the above file. Run Prettier with --write to fix."
+          },
+          {
+            "text": "[ELIFECYCLE] Command failed with exit code 1."
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "job-failure",
       "path": "/",
       "value": {
         "job": {
-          "id": "de70b257-e61a-45cb-bcfd-96304e9a0485",
+          "id": "4b5fd10b-e26a-48db-b138-cf0fa64e8c9d",
           "name": "lint-format",
-          "workflowId": "37bd8935-93cd-42ab-92ef-01e0a09c9ce7"
+          "workflowId": "6da68785-d209-4441-95a9-174080b2428c"
         },
         "step": {
           "name": "Format check",
@@ -125,7 +150,7 @@
             "text": "Checking formatting..."
           },
           {
-            "text": "[warn] scripts/ci-format-demo.mjs"
+            "text": "[warn] apps/orchestrator/src/config.ts"
           },
           {
             "text": "[warn] Code style issues found in the above file. Run Prettier with --write to fix."
