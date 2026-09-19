@@ -70,6 +70,8 @@ path — `{"context": {"issueId": {"path": "id"}}}` — so every row carries its
 - The properties follow as labelled rows — **Status**, **Priority**, **Assignee**, **Labels** —
   each label in the caption register and its value beside it.
 - The description follows as written, in the body register. Never summarize it in its place.
+- A description and a comment body are Markdown. Bind each as written to a body-register `Text`,
+  which renders it; never to a caption or a heading, which show its syntax raw.
 - Linked pull requests and the branch follow the description, each a row of its own: a pull
   request by its title with its number in the caption register; the branch by its name, exactly
   as the payload spells it, in the caption register.

@@ -48,6 +48,9 @@
             "priority": "High",
             "labels": "Bug",
             "updated": "Sep 18"
+          },
+          {
+            "id": "A2U-6"
           }
         ]
       }
@@ -95,7 +98,8 @@
             "id": "A2U-6",
             "title": "Name the workflow, not its id, in the confirm status line",
             "status": "In Progress",
-            "statusType": "started"
+            "statusType": "started",
+            "priority": "Medium"
           }
         ]
       }

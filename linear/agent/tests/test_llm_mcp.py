@@ -1,4 +1,4 @@
-"""Offline assertions on the hosted Linear MCP wiring (task-7.3 decisions 1 and 6).
+"""Offline assertions on the hosted Linear MCP wiring (task-7.3 decisions 1, 6 and 11).
 
 No test here touches the network: McpToolset connects lazily, so construction is offline.
 
@@ -10,16 +10,26 @@ it has to be a deliberate edit to a test, not a quiet edit to a tuple.
 
 from __future__ import annotations
 
+import json
+
+import httpx
 import pytest
 
+from app import mcp
 from app.mcp import (
     LINEAR_MCP_URL,
     LINEAR_TOOLS,
+    PLACEHOLDER_EMAIL,
     TOKEN_ENV,
+    AccountEmailUnavailableError,
     MissingLinearTokenError,
+    RecordingMcpTool,
+    _jsonrpc_message,
+    build_live_toolset,
     linear_connection_params,
     linear_token,
     mcp_headers,
+    replace_email,
 )
 
 # What the server exposes (live tools/list, 2026-09-18) that this agent does not hold.
@@ -123,3 +133,74 @@ def test_connection_params_carry_the_endpoint_and_the_header(monkeypatch):
     params = linear_connection_params()
     assert params.url == LINEAR_MCP_URL
     assert params.headers == {"Authorization": "Bearer t0k"}
+
+
+# The key's own email address in a recording (task-7.3 decision 11).
+
+ADDRESS = "someone@example.org"
+
+
+@pytest.fixture
+def armed(monkeypatch, tmp_path):
+    monkeypatch.setenv("A2UI_RECORD_DIR", str(tmp_path))
+    monkeypatch.setenv(TOKEN_ENV, "t0k")
+    monkeypatch.setattr(RecordingMcpTool, "scrubbed_email", None)
+    return tmp_path
+
+
+def _result() -> dict:
+    user = {"name": "Someone@Example.org", "email": ADDRESS, "displayName": "someone"}
+    return {
+        "content": [{"type": "text", "text": json.dumps(user)}],
+        "structuredContent": user,
+        "isError": False,
+    }
+
+
+def _tool(name: str) -> RecordingMcpTool:
+    tool = object.__new__(RecordingMcpTool)
+    tool.name = name
+    return tool
+
+
+def test_the_swap_reaches_both_copies_of_a_result_in_any_case():
+    swapped = replace_email(_result(), ADDRESS)
+    assert ADDRESS not in json.dumps(swapped).lower()
+    assert swapped["structuredContent"]["email"] == PLACEHOLDER_EMAIL
+    assert swapped["structuredContent"]["name"] == PLACEHOLDER_EMAIL
+    assert json.loads(swapped["content"][0]["text"])["email"] == PLACEHOLDER_EMAIL
+    assert swapped["structuredContent"]["displayName"] == "someone"
+
+
+def test_record_mode_swaps_before_the_model_reads_and_captures_the_swapped_payload(armed):
+    RecordingMcpTool.scrubbed_email = ADDRESS
+    returned = _tool("get_user").shape_result(_result())
+    assert ADDRESS not in json.dumps(returned).lower()
+    captured = (armed / "payloads" / "get_user.jsonl").read_text(encoding="utf-8")
+    assert ADDRESS not in captured.lower() and PLACEHOLDER_EMAIL in captured
+
+
+def test_outside_record_mode_a_result_is_untouched(monkeypatch):
+    monkeypatch.delenv("A2UI_RECORD_DIR", raising=False)
+    monkeypatch.setattr(RecordingMcpTool, "scrubbed_email", ADDRESS)
+    assert _tool("get_user").shape_result(_result()) == _result()
+
+
+def test_a_recording_that_cannot_learn_the_address_does_not_start(armed, monkeypatch):
+    def unavailable(token: str) -> str:
+        raise AccountEmailUnavailableError("no email")
+
+    monkeypatch.setattr(mcp, "account_email", unavailable)
+    with pytest.raises(AccountEmailUnavailableError):
+        build_live_toolset()
+
+
+def test_arming_the_recorder_arms_the_swap(armed, monkeypatch):
+    monkeypatch.setattr(mcp, "account_email", lambda token: ADDRESS)
+    build_live_toolset()
+    assert RecordingMcpTool.scrubbed_email == ADDRESS
+
+
+def test_a_streamed_answer_is_read_from_its_event():
+    response = httpx.Response(200, text='event: message\ndata: {"jsonrpc": "2.0", "id": 2}\n\n')
+    assert _jsonrpc_message(response) == {"jsonrpc": "2.0", "id": 2}

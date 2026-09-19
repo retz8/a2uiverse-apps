@@ -39,10 +39,46 @@
 }
 
 /* The issue title keeps to one line inside a row. */
-.linear-catalog button .body {
+.linear-catalog button .body,
+.linear-catalog button .body > p {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+/*
+ * Body text arrives as rendered Markdown (see markdown.ts): its blocks sit flush with the text
+ * around them and are spaced only from each other.
+ */
+.linear-catalog .body > p,
+.linear-catalog .body > ul,
+.linear-catalog .body > ol,
+.linear-catalog .body > pre,
+.linear-catalog .body > blockquote {
+  margin: 0;
+}
+
+.linear-catalog .body > * + * {
+  margin-top: 0.5em;
+}
+
+.linear-catalog .body ul,
+.linear-catalog .body ol {
+  padding-left: 1.25em;
+}
+
+.linear-catalog .body code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.9em;
+  padding: 0.0625rem 0.25rem;
+  border-radius: 4px;
+  background: var(--a2ui-color-secondary, #ededed);
+}
+
+.linear-catalog .body pre code {
+  display: block;
+  padding: 0.5rem 0.75rem;
+  overflow-x: auto;
 }
 
 /* The detail title sits between medium and semibold. */

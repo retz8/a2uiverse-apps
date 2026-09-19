@@ -12,6 +12,11 @@ appends two product components, the two marks every row of Linear's issue list c
 - **`PriorityIcon`** — an issue's priority: three rising bars filled by level, a filled square
   with an exclamation mark for urgent, three dashes for no priority.
 
+The `Provider` also installs the bundle's markdown renderer (`src/markdown.ts`) through upstream's
+`MarkdownContext`, because Linear writes descriptions and comments in Markdown: body text inside a
+Linear fragment renders the subset the basic `Text` promises — raw HTML escaped, a link as its
+text, an image as its alt text — and text anywhere else on the page is untouched.
+
 The basic catalog cannot vary a row's look by data — a text variant is fixed per template — so a
 per-row drawn state needs a component of its own (SPEC §9.2). The rest of the product identity is
 the `Provider`'s tokens and the scoped theme sheet.
@@ -26,7 +31,8 @@ where, and which values stand in for an appearance that had no sample.
 | ------------------------------ | --------------------------------------------------------------------------------------------------------- |
 | `catalogs/v0.9.1/catalog.json` | Upstream's basic catalog with four identity fields rewritten (`$id`, `catalogId`, `title`, `description`) |
 | `src/catalog.ts`               | The runtime catalog: `basicCatalog`'s components and functions, verbatim, plus the two icons              |
-| `src/provider.tsx`             | The token theme, light and dark, sampled from Linear's web app                                            |
+| `src/provider.tsx`             | The token theme, light and dark, sampled from Linear's web app; installs the markdown renderer            |
+| `src/markdown.ts`              | The markdown renderer: the basic `Text`'s subset, no HTML, links or images                                |
 | `src/theme.css`                | The product sheet, scoped to the Provider's wrapper: rows, the icons' colors, buttons                     |
 | `src/catalog.parity.test.ts`   | Schema ↔ runtime lockstep, and the upstream-drift detector                                                |
 

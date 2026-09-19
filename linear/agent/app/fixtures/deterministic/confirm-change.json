@@ -33,7 +33,7 @@
     "updateDataModel": {
       "surfaceId": "issue-detail",
       "value": {
-        "assignee": "ekkicb71@gmail.com",
+        "assignee": "Jioh In",
         "labels": "Bug"
       }
     }
@@ -88,21 +88,6 @@
     "version": "v0.9",
     "updateDataModel": {
       "surfaceId": "issue-detail",
-      "value": {
-        "comments": [
-          {
-            "author": "GitHub",
-            "when": "Sep 18",
-            "body": "This comment thread is synced to a corresponding [GitHub issue](https://github.com/retz8/a2uiverse/issues/3). All replies are displayed in both locations."
-          }
-        ]
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "issue-detail",
       "path": "/",
       "value": {
         "id": "A2U-5",
@@ -110,7 +95,7 @@
         "status": "In Review",
         "statusType": "started",
         "priority": "High",
-        "assignee": "ekkicb71@gmail.com",
+        "assignee": "Jioh In",
         "labels": "Bug",
         "description": "A failed utterance leaves the canvas idle with no word: the palette closes and nothing paints, and the failure shows up only in the orchestrator's log. Found in the CircleCI app's canvas pass (7.2).\n\nThe canvas should say the turn failed, in words, where the answer would have painted.",
         "pullRequests": [
@@ -383,16 +368,16 @@
           "variant": "caption"
         },
         {
+          "id": "divider-2",
+          "component": "Divider"
+        },
+        {
           "id": "activity",
           "component": "Column",
           "children": {
             "path": "/comments",
             "componentId": "comment"
           }
-        },
-        {
-          "id": "divider-2",
-          "component": "Divider"
         },
         {
           "id": "comment",

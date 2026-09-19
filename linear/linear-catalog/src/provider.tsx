@@ -11,6 +11,8 @@
  * Everything not set here falls through to the basic catalog's defaults.
  */
 import {useEffect, useState, type CSSProperties, type ReactNode} from 'react';
+import {MarkdownContext} from '@a2ui/react/v0_9';
+import {renderMarkdown} from './markdown.js';
 
 const DARK = '(prefers-color-scheme: dark)';
 
@@ -136,7 +138,8 @@ export const TOKENS_DARK = {...STRUCTURE, ...DARK_TOKENS} as const satisfies Rec
 
 /**
  * Wraps every linear-catalog surface. `display: contents` keeps the wrapper out of layout;
- * custom properties still cascade to the subtree.
+ * custom properties still cascade to the subtree. The bundle's markdown renderer is installed
+ * here, so body text inside a Linear fragment renders as Markdown and nowhere else does.
  */
 export function Provider({children}: {children: ReactNode}) {
   const tokens = useSystemAppearance() === 'dark' ? TOKENS_DARK : TOKENS;
@@ -148,7 +151,7 @@ export function Provider({children}: {children: ReactNode}) {
       className="linear-catalog"
       style={{display: 'contents', fontFamily: FONT_STACK, ...tokens} as CSSProperties}
     >
-      {children}
+      <MarkdownContext.Provider value={renderMarkdown}>{children}</MarkdownContext.Provider>
     </div>
   );
 }

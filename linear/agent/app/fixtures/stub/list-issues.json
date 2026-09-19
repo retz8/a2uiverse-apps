@@ -1,6 +1,40 @@
 {
   "issues": [
     {
+      "id": "A2U-5",
+      "uuid": "fb78160d-bbd7-4e2e-a7a0-88fea9319656",
+      "title": "Say on the canvas when an utterance fails",
+      "description": "A failed utterance leaves the canvas idle with no word: the palette closes and nothing paints, and the failure shows up only in the orchestrator's log. Found in the CircleCI app's canvas pass (7.2).\n\nThe canvas should say the turn failed, in words, where the answer would have painted.",
+      "priority": {
+        "value": 2,
+        "name": "High"
+      },
+      "url": "https://linear.app/a2uiverse/issue/A2U-5/say-on-the-canvas-when-an-utterance-fails",
+      "gitBranchName": "ekkicb71/a2u-5-say-on-the-canvas-when-an-utterance-fails",
+      "createdAt": "2026-09-18T11:50:56.302Z",
+      "updatedAt": "2026-09-18T13:42:55.227Z",
+      "archivedAt": null,
+      "completedAt": null,
+      "startedAt": "2026-09-18T11:52:45.328Z",
+      "canceledAt": null,
+      "dueDate": null,
+      "slaStartedAt": null,
+      "slaMediumRiskAt": null,
+      "slaHighRiskAt": null,
+      "slaBreachesAt": null,
+      "status": "In Progress",
+      "statusType": "started",
+      "labels": [
+        "Bug"
+      ],
+      "createdBy": "Jioh In",
+      "createdById": "84952ecc-c607-4bc3-8dbc-b8d03029ba59",
+      "assignee": "Jioh In",
+      "assigneeId": "84952ecc-c607-4bc3-8dbc-b8d03029ba59",
+      "team": "A2uiverse",
+      "teamId": "210dbbff-2acb-4c57-b2be-8369f6177bb9"
+    },
+    {
       "id": "A2U-6",
       "uuid": "d94350be-8d65-4d77-8527-bc0757ef9294",
       "title": "Name the workflow, not its id, in the confirm status line",
@@ -27,43 +61,9 @@
       "labels": [
         "Improvement"
       ],
-      "createdBy": "ekkicb71@gmail.com",
+      "createdBy": "Jioh In",
       "createdById": "84952ecc-c607-4bc3-8dbc-b8d03029ba59",
-      "assignee": "ekkicb71@gmail.com",
-      "assigneeId": "84952ecc-c607-4bc3-8dbc-b8d03029ba59",
-      "team": "A2uiverse",
-      "teamId": "210dbbff-2acb-4c57-b2be-8369f6177bb9"
-    },
-    {
-      "id": "A2U-5",
-      "uuid": "fb78160d-bbd7-4e2e-a7a0-88fea9319656",
-      "title": "Say on the canvas when an utterance fails",
-      "description": "A failed utterance leaves the canvas idle with no word: the palette closes and nothing paints, and the failure shows up only in the orchestrator's log. Found in the CircleCI app's canvas pass (7.2).\n\nThe canvas should say the turn failed, in words, where the answer would have painted.",
-      "priority": {
-        "value": 2,
-        "name": "High"
-      },
-      "url": "https://linear.app/a2uiverse/issue/A2U-5/say-on-the-canvas-when-an-utterance-fails",
-      "gitBranchName": "ekkicb71/a2u-5-say-on-the-canvas-when-an-utterance-fails",
-      "createdAt": "2026-09-18T11:50:56.302Z",
-      "updatedAt": "2026-09-18T11:52:45.344Z",
-      "archivedAt": null,
-      "completedAt": null,
-      "startedAt": "2026-09-18T11:52:45.328Z",
-      "canceledAt": null,
-      "dueDate": null,
-      "slaStartedAt": null,
-      "slaMediumRiskAt": null,
-      "slaHighRiskAt": null,
-      "slaBreachesAt": null,
-      "status": "In Progress",
-      "statusType": "started",
-      "labels": [
-        "Bug"
-      ],
-      "createdBy": "ekkicb71@gmail.com",
-      "createdById": "84952ecc-c607-4bc3-8dbc-b8d03029ba59",
-      "assignee": "ekkicb71@gmail.com",
+      "assignee": "Jioh In",
       "assigneeId": "84952ecc-c607-4bc3-8dbc-b8d03029ba59",
       "team": "A2uiverse",
       "teamId": "210dbbff-2acb-4c57-b2be-8369f6177bb9"
@@ -95,9 +95,9 @@
       "labels": [
         "Bug"
       ],
-      "createdBy": "ekkicb71@gmail.com",
+      "createdBy": "Jioh In",
       "createdById": "84952ecc-c607-4bc3-8dbc-b8d03029ba59",
-      "assignee": "ekkicb71@gmail.com",
+      "assignee": "Jioh In",
       "assigneeId": "84952ecc-c607-4bc3-8dbc-b8d03029ba59",
       "team": "A2uiverse",
       "teamId": "210dbbff-2acb-4c57-b2be-8369f6177bb9"

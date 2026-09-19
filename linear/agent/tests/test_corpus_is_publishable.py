@@ -14,6 +14,8 @@ from pathlib import Path
 
 from dotenv import dotenv_values
 
+from app.mcp import PLACEHOLDER_EMAIL
+
 AGENT = Path(__file__).resolve().parents[1]
 
 # Directories whose contents are committed and therefore published.
@@ -72,8 +74,44 @@ def test_no_tracked_artifact_carries_a_secret():
     )
 
 
+# Any email address. The recorder replaces the key's own address with the placeholder (task-7.3
+# decision 11), so a recorded corpus may hold the placeholder and Linear's own system addresses —
+# its built-in app user, `linear-<workspace id>@linear.linear.app`, which `list_users` returns
+# beside the people. Any other address is either the key's own, escaped, or a person's, and
+# neither is published unexamined.
+EMAIL_SHAPE = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}")
+LINEAR_SYSTEM_DOMAIN = "@linear.linear.app"
+
+
+def _addresses(text: str) -> list[str]:
+    return [
+        a
+        for a in EMAIL_SHAPE.findall(text)
+        if a.lower() != PLACEHOLDER_EMAIL and not a.lower().endswith(LINEAR_SYSTEM_DOMAIN)
+    ]
+
+
+def test_no_tracked_artifact_carries_an_email_address():
+    offenders = sorted(
+        {
+            f"{path.relative_to(AGENT)}: {address}"
+            for path in _tracked_files()
+            for address in _addresses(path.read_text(encoding="utf-8"))
+        }
+    )
+    assert not offenders, (
+        "tracked artifacts carry an email address other than the placeholder. Re-record with "
+        "the recorder armed (it replaces the key's own address); an address that is not the "
+        "key's is a decision to make before publishing.\n  " + "\n  ".join(offenders)
+    )
+
+
 def test_the_guard_would_catch_a_leak():
     # A guard nobody has seen fail is a guard nobody knows works.
     assert _leaks('{"note": "LINEAR_MCP_TOKEN=lin_api_AbCdEf0123456789XyZ"}')
     assert _leaks('{"h": "Authorization: Bearer abcdefghijklmnopqrstu"}')
     assert not _leaks('{"gitBranchName": "ekkicb71/a2u-5-tighten-the-sort-comparator"}')
+    assert _addresses('{"assignee": "someone@example.org"}')
+    assert not _addresses(f'{{"email": "{PLACEHOLDER_EMAIL}"}}')
+    assert not _addresses('{"email": "linear-ee2c649c@linear.linear.app"}')
+    assert _addresses('{"email": "someone@linear.app"}')

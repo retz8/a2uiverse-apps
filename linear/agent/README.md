@@ -114,6 +114,13 @@ workspace.
 
 The recorded corpus is what the other two run modes are built from: the MCP payloads become
 `app/fixtures/stub/` (the stub backend's data) and the settled painted streams become
-`app/fixtures/deterministic/`. Neither is hand-authored. Nothing is pseudonymized — the data is
-the user's own workspace — and `tests/test_corpus_is_publishable.py` fails the corpus on anything
-token-shaped, and on the configured key itself.
+`app/fixtures/deterministic/`. Neither is hand-authored. Values stay real with one exception: when
+the recorder arms, the agent asks Linear for the key's own email address and replaces it with
+`me@example.com` in every result before the model reads it, so neither the payloads nor the painted
+streams hold it; a recording that cannot learn the address does not start. The username, and the
+branch names built on it, stay real. `tests/test_corpus_is_publishable.py` fails the corpus on
+anything token-shaped, on the configured key itself, and on any email address other than the
+placeholder.
+
+Set a full name on the Linear account before recording: without one, Linear uses the email address
+as the user's name, and every assignee and author then records as the placeholder.
