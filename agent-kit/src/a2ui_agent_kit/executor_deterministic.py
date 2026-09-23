@@ -9,9 +9,8 @@ from __future__ import annotations
 from a2a.server.agent_execution import AgentExecutor, RequestContext
 from a2a.server.events import EventQueue
 from a2a.server.tasks import TaskUpdater
-from a2a.types import DataPart, Part, Task, TaskState, TextPart, UnsupportedOperationError
+from a2a.types import DataPart, Part, Task, TaskState, TextPart
 from a2a.utils import new_agent_parts_message, new_task
-from a2a.utils.errors import ServerError
 from a2ui.a2a.parts import create_a2ui_part
 
 from a2ui_agent_kit.config import BuildResponse, BuildTextResponse
@@ -71,4 +70,8 @@ class DeterministicAgentExecutor(AgentExecutor):
         )
 
     async def cancel(self, context: RequestContext, event_queue: EventQueue) -> Task | None:
-        raise ServerError(error=UnsupportedOperationError())
+        # Nothing of its own to stop: a turn is one completed final, and the SDK answers
+        # a task that already ended not cancelable without calling here. A cancel that
+        # lands before that final is answered with a bare `canceled` (task-8.9 decision 3).
+        await TaskUpdater(event_queue, context.task_id, context.context_id).cancel()
+        return None

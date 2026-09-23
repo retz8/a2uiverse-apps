@@ -6,6 +6,7 @@ app's config; the streaming/retry machinery is vendor-free.
 
 from __future__ import annotations
 
+import asyncio
 import contextlib
 import json
 import logging
@@ -15,9 +16,8 @@ from datetime import datetime, timezone
 from a2a.server.agent_execution import AgentExecutor, RequestContext
 from a2a.server.events import EventQueue
 from a2a.server.tasks import TaskUpdater
-from a2a.types import DataPart, Part, Task, TaskState, TextPart, UnsupportedOperationError
+from a2a.types import DataPart, Part, Task, TaskState, TextPart
 from a2a.utils import new_agent_parts_message, new_task
-from a2a.utils.errors import ServerError
 from a2ui.a2a.parts import create_a2ui_part
 from a2ui.parser.parser import parse_response
 from a2ui.parser.streaming_v09 import A2uiStreamParserV09
@@ -388,7 +388,21 @@ class LlmAgentExecutor(AgentExecutor):
             prompt=prompt,
             action=action,
         )
+        try:
+            await self._attempts(prompt, task, updater)
+        except asyncio.CancelledError:
+            # tasks/cancel: once `cancel` has answered `canceled`, the SDK cancels this
+            # run. The CancelledError lands on whatever the attempt was awaiting — the
+            # model stream or an enqueue — and the attempt's finally closes the model
+            # stream, and with it ADK's run; no further attempt starts. An MCP call
+            # already sent is abandoned: its server finishes it and the reply goes
+            # nowhere (task-8.9 decision 2).
+            logger.info("task %s canceled", task.id)
+            self._recorder.end_turn("canceled", task_id=task.id)
+            raise
 
+    async def _attempts(self, prompt: str, task: Task, updater: TaskUpdater) -> None:
+        """One turn's model attempts, until a surface lands or the attempts run out."""
         # One parser persisted across attempts. Its dedup caches make a retry patch the
         # surface attempt 1 created — createSurface and unchanged components are
         # suppressed, only changed/new components stream as updateComponents — instead of
@@ -643,4 +657,7 @@ class LlmAgentExecutor(AgentExecutor):
     async def cancel(
         self, context: RequestContext, event_queue: EventQueue
     ) -> Task | None:
-        raise ServerError(error=UnsupportedOperationError())
+        # A bare `canceled` (task-8.9 decision 3). The SDK then cancels the running
+        # execute(), which stops the model (see there).
+        await TaskUpdater(event_queue, context.task_id, context.context_id).cancel()
+        return None

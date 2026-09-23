@@ -1137,3 +1137,65 @@ async def test_undeclared_surfaceless_response_still_retries():
     assert responder.calls == 2
     assert responder.corrections[1] is not None
     assert "no A2UI surface" in responder.corrections[1]
+
+
+# ---- task 8.9: the kit honours A2A's cancel ----
+
+import asyncio  # noqa: E402
+from types import SimpleNamespace  # noqa: E402
+
+from a2a.types import TaskState, TaskStatusUpdateEvent  # noqa: E402
+
+
+class _HangingResponder:
+    """Streams one prose chunk, then waits on the model for ever."""
+
+    def __init__(self):
+        self.calls = 0
+        self.closed = 0
+        self.waiting = asyncio.Event()
+
+    async def stream(self, prompt, correction=None, context_id=None):
+        self.calls += 1
+        try:
+            yield "Looking up your pull requests. "
+            self.waiting.set()
+            await asyncio.Event().wait()
+            yield "never reached"
+        finally:
+            self.closed += 1
+
+
+@pytest.mark.asyncio
+async def test_a_cancel_is_answered_with_a_bare_canceled():
+    queue = _FakeQueue()
+    await _executor(_HangingResponder()).cancel(
+        SimpleNamespace(task_id="t1", context_id="c1"), queue
+    )
+
+    (event,) = queue.events
+    assert isinstance(event, TaskStatusUpdateEvent)
+    assert (event.task_id, event.context_id) == ("t1", "c1")
+    assert event.status.state == TaskState.canceled
+    assert event.final is True
+    assert event.status.message is None
+
+
+@pytest.mark.asyncio
+async def test_a_cancel_mid_stream_closes_the_model_stream_and_starts_no_further_attempt(tmp_path):
+    responder = _HangingResponder()
+    executor = _executor(responder, recorder=create_recorder(str(tmp_path)))
+    run = asyncio.create_task(executor.execute(_Ctx("show me open PRs"), _FakeQueue()))
+    await asyncio.wait_for(responder.waiting.wait(), timeout=5)
+
+    run.cancel()  # what the SDK does to execute() once cancel() has answered
+    with pytest.raises(asyncio.CancelledError):
+        await run
+
+    assert responder.calls == 1  # no second attempt
+    assert responder.closed == 1  # the model stream closed in-task
+    (turn,) = _recorded_session(tmp_path)["turns"]
+    assert turn["outcome"] == "canceled"
+    assert [t for batch in turn["batches"] for t in batch["texts"]] == [
+        "Looking up your pull requests. "
+    ]

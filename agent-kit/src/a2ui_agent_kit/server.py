@@ -10,7 +10,6 @@ from __future__ import annotations
 
 from a2a.server.apps import A2AStarletteApplication
 from a2a.server.request_handlers import DefaultRequestHandler
-from a2a.server.tasks import InMemoryTaskStore
 from a2a.types import AgentCapabilities, AgentCard
 from a2ui.a2a.extension import get_a2ui_agent_extension
 from a2ui.schema.constants import VERSION_0_9_1
@@ -19,6 +18,7 @@ from starlette.middleware.cors import CORSMiddleware
 from a2ui_agent_kit.catalog import catalog_context
 from a2ui_agent_kit.config import AgentAppConfig
 from a2ui_agent_kit.modes import resolve_executor
+from a2ui_agent_kit.task_store import TerminalGuardedTaskStore
 
 CORS_ORIGIN_REGEX = r"^(http://localhost:\d+|https://[a-z0-9-]+\.[a-z]+\.devtunnels\.ms)$"
 
@@ -55,7 +55,7 @@ def build_app(
     base_url = base_url or f"http://{host}:{port}"
     handler = DefaultRequestHandler(
         agent_executor=resolve_executor(config, mode),
-        task_store=InMemoryTaskStore(),
+        task_store=TerminalGuardedTaskStore(),
     )
     server = A2AStarletteApplication(
         agent_card=build_agent_card(config, base_url), http_handler=handler

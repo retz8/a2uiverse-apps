@@ -43,7 +43,7 @@ class NullRecorder:
 
     def record_batch(self, _parts: list[Part]) -> None: ...
 
-    def end_turn(self, _outcome: str) -> None: ...
+    def end_turn(self, _outcome: str, *, task_id: str | None = None) -> None: ...
 
 
 class SessionRecorder:
@@ -107,8 +107,16 @@ class SessionRecorder:
             }
         )
 
-    def end_turn(self, outcome: str) -> None:
+    def end_turn(self, outcome: str, *, task_id: str | None = None) -> None:
+        """Closes the held turn with `outcome` and rewrites its conversation's file.
+
+        With `task_id`, only when the held turn is that task's. A cancel passes it: under
+        Retry's race a turn started since has replaced the cancelled one, and must not
+        take its outcome (task-8.9 decision 6).
+        """
         if self._turn is None:
+            return
+        if task_id is not None and self._turn["taskId"] != task_id:
             return
         self._turn["outcome"] = outcome
         self._turn["durationMs"] = int((time.monotonic() - self._started) * 1000)

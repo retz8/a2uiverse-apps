@@ -180,3 +180,37 @@ def test_two_conversations_land_in_two_files(tmp_path):
     b = json.loads((tmp_path / "session-ctx-b.json").read_text(encoding="utf-8"))
     assert [t["prompt"] for t in a["turns"]] == ["a"]
     assert [t["prompt"] for t in b["turns"]] == ["b"]
+
+
+def test_a_cancelled_turn_is_recorded_with_what_it_streamed(tmp_path):
+    """task-8.9 decision 6: the turn happened; it lands as canceled, never as a beat."""
+    rec = create_recorder(str(tmp_path))
+    rec.start_turn(context_id="ctx", task_id="t1", kind="utterance", prompt="p")
+    rec.record_batch([_text_part("Looking up your pull requests.")])
+    rec.end_turn("canceled", task_id="t1")
+
+    (turn,) = json.loads(next(tmp_path.glob("*.json")).read_text(encoding="utf-8"))["turns"]
+    assert turn["outcome"] == "canceled"
+    assert turn["batches"][0]["texts"] == ["Looking up your pull requests."]
+
+
+def test_a_cancel_never_takes_a_turn_that_is_not_its_own(tmp_path):
+    """Retry's race: the re-dispatch's turn replaced the one being cancelled."""
+    rec = create_recorder(str(tmp_path))
+    rec.start_turn(context_id="ctx", task_id="original", kind="utterance", prompt="p")
+    rec.start_turn(context_id="ctx", task_id="retry", kind="utterance", prompt="p")
+    rec.record_batch([_a2ui_part("s1")])
+    rec.end_turn("canceled", task_id="original")
+    assert list(tmp_path.glob("*.json")) == []
+
+    rec.end_turn("completed")
+    (turn,) = json.loads(next(tmp_path.glob("*.json")).read_text(encoding="utf-8"))["turns"]
+    assert turn["taskId"] == "retry"
+    assert turn["outcome"] == "completed"
+
+
+def test_the_null_recorder_accepts_a_cancel(tmp_path):
+    rec = create_recorder(None)
+    rec.start_turn(context_id="ctx", task_id="t", kind="utterance", prompt="p")
+    rec.end_turn("canceled", task_id="t")
+    assert list(tmp_path.iterdir()) == []
