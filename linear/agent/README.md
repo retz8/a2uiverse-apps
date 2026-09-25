@@ -10,7 +10,7 @@ In `live` mode it works through Linear's hosted MCP server.
 - **Creates** an issue, **updates** one — title, description, status, priority, assignee, labels — and **comments** on one. Every write is shown to you as a proposal first and runs only when you confirm.
 - **Can't** delete an issue or a comment, create a label, or work with projects, cycles, documents, initiatives or releases.
 
-10 of the server's tools are allowed, listed in `app/mcp.py`. To allow another, update that list, the pin in `tests/test_llm_mcp.py`, the stub in `app/tools.py`, and the domain doc in `app/knowledge/`, together.
+It's allowed 10 of the server's tools: the issue, comment, team, status, label and user reads, `save_issue` and `save_comment`.
 
 ## Run
 
@@ -59,6 +59,18 @@ uv run pytest tests/test_corpus_is_publishable.py
 Recording's last step **really changes** an issue's status in the workspace.
 
 Values stay real except your email: while recording, the agent replaces the key owner's address with `me@example.com` before the model reads anything. Set a full name on the Linear account first — without one, Linear shows the email as your name, and every assignee and author records as the placeholder. The last test fails the recordings on anything token-shaped or any other email address.
+
+## Allowing more tools
+
+The allowed tools are `LINEAR_TOOLS` in `app/mcp.py`. The key's Read and Write permissions already cover much more, so that list is what limits the agent.
+
+To allow a tool, change these together:
+
+1. Check its name and arguments against the server's live `tools/list`.
+2. Add it to `LINEAR_TOOLS` in `app/mcp.py`, and take it out of the withheld comment.
+3. Update the pin in `tests/test_llm_mcp.py`.
+4. Add it to the stub, `STUB_TOOLS` in `app/tools.py`, over data from a recorded run (`scripts/derive_corpus.py` writes it).
+5. Describe what it returns in `app/knowledge/linear-domain.md`. For a write, add a proposal to the prompt, so it runs only when you confirm.
 
 ## Connecting to A2UIVerse
 

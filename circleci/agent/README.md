@@ -10,7 +10,7 @@ In `live` mode it works through CircleCI's hosted MCP server.
 - **Reruns** a workflow — every job, or only the failed ones — and **cancels** a running one. Both are shown to you as a proposal first and run only when you confirm.
 - **Can't** edit config, trigger a new pipeline, approve a hold, or delete anything.
 
-9 of the server's tools are allowed, listed in `app/mcp.py`. To allow another, update that list, the pin in `tests/test_llm_mcp.py`, the stub in `app/tools.py`, and the domain doc in `app/knowledge/`, together.
+It's allowed 9 of the server's tools — the run, workflow and job reads, `rerun_workflow` and `cancel_workflow` — plus `list_projects`, a local tool over `CIRCLECI_PROJECTS`.
 
 ## Run
 
@@ -57,6 +57,18 @@ uv run pytest tests/test_corpus_is_publishable.py
 ```
 
 Recording needs a failed run in a configured project, and its last step **really reruns** that workflow on CircleCI. Nothing is pseudonymized — the data is a public repository's CI — and the last test fails the recordings if anything token-shaped got in.
+
+## Allowing more tools
+
+The allowed tools are `CIRCLECI_TOOLS` in `app/mcp.py`. The token has no scopes, so that list is what limits the agent.
+
+To allow a tool, change these together:
+
+1. Check its name and arguments against the server's live `tools/list`.
+2. Add it to `CIRCLECI_TOOLS` in `app/mcp.py`, and take it out of the withheld comment.
+3. Update the pin in `tests/test_llm_mcp.py`.
+4. Add it to the stub, `STUB_TOOLS` in `app/tools.py`, over data from a recorded run (`scripts/derive_corpus.py` writes it).
+5. Describe what it returns in `app/knowledge/circleci-domain.md`. For a write, add a proposal to the prompt, so it runs only when you confirm.
 
 ## Connecting to A2UIVerse
 

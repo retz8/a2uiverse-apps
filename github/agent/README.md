@@ -4,7 +4,7 @@ An A2A agent for GitHub. It answers GitHub questions by painting A2UI surfaces w
 
 ## What it can do
 
-In `live` mode it works through the remote GitHub MCP server with its full tool set, acting as the user who owns the token. It reads repositories, issues, pull requests and notifications, and it can comment, review, merge and edit files.
+In `live` mode it works through GitHub's remote MCP server, acting as the user who owns the token. It gets every tool the server offers, so it reads repositories, issues, pull requests and notifications, and it can comment, review, merge and edit files.
 
 - Writes that carry content — a comment, a review, an edit — are shown to you as a proposal first and run only when you confirm.
 - Quick toggles that are easy to undo run straight away.
@@ -49,6 +49,14 @@ uv run python scripts/derive_corpus.py
 ```
 
 Nothing is scrubbed: the recordings come from public repository data.
+
+## Narrowing what it can do
+
+The agent already has every tool, so there's nothing to allow; your token is the limit. To give it less:
+
+- **Scope the token.** A fine-grained token limited to some repositories and permissions limits the agent the same way.
+- **Ask for fewer toolsets.** `GITHUB_MCP_TOOLSETS` in `app/mcp.py` is sent as the server's `X-MCP-Toolsets` header. Set it to a list such as `repos,issues,pull_requests` instead of `all`, and update the pin in `tests/test_llm_mcp.py`.
+- **Read tools only.** The server also takes an `X-MCP-Readonly: true` header; add it in `mcp_headers()` in `app/mcp.py`.
 
 ## Troubleshooting
 

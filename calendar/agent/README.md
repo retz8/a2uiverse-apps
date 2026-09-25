@@ -4,14 +4,15 @@ An A2A agent for Google Calendar. It answers schedule questions by painting A2UI
 
 ## What it can do
 
-In `live` mode it works through Google's Calendar MCP server.
+In `live` mode it works through Google's Calendar MCP server, on the demo calendar only.
 
 - **Reads** events.
 - **Creates** an event, shown to you as a proposal first and created only when you confirm.
 - **Answers invitations** for you.
+- **Never notifies attendees.** Invitations and updates aren't emailed, so a proposed event says its attendees won't be told.
 - **Can't delete, cancel or change** an existing event.
 
-4 of the server's tools are allowed, listed in `app/mcp.py`. The Google scope would allow more, so a second guard applies in every mode: attendees are never notified. An event created through this agent still exists, but its attendees aren't told about it, and the proposal says so.
+It's allowed 4 of the server's tools: `list_events`, `get_event`, `create_event` and `respond_to_event`.
 
 ## The demo calendar
 
@@ -95,6 +96,20 @@ uv run pytest tests/test_corpus_is_publishable.py
 ```
 
 Nothing is pseudonymized: the demo calendar holds nothing private.
+
+## Allowing more tools
+
+The allowed tools are `CALENDAR_TOOLS` in `app/mcp.py`; the rest of the server's tools are in `WITHHELD_TOOLS` beside it. The Google login's `calendar.events` scope already covers changing and deleting events, so that list is what limits the agent.
+
+To allow a tool, change these together:
+
+1. Check its name and arguments against the server's live `tools/list`.
+2. Move it from `WITHHELD_TOOLS` to `CALENDAR_TOOLS` in `app/mcp.py`.
+3. Update the pin in `tests/test_llm_mcp.py`.
+4. Add it to the stub, `STUB_TOOLS` in `app/tools.py`, over data from a recorded run (`scripts/derive_corpus.py` writes it).
+5. Describe what it returns in `app/knowledge/calendar-domain.md`. For a write, add a proposal to the prompt, so it runs only when you confirm.
+
+Every call still stays on the demo calendar and notifies no one; `app/tool_shaping.py` enforces both.
 
 ## Connecting to A2UIVerse
 

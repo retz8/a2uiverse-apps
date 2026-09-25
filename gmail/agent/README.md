@@ -7,11 +7,12 @@ An A2A agent for Gmail. It answers mail questions by painting A2UI surfaces with
 In `live` mode it works through Google's Gmail MCP server.
 
 - **Reads** threads, messages, labels and drafts.
-- **Writes** drafts and labels. A draft is shown to you as a proposal first and saved only when you confirm.
+- **Saves drafts**, shown to you as a proposal first and saved only when you confirm.
+- **Adds and removes labels**, and creates new ones, straight away.
 - **Can't send mail**: the Gmail MCP server has no send tool.
 - **Can't trash, mark as spam or delete** anything, its own drafts included.
 
-12 of the server's tools are allowed, listed in `app/mcp.py`. That list is the only thing holding back trash and spam, because Gmail has no scope that allows labels without also allowing them.
+It's allowed 12 of the server's tools: the reads, `create_draft`, and the label tools.
 
 ## Run
 
@@ -82,6 +83,20 @@ uv run pytest tests/test_corpus_is_publishable.py
 ```
 
 **Setting `A2UI_RECORD_DIR` also turns on pseudonymization.** Every mail payload gets stand-in names and subjects before the model sees it, so no real mail reaches the recordings or the model provider. The stand-ins are seeded, so re-recording gives the same ones.
+
+## Allowing more tools
+
+The allowed tools are `GMAIL_TOOLS` in `app/mcp.py`; the ones held back are named in the comment under it. The Google login's `gmail.modify` scope already covers trash and spam, so that list is what limits the agent.
+
+To allow a tool, change these together:
+
+1. Check its name and arguments against the server's live `tools/list`.
+2. Add it to `GMAIL_TOOLS` in `app/mcp.py`, and take it out of the comment.
+3. Update the pin in `tests/test_llm_mcp.py`.
+4. Add it to the stub, `STUB_TOOLS` in `app/tools.py`, over data from a recorded run (`scripts/derive_corpus.py` writes it).
+5. Describe what it returns in `app/knowledge/gmail-domain.md`. For a write, add a proposal to the prompt, so it runs only when you confirm.
+
+A tool that needs a scope the login doesn't have also needs it in `GMAIL_SCOPES` in `app/mcp.py` and in the login command above.
 
 ## Connecting to A2UIVerse
 
