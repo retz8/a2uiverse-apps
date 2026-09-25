@@ -1,13 +1,13 @@
 # CircleCI agent
 
-The CircleCI app's A2A agent. It answers CI questions on the A2UIVerse canvas and paints its answers with [`circleci-catalog`](../circleci-catalog/), the basic A2UI catalog in CircleCI's look. It runs on port **11004** and is built on the [agent kit](../../agent-kit/).
+An A2A agent for CircleCI. It answers CI questions by painting A2UI surfaces with [`circleci-catalog`](../circleci-catalog/), the basic A2UI catalog in CircleCI's look. It runs on port **11004** and is built on the [agent kit](../../agent-kit/).
 
 ## What it can do
 
 In `live` mode it works through CircleCI's hosted MCP server.
 
 - **Reads** a project's pipeline runs, each run's workflows, each workflow's jobs, and a job's log.
-- **Reruns** a workflow — every job, or only the failed ones — and **cancels** a running one. Both are proposed on the canvas first and run only when you confirm.
+- **Reruns** a workflow — every job, or only the failed ones — and **cancels** a running one. Both are shown to you as a proposal first and run only when you confirm.
 - **Can't** edit config, trigger a new pipeline, approve a hold, or delete anything.
 
 9 of the server's tools are allowed, listed in `app/mcp.py`. To allow another, update that list, the pin in `tests/test_llm_mcp.py`, the stub in `app/tools.py`, and the domain doc in `app/knowledge/`, together.
@@ -20,15 +20,15 @@ cp .env.example .env
 uv run python -m app --mode deterministic
 ```
 
-| Mode            | What runs                                | Needs                                                       |
-| --------------- | ---------------------------------------- | ----------------------------------------------------------- |
-| `deterministic` | canned answers, no model                 | nothing                                                     |
-| `stub`          | the model over canned CI data            | `GOOGLE_API_KEY`                                            |
-| `live`          | the model over CircleCI's hosted MCP     | `GOOGLE_API_KEY`, `CIRCLECI_MCP_TOKEN`, `CIRCLECI_PROJECTS` |
+| Mode            | What runs                            | Needs                                                       |
+| --------------- | ------------------------------------ | ----------------------------------------------------------- |
+| `deterministic` | canned answers, no model             | nothing                                                     |
+| `stub`          | the model over canned CI data        | `GOOGLE_API_KEY`                                            |
+| `live`          | the model over CircleCI's hosted MCP | `GOOGLE_API_KEY`, `CIRCLECI_MCP_TOKEN`, `CIRCLECI_PROJECTS` |
 
-`deterministic` answers any question with the recorded recent runs, and replays the recorded actions: opening a run, opening a job, proposing a rerun and confirming or declining it. Opening a run or a job paints a new surface, as the live agent does, so the canvas can step back to the list.
+`deterministic` answers any question with the recorded recent runs, and replays the recorded actions: opening a run, opening a job, proposing a rerun and confirming or declining it. Opening a run or a job paints a new surface, as the live agent does.
 
-You rarely start it by hand: the platform's launcher starts every agent (`pnpm dev:agents` in the `a2uiverse` repo). Other flags: `--port`, `--host`, and `--base-url`, the address the agent card advertises.
+Other flags: `--port`, `--host`, and `--base-url`, the address the agent card advertises.
 
 ## CircleCI credentials (live mode)
 
@@ -56,4 +56,11 @@ uv run python scripts/derive_corpus.py
 uv run pytest tests/test_corpus_is_publishable.py
 ```
 
-The beats need a failed run in a configured project, and the last one **really reruns** its workflow on CircleCI. Nothing is pseudonymized — the data is a public repository's CI — and the last test fails the recordings if anything token-shaped got in.
+Recording needs a failed run in a configured project, and its last step **really reruns** that workflow on CircleCI. Nothing is pseudonymized — the data is a public repository's CI — and the last test fails the recordings if anything token-shaped got in.
+
+## Connecting to A2UIVerse
+
+The agent speaks plain A2UI over A2A. Nothing in it needs [A2UIVerse](https://github.com/retz8/a2uiverse) to run.
+
+- **Launch it** from the `a2uiverse` repo with `pnpm dev:agents --only circleci` (add `--mode live` for real data). The launcher finds the agent through the app's [`manifest.json`](../manifest.json) and starts it on the port listed there. Start agents before the platform, because the orchestrator reads each agent card once, at boot. `pnpm dev:all` does both, in that order.
+- **Paint titles.** The prompt asks the model to give each new surface a short title and to mark a surface that asks you something. The kit sends these beside the A2UI as a `paintMeta` data part. A2UIVerse uses the title to name the view, for example on its back arrow, and uses the mark to recognise a question. Other clients ignore the part.

@@ -1,12 +1,12 @@
 # GitHub agent
 
-The GitHub app's A2A agent. It answers GitHub questions on the A2UIVerse canvas and paints its answers with [`github-catalog`](../github-catalog/), built on Primer, GitHub's own design system. It runs on port **11001** and is built on the [agent kit](../../agent-kit/).
+An A2A agent for GitHub. It answers GitHub questions by painting A2UI surfaces with [`github-catalog`](../github-catalog/), built on Primer, GitHub's own design system. It runs on port **11001** and is built on the [agent kit](../../agent-kit/).
 
 ## What it can do
 
 In `live` mode it works through the remote GitHub MCP server with its full tool set, acting as the user who owns the token. It reads repositories, issues, pull requests and notifications, and it can comment, review, merge and edit files.
 
-- Writes that carry content — a comment, a review, an edit — are proposed on the canvas first and run only when you confirm.
+- Writes that carry content — a comment, a review, an edit — are shown to you as a proposal first and run only when you confirm.
 - Quick toggles that are easy to undo run straight away.
 
 > [!IMPORTANT]
@@ -28,7 +28,7 @@ uv run python -m app --mode deterministic
 
 `deterministic` answers any question with a recorded notifications digest, and answers the Primer components' demo actions with canned responses.
 
-You rarely start it by hand: the platform's launcher starts every agent (`pnpm dev:agents` in the `a2uiverse` repo). Other flags: `--port`, `--host`, and `--base-url`, the address the agent card advertises.
+Other flags: `--port`, `--host`, and `--base-url`, the address the agent card advertises.
 
 ## Test
 
@@ -48,11 +48,11 @@ uv run python scripts/record_beats.py --model <model>
 uv run python scripts/derive_corpus.py
 ```
 
-Nothing is scrubbed: the recordings come from public repository data. The canvas replays the platform uses are recorded separately, through the orchestrator, in the `a2uiverse` repo.
+Nothing is scrubbed: the recordings come from public repository data.
 
 ## Troubleshooting
 
-**A dead token doesn't look like an auth error.** With an expired or revoked `GITHUB_MCP_PAT`, the agent starts with no tools and the turn ends in an apology on the canvas (`MALFORMED_FUNCTION_CALL` in the log). Check the token first:
+**A dead token doesn't look like an auth error.** With an expired or revoked `GITHUB_MCP_PAT`, the agent starts with no tools and the turn ends in an apology on screen (`MALFORMED_FUNCTION_CALL` in the log). Check the token first:
 
 ```bash
 curl -s -o /dev/null -w "%{http_code}\n" \
@@ -61,3 +61,10 @@ curl -s -o /dev/null -w "%{http_code}\n" \
 ```
 
 `200` means the token is fine; `401` means it's expired or revoked. Extending an expired classic token generates a new value, so copy it into `.env` again.
+
+## Connecting to A2UIVerse
+
+The agent speaks plain A2UI over A2A. Nothing in it needs [A2UIVerse](https://github.com/retz8/a2uiverse) to run.
+
+- **Launch it** from the `a2uiverse` repo with `pnpm dev:agents --only github` (add `--mode live` for real data). The launcher finds the agent through the app's [`manifest.json`](../manifest.json) and starts it on the port listed there. Start agents before the platform, because the orchestrator reads each agent card once, at boot. `pnpm dev:all` does both, in that order.
+- **Paint titles.** The prompt asks the model to give each new surface a short title and to mark a surface that asks you something. The kit sends these beside the A2UI as a `paintMeta` data part. A2UIVerse uses the title to name the view, for example on its back arrow, and uses the mark to recognise a question. Other clients ignore the part.

@@ -1,13 +1,13 @@
 # Google Calendar agent
 
-The Google Calendar app's A2A agent. It answers schedule questions on the A2UIVerse canvas and paints its answers with [`calendar-catalog`](../calendar-catalog/), the basic A2UI catalog in Calendar's Material 3 look. It runs on port **11003** and is built on the [agent kit](../../agent-kit/).
+An A2A agent for Google Calendar. It answers schedule questions by painting A2UI surfaces with [`calendar-catalog`](../calendar-catalog/), the basic A2UI catalog in Calendar's Material 3 look. It runs on port **11003** and is built on the [agent kit](../../agent-kit/).
 
 ## What it can do
 
 In `live` mode it works through Google's Calendar MCP server.
 
 - **Reads** events.
-- **Creates** an event from a proposal you confirm on the canvas.
+- **Creates** an event, shown to you as a proposal first and created only when you confirm.
 - **Answers invitations** for you.
 - **Can't delete, cancel or change** an existing event.
 
@@ -23,7 +23,7 @@ Create any secondary calendar in the Google account, put its id in `.env` as `CA
 uv run python -m scripts.seed_calendar
 ```
 
-Seeding wipes the calendar and recreates every event relative to today. Re-seed before recording and before any live demo — the write beats change the calendar, and dates go stale.
+Seeding wipes the calendar and recreates every event relative to today. Re-seed before recording and before any live demo: recording creates events and answers invitations, and dates go stale.
 
 ## Run
 
@@ -33,15 +33,15 @@ cp .env.example .env
 uv run python -m app --mode deterministic
 ```
 
-| Mode            | What runs                                  | Needs                                                                |
-| --------------- | ------------------------------------------ | -------------------------------------------------------------------- |
-| `deterministic` | canned answers, no model                   | nothing                                                              |
-| `stub`          | the model over canned events               | `GOOGLE_API_KEY`                                                     |
-| `live`          | the model over the demo calendar, via MCP  | `GOOGLE_API_KEY`, `GOOGLE_CLOUD_PROJECT`, `CALENDAR_ID`, Google login |
+| Mode            | What runs                                 | Needs                                                                 |
+| --------------- | ----------------------------------------- | --------------------------------------------------------------------- |
+| `deterministic` | canned answers, no model                  | nothing                                                               |
+| `stub`          | the model over canned events              | `GOOGLE_API_KEY`                                                      |
+| `live`          | the model over the demo calendar, via MCP | `GOOGLE_API_KEY`, `GOOGLE_CLOUD_PROJECT`, `CALENDAR_ID`, Google login |
 
-`deterministic` answers any question with a recorded agenda, and replays the recorded actions: opening an event, confirming or cancelling a new one, answering an invitation. Opening an event paints a new surface, as the live agent does, so the canvas can step back to the agenda.
+`deterministic` answers any question with a recorded agenda, and replays the recorded actions: opening an event, confirming or cancelling a new one, answering an invitation. Opening an event paints a new surface, as the live agent does.
 
-You rarely start it by hand: the platform's launcher starts every agent (`pnpm dev:agents` in the `a2uiverse` repo). Other flags: `--port`, `--host`, and `--base-url`, the address the agent card advertises.
+Other flags: `--port`, `--host`, and `--base-url`, the address the agent card advertises.
 
 ## Google login (live mode)
 
@@ -95,3 +95,10 @@ uv run pytest tests/test_corpus_is_publishable.py
 ```
 
 Nothing is pseudonymized: the demo calendar holds nothing private.
+
+## Connecting to A2UIVerse
+
+The agent speaks plain A2UI over A2A. Nothing in it needs [A2UIVerse](https://github.com/retz8/a2uiverse) to run.
+
+- **Launch it** from the `a2uiverse` repo with `pnpm dev:agents --only calendar` (add `--mode live` for the real calendar). The launcher finds the agent through the app's [`manifest.json`](../manifest.json) and starts it on the port listed there. Start agents before the platform, because the orchestrator reads each agent card once, at boot. `pnpm dev:all` does both, in that order.
+- **Paint titles.** The prompt asks the model to give each new surface a short title and to mark a surface that asks you something. The kit sends these beside the A2UI as a `paintMeta` data part. A2UIVerse uses the title to name the view, for example on its back arrow, and uses the mark to recognise a question. Other clients ignore the part.

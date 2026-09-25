@@ -1,6 +1,6 @@
 # circleci-catalog
 
-The CircleCI app's A2UI catalog: the basic A2UI catalog in CircleCI's look, plus one component of its own.
+An A2UI catalog for CircleCI: the basic A2UI catalog in CircleCI's look, plus one component of its own.
 
 ## What's in it
 
@@ -16,9 +16,9 @@ import {CATALOG, CATALOG_ID, Provider} from 'circleci-catalog';
 
 - **`CATALOG`**: the basic components and functions plus `StatusBadge`, ready for an A2UI `MessageProcessor`.
 - **`CATALOG_ID`**: the catalog's id. A surface created with it renders with this catalog.
-- **`Provider`**: CircleCI's theme. The host wraps each of this catalog's fragments in it and sets up nothing else.
+- **`Provider`**: CircleCI's theme. Wrap each surface rendered with this catalog in it; nothing else needs setting up.
 
-The Provider sets its design tokens and stylesheet on its own wrapper element, never on the page, so the theme stays inside the fragment. Light or dark follows the OS.
+The Provider sets its design tokens and stylesheet on its own wrapper element, never on the page, so the theme stays inside the wrapper. Light or dark follows the OS.
 
 ## Files
 
@@ -38,3 +38,13 @@ pnpm --filter circleci-catalog test
 ```
 
 **Keeping up with upstream.** `catalog.json` starts from a copy of upstream's basic catalog. A test compares it with the basic catalog of the pinned `@a2ui/react`, so bumping that version past an upstream change turns the build red. To fix it, copy the basic part again from upstream and restore the changed fields and `StatusBadge`.
+
+## Connecting to A2UIVerse
+
+The catalog depends only on A2UI. [A2UIVerse](https://github.com/retz8/a2uiverse)'s client installs it straight from this repo, with no registry:
+
+```json
+"circleci-catalog": "github:retz8/a2uiverse-apps#path:circleci/circleci-catalog"
+```
+
+The client renders every surface carrying `CATALOG_ID` with `CATALOG`, inside `Provider`. Until A2UIVerse installs app bundles, the client also lists the catalog by hand in its catalog map. A2UIVerse puts several apps' catalogs on one page, so its collision tests fail if a catalog's styles escape its wrapper.

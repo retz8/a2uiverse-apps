@@ -1,13 +1,13 @@
 # Gmail agent
 
-The Gmail app's A2A agent. It answers mail questions on the A2UIVerse canvas and paints its answers with [`gmail-catalog`](../gmail-catalog/), the basic A2UI catalog in Gmail's Material 3 look. It runs on port **11002** and is built on the [agent kit](../../agent-kit/).
+An A2A agent for Gmail. It answers mail questions by painting A2UI surfaces with [`gmail-catalog`](../gmail-catalog/), the basic A2UI catalog in Gmail's Material 3 look. It runs on port **11002** and is built on the [agent kit](../../agent-kit/).
 
 ## What it can do
 
 In `live` mode it works through Google's Gmail MCP server.
 
 - **Reads** threads, messages, labels and drafts.
-- **Writes** drafts and labels. A draft is proposed on the canvas and saved only when you confirm.
+- **Writes** drafts and labels. A draft is shown to you as a proposal first and saved only when you confirm.
 - **Can't send mail**: the Gmail MCP server has no send tool.
 - **Can't trash, mark as spam or delete** anything, its own drafts included.
 
@@ -21,15 +21,15 @@ cp .env.example .env
 uv run python -m app --mode deterministic
 ```
 
-| Mode            | What runs                                   | Needs                                                  |
-| --------------- | ------------------------------------------- | ------------------------------------------------------ |
-| `deterministic` | canned answers, no model                    | nothing                                                |
-| `stub`          | the model over canned mail                  | `GOOGLE_API_KEY`                                       |
-| `live`          | the model over your mailbox, through MCP    | `GOOGLE_API_KEY`, `GOOGLE_CLOUD_PROJECT`, Google login |
+| Mode            | What runs                                | Needs                                                  |
+| --------------- | ---------------------------------------- | ------------------------------------------------------ |
+| `deterministic` | canned answers, no model                 | nothing                                                |
+| `stub`          | the model over canned mail               | `GOOGLE_API_KEY`                                       |
+| `live`          | the model over your mailbox, through MCP | `GOOGLE_API_KEY`, `GOOGLE_CLOUD_PROJECT`, Google login |
 
-`deterministic` answers any question with a recorded inbox digest, and replays the recorded actions: opening a thread, confirming or cancelling a draft, toggling a label. Opening a thread paints a new surface, as the live agent does, so the canvas can step back to the inbox.
+`deterministic` answers any question with a recorded inbox digest, and replays the recorded actions: opening a thread, confirming or cancelling a draft, toggling a label. Opening a thread paints a new surface, as the live agent does.
 
-You rarely start it by hand: the platform's launcher starts every agent (`pnpm dev:agents` in the `a2uiverse` repo). Other flags: `--port`, `--host`, and `--base-url`, the address the agent card advertises.
+Other flags: `--port`, `--host`, and `--base-url`, the address the agent card advertises.
 
 ## Google login (live mode)
 
@@ -81,4 +81,12 @@ uv run python scripts/derive_corpus.py
 uv run pytest tests/test_corpus_is_publishable.py
 ```
 
-**Setting `A2UI_RECORD_DIR` also turns on pseudonymization.** Every mail payload gets stand-in names and subjects before the model sees it, so no real mail reaches the recordings or the model provider. The stand-ins are seeded, so re-recording gives the same ones. Start this agent with it set whenever the platform records its canvas replays too — that's what keeps real mail out of them.
+**Setting `A2UI_RECORD_DIR` also turns on pseudonymization.** Every mail payload gets stand-in names and subjects before the model sees it, so no real mail reaches the recordings or the model provider. The stand-ins are seeded, so re-recording gives the same ones.
+
+## Connecting to A2UIVerse
+
+The agent speaks plain A2UI over A2A. Nothing in it needs [A2UIVerse](https://github.com/retz8/a2uiverse) to run.
+
+- **Launch it** from the `a2uiverse` repo with `pnpm dev:agents --only gmail` (add `--mode live` for your mailbox). The launcher finds the agent through the app's [`manifest.json`](../manifest.json) and starts it on the port listed there. Start agents before the platform, because the orchestrator reads each agent card once, at boot. `pnpm dev:all` does both, in that order.
+- **Paint titles.** The prompt asks the model to give each new surface a short title and to mark a surface that asks you something. The kit sends these beside the A2UI as a `paintMeta` data part. A2UIVerse uses the title to name the view, for example on its back arrow, and uses the mark to recognise a question. Other clients ignore the part.
+- **Recording A2UIVerse's replays.** When the platform records its canvas replays with this agent live, start the agent with `A2UI_RECORD_DIR` set, so real mail never reaches those recordings.

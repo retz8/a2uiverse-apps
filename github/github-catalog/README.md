@@ -1,8 +1,8 @@
 # github-catalog
 
-The GitHub app's A2UI catalog, built on [Primer](https://primer.style/), GitHub's real design system. It targets A2UI **v0.9.1** on top of [`@a2ui/react`](https://www.npmjs.com/package/@a2ui/react).
+An A2UI catalog for GitHub, built on [Primer](https://primer.style/), GitHub's real design system. It targets A2UI **v0.9.1** on top of [`@a2ui/react`](https://www.npmjs.com/package/@a2ui/react).
 
-It is the one fully custom catalog on the roster. The other apps theme the basic A2UI catalog; this one maps every component onto Primer.
+It is the one fully custom catalog in this repo. The other apps theme the basic A2UI catalog; this one maps every component onto Primer.
 
 ## What's in it
 
@@ -23,17 +23,11 @@ import {CATALOG, CATALOG_ID, Provider} from 'github-catalog';
 
 - **`CATALOG`**: every component and function, ready for an A2UI `MessageProcessor`.
 - **`CATALOG_ID`**: the catalog's id. A surface created with it renders with this catalog.
-- **`Provider`**: Primer's theme and styles. The host wraps each of this catalog's fragments in it and sets up nothing else.
+- **`Provider`**: Primer's theme and styles. Wrap each surface rendered with this catalog in it; nothing else needs setting up.
 
-The Provider keeps Primer inside the fragment. Its tokens are scoped to its own wrapper rather than the page, and Primer's overlays open inside that wrapper, so they stay themed and never land on top of another app. The platform's build fails if either one leaks.
+The Provider keeps Primer inside its own wrapper. Its tokens are scoped to that wrapper rather than the page, and Primer's overlays open inside it, so they stay themed and never land on top of anything else on the page.
 
 The package ships Primer itself at exact versions. The host supplies only what must be shared: React, `@a2ui/react` / `@a2ui/web_core`, and zod.
-
-The platform installs it straight from this repo, with no registry:
-
-```json
-"github-catalog": "github:retz8/a2uiverse-apps#path:github/github-catalog"
-```
 
 ## Build and test
 
@@ -60,3 +54,13 @@ src/
 ## Adding a component
 
 Two repo skills in `.claude/skills/`: `design-catalog-component` settles the design with you and writes a decision doc; `build-catalog-component` then builds it — the `catalog.json` entry, the schema, the render, and the agent's fixture.
+
+## Connecting to A2UIVerse
+
+The catalog depends only on A2UI. [A2UIVerse](https://github.com/retz8/a2uiverse)'s client installs it straight from this repo, with no registry:
+
+```json
+"github-catalog": "github:retz8/a2uiverse-apps#path:github/github-catalog"
+```
+
+The client renders every surface carrying `CATALOG_ID` with `CATALOG`, inside `Provider`. Until A2UIVerse installs app bundles, the client also lists the catalog by hand in its catalog map. A2UIVerse puts several apps' catalogs on one page, so its collision tests fail if a catalog's styles escape its wrapper.
