@@ -976,13 +976,8 @@ async def test_recording_never_changes_what_the_client_receives(tmp_path):
     assert len(unarmed_queue.events) == len(armed_queue.events)
 
 
-# ---- task 8.5: paint titles, question marker, fork context ----
+# ---- task 8.5: paint titles, question marker ----
 
-from a2ui_agent_kit.executor_llm import (  # noqa: E402
-    FORK_CONTEXT_KEY,
-    _frame_fork_context,
-    _resolve_prompt,
-)
 
 
 def _titled_surface_text(surface_id: str = "s1", kind: str | None = None) -> str:
@@ -1051,41 +1046,6 @@ async def test_unclosed_tag_tail_is_flushed_at_stream_end():
     text = _all_text(queue)
     assert "never closed" in text
     assert "<paint-title" in text  # released as plain prose, not swallowed
-
-
-def test_fork_context_framed_into_action_prompt():
-    action = {"name": "open-pr", "context": {"number": 48}}
-    fork = {"paintId": 4, "title": "Waiting on you", "paintedAt": 1755230000000, "position": 3}
-    ctx = _ActionCtx(action, metadata={FORK_CONTEXT_KEY: fork})
-    prompt = _resolve_prompt(ctx)
-    assert "HISTORICAL" in prompt
-    assert "'Waiting on you'" in prompt
-    assert "3 paints behind the current view" in prompt
-    assert "Refetch live data" in prompt
-    assert "NEWEST view" in prompt
-
-
-def test_fork_context_framed_into_utterance_prompt_before_data_model():
-    fork = {"paintId": 2, "title": "PR #48 review", "paintedAt": 1755230000000, "position": 1}
-    model = {"version": "v0.9", "surfaces": {"s1": {"sel": True}}}
-    ctx = _Ctx(
-        "what changed here?",
-        metadata={FORK_CONTEXT_KEY: fork, "a2uiClientDataModel": model},
-    )
-    prompt = _resolve_prompt(ctx)
-    assert prompt.index("HISTORICAL") < prompt.index("Current data model")
-    assert "1 paint behind the current view" in prompt
-
-
-def test_fork_frame_tolerates_missing_fields():
-    prompt = _frame_fork_context({})
-    assert "a past view" in prompt
-    assert "behind the current view" not in prompt  # no position claimed
-
-
-def test_no_fork_context_means_no_historical_framing():
-    prompt = _resolve_prompt(_Ctx("show me open PRs"))
-    assert "HISTORICAL" not in prompt
 
 
 def _all_data_parts(queue: _FakeQueue) -> list[dict]:

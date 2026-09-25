@@ -11,7 +11,6 @@ import contextlib
 import json
 import logging
 import os
-from datetime import datetime, timezone
 
 from a2a.server.agent_execution import AgentExecutor, RequestContext
 from a2a.server.events import EventQueue
@@ -101,11 +100,6 @@ class LenientA2uiStreamParser(A2uiStreamParserV09):
 # A2A message-metadata key under which the client reports the current data model of
 # its sendDataModel-flagged surfaces (the spec's A2A binding; no upstream constant).
 CLIENT_DATA_MODEL_KEY = "a2uiClientDataModel"
-# A2A message-metadata key under which the canvas attaches fork context when a turn is
-# dispatched from a parked (historical) view — task-8.5 decision 9/10. Presence of the
-# key IS the historical-view flag; the object carries {paintId, title, paintedAt,
-# position}, with position the depth behind the live head at dispatch.
-FORK_CONTEXT_KEY = "a2uiForkContext"
 MAX_ATTEMPTS = 2  # one initial + one retry; tunable (spec decision 6)
 APOLOGY_TEXT = (
     "Sorry — I couldn't compose a valid interface for that request. Please try rephrasing."
@@ -201,44 +195,6 @@ def _frame_client_data_model(surfaces: dict) -> str:
     )
 
 
-def _extract_fork_context(context: RequestContext) -> dict | None:
-    """Returns the canvas's fork context ({paintId, title, paintedAt, position}), or
-    None. Its presence means the turn was dispatched from a parked historical view."""
-    message = context.message
-    metadata = getattr(message, "metadata", None) if message else None
-    if not isinstance(metadata, dict):
-        return None
-    fork = metadata.get(FORK_CONTEXT_KEY)
-    return fork if isinstance(fork, dict) else None
-
-
-def _frame_fork_context(fork: dict) -> str:
-    """Frames a forked turn: the historical-view facts plus explicit directives
-    (task-8.5 decision 11) — the fork is the one case where the conversation history
-    actively misleads the model, so the staleness rules are stated, not implied."""
-    title = fork.get("title")
-    identity = f"the past view titled {title!r}" if isinstance(title, str) and title else (
-        "a past view"
-    )
-    painted_at = fork.get("paintedAt")
-    if isinstance(painted_at, (int, float)) and not isinstance(painted_at, bool):
-        when = datetime.fromtimestamp(painted_at / 1000, tz=timezone.utc)
-        identity += f", painted at {when.strftime('%Y-%m-%d %H:%M UTC')}"
-    position = fork.get("position")
-    if isinstance(position, int) and not isinstance(position, bool) and position > 0:
-        plural = "s" if position != 1 else ""
-        identity += f", now {position} paint{plural} behind the current view"
-    return (
-        f"\n\nThis message was sent from a HISTORICAL view the user navigated back to "
-        f"— {identity}. The data model attached to this message reflects that "
-        "historical view as the user last touched it: its data is as of that time, "
-        "not now. Refetch live data through your tools before composing anything that "
-        "depends on current state. Your response will be painted as the NEWEST view — "
-        "it does not overwrite or edit the historical one — and do not be confused if "
-        "the referenced content has changed since that view was painted."
-    )
-
-
 def _resolve_prompt(context: RequestContext) -> str:
     """Resolves the incoming message to a model prompt: text first, then an action.
 
@@ -255,11 +211,6 @@ def _resolve_prompt(context: RequestContext) -> str:
             prompt = _frame_action_prompt(action)
     if not prompt:
         return ""
-    fork = _extract_fork_context(context)
-    if fork:
-        # Framed before the data model so the staleness rules precede the data they
-        # apply to.
-        prompt += _frame_fork_context(fork)
     surfaces = _extract_client_data_model(context)
     if surfaces:
         prompt += _frame_client_data_model(surfaces)
