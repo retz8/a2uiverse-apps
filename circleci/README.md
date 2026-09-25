@@ -1,6 +1,6 @@
 # CircleCI
 
-An A2A agent that answers questions about your pipelines with UI it generates in [A2UI](https://a2ui.org/).
+An A2A agent that answers questions about your pipelines with UI it generates in A2UI.
 
 - **MCP server**: [CircleCI's hosted MCP server](https://circleci.com/docs/guides/toolkit/circleci-mcp-overview/), run by CircleCI. Your pipelines live behind it; the server isn't part of this repo.
 - **Agent** ([`agent/`](agent/)): the agentic BFF. It takes a question, calls the MCP server, and answers with UI instead of data. It reads pipeline runs, workflows, jobs and logs, and reruns or cancels workflows.

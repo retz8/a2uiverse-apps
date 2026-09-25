@@ -1,6 +1,6 @@
 # Gmail
 
-An A2A agent that answers questions about your mail with UI it generates in [A2UI](https://a2ui.org/).
+An A2A agent that answers questions about your mail with UI it generates in A2UI.
 
 - **MCP server**: [Gmail's MCP server](https://developers.google.com/workspace/gmail/api/guides/configure-mcp-server), run by Google. Your mailbox lives behind it; the server isn't part of this repo.
 - **Agent** ([`agent/`](agent/)): the agentic BFF. It takes a question, calls the MCP server, and answers with UI instead of data. It reads mail, saves drafts and applies labels.

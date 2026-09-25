@@ -1,6 +1,6 @@
 # Linear
 
-An A2A agent that answers questions about your issues with UI it generates in [A2UI](https://a2ui.org/).
+An A2A agent that answers questions about your issues with UI it generates in A2UI.
 
 - **MCP server**: [Linear's hosted MCP server](https://linear.app/docs/mcp), run by Linear. Your issues live behind it; the server isn't part of this repo.
 - **Agent** ([`agent/`](agent/)): the agentic BFF. It takes a question, calls the MCP server, and answers with UI instead of data. It reads issues, creates and updates them, and comments on them.

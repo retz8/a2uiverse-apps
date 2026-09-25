@@ -1,6 +1,6 @@
 # GitHub
 
-An A2A agent that answers questions about your repositories with UI it generates in [A2UI](https://a2ui.org/).
+An A2A agent that answers questions about your repositories with UI it generates in A2UI.
 
 - **MCP server**: [GitHub's MCP server](https://github.com/github/github-mcp-server), the remote one run by GitHub. Your repositories live behind it; the server isn't part of this repo.
 - **Agent** ([`agent/`](agent/)): the agentic BFF. It takes a question, calls the MCP server, and answers with UI instead of data. It reads repositories, issues, pull requests and notifications, and can comment, review, merge and edit files.
