@@ -1,33 +1,49 @@
 # shop-a-catalog
 
-The Shop A app's A2UI catalog: the **basic catalog** as schema and implementation,
-under a product theme.
+An A2UI catalog for Aperture & Co, an invented camera store: the basic A2UI catalog, unchanged, in a neutral theme with a warm-brown accent.
 
-The bundle ships no component mapping of its own. `CATALOG` re-uses `basicCatalog`'s
-implementations and functions from `@a2ui/react` unchanged; the product identity is entirely
-in the `Provider`'s tokens and the scoped theme sheet.
+The catalog adds no components of its own. `CATALOG` reuses the basic catalog's components and functions from `@a2ui/react` as they are, and the look comes entirely from the `Provider`.
 
-## Shape
+## Using it
 
-| File                           | What it is                                                                                                |
-| ------------------------------ | --------------------------------------------------------------------------------------------------------- |
-| `catalogs/v0.9.1/catalog.json` | Upstream's basic catalog with four identity fields rewritten (`$id`, `catalogId`, `title`, `description`) |
-| `src/catalog.ts`               | The runtime catalog: `basicCatalog`'s components and functions, verbatim                                  |
-| `src/provider.tsx`             | The token theme, light and dark; the accent is this store's own (warm brown)                              |
-| `src/theme.css`                | The scoped sheet, where the accent reaches what a token cannot (the row hover)                            |
-| `src/catalog.parity.test.ts`   | Schema ↔ runtime lockstep, and the upstream-drift detector                                                |
+```ts
+import {CATALOG, CATALOG_ID, Provider} from 'shop-a-catalog';
+```
 
-## The one rule
+- **`CATALOG`**: the basic components and functions, ready for an A2UI `MessageProcessor`.
+- **`CATALOG_ID`**: the catalog's id. A surface created with it renders with this catalog.
+- **`Provider`**: the store's theme. Wrap each surface rendered with this catalog in it; nothing else needs setting up.
 
-The Provider writes its custom properties **on its own wrapper element** — never `:root` — and
-loads a stylesheet scoped to that same wrapper class. Nothing is global. This is the bundle's
-one Provider and one CSS setup; a host wraps each of this catalog's fragments in it and
-registers nothing of its own.
+## Theme
+
+The Provider sets its design tokens and a small stylesheet on its own wrapper element, never on the page, so the theme stays inside the wrapper. The palette is neutral except for the accent — warm-brown here, teal in [`shop-b-catalog`](../../shop-b/shop-b-catalog/) — so the two stores can be told apart side by side. Everything else keeps the basic catalog's defaults.
+
+Light or dark follows the OS.
+
+## Files
+
+| File                           | What it is                                                                   |
+| ------------------------------ | ---------------------------------------------------------------------------- |
+| `catalogs/v0.9.1/catalog.json` | the upstream basic catalog, with only its ids, title and description changed |
+| `src/catalog.ts`               | the runtime catalog: the basic components and functions                      |
+| `src/provider.tsx`             | the tokens, light and dark                                                   |
+| `src/theme.css`                | the stylesheet, scoped to the Provider's wrapper: the accent on row hover    |
 
 ## Build and test
 
 ```bash
-pnpm install
-pnpm build
-pnpm test
+pnpm --filter shop-a-catalog build
+pnpm --filter shop-a-catalog test
 ```
+
+**Keeping up with upstream.** `catalog.json` is a copy of upstream's basic catalog. A test compares it with the basic catalog of the pinned `@a2ui/react`, so bumping that version past an upstream change turns the build red. To fix it, copy the file again from upstream and restore the four changed fields (`$id`, `catalogId`, `title`, `description`).
+
+## Connecting to A2UIVerse
+
+[A2UIVerse](https://github.com/retz8/a2uiverse)'s client installs it straight from this repo, with no registry:
+
+```json
+"shop-a-catalog": "github:retz8/a2uiverse-apps#path:mocks/shop-a/shop-a-catalog"
+```
+
+The client renders every surface carrying `CATALOG_ID` with `CATALOG`, inside `Provider`. Until A2UIVerse installs app bundles, the client also lists the catalog by hand in its catalog map. A2UIVerse puts several apps' catalogs on one page, so its collision tests fail if a catalog's styles escape its wrapper.
