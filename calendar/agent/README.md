@@ -4,7 +4,7 @@ An A2A agent for Google Calendar. It answers schedule questions by painting A2UI
 
 ## What it can do
 
-In `live` mode it works through Google's Calendar MCP server, on the demo calendar only.
+In `live` mode it works through Google's Calendar MCP server, on one calendar only (see below).
 
 - **Reads** events.
 - **Creates** an event, shown to you as a proposal first and created only when you confirm.
@@ -16,7 +16,7 @@ It's allowed 4 of the server's tools: `list_events`, `get_event`, `create_event`
 
 ## Demo calendar
 
-**The agent never reads your primary calendar.** It reads a demo calendar seeded from [`scripts/seed_events.json`](scripts/seed_events.json), named by `CALENDAR_ID`, and refuses to start without it. Because the content is authored, nothing needs scrubbing before it's recorded.
+**The agent reads one calendar only: the one `CALENDAR_ID` names**, and it refuses to start without it. Out of the box that's a demo calendar seeded from [`scripts/seed_events.json`](scripts/seed_events.json), never your main one. Because the content is authored, nothing needs scrubbing before it's recorded.
 
 Create any secondary calendar in the Google account, put its id in `.env` as `CALENDAR_ID`, then seed it:
 
@@ -25,6 +25,13 @@ uv run python -m scripts.seed_calendar
 ```
 
 Seeding wipes the calendar and recreates every event relative to today. Re-seed before recording and before any live demo: recording creates events and answers invitations, and dates go stale.
+
+**Using your own calendar.** Set `CALENDAR_ID` to its id: your Google account's email address for your main calendar, or the Calendar ID under a calendar's Settings → Integrate calendar. Then:
+
+- **Never run the seed script.** It deletes every event on the calendar `CALENDAR_ID` names.
+- **Don't record.** Recordings are committed to this repo, and nothing in them is scrubbed.
+
+Attendees are still never notified: an event the agent creates, or an invitation it answers, reaches no one's inbox.
 
 ## Run
 
@@ -109,7 +116,7 @@ To allow a tool, change these together:
 4. Add it to the stub, `STUB_TOOLS` in `app/tools.py`, over data from a recorded run (`scripts/derive_corpus.py` writes it).
 5. Describe what it returns in `app/knowledge/calendar-domain.md`. For a write, add a proposal to the prompt, so it runs only when you confirm.
 
-Every call still stays on the demo calendar and notifies no one; `app/tool_shaping.py` enforces both.
+Every call still stays on the calendar `CALENDAR_ID` names and notifies no one; `app/tool_shaping.py` enforces both.
 
 ## Connecting to A2UIVerse
 
