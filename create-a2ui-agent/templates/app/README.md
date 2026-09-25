@@ -14,7 +14,7 @@ uv sync
 uv run python -m app --mode deterministic   # canned answers, no key needed
 ```
 
-The agent runs on port **__PORT__**. Live mode needs a Gemini key and the credential for __DISPLAY_NAME__'s MCP server — see the [agent README](agent/README.md).
+The agent runs on port **__PORT__**. Live mode needs a Gemini key and the credential for __DISPLAY_NAME__'s MCP server. See the [agent README](agent/README.md).
 
 ## Connecting to A2UIVerse
 

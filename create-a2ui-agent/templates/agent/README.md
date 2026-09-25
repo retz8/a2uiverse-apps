@@ -74,4 +74,4 @@ The recorded MCP payloads become `app/fixtures/stub/`, and the painted streams b
 
 ## Connecting to A2UIVerse
 
-Put the app folder in A2UIVerse's agents dir — by default the `a2uiverse-apps` checkout beside the `a2uiverse` repo — and launch it from the [A2UIVerse](https://github.com/retz8/a2uiverse) repo with `pnpm dev:agents --only __APP_ID__`. The launcher finds the agent through the app's [`manifest.json`](../manifest.json) and starts it on the port listed there. Start agents before the platform, because the orchestrator reads each agent card once, at boot. `pnpm dev:all` does both, in that order.
+Put the app folder in A2UIVerse's agents dir, which by default is the `a2uiverse-apps` checkout beside the `a2uiverse` repo, and launch it from the [A2UIVerse](https://github.com/retz8/a2uiverse) repo with `pnpm dev:agents --only __APP_ID__`. The launcher finds the agent through the app's [`manifest.json`](../manifest.json) and starts it on the port listed there. Start agents before the platform, because the orchestrator reads each agent card once, at boot. `pnpm dev:all` does both, in that order.

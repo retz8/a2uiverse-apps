@@ -18,7 +18,7 @@ import {CATALOG, CATALOG_ID, Provider} from '__PACKAGE_NAME__';
 
 The Provider sets its design tokens and a small stylesheet on its own wrapper element, never on the page, so the theme stays inside the wrapper. Light or dark follows the OS.
 
-TODO: the scaffold starts from a neutral palette. Put __DISPLAY_NAME__'s own tokens in `src/provider.tsx`, and the rules a token can't reach — row colours, button shapes — in `src/theme.css`.
+TODO: the scaffold starts from a neutral palette. Put __DISPLAY_NAME__'s own tokens in `src/provider.tsx`, and the rules a token can't reach, like row colours or button shapes, in `src/theme.css`.
 
 When the basic components can't show something __DISPLAY_NAME__ needs, such as a status coloured per row, add a component of your own beside them, the way `circleci-catalog` adds `StatusBadge`.
 

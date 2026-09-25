@@ -14,7 +14,7 @@ uv sync
 uv run python -m app --mode deterministic   # canned answers, no key needed
 ```
 
-The agent runs on port **11002**. Live mode needs a Gemini key and a Google login shared with Calendar — see the [agent README](agent/README.md).
+The agent runs on port **11002**. Live mode needs a Gemini key and a Google login shared with Calendar. See the [agent README](agent/README.md).
 
 ## Connecting to A2UIVerse
 

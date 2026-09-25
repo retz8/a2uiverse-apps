@@ -6,7 +6,7 @@ An A2UI catalog for CircleCI: the basic A2UI catalog in CircleCI's look, plus on
 
 `CATALOG` reuses the basic catalog's components and functions from `@a2ui/react` as they are, and adds **`StatusBadge`**: a pipeline, workflow or job status drawn as CircleCI's status pill, in that status's colour.
 
-The basic catalog can't colour a row by its data, so a per-row status needs a component of its own. The colours are sampled from CircleCI's web app — Running, Success, Failed, and the slate of a queued run. Any other status is drawn neutral.
+The basic catalog can't colour a row by its data, so a per-row status needs a component of its own. The colours for Running, Success, Failed and the slate of a queued run are sampled from CircleCI's web app. Any other status is drawn neutral.
 
 ## Using it
 

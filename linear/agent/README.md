@@ -7,7 +7,7 @@ An A2A agent for Linear. It answers issue-tracking questions by painting A2UI su
 In `live` mode it works through Linear's hosted MCP server.
 
 - **Reads** your issues and a team's, one issue with its comments and linked pull requests, and a team's states, labels and members.
-- **Creates** an issue, **updates** one — title, description, status, priority, assignee, labels — and **comments** on one. Every write is shown to you as a proposal first and runs only when you confirm.
+- **Creates** an issue, **updates** one (title, description, status, priority, assignee, labels), and **comments** on one. Every write is shown to you as a proposal first and runs only when you confirm.
 - **Can't** delete an issue or a comment, create a label, or work with projects, cycles, documents, initiatives or releases.
 
 It's allowed 10 of the server's tools: the issue, comment, team, status, label and user reads, `save_issue` and `save_comment`.
@@ -58,7 +58,7 @@ uv run pytest tests/test_corpus_is_publishable.py
 
 Recording's last step **really changes** an issue's status in the workspace.
 
-Values stay real except your email: while recording, the agent replaces the key owner's address with `me@example.com` before the model reads anything. Set a full name on the Linear account first — without one, Linear shows the email as your name, and every assignee and author records as the placeholder. The last test fails the recordings on anything token-shaped or any other email address.
+Values stay real except your email: while recording, the agent replaces the key owner's address with `me@example.com` before the model reads anything. Set a full name on the Linear account first. Without one, Linear shows the email as your name, and every assignee and author records as the placeholder. The last test fails the recordings on anything token-shaped or any other email address.
 
 ## Allowing more tools
 

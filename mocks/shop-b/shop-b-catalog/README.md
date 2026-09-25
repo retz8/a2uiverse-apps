@@ -16,7 +16,7 @@ import {CATALOG, CATALOG_ID, Provider} from 'shop-b-catalog';
 
 ## Theme
 
-The Provider sets its design tokens and a small stylesheet on its own wrapper element, never on the page, so the theme stays inside the wrapper. The palette is neutral except for the accent — teal here, warm-brown in [`shop-a-catalog`](../../shop-a/shop-a-catalog/) — so the two stores can be told apart side by side. Everything else keeps the basic catalog's defaults.
+The Provider sets its design tokens and a small stylesheet on its own wrapper element, never on the page, so the theme stays inside the wrapper. The palette is neutral except for the accent, teal here and warm brown in [`shop-a-catalog`](../../shop-a/shop-a-catalog/), so the two stores can be told apart side by side. Everything else keeps the basic catalog's defaults.
 
 Light or dark follows the OS.
 

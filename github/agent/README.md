@@ -6,7 +6,7 @@ An A2A agent for GitHub. It answers GitHub questions by painting A2UI surfaces w
 
 In `live` mode it works through GitHub's remote MCP server, acting as the user who owns the token. It gets every tool the server offers, so it reads repositories, issues, pull requests and notifications, and it can comment, review, merge and edit files.
 
-- Writes that carry content — a comment, a review, an edit — are shown to you as a proposal first and run only when you confirm.
+- Writes that carry content, like a comment, a review or an edit, are shown to you as a proposal first and run only when you confirm.
 - Quick toggles that are easy to undo run straight away.
 
 > [!IMPORTANT]

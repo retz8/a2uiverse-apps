@@ -1,6 +1,6 @@
 # a2ui-agent-kit
 
-A Python kit for building A2A agents that answer with UI they generate in A2UI. It carries everything the apps in this repo share — the A2A server, the three run modes, catalog loading and validation, prompt assembly, recording — so each app keeps only what is its own: its card, prompt prose, tools, fixtures and knowledge docs.
+A Python kit for building A2A agents that answer with UI they generate in A2UI. It carries everything the apps in this repo share: the A2A server, the three run modes, catalog loading and validation, prompt assembly and recording. Each app keeps only what is its own: its card, prompt prose, tools, fixtures and knowledge docs.
 
 An agent built on it speaks A2UI and A2A and nothing else. Unofficial: not part of the A2UI project.
 

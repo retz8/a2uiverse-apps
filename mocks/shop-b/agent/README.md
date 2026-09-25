@@ -59,7 +59,7 @@ A2UI_RECORD_DIR=.recordings uv run python -m app --mode live --host localhost
 uv run python scripts/record_beats.py --model <model>
 ```
 
-One conversation: the catalogue, a camera opened, back to the list, then sorted cheapest first. Unlike a vendor app, the recordings don't feed the other modes — those are built from the dataset directly. A recording shows what the model did with it.
+One conversation: the catalogue, a camera opened, back to the list, then sorted cheapest first. Unlike a vendor app, the recordings don't feed the other modes, which are built from the dataset directly. A recording shows what the model did with it.
 
 ## Connecting to A2UIVerse
 

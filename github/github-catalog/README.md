@@ -53,7 +53,7 @@ src/
 
 ## Adding a component
 
-Two repo skills in `.claude/skills/`: `design-catalog-component` settles the design with you and writes a decision doc; `build-catalog-component` then builds it — the `catalog.json` entry, the schema, the render, and the agent's fixture.
+Two repo skills in `.claude/skills/`: `design-catalog-component` settles the design with you and writes a decision doc; `build-catalog-component` then builds it: the `catalog.json` entry, the schema, the render, and the agent's fixture.
 
 ## Connecting to A2UIVerse
 

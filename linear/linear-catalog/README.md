@@ -6,7 +6,7 @@ An A2UI catalog for Linear: the basic A2UI catalog in Linear's look, plus the tw
 
 `CATALOG` reuses the basic catalog's components and functions from `@a2ui/react` as they are, and adds:
 
-- **`StatusIcon`**: an issue's workflow state as Linear's status circle — dashed for backlog, empty for unstarted, part-filled for started, a check for completed, a cross for canceled or duplicate — each in its state's colour.
+- **`StatusIcon`**: an issue's workflow state as Linear's status circle, in its state's colour. It's dashed for backlog, empty for unstarted, part-filled for started, a check for completed, and a cross for canceled or duplicate.
 - **`PriorityIcon`**: an issue's priority as three rising bars, an exclamation mark in a square for urgent, or three dashes for none.
 
 The basic catalog can't vary a row's look by its data, so a per-row icon needs a component of its own. Colours and proportions are measured from Linear's own screenshots, in light and dark; `src/provider.tsx` notes where each came from.

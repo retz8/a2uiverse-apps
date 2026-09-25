@@ -7,10 +7,10 @@ An A2A agent for CircleCI. It answers CI questions by painting A2UI surfaces wit
 In `live` mode it works through CircleCI's hosted MCP server.
 
 - **Reads** a project's pipeline runs, each run's workflows, each workflow's jobs, and a job's log.
-- **Reruns** a workflow — every job, or only the failed ones — and **cancels** a running one. Both are shown to you as a proposal first and run only when you confirm.
+- **Reruns** a workflow, either every job or only the failed ones, and **cancels** a running one. Both are shown to you as a proposal first and run only when you confirm.
 - **Can't** edit config, trigger a new pipeline, approve a hold, or delete anything.
 
-It's allowed 9 of the server's tools — the run, workflow and job reads, `rerun_workflow` and `cancel_workflow` — plus `list_projects`, a local tool over `CIRCLECI_PROJECTS`.
+It's allowed 9 of the server's tools: the run, workflow and job reads, `rerun_workflow` and `cancel_workflow`. It also has `list_projects`, a local tool over `CIRCLECI_PROJECTS`.
 
 ## Run
 
@@ -56,7 +56,7 @@ uv run python scripts/derive_corpus.py
 uv run pytest tests/test_corpus_is_publishable.py
 ```
 
-Recording needs a failed run in a configured project, and its last step **really reruns** that workflow on CircleCI. Nothing is pseudonymized — the data is a public repository's CI — and the last test fails the recordings if anything token-shaped got in.
+Recording needs a failed run in a configured project, and its last step **really reruns** that workflow on CircleCI. Nothing is pseudonymized, since the data is a public repository's CI, and the last test fails the recordings if anything token-shaped got in.
 
 ## Allowing more tools
 
