@@ -62,6 +62,7 @@ CONFIG = AgentAppConfig(
 
 exports[`basic kind, both opt-ins > writes the expected tree and generated files > files 1`] = `
 [
+  "README.md",
   "acme-mail-catalog/.gitignore",
   "acme-mail-catalog/README.md",
   "acme-mail-catalog/catalogs/v0.9.1/catalog.json",
@@ -316,6 +317,7 @@ CONFIG = AgentAppConfig(
 
 exports[`custom kind, no opt-ins > writes the expected tree and generated files > files 1`] = `
 [
+  "README.md",
   "acme-mail-catalog/.gitignore",
   "acme-mail-catalog/README.md",
   "acme-mail-catalog/catalogs/v0.9.1/catalog.json",

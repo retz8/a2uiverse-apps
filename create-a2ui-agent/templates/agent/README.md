@@ -18,6 +18,7 @@ Every `TODO` in the scaffold marks something only you can write. Delete this sec
 | `app/fixtures/deterministic/`         | The canned answers `deterministic` plays                                 |
 | `scripts/record_beats.py`             | The conversations to record                                              |
 | this README                           | "What it can do" and "Credentials" below                                 |
+| `../README.md`                        | The app's opening line, its MCP server, and what the agent does          |
 
 ## What it can do
 

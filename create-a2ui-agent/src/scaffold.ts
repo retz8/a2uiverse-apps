@@ -64,6 +64,9 @@ export function scaffold({
     for (const path of written) files.add(relative(targetDir, join(dir, path)));
   };
 
+  // The app's own README, at the root beside the two halves.
+  record(targetDir, copyTemplateTree(join(templates, 'app'), targetDir, tokens));
+
   // Agent half: the common tree, refined by the kind overlay and the ADC overlay.
   record(agentDir, copyTemplateTree(join(templates, 'agent'), agentDir, tokens));
   record(
