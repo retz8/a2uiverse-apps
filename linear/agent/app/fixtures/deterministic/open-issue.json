@@ -1,6 +1,14 @@
 [
   {
     "version": "v0.9",
+    "createSurface": {
+      "surfaceId": "issue-detail",
+      "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/linear/linear-catalog/catalogs/v0.9.1/catalog.json",
+      "sendDataModel": true
+    }
+  },
+  {
+    "version": "v0.9",
     "updateDataModel": {
       "surfaceId": "issue-detail",
       "value": {

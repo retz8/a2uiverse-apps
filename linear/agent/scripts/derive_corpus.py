@@ -25,8 +25,10 @@ BEATS = AGENT / "recordings" / "beats"
 STUB = AGENT / "app" / "fixtures" / "stub"
 DETERMINISTIC = AGENT / "app" / "fixtures" / "deterministic"
 
-# Action name -> the beat whose settled stream answers it. Action responses are updates
-# against a surface the client already holds, so they carry no createSurface.
+# Action name -> the beat whose settled stream answers it. A drill-down is a new screen, as the
+# live agent paints it, so it keeps its createSurface and the kit answers it on a fresh surface;
+# every other action response is an update against a surface the client already holds, so it
+# carries no createSurface.
 ACTION_BEATS = {
     "open-issue.json": "beat-2-issue-detail.json",
     "confirm-change.json": "beat-3-status-confirm.json",
@@ -89,6 +91,10 @@ def derive_stub() -> None:
             write(STUB / f"{fixture}.json", doc, tool)
 
 
+# The actions that open a new screen.
+DRILL_DOWNS = {"open-issue.json"}
+
+
 def derive_deterministic() -> None:
     # All or nothing: a partial corpus is worse than none, because the tests that depend on
     # it key on the directory existing and would run against a half-set.
@@ -102,7 +108,11 @@ def derive_deterministic() -> None:
     write(DETERMINISTIC / "my-issues.json", messages, f"{len(messages)} messages")
 
     for fixture, beat in ACTION_BEATS.items():
-        messages = [m for m in settled_messages(BEATS / beat) if "createSurface" not in m]
+        messages = [
+            m
+            for m in settled_messages(BEATS / beat)
+            if fixture in DRILL_DOWNS or "createSurface" not in m
+        ]
         write(DETERMINISTIC / fixture, messages, f"{len(messages)} messages")
 
     # Declining a proposal paints nothing new; the canned response says so on the surface.

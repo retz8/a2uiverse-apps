@@ -18,7 +18,7 @@ FIXTURES = Path(__file__).resolve().parent / "fixtures" / "deterministic"
 def _pair():
     return fixture_responder(
         FIXTURES,
-        {"greet": "greeting.json"},
+        {"greet": "greeting.json", "open": "digest.json"},
         text_fixture="digest.json",
         surface_prefix="test",
     )
@@ -29,6 +29,15 @@ def test_known_action_plays_its_fixture_stamped_with_the_action_surface():
     messages = build_response({"name": "greet", "surfaceId": "s-42"})
     assert messages[0]["updateComponents"]["surfaceId"] == "s-42"
     assert messages[0]["updateComponents"]["components"][0]["text"] == "ok"
+
+
+def test_an_action_whose_fixture_creates_a_surface_answers_on_a_fresh_one():
+    build_response, build_text_response = _pair()
+    build_text_response("anything")
+    messages = build_response({"name": "open", "surfaceId": "test-1"})
+    # A new screen, as the live agent paints a drill-down: never the acted surface re-created.
+    assert messages[0]["createSurface"]["surfaceId"] == "test-2"
+    assert messages[1]["updateComponents"]["surfaceId"] == "test-2"
 
 
 def test_unknown_action_gets_the_visible_fallback():

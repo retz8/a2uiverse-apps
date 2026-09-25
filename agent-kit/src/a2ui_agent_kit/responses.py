@@ -88,7 +88,10 @@ def fixture_responder(
     response); any plain-text prompt answers with `text_fixture` on a fresh
     `<surface_prefix>-N` surface — a surfaceId may not be re-created on the client,
     and the stateless executor cannot know what already exists, so fresh ids keep
-    every turn renderable. The text path does not route: whatever it is asked, it
+    every turn renderable. An action's fixture that carries a `createSurface` is a
+    new screen — a drill-down, as the live agent paints it — and answers on a fresh
+    surface too, so the platform counts it a paint of its own with a way back; one
+    without is an update in place, on the surface the action came from. The text path does not route: whatever it is asked, it
     answers with the canned digest the fan-out beat expects — discriminating on the
     utterance would be a second, worse router; the live modes are where intent is
     read.
@@ -101,7 +104,10 @@ def fixture_responder(
         fixture = event_fixtures.get(name)
         if fixture is None:
             return fallback(name, surface_id)
-        return stamp_surface(load_fixture(fixtures_dir, fixture), surface_id)
+        messages = load_fixture(fixtures_dir, fixture)
+        if any("createSurface" in m for m in messages):
+            surface_id = f"{surface_prefix}-{next(surface_counter)}"
+        return stamp_surface(messages, surface_id)
 
     def build_text_response(text: str) -> list[dict]:
         messages = load_fixture(fixtures_dir, text_fixture)

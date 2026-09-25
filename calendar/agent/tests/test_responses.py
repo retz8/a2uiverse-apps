@@ -19,6 +19,8 @@ from app.responses import build_response, build_text_response
 validate_payload = catalog_context(CONFIG).validate_payload
 
 ACTIONS = ("open-event", "confirm-event", "rsvp-toggle", "cancel-event")
+# The actions that open a new screen.
+DRILL_DOWNS = ["open-event"]
 
 # The canned corpus is derived from a live recording run, so it does not exist until one has
 # happened and been verified publishable. These skip rather than assert against stand-in data
@@ -74,21 +76,34 @@ class TestActionPath:
         assert messages
         assert "Unhandled event" not in str(messages)
 
-    @pytest.mark.parametrize("name", ACTIONS)
-    def test_each_response_echoes_the_surface_it_targets(self, name):
+    @pytest.mark.parametrize("name", [a for a in ACTIONS if a not in DRILL_DOWNS])
+    def test_each_update_echoes_the_surface_it_targets(self, name):
         for message in build_response(_action(name, "surface-42")):
             for key in ("updateComponents", "updateDataModel", "createSurface"):
                 if key in message:
                     assert message[key]["surfaceId"] == "surface-42"
 
+    @pytest.mark.parametrize("name", DRILL_DOWNS)
+    def test_a_drill_down_answers_on_a_fresh_surface(self, name):
+        # A new screen, as the live agent paints it: the platform counts it a paint of its own.
+        messages = build_response(_action(name, "surface-42"))
+        assert _ops(messages)[0] == "createSurface"
+        fresh = messages[0]["createSurface"]["surfaceId"]
+        assert fresh != "surface-42"
+        for message in messages:
+            for key in ("updateComponents", "updateDataModel", "createSurface"):
+                if key in message:
+                    assert message[key]["surfaceId"] == fresh
+
     @pytest.mark.parametrize("name", ACTIONS)
     def test_each_response_is_catalog_conformant(self, name):
         validate_payload(build_response(_action(name)))
 
-    def test_an_action_response_never_creates_a_surface(self):
-        # It is a partial update against a surface the client already holds.
+    def test_only_a_drill_down_creates_a_surface(self):
+        # Every other response is a partial update against a surface the client already holds.
         for name in ACTIONS:
-            assert "createSurface" not in _ops(build_response(_action(name)))
+            created = "createSurface" in _ops(build_response(_action(name)))
+            assert created == (name in DRILL_DOWNS)
 
     def test_an_unknown_event_is_visibly_unhandled(self):
         # A silent no-op looks like a working round-trip that changed nothing.

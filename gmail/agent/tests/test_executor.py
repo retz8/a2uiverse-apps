@@ -21,13 +21,16 @@ requires_corpus = pytest.mark.skipif(
 
 
 @requires_corpus
-async def test_a_beat_action_round_trips_and_echoes_its_surface():
+async def test_a_drill_down_round_trips_on_a_fresh_surface():
+    # Opening a thread is a new screen, as the live agent paints it: never the acted surface.
     payload = await run_executor(OPEN_THREAD)
     assert payload
+    fresh = payload[0]["createSurface"]["surfaceId"]
+    assert fresh != "gmail-1"
     for message in payload:
         for key in ("updateComponents", "updateDataModel"):
             if key in message:
-                assert message[key]["surfaceId"] == "gmail-1"
+                assert message[key]["surfaceId"] == fresh
 
 
 @requires_corpus

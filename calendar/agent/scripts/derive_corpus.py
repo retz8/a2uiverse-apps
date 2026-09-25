@@ -145,8 +145,9 @@ def derive_deterministic() -> None:
         if messages:
             write(DETERMINISTIC / "agenda-digest.json", messages, f"{len(messages)} messages")
 
-    # Action responses are partial updates against a surface the client already holds, so
-    # they carry no createSurface.
+    # A drill-down is a new screen, as the live agent paints it, so it keeps its createSurface
+    # and the kit answers it on a fresh surface; every other action response is a partial
+    # update against a surface the client already holds, so it carries no createSurface.
     for beat, name in (
         ("beat-2-event-detail.json", "open-event.json"),
         ("beat-3-event-create.json", "confirm-event.json"),
@@ -155,7 +156,9 @@ def derive_deterministic() -> None:
         path = BEATS / beat
         if not path.is_file():
             continue
-        messages = [m for m in settled_messages(path) if "createSurface" not in m]
+        messages = [
+            m for m in settled_messages(path) if name == "open-event.json" or "createSurface" not in m
+        ]
         if messages:
             write(DETERMINISTIC / name, messages, f"{len(messages)} messages")
 

@@ -12,6 +12,8 @@ from app.responses import EVENT_FIXTURES, build_response, build_text_response
 validate_payload = catalog_context(CONFIG).validate_payload
 
 ACTIONS = sorted(EVENT_FIXTURES)
+# The actions that open a new screen.
+DRILL_DOWNS = ["open-issue"]
 
 
 def _action(name: str, surface_id: str = "s-1") -> dict:
@@ -45,12 +47,24 @@ class TestActionPath:
         assert messages
         assert "Unhandled event" not in str(messages)
 
-    @pytest.mark.parametrize("name", ACTIONS)
-    def test_each_response_echoes_the_surface_it_targets(self, name):
+    @pytest.mark.parametrize("name", [a for a in ACTIONS if a not in DRILL_DOWNS])
+    def test_each_update_echoes_the_surface_it_targets(self, name):
         for message in build_response(_action(name, "surface-42")):
             for key in ("updateComponents", "updateDataModel", "createSurface"):
                 if key in message:
                     assert message[key]["surfaceId"] == "surface-42"
+
+    @pytest.mark.parametrize("name", DRILL_DOWNS)
+    def test_a_drill_down_answers_on_a_fresh_surface(self, name):
+        # A new screen, as the live agent paints it: the platform counts it a paint of its own.
+        messages = build_response(_action(name, "surface-42"))
+        assert _ops(messages)[0] == "createSurface"
+        fresh = messages[0]["createSurface"]["surfaceId"]
+        assert fresh != "surface-42"
+        for message in messages:
+            for key in ("updateComponents", "updateDataModel", "createSurface"):
+                if key in message:
+                    assert message[key]["surfaceId"] == fresh
 
     @pytest.mark.parametrize("name", ACTIONS)
     def test_each_response_is_catalog_conformant(self, name):

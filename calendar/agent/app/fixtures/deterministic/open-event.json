@@ -1,6 +1,14 @@
 [
   {
     "version": "v0.9",
+    "createSurface": {
+      "surfaceId": "event-ectktv0lkuauv7g3i8hgpmhelg",
+      "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/calendar/calendar-catalog/catalogs/v0.9.1/catalog.json",
+      "sendDataModel": true
+    }
+  },
+  {
+    "version": "v0.9",
     "updateDataModel": {
       "surfaceId": "event-ectktv0lkuauv7g3i8hgpmhelg",
       "value": {
