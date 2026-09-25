@@ -1,16 +1,52 @@
-# agent/ — the __DISPLAY_NAME__ app's A2A agent
+# __DISPLAY_NAME__ agent
 
-uv-managed Python project, on port **__PORT__** in every run mode. Built on
-[`a2ui-agent-kit`](https://github.com/retz8/a2uiverse-apps/tree/main/agent-kit), pinned to a
-commit in `pyproject.toml`: the kit carries the servers, run modes, recorder, and catalog
-machinery; this project carries what is __DISPLAY_NAME__'s — prompt prose, tool policy,
-fixtures, knowledge docs, and the agent card (`app/`).
+An A2A agent for __DISPLAY_NAME__. It answers questions by painting A2UI surfaces with [`__PACKAGE_NAME__`](../__PACKAGE_NAME__/). It runs on port **__PORT__** and is built on [`a2ui-agent-kit`](https://github.com/retz8/a2uiverse-apps/tree/main/agent-kit), pinned to a commit in `pyproject.toml`.
 
-## Setup
+## What to fill in
+
+Every `TODO` in the scaffold marks something only you can write. Delete this section once they're done.
+
+| Where                                 | What                                                                     |
+| ------------------------------------- | ------------------------------------------------------------------------ |
+| `app/card.py`                         | The skills: one per capability, with a few example questions each        |
+| `app/prose.py`                        | What the agent is and what it must never do, in __DISPLAY_NAME__'s voice |
+| `app/knowledge/__APP_ID__-domain.md`  | What __DISPLAY_NAME__'s things are, and the decisions that hang on them  |
+| `app/knowledge/brand-guidance.md`     | How a surface should look to read as __DISPLAY_NAME__'s own UI           |
+| `app/knowledge/examples/`             | Example surfaces, one per layout idiom; the tests validate each          |
+| `app/mcp.py`                          | The MCP server's address and credential                                  |
+| `app/tools.py` + `app/fixtures/stub/` | The stub: the live tools mirrored over canned data                       |
+| `app/fixtures/deterministic/`         | The canned answers `deterministic` plays                                 |
+| `scripts/record_beats.py`             | The conversations to record                                              |
+| this README                           | "What it can do" and "Credentials" below                                 |
+
+## What it can do
+
+TODO: what the agent reads and writes through __DISPLAY_NAME__'s MCP server, which writes are shown as a proposal first, and what it can't do.
+
+## Run
 
 ```bash
 uv sync
+cp .env.example .env
+uv run python -m app --mode deterministic
 ```
+
+| Mode            | What runs                                   | Needs                                   |
+| --------------- | ------------------------------------------- | --------------------------------------- |
+| `deterministic` | canned answers, no model                    | nothing                                 |
+| `stub`          | the model over canned __DISPLAY_NAME__ data | `GOOGLE_API_KEY`                        |
+| `live`          | the model over __DISPLAY_NAME__'s MCP server | `GOOGLE_API_KEY`, the credential below |
+
+A fresh scaffold runs before you edit anything: `deterministic` paints a greeting card, `stub` holds one placeholder tool, and `live` stops with a "not wired yet" message until `app/mcp.py` names the MCP server.
+
+Other flags: `--port`, `--host`, and `--base-url`, the address the agent card advertises.
+
+## Credentials (live mode)
+
+TODO: how to get the credential __DISPLAY_NAME__'s MCP server takes, and where it goes in `.env`.
+
+> [!IMPORTANT]
+> The agent can do anything its credential can, as that credential's user. Scope it to what you want the agent to be able to do.
 
 ## Test
 
@@ -18,68 +54,23 @@ uv sync
 uv run pytest
 ```
 
-Tests make zero LLM calls and zero vendor calls: prompt-assembly snapshot, validator, and the
-executor against canned responses. No key or credential is needed to run the suite. The first
-run writes `tests/golden/llm_system_prompt.skeleton.txt`; commit it, and refresh it deliberately
-whenever the prompt framing changes.
+No model calls and no credentials needed. The first run writes `tests/golden/llm_system_prompt.skeleton.txt`: commit it, and refresh it when you change the prompt.
 
-## Run
+## Recording
 
-One entrypoint, three modes:
+The canned data behind `deterministic` and `stub` should come from recorded live runs, not be hand-written.
 
 ```bash
-uv run python -m app --mode deterministic   # canned fixtures, no model
-uv run python -m app --mode stub            # model over canned tools
-uv run python -m app --mode live            # model over the live __DISPLAY_NAME__ MCP server
+A2UI_RECORD_DIR=.recordings uv run python -m app --mode live --host localhost
+uv run python scripts/record_beats.py --model <model>
 ```
 
-| Mode            | Needs                                    |
-| --------------- | ---------------------------------------- |
-| `deterministic` | nothing                                  |
-| `stub`          | `GOOGLE_API_KEY`                         |
-| `live`          | `GOOGLE_API_KEY` + the vendor credential |
+The recorded MCP payloads become `app/fixtures/stub/`, and the painted streams become `app/fixtures/deterministic/`. Never commit real personal data: if __DISPLAY_NAME__'s data is personal, scrub it as it's recorded.
 
-Copy `.env.example` to `.env` first (`MODEL_NAME` defaults to `gemini-3.7-flash`).
+## Choosing its tools
 
-> [!IMPORTANT]
-> **The live agent acts as its credential's user.** Whatever the MCP server lets that
-> credential do, the agent can do — reads and writes alike, under that user's name. Scope the
-> credential to the authority you want the agent to have.
+`TOOL_FILTER` in `app/mcp.py` lists the server's tools the agent holds; empty means all of them. Whenever the list changes, mirror it in the stub (`app/tools.py`) and describe what each tool returns in `app/knowledge/__APP_ID__-domain.md`.
 
-A fresh scaffold works before you edit anything: deterministic mode paints a greeting card,
-stub mode holds one placeholder tool, and live mode fails fast with a "not wired yet" message
-until `app/mcp.py` names the MCP server.
+## Connecting to A2UIVerse
 
-## What to fill in
-
-Every `TODO` marker is a seam the scaffold could not fill for you:
-
-| Where                                 | What                                                                                 |
-| ------------------------------------- | ------------------------------------------------------------------------------------ |
-| `app/card.py`                         | The skills: one per capability, several example utterances each, in the user's words |
-| `app/prose.py`                        | The role and scope prose in __DISPLAY_NAME__'s own voice                             |
-| `app/knowledge/__APP_ID__-domain.md`  | Domain facts and the decisions that hinge on them                                    |
-| `app/knowledge/brand-guidance.md`     | How to compose surfaces that read as __DISPLAY_NAME__'s product UI                   |
-| `app/knowledge/examples/`             | Curated example surfaces, one per composition idiom; each is validated by the tests  |
-| `app/tools.py` + `app/fixtures/stub/` | A stub mirror of the live tool surface over real-shaped fixtures                     |
-| `app/fixtures/deterministic/`         | The canned responses deterministic mode plays (derive them from recorded live runs)  |
-| `app/mcp.py`                          | The live MCP server and its credential                                               |
-
-### Serving a browser on another machine
-
-`--base-url` sets the URL the agent card advertises (default `http://<host>:<port>`). Pass
-the publicly reachable URL whenever the browser reaches the agent through a host other than
-`localhost` — with the default, the card fetch succeeds but the `message/send` POST targets
-the wrong host.
-
-## Recording live runs
-
-With `A2UI_RECORD_DIR` set, every conversation's streamed A2UI output is captured as the exact
-batch sequence it was sent, one file per conversation; unset, the agent behaves identically and
-writes nothing. `scripts/record_beats.py` drives scripted prompts against an armed agent and
-finalizes each into a per-beat fixture under `recordings/beats/`.
-
-The recorded corpus is what the other two run modes should be built from: the captured MCP
-payloads become `app/fixtures/stub/` and the painted streams become `app/fixtures/deterministic/`.
-Never record real personal data into a tracked file — pseudonymize at the source if the vendor
-data is personal (the Gmail app in the a2uiverse-apps roster shows how).
+Put the app folder in A2UIVerse's agents dir — by default the `a2uiverse-apps` checkout beside the `a2uiverse` repo — and launch it from the [A2UIVerse](https://github.com/retz8/a2uiverse) repo with `pnpm dev:agents --only __APP_ID__`. The launcher finds the agent through the app's [`manifest.json`](../manifest.json) and starts it on the port listed there. Start agents before the platform, because the orchestrator reads each agent card once, at boot. `pnpm dev:all` does both, in that order.
