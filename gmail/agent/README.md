@@ -1,50 +1,50 @@
-# agent/ — the Gmail app's A2A agent
+# Gmail agent
 
-uv-managed Python project (outside the pnpm workspace), on port **11002** in every
-run mode. Built on `a2ui-agent-kit` (`../../agent-kit/`, an editable path
-dependency): the kit carries the servers, run modes, recorder, and catalog
-machinery; this project carries what is Gmail's — prompt prose, tool policy,
-fixtures, knowledge docs, and the agent card (`app/`).
+The Gmail app's A2A agent. It answers mail questions on the A2UIVerse canvas and paints its answers with [`gmail-catalog`](../gmail-catalog/), the basic A2UI catalog in Gmail's Material 3 look. It runs on port **11002** and is built on the [agent kit](../../agent-kit/).
 
-`deterministic` is the **composition harness**: its text path answers with the canned
-inbox digest and its action map covers the four beats, so the three-agent composed
-screen can be driven end to end with no LLM call and no Gmail MCP quota. `live` turns a
-natural-language prompt into a streamed, catalog-valid, data-bound A2UI surface (Gemini
-via Google ADK), reading and writing the real mailbox through Google's Gmail MCP server.
-`stub` puts the model over canned tool data (`app/tools.py`) for work that should not
-touch the mailbox.
+## What it can do
 
-## Setup
+In `live` mode it works through Google's Gmail MCP server.
+
+- **Reads** threads, messages, labels and drafts.
+- **Writes** drafts and labels. A draft is proposed on the canvas and saved only when you confirm.
+- **Can't send mail**: the Gmail MCP server has no send tool.
+- **Can't trash, mark as spam or delete** anything, its own drafts included.
+
+12 of the server's tools are allowed, listed in `app/mcp.py`. That list is the only thing holding back trash and spam, because Gmail has no scope that allows labels without also allowing them.
+
+## Run
 
 ```bash
 uv sync
+cp .env.example .env
+uv run python -m app --mode deterministic
 ```
 
-## Test
+| Mode            | What runs                                   | Needs                                                  |
+| --------------- | ------------------------------------------- | ------------------------------------------------------ |
+| `deterministic` | canned answers, no model                    | nothing                                                |
+| `stub`          | the model over canned mail                  | `GOOGLE_API_KEY`                                       |
+| `live`          | the model over your mailbox, through MCP    | `GOOGLE_API_KEY`, `GOOGLE_CLOUD_PROJECT`, Google login |
 
-```bash
-uv run pytest
-```
+`deterministic` answers any question with a recorded inbox digest, and replays the recorded actions: opening a thread, confirming or cancelling a draft, toggling a label. Opening a thread paints a new surface, as the live agent does, so the canvas can step back to the inbox.
 
-Tests make zero LLM calls and zero Gmail calls: prompt-assembly snapshot, validator, and the
-executor against a faked model stream. No credential is needed to run the suite.
+You rarely start it by hand: the platform's launcher starts every agent (`pnpm dev:agents` in the `a2uiverse` repo). Other flags: `--port`, `--host`, and `--base-url`, the address the agent card advertises.
 
-## Setting up the Gmail credential
+## Google login (live mode)
 
-One-time, and outside the agent — it never holds a secret and never runs a consent flow.
+One-time, outside the agent. The agent never holds a secret.
 
-1. Enable the APIs on the preview project:
+1. Enable the APIs:
 
    ```bash
    gcloud services enable gmail.googleapis.com gmailmcp.googleapis.com \
      --project=a2uiverse-506907
    ```
 
-2. On that project's consent screen (Google Auth Platform → Data Access), add
-   `gmail.readonly`, `gmail.compose`, and `gmail.modify` **alongside** the Calendar scopes.
-   One consent screen serves every Google app in this repo.
+2. On the project's consent screen (Google Auth Platform → Data Access), add `gmail.readonly`, `gmail.compose` and `gmail.modify`.
 
-3. Mint Application Default Credentials against the project's Desktop client:
+3. Log in with Application Default Credentials:
 
    ```bash
    gcloud auth application-default login \
@@ -57,72 +57,28 @@ One-time, and outside the agent — it never holds a secret and never runs a con
    https://www.googleapis.com/auth/cloud-platform
    ```
 
-   `--scopes` **replaces** the granted set rather than adding to it, and every Google app in
-   this repo reads the same Application Default Credentials. So this command lists the
-   **union of all of them** — Gmail's three and Calendar's two. Running it with only one
-   product's scopes silently revokes the other app's access, and that app then fails at
-   startup with a credential error that names the wrong cause. A third Google app extends
-   this list here **and** in every sibling app's README.
+> [!WARNING]
+> Gmail and Calendar share one Google login, and `--scopes` replaces what was granted before. Always log in with **both** apps' scopes, as above. Otherwise the other app loses access and fails at startup with an error that points elsewhere.
 
-The agent refuses to start on the MCP backend with no usable credential, naming this command
-— it never degrades silently to canned data, because a convincing surface built from stub
-fixtures with no signal that it is not live is worse than a failure.
+With no usable login, `live` refuses to start rather than quietly falling back to canned mail.
 
-## Run
-
-One entrypoint, three modes:
+## Test
 
 ```bash
-uv run python -m app --mode deterministic   # canned fixtures, no model
-uv run python -m app --mode stub            # model over canned tools
-uv run python -m app --mode live            # model over the live Gmail MCP server
+uv run pytest
 ```
 
-| Mode | Needs |
-| --- | --- |
-| `deterministic` | nothing |
-| `stub` | `GOOGLE_API_KEY` |
-| `live` | `GOOGLE_API_KEY`, ADC, `GOOGLE_CLOUD_PROJECT` |
+No model calls, no Gmail calls, no credentials needed.
 
-Copy `.env.example` to `.env` first.
+## Recording
 
-### What this agent can and cannot do
+The canned data behind `deterministic` and `stub` comes from recorded live runs, not hand-written.
 
-It reads the mailbox, saves drafts, and adds and removes labels. It **cannot send mail** —
-the Gmail MCP server exposes no send tool at all — and it **cannot delete or discard**
-anything, including drafts it created itself.
+```bash
+A2UI_RECORD_DIR=.recordings uv run python -m app --mode live --host localhost
+uv run python scripts/record_beats.py --model <model>
+uv run python scripts/derive_corpus.py
+uv run pytest tests/test_corpus_is_publishable.py
+```
 
-Of the server's twenty-three tools, twelve are admitted; trashing, spam marking and
-sensitive-label application are withheld by `tool_filter` in `app/mcp.py`. That
-exclusion is a **single** layer: Gmail has no scope that grants the labelling tools without
-also authorizing trash and spam, so the credential permits what the filter withholds.
-Admitting the destructive tools is a decision for a real authority surface (M8), not
-something to reach for here.
-
-### Serving a browser on another machine
-
-`--base-url` sets the URL the agent card advertises (default `http://<host>:<port>`). Pass
-the publicly reachable URL whenever the browser reaches the agent through a host other than
-`localhost` — with the default, the card fetch succeeds but the `message/send` POST targets
-the wrong host.
-
-## Recording live runs
-
-With `A2UI_RECORD_DIR` set, every conversation's streamed A2UI output is captured as the
-exact batch sequence it was sent; unset, the agent behaves identically and writes nothing.
-
-**Setting `A2UI_RECORD_DIR` also arms pseudonymization** — which is why it matters beyond this
-agent's own fixtures. The beats the canvas replays are recorded in the platform repo, through the
-composing hub, and that recorder captures whatever the hub relays without being able to tell
-whether anything was scrubbed. Starting this agent armed is what keeps real mail out of a tracked
-file there; `check:fixtures` in the platform repo is the backstop if it is forgotten. Every Gmail MCP payload passes
-through a deterministic, length-preserving substitution (`app/tool_shaping.py`) before
-the model sees it, so the model paints stand-in names and subjects natively and no real mail
-reaches the recorded stream, the prompt dump, or the model provider. The seed is fixed, so a
-re-recorded beat reproduces the same stand-ins and still matches its committed screenshot
-baseline.
-
-The recorded corpus is what the other two run modes are built from: the pseudonymized MCP
-payloads become `app/fixtures/stub/` (the stub backend's data) and the pseudonymized painted
-streams become `app/fixtures/deterministic/`. Neither is hand-authored — that is what keeps
-the canned data real-shaped.
+**Setting `A2UI_RECORD_DIR` also turns on pseudonymization.** Every mail payload gets stand-in names and subjects before the model sees it, so no real mail reaches the recordings or the model provider. The stand-ins are seeded, so re-recording gives the same ones. Start this agent with it set whenever the platform records its canvas replays too — that's what keeps real mail out of them.

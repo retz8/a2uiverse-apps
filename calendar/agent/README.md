@@ -1,83 +1,62 @@
-# agent/ — the Google Calendar app's A2A agent
+# Google Calendar agent
 
-uv-managed Python project (outside the pnpm workspace), on port **11003** in every
-run mode. Built on `a2ui-agent-kit` (`../../agent-kit/`, an editable path
-dependency): the kit carries the servers, run modes, recorder, and catalog
-machinery; this project carries what is Calendar's — prompt prose, tool policy,
-fixtures, knowledge docs, and the agent card (`app/`).
+The Google Calendar app's A2A agent. It answers schedule questions on the A2UIVerse canvas and paints its answers with [`calendar-catalog`](../calendar-catalog/), the basic A2UI catalog in Calendar's Material 3 look. It runs on port **11003** and is built on the [agent kit](../../agent-kit/).
 
-`deterministic` is the **composition harness**: its text path answers with the canned
-agenda and its action map covers the four beats, so the three-agent composed screen can
-be driven end to end with no LLM call and no Calendar MCP quota. `live` turns a
-natural-language prompt into a streamed, catalog-valid, data-bound A2UI surface (Gemini
-via Google ADK), reading and writing a real calendar through Google's Calendar MCP
-server. `stub` puts the model over canned tool data (`app/tools.py`) for work that should
-not touch Google at all.
+## What it can do
 
-## Setup
+In `live` mode it works through Google's Calendar MCP server.
 
-```bash
-uv sync
-```
+- **Reads** events.
+- **Creates** an event from a proposal you confirm on the canvas.
+- **Answers invitations** for you.
+- **Can't delete, cancel or change** an existing event.
 
-## Test
-
-```bash
-uv run pytest
-```
-
-Tests make zero LLM calls and zero Calendar calls: prompt-assembly snapshot, validator, and
-the executor against a faked model stream. No credential is needed to run the suite.
+4 of the server's tools are allowed, listed in `app/mcp.py`. The Google scope would allow more, so a second guard applies in every mode: attendees are never notified. An event created through this agent still exists, but its attendees aren't told about it, and the proposal says so.
 
 ## The demo calendar
 
-**The agent never reads `primary`.** It reads a seeded demo calendar whose events are
-authored and tracked in this repo (task-2.7 decision 4), and it fails at startup if
-`CALENDAR_ID` is unset rather than falling back to anything.
+**The agent never reads your primary calendar.** It reads a demo calendar seeded from [`scripts/seed_events.json`](scripts/seed_events.json), named by `CALENDAR_ID`, and refuses to start without it. Because the content is authored, nothing needs scrubbing before it's recorded.
 
-That is the whole of this app's privacy story, and it replaces the pseudonymizer the Gmail
-agent needs. An account has exactly one mailbox, so reading Gmail live means reading real
-mail and every payload has to be scrubbed before it can reach a public repo. Calendar is not
-shaped like that: `calendarId` is a first-class parameter and one account holds many
-calendars. So the corpus here is clean **by construction** rather than by a substitution pass
-whose completeness nobody can prove.
-
-What that costs is recorded rather than glossed: the payload *shapes* are real, because they
-come from the real API, but the *content* is authored. Phase decision 1's "derived from real
-MCP payloads, not invented" holds for everything that teaches the model a field exists, and
-not for the values in those fields.
-
-Create the calendar once (any secondary calendar in the project's account), put its id in
-`.env`, then seed it:
+Create any secondary calendar in the Google account, put its id in `.env` as `CALENDAR_ID`, then seed it:
 
 ```bash
 uv run python -m scripts.seed_calendar
 ```
 
-The seed corpus (`scripts/seed_events.json`) dates every event **relative to the run date**,
-and seeding **wipes and recreates**. Both matter: a calendar is dates, so an absolutely-dated
-seed is an empty agenda a few months later and the live demo shows nothing; and the two write
-beats mutate the calendar, so without a wipe each recording run degrades the fixture source it
-was recorded from.
+Seeding wipes the calendar and recreates every event relative to today. Re-seed before recording and before any live demo — the write beats change the calendar, and dates go stale.
 
-Re-seed before recording beats and before any live demo.
+## Run
 
-## Setting up the Calendar credential
+```bash
+uv sync
+cp .env.example .env
+uv run python -m app --mode deterministic
+```
 
-One-time, and outside the agent — it never holds a secret and never runs a consent flow.
+| Mode            | What runs                                  | Needs                                                                |
+| --------------- | ------------------------------------------ | -------------------------------------------------------------------- |
+| `deterministic` | canned answers, no model                   | nothing                                                              |
+| `stub`          | the model over canned events               | `GOOGLE_API_KEY`                                                     |
+| `live`          | the model over the demo calendar, via MCP  | `GOOGLE_API_KEY`, `GOOGLE_CLOUD_PROJECT`, `CALENDAR_ID`, Google login |
 
-1. Enable the APIs on the preview project:
+`deterministic` answers any question with a recorded agenda, and replays the recorded actions: opening an event, confirming or cancelling a new one, answering an invitation. Opening an event paints a new surface, as the live agent does, so the canvas can step back to the agenda.
+
+You rarely start it by hand: the platform's launcher starts every agent (`pnpm dev:agents` in the `a2uiverse` repo). Other flags: `--port`, `--host`, and `--base-url`, the address the agent card advertises.
+
+## Google login (live mode)
+
+One-time, outside the agent. The agent never holds a secret.
+
+1. Enable the APIs:
 
    ```bash
    gcloud services enable calendar-json.googleapis.com calendarmcp.googleapis.com \
      --project=a2uiverse-506907
    ```
 
-2. On that project's consent screen (Google Auth Platform → Data Access), add
-   `calendar.readonly` and `calendar.events` **alongside** the Gmail scopes already there.
-   One consent screen serves every Google app in this repo.
+2. On the project's consent screen (Google Auth Platform → Data Access), add `calendar.readonly` and `calendar.events`.
 
-3. Mint Application Default Credentials against the project's Desktop client:
+3. Log in with Application Default Credentials:
 
    ```bash
    gcloud auth application-default login \
@@ -90,83 +69,29 @@ One-time, and outside the agent — it never holds a secret and never runs a con
    https://www.googleapis.com/auth/cloud-platform
    ```
 
-   `--scopes` **replaces** the granted set rather than adding to it, and every Google app in
-   this repo reads the same Application Default Credentials. So this command lists the
-   **union of all of them** — Gmail's three and Calendar's two. Running it with only one
-   product's scopes silently revokes the other app's access, and that app then fails at
-   startup with a credential error that names the wrong cause. A third Google app extends
-   this list here **and** in every sibling app's README.
+> [!WARNING]
+> Gmail and Calendar share one Google login, and `--scopes` replaces what was granted before. Always log in with **both** apps' scopes, as above. Otherwise the other app loses access and fails at startup with an error that points elsewhere.
 
-The agent refuses to start on the MCP backend with no usable credential, naming this command
-— it never degrades silently to canned data, because a convincing surface built from stub
-fixtures with no signal that it is not live is worse than a failure.
+With no usable login, `live` refuses to start rather than quietly falling back to canned events.
 
-## Run
-
-One entrypoint, three modes:
+## Test
 
 ```bash
-uv run python -m app --mode deterministic   # canned fixtures, no model
-uv run python -m app --mode stub            # model over canned tools
-uv run python -m app --mode live            # model over the live Calendar MCP server
+uv run pytest
 ```
 
-| Mode | Needs |
-| --- | --- |
-| `deterministic` | nothing |
-| `stub` | `GOOGLE_API_KEY` |
-| `live` | `GOOGLE_API_KEY`, ADC, `GOOGLE_CLOUD_PROJECT`, `CALENDAR_ID` |
+No model calls, no Calendar calls, no credentials needed.
 
-Copy `.env.example` to `.env` first.
+## Recording
 
-### What this agent can and cannot do
-
-It reads the calendar, creates an event from a proposal the user confirms, and answers an
-invitation on the user's behalf. It **cannot delete or cancel** anything, and it **cannot
-change an event that already exists**.
-
-The admitted inventory is pinned by `tool_filter` in `app/mcp.py`: the reads, event
-creation, and the attendee-response tool. Deletion and every tool that modifies an existing
-event are withheld.
-
-**Two layers, not one.** The tool filter is the first, and on its own it is as thin as
-Gmail's: `calendar.events` grants full CRUD including deletion, and the narrower
-`calendar.events.owned` cannot cover the response tool at all, because a response is made on
-an event the user does not own. So the credential permits what the filter withholds.
-
-The second layer is real, and Gmail had no equivalent. Calendar's writes reach third parties
-— creating an event mails its attendees and changes their calendars, where trashing mail is
-private and reversible — so every outbound call has its notification parameter forced to a
-non-notifying value in `app/tool_shaping.py`, in every run mode. Stated precisely: **it
-stops the invitations, it does not stop the event existing.** An event created through this
-agent is one its attendees do not know about, which is why the prompt requires the proposal
-to say so on the surface.
-
-Admitting the destructive tools is a decision for a real authority surface (M8), not
-something to reach for here.
-
-### Serving a browser on another machine
-
-`--base-url` sets the URL the agent card advertises (default `http://<host>:<port>`). Pass
-the publicly reachable URL whenever the browser reaches the agent through a host other than
-`localhost` — with the default, the card fetch succeeds but the `message/send` POST targets
-the wrong host.
-
-## Recording live runs
-
-With `A2UI_RECORD_DIR` set, every conversation's streamed A2UI output is captured as the
-exact batch sequence it was sent; unset, the agent behaves identically and writes nothing.
-
-Setting it also arms **corpus capture**: each Calendar MCP payload the model reads is
-appended to `.recordings/payloads/`. Unlike the Gmail agent, nothing is rewritten on the way
-through — there is no pseudonymizer, because the demo calendar has nothing to pseudonymize.
-
-The recorded corpus is what the other two run modes are built from: the captured MCP payloads
-become `app/fixtures/stub/` (the stub backend's data) and the recorded painted streams become
-`app/fixtures/deterministic/`. Neither is hand-authored — that is what keeps the canned data
-real-shaped.
+The canned data behind `deterministic` and `stub` comes from recorded live runs, not hand-written.
 
 ```bash
-uv run python -m scripts.record_beats
-uv run python -m scripts.derive_corpus
+uv run python -m scripts.seed_calendar
+A2UI_RECORD_DIR=.recordings uv run python -m app --mode live --host localhost
+uv run python scripts/record_beats.py --model <model>
+uv run python scripts/derive_corpus.py
+uv run pytest tests/test_corpus_is_publishable.py
 ```
+
+Nothing is pseudonymized: the demo calendar holds nothing private.

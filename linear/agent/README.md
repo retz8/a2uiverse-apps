@@ -1,22 +1,41 @@
-# agent/ — the Linear app's A2A agent
+# Linear agent
 
-uv-managed Python project (outside the pnpm workspace), on port **11005** in every run mode.
-Built on `a2ui-agent-kit` (`../../agent-kit/`, an editable path dependency): the kit carries
-the servers, run modes, recorder, and catalog machinery; this project carries what is Linear's —
-prompt prose, tool policy, fixtures, knowledge docs, and the agent card (`app/`).
+The Linear app's A2A agent. It answers issue-tracking questions on the A2UIVerse canvas and paints its answers with [`linear-catalog`](../linear-catalog/), the basic A2UI catalog in Linear's look. It runs on port **11005** and is built on the [agent kit](../../agent-kit/).
 
-`deterministic` is the **composition harness**: its text path answers with the canned list of
-the user's issues and its action map covers the three beats, so the composed screen can be driven
-end to end with no LLM call and no Linear quota. `live` turns a natural-language prompt into a
-streamed, catalog-valid, data-bound A2UI surface (Gemini via Google ADK), reading issues and
-creating, updating or commenting on them through Linear's hosted MCP server. `stub` puts the
-model over canned tool data (`app/tools.py`) for work that should not touch Linear.
+## What it can do
 
-## Setup
+In `live` mode it works through Linear's hosted MCP server.
+
+- **Reads** your issues and a team's, one issue with its comments and linked pull requests, and a team's states, labels and members.
+- **Creates** an issue, **updates** one — title, description, status, priority, assignee, labels — and **comments** on one. Every write is proposed on the canvas first and runs only when you confirm.
+- **Can't** delete an issue or a comment, create a label, or work with projects, cycles, documents, initiatives or releases.
+
+10 of the server's tools are allowed, listed in `app/mcp.py`. To allow another, update that list, the pin in `tests/test_llm_mcp.py`, the stub in `app/tools.py`, and the domain doc in `app/knowledge/`, together.
+
+## Run
 
 ```bash
 uv sync
+cp .env.example .env
+uv run python -m app --mode deterministic
 ```
+
+| Mode            | What runs                              | Needs                                |
+| --------------- | -------------------------------------- | ------------------------------------ |
+| `deterministic` | canned answers, no model               | nothing                              |
+| `stub`          | the model over canned issues           | `GOOGLE_API_KEY`                     |
+| `live`          | the model over Linear's hosted MCP     | `GOOGLE_API_KEY`, `LINEAR_MCP_TOKEN` |
+
+`deterministic` answers any question with the recorded list of your issues, and replays the recorded actions: opening an issue, proposing a status change and confirming or declining it. Opening an issue paints a new surface, as the live agent does, so the canvas can step back to the list.
+
+You rarely start it by hand: the platform's launcher starts every agent (`pnpm dev:agents` in the `a2uiverse` repo). Other flags: `--port`, `--host`, and `--base-url`, the address the agent card advertises.
+
+## Linear credentials (live mode)
+
+1. **A personal API key.** In Linear: Settings → Account → Security & Access. Create a key with **Read** and **Write**, and copy it (it's shown once) into `.env` as `LINEAR_MCP_TOKEN`. Limiting the key to some teams limits what the agent sees.
+2. **The GitHub integration**, for linked pull requests: Settings → Features → Integrations → GitHub, installed on the repositories the issues link to.
+
+The key acts as its user: **the agent can do whatever that user can**, within the key's permissions. With no key, `live` refuses to start rather than quietly falling back to canned data.
 
 ## Test
 
@@ -24,103 +43,19 @@ uv sync
 uv run pytest
 ```
 
-Tests make zero LLM calls and zero Linear calls: prompt-assembly snapshot, validator, the tool
-pin, and the executor against canned responses. No credential is needed to run the suite.
+No model calls, no Linear calls, no credentials needed.
 
-## Setting up the Linear credential
+## Recording
 
-One-time, and outside the agent — it never runs a consent flow.
-
-1. **A personal API key.** In Linear: **Settings → Account → Security & Access**, create a new
-   API key with the **Read** and **Write** permissions, and copy it — it is shown once. Put it in
-   `agent/.env` as `LINEAR_MCP_TOKEN`. Limiting the key to teams there limits what the agent sees.
-2. **The GitHub integration**, for linked pull requests: **Settings → Features → Integrations →
-   GitHub**, installed on the repositories whose pull requests the issues should link to.
-
-The key acts as its user: **the agent can do whatever that user can**, within the key's
-permissions, on every team the key reaches. The agent refuses to start in `live` mode with no key
-— it never degrades silently to canned data, because a convincing surface built from stub
-fixtures with no signal that it is not live is worse than a failure.
-
-## Run
-
-One entrypoint, three modes:
-
-```bash
-uv run python -m app --mode deterministic   # canned fixtures, no model
-uv run python -m app --mode stub            # model over canned tools
-uv run python -m app --mode live            # model over Linear's hosted MCP server
-```
-
-| Mode            | Needs                                |
-| --------------- | ------------------------------------ |
-| `deterministic` | nothing                              |
-| `stub`          | `GOOGLE_API_KEY`                     |
-| `live`          | `GOOGLE_API_KEY`, `LINEAR_MCP_TOKEN` |
-
-Copy `.env.example` to `.env` first (`MODEL_NAME` defaults to `gemini-3.7-flash`).
-
-### What this agent can and cannot do
-
-It reads the user's issues and a team's, one issue's detail with its comments and linked pull
-requests, and the team's states, labels and members; it creates an issue, updates one — title,
-description, status, priority, assignee, labels — and comments on one. Every write is **proposed
-first** and fires only on the user's confirm. It cannot delete an issue or a comment, create a
-label, or work with projects, cycles, documents, initiatives or releases.
-
-### The tool inventory, and how to expand it
-
-Of the server's sixty-six tools, ten are admitted, by `LINEAR_TOOLS` in `app/mcp.py` (passed as
-the toolset's `tool_filter`). Everything else — the delete and label writes, attachments,
-projects, milestones, cycles, documents, initiatives, releases, Linear's pull-request review,
-notifications — is withheld because nothing in the app shows it.
-
-Admitting a tool is one change in five places, made together:
-
-1. **Confirm the tool's name and arguments** against a live `tools/list`.
-2. **Add it to `LINEAR_TOOLS`** in `app/mcp.py`, and move it out of the withheld comment.
-3. **Pin it in `tests/test_llm_mcp.py`**: add it to the admitted set, remove it from `WITHHELD`.
-4. **Mirror it in the stub** (`app/tools.py`, added to `STUB_TOOLS`) over a fixture derived from a
-   recorded payload, and teach `scripts/derive_corpus.py` to write that fixture.
-5. **Describe what it returns** in `app/knowledge/linear-domain.md` — a tool the domain doc never
-   describes is a tool the model misreads — and, for a write, give it a proposal in the prompt
-   the way the issue writes have one.
-
-A deleting tool belongs with a real authority surface on the platform, not with a filter edit.
-
-### Serving a browser on another machine
-
-`--base-url` sets the URL the agent card advertises (default `http://<host>:<port>`). Pass the
-publicly reachable URL whenever the browser reaches the agent through a host other than
-`localhost` — with the default, the card fetch succeeds but the `message/send` POST targets the
-wrong host.
-
-## Recording live runs
-
-With `A2UI_RECORD_DIR` set, every conversation's streamed A2UI output is captured as the exact
-batch sequence it was sent, and every MCP result is captured as it returns; unset, the agent
-behaves identically and writes nothing.
+The canned data behind `deterministic` and `stub` comes from recorded live runs, not hand-written.
 
 ```bash
 A2UI_RECORD_DIR=.recordings uv run python -m app --mode live --host localhost
-uv run python scripts/record_beats.py --model gemini-3.7-flash   # the three beats
-uv run python scripts/derive_corpus.py                            # stub + deterministic corpora
+uv run python scripts/record_beats.py --model <model>
+uv run python scripts/derive_corpus.py
 uv run pytest tests/test_corpus_is_publishable.py
 ```
 
-The three beats: the user's issues; A2U-5 opened, with its linked pull request and branch; a move
-to In Review, proposed and then confirmed. Beat 3 **really changes** A2U-5's status in the
-workspace.
+The last beat **really changes** an issue's status in the workspace.
 
-The recorded corpus is what the other two run modes are built from: the MCP payloads become
-`app/fixtures/stub/` (the stub backend's data) and the settled painted streams become
-`app/fixtures/deterministic/`. Neither is hand-authored. Values stay real with one exception: when
-the recorder arms, the agent asks Linear for the key's own email address and replaces it with
-`me@example.com` in every result before the model reads it, so neither the payloads nor the painted
-streams hold it; a recording that cannot learn the address does not start. The username, and the
-branch names built on it, stay real. `tests/test_corpus_is_publishable.py` fails the corpus on
-anything token-shaped, on the configured key itself, and on any email address other than the
-placeholder.
-
-Set a full name on the Linear account before recording: without one, Linear uses the email address
-as the user's name, and every assignee and author then records as the placeholder.
+Values stay real except your email: while recording, the agent replaces the key owner's address with `me@example.com` before the model reads anything. Set a full name on the Linear account first — without one, Linear shows the email as your name, and every assignee and author records as the placeholder. The last test fails the recordings on anything token-shaped or any other email address.

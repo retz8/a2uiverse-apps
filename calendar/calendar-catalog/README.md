@@ -1,63 +1,41 @@
 # calendar-catalog
 
-The Google Calendar app's A2UI catalog: the **basic catalog** as schema and implementation, under
-Calendar's **Material 3** product theme.
+The Google Calendar app's A2UI catalog: the basic A2UI catalog, unchanged, in Calendar's **Material 3** look.
 
-The bundle ships no component mapping of its own. `CATALOG` re-uses `basicCatalog`'s
-implementations and functions from `@a2ui/react` unchanged; the product identity is entirely
-in the `Provider`'s tokens. That is the second of the two catalog kinds on the roster — the
-other being a full custom catalog over a real component library, as `github-catalog` is over
-Primer (SPEC §4.2, phase-2 decision 3).
+The catalog adds no components of its own. `CATALOG` reuses the basic catalog's components and functions from `@a2ui/react` as they are, and Calendar's look comes entirely from the `Provider`.
 
-## Shape
+## Using it
 
-| File                           | What it is                                                                                                                     |
-| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
-| `catalogs/v0.9.1/catalog.json` | Upstream's basic catalog with four identity fields rewritten (`$id`, `catalogId`, `title`, `description`) and nothing appended |
-| `src/catalog.ts`               | The runtime catalog: `basicCatalog`'s components and functions, verbatim                                                       |
-| `src/provider.tsx`             | The Material 3 token theme, light and dark                                                                                     |
-| `src/catalog.parity.test.ts`   | Schema ↔ runtime lockstep, and the upstream-drift detector                                                                     |
+```ts
+import {CATALOG, CATALOG_ID, Provider} from 'calendar-catalog';
+```
 
-## Theme
+- **`CATALOG`**: the basic components and functions, ready for an A2UI `MessageProcessor`.
+- **`CATALOG_ID`**: the catalog's id. A surface created with it renders with this catalog.
+- **`Provider`**: Calendar's theme. The host wraps each of this catalog's fragments in it and sets up nothing else.
 
-The Provider writes its custom properties **on its own wrapper element** — never `:root`, and
-alongside them a product stylesheet scoped to that same wrapper class, loaded on first mount.
-Nothing is global (phase-2 decision 4, SPEC §14): tokens carry the palette, and the sheet styles
-the basic components' runtime DOM where a token cannot reach it.
+## The theme
 
-Calendar and Gmail are the same design system by the same company, so the theme is built on
-where Calendar genuinely differs rather than on restating Material 3 a second time (task-2.7
-decision 3):
+The Provider sets its design tokens and a small stylesheet on its own wrapper element, never on the page, so the theme stays inside the fragment.
 
-- **A dense agenda on a flat ground**, not cards floating on a tinted one. The card trades
-  elevation for a hairline rule (`--a2ui-card-box-shadow: none` plus `--a2ui-card-border`), and
-  the layout gaps — `--a2ui-list-gap`, `--a2ui-column-gap`, `--a2ui-row-gap`,
-  `--a2ui-card-padding`, `--a2ui-card-margin` — tighten below what the spacing scale alone gives.
-- **A smaller type scale and a tighter spacing scale**, because an agenda row packs a time, a
-  title and a location into the height Gmail gives a sender and a subject.
-- **A per-event calendar colour** (Peacock) as the accent, rather than one product blue.
+Calendar and Gmail are both Material 3, so the theme leans on where Calendar actually differs:
 
-What the two products genuinely share stays shared — the pill button, the Google Sans stack, and
-the rounded field and chip are Material 3's signature in both. Faking a difference there would
-invent contrast rather than carry it.
+- **A dense agenda on a flat background.** Cards trade their shadow for a thin rule, and the gaps are tighter.
+- **Smaller type and tighter spacing**, since an agenda row fits a time, a title and a place in the height Gmail gives a sender and a subject.
+- **The calendar's own colour** (Peacock) as the accent, instead of one product blue.
 
-That the two bundles actually resolve the same token to different values is asserted in the
-client, where both are on the page at once; a bundle cannot check it alone without depending on
-its sibling, which SPEC §13 forbids.
+What the two really share stays the same: the pill button, the rounded field and chip, and the Google Sans font stack. The platform checks that the two themes really do resolve differently, with both on the page at once.
 
-Appearance follows the OS, from the same `prefers-color-scheme` query the canvas shell reads,
-so a fragment tracks the surface it is mounted into without depending on anything the shell owns.
+Light or dark follows the OS.
 
-Google Sans is not distributed as a web font: the stack prefers it where the platform has it
-and falls back through Roboto to the system stack.
+## Files
 
-## Upstream drift
-
-`catalog.json` is a checked-in copy of `specification/v0_9/catalogs/basic/catalog.json`. The
-parity test compares it against the basic catalog of the **pinned** `@a2ui/react`, so bumping
-that pin past a basic-catalog change turns the build red. The fix is to refresh the copy from
-the `upstream/main` ref and re-apply the four identity fields — see `CLAUDE.md` §2 for how to
-read the spec.
+| File                           | What it is                                                                   |
+| ------------------------------ | ---------------------------------------------------------------------------- |
+| `catalogs/v0.9.1/catalog.json` | the upstream basic catalog, with only its ids, title and description changed |
+| `src/catalog.ts`               | the runtime catalog: the basic components and functions                      |
+| `src/provider.tsx`             | the Material 3 tokens, light and dark                                        |
+| `src/theme.css`                | the stylesheet, scoped to the Provider's wrapper                             |
 
 ## Build and test
 
@@ -65,3 +43,5 @@ read the spec.
 pnpm --filter calendar-catalog build
 pnpm --filter calendar-catalog test
 ```
+
+**Keeping up with upstream.** `catalog.json` is a copy of upstream's basic catalog. A test compares it with the basic catalog of the pinned `@a2ui/react`, so bumping that version past an upstream change turns the build red. To fix it, copy the file again from upstream and restore the four changed fields (`$id`, `catalogId`, `title`, `description`).

@@ -1,52 +1,46 @@
 # linear-catalog
 
-The Linear app's A2UI catalog: the **basic catalog** as schema and implementation, under a
-product theme.
+The Linear app's A2UI catalog: the basic A2UI catalog in Linear's look, plus the two icons every row of Linear's issue list carries.
 
-`CATALOG` re-uses `basicCatalog`'s implementations and functions from `@a2ui/react` unchanged and
-appends two product components, the two marks every row of Linear's issue list carries:
+## What's in it
 
-- **`StatusIcon`** — an issue's workflow state, drawn as Linear's status circle: dashed for
-  backlog, empty for unstarted, part-filled for started, filled with a check for completed,
-  filled with a cross for canceled or duplicate, each in its state's color.
-- **`PriorityIcon`** — an issue's priority: three rising bars filled by level, a filled square
-  with an exclamation mark for urgent, three dashes for no priority.
+`CATALOG` reuses the basic catalog's components and functions from `@a2ui/react` as they are, and adds:
 
-The `Provider` also installs the bundle's markdown renderer (`src/markdown.ts`) through upstream's
-`MarkdownContext`, because Linear writes descriptions and comments in Markdown: body text inside a
-Linear fragment renders the subset the basic `Text` promises — raw HTML escaped, a link as its
-text, an image as its alt text — and text anywhere else on the page is untouched.
+- **`StatusIcon`**: an issue's workflow state as Linear's status circle — dashed for backlog, empty for unstarted, part-filled for started, a check for completed, a cross for canceled or duplicate — each in its state's colour.
+- **`PriorityIcon`**: an issue's priority as three rising bars, an exclamation mark in a square for urgent, or three dashes for none.
 
-The basic catalog cannot vary a row's look by data — a text variant is fixed per template — so a
-per-row drawn state needs a component of its own (SPEC §9.2). The rest of the product identity is
-the `Provider`'s tokens and the scoped theme sheet.
+The basic catalog can't vary a row's look by its data, so a per-row icon needs a component of its own. Colours and proportions are measured from Linear's own screenshots, in light and dark; `src/provider.tsx` notes where each came from.
 
-The palette, the icons' colors and their proportions are measured on Linear's documentation
-screenshots of its web app, in both appearances; `src/provider.tsx` names what was sampled
-where, and which values stand in for an appearance that had no sample.
+**Markdown.** Linear writes descriptions and comments in Markdown, so the Provider installs a Markdown renderer for text inside Linear's fragments: raw HTML is escaped, a link shows as its text, an image as its alt text. Text elsewhere on the page is untouched.
 
-## Shape
+## Using it
 
-| File                           | What it is                                                                                                |
-| ------------------------------ | --------------------------------------------------------------------------------------------------------- |
-| `catalogs/v0.9.1/catalog.json` | Upstream's basic catalog with four identity fields rewritten (`$id`, `catalogId`, `title`, `description`) |
-| `src/catalog.ts`               | The runtime catalog: `basicCatalog`'s components and functions, verbatim, plus the two icons              |
-| `src/provider.tsx`             | The token theme, light and dark, sampled from Linear's web app; installs the markdown renderer            |
-| `src/markdown.ts`              | The markdown renderer: the basic `Text`'s subset, no HTML, links or images                                |
-| `src/theme.css`                | The product sheet, scoped to the Provider's wrapper: rows, the icons' colors, buttons                     |
-| `src/catalog.parity.test.ts`   | Schema ↔ runtime lockstep, and the upstream-drift detector                                                |
+```ts
+import {CATALOG, CATALOG_ID, Provider} from 'linear-catalog';
+```
 
-## The one rule
+- **`CATALOG`**: the basic components and functions plus the two icons, ready for an A2UI `MessageProcessor`.
+- **`CATALOG_ID`**: the catalog's id. A surface created with it renders with this catalog.
+- **`Provider`**: Linear's theme and the Markdown renderer. The host wraps each of this catalog's fragments in it and sets up nothing else.
 
-The Provider writes its custom properties **on its own wrapper element** — never `:root` — and
-loads a stylesheet scoped to that same wrapper class. Nothing is global. This is the bundle's one
-Provider and one CSS setup; a host wraps each of this catalog's fragments in it and registers
-nothing of its own.
+The Provider sets its design tokens and stylesheet on its own wrapper element, never on the page, so the theme stays inside the fragment. Light or dark follows the OS.
+
+## Files
+
+| File                           | What it is                                                                                 |
+| ------------------------------ | ------------------------------------------------------------------------------------------ |
+| `catalogs/v0.9.1/catalog.json` | the upstream basic catalog with its ids, title and description changed, plus the two icons |
+| `src/catalog.ts`               | the runtime catalog: the basic components and functions, plus the two icons                |
+| `src/components/`              | `status-icon/` and `priority-icon/`: each icon's schema and render                         |
+| `src/provider.tsx`             | the tokens, light and dark, sampled from Linear's web app; installs the renderer           |
+| `src/markdown.ts`              | the Markdown renderer                                                                      |
+| `src/theme.css`                | the stylesheet, scoped to the Provider's wrapper: rows, the icons' colours, buttons        |
 
 ## Build and test
 
 ```bash
-pnpm install
-pnpm build
-pnpm test
+pnpm --filter linear-catalog build
+pnpm --filter linear-catalog test
 ```
+
+**Keeping up with upstream.** `catalog.json` starts from a copy of upstream's basic catalog. A test compares it with the basic catalog of the pinned `@a2ui/react`, so bumping that version past an upstream change turns the build red. To fix it, copy the basic part again from upstream and restore the changed fields and the two icons.
