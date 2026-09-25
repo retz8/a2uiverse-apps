@@ -57,7 +57,7 @@ Two repo skills in `.claude/skills/`: `design-catalog-component` settles the des
 
 ## Connecting to A2UIVerse
 
-The catalog depends only on A2UI. [A2UIVerse](https://github.com/retz8/a2uiverse)'s client installs it straight from this repo, with no registry:
+[A2UIVerse](https://github.com/retz8/a2uiverse)'s client installs it straight from this repo, with no registry:
 
 ```json
 "github-catalog": "github:retz8/a2uiverse-apps#path:github/github-catalog"

@@ -85,8 +85,6 @@ uv run pytest tests/test_corpus_is_publishable.py
 
 ## Connecting to A2UIVerse
 
-The agent speaks plain A2UI over A2A. Nothing in it needs [A2UIVerse](https://github.com/retz8/a2uiverse) to run.
+Launch it from the [A2UIVerse](https://github.com/retz8/a2uiverse) repo with `pnpm dev:agents --only gmail` (add `--mode live` for your mailbox). The launcher finds the agent through the app's [`manifest.json`](../manifest.json) and starts it on the port listed there. Start agents before the platform, because the orchestrator reads each agent card once, at boot. `pnpm dev:all` does both, in that order.
 
-- **Launch it** from the `a2uiverse` repo with `pnpm dev:agents --only gmail` (add `--mode live` for your mailbox). The launcher finds the agent through the app's [`manifest.json`](../manifest.json) and starts it on the port listed there. Start agents before the platform, because the orchestrator reads each agent card once, at boot. `pnpm dev:all` does both, in that order.
-- **Paint titles.** The prompt asks the model to give each new surface a short title and to mark a surface that asks you something. The kit sends these beside the A2UI as a `paintMeta` data part. A2UIVerse uses the title to name the view, for example on its back arrow, and uses the mark to recognise a question. Other clients ignore the part.
-- **Recording A2UIVerse's replays.** When the platform records its canvas replays with this agent live, start the agent with `A2UI_RECORD_DIR` set, so real mail never reaches those recordings.
+When the platform records its canvas replays with this agent live, start the agent with `A2UI_RECORD_DIR` set, so real mail never reaches those recordings.

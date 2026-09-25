@@ -48,7 +48,7 @@ pnpm --filter calendar-catalog test
 
 ## Connecting to A2UIVerse
 
-The catalog depends only on A2UI. [A2UIVerse](https://github.com/retz8/a2uiverse)'s client installs it straight from this repo, with no registry:
+[A2UIVerse](https://github.com/retz8/a2uiverse)'s client installs it straight from this repo, with no registry:
 
 ```json
 "calendar-catalog": "github:retz8/a2uiverse-apps#path:calendar/calendar-catalog"
