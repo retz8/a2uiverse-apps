@@ -1,12 +1,10 @@
 # Linear
 
-An app for Linear: an A2A agent that reads, creates and updates issues and comments on them through Linear's hosted MCP server, and the A2UI catalog it paints with, in Linear's look.
+An A2A agent that answers questions about your issues with UI it generates in [A2UI](https://a2ui.org/).
 
-| Part                                 | What it is                                                                                  |
-| ------------------------------------ | ------------------------------------------------------------------------------------------- |
-| [`agent/`](agent/)                   | the A2A agent (Python, uv), on port 11005. Runs on canned answers, on canned data, or live. |
-| [`linear-catalog/`](linear-catalog/) | the A2UI catalog: the basic catalog in Linear's look, plus `StatusIcon` and `PriorityIcon`  |
-| [`manifest.json`](manifest.json)     | the app manifest: its id, agent URL and catalog                                             |
+- **MCP server**: [Linear's hosted MCP server](https://linear.app/docs/mcp), run by Linear. Your issues live behind it; the server isn't part of this repo.
+- **Agent** ([`agent/`](agent/)): the agentic BFF. It takes a question, calls the MCP server, and answers with UI instead of data. It reads issues, creates and updates them, and comments on them.
+- **Catalog** ([`linear-catalog/`](linear-catalog/)): the A2UI components that UI is built from, styled as Linear, with Linear's status and priority icons. A2UI is a protocol for agents to generate UI.
 
 ## Quick start
 
@@ -20,4 +18,4 @@ Live mode needs a Gemini key and a Linear API key — see the [agent README](age
 
 ## Connecting to A2UIVerse
 
-`manifest.json` is [A2UIVerse](https://github.com/retz8/a2uiverse)'s app manifest, a placeholder until A2UIVerse's bundle format lands. How each half connects is in its own README: the [agent](agent/README.md#connecting-to-a2uiverse) and the [catalog](linear-catalog/README.md#connecting-to-a2uiverse).
+[`manifest.json`](manifest.json) is the app's [A2UIVerse](https://github.com/retz8/a2uiverse) manifest: its id, agent URL and catalog. It's a placeholder until A2UIVerse's bundle format lands. How the agent and the catalog connect is in their own READMEs: the [agent](agent/README.md#connecting-to-a2uiverse) and the [catalog](linear-catalog/README.md#connecting-to-a2uiverse).
