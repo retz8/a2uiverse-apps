@@ -1,6 +1,6 @@
 # CircleCI agent
 
-An A2A agent for CircleCI. It answers CI questions by painting A2UI surfaces with [`circleci-catalog`](../circleci-catalog/), the basic A2UI catalog in CircleCI's look. It runs on port **11004** and is built on the [agent kit](../../agent-kit/).
+An A2A agent for CircleCI. It answers CI questions by painting A2UI surfaces with [`circleci-catalog`](../circleci-catalog/), the basic A2UI catalog in CircleCI's look. It runs on port **11004** and is built on [`a2ui-agent-kit`](../../agent-kit/).
 
 ## What it can do
 

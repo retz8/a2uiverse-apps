@@ -1,6 +1,6 @@
 # Google Calendar agent
 
-An A2A agent for Google Calendar. It answers schedule questions by painting A2UI surfaces with [`calendar-catalog`](../calendar-catalog/), the basic A2UI catalog in Calendar's Material 3 look. It runs on port **11003** and is built on the [agent kit](../../agent-kit/).
+An A2A agent for Google Calendar. It answers schedule questions by painting A2UI surfaces with [`calendar-catalog`](../calendar-catalog/), the basic A2UI catalog in Calendar's Material 3 look. It runs on port **11003** and is built on [`a2ui-agent-kit`](../../agent-kit/).
 
 ## What it can do
 

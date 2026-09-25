@@ -1,6 +1,6 @@
 # Gmail agent
 
-An A2A agent for Gmail. It answers mail questions by painting A2UI surfaces with [`gmail-catalog`](../gmail-catalog/), the basic A2UI catalog in Gmail's Material 3 look. It runs on port **11002** and is built on the [agent kit](../../agent-kit/).
+An A2A agent for Gmail. It answers mail questions by painting A2UI surfaces with [`gmail-catalog`](../gmail-catalog/), the basic A2UI catalog in Gmail's Material 3 look. It runs on port **11002** and is built on [`a2ui-agent-kit`](../../agent-kit/).
 
 ## What it can do
 

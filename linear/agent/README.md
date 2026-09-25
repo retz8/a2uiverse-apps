@@ -1,6 +1,6 @@
 # Linear agent
 
-An A2A agent for Linear. It answers issue-tracking questions by painting A2UI surfaces with [`linear-catalog`](../linear-catalog/), the basic A2UI catalog in Linear's look. It runs on port **11005** and is built on the [agent kit](../../agent-kit/).
+An A2A agent for Linear. It answers issue-tracking questions by painting A2UI surfaces with [`linear-catalog`](../linear-catalog/), the basic A2UI catalog in Linear's look. It runs on port **11005** and is built on [`a2ui-agent-kit`](../../agent-kit/).
 
 ## What it can do
 

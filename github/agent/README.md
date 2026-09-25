@@ -1,6 +1,6 @@
 # GitHub agent
 
-An A2A agent for GitHub. It answers GitHub questions by painting A2UI surfaces with [`github-catalog`](../github-catalog/), built on Primer, GitHub's own design system. It runs on port **11001** and is built on the [agent kit](../../agent-kit/).
+An A2A agent for GitHub. It answers GitHub questions by painting A2UI surfaces with [`github-catalog`](../github-catalog/), built on Primer, GitHub's own design system. It runs on port **11001** and is built on [`a2ui-agent-kit`](../../agent-kit/).
 
 ## What it can do
 
