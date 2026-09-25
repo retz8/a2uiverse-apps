@@ -4,11 +4,13 @@ Apps for [A2UIVerse](https://github.com/retz8/a2uiverse): agents for GitHub, Gma
 
 ## What an app is
 
-An app answers a question with UI. It has three parts:
+An app answers a question with UI.
 
-- **The vendor's MCP server**, where your data lives. The vendor runs it; it isn't built here.
-- **The agent**, an Agentic BFF: an [A2A](https://github.com/a2aproject/A2A) agent that takes a question, calls the MCP server, and answers with UI it generates in [A2UI](https://a2ui.org), a protocol for agents to generate UI.
-- **The catalog**, the A2UI components that UI is built from, in the product's look: the schema the agent writes against, and the React implementation a client draws it with.
+**App = MCP server + Agentic BFF + A2UI catalog**
+
+- **Vendor's MCP server**, where your data lives. The vendor runs it; it isn't built here.
+- **Agent**, an Agentic BFF: an [A2A](https://github.com/a2aproject/A2A) agent that takes a question, calls the MCP server, and answers with UI it generates in [A2UI](https://a2ui.org), a protocol for agents to generate UI.
+- **Catalog**, the A2UI components that UI is built from, in the product's look: the schema the agent writes against, and the React implementation a client draws it with.
 
 ## Apps
 
