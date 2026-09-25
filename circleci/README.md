@@ -14,7 +14,7 @@ uv sync
 uv run python -m app --mode deterministic   # canned answers, no key needed
 ```
 
-Live mode needs a Gemini key, a CircleCI token and the projects to read — see the [agent README](agent/README.md).
+The agent runs on port **11004**. Live mode needs a Gemini key, a CircleCI token and the projects to read — see the [agent README](agent/README.md).
 
 ## Connecting to A2UIVerse
 
