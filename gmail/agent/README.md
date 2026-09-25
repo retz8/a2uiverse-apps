@@ -36,16 +36,22 @@ Other flags: `--port`, `--host`, and `--base-url`, the address the agent card ad
 
 One-time, outside the agent. The agent never holds a secret.
 
-1. Enable the APIs:
+1. **Create a Google Cloud project**, and put its id in `.env` as `GOOGLE_CLOUD_PROJECT`.
+
+2. **Join the [Google Workspace Developer Preview Program](https://developers.google.com/workspace/preview)** with that project. The Gmail MCP server is in preview; approval takes a couple of days.
+
+3. **Enable the APIs:**
 
    ```bash
    gcloud services enable gmail.googleapis.com gmailmcp.googleapis.com \
-     --project=a2uiverse-506907
+     --project=<your-project-id>
    ```
 
-2. On the project's consent screen (Google Auth Platform → Data Access), add `gmail.readonly`, `gmail.compose` and `gmail.modify`.
+4. **Set up the consent screen** (Google Auth Platform). Add your account as a test user if the audience is External, and under Data Access add `gmail.readonly`, `gmail.compose` and `gmail.modify`.
 
-3. Log in with Application Default Credentials:
+5. **Create an OAuth client** of type Desktop app, and save its JSON as `~/.config/a2uiverse/oauth-client.json`.
+
+6. **Log in** with Application Default Credentials:
 
    ```bash
    gcloud auth application-default login \
@@ -57,6 +63,8 @@ One-time, outside the agent. The agent never holds a secret.
    https://www.googleapis.com/auth/calendar.events,\
    https://www.googleapis.com/auth/cloud-platform
    ```
+
+If Calendar is already set up, only steps 3 and 4 are new; then log in again.
 
 > [!WARNING]
 > Gmail and Calendar share one Google login, and `--scopes` replaces what was granted before. Always log in with **both** apps' scopes, as above. Otherwise the other app loses access and fails at startup with an error that points elsewhere.
