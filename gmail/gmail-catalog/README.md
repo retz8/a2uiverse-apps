@@ -14,7 +14,7 @@ import {CATALOG, CATALOG_ID, Provider} from 'gmail-catalog';
 - **`CATALOG_ID`**: the catalog's id. A surface created with it renders with this catalog.
 - **`Provider`**: Gmail's theme. Wrap each surface rendered with this catalog in it; nothing else needs setting up.
 
-## The theme
+## Theme
 
 The Provider sets its design tokens and a small stylesheet on its own wrapper element, never on the page, so the theme stays inside the wrapper. It carries Material 3's signature: the pill button, the raised card on a lighter background, the rounded field and chip. Everything else keeps the basic catalog's defaults.
 

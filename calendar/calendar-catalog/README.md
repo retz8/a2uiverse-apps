@@ -14,7 +14,7 @@ import {CATALOG, CATALOG_ID, Provider} from 'calendar-catalog';
 - **`CATALOG_ID`**: the catalog's id. A surface created with it renders with this catalog.
 - **`Provider`**: Calendar's theme. Wrap each surface rendered with this catalog in it; nothing else needs setting up.
 
-## The theme
+## Theme
 
 The Provider sets its design tokens and a small stylesheet on its own wrapper element, never on the page, so the theme stays inside the wrapper.
 

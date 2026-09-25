@@ -14,7 +14,7 @@ In `live` mode it works through Google's Calendar MCP server, on the demo calend
 
 It's allowed 4 of the server's tools: `list_events`, `get_event`, `create_event` and `respond_to_event`.
 
-## The demo calendar
+## Demo calendar
 
 **The agent never reads your primary calendar.** It reads a demo calendar seeded from [`scripts/seed_events.json`](scripts/seed_events.json), named by `CALENDAR_ID`, and refuses to start without it. Because the content is authored, nothing needs scrubbing before it's recorded.
 
