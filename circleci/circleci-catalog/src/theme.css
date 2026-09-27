@@ -181,6 +181,7 @@
   border: 1px solid var(--circleci-border);
   border-radius: 0.5rem;
   min-width: 0;
+  container: circleci-panel / inline-size;
 }
 .circleci-catalog .circleci-panel[data-padding='none'] {
   padding: 0;
@@ -458,6 +459,26 @@
 .circleci-catalog .circleci-field-label {
   font-size: 0.75rem;
   color: var(--circleci-text-muted);
+}
+/* A row of Fields keeps each field's words whole: the longest value wraps at its breaks. */
+.circleci-catalog .circleci-stack[data-direction='horizontal'] > .circleci-field {
+  min-width: min-content;
+}
+/* A narrow panel stacks a row of Fields, one field per line, its vertical dividers gone: under
+   26rem a run's facts with a long branch no longer fit on one line. */
+@container circleci-panel (max-width: 26rem) {
+  .circleci-catalog .circleci-stack[data-direction='horizontal']:has(> .circleci-field) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .circleci-catalog .circleci-stack[data-direction='horizontal'] > .circleci-field {
+    min-width: 0;
+  }
+  .circleci-catalog
+    .circleci-stack[data-direction='horizontal']:has(> .circleci-field)
+    > .circleci-divider[data-orientation='vertical'] {
+    display: none;
+  }
 }
 
 /* Divider */
