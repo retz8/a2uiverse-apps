@@ -60,6 +60,15 @@ describe('theme.css', () => {
     }
   });
 
+  it('wraps a horizontal Stack inside a horizontal Stack, so its peers never slide under the next', () => {
+    const nested = rules().find(r =>
+      /\.circleci-stack\[data-direction='horizontal'\]\s*>\s*\.circleci-stack\[data-direction='horizontal'\]$/.test(
+        r.selector,
+      ),
+    );
+    expect(nested?.body).toMatch(/flex-wrap:\s*wrap/);
+  });
+
   it('owns its typeface family and its counter', () => {
     expect(css).toMatch(/font-family:\s*'circleci-catalog-inter'/);
     for (const counter of css.matchAll(/counter-(?:reset|increment):\s*([\w-]+)/g)) {

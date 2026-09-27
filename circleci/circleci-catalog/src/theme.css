@@ -124,6 +124,14 @@
 .circleci-catalog .circleci-stack[data-wrap='true'] {
   flex-wrap: wrap;
 }
+/* A line inside a line wraps when it runs out of room: its peers keep their words whole and never
+   slide under the trailing peer beside it — a run's badge and repository keep the time on the
+   first line, the branch moving below them. */
+.circleci-catalog
+  .circleci-stack[data-direction='horizontal']
+  > .circleci-stack[data-direction='horizontal'] {
+  flex-wrap: wrap;
+}
 .circleci-catalog .circleci-stack[data-gap='none'] {
   gap: 0;
 }
