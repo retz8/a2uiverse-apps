@@ -47,7 +47,7 @@ CONFIG = AgentAppConfig(
     / "catalogs"
     / "v0.9.1"
     / "catalog.json",
-    catalog_kind="basic",
+    catalog_kind="custom",
     examples_dir=_APP_PKG / "knowledge" / "examples",
     role_description=prose.ROLE_DESCRIPTION,
     workflow_descriptions=(

@@ -17,9 +17,18 @@
         "path": "/",
         "value": {
           "labels": [
-            { "id": "Label_12", "name": "Receipts" },
-            { "id": "Label_19", "name": "Travel" },
-            { "id": "Label_23", "name": "Reading" }
+            {
+              "id": "Label_12",
+              "name": "Receipts"
+            },
+            {
+              "id": "Label_19",
+              "name": "Travel"
+            },
+            {
+              "id": "Label_23",
+              "name": "Reading"
+            }
           ]
         }
       }
@@ -29,38 +38,74 @@
       "updateComponents": {
         "surfaceId": "labels",
         "components": [
-          { "id": "root", "component": "Card", "child": "body" },
+          {
+            "id": "root",
+            "component": "Surface",
+            "child": "body",
+            "container": "low",
+            "shape": "large",
+            "padding": "small"
+          },
           {
             "id": "body",
-            "component": "Column",
-            "children": ["heading", "sub", "divider", "label-list"]
+            "component": "Stack",
+            "children": [
+              "header",
+              "label-list"
+            ],
+            "gap": "xs"
           },
-          { "id": "heading", "component": "Text", "variant": "h3", "text": "Your labels" },
+          {
+            "id": "header",
+            "component": "Stack",
+            "children": [
+              "heading",
+              "sub"
+            ],
+            "gap": "xs",
+            "padding": "sm"
+          },
+          {
+            "id": "heading",
+            "component": "Text",
+            "text": "Your labels",
+            "variant": "titleLarge"
+          },
           {
             "id": "sub",
             "component": "Text",
-            "variant": "caption",
-            "text": "Applies to the thread you have open"
+            "text": "Applies to the thread you have open",
+            "variant": "bodySmall",
+            "color": "onSurfaceVariant"
           },
-          { "id": "divider", "component": "Divider" },
           {
             "id": "label-list",
-            "component": "Column",
-            "children": { "path": "/labels", "componentId": "label-row" }
+            "component": "Stack",
+            "children": {
+              "path": "/labels",
+              "componentId": "label-row"
+            },
+            "gap": "none"
           },
           {
             "id": "label-row",
-            "component": "Button",
-            "variant": "borderless",
-            "child": "label-name",
+            "component": "NavigationItem",
+            "label": {
+              "path": "name"
+            },
+            "icon": "label",
             "action": {
               "event": {
                 "name": "label-toggle",
-                "context": { "labelId": { "path": "id" }, "add": true }
+                "context": {
+                  "labelId": {
+                    "path": "id"
+                  },
+                  "add": true
+                }
               }
             }
-          },
-          { "id": "label-name", "component": "Text", "text": { "path": "name" } }
+          }
         ]
       }
     }

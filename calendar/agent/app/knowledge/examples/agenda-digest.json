@@ -54,46 +54,87 @@
         "components": [
           {
             "id": "root",
-            "component": "Card",
-            "child": "body"
+            "component": "Surface",
+            "child": "body",
+            "container": "low",
+            "shape": "large",
+            "padding": "small"
           },
           {
             "id": "body",
-            "component": "Column",
+            "component": "Stack",
             "children": [
-              "heading",
+              "header",
+              "sheet"
+            ],
+            "gap": "xs"
+          },
+          {
+            "id": "header",
+            "component": "Stack",
+            "children": [
+              "heading"
+            ],
+            "padding": "sm"
+          },
+          {
+            "id": "heading",
+            "component": "Text",
+            "text": "Needs attention today",
+            "variant": "titleLarge"
+          },
+          {
+            "id": "sheet",
+            "component": "Surface",
+            "child": "sections",
+            "container": "lowest",
+            "shape": "large",
+            "padding": "none"
+          },
+          {
+            "id": "sections",
+            "component": "Stack",
+            "children": [
               "waiting-label",
               "waiting-list",
               "divider",
               "clash-label",
               "clash-list"
-            ]
-          },
-          {
-            "id": "heading",
-            "component": "Text",
-            "variant": "h3",
-            "text": "Needs an answer"
+            ],
+            "gap": "none"
           },
           {
             "id": "waiting-label",
+            "component": "Stack",
+            "children": [
+              "waiting-title"
+            ],
+            "padding": "sm"
+          },
+          {
+            "id": "waiting-title",
             "component": "Text",
-            "variant": "caption",
-            "text": "2 invitations you have not replied to"
+            "text": "Unanswered invitations",
+            "variant": "titleSmall",
+            "color": "primary"
           },
           {
             "id": "waiting-list",
-            "component": "Column",
+            "component": "List",
             "children": {
               "path": "/waiting",
               "componentId": "waiting-row"
-            }
+            },
+            "layout": "inline"
           },
           {
             "id": "waiting-row",
-            "component": "Button",
-            "variant": "borderless",
-            "child": "waiting-body",
+            "component": "ListItem",
+            "headline": "waiting-when",
+            "supporting": "waiting-body",
+            "leading": [
+              "waiting-swatch"
+            ],
             "action": {
               "event": {
                 "name": "open-event",
@@ -106,43 +147,45 @@
             }
           },
           {
-            "id": "waiting-body",
-            "component": "Column",
-            "children": [
-              "waiting-top",
-              "waiting-note"
-            ]
-          },
-          {
-            "id": "waiting-top",
-            "component": "Row",
-            "align": "center",
-            "children": [
-              "waiting-when",
-              "waiting-summary"
-            ]
+            "id": "waiting-swatch",
+            "component": "ColorSwatch",
+            "color": "peacock",
+            "shape": "dot"
           },
           {
             "id": "waiting-when",
             "component": "Text",
             "text": {
               "path": "when"
-            }
+            },
+            "variant": "labelLarge"
+          },
+          {
+            "id": "waiting-body",
+            "component": "Stack",
+            "children": [
+              "waiting-summary",
+              "waiting-note"
+            ],
+            "gap": "none"
           },
           {
             "id": "waiting-summary",
             "component": "Text",
             "text": {
               "path": "summary"
-            }
+            },
+            "maxLines": 1
           },
           {
             "id": "waiting-note",
             "component": "Text",
-            "variant": "caption",
             "text": {
               "path": "note"
-            }
+            },
+            "variant": "bodySmall",
+            "color": "onSurfaceVariant",
+            "maxLines": 1
           },
           {
             "id": "divider",
@@ -150,23 +193,36 @@
           },
           {
             "id": "clash-label",
+            "component": "Stack",
+            "children": [
+              "clash-title"
+            ],
+            "padding": "sm"
+          },
+          {
+            "id": "clash-title",
             "component": "Text",
-            "variant": "caption",
-            "text": "Double-booked today"
+            "text": "Double-booked today",
+            "variant": "titleSmall",
+            "color": "primary"
           },
           {
             "id": "clash-list",
-            "component": "Column",
+            "component": "List",
             "children": {
               "path": "/clashes",
               "componentId": "clash-row"
-            }
+            },
+            "layout": "inline"
           },
           {
             "id": "clash-row",
-            "component": "Button",
-            "variant": "borderless",
-            "child": "clash-body",
+            "component": "ListItem",
+            "headline": "clash-when",
+            "supporting": "clash-body",
+            "leading": [
+              "clash-swatch"
+            ],
             "action": {
               "event": {
                 "name": "open-event",
@@ -179,43 +235,45 @@
             }
           },
           {
-            "id": "clash-body",
-            "component": "Column",
-            "children": [
-              "clash-top",
-              "clash-note"
-            ]
-          },
-          {
-            "id": "clash-top",
-            "component": "Row",
-            "align": "center",
-            "children": [
-              "clash-when",
-              "clash-summary"
-            ]
+            "id": "clash-swatch",
+            "component": "ColorSwatch",
+            "color": "peacock",
+            "shape": "dot"
           },
           {
             "id": "clash-when",
             "component": "Text",
             "text": {
               "path": "when"
-            }
+            },
+            "variant": "labelLarge"
+          },
+          {
+            "id": "clash-body",
+            "component": "Stack",
+            "children": [
+              "clash-summary",
+              "clash-note"
+            ],
+            "gap": "none"
           },
           {
             "id": "clash-summary",
             "component": "Text",
             "text": {
               "path": "summary"
-            }
+            },
+            "maxLines": 1
           },
           {
             "id": "clash-note",
             "component": "Text",
-            "variant": "caption",
             "text": {
               "path": "note"
-            }
+            },
+            "variant": "bodySmall",
+            "color": "onSurfaceVariant",
+            "maxLines": 1
           }
         ]
       }

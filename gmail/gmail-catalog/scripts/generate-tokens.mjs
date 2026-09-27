@@ -1,0 +1,155 @@
+/**
+ * Writes `src/tokens.css`: the catalog's Material 3 tokens, scoped to the Provider's wrapper.
+ *
+ * Colour follows Material 3's published method (`@material/material-color-utilities`): tonal
+ * palettes from one seed, TonalSpot's role-to-tone mapping, light and dark. The seed is Google
+ * Ecosystem Blue `#4285F4` (firebase.google.com/brand-guidelines). The primary palette keeps the
+ * seed's own chroma, as the Fidelity scheme does; the other palettes take TonalSpot's chromas.
+ * Type, shape, elevation and state values are m3.material.io's (the 34.0.21 token set); the
+ * sources are listed in `_dev/references/material3/README.md` of the platform repo.
+ *
+ *   node scripts/generate-tokens.mjs
+ */
+import {writeFileSync} from 'node:fs';
+import {register} from 'node:module';
+import {dirname, resolve} from 'node:path';
+import {fileURLToPath} from 'node:url';
+
+const SCOPE = '.gmail-catalog';
+const PREFIX = '--gm';
+const SEED = '#4285F4';
+
+const packageRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+
+// The package's relative imports carry no file extension, which Node's ESM resolver requires.
+const addJsExtension = `export async function resolve(specifier, context, next) {
+  try {
+    return await next(specifier, context);
+  } catch (error) {
+    if (specifier.startsWith('.') && !specifier.endsWith('.js')) return next(specifier + '.js', context);
+    throw error;
+  }
+}`;
+register(`data:text/javascript,${encodeURIComponent(addJsExtension)}`);
+const mcu = await import('@material/material-color-utilities');
+
+const {Hct, DynamicScheme, Variant, TonalPalette, MaterialDynamicColors, hexFromArgb, argbFromHex} =
+  mcu;
+
+const ROLES = [
+  'primary',
+  'onPrimary',
+  'primaryContainer',
+  'onPrimaryContainer',
+  'secondary',
+  'onSecondary',
+  'secondaryContainer',
+  'onSecondaryContainer',
+  'tertiary',
+  'onTertiary',
+  'tertiaryContainer',
+  'onTertiaryContainer',
+  'error',
+  'onError',
+  'errorContainer',
+  'onErrorContainer',
+  'surface',
+  'onSurface',
+  'surfaceVariant',
+  'onSurfaceVariant',
+  'surfaceContainerLowest',
+  'surfaceContainerLow',
+  'surfaceContainer',
+  'surfaceContainerHigh',
+  'surfaceContainerHighest',
+  'surfaceDim',
+  'surfaceBright',
+  'inverseSurface',
+  'inverseOnSurface',
+  'inversePrimary',
+  'outline',
+  'outlineVariant',
+  'scrim',
+  'shadow',
+];
+
+const kebab = name => name.replace(/[A-Z]/g, c => `-${c.toLowerCase()}`);
+
+function scheme(isDark) {
+  const seed = Hct.fromInt(argbFromHex(SEED));
+  const hue = seed.hue;
+  return new DynamicScheme({
+    sourceColorHct: seed,
+    variant: Variant.TONAL_SPOT,
+    contrastLevel: 0,
+    isDark,
+    primaryPalette: TonalPalette.fromHueAndChroma(hue, seed.chroma),
+    secondaryPalette: TonalPalette.fromHueAndChroma(hue, 16),
+    tertiaryPalette: TonalPalette.fromHueAndChroma((hue + 60) % 360, 24),
+    neutralPalette: TonalPalette.fromHueAndChroma(hue, 6),
+    neutralVariantPalette: TonalPalette.fromHueAndChroma(hue, 8),
+  });
+}
+
+function colors(isDark) {
+  const s = scheme(isDark);
+  const dynamic = new MaterialDynamicColors();
+  return ROLES.map(
+    role => `  ${PREFIX}-color-${kebab(role)}: ${hexFromArgb(dynamic[role]().getArgb(s))};`,
+  );
+}
+
+/** m3.material.io type scale: size, line height, weight, tracking (px). */
+const TYPE = {
+  'display-small': [36, 44, 400, 0],
+  'headline-large': [32, 40, 400, 0],
+  'headline-medium': [28, 36, 400, 0],
+  'headline-small': [24, 32, 400, 0],
+  'title-large': [22, 28, 400, 0],
+  'title-medium': [16, 24, 500, 0.15],
+  'title-small': [14, 20, 500, 0.1],
+  'body-large': [16, 24, 400, 0.5],
+  'body-medium': [14, 20, 400, 0.25],
+  'body-small': [12, 16, 400, 0.4],
+  'label-large': [14, 20, 500, 0.1],
+  'label-medium': [12, 16, 500, 0.5],
+  'label-small': [11, 16, 500, 0.5],
+};
+
+const type = Object.entries(TYPE).flatMap(([role, [size, line, weight, tracking]]) => [
+  `  ${PREFIX}-type-${role}-size: ${size / 16}rem;`,
+  `  ${PREFIX}-type-${role}-line: ${line / 16}rem;`,
+  `  ${PREFIX}-type-${role}-weight: ${weight};`,
+  `  ${PREFIX}-type-${role}-tracking: ${tracking / 16}rem;`,
+]);
+
+/** m3.material.io corner radius scale. */
+const SHAPE = {xs: 4, sm: 8, md: 12, lg: 16, xl: 28, full: 9999};
+const shape = Object.entries(SHAPE).map(([step, px]) => `  ${PREFIX}-shape-${step}: ${px}px;`);
+
+/** Material 3 elevation levels 1–3: a key shadow at 0.3 and an ambient one at 0.15. */
+const ELEVATION = {
+  1: ['0 1px 2px 0', '0 1px 3px 1px'],
+  2: ['0 1px 2px 0', '0 2px 6px 2px'],
+  3: ['0 1px 3px 0', '0 4px 8px 3px'],
+};
+const elevation = Object.entries(ELEVATION).map(
+  ([level, [key, ambient]]) =>
+    `  ${PREFIX}-elevation-${level}: ${key} rgb(0 0 0 / 0.3), ${ambient} rgb(0 0 0 / 0.15);`,
+);
+
+/** State-layer opacities. */
+const STATE = {hover: 0.08, focus: 0.1, pressed: 0.1, dragged: 0.16, disabled: 0.38};
+const state = Object.entries(STATE).map(([name, value]) => `  ${PREFIX}-state-${name}: ${value};`);
+
+const css = `/* Generated by scripts/generate-tokens.mjs from seed ${SEED}; do not edit by hand. */
+${SCOPE} {
+${[...colors(false), ...type, ...shape, ...elevation, ...state].join('\n')}
+}
+
+${SCOPE}[data-appearance='dark'] {
+${colors(true).join('\n')}
+}
+`;
+
+writeFileSync(resolve(packageRoot, 'src/tokens.css'), css);

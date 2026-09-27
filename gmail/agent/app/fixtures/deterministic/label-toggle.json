@@ -2,17 +2,19 @@
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "labels-list",
+      "surfaceId": "labels",
       "value": {
         "labels": [
           {
             "id": "Label_1",
-            "name": "question agen",
-            "type": "User label"
+            "name": "question agen"
           },
           {
             "id": "INBOX",
             "name": "INBOX"
+          },
+          {
+            "id": "STARRED"
           }
         ]
       }
@@ -21,76 +23,23 @@
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "labels-list",
+      "surfaceId": "labels",
       "value": {
         "labels": [
           {
             "id": "Label_1",
-            "name": "question agen",
-            "type": "User label"
+            "name": "question agen"
           },
           {
             "id": "INBOX",
-            "name": "INBOX",
-            "type": "System"
-          },
-          {
-            "id": "UNREAD"
-          }
-        ]
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "labels-list",
-      "value": {
-        "labels": [
-          {
-            "id": "Label_1",
-            "name": "question agen",
-            "type": "User label"
-          },
-          {
-            "id": "INBOX",
-            "name": "INBOX",
-            "type": "System"
-          },
-          {
-            "id": "UNREAD",
-            "name": "UNREAD",
-            "type": "System"
-          }
-        ]
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "labels-list",
-      "value": {
-        "labels": [
-          {
-            "id": "Label_1",
-            "name": "question agen",
-            "type": "User label"
-          },
-          {
-            "id": "INBOX",
-            "name": "INBOX",
-            "type": "System"
-          },
-          {
-            "id": "UNREAD",
-            "name": "UNREAD",
-            "type": "System"
+            "name": "INBOX"
           },
           {
             "id": "STARRED",
-            "name": "STARRED",
-            "type": "System"
+            "name": "STARRED"
+          },
+          {
+            "id": "SENT"
           }
         ]
       }
@@ -99,28 +48,57 @@
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "labels-list",
+      "surfaceId": "labels",
       "value": {
         "labels": [
           {
             "id": "Label_1",
-            "name": "question agen",
-            "type": "User label"
+            "name": "question agen"
           },
           {
             "id": "INBOX",
-            "name": "INBOX",
-            "type": "System"
-          },
-          {
-            "id": "UNREAD",
-            "name": "UNREAD",
-            "type": "System"
+            "name": "INBOX"
           },
           {
             "id": "STARRED",
-            "name": "STARRED",
-            "type": "System"
+            "name": "STARRED"
+          },
+          {
+            "id": "SENT",
+            "name": "SENT"
+          },
+          {
+            "id": "DRAFT"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "labels",
+      "value": {
+        "labels": [
+          {
+            "id": "Label_1",
+            "name": "question agen"
+          },
+          {
+            "id": "INBOX",
+            "name": "INBOX"
+          },
+          {
+            "id": "STARRED",
+            "name": "STARRED"
+          },
+          {
+            "id": "SENT",
+            "name": "SENT"
+          },
+          {
+            "id": "DRAFT",
+            "name": "DRAFT"
           },
           {
             "id": "IMPORTANT",
@@ -133,125 +111,36 @@
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "labels-list",
+      "surfaceId": "labels",
       "value": {
         "labels": [
           {
             "id": "Label_1",
-            "name": "question agen",
-            "type": "User label"
+            "name": "question agen"
           },
           {
             "id": "INBOX",
-            "name": "INBOX",
-            "type": "System"
-          },
-          {
-            "id": "UNREAD",
-            "name": "UNREAD",
-            "type": "System"
+            "name": "INBOX"
           },
           {
             "id": "STARRED",
-            "name": "STARRED",
-            "type": "System"
-          },
-          {
-            "id": "IMPORTANT",
-            "name": "IMPORTANT",
-            "type": "System"
+            "name": "STARRED"
           },
           {
             "id": "SENT",
             "name": "SENT"
-          }
-        ]
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "labels-list",
-      "value": {
-        "labels": [
-          {
-            "id": "Label_1",
-            "name": "question agen",
-            "type": "User label"
-          },
-          {
-            "id": "INBOX",
-            "name": "INBOX",
-            "type": "System"
-          },
-          {
-            "id": "UNREAD",
-            "name": "UNREAD",
-            "type": "System"
-          },
-          {
-            "id": "STARRED",
-            "name": "STARRED",
-            "type": "System"
-          },
-          {
-            "id": "IMPORTANT",
-            "name": "IMPORTANT",
-            "type": "System"
-          },
-          {
-            "id": "SENT",
-            "name": "SENT",
-            "type": "System"
-          },
-          {
-            "id": "DRAFT"
-          }
-        ]
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "labels-list",
-      "value": {
-        "labels": [
-          {
-            "id": "Label_1",
-            "name": "question agen",
-            "type": "User label"
-          },
-          {
-            "id": "INBOX",
-            "name": "INBOX",
-            "type": "System"
-          },
-          {
-            "id": "UNREAD",
-            "name": "UNREAD",
-            "type": "System"
-          },
-          {
-            "id": "STARRED",
-            "name": "STARRED",
-            "type": "System"
-          },
-          {
-            "id": "IMPORTANT",
-            "name": "IMPORTANT",
-            "type": "System"
-          },
-          {
-            "id": "SENT",
-            "name": "SENT",
-            "type": "System"
           },
           {
             "id": "DRAFT",
-            "name": "DRAFT",
-            "type": "System"
+            "name": "DRAFT"
+          },
+          {
+            "id": "IMPORTANT",
+            "name": "IMPORTANT"
+          },
+          {
+            "id": "UNREAD",
+            "name": "UNREAD"
           }
         ]
       }
@@ -260,48 +149,40 @@
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "labels-list",
+      "surfaceId": "labels",
       "value": {
         "labels": [
           {
             "id": "Label_1",
-            "name": "question agen",
-            "type": "User label"
+            "name": "question agen"
           },
           {
             "id": "INBOX",
-            "name": "INBOX",
-            "type": "System"
-          },
-          {
-            "id": "UNREAD",
-            "name": "UNREAD",
-            "type": "System"
+            "name": "INBOX"
           },
           {
             "id": "STARRED",
-            "name": "STARRED",
-            "type": "System"
-          },
-          {
-            "id": "IMPORTANT",
-            "name": "IMPORTANT",
-            "type": "System"
+            "name": "STARRED"
           },
           {
             "id": "SENT",
-            "name": "SENT",
-            "type": "System"
+            "name": "SENT"
           },
           {
             "id": "DRAFT",
-            "name": "DRAFT",
-            "type": "System"
+            "name": "DRAFT"
+          },
+          {
+            "id": "IMPORTANT",
+            "name": "IMPORTANT"
+          },
+          {
+            "id": "UNREAD",
+            "name": "UNREAD"
           },
           {
             "id": "SPAM",
-            "name": "SPAM",
-            "type": "System"
+            "name": "SPAM"
           }
         ]
       }
@@ -310,48 +191,40 @@
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "labels-list",
+      "surfaceId": "labels",
       "value": {
         "labels": [
           {
             "id": "Label_1",
-            "name": "question agen",
-            "type": "User label"
+            "name": "question agen"
           },
           {
             "id": "INBOX",
-            "name": "INBOX",
-            "type": "System"
-          },
-          {
-            "id": "UNREAD",
-            "name": "UNREAD",
-            "type": "System"
+            "name": "INBOX"
           },
           {
             "id": "STARRED",
-            "name": "STARRED",
-            "type": "System"
-          },
-          {
-            "id": "IMPORTANT",
-            "name": "IMPORTANT",
-            "type": "System"
+            "name": "STARRED"
           },
           {
             "id": "SENT",
-            "name": "SENT",
-            "type": "System"
+            "name": "SENT"
           },
           {
             "id": "DRAFT",
-            "name": "DRAFT",
-            "type": "System"
+            "name": "DRAFT"
+          },
+          {
+            "id": "IMPORTANT",
+            "name": "IMPORTANT"
+          },
+          {
+            "id": "UNREAD",
+            "name": "UNREAD"
           },
           {
             "id": "SPAM",
-            "name": "SPAM",
-            "type": "System"
+            "name": "SPAM"
           },
           {
             "id": "TRASH",
@@ -364,116 +237,48 @@
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "labels-list",
+      "surfaceId": "labels",
       "value": {
         "labels": [
           {
             "id": "Label_1",
-            "name": "question agen",
-            "type": "User label"
+            "name": "question agen"
           },
           {
             "id": "INBOX",
-            "name": "INBOX",
-            "type": "System"
-          },
-          {
-            "id": "UNREAD",
-            "name": "UNREAD",
-            "type": "System"
+            "name": "INBOX"
           },
           {
             "id": "STARRED",
-            "name": "STARRED",
-            "type": "System"
-          },
-          {
-            "id": "IMPORTANT",
-            "name": "IMPORTANT",
-            "type": "System"
+            "name": "STARRED"
           },
           {
             "id": "SENT",
-            "name": "SENT",
-            "type": "System"
+            "name": "SENT"
           },
           {
             "id": "DRAFT",
-            "name": "DRAFT",
-            "type": "System"
+            "name": "DRAFT"
           },
           {
-            "id": "SPAM",
-            "name": "SPAM",
-            "type": "System"
-          },
-          {
-            "id": "TRASH",
-            "name": "TRASH",
-            "type": "System"
-          },
-          {
-            "id": "CHAT"
-          }
-        ]
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "labels-list",
-      "value": {
-        "labels": [
-          {
-            "id": "Label_1",
-            "name": "question agen",
-            "type": "User label"
-          },
-          {
-            "id": "INBOX",
-            "name": "INBOX",
-            "type": "System"
+            "id": "IMPORTANT",
+            "name": "IMPORTANT"
           },
           {
             "id": "UNREAD",
-            "name": "UNREAD",
-            "type": "System"
-          },
-          {
-            "id": "STARRED",
-            "name": "STARRED",
-            "type": "System"
-          },
-          {
-            "id": "IMPORTANT",
-            "name": "IMPORTANT",
-            "type": "System"
-          },
-          {
-            "id": "SENT",
-            "name": "SENT",
-            "type": "System"
-          },
-          {
-            "id": "DRAFT",
-            "name": "DRAFT",
-            "type": "System"
+            "name": "UNREAD"
           },
           {
             "id": "SPAM",
-            "name": "SPAM",
-            "type": "System"
+            "name": "SPAM"
           },
           {
             "id": "TRASH",
-            "name": "TRASH",
-            "type": "System"
+            "name": "TRASH"
           },
           {
             "id": "CHAT",
-            "name": "CHAT",
-            "type": "System"
+            "name": "CHAT"
           }
         ]
       }
@@ -482,59 +287,49 @@
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "labels-list",
+      "surfaceId": "labels",
       "path": "/",
       "value": {
         "labels": [
           {
             "id": "Label_1",
-            "name": "question agen",
-            "type": "User label"
+            "name": "question agen"
           },
           {
             "id": "INBOX",
-            "name": "INBOX",
-            "type": "System"
-          },
-          {
-            "id": "UNREAD",
-            "name": "UNREAD",
-            "type": "System"
+            "name": "INBOX"
           },
           {
             "id": "STARRED",
-            "name": "STARRED",
-            "type": "System"
-          },
-          {
-            "id": "IMPORTANT",
-            "name": "IMPORTANT",
-            "type": "System"
+            "name": "STARRED"
           },
           {
             "id": "SENT",
-            "name": "SENT",
-            "type": "System"
+            "name": "SENT"
           },
           {
             "id": "DRAFT",
-            "name": "DRAFT",
-            "type": "System"
+            "name": "DRAFT"
+          },
+          {
+            "id": "IMPORTANT",
+            "name": "IMPORTANT"
+          },
+          {
+            "id": "UNREAD",
+            "name": "UNREAD"
           },
           {
             "id": "SPAM",
-            "name": "SPAM",
-            "type": "System"
+            "name": "SPAM"
           },
           {
             "id": "TRASH",
-            "name": "TRASH",
-            "type": "System"
+            "name": "TRASH"
           },
           {
             "id": "CHAT",
-            "name": "CHAT",
-            "type": "System"
+            "name": "CHAT"
           }
         ]
       }
@@ -546,66 +341,77 @@
       "components": [
         {
           "id": "body",
-          "component": "Column",
+          "component": "Stack",
           "children": [
-            "heading",
-            "sub",
-            "divider",
-            "label-list"
-          ]
+            "header",
+            "sheet"
+          ],
+          "gap": "xs"
         },
         {
           "id": "root",
-          "component": "Card",
-          "child": "body"
+          "component": "Surface",
+          "child": "body",
+          "container": "low",
+          "shape": "large",
+          "padding": "small"
+        },
+        {
+          "id": "header",
+          "component": "Stack",
+          "children": [
+            "heading",
+            "sub"
+          ],
+          "gap": "xs",
+          "padding": "sm"
+        },
+        {
+          "id": "sheet",
+          "component": "Surface",
+          "child": "label-list",
+          "container": "lowest",
+          "shape": "large",
+          "padding": "none"
         },
         {
           "id": "heading",
           "component": "Text",
-          "variant": "h3",
-          "text": "Labels"
+          "text": "Labels",
+          "variant": "titleLarge"
         },
         {
           "id": "sub",
           "component": "Text",
-          "variant": "caption",
-          "text": "1 custom label and 9 system labels"
-        },
-        {
-          "id": "divider",
-          "component": "Divider"
+          "text": "10 labels in your mailbox",
+          "variant": "bodySmall",
+          "color": "onSurfaceVariant"
         },
         {
           "id": "label-list",
-          "component": "Column",
+          "component": "Stack",
           "children": {
-            "componentId": "label-row",
-            "path": "/labels"
-          }
+            "path": "/labels",
+            "componentId": "label-row"
+          },
+          "gap": "none"
         },
         {
           "id": "label-row",
-          "component": "Row",
-          "justify": "spaceBetween",
-          "align": "center",
-          "children": [
-            "label-name",
-            "label-type"
-          ]
-        },
-        {
-          "id": "label-name",
-          "component": "Text",
-          "text": {
+          "component": "NavigationItem",
+          "label": {
             "path": "name"
-          }
-        },
-        {
-          "id": "label-type",
-          "component": "Text",
-          "variant": "caption",
-          "text": {
-            "path": "type"
+          },
+          "icon": "label",
+          "action": {
+            "event": {
+              "name": "open-label",
+              "context": {
+                "labelId": {
+                  "path": "id"
+                }
+              }
+            }
           }
         }
       ]

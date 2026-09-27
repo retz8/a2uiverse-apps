@@ -29,26 +29,22 @@
         "components": [
           {
             "id": "root",
-            "component": "Card",
-            "child": "body"
+            "component": "Surface",
+            "child": "body",
+            "container": "high",
+            "shape": "extraLarge",
+            "padding": "large",
+            "elevation": "level2"
           },
           {
             "id": "body",
-            "component": "Column",
+            "component": "Stack",
             "children": [
-              "heading",
               "title-field",
-              "when-row",
-              "guests-row",
-              "notice",
+              "details",
               "actions"
-            ]
-          },
-          {
-            "id": "heading",
-            "component": "Text",
-            "variant": "h3",
-            "text": "Create this event?"
+            ],
+            "gap": "md"
           },
           {
             "id": "title-field",
@@ -56,25 +52,34 @@
             "label": "Title",
             "value": {
               "path": "/summary"
-            }
+            },
+            "placeholder": "Add title",
+            "variant": "plain",
+            "size": "large"
           },
           {
-            "id": "when-row",
-            "component": "Row",
-            "align": "center",
+            "id": "details",
+            "component": "List",
             "children": [
-              "when-label",
-              "when-value"
+              "when-row",
+              "guests-row"
             ]
           },
           {
-            "id": "when-label",
-            "component": "Text",
-            "variant": "caption",
-            "text": "WHEN"
+            "id": "when-row",
+            "component": "ListItem",
+            "headline": "when",
+            "leading": [
+              "when-icon"
+            ]
           },
           {
-            "id": "when-value",
+            "id": "when-icon",
+            "component": "Icon",
+            "name": "schedule"
+          },
+          {
+            "id": "when",
             "component": "Text",
             "text": {
               "path": "/when"
@@ -82,64 +87,40 @@
           },
           {
             "id": "guests-row",
-            "component": "Row",
-            "align": "center",
-            "children": [
-              "guests-label",
-              "guests-value"
+            "component": "ListItem",
+            "headline": "guests",
+            "leading": [
+              "guests-icon"
             ]
           },
           {
-            "id": "guests-label",
-            "component": "Text",
-            "variant": "caption",
-            "text": "GUESTS"
+            "id": "guests-icon",
+            "component": "Icon",
+            "name": "group"
           },
           {
-            "id": "guests-value",
+            "id": "guests",
             "component": "Text",
             "text": {
               "path": "/guests"
             }
           },
           {
-            "id": "notice",
-            "component": "Text",
-            "variant": "caption",
-            "text": "Guests will not be notified — the event appears on their calendar, but no invitation is sent. You will need to tell them yourself."
-          },
-          {
             "id": "actions",
-            "component": "Row",
+            "component": "Stack",
             "children": [
-              "create",
-              "discard"
-            ]
+              "cancel",
+              "create"
+            ],
+            "direction": "horizontal",
+            "justify": "end",
+            "gap": "sm"
           },
           {
-            "id": "create",
+            "id": "cancel",
             "component": "Button",
-            "variant": "primary",
-            "child": "create-label",
-            "action": {
-              "event": {
-                "name": "confirm-event",
-                "context": {
-                  "proposalId": "propose-event"
-                }
-              }
-            }
-          },
-          {
-            "id": "create-label",
-            "component": "Text",
-            "text": "Create event"
-          },
-          {
-            "id": "discard",
-            "component": "Button",
-            "variant": "borderless",
-            "child": "discard-label",
+            "label": "Discard",
+            "variant": "text",
             "action": {
               "event": {
                 "name": "cancel-event",
@@ -150,9 +131,17 @@
             }
           },
           {
-            "id": "discard-label",
-            "component": "Text",
-            "text": "Discard"
+            "id": "create",
+            "component": "Button",
+            "label": "Create event",
+            "action": {
+              "event": {
+                "name": "confirm-event",
+                "context": {
+                  "proposalId": "propose-event"
+                }
+              }
+            }
           }
         ]
       }

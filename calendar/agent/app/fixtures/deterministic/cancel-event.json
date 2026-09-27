@@ -4,9 +4,14 @@
     "updateComponents": {
       "components": [
         {
-          "id": "heading",
+          "id": "root",
+          "component": "Surface",
+          "child": "declined",
+          "container": "low"
+        },
+        {
+          "id": "declined",
           "component": "Text",
-          "variant": "h3",
           "text": "Proposal discarded"
         }
       ]

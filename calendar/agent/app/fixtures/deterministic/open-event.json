@@ -2,7 +2,7 @@
   {
     "version": "v0.9",
     "createSurface": {
-      "surfaceId": "event-ectktv0lkuauv7g3i8hgpmhelg",
+      "surfaceId": "event-7nuujj9h9ru89blofii3m5otlo",
       "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/calendar/calendar-catalog/catalogs/v0.9.1/catalog.json",
       "sendDataModel": true
     }
@@ -10,7 +10,7 @@
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "event-ectktv0lkuauv7g3i8hgpmhelg",
+      "surfaceId": "event-7nuujj9h9ru89blofii3m5otlo",
       "value": {
         "summary": "Design review \u2014 agenda surface"
       }
@@ -19,7 +19,7 @@
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "event-ectktv0lkuauv7g3i8hgpmhelg",
+      "surfaceId": "event-7nuujj9h9ru89blofii3m5otlo",
       "value": {
         "when": "Today, 11:00 \u2013 12:00",
         "where": "Room 4B"
@@ -29,35 +29,17 @@
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "event-ectktv0lkuauv7g3i8hgpmhelg",
+      "surfaceId": "event-7nuujj9h9ru89blofii3m5otlo",
       "value": {
         "note_intro": "Walk through the three fragment layouts.",
-        "note_bring_heading": "Bring:"
+        "note_bring": "Bring the density comparison and the token divergence notes."
       }
     }
   },
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "event-ectktv0lkuauv7g3i8hgpmhelg",
-      "value": {
-        "note_bring_1": "\u2022 the density comparison"
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "event-ectktv0lkuauv7g3i8hgpmhelg",
-      "value": {
-        "note_bring_2": "\u2022 the token divergence notes"
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "event-ectktv0lkuauv7g3i8hgpmhelg",
+      "surfaceId": "event-7nuujj9h9ru89blofii3m5otlo",
       "value": {
         "note_close": "We should decide the accent question in this session rather than carrying it another week."
       }
@@ -66,7 +48,26 @@
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "event-ectktv0lkuauv7g3i8hgpmhelg",
+      "surfaceId": "event-7nuujj9h9ru89blofii3m5otlo",
+      "value": {
+        "guests": [
+          {
+            "name": "Alex Bergman",
+            "status": "Accepted"
+          },
+          {
+            "name": "Mei Silva",
+            "status": "No answer yet"
+          },
+          {}
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "event-7nuujj9h9ru89blofii3m5otlo",
       "value": {
         "guests": [
           {
@@ -78,7 +79,8 @@
             "status": "No answer yet"
           },
           {
-            "name": "Idris Haddad"
+            "name": "Idris Haddad",
+            "status": "Declined"
           }
         ]
       }
@@ -87,7 +89,7 @@
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "event-ectktv0lkuauv7g3i8hgpmhelg",
+      "surfaceId": "event-7nuujj9h9ru89blofii3m5otlo",
       "value": {
         "guests": [
           {
@@ -103,7 +105,7 @@
             "status": "Declined"
           },
           {
-            "name": "You"
+            "name": "A2UIVerse Demo"
           }
         ]
       }
@@ -112,16 +114,14 @@
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "event-ectktv0lkuauv7g3i8hgpmhelg",
+      "surfaceId": "event-7nuujj9h9ru89blofii3m5otlo",
       "path": "/",
       "value": {
         "summary": "Design review \u2014 agenda surface",
         "when": "Today, 11:00 \u2013 12:00",
         "where": "Room 4B",
         "note_intro": "Walk through the three fragment layouts.",
-        "note_bring_heading": "Bring:",
-        "note_bring_1": "\u2022 the density comparison",
-        "note_bring_2": "\u2022 the token divergence notes",
+        "note_bring": "Bring the density comparison and the token divergence notes.",
         "note_close": "We should decide the accent question in this session rather than carrying it another week.",
         "guests": [
           {
@@ -137,7 +137,7 @@
             "status": "Declined"
           },
           {
-            "name": "You",
+            "name": "A2UIVerse Demo",
             "status": "No answer yet"
           }
         ]
@@ -149,53 +149,105 @@
     "updateComponents": {
       "components": [
         {
-          "id": "root",
-          "component": "Card",
-          "child": "body"
-        },
-        {
           "id": "body",
-          "component": "Column",
+          "component": "Stack",
           "children": [
-            "heading",
-            "when",
-            "where",
-            "divider",
-            "note-intro",
-            "note-bring-heading",
-            "note-bring-1",
-            "note-bring-2",
-            "note-close",
-            "guests-label",
-            "guest-list"
-          ]
+            "title-row",
+            "details"
+          ],
+          "gap": "sm"
         },
         {
-          "id": "heading",
+          "id": "root",
+          "component": "Surface",
+          "child": "body",
+          "container": "high",
+          "shape": "extraLarge",
+          "padding": "medium"
+        },
+        {
+          "id": "title-row",
+          "component": "Stack",
+          "children": [
+            "title-swatch",
+            "title-block"
+          ],
+          "direction": "horizontal",
+          "gap": "lg",
+          "align": "start"
+        },
+        {
+          "id": "title-swatch",
+          "component": "ColorSwatch",
+          "color": "peacock"
+        },
+        {
+          "id": "title-block",
+          "component": "Stack",
+          "children": [
+            "summary",
+            "when"
+          ],
+          "gap": "xs"
+        },
+        {
+          "id": "summary",
           "component": "Text",
-          "variant": "h3",
           "text": {
             "path": "/summary"
-          }
+          },
+          "variant": "titleLarge"
         },
         {
           "id": "when",
           "component": "Text",
           "text": {
             "path": "/when"
-          }
+          },
+          "color": "onSurfaceVariant"
+        },
+        {
+          "id": "details",
+          "component": "List",
+          "children": [
+            "where-row",
+            "notes-row",
+            "guests-row"
+          ]
+        },
+        {
+          "id": "where-row",
+          "component": "ListItem",
+          "headline": "where",
+          "leading": [
+            "where-icon"
+          ]
+        },
+        {
+          "id": "where-icon",
+          "component": "Icon",
+          "name": "location_on"
         },
         {
           "id": "where",
           "component": "Text",
-          "variant": "caption",
           "text": {
             "path": "/where"
           }
         },
         {
-          "id": "divider",
-          "component": "Divider"
+          "id": "notes-row",
+          "component": "ListItem",
+          "headline": "note-intro",
+          "supporting": "note-more",
+          "leading": [
+            "notes-icon"
+          ]
+        },
+        {
+          "id": "notes-icon",
+          "component": "Icon",
+          "name": "notes"
         },
         {
           "id": "note-intro",
@@ -205,24 +257,19 @@
           }
         },
         {
-          "id": "note-bring-heading",
-          "component": "Text",
-          "text": {
-            "path": "/note_bring_heading"
-          }
+          "id": "note-more",
+          "component": "Stack",
+          "children": [
+            "note-bring",
+            "note-close"
+          ],
+          "gap": "xs"
         },
         {
-          "id": "note-bring-1",
+          "id": "note-bring",
           "component": "Text",
           "text": {
-            "path": "/note_bring_1"
-          }
-        },
-        {
-          "id": "note-bring-2",
-          "component": "Text",
-          "text": {
-            "path": "/note_bring_2"
+            "path": "/note_bring"
           }
         },
         {
@@ -233,28 +280,62 @@
           }
         },
         {
+          "id": "guests-row",
+          "component": "ListItem",
+          "headline": "guests-label",
+          "supporting": "guest-list",
+          "leading": [
+            "guests-icon"
+          ]
+        },
+        {
+          "id": "guests-icon",
+          "component": "Icon",
+          "name": "group"
+        },
+        {
           "id": "guests-label",
           "component": "Text",
-          "variant": "caption",
           "text": "Guests"
         },
         {
           "id": "guest-list",
-          "component": "List",
+          "component": "Stack",
           "children": {
             "path": "/guests",
-            "componentId": "guest-row"
-          }
+            "componentId": "guest"
+          },
+          "gap": "md"
         },
         {
-          "id": "guest-row",
-          "component": "Row",
-          "justify": "spaceBetween",
-          "align": "center",
+          "id": "guest",
+          "component": "Stack",
+          "children": [
+            "guest-avatar",
+            "guest-text"
+          ],
+          "direction": "horizontal",
+          "gap": "md"
+        },
+        {
+          "id": "guest-avatar",
+          "component": "Avatar",
+          "name": {
+            "path": "name"
+          },
+          "status": {
+            "path": "status"
+          },
+          "size": "medium"
+        },
+        {
+          "id": "guest-text",
+          "component": "Stack",
           "children": [
             "guest-name",
             "guest-status"
-          ]
+          ],
+          "gap": "none"
         },
         {
           "id": "guest-name",
@@ -266,10 +347,11 @@
         {
           "id": "guest-status",
           "component": "Text",
-          "variant": "caption",
           "text": {
             "path": "status"
-          }
+          },
+          "variant": "bodySmall",
+          "color": "onSurfaceVariant"
         }
       ]
     }

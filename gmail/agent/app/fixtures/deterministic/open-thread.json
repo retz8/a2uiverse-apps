@@ -26,7 +26,23 @@
           {
             "id": "1a06f2abedf045ce",
             "sender": "elin.tanaka@example.com",
-            "when": "2026-09-05 01:24 UTC"
+            "when": "Sep 5, 01:24"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "thread-1a06f2abedf045ce",
+      "value": {
+        "messages": [
+          {
+            "id": "1a06f2abedf045ce",
+            "sender": "elin.tanaka@example.com",
+            "when": "Sep 5, 01:24",
+            "body": "section summary feedback update meeting confirm thread section summary schedule pending attached thread review update confirm agenda proposal proposal status meeting timeline timeline agenda estimate update reply confirm feedback update attached schedule proposal update confirm review timeline update attached pending proposal question revision update notes section attached section update feedback pending review confirm schedule proposal estimate notes question update question attached confirm proposal estimate proposal status notes meeting draft schedule proposal summary section notes question revision meeting thread review update thread confirm confirm follow proposal review confirm question notes question agenda agenda notes proposal estimate schedule follow question confirm proposal estimate pending attached update draft notes confirm section attached attached pending reply notes follow notes thread reply estimate feedback pending feedback section proposal follow pr"
           }
         ]
       }
@@ -44,7 +60,7 @@
           {
             "id": "1a06f2abedf045ce",
             "sender": "elin.tanaka@example.com",
-            "when": "2026-09-05 01:24 UTC",
+            "when": "Sep 5, 01:24",
             "body": "section summary feedback update meeting confirm thread section summary schedule pending attached thread review update confirm agenda proposal proposal status meeting timeline timeline agenda estimate update reply confirm feedback update attached schedule proposal update confirm review timeline update attached pending proposal question revision update notes section attached section update feedback pending review confirm schedule proposal estimate notes question update question attached confirm proposal estimate proposal status notes meeting draft schedule proposal summary section notes question revision meeting thread review update thread confirm confirm follow proposal review confirm question notes question agenda agenda notes proposal estimate schedule follow question confirm proposal estimate pending attached update draft notes confirm section attached attached pending reply notes follow notes thread reply estimate feedback pending feedback section proposal follow pr"
           }
         ]
@@ -57,101 +73,102 @@
       "components": [
         {
           "id": "root",
-          "component": "Card",
-          "child": "body"
+          "component": "Surface",
+          "child": "body",
+          "container": "low",
+          "shape": "large",
+          "padding": "small"
         },
         {
           "id": "body",
-          "component": "Column",
+          "component": "Stack",
+          "children": [
+            "header",
+            "sheet"
+          ],
+          "gap": "xs"
+        },
+        {
+          "id": "header",
+          "component": "Stack",
           "children": [
             "subject",
-            "count",
-            "divider",
-            "messages",
-            "actions"
-          ]
+            "count"
+          ],
+          "gap": "xs",
+          "padding": "sm"
+        },
+        {
+          "id": "sheet",
+          "component": "Surface",
+          "child": "thread",
+          "container": "lowest",
+          "shape": "large",
+          "padding": "none"
         },
         {
           "id": "subject",
           "component": "Text",
-          "variant": "h3",
           "text": {
             "path": "/subject"
-          }
+          },
+          "variant": "titleLarge"
         },
         {
           "id": "count",
           "component": "Text",
-          "variant": "caption",
           "text": {
             "path": "/count"
-          }
+          },
+          "variant": "bodySmall",
+          "color": "onSurfaceVariant"
         },
         {
-          "id": "divider",
-          "component": "Divider"
+          "id": "thread",
+          "component": "Stack",
+          "children": [
+            "messages",
+            "actions"
+          ],
+          "gap": "none"
         },
         {
           "id": "messages",
-          "component": "Column",
+          "component": "List",
           "children": {
             "path": "/messages",
             "componentId": "message"
-          }
+          },
+          "dividers": true,
+          "layout": "stacked"
         },
         {
           "id": "actions",
-          "component": "Row",
+          "component": "Stack",
           "children": [
             "reply",
             "archive"
-          ]
+          ],
+          "direction": "horizontal",
+          "gap": "sm",
+          "padding": "md"
         },
         {
           "id": "message",
-          "component": "Column",
-          "children": [
-            "message-head",
-            "message-body"
+          "component": "ListItem",
+          "headline": "message-sender",
+          "supporting": "message-body",
+          "meta": "message-when",
+          "leading": [
+            "message-avatar"
           ]
-        },
-        {
-          "id": "message-head",
-          "component": "Row",
-          "justify": "spaceBetween",
-          "align": "center",
-          "children": [
-            "message-sender",
-            "message-when"
-          ]
-        },
-        {
-          "id": "message-body",
-          "component": "Text",
-          "text": {
-            "path": "body"
-          }
-        },
-        {
-          "id": "message-sender",
-          "component": "Text",
-          "text": {
-            "path": "sender"
-          }
-        },
-        {
-          "id": "message-when",
-          "component": "Text",
-          "variant": "caption",
-          "text": {
-            "path": "when"
-          }
         },
         {
           "id": "reply",
           "component": "Button",
-          "variant": "primary",
-          "child": "reply-label",
+          "label": "Draft a reply",
+          "variant": "outlined",
+          "icon": "reply",
           "action": {
             "event": {
               "name": "draft-reply",
@@ -162,14 +179,11 @@
           }
         },
         {
-          "id": "reply-label",
-          "component": "Text",
-          "text": "Draft a reply"
-        },
-        {
           "id": "archive",
           "component": "Button",
-          "child": "archive-label",
+          "label": "Archive",
+          "variant": "outlined",
+          "icon": "archive",
           "action": {
             "event": {
               "name": "label-toggle",
@@ -182,9 +196,37 @@
           }
         },
         {
-          "id": "archive-label",
+          "id": "message-avatar",
+          "component": "Avatar",
+          "name": {
+            "path": "sender"
+          },
+          "size": "large"
+        },
+        {
+          "id": "message-sender",
           "component": "Text",
-          "text": "Archive"
+          "text": {
+            "path": "sender"
+          },
+          "variant": "titleSmall",
+          "weight": "bold"
+        },
+        {
+          "id": "message-when",
+          "component": "Text",
+          "text": {
+            "path": "when"
+          },
+          "variant": "bodySmall",
+          "color": "onSurfaceVariant"
+        },
+        {
+          "id": "message-body",
+          "component": "Text",
+          "text": {
+            "path": "body"
+          }
         }
       ]
     }

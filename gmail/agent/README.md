@@ -1,6 +1,6 @@
 # Gmail agent
 
-An A2A agent for Gmail. It answers mail questions by painting A2UI surfaces with [`gmail-catalog`](../gmail-catalog/), the basic A2UI catalog in Gmail's Material 3 look. It runs on port **11002** and is built on [`a2ui-agent-kit`](../../agent-kit/).
+An A2A agent for Gmail. It answers mail questions by painting A2UI surfaces with [`gmail-catalog`](../gmail-catalog/), Gmail's own components in Material 3's design language. It runs on port **11002** and is built on [`a2ui-agent-kit`](../../agent-kit/).
 
 ## What it can do
 
@@ -91,6 +91,15 @@ uv run pytest tests/test_corpus_is_publishable.py
 ```
 
 **Setting `A2UI_RECORD_DIR` also turns on pseudonymization.** Every mail payload gets stand-in names and subjects before the model sees it, so no real mail reaches the recordings or the model provider. The stand-ins are seeded, so re-recording gives the same ones.
+
+To repaint the beats after a catalog change, record them against the stub instead: the model paints over the recorded data, nothing reaches Gmail, and only the deterministic corpus is derived again.
+
+```bash
+A2UI_RECORD_DIR=.recordings uv run python -m app --mode stub --host localhost
+uv run python scripts/record_beats.py --model <model>
+uv run python scripts/derive_corpus.py --beats-only
+uv run pytest tests/test_corpus_is_publishable.py
+```
 
 ## Allowing more tools
 

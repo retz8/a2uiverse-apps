@@ -46,68 +46,161 @@
       "updateComponents": {
         "surfaceId": "thread-th-1",
         "components": [
-          { "id": "root", "component": "Card", "child": "body" },
+          {
+            "id": "root",
+            "component": "Surface",
+            "child": "body",
+            "container": "low",
+            "shape": "large",
+            "padding": "small"
+          },
           {
             "id": "body",
-            "component": "Column",
-            "children": ["subject", "count", "divider", "messages", "actions"]
+            "component": "Stack",
+            "children": [
+              "header",
+              "sheet"
+            ],
+            "gap": "xs"
           },
-          { "id": "subject", "component": "Text", "variant": "h3", "text": { "path": "/subject" } },
+          {
+            "id": "header",
+            "component": "Stack",
+            "children": [
+              "subject",
+              "count"
+            ],
+            "gap": "xs",
+            "padding": "sm"
+          },
+          {
+            "id": "sheet",
+            "component": "Surface",
+            "child": "thread",
+            "container": "lowest",
+            "shape": "large",
+            "padding": "none"
+          },
+          {
+            "id": "thread",
+            "component": "Stack",
+            "children": [
+              "messages",
+              "actions"
+            ],
+            "gap": "none"
+          },
+          {
+            "id": "subject",
+            "component": "Text",
+            "text": {
+              "path": "/subject"
+            },
+            "variant": "titleLarge"
+          },
           {
             "id": "count",
             "component": "Text",
-            "variant": "caption",
-            "text": { "path": "/count" }
+            "text": {
+              "path": "/count"
+            },
+            "variant": "bodySmall",
+            "color": "onSurfaceVariant"
           },
-          { "id": "divider", "component": "Divider" },
           {
             "id": "messages",
-            "component": "Column",
-            "children": { "path": "/messages", "componentId": "message" }
+            "component": "List",
+            "children": {
+              "path": "/messages",
+              "componentId": "message"
+            },
+            "dividers": true
           },
           {
             "id": "message",
-            "component": "Column",
-            "children": ["message-head", "message-body"]
+            "component": "ListItem",
+            "headline": "message-sender",
+            "meta": "message-when",
+            "supporting": "message-body",
+            "leading": [
+              "message-avatar"
+            ]
           },
           {
-            "id": "message-head",
-            "component": "Row",
-            "justify": "spaceBetween",
-            "align": "center",
-            "children": ["message-sender", "message-when"]
+            "id": "message-avatar",
+            "component": "Avatar",
+            "name": {
+              "path": "sender"
+            }
           },
-          { "id": "message-sender", "component": "Text", "text": { "path": "sender" } },
+          {
+            "id": "message-sender",
+            "component": "Text",
+            "text": {
+              "path": "sender"
+            },
+            "variant": "titleSmall",
+            "weight": "bold"
+          },
           {
             "id": "message-when",
             "component": "Text",
-            "variant": "caption",
-            "text": { "path": "when" }
+            "text": {
+              "path": "when"
+            },
+            "variant": "bodySmall",
+            "color": "onSurfaceVariant"
           },
-          { "id": "message-body", "component": "Text", "text": { "path": "body" } },
-          { "id": "actions", "component": "Row", "children": ["reply", "archive"] },
+          {
+            "id": "message-body",
+            "component": "Text",
+            "text": {
+              "path": "body"
+            }
+          },
+          {
+            "id": "actions",
+            "component": "Stack",
+            "children": [
+              "reply",
+              "archive"
+            ],
+            "direction": "horizontal",
+            "gap": "sm",
+            "padding": "md"
+          },
           {
             "id": "reply",
             "component": "Button",
-            "variant": "primary",
-            "child": "reply-label",
-            "action": {
-              "event": { "name": "draft-reply", "context": { "threadId": "th-1" } }
-            }
-          },
-          { "id": "reply-label", "component": "Text", "text": "Draft a reply" },
-          {
-            "id": "archive",
-            "component": "Button",
-            "child": "archive-label",
+            "label": "Draft a reply",
+            "variant": "outlined",
+            "icon": "reply",
             "action": {
               "event": {
-                "name": "label-toggle",
-                "context": { "threadId": "th-1", "labelId": "INBOX", "add": false }
+                "name": "draft-reply",
+                "context": {
+                  "threadId": "th-1"
+                }
               }
             }
           },
-          { "id": "archive-label", "component": "Text", "text": "Archive" }
+          {
+            "id": "archive",
+            "component": "Button",
+            "label": "Archive",
+            "variant": "outlined",
+            "icon": "archive",
+            "action": {
+              "event": {
+                "name": "label-toggle",
+                "context": {
+                  "threadId": "th-1",
+                  "labelId": "INBOX",
+                  "add": false
+                }
+              }
+            }
+          }
         ]
       }
     }

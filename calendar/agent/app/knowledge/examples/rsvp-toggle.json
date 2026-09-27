@@ -29,56 +29,121 @@
         "components": [
           {
             "id": "root",
-            "component": "Card",
-            "child": "body"
+            "component": "Surface",
+            "child": "body",
+            "container": "high",
+            "shape": "extraLarge",
+            "padding": "none"
           },
           {
             "id": "body",
-            "component": "Column",
+            "component": "Stack",
             "children": [
-              "heading",
-              "when",
-              "current",
-              "actions"
-            ]
+              "content",
+              "footer"
+            ],
+            "gap": "none"
           },
           {
-            "id": "heading",
+            "id": "content",
+            "component": "Stack",
+            "children": [
+              "title-row",
+              "current"
+            ],
+            "gap": "md",
+            "padding": "lg"
+          },
+          {
+            "id": "title-row",
+            "component": "Stack",
+            "children": [
+              "title-swatch",
+              "title-block"
+            ],
+            "direction": "horizontal",
+            "gap": "lg",
+            "align": "start"
+          },
+          {
+            "id": "title-swatch",
+            "component": "ColorSwatch",
+            "color": "peacock"
+          },
+          {
+            "id": "title-block",
+            "component": "Stack",
+            "children": [
+              "summary",
+              "when"
+            ],
+            "gap": "xs"
+          },
+          {
+            "id": "summary",
             "component": "Text",
-            "variant": "h3",
             "text": {
               "path": "/summary"
-            }
+            },
+            "variant": "titleLarge"
           },
           {
             "id": "when",
             "component": "Text",
             "text": {
               "path": "/when"
-            }
+            },
+            "color": "onSurfaceVariant"
           },
           {
             "id": "current",
             "component": "Text",
-            "variant": "caption",
             "text": {
               "path": "/current"
-            }
+            },
+            "variant": "bodySmall",
+            "color": "onSurfaceVariant"
           },
           {
-            "id": "actions",
-            "component": "Row",
+            "id": "footer",
+            "component": "Surface",
+            "child": "going",
+            "container": "highest",
+            "shape": "none",
+            "padding": "medium"
+          },
+          {
+            "id": "going",
+            "component": "Stack",
+            "children": [
+              "going-label",
+              "answers"
+            ],
+            "direction": "horizontal",
+            "justify": "spaceBetween",
+            "wrap": true
+          },
+          {
+            "id": "going-label",
+            "component": "Text",
+            "text": "Going?"
+          },
+          {
+            "id": "answers",
+            "component": "Stack",
             "children": [
               "yes",
-              "maybe",
-              "no"
-            ]
+              "no",
+              "maybe"
+            ],
+            "direction": "horizontal",
+            "gap": "sm"
           },
           {
             "id": "yes",
             "component": "Button",
-            "variant": "primary",
-            "child": "yes-label",
+            "label": "Yes",
+            "variant": "outlined",
             "action": {
               "event": {
                 "name": "rsvp-toggle",
@@ -90,35 +155,10 @@
             }
           },
           {
-            "id": "yes-label",
-            "component": "Text",
-            "text": "Accept"
-          },
-          {
-            "id": "maybe",
-            "component": "Button",
-            "variant": "default",
-            "child": "maybe-label",
-            "action": {
-              "event": {
-                "name": "rsvp-toggle",
-                "context": {
-                  "eventId": "ev-6",
-                  "responseStatus": "tentative"
-                }
-              }
-            }
-          },
-          {
-            "id": "maybe-label",
-            "component": "Text",
-            "text": "Maybe"
-          },
-          {
             "id": "no",
             "component": "Button",
-            "variant": "default",
-            "child": "no-label",
+            "label": "No",
+            "variant": "outlined",
             "action": {
               "event": {
                 "name": "rsvp-toggle",
@@ -130,9 +170,19 @@
             }
           },
           {
-            "id": "no-label",
-            "component": "Text",
-            "text": "Decline"
+            "id": "maybe",
+            "component": "Button",
+            "label": "Maybe",
+            "variant": "outlined",
+            "action": {
+              "event": {
+                "name": "rsvp-toggle",
+                "context": {
+                  "eventId": "ev-6",
+                  "responseStatus": "tentative"
+                }
+              }
+            }
           }
         ]
       }

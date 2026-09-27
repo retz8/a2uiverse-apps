@@ -4,22 +4,22 @@
   "title": "Invitation response",
   "prompt": "Accept the quarter planning invite.",
   "model": "gemini-3.7-flash",
-  "recordedAt": "2026-09-05T06:11:15+00:00",
-  "contextId": "5df8643b-54f4-4998-97bc-206b6aac9a8e",
+  "recordedAt": "2026-09-27T01:54:01+00:00",
+  "contextId": "fe35fa1d-2a7a-472d-b8c4-2995168e7a9e",
   "chainedFrom": null,
   "turns": [
     {
-      "taskId": "76a164b6-8920-4da9-91dc-7d59aca7bece",
+      "taskId": "2ea3289b-d0e1-42f6-925b-6a9da2ac8013",
       "kind": "utterance",
       "prompt": "Accept the quarter planning invite.",
       "action": null,
       "batches": [
         {
-          "offsetMs": 14575,
+          "offsetMs": 15186,
           "messages": [
             {
               "paintMeta": {
-                "surfaceId": "rsvp-96bo794ni061s93l98v7lj1o7k",
+                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo",
                 "title": "Quarter planning"
               }
             }
@@ -29,12 +29,12 @@
           ]
         },
         {
-          "offsetMs": 14746,
+          "offsetMs": 15515,
           "messages": [
             {
               "version": "v0.9",
               "createSurface": {
-                "surfaceId": "rsvp-96bo794ni061s93l98v7lj1o7k",
+                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo",
                 "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/calendar/calendar-catalog/catalogs/v0.9.1/catalog.json",
                 "sendDataModel": true
               }
@@ -43,12 +43,12 @@
           "texts": []
         },
         {
-          "offsetMs": 14933,
+          "offsetMs": 15979,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "rsvp-96bo794ni061s93l98v7lj1o7k",
+                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo",
                 "value": {
                   "summary": "Quarter planning"
                 }
@@ -58,14 +58,14 @@
           "texts": []
         },
         {
-          "offsetMs": 15006,
+          "offsetMs": 16156,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "rsvp-96bo794ni061s93l98v7lj1o7k",
+                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo",
                 "value": {
-                  "when": "September 6, 2026, 10:00 \u2013 11:30"
+                  "when": "Tomorrow, 10:00 \u2013 11:30"
                 }
               }
             }
@@ -73,17 +73,17 @@
           "texts": []
         },
         {
-          "offsetMs": 15073,
+          "offsetMs": 16311,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "rsvp-96bo794ni061s93l98v7lj1o7k",
+                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo",
                 "path": "/",
                 "value": {
                   "summary": "Quarter planning",
-                  "when": "September 6, 2026, 10:00 \u2013 11:30",
-                  "current": "Accepted"
+                  "when": "Tomorrow, 10:00 \u2013 11:30",
+                  "current": "You're going"
                 }
               }
             }
@@ -91,7 +91,34 @@
           "texts": []
         },
         {
-          "offsetMs": 15342,
+          "offsetMs": 16798,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "loading_body",
+                    "container": "high",
+                    "shape": "extraLarge",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "loading_body",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 16960,
           "messages": [
             {
               "version": "v0.9",
@@ -99,26 +126,181 @@
                 "components": [
                   {
                     "id": "body",
-                    "component": "Column",
+                    "component": "Stack",
                     "children": [
-                      "loading_heading",
-                      "loading_when",
-                      "loading_current",
-                      "loading_actions"
+                      "loading_content",
+                      "loading_footer"
                     ]
                   },
                   {
                     "id": "root",
-                    "component": "Card",
-                    "child": "body"
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "high",
+                    "shape": "extraLarge",
+                    "padding": "none"
                   },
                   {
-                    "id": "loading_heading",
+                    "id": "loading_content",
                     "component": "Row",
                     "children": []
                   },
                   {
-                    "id": "loading_when",
+                    "id": "loading_footer",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 17136,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "loading_content",
+                      "loading_footer"
+                    ],
+                    "gap": "none"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "high",
+                    "shape": "extraLarge",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "loading_content",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_footer",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 17457,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "content",
+                      "loading_footer"
+                    ],
+                    "gap": "none"
+                  },
+                  {
+                    "id": "content",
+                    "component": "Stack",
+                    "children": [
+                      "loading_title-row",
+                      "loading_current"
+                    ],
+                    "gap": "md",
+                    "padding": "lg"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "high",
+                    "shape": "extraLarge",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "loading_footer",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_title-row",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_current",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 17896,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "content",
+                      "loading_footer"
+                    ],
+                    "gap": "none"
+                  },
+                  {
+                    "id": "content",
+                    "component": "Stack",
+                    "children": [
+                      "title-row",
+                      "loading_current"
+                    ],
+                    "gap": "md",
+                    "padding": "lg"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "high",
+                    "shape": "extraLarge",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "title-row",
+                    "component": "Stack",
+                    "children": [
+                      "loading_title-swatch",
+                      "loading_title-block"
+                    ],
+                    "direction": "horizontal",
+                    "gap": "lg",
+                    "align": "start"
+                  },
+                  {
+                    "id": "loading_footer",
                     "component": "Row",
                     "children": []
                   },
@@ -128,19 +310,24 @@
                     "children": []
                   },
                   {
-                    "id": "loading_actions",
+                    "id": "loading_title-swatch",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_title-block",
                     "component": "Row",
                     "children": []
                   }
                 ],
-                "surfaceId": "rsvp-96bo794ni061s93l98v7lj1o7k"
+                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 15486,
+          "offsetMs": 18256,
           "messages": [
             {
               "version": "v0.9",
@@ -148,29 +335,129 @@
                 "components": [
                   {
                     "id": "body",
-                    "component": "Column",
+                    "component": "Stack",
                     "children": [
-                      "heading",
-                      "loading_when",
-                      "loading_current",
-                      "loading_actions"
-                    ]
+                      "content",
+                      "loading_footer"
+                    ],
+                    "gap": "none"
                   },
                   {
-                    "id": "heading",
-                    "component": "Text",
-                    "variant": "h3",
-                    "text": {
-                      "path": "/summary"
-                    }
+                    "id": "content",
+                    "component": "Stack",
+                    "children": [
+                      "title-row",
+                      "loading_current"
+                    ],
+                    "gap": "md",
+                    "padding": "lg"
                   },
                   {
                     "id": "root",
-                    "component": "Card",
-                    "child": "body"
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "high",
+                    "shape": "extraLarge",
+                    "padding": "none"
                   },
                   {
-                    "id": "loading_when",
+                    "id": "title-block",
+                    "component": "Stack"
+                  },
+                  {
+                    "id": "title-row",
+                    "component": "Stack",
+                    "children": [
+                      "title-swatch",
+                      "title-block"
+                    ],
+                    "direction": "horizontal",
+                    "gap": "lg",
+                    "align": "start"
+                  },
+                  {
+                    "id": "title-swatch",
+                    "component": "ColorSwatch",
+                    "color": "peacock"
+                  },
+                  {
+                    "id": "loading_footer",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_current",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 18442,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "content",
+                      "loading_footer"
+                    ],
+                    "gap": "none"
+                  },
+                  {
+                    "id": "content",
+                    "component": "Stack",
+                    "children": [
+                      "title-row",
+                      "loading_current"
+                    ],
+                    "gap": "md",
+                    "padding": "lg"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "high",
+                    "shape": "extraLarge",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "title-block",
+                    "component": "Stack",
+                    "children": [
+                      "loading_summary",
+                      "loading_when"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "title-row",
+                    "component": "Stack",
+                    "children": [
+                      "title-swatch",
+                      "title-block"
+                    ],
+                    "direction": "horizontal",
+                    "gap": "lg",
+                    "align": "start"
+                  },
+                  {
+                    "id": "title-swatch",
+                    "component": "ColorSwatch",
+                    "color": "peacock"
+                  },
+                  {
+                    "id": "loading_footer",
                     "component": "Row",
                     "children": []
                   },
@@ -180,19 +467,24 @@
                     "children": []
                   },
                   {
-                    "id": "loading_actions",
+                    "id": "loading_summary",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_when",
                     "component": "Row",
                     "children": []
                   }
                 ],
-                "surfaceId": "rsvp-96bo794ni061s93l98v7lj1o7k"
+                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 15562,
+          "offsetMs": 18763,
           "messages": [
             {
               "version": "v0.9",
@@ -200,53 +492,180 @@
                 "components": [
                   {
                     "id": "body",
-                    "component": "Column",
+                    "component": "Stack",
                     "children": [
-                      "heading",
-                      "when",
-                      "loading_current",
-                      "loading_actions"
-                    ]
+                      "content",
+                      "loading_footer"
+                    ],
+                    "gap": "none"
                   },
                   {
-                    "id": "heading",
-                    "component": "Text",
-                    "variant": "h3",
-                    "text": {
-                      "path": "/summary"
-                    }
+                    "id": "content",
+                    "component": "Stack",
+                    "children": [
+                      "title-row",
+                      "loading_current"
+                    ],
+                    "gap": "md",
+                    "padding": "lg"
                   },
                   {
                     "id": "root",
-                    "component": "Card",
-                    "child": "body"
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "high",
+                    "shape": "extraLarge",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "summary",
+                    "component": "Text",
+                    "text": {
+                      "path": "/summary"
+                    },
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "title-block",
+                    "component": "Stack",
+                    "children": [
+                      "summary",
+                      "loading_when"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "title-row",
+                    "component": "Stack",
+                    "children": [
+                      "title-swatch",
+                      "title-block"
+                    ],
+                    "direction": "horizontal",
+                    "gap": "lg",
+                    "align": "start"
+                  },
+                  {
+                    "id": "title-swatch",
+                    "component": "ColorSwatch",
+                    "color": "peacock"
+                  },
+                  {
+                    "id": "loading_footer",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_current",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_when",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 19097,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "content",
+                      "loading_footer"
+                    ],
+                    "gap": "none"
+                  },
+                  {
+                    "id": "content",
+                    "component": "Stack",
+                    "children": [
+                      "title-row",
+                      "loading_current"
+                    ],
+                    "gap": "md",
+                    "padding": "lg"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "high",
+                    "shape": "extraLarge",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "summary",
+                    "component": "Text",
+                    "text": {
+                      "path": "/summary"
+                    },
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "title-block",
+                    "component": "Stack",
+                    "children": [
+                      "summary",
+                      "when"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "title-row",
+                    "component": "Stack",
+                    "children": [
+                      "title-swatch",
+                      "title-block"
+                    ],
+                    "direction": "horizontal",
+                    "gap": "lg",
+                    "align": "start"
+                  },
+                  {
+                    "id": "title-swatch",
+                    "component": "ColorSwatch",
+                    "color": "peacock"
                   },
                   {
                     "id": "when",
                     "component": "Text",
                     "text": {
                       "path": "/when"
-                    }
+                    },
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "loading_footer",
+                    "component": "Row",
+                    "children": []
                   },
                   {
                     "id": "loading_current",
                     "component": "Row",
                     "children": []
-                  },
-                  {
-                    "id": "loading_actions",
-                    "component": "Row",
-                    "children": []
                   }
                 ],
-                "surfaceId": "rsvp-96bo794ni061s93l98v7lj1o7k"
+                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 15692,
+          "offsetMs": 19624,
           "messages": [
             {
               "version": "v0.9",
@@ -254,107 +673,776 @@
                 "components": [
                   {
                     "id": "body",
-                    "component": "Column",
+                    "component": "Stack",
                     "children": [
-                      "heading",
-                      "when",
-                      "current",
-                      "loading_actions"
-                    ]
+                      "content",
+                      "footer"
+                    ],
+                    "gap": "none"
+                  },
+                  {
+                    "id": "content",
+                    "component": "Stack",
+                    "children": [
+                      "title-row",
+                      "current"
+                    ],
+                    "gap": "md",
+                    "padding": "lg"
                   },
                   {
                     "id": "current",
                     "component": "Text",
-                    "variant": "caption",
                     "text": {
                       "path": "/current"
-                    }
+                    },
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
                   },
                   {
-                    "id": "heading",
-                    "component": "Text",
-                    "variant": "h3",
-                    "text": {
-                      "path": "/summary"
-                    }
+                    "id": "footer",
+                    "component": "Surface"
                   },
                   {
                     "id": "root",
-                    "component": "Card",
-                    "child": "body"
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "high",
+                    "shape": "extraLarge",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "summary",
+                    "component": "Text",
+                    "text": {
+                      "path": "/summary"
+                    },
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "title-block",
+                    "component": "Stack",
+                    "children": [
+                      "summary",
+                      "when"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "title-row",
+                    "component": "Stack",
+                    "children": [
+                      "title-swatch",
+                      "title-block"
+                    ],
+                    "direction": "horizontal",
+                    "gap": "lg",
+                    "align": "start"
+                  },
+                  {
+                    "id": "title-swatch",
+                    "component": "ColorSwatch",
+                    "color": "peacock"
                   },
                   {
                     "id": "when",
                     "component": "Text",
                     "text": {
                       "path": "/when"
-                    }
-                  },
-                  {
-                    "id": "loading_actions",
-                    "component": "Row",
-                    "children": []
+                    },
+                    "color": "onSurfaceVariant"
                   }
                 ],
-                "surfaceId": "rsvp-96bo794ni061s93l98v7lj1o7k"
+                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 15817,
+          "offsetMs": 19804,
           "messages": [
             {
               "version": "v0.9",
               "updateComponents": {
                 "components": [
                   {
-                    "id": "actions",
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "content",
+                      "footer"
+                    ],
+                    "gap": "none"
+                  },
+                  {
+                    "id": "content",
+                    "component": "Stack",
+                    "children": [
+                      "title-row",
+                      "current"
+                    ],
+                    "gap": "md",
+                    "padding": "lg"
+                  },
+                  {
+                    "id": "current",
+                    "component": "Text",
+                    "text": {
+                      "path": "/current"
+                    },
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "footer",
+                    "component": "Surface",
+                    "child": "loading_going",
+                    "container": "highest",
+                    "shape": "none"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "high",
+                    "shape": "extraLarge",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "summary",
+                    "component": "Text",
+                    "text": {
+                      "path": "/summary"
+                    },
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "title-block",
+                    "component": "Stack",
+                    "children": [
+                      "summary",
+                      "when"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "title-row",
+                    "component": "Stack",
+                    "children": [
+                      "title-swatch",
+                      "title-block"
+                    ],
+                    "direction": "horizontal",
+                    "gap": "lg",
+                    "align": "start"
+                  },
+                  {
+                    "id": "title-swatch",
+                    "component": "ColorSwatch",
+                    "color": "peacock"
+                  },
+                  {
+                    "id": "when",
+                    "component": "Text",
+                    "text": {
+                      "path": "/when"
+                    },
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "loading_going",
                     "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 19978,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "content",
+                      "footer"
+                    ],
+                    "gap": "none"
+                  },
+                  {
+                    "id": "content",
+                    "component": "Stack",
+                    "children": [
+                      "title-row",
+                      "current"
+                    ],
+                    "gap": "md",
+                    "padding": "lg"
+                  },
+                  {
+                    "id": "current",
+                    "component": "Text",
+                    "text": {
+                      "path": "/current"
+                    },
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "footer",
+                    "component": "Surface",
+                    "child": "loading_going",
+                    "container": "highest",
+                    "shape": "none",
+                    "padding": "medium"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "high",
+                    "shape": "extraLarge",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "summary",
+                    "component": "Text",
+                    "text": {
+                      "path": "/summary"
+                    },
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "title-block",
+                    "component": "Stack",
+                    "children": [
+                      "summary",
+                      "when"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "title-row",
+                    "component": "Stack",
+                    "children": [
+                      "title-swatch",
+                      "title-block"
+                    ],
+                    "direction": "horizontal",
+                    "gap": "lg",
+                    "align": "start"
+                  },
+                  {
+                    "id": "title-swatch",
+                    "component": "ColorSwatch",
+                    "color": "peacock"
+                  },
+                  {
+                    "id": "when",
+                    "component": "Text",
+                    "text": {
+                      "path": "/when"
+                    },
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "loading_going",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 20349,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "content",
+                      "footer"
+                    ],
+                    "gap": "none"
+                  },
+                  {
+                    "id": "content",
+                    "component": "Stack",
+                    "children": [
+                      "title-row",
+                      "current"
+                    ],
+                    "gap": "md",
+                    "padding": "lg"
+                  },
+                  {
+                    "id": "current",
+                    "component": "Text",
+                    "text": {
+                      "path": "/current"
+                    },
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "footer",
+                    "component": "Surface",
+                    "child": "going",
+                    "container": "highest",
+                    "shape": "none",
+                    "padding": "medium"
+                  },
+                  {
+                    "id": "going",
+                    "component": "Stack",
+                    "children": [
+                      "loading_going-label",
+                      "loading_answers"
+                    ],
+                    "direction": "horizontal",
+                    "justify": "spaceBetween",
+                    "wrap": true
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "high",
+                    "shape": "extraLarge",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "summary",
+                    "component": "Text",
+                    "text": {
+                      "path": "/summary"
+                    },
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "title-block",
+                    "component": "Stack",
+                    "children": [
+                      "summary",
+                      "when"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "title-row",
+                    "component": "Stack",
+                    "children": [
+                      "title-swatch",
+                      "title-block"
+                    ],
+                    "direction": "horizontal",
+                    "gap": "lg",
+                    "align": "start"
+                  },
+                  {
+                    "id": "title-swatch",
+                    "component": "ColorSwatch",
+                    "color": "peacock"
+                  },
+                  {
+                    "id": "when",
+                    "component": "Text",
+                    "text": {
+                      "path": "/when"
+                    },
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "loading_going-label",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_answers",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 20527,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "content",
+                      "footer"
+                    ],
+                    "gap": "none"
+                  },
+                  {
+                    "id": "content",
+                    "component": "Stack",
+                    "children": [
+                      "title-row",
+                      "current"
+                    ],
+                    "gap": "md",
+                    "padding": "lg"
+                  },
+                  {
+                    "id": "current",
+                    "component": "Text",
+                    "text": {
+                      "path": "/current"
+                    },
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "footer",
+                    "component": "Surface",
+                    "child": "going",
+                    "container": "highest",
+                    "shape": "none",
+                    "padding": "medium"
+                  },
+                  {
+                    "id": "going",
+                    "component": "Stack",
+                    "children": [
+                      "going-label",
+                      "loading_answers"
+                    ],
+                    "direction": "horizontal",
+                    "justify": "spaceBetween",
+                    "wrap": true
+                  },
+                  {
+                    "id": "going-label",
+                    "component": "Text",
+                    "text": ""
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "high",
+                    "shape": "extraLarge",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "summary",
+                    "component": "Text",
+                    "text": {
+                      "path": "/summary"
+                    },
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "title-block",
+                    "component": "Stack",
+                    "children": [
+                      "summary",
+                      "when"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "title-row",
+                    "component": "Stack",
+                    "children": [
+                      "title-swatch",
+                      "title-block"
+                    ],
+                    "direction": "horizontal",
+                    "gap": "lg",
+                    "align": "start"
+                  },
+                  {
+                    "id": "title-swatch",
+                    "component": "ColorSwatch",
+                    "color": "peacock"
+                  },
+                  {
+                    "id": "when",
+                    "component": "Text",
+                    "text": {
+                      "path": "/when"
+                    },
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "loading_answers",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 20702,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "answers",
+                    "component": "Stack"
+                  },
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "content",
+                      "footer"
+                    ],
+                    "gap": "none"
+                  },
+                  {
+                    "id": "content",
+                    "component": "Stack",
+                    "children": [
+                      "title-row",
+                      "current"
+                    ],
+                    "gap": "md",
+                    "padding": "lg"
+                  },
+                  {
+                    "id": "current",
+                    "component": "Text",
+                    "text": {
+                      "path": "/current"
+                    },
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "footer",
+                    "component": "Surface",
+                    "child": "going",
+                    "container": "highest",
+                    "shape": "none",
+                    "padding": "medium"
+                  },
+                  {
+                    "id": "going",
+                    "component": "Stack",
+                    "children": [
+                      "going-label",
+                      "answers"
+                    ],
+                    "direction": "horizontal",
+                    "justify": "spaceBetween",
+                    "wrap": true
+                  },
+                  {
+                    "id": "going-label",
+                    "component": "Text",
+                    "text": "Going?"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "high",
+                    "shape": "extraLarge",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "summary",
+                    "component": "Text",
+                    "text": {
+                      "path": "/summary"
+                    },
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "title-block",
+                    "component": "Stack",
+                    "children": [
+                      "summary",
+                      "when"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "title-row",
+                    "component": "Stack",
+                    "children": [
+                      "title-swatch",
+                      "title-block"
+                    ],
+                    "direction": "horizontal",
+                    "gap": "lg",
+                    "align": "start"
+                  },
+                  {
+                    "id": "title-swatch",
+                    "component": "ColorSwatch",
+                    "color": "peacock"
+                  },
+                  {
+                    "id": "when",
+                    "component": "Text",
+                    "text": {
+                      "path": "/when"
+                    },
+                    "color": "onSurfaceVariant"
+                  }
+                ],
+                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 21093,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "answers",
+                    "component": "Stack",
                     "children": [
                       "loading_yes",
-                      "loading_maybe",
-                      "loading_no"
-                    ]
+                      "loading_no",
+                      "loading_maybe"
+                    ],
+                    "direction": "horizontal",
+                    "gap": "sm"
                   },
                   {
                     "id": "body",
-                    "component": "Column",
+                    "component": "Stack",
                     "children": [
-                      "heading",
-                      "when",
-                      "current",
-                      "actions"
-                    ]
+                      "content",
+                      "footer"
+                    ],
+                    "gap": "none"
+                  },
+                  {
+                    "id": "content",
+                    "component": "Stack",
+                    "children": [
+                      "title-row",
+                      "current"
+                    ],
+                    "gap": "md",
+                    "padding": "lg"
                   },
                   {
                     "id": "current",
                     "component": "Text",
-                    "variant": "caption",
                     "text": {
                       "path": "/current"
-                    }
+                    },
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
                   },
                   {
-                    "id": "heading",
+                    "id": "footer",
+                    "component": "Surface",
+                    "child": "going",
+                    "container": "highest",
+                    "shape": "none",
+                    "padding": "medium"
+                  },
+                  {
+                    "id": "going",
+                    "component": "Stack",
+                    "children": [
+                      "going-label",
+                      "answers"
+                    ],
+                    "direction": "horizontal",
+                    "justify": "spaceBetween",
+                    "wrap": true
+                  },
+                  {
+                    "id": "going-label",
                     "component": "Text",
-                    "variant": "h3",
-                    "text": {
-                      "path": "/summary"
-                    }
+                    "text": "Going?"
                   },
                   {
                     "id": "root",
-                    "component": "Card",
-                    "child": "body"
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "high",
+                    "shape": "extraLarge",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "summary",
+                    "component": "Text",
+                    "text": {
+                      "path": "/summary"
+                    },
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "title-block",
+                    "component": "Stack",
+                    "children": [
+                      "summary",
+                      "when"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "title-row",
+                    "component": "Stack",
+                    "children": [
+                      "title-swatch",
+                      "title-block"
+                    ],
+                    "direction": "horizontal",
+                    "gap": "lg",
+                    "align": "start"
+                  },
+                  {
+                    "id": "title-swatch",
+                    "component": "ColorSwatch",
+                    "color": "peacock"
                   },
                   {
                     "id": "when",
                     "component": "Text",
                     "text": {
                       "path": "/when"
-                    }
+                    },
+                    "color": "onSurfaceVariant"
                   },
                   {
                     "id": "loading_yes",
@@ -362,981 +1450,253 @@
                     "children": []
                   },
                   {
-                    "id": "loading_maybe",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
                     "id": "loading_no",
                     "component": "Row",
                     "children": []
-                  }
-                ],
-                "surfaceId": "rsvp-96bo794ni061s93l98v7lj1o7k"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 15954,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "actions",
-                    "component": "Row",
-                    "children": [
-                      "yes",
-                      "loading_maybe",
-                      "loading_no"
-                    ]
-                  },
-                  {
-                    "id": "body",
-                    "component": "Column",
-                    "children": [
-                      "heading",
-                      "when",
-                      "current",
-                      "actions"
-                    ]
-                  },
-                  {
-                    "id": "current",
-                    "component": "Text",
-                    "variant": "caption",
-                    "text": {
-                      "path": "/current"
-                    }
-                  },
-                  {
-                    "id": "heading",
-                    "component": "Text",
-                    "variant": "h3",
-                    "text": {
-                      "path": "/summary"
-                    }
-                  },
-                  {
-                    "id": "root",
-                    "component": "Card",
-                    "child": "body"
-                  },
-                  {
-                    "id": "when",
-                    "component": "Text",
-                    "text": {
-                      "path": "/when"
-                    }
-                  },
-                  {
-                    "id": "yes",
-                    "component": "Button",
-                    "variant": "primary",
-                    "child": "loading_yes-label",
-                    "action": {
-                      "event": {
-                        "name": "rsvp-toggle"
-                      }
-                    }
                   },
                   {
                     "id": "loading_maybe",
                     "component": "Row",
                     "children": []
-                  },
-                  {
-                    "id": "loading_no",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_yes-label",
-                    "component": "Row",
-                    "children": []
                   }
                 ],
-                "surfaceId": "rsvp-96bo794ni061s93l98v7lj1o7k"
+                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 16096,
+          "offsetMs": 21734,
           "messages": [
             {
               "version": "v0.9",
               "updateComponents": {
                 "components": [
                   {
-                    "id": "actions",
-                    "component": "Row",
+                    "id": "answers",
+                    "component": "Stack",
                     "children": [
                       "yes",
-                      "loading_maybe",
-                      "loading_no"
-                    ]
+                      "loading_no",
+                      "loading_maybe"
+                    ],
+                    "direction": "horizontal",
+                    "gap": "sm"
                   },
                   {
                     "id": "body",
-                    "component": "Column",
+                    "component": "Stack",
                     "children": [
-                      "heading",
-                      "when",
-                      "current",
-                      "actions"
-                    ]
+                      "content",
+                      "footer"
+                    ],
+                    "gap": "none"
+                  },
+                  {
+                    "id": "content",
+                    "component": "Stack",
+                    "children": [
+                      "title-row",
+                      "current"
+                    ],
+                    "gap": "md",
+                    "padding": "lg"
                   },
                   {
                     "id": "current",
                     "component": "Text",
-                    "variant": "caption",
                     "text": {
                       "path": "/current"
-                    }
+                    },
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
                   },
                   {
-                    "id": "heading",
+                    "id": "footer",
+                    "component": "Surface",
+                    "child": "going",
+                    "container": "highest",
+                    "shape": "none",
+                    "padding": "medium"
+                  },
+                  {
+                    "id": "going",
+                    "component": "Stack",
+                    "children": [
+                      "going-label",
+                      "answers"
+                    ],
+                    "direction": "horizontal",
+                    "justify": "spaceBetween",
+                    "wrap": true
+                  },
+                  {
+                    "id": "going-label",
                     "component": "Text",
-                    "variant": "h3",
-                    "text": {
-                      "path": "/summary"
-                    }
+                    "text": "Going?"
                   },
                   {
                     "id": "root",
-                    "component": "Card",
-                    "child": "body"
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "high",
+                    "shape": "extraLarge",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "summary",
+                    "component": "Text",
+                    "text": {
+                      "path": "/summary"
+                    },
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "title-block",
+                    "component": "Stack",
+                    "children": [
+                      "summary",
+                      "when"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "title-row",
+                    "component": "Stack",
+                    "children": [
+                      "title-swatch",
+                      "title-block"
+                    ],
+                    "direction": "horizontal",
+                    "gap": "lg",
+                    "align": "start"
+                  },
+                  {
+                    "id": "title-swatch",
+                    "component": "ColorSwatch",
+                    "color": "peacock"
                   },
                   {
                     "id": "when",
                     "component": "Text",
                     "text": {
                       "path": "/when"
-                    }
+                    },
+                    "color": "onSurfaceVariant"
                   },
                   {
                     "id": "yes",
                     "component": "Button",
-                    "variant": "primary",
-                    "child": "loading_yes-label",
+                    "label": "Yes",
+                    "variant": "tonal",
                     "action": {
                       "event": {
                         "name": "rsvp-toggle",
                         "context": {
-                          "eventId": "96bo794ni061s93l98v7lj1o7k",
+                          "eventId": "o49vnbegq501jme5all5bt82eo",
                           "responseStatus": "accepted"
                         }
                       }
                     }
+                  },
+                  {
+                    "id": "loading_no",
+                    "component": "Row",
+                    "children": []
                   },
                   {
                     "id": "loading_maybe",
                     "component": "Row",
                     "children": []
-                  },
-                  {
-                    "id": "loading_no",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_yes-label",
-                    "component": "Row",
-                    "children": []
                   }
                 ],
-                "surfaceId": "rsvp-96bo794ni061s93l98v7lj1o7k"
+                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 16154,
+          "offsetMs": 22590,
           "messages": [
             {
               "version": "v0.9",
               "updateComponents": {
                 "components": [
                   {
-                    "id": "actions",
-                    "component": "Row",
+                    "id": "answers",
+                    "component": "Stack",
                     "children": [
                       "yes",
-                      "loading_maybe",
-                      "loading_no"
-                    ]
+                      "no",
+                      "loading_maybe"
+                    ],
+                    "direction": "horizontal",
+                    "gap": "sm"
                   },
                   {
                     "id": "body",
-                    "component": "Column",
+                    "component": "Stack",
                     "children": [
-                      "heading",
-                      "when",
-                      "current",
-                      "actions"
-                    ]
+                      "content",
+                      "footer"
+                    ],
+                    "gap": "none"
+                  },
+                  {
+                    "id": "content",
+                    "component": "Stack",
+                    "children": [
+                      "title-row",
+                      "current"
+                    ],
+                    "gap": "md",
+                    "padding": "lg"
                   },
                   {
                     "id": "current",
                     "component": "Text",
-                    "variant": "caption",
                     "text": {
                       "path": "/current"
-                    }
+                    },
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
                   },
                   {
-                    "id": "heading",
-                    "component": "Text",
-                    "variant": "h3",
-                    "text": {
-                      "path": "/summary"
-                    }
+                    "id": "footer",
+                    "component": "Surface",
+                    "child": "going",
+                    "container": "highest",
+                    "shape": "none",
+                    "padding": "medium"
                   },
                   {
-                    "id": "root",
-                    "component": "Card",
-                    "child": "body"
-                  },
-                  {
-                    "id": "when",
-                    "component": "Text",
-                    "text": {
-                      "path": "/when"
-                    }
-                  },
-                  {
-                    "id": "yes",
-                    "component": "Button",
-                    "variant": "primary",
-                    "child": "yes-label",
-                    "action": {
-                      "event": {
-                        "name": "rsvp-toggle",
-                        "context": {
-                          "eventId": "96bo794ni061s93l98v7lj1o7k",
-                          "responseStatus": "accepted"
-                        }
-                      }
-                    }
-                  },
-                  {
-                    "id": "yes-label",
-                    "component": "Text"
-                  },
-                  {
-                    "id": "loading_maybe",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_no",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "rsvp-96bo794ni061s93l98v7lj1o7k"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 16223,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "actions",
-                    "component": "Row",
+                    "id": "going",
+                    "component": "Stack",
                     "children": [
-                      "yes",
-                      "loading_maybe",
-                      "loading_no"
-                    ]
+                      "going-label",
+                      "answers"
+                    ],
+                    "direction": "horizontal",
+                    "justify": "spaceBetween",
+                    "wrap": true
                   },
                   {
-                    "id": "body",
-                    "component": "Column",
-                    "children": [
-                      "heading",
-                      "when",
-                      "current",
-                      "actions"
-                    ]
-                  },
-                  {
-                    "id": "current",
+                    "id": "going-label",
                     "component": "Text",
-                    "variant": "caption",
-                    "text": {
-                      "path": "/current"
-                    }
-                  },
-                  {
-                    "id": "heading",
-                    "component": "Text",
-                    "variant": "h3",
-                    "text": {
-                      "path": "/summary"
-                    }
-                  },
-                  {
-                    "id": "root",
-                    "component": "Card",
-                    "child": "body"
-                  },
-                  {
-                    "id": "when",
-                    "component": "Text",
-                    "text": {
-                      "path": "/when"
-                    }
-                  },
-                  {
-                    "id": "yes",
-                    "component": "Button",
-                    "variant": "primary",
-                    "child": "yes-label",
-                    "action": {
-                      "event": {
-                        "name": "rsvp-toggle",
-                        "context": {
-                          "eventId": "96bo794ni061s93l98v7lj1o7k",
-                          "responseStatus": "accepted"
-                        }
-                      }
-                    }
-                  },
-                  {
-                    "id": "yes-label",
-                    "component": "Text",
-                    "text": "Accept"
-                  },
-                  {
-                    "id": "loading_maybe",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_no",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "rsvp-96bo794ni061s93l98v7lj1o7k"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 16300,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "actions",
-                    "component": "Row",
-                    "children": [
-                      "yes",
-                      "maybe",
-                      "loading_no"
-                    ]
-                  },
-                  {
-                    "id": "body",
-                    "component": "Column",
-                    "children": [
-                      "heading",
-                      "when",
-                      "current",
-                      "actions"
-                    ]
-                  },
-                  {
-                    "id": "current",
-                    "component": "Text",
-                    "variant": "caption",
-                    "text": {
-                      "path": "/current"
-                    }
-                  },
-                  {
-                    "id": "heading",
-                    "component": "Text",
-                    "variant": "h3",
-                    "text": {
-                      "path": "/summary"
-                    }
-                  },
-                  {
-                    "id": "maybe",
-                    "component": "Button",
-                    "variant": "default",
-                    "child": "loading_maybe-label"
-                  },
-                  {
-                    "id": "root",
-                    "component": "Card",
-                    "child": "body"
-                  },
-                  {
-                    "id": "when",
-                    "component": "Text",
-                    "text": {
-                      "path": "/when"
-                    }
-                  },
-                  {
-                    "id": "yes",
-                    "component": "Button",
-                    "variant": "primary",
-                    "child": "yes-label",
-                    "action": {
-                      "event": {
-                        "name": "rsvp-toggle",
-                        "context": {
-                          "eventId": "96bo794ni061s93l98v7lj1o7k",
-                          "responseStatus": "accepted"
-                        }
-                      }
-                    }
-                  },
-                  {
-                    "id": "yes-label",
-                    "component": "Text",
-                    "text": "Accept"
-                  },
-                  {
-                    "id": "loading_no",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_maybe-label",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "rsvp-96bo794ni061s93l98v7lj1o7k"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 16362,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "actions",
-                    "component": "Row",
-                    "children": [
-                      "yes",
-                      "maybe",
-                      "loading_no"
-                    ]
-                  },
-                  {
-                    "id": "body",
-                    "component": "Column",
-                    "children": [
-                      "heading",
-                      "when",
-                      "current",
-                      "actions"
-                    ]
-                  },
-                  {
-                    "id": "current",
-                    "component": "Text",
-                    "variant": "caption",
-                    "text": {
-                      "path": "/current"
-                    }
-                  },
-                  {
-                    "id": "heading",
-                    "component": "Text",
-                    "variant": "h3",
-                    "text": {
-                      "path": "/summary"
-                    }
-                  },
-                  {
-                    "id": "maybe",
-                    "component": "Button",
-                    "variant": "default",
-                    "child": "loading_maybe-label",
-                    "action": {
-                      "event": {
-                        "name": "rsvp-toggle"
-                      }
-                    }
-                  },
-                  {
-                    "id": "root",
-                    "component": "Card",
-                    "child": "body"
-                  },
-                  {
-                    "id": "when",
-                    "component": "Text",
-                    "text": {
-                      "path": "/when"
-                    }
-                  },
-                  {
-                    "id": "yes",
-                    "component": "Button",
-                    "variant": "primary",
-                    "child": "yes-label",
-                    "action": {
-                      "event": {
-                        "name": "rsvp-toggle",
-                        "context": {
-                          "eventId": "96bo794ni061s93l98v7lj1o7k",
-                          "responseStatus": "accepted"
-                        }
-                      }
-                    }
-                  },
-                  {
-                    "id": "yes-label",
-                    "component": "Text",
-                    "text": "Accept"
-                  },
-                  {
-                    "id": "loading_no",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_maybe-label",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "rsvp-96bo794ni061s93l98v7lj1o7k"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 16508,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "actions",
-                    "component": "Row",
-                    "children": [
-                      "yes",
-                      "maybe",
-                      "loading_no"
-                    ]
-                  },
-                  {
-                    "id": "body",
-                    "component": "Column",
-                    "children": [
-                      "heading",
-                      "when",
-                      "current",
-                      "actions"
-                    ]
-                  },
-                  {
-                    "id": "current",
-                    "component": "Text",
-                    "variant": "caption",
-                    "text": {
-                      "path": "/current"
-                    }
-                  },
-                  {
-                    "id": "heading",
-                    "component": "Text",
-                    "variant": "h3",
-                    "text": {
-                      "path": "/summary"
-                    }
-                  },
-                  {
-                    "id": "maybe",
-                    "component": "Button",
-                    "variant": "default",
-                    "child": "loading_maybe-label",
-                    "action": {
-                      "event": {
-                        "name": "rsvp-toggle",
-                        "context": {
-                          "eventId": "96bo794ni061s93l98v7lj1o7k",
-                          "responseStatus": "tentative"
-                        }
-                      }
-                    }
-                  },
-                  {
-                    "id": "root",
-                    "component": "Card",
-                    "child": "body"
-                  },
-                  {
-                    "id": "when",
-                    "component": "Text",
-                    "text": {
-                      "path": "/when"
-                    }
-                  },
-                  {
-                    "id": "yes",
-                    "component": "Button",
-                    "variant": "primary",
-                    "child": "yes-label",
-                    "action": {
-                      "event": {
-                        "name": "rsvp-toggle",
-                        "context": {
-                          "eventId": "96bo794ni061s93l98v7lj1o7k",
-                          "responseStatus": "accepted"
-                        }
-                      }
-                    }
-                  },
-                  {
-                    "id": "yes-label",
-                    "component": "Text",
-                    "text": "Accept"
-                  },
-                  {
-                    "id": "loading_no",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_maybe-label",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "rsvp-96bo794ni061s93l98v7lj1o7k"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 16654,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "actions",
-                    "component": "Row",
-                    "children": [
-                      "yes",
-                      "maybe",
-                      "loading_no"
-                    ]
-                  },
-                  {
-                    "id": "body",
-                    "component": "Column",
-                    "children": [
-                      "heading",
-                      "when",
-                      "current",
-                      "actions"
-                    ]
-                  },
-                  {
-                    "id": "current",
-                    "component": "Text",
-                    "variant": "caption",
-                    "text": {
-                      "path": "/current"
-                    }
-                  },
-                  {
-                    "id": "heading",
-                    "component": "Text",
-                    "variant": "h3",
-                    "text": {
-                      "path": "/summary"
-                    }
-                  },
-                  {
-                    "id": "maybe",
-                    "component": "Button",
-                    "variant": "default",
-                    "child": "maybe-label",
-                    "action": {
-                      "event": {
-                        "name": "rsvp-toggle",
-                        "context": {
-                          "eventId": "96bo794ni061s93l98v7lj1o7k",
-                          "responseStatus": "tentative"
-                        }
-                      }
-                    }
-                  },
-                  {
-                    "id": "maybe-label",
-                    "component": "Text",
-                    "text": "Maybe"
-                  },
-                  {
-                    "id": "root",
-                    "component": "Card",
-                    "child": "body"
-                  },
-                  {
-                    "id": "when",
-                    "component": "Text",
-                    "text": {
-                      "path": "/when"
-                    }
-                  },
-                  {
-                    "id": "yes",
-                    "component": "Button",
-                    "variant": "primary",
-                    "child": "yes-label",
-                    "action": {
-                      "event": {
-                        "name": "rsvp-toggle",
-                        "context": {
-                          "eventId": "96bo794ni061s93l98v7lj1o7k",
-                          "responseStatus": "accepted"
-                        }
-                      }
-                    }
-                  },
-                  {
-                    "id": "yes-label",
-                    "component": "Text",
-                    "text": "Accept"
-                  },
-                  {
-                    "id": "loading_no",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "rsvp-96bo794ni061s93l98v7lj1o7k"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 16794,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "actions",
-                    "component": "Row",
-                    "children": [
-                      "yes",
-                      "maybe",
-                      "no"
-                    ]
-                  },
-                  {
-                    "id": "body",
-                    "component": "Column",
-                    "children": [
-                      "heading",
-                      "when",
-                      "current",
-                      "actions"
-                    ]
-                  },
-                  {
-                    "id": "current",
-                    "component": "Text",
-                    "variant": "caption",
-                    "text": {
-                      "path": "/current"
-                    }
-                  },
-                  {
-                    "id": "heading",
-                    "component": "Text",
-                    "variant": "h3",
-                    "text": {
-                      "path": "/summary"
-                    }
-                  },
-                  {
-                    "id": "maybe",
-                    "component": "Button",
-                    "variant": "default",
-                    "child": "maybe-label",
-                    "action": {
-                      "event": {
-                        "name": "rsvp-toggle",
-                        "context": {
-                          "eventId": "96bo794ni061s93l98v7lj1o7k",
-                          "responseStatus": "tentative"
-                        }
-                      }
-                    }
-                  },
-                  {
-                    "id": "maybe-label",
-                    "component": "Text",
-                    "text": "Maybe"
+                    "text": "Going?"
                   },
                   {
                     "id": "no",
                     "component": "Button",
-                    "variant": "default",
-                    "child": "loading_no-label",
-                    "action": {
-                      "event": {
-                        "name": "rsvp-toggle"
-                      }
-                    }
-                  },
-                  {
-                    "id": "root",
-                    "component": "Card",
-                    "child": "body"
-                  },
-                  {
-                    "id": "when",
-                    "component": "Text",
-                    "text": {
-                      "path": "/when"
-                    }
-                  },
-                  {
-                    "id": "yes",
-                    "component": "Button",
-                    "variant": "primary",
-                    "child": "yes-label",
+                    "label": "No",
+                    "variant": "outlined",
                     "action": {
                       "event": {
                         "name": "rsvp-toggle",
                         "context": {
-                          "eventId": "96bo794ni061s93l98v7lj1o7k",
-                          "responseStatus": "accepted"
-                        }
-                      }
-                    }
-                  },
-                  {
-                    "id": "yes-label",
-                    "component": "Text",
-                    "text": "Accept"
-                  },
-                  {
-                    "id": "loading_no-label",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "rsvp-96bo794ni061s93l98v7lj1o7k"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 16930,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "actions",
-                    "component": "Row",
-                    "children": [
-                      "yes",
-                      "maybe",
-                      "no"
-                    ]
-                  },
-                  {
-                    "id": "body",
-                    "component": "Column",
-                    "children": [
-                      "heading",
-                      "when",
-                      "current",
-                      "actions"
-                    ]
-                  },
-                  {
-                    "id": "current",
-                    "component": "Text",
-                    "variant": "caption",
-                    "text": {
-                      "path": "/current"
-                    }
-                  },
-                  {
-                    "id": "heading",
-                    "component": "Text",
-                    "variant": "h3",
-                    "text": {
-                      "path": "/summary"
-                    }
-                  },
-                  {
-                    "id": "maybe",
-                    "component": "Button",
-                    "variant": "default",
-                    "child": "maybe-label",
-                    "action": {
-                      "event": {
-                        "name": "rsvp-toggle",
-                        "context": {
-                          "eventId": "96bo794ni061s93l98v7lj1o7k",
-                          "responseStatus": "tentative"
-                        }
-                      }
-                    }
-                  },
-                  {
-                    "id": "maybe-label",
-                    "component": "Text",
-                    "text": "Maybe"
-                  },
-                  {
-                    "id": "no",
-                    "component": "Button",
-                    "variant": "default",
-                    "child": "loading_no-label",
-                    "action": {
-                      "event": {
-                        "name": "rsvp-toggle",
-                        "context": {
-                          "eventId": "96bo794ni061s93l98v7lj1o7k",
+                          "eventId": "o49vnbegq501jme5all5bt82eo",
                           "responseStatus": "declined"
                         }
                       }
@@ -1344,164 +1704,416 @@
                   },
                   {
                     "id": "root",
-                    "component": "Card",
-                    "child": "body"
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "high",
+                    "shape": "extraLarge",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "summary",
+                    "component": "Text",
+                    "text": {
+                      "path": "/summary"
+                    },
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "title-block",
+                    "component": "Stack",
+                    "children": [
+                      "summary",
+                      "when"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "title-row",
+                    "component": "Stack",
+                    "children": [
+                      "title-swatch",
+                      "title-block"
+                    ],
+                    "direction": "horizontal",
+                    "gap": "lg",
+                    "align": "start"
+                  },
+                  {
+                    "id": "title-swatch",
+                    "component": "ColorSwatch",
+                    "color": "peacock"
                   },
                   {
                     "id": "when",
                     "component": "Text",
                     "text": {
                       "path": "/when"
-                    }
+                    },
+                    "color": "onSurfaceVariant"
                   },
                   {
                     "id": "yes",
                     "component": "Button",
-                    "variant": "primary",
-                    "child": "yes-label",
+                    "label": "Yes",
+                    "variant": "tonal",
                     "action": {
                       "event": {
                         "name": "rsvp-toggle",
                         "context": {
-                          "eventId": "96bo794ni061s93l98v7lj1o7k",
+                          "eventId": "o49vnbegq501jme5all5bt82eo",
                           "responseStatus": "accepted"
                         }
                       }
                     }
                   },
                   {
-                    "id": "yes-label",
-                    "component": "Text",
-                    "text": "Accept"
-                  },
-                  {
-                    "id": "loading_no-label",
+                    "id": "loading_maybe",
                     "component": "Row",
                     "children": []
                   }
                 ],
-                "surfaceId": "rsvp-96bo794ni061s93l98v7lj1o7k"
+                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 17069,
+          "offsetMs": 23109,
           "messages": [
             {
               "version": "v0.9",
               "updateComponents": {
                 "components": [
                   {
-                    "id": "actions",
-                    "component": "Row",
+                    "id": "answers",
+                    "component": "Stack",
                     "children": [
                       "yes",
-                      "maybe",
-                      "no"
-                    ]
+                      "no",
+                      "maybe"
+                    ],
+                    "direction": "horizontal",
+                    "gap": "sm"
                   },
                   {
                     "id": "body",
-                    "component": "Column",
+                    "component": "Stack",
                     "children": [
-                      "heading",
-                      "when",
-                      "current",
-                      "actions"
-                    ]
+                      "content",
+                      "footer"
+                    ],
+                    "gap": "none"
+                  },
+                  {
+                    "id": "content",
+                    "component": "Stack",
+                    "children": [
+                      "title-row",
+                      "current"
+                    ],
+                    "gap": "md",
+                    "padding": "lg"
                   },
                   {
                     "id": "current",
                     "component": "Text",
-                    "variant": "caption",
                     "text": {
                       "path": "/current"
-                    }
+                    },
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
                   },
                   {
-                    "id": "heading",
+                    "id": "footer",
+                    "component": "Surface",
+                    "child": "going",
+                    "container": "highest",
+                    "shape": "none",
+                    "padding": "medium"
+                  },
+                  {
+                    "id": "going",
+                    "component": "Stack",
+                    "children": [
+                      "going-label",
+                      "answers"
+                    ],
+                    "direction": "horizontal",
+                    "justify": "spaceBetween",
+                    "wrap": true
+                  },
+                  {
+                    "id": "going-label",
                     "component": "Text",
-                    "variant": "h3",
-                    "text": {
-                      "path": "/summary"
-                    }
+                    "text": "Going?"
                   },
                   {
                     "id": "maybe",
                     "component": "Button",
-                    "variant": "default",
-                    "child": "maybe-label",
+                    "label": "Maybe",
+                    "variant": "outlined",
                     "action": {
                       "event": {
                         "name": "rsvp-toggle",
                         "context": {
-                          "eventId": "96bo794ni061s93l98v7lj1o7k",
-                          "responseStatus": "tentative"
+                          "eventId": "o49vnbegq501jme5all5bt82eo"
                         }
                       }
                     }
                   },
                   {
-                    "id": "maybe-label",
-                    "component": "Text",
-                    "text": "Maybe"
-                  },
-                  {
                     "id": "no",
                     "component": "Button",
-                    "variant": "default",
-                    "child": "no-label",
+                    "label": "No",
+                    "variant": "outlined",
                     "action": {
                       "event": {
                         "name": "rsvp-toggle",
                         "context": {
-                          "eventId": "96bo794ni061s93l98v7lj1o7k",
+                          "eventId": "o49vnbegq501jme5all5bt82eo",
                           "responseStatus": "declined"
                         }
                       }
                     }
                   },
                   {
-                    "id": "no-label",
-                    "component": "Text",
-                    "text": "Decline"
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "high",
+                    "shape": "extraLarge",
+                    "padding": "none"
                   },
                   {
-                    "id": "root",
-                    "component": "Card",
-                    "child": "body"
+                    "id": "summary",
+                    "component": "Text",
+                    "text": {
+                      "path": "/summary"
+                    },
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "title-block",
+                    "component": "Stack",
+                    "children": [
+                      "summary",
+                      "when"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "title-row",
+                    "component": "Stack",
+                    "children": [
+                      "title-swatch",
+                      "title-block"
+                    ],
+                    "direction": "horizontal",
+                    "gap": "lg",
+                    "align": "start"
+                  },
+                  {
+                    "id": "title-swatch",
+                    "component": "ColorSwatch",
+                    "color": "peacock"
                   },
                   {
                     "id": "when",
                     "component": "Text",
                     "text": {
                       "path": "/when"
-                    }
+                    },
+                    "color": "onSurfaceVariant"
                   },
                   {
                     "id": "yes",
                     "component": "Button",
-                    "variant": "primary",
-                    "child": "yes-label",
+                    "label": "Yes",
+                    "variant": "tonal",
                     "action": {
                       "event": {
                         "name": "rsvp-toggle",
                         "context": {
-                          "eventId": "96bo794ni061s93l98v7lj1o7k",
+                          "eventId": "o49vnbegq501jme5all5bt82eo",
                           "responseStatus": "accepted"
+                        }
+                      }
+                    }
+                  }
+                ],
+                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 23246,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "answers",
+                    "component": "Stack",
+                    "children": [
+                      "yes",
+                      "no",
+                      "maybe"
+                    ],
+                    "direction": "horizontal",
+                    "gap": "sm"
+                  },
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "content",
+                      "footer"
+                    ],
+                    "gap": "none"
+                  },
+                  {
+                    "id": "content",
+                    "component": "Stack",
+                    "children": [
+                      "title-row",
+                      "current"
+                    ],
+                    "gap": "md",
+                    "padding": "lg"
+                  },
+                  {
+                    "id": "current",
+                    "component": "Text",
+                    "text": {
+                      "path": "/current"
+                    },
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "footer",
+                    "component": "Surface",
+                    "child": "going",
+                    "container": "highest",
+                    "shape": "none",
+                    "padding": "medium"
+                  },
+                  {
+                    "id": "going",
+                    "component": "Stack",
+                    "children": [
+                      "going-label",
+                      "answers"
+                    ],
+                    "direction": "horizontal",
+                    "justify": "spaceBetween",
+                    "wrap": true
+                  },
+                  {
+                    "id": "going-label",
+                    "component": "Text",
+                    "text": "Going?"
+                  },
+                  {
+                    "id": "maybe",
+                    "component": "Button",
+                    "label": "Maybe",
+                    "variant": "outlined",
+                    "action": {
+                      "event": {
+                        "name": "rsvp-toggle",
+                        "context": {
+                          "eventId": "o49vnbegq501jme5all5bt82eo",
+                          "responseStatus": "tentative"
                         }
                       }
                     }
                   },
                   {
-                    "id": "yes-label",
+                    "id": "no",
+                    "component": "Button",
+                    "label": "No",
+                    "variant": "outlined",
+                    "action": {
+                      "event": {
+                        "name": "rsvp-toggle",
+                        "context": {
+                          "eventId": "o49vnbegq501jme5all5bt82eo",
+                          "responseStatus": "declined"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "high",
+                    "shape": "extraLarge",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "summary",
                     "component": "Text",
-                    "text": "Accept"
+                    "text": {
+                      "path": "/summary"
+                    },
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "title-block",
+                    "component": "Stack",
+                    "children": [
+                      "summary",
+                      "when"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "title-row",
+                    "component": "Stack",
+                    "children": [
+                      "title-swatch",
+                      "title-block"
+                    ],
+                    "direction": "horizontal",
+                    "gap": "lg",
+                    "align": "start"
+                  },
+                  {
+                    "id": "title-swatch",
+                    "component": "ColorSwatch",
+                    "color": "peacock"
+                  },
+                  {
+                    "id": "when",
+                    "component": "Text",
+                    "text": {
+                      "path": "/when"
+                    },
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "yes",
+                    "component": "Button",
+                    "label": "Yes",
+                    "variant": "tonal",
+                    "action": {
+                      "event": {
+                        "name": "rsvp-toggle",
+                        "context": {
+                          "eventId": "o49vnbegq501jme5all5bt82eo",
+                          "responseStatus": "accepted"
+                        }
+                      }
+                    }
                   }
                 ],
-                "surfaceId": "rsvp-96bo794ni061s93l98v7lj1o7k"
+                "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo"
               }
             }
           ],
@@ -1509,7 +2121,7 @@
         }
       ],
       "outcome": "completed",
-      "durationMs": 17263
+      "durationMs": 23531
     }
   ]
 }

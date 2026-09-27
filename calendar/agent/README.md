@@ -1,6 +1,6 @@
 # Google Calendar agent
 
-An A2A agent for Google Calendar. It answers schedule questions by painting A2UI surfaces with [`calendar-catalog`](../calendar-catalog/), the basic A2UI catalog in Calendar's Material 3 look. It runs on port **11003** and is built on [`a2ui-agent-kit`](../../agent-kit/).
+An A2A agent for Google Calendar. It answers schedule questions by painting A2UI surfaces with [`calendar-catalog`](../calendar-catalog/), Calendar's own components in Material 3's design language. It runs on port **11003** and is built on [`a2ui-agent-kit`](../../agent-kit/).
 
 ## What it can do
 
@@ -111,6 +111,15 @@ uv run pytest tests/test_corpus_is_publishable.py
 ```
 
 Nothing is pseudonymized: the demo calendar holds nothing private.
+
+To repaint the beats after a catalog change, record them against the stub instead: the model paints over the recorded data, nothing reaches Google Calendar, and only the deterministic corpus is derived again.
+
+```bash
+A2UI_RECORD_DIR=.recordings uv run python -m app --mode stub --host localhost
+uv run python scripts/record_beats.py --model <model>
+uv run python scripts/derive_corpus.py --beats-only
+uv run pytest tests/test_corpus_is_publishable.py
+```
 
 ## Allowing more tools
 

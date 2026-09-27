@@ -13,7 +13,8 @@
     "updateDataModel": {
       "surfaceId": "draft-1a06f2abedf045ce",
       "value": {
-        "subject": "Re: estimate review thread status agenda confirm summ"
+        "subject": "Re: estimate review thread status agenda confirm summ",
+        "body": "I will get to it this week."
       }
     }
   },
@@ -35,34 +36,67 @@
       "components": [
         {
           "id": "root",
-          "component": "Card",
-          "child": "body"
+          "component": "Surface",
+          "child": "body",
+          "container": "lowest",
+          "shape": "large",
+          "padding": "none",
+          "elevation": "level2"
         },
         {
           "id": "body",
-          "component": "Column",
+          "component": "Stack",
           "children": [
-            "heading",
-            "to-row",
-            "subject-field",
-            "body-field",
+            "title-bar",
+            "fields",
             "actions"
-          ]
+          ],
+          "gap": "none"
+        },
+        {
+          "id": "title-bar",
+          "component": "Surface",
+          "child": "heading",
+          "container": "high",
+          "shape": "none",
+          "padding": "medium"
+        },
+        {
+          "id": "fields",
+          "component": "Stack",
+          "children": [
+            "to-field",
+            "subject-field",
+            "body-field"
+          ],
+          "gap": "none",
+          "padding": "md"
+        },
+        {
+          "id": "actions",
+          "component": "Stack",
+          "children": [
+            "save",
+            "cancel"
+          ],
+          "direction": "horizontal",
+          "gap": "sm",
+          "padding": "md"
         },
         {
           "id": "heading",
           "component": "Text",
-          "variant": "h3",
-          "text": "Save this reply?"
+          "text": "Save this reply?",
+          "variant": "titleSmall"
         },
         {
-          "id": "to-row",
-          "component": "Row",
-          "align": "center",
-          "children": [
-            "to-label",
-            "to-value"
-          ]
+          "id": "to-field",
+          "component": "TextField",
+          "label": "To",
+          "value": {
+            "path": "/to"
+          },
+          "variant": "plain"
         },
         {
           "id": "subject-field",
@@ -70,43 +104,24 @@
           "label": "Subject",
           "value": {
             "path": "/subject"
-          }
+          },
+          "variant": "plain"
         },
         {
           "id": "body-field",
           "component": "TextField",
           "label": "Message",
-          "variant": "longText",
           "value": {
             "path": "/body"
-          }
-        },
-        {
-          "id": "actions",
-          "component": "Row",
-          "children": [
-            "save",
-            "cancel"
-          ]
-        },
-        {
-          "id": "to-label",
-          "component": "Text",
-          "variant": "caption",
-          "text": "TO"
-        },
-        {
-          "id": "to-value",
-          "component": "Text",
-          "text": {
-            "path": "/to"
-          }
+          },
+          "variant": "plain",
+          "multiline": true
         },
         {
           "id": "save",
           "component": "Button",
-          "variant": "primary",
-          "child": "save-label",
+          "label": "Save draft",
+          "icon": "draft",
           "action": {
             "event": {
               "name": "confirm-draft",
@@ -119,8 +134,8 @@
         {
           "id": "cancel",
           "component": "Button",
-          "variant": "borderless",
-          "child": "cancel-label",
+          "label": "Discard",
+          "variant": "text",
           "action": {
             "event": {
               "name": "cancel-draft",
@@ -129,16 +144,6 @@
               }
             }
           }
-        },
-        {
-          "id": "save-label",
-          "component": "Text",
-          "text": "Save draft"
-        },
-        {
-          "id": "cancel-label",
-          "component": "Text",
-          "text": "Discard"
         }
       ]
     }

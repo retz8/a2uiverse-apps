@@ -47,62 +47,136 @@
       "updateComponents": {
         "surfaceId": "needs-attention",
         "components": [
-          { "id": "root", "component": "Card", "child": "body" },
+          {
+            "id": "root",
+            "component": "Surface",
+            "child": "body",
+            "container": "low",
+            "shape": "large",
+            "padding": "small"
+          },
           {
             "id": "body",
-            "component": "Column",
-            "children": ["heading", "sub", "divider", "thread-list"]
+            "component": "Stack",
+            "children": [
+              "header",
+              "sheet"
+            ],
+            "gap": "xs"
           },
-          { "id": "heading", "component": "Text", "variant": "h3", "text": "Waiting on you" },
+          {
+            "id": "header",
+            "component": "Stack",
+            "children": [
+              "heading",
+              "sub"
+            ],
+            "gap": "xs",
+            "padding": "sm"
+          },
+          {
+            "id": "sheet",
+            "component": "Surface",
+            "child": "thread-list",
+            "container": "lowest",
+            "shape": "large",
+            "padding": "none"
+          },
+          {
+            "id": "heading",
+            "component": "Text",
+            "text": "Waiting on you",
+            "variant": "titleLarge"
+          },
           {
             "id": "sub",
             "component": "Text",
-            "variant": "caption",
-            "text": "3 threads where someone is waiting on a reply"
+            "text": "3 threads where someone is waiting on a reply",
+            "variant": "bodySmall",
+            "color": "onSurfaceVariant"
           },
-          { "id": "divider", "component": "Divider" },
           {
             "id": "thread-list",
-            "component": "Column",
-            "children": { "path": "/threads", "componentId": "thread-row" }
+            "component": "List",
+            "children": {
+              "path": "/threads",
+              "componentId": "thread-row"
+            },
+            "dividers": true,
+            "layout": "inline"
           },
           {
             "id": "thread-row",
-            "component": "Button",
-            "variant": "borderless",
-            "child": "thread-body",
+            "component": "ListItem",
+            "headline": "thread-sender",
+            "supporting": "thread-preview",
+            "meta": "thread-when",
+            "leading": [
+              "thread-avatar"
+            ],
             "action": {
               "event": {
                 "name": "open-thread",
-                "context": { "threadId": { "path": "id" } }
+                "context": {
+                  "threadId": {
+                    "path": "id"
+                  }
+                }
               }
             }
           },
           {
-            "id": "thread-body",
-            "component": "Column",
-            "children": ["thread-top", "thread-subject", "thread-preview"]
+            "id": "thread-avatar",
+            "component": "Avatar",
+            "name": {
+              "path": "sender"
+            },
+            "size": "medium"
           },
           {
-            "id": "thread-top",
-            "component": "Row",
-            "justify": "spaceBetween",
-            "align": "center",
-            "children": ["thread-sender", "thread-when"]
+            "id": "thread-sender",
+            "component": "Text",
+            "text": {
+              "path": "sender"
+            },
+            "weight": "bold",
+            "maxLines": 1
           },
-          { "id": "thread-sender", "component": "Text", "text": { "path": "sender" } },
           {
             "id": "thread-when",
             "component": "Text",
-            "variant": "caption",
-            "text": { "path": "when" }
+            "text": {
+              "path": "when"
+            },
+            "variant": "labelMedium",
+            "color": "onSurfaceVariant"
           },
-          { "id": "thread-subject", "component": "Text", "text": { "path": "subject" } },
           {
             "id": "thread-preview",
+            "component": "Stack",
+            "children": [
+              "thread-subject",
+              "thread-snippet"
+            ],
+            "gap": "none"
+          },
+          {
+            "id": "thread-subject",
             "component": "Text",
-            "variant": "caption",
-            "text": { "path": "snippet" }
+            "text": {
+              "path": "subject"
+            },
+            "weight": "medium",
+            "maxLines": 1
+          },
+          {
+            "id": "thread-snippet",
+            "component": "Text",
+            "text": {
+              "path": "snippet"
+            },
+            "color": "onSurfaceVariant",
+            "maxLines": 1
           }
         ]
       }

@@ -14,15 +14,15 @@ An app answers a question with UI.
 
 ## Apps
 
-| App                          | Answers about                                         | Catalog                                         | Port    |
-| ---------------------------- | ----------------------------------------------------- | ----------------------------------------------- | ------- |
-| [GitHub](github/)            | repositories, issues, pull requests and notifications | Primer, GitHub's own design system              | `11001` |
-| [Gmail](gmail/)              | your mail                                             | the basic catalog in Gmail's Material 3 look    | `11002` |
-| [Google Calendar](calendar/) | your calendar                                         | the basic catalog in Calendar's Material 3 look | `11003` |
-| [CircleCI](circleci/)        | your pipelines                                        | CircleCI's own components in its look           | `11004` |
-| [Linear](linear/)            | your issues                                           | Linear's own components in its look             | `11005` |
+| App                          | Answers about                                         | Catalog                                          | Port    |
+| ---------------------------- | ----------------------------------------------------- | ------------------------------------------------ | ------- |
+| [GitHub](github/)            | repositories, issues, pull requests and notifications | Primer, GitHub's own design system               | `11001` |
+| [Gmail](gmail/)              | your mail                                             | Gmail's own components in its Material 3 look    | `11002` |
+| [Google Calendar](calendar/) | your calendar                                         | Calendar's own components in its Material 3 look | `11003` |
+| [CircleCI](circleci/)        | your pipelines                                        | CircleCI's own components in its look            | `11004` |
+| [Linear](linear/)            | your issues                                           | Linear's own components in its look              | `11005` |
 
-Every app is backed by its vendor's official MCP server. GitHub's catalog is built on Primer, and CircleCI's and Linear's are each their own set of components in their product's look; the rest are the A2UI basic catalog under the product's theme, with a component of their own only where the basic set can't draw what the product shows. Each app's README says what it covers, and its agent's README what it can and can't do.
+Every app is backed by its vendor's official MCP server. GitHub's catalog is built on Primer, and each of the others is its own set of components in its product's look. Each app's README says what it covers, and its agent's README what it can and can't do.
 
 ## Running an app
 

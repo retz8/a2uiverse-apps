@@ -15,6 +15,7 @@ runs over the result. Do not commit a corpus that fails it.
 from __future__ import annotations
 
 import json
+import sys
 from pathlib import Path
 
 from a2ui_agent_kit.corpus import settled_messages
@@ -125,12 +126,8 @@ def derive_deterministic() -> None:
                 "version": "v0.9",
                 "updateComponents": {
                     "components": [
-                        {
-                            "id": "heading",
-                            "component": "Text",
-                            "variant": "h3",
-                            "text": "Draft discarded",
-                        }
+                        {"id": "root", "component": "Surface", "child": "declined", "container": "low"},
+                        {"id": "declined", "component": "Text", "text": "Draft discarded"},
                     ]
                 },
             }
@@ -140,10 +137,13 @@ def derive_deterministic() -> None:
 
 
 if __name__ == "__main__":
-    if not CAPTURED.is_dir():
-        raise SystemExit(
-            f"no captured payloads at {CAPTURED}. Record a run first — see agent/README.md."
-        )
-    derive_stub()
+    # --beats-only: a repaint recorded against the stub has no fresh MCP payloads, so only
+    # the deterministic corpus is derived and the stub's fixtures stay as they are.
+    if "--beats-only" not in sys.argv:
+        if not CAPTURED.is_dir():
+            raise SystemExit(
+                f"no captured payloads at {CAPTURED}. Record a run first — see agent/README.md."
+            )
+        derive_stub()
     derive_deterministic()
     print("\nNow run: uv run pytest tests/test_corpus_is_publishable.py")

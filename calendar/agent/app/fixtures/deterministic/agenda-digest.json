@@ -2,7 +2,7 @@
   {
     "version": "v0.9",
     "createSurface": {
-      "surfaceId": "needs-attention-today",
+      "surfaceId": "needs-attention",
       "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/calendar/calendar-catalog/catalogs/v0.9.1/catalog.json",
       "sendDataModel": true
     }
@@ -10,14 +10,13 @@
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "needs-attention-today",
+      "surfaceId": "needs-attention",
       "value": {
         "waiting": [
           {
-            "id": "ectktv0lkuauv7g3i8hgpmhelg",
+            "id": "7nuujj9h9ru89blofii3m5otlo",
             "when": "11:00",
-            "summary": "Design review \u2014 agenda surface",
-            "description": "Walk through the three fragment layouts."
+            "summary": "Design review \u2014 agenda surface"
           }
         ]
       }
@@ -26,15 +25,14 @@
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "needs-attention-today",
+      "surfaceId": "needs-attention",
       "value": {
         "waiting": [
           {
-            "id": "ectktv0lkuauv7g3i8hgpmhelg",
+            "id": "7nuujj9h9ru89blofii3m5otlo",
             "when": "11:00",
             "summary": "Design review \u2014 agenda surface",
-            "description": "Walk through the three fragment layouts.",
-            "idLabel": "ID: ectktv0lkuauv7g3i8hgpmhelg"
+            "note": "ID: 7nuujj9h9ru89blofii3m5otlo \u2022 Unanswered invitation \u2022 Walk through the three fragment layouts."
           }
         ]
       }
@@ -43,14 +41,13 @@
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "needs-attention-today",
+      "surfaceId": "needs-attention",
       "value": {
         "clashes": [
           {
-            "id": "ectktv0lkuauv7g3i8hgpmhelg",
+            "id": "7nuujj9h9ru89blofii3m5otlo",
             "when": "11:00 \u2013 12:00",
-            "summary": "Design review \u2014 agenda surface",
-            "description": "Walk through the three fragment layouts."
+            "summary": "Design review \u2014 agenda surface"
           }
         ]
       }
@@ -59,15 +56,14 @@
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "needs-attention-today",
+      "surfaceId": "needs-attention",
       "value": {
         "clashes": [
           {
-            "id": "ectktv0lkuauv7g3i8hgpmhelg",
+            "id": "7nuujj9h9ru89blofii3m5otlo",
             "when": "11:00 \u2013 12:00",
             "summary": "Design review \u2014 agenda surface",
-            "description": "Walk through the three fragment layouts.",
-            "note": "Overlaps Budget sync"
+            "note": "ID: 7nuujj9h9ru89blofii3m5otlo \u2022 Overlaps Budget sync \u2022 Walk through the three fragment layouts."
           }
         ]
       }
@@ -76,37 +72,17 @@
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "needs-attention-today",
+      "surfaceId": "needs-attention",
       "value": {
         "clashes": [
           {
-            "id": "ectktv0lkuauv7g3i8hgpmhelg",
+            "id": "7nuujj9h9ru89blofii3m5otlo",
             "when": "11:00 \u2013 12:00",
             "summary": "Design review \u2014 agenda surface",
-            "description": "Walk through the three fragment layouts.",
-            "note": "Overlaps Budget sync",
-            "idLabel": "ID: ectktv0lkuauv7g3i8hgpmhelg"
-          }
-        ]
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "needs-attention-today",
-      "value": {
-        "clashes": [
-          {
-            "id": "ectktv0lkuauv7g3i8hgpmhelg",
-            "when": "11:00 \u2013 12:00",
-            "summary": "Design review \u2014 agenda surface",
-            "description": "Walk through the three fragment layouts.",
-            "note": "Overlaps Budget sync",
-            "idLabel": "ID: ectktv0lkuauv7g3i8hgpmhelg"
+            "note": "ID: 7nuujj9h9ru89blofii3m5otlo \u2022 Overlaps Budget sync \u2022 Walk through the three fragment layouts."
           },
           {
-            "id": "10fs9gng8s8tdtlejrpim3106g"
+            "id": "ev1fmp1rmvhhb260fbebvd7o9o"
           }
         ]
       }
@@ -115,19 +91,37 @@
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "needs-attention-today",
+      "surfaceId": "needs-attention",
       "value": {
         "clashes": [
           {
-            "id": "ectktv0lkuauv7g3i8hgpmhelg",
+            "id": "7nuujj9h9ru89blofii3m5otlo",
             "when": "11:00 \u2013 12:00",
             "summary": "Design review \u2014 agenda surface",
-            "description": "Walk through the three fragment layouts.",
-            "note": "Overlaps Budget sync",
-            "idLabel": "ID: ectktv0lkuauv7g3i8hgpmhelg"
+            "note": "ID: 7nuujj9h9ru89blofii3m5otlo \u2022 Overlaps Budget sync \u2022 Walk through the three fragment layouts."
           },
           {
-            "id": "10fs9gng8s8tdtlejrpim3106g",
+            "id": "ev1fmp1rmvhhb260fbebvd7o9o",
+            "when": "11:30 \u2013 12:15"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "needs-attention",
+      "value": {
+        "clashes": [
+          {
+            "id": "7nuujj9h9ru89blofii3m5otlo",
+            "when": "11:00 \u2013 12:00",
+            "summary": "Design review \u2014 agenda surface",
+            "note": "ID: 7nuujj9h9ru89blofii3m5otlo \u2022 Overlaps Budget sync \u2022 Walk through the three fragment layouts."
+          },
+          {
+            "id": "ev1fmp1rmvhhb260fbebvd7o9o",
             "when": "11:30 \u2013 12:15",
             "summary": "Budget sync"
           }
@@ -138,23 +132,20 @@
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "needs-attention-today",
+      "surfaceId": "needs-attention",
       "value": {
         "clashes": [
           {
-            "id": "ectktv0lkuauv7g3i8hgpmhelg",
+            "id": "7nuujj9h9ru89blofii3m5otlo",
             "when": "11:00 \u2013 12:00",
             "summary": "Design review \u2014 agenda surface",
-            "description": "Walk through the three fragment layouts.",
-            "note": "Overlaps Budget sync",
-            "idLabel": "ID: ectktv0lkuauv7g3i8hgpmhelg"
+            "note": "ID: 7nuujj9h9ru89blofii3m5otlo \u2022 Overlaps Budget sync \u2022 Walk through the three fragment layouts."
           },
           {
-            "id": "10fs9gng8s8tdtlejrpim3106g",
+            "id": "ev1fmp1rmvhhb260fbebvd7o9o",
             "when": "11:30 \u2013 12:15",
             "summary": "Budget sync",
-            "description": "Two line items still do not reconcile against the estimate.",
-            "note": "Overlaps Design review \u2014 agenda surface"
+            "note": "ID: ev1fmp1rmvhhb260fbebvd7o9o \u2022 Overlaps Design review \u2022 Two line items still do not reconcile against the estimate."
           }
         ]
       }
@@ -163,34 +154,29 @@
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "needs-attention-today",
+      "surfaceId": "needs-attention",
       "path": "/",
       "value": {
         "waiting": [
           {
-            "id": "ectktv0lkuauv7g3i8hgpmhelg",
+            "id": "7nuujj9h9ru89blofii3m5otlo",
             "when": "11:00",
             "summary": "Design review \u2014 agenda surface",
-            "description": "Walk through the three fragment layouts.",
-            "idLabel": "ID: ectktv0lkuauv7g3i8hgpmhelg"
+            "note": "ID: 7nuujj9h9ru89blofii3m5otlo \u2022 Unanswered invitation \u2022 Walk through the three fragment layouts."
           }
         ],
         "clashes": [
           {
-            "id": "ectktv0lkuauv7g3i8hgpmhelg",
+            "id": "7nuujj9h9ru89blofii3m5otlo",
             "when": "11:00 \u2013 12:00",
             "summary": "Design review \u2014 agenda surface",
-            "description": "Walk through the three fragment layouts.",
-            "note": "Overlaps Budget sync",
-            "idLabel": "ID: ectktv0lkuauv7g3i8hgpmhelg"
+            "note": "ID: 7nuujj9h9ru89blofii3m5otlo \u2022 Overlaps Budget sync \u2022 Walk through the three fragment layouts."
           },
           {
-            "id": "10fs9gng8s8tdtlejrpim3106g",
+            "id": "ev1fmp1rmvhhb260fbebvd7o9o",
             "when": "11:30 \u2013 12:15",
             "summary": "Budget sync",
-            "description": "Two line items still do not reconcile against the estimate.",
-            "note": "Overlaps Design review \u2014 agenda surface",
-            "idLabel": "ID: 10fs9gng8s8tdtlejrpim3106g"
+            "note": "ID: ev1fmp1rmvhhb260fbebvd7o9o \u2022 Overlaps Design review \u2022 Two line items still do not reconcile against the estimate."
           }
         ]
       }
@@ -202,46 +188,87 @@
       "components": [
         {
           "id": "root",
-          "component": "Card",
-          "child": "body"
+          "component": "Surface",
+          "child": "body",
+          "container": "low",
+          "shape": "large",
+          "padding": "small"
         },
         {
           "id": "body",
-          "component": "Column",
+          "component": "Stack",
           "children": [
-            "heading",
+            "header",
+            "sheet"
+          ],
+          "gap": "xs"
+        },
+        {
+          "id": "header",
+          "component": "Stack",
+          "children": [
+            "heading"
+          ],
+          "padding": "sm"
+        },
+        {
+          "id": "heading",
+          "component": "Text",
+          "text": "Needs attention today",
+          "variant": "titleLarge"
+        },
+        {
+          "id": "sheet",
+          "component": "Surface",
+          "child": "sections",
+          "container": "lowest",
+          "shape": "large",
+          "padding": "none"
+        },
+        {
+          "id": "sections",
+          "component": "Stack",
+          "children": [
             "waiting-label",
             "waiting-list",
             "divider",
             "clash-label",
             "clash-list"
-          ]
-        },
-        {
-          "id": "heading",
-          "component": "Text",
-          "variant": "h3",
-          "text": "Needs attention today"
+          ],
+          "gap": "none"
         },
         {
           "id": "waiting-label",
+          "component": "Stack",
+          "children": [
+            "waiting-title"
+          ],
+          "padding": "sm"
+        },
+        {
+          "id": "waiting-title",
           "component": "Text",
-          "variant": "caption",
-          "text": "Unanswered invitation"
+          "text": "Unanswered invitations",
+          "variant": "titleSmall",
+          "color": "primary"
         },
         {
           "id": "waiting-list",
-          "component": "Column",
+          "component": "List",
           "children": {
             "path": "/waiting",
             "componentId": "waiting-row"
-          }
+          },
+          "layout": "inline"
         },
         {
           "id": "waiting-row",
-          "component": "Button",
-          "variant": "borderless",
-          "child": "waiting-body",
+          "component": "ListItem",
+          "headline": "waiting-when",
+          "supporting": "waiting-body",
+          "leading": [
+            "waiting-swatch"
+          ],
           "action": {
             "event": {
               "name": "open-event",
@@ -254,52 +281,45 @@
           }
         },
         {
-          "id": "waiting-body",
-          "component": "Column",
-          "children": [
-            "waiting-top",
-            "waiting-desc",
-            "waiting-id"
-          ]
-        },
-        {
-          "id": "waiting-top",
-          "component": "Row",
-          "align": "center",
-          "children": [
-            "waiting-when",
-            "waiting-summary"
-          ]
+          "id": "waiting-swatch",
+          "component": "ColorSwatch",
+          "color": "peacock",
+          "shape": "dot"
         },
         {
           "id": "waiting-when",
           "component": "Text",
           "text": {
             "path": "when"
-          }
+          },
+          "variant": "labelLarge"
+        },
+        {
+          "id": "waiting-body",
+          "component": "Stack",
+          "children": [
+            "waiting-summary",
+            "waiting-note"
+          ],
+          "gap": "none"
         },
         {
           "id": "waiting-summary",
           "component": "Text",
           "text": {
             "path": "summary"
-          }
+          },
+          "maxLines": 1
         },
         {
-          "id": "waiting-desc",
+          "id": "waiting-note",
           "component": "Text",
-          "variant": "caption",
           "text": {
-            "path": "description"
-          }
-        },
-        {
-          "id": "waiting-id",
-          "component": "Text",
-          "variant": "caption",
-          "text": {
-            "path": "idLabel"
-          }
+            "path": "note"
+          },
+          "variant": "bodySmall",
+          "color": "onSurfaceVariant",
+          "maxLines": 1
         },
         {
           "id": "divider",
@@ -307,23 +327,36 @@
         },
         {
           "id": "clash-label",
+          "component": "Stack",
+          "children": [
+            "clash-title"
+          ],
+          "padding": "sm"
+        },
+        {
+          "id": "clash-title",
           "component": "Text",
-          "variant": "caption",
-          "text": "Double-booked today"
+          "text": "Double-booked today",
+          "variant": "titleSmall",
+          "color": "primary"
         },
         {
           "id": "clash-list",
-          "component": "Column",
+          "component": "List",
           "children": {
             "path": "/clashes",
             "componentId": "clash-row"
-          }
+          },
+          "layout": "inline"
         },
         {
           "id": "clash-row",
-          "component": "Button",
-          "variant": "borderless",
-          "child": "clash-body",
+          "component": "ListItem",
+          "headline": "clash-when",
+          "supporting": "clash-body",
+          "leading": [
+            "clash-swatch"
+          ],
           "action": {
             "event": {
               "name": "open-event",
@@ -336,61 +369,45 @@
           }
         },
         {
-          "id": "clash-body",
-          "component": "Column",
-          "children": [
-            "clash-top",
-            "clash-desc",
-            "clash-note",
-            "clash-id"
-          ]
-        },
-        {
-          "id": "clash-top",
-          "component": "Row",
-          "align": "center",
-          "children": [
-            "clash-when",
-            "clash-summary"
-          ]
+          "id": "clash-swatch",
+          "component": "ColorSwatch",
+          "color": "peacock",
+          "shape": "dot"
         },
         {
           "id": "clash-when",
           "component": "Text",
           "text": {
             "path": "when"
-          }
+          },
+          "variant": "labelLarge"
+        },
+        {
+          "id": "clash-body",
+          "component": "Stack",
+          "children": [
+            "clash-summary",
+            "clash-note"
+          ],
+          "gap": "none"
         },
         {
           "id": "clash-summary",
           "component": "Text",
           "text": {
             "path": "summary"
-          }
-        },
-        {
-          "id": "clash-desc",
-          "component": "Text",
-          "variant": "caption",
-          "text": {
-            "path": "description"
-          }
+          },
+          "maxLines": 1
         },
         {
           "id": "clash-note",
           "component": "Text",
-          "variant": "caption",
           "text": {
             "path": "note"
-          }
-        },
-        {
-          "id": "clash-id",
-          "component": "Text",
-          "variant": "caption",
-          "text": {
-            "path": "idLabel"
-          }
+          },
+          "variant": "bodySmall",
+          "color": "onSurfaceVariant",
+          "maxLines": 1
         }
       ]
     }

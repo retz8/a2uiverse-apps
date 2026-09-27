@@ -2,7 +2,7 @@
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "rsvp-96bo794ni061s93l98v7lj1o7k",
+      "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo",
       "value": {
         "summary": "Quarter planning"
       }
@@ -11,21 +11,21 @@
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "rsvp-96bo794ni061s93l98v7lj1o7k",
+      "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo",
       "value": {
-        "when": "September 6, 2026, 10:00 \u2013 11:30"
+        "when": "Tomorrow, 10:00 \u2013 11:30"
       }
     }
   },
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "rsvp-96bo794ni061s93l98v7lj1o7k",
+      "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo",
       "path": "/",
       "value": {
         "summary": "Quarter planning",
-        "when": "September 6, 2026, 10:00 \u2013 11:30",
-        "current": "Accepted"
+        "when": "Tomorrow, 10:00 \u2013 11:30",
+        "current": "You're going"
       }
     }
   },
@@ -34,111 +34,161 @@
     "updateComponents": {
       "components": [
         {
-          "id": "body",
-          "component": "Column",
-          "children": [
-            "heading",
-            "when",
-            "current",
-            "actions"
-          ]
-        },
-        {
           "id": "root",
-          "component": "Card",
-          "child": "body"
+          "component": "Surface",
+          "child": "body",
+          "container": "high",
+          "shape": "extraLarge",
+          "padding": "none"
         },
         {
-          "id": "heading",
+          "id": "body",
+          "component": "Stack",
+          "children": [
+            "content",
+            "footer"
+          ],
+          "gap": "none"
+        },
+        {
+          "id": "content",
+          "component": "Stack",
+          "children": [
+            "title-row",
+            "current"
+          ],
+          "gap": "md",
+          "padding": "lg"
+        },
+        {
+          "id": "title-row",
+          "component": "Stack",
+          "children": [
+            "title-swatch",
+            "title-block"
+          ],
+          "direction": "horizontal",
+          "gap": "lg",
+          "align": "start"
+        },
+        {
+          "id": "title-block",
+          "component": "Stack",
+          "children": [
+            "summary",
+            "when"
+          ],
+          "gap": "xs"
+        },
+        {
+          "id": "title-swatch",
+          "component": "ColorSwatch",
+          "color": "peacock"
+        },
+        {
+          "id": "summary",
           "component": "Text",
-          "variant": "h3",
           "text": {
             "path": "/summary"
-          }
+          },
+          "variant": "titleLarge"
         },
         {
           "id": "when",
           "component": "Text",
           "text": {
             "path": "/when"
-          }
+          },
+          "color": "onSurfaceVariant"
         },
         {
           "id": "current",
           "component": "Text",
-          "variant": "caption",
           "text": {
             "path": "/current"
-          }
+          },
+          "variant": "bodySmall",
+          "color": "onSurfaceVariant"
         },
         {
-          "id": "actions",
-          "component": "Row",
+          "id": "footer",
+          "component": "Surface",
+          "child": "going",
+          "container": "highest",
+          "shape": "none",
+          "padding": "medium"
+        },
+        {
+          "id": "going",
+          "component": "Stack",
+          "children": [
+            "going-label",
+            "answers"
+          ],
+          "direction": "horizontal",
+          "justify": "spaceBetween",
+          "wrap": true
+        },
+        {
+          "id": "going-label",
+          "component": "Text",
+          "text": "Going?"
+        },
+        {
+          "id": "answers",
+          "component": "Stack",
           "children": [
             "yes",
-            "maybe",
-            "no"
-          ]
+            "no",
+            "maybe"
+          ],
+          "direction": "horizontal",
+          "gap": "sm"
         },
         {
           "id": "yes",
           "component": "Button",
-          "variant": "primary",
-          "child": "yes-label",
+          "label": "Yes",
+          "variant": "tonal",
           "action": {
             "event": {
               "name": "rsvp-toggle",
               "context": {
-                "eventId": "96bo794ni061s93l98v7lj1o7k",
+                "eventId": "o49vnbegq501jme5all5bt82eo",
                 "responseStatus": "accepted"
               }
             }
           }
         },
         {
-          "id": "yes-label",
-          "component": "Text",
-          "text": "Accept"
-        },
-        {
-          "id": "maybe",
-          "component": "Button",
-          "variant": "default",
-          "child": "maybe-label",
-          "action": {
-            "event": {
-              "name": "rsvp-toggle",
-              "context": {
-                "eventId": "96bo794ni061s93l98v7lj1o7k",
-                "responseStatus": "tentative"
-              }
-            }
-          }
-        },
-        {
-          "id": "maybe-label",
-          "component": "Text",
-          "text": "Maybe"
-        },
-        {
           "id": "no",
           "component": "Button",
-          "variant": "default",
-          "child": "no-label",
+          "label": "No",
+          "variant": "outlined",
           "action": {
             "event": {
               "name": "rsvp-toggle",
               "context": {
-                "eventId": "96bo794ni061s93l98v7lj1o7k",
+                "eventId": "o49vnbegq501jme5all5bt82eo",
                 "responseStatus": "declined"
               }
             }
           }
         },
         {
-          "id": "no-label",
-          "component": "Text",
-          "text": "Decline"
+          "id": "maybe",
+          "component": "Button",
+          "label": "Maybe",
+          "variant": "outlined",
+          "action": {
+            "event": {
+              "name": "rsvp-toggle",
+              "context": {
+                "eventId": "o49vnbegq501jme5all5bt82eo",
+                "responseStatus": "tentative"
+              }
+            }
+          }
         }
       ]
     }

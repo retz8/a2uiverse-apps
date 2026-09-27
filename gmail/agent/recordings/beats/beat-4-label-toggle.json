@@ -4,22 +4,22 @@
   "title": "Label toggle",
   "prompt": "What labels do I have?",
   "model": "gemini-3.7-flash",
-  "recordedAt": "2026-09-05T06:09:25+00:00",
-  "contextId": "f98c8be6-7e69-4b85-9d9d-160f0df324b3",
+  "recordedAt": "2026-09-27T01:55:41+00:00",
+  "contextId": "d95aab80-04bc-42d8-a9fd-b6c2c6f14ee0",
   "chainedFrom": null,
   "turns": [
     {
-      "taskId": "d989d88f-404b-4d03-82ac-d48d043b2501",
+      "taskId": "bce618fe-0d18-4d75-b93f-347997a98b1a",
       "kind": "utterance",
       "prompt": "What labels do I have?",
       "action": null,
       "batches": [
         {
-          "offsetMs": 12979,
+          "offsetMs": 12313,
           "messages": [
             {
               "paintMeta": {
-                "surfaceId": "labels-list",
+                "surfaceId": "labels",
                 "title": "Labels"
               }
             }
@@ -29,12 +29,12 @@
           ]
         },
         {
-          "offsetMs": 13093,
+          "offsetMs": 12619,
           "messages": [
             {
               "version": "v0.9",
               "createSurface": {
-                "surfaceId": "labels-list",
+                "surfaceId": "labels",
                 "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/gmail/gmail-catalog/catalogs/v0.9.1/catalog.json",
                 "sendDataModel": true
               }
@@ -43,22 +43,24 @@
           "texts": []
         },
         {
-          "offsetMs": 13283,
+          "offsetMs": 13127,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "labels-list",
+                "surfaceId": "labels",
                 "value": {
                   "labels": [
                     {
                       "id": "Label_1",
-                      "name": "question agen",
-                      "type": "User label"
+                      "name": "question agen"
                     },
                     {
                       "id": "INBOX",
                       "name": "INBOX"
+                    },
+                    {
+                      "id": "STARRED"
                     }
                   ]
                 }
@@ -68,93 +70,28 @@
           "texts": []
         },
         {
-          "offsetMs": 13338,
+          "offsetMs": 13268,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "labels-list",
+                "surfaceId": "labels",
                 "value": {
                   "labels": [
                     {
                       "id": "Label_1",
-                      "name": "question agen",
-                      "type": "User label"
+                      "name": "question agen"
                     },
                     {
                       "id": "INBOX",
-                      "name": "INBOX",
-                      "type": "System"
-                    },
-                    {
-                      "id": "UNREAD"
-                    }
-                  ]
-                }
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 13398,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateDataModel": {
-                "surfaceId": "labels-list",
-                "value": {
-                  "labels": [
-                    {
-                      "id": "Label_1",
-                      "name": "question agen",
-                      "type": "User label"
-                    },
-                    {
-                      "id": "INBOX",
-                      "name": "INBOX",
-                      "type": "System"
-                    },
-                    {
-                      "id": "UNREAD",
-                      "name": "UNREAD",
-                      "type": "System"
-                    }
-                  ]
-                }
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 13462,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateDataModel": {
-                "surfaceId": "labels-list",
-                "value": {
-                  "labels": [
-                    {
-                      "id": "Label_1",
-                      "name": "question agen",
-                      "type": "User label"
-                    },
-                    {
-                      "id": "INBOX",
-                      "name": "INBOX",
-                      "type": "System"
-                    },
-                    {
-                      "id": "UNREAD",
-                      "name": "UNREAD",
-                      "type": "System"
+                      "name": "INBOX"
                     },
                     {
                       "id": "STARRED",
-                      "name": "STARRED",
-                      "type": "System"
+                      "name": "STARRED"
+                    },
+                    {
+                      "id": "SENT"
                     }
                   ]
                 }
@@ -164,33 +101,68 @@
           "texts": []
         },
         {
-          "offsetMs": 13516,
+          "offsetMs": 13440,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "labels-list",
+                "surfaceId": "labels",
                 "value": {
                   "labels": [
                     {
                       "id": "Label_1",
-                      "name": "question agen",
-                      "type": "User label"
+                      "name": "question agen"
                     },
                     {
                       "id": "INBOX",
-                      "name": "INBOX",
-                      "type": "System"
-                    },
-                    {
-                      "id": "UNREAD",
-                      "name": "UNREAD",
-                      "type": "System"
+                      "name": "INBOX"
                     },
                     {
                       "id": "STARRED",
-                      "name": "STARRED",
-                      "type": "System"
+                      "name": "STARRED"
+                    },
+                    {
+                      "id": "SENT",
+                      "name": "SENT"
+                    },
+                    {
+                      "id": "DRAFT"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 13609,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "labels",
+                "value": {
+                  "labels": [
+                    {
+                      "id": "Label_1",
+                      "name": "question agen"
+                    },
+                    {
+                      "id": "INBOX",
+                      "name": "INBOX"
+                    },
+                    {
+                      "id": "STARRED",
+                      "name": "STARRED"
+                    },
+                    {
+                      "id": "SENT",
+                      "name": "SENT"
+                    },
+                    {
+                      "id": "DRAFT",
+                      "name": "DRAFT"
                     },
                     {
                       "id": "IMPORTANT",
@@ -204,142 +176,41 @@
           "texts": []
         },
         {
-          "offsetMs": 13587,
+          "offsetMs": 13756,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "labels-list",
+                "surfaceId": "labels",
                 "value": {
                   "labels": [
                     {
                       "id": "Label_1",
-                      "name": "question agen",
-                      "type": "User label"
+                      "name": "question agen"
                     },
                     {
                       "id": "INBOX",
-                      "name": "INBOX",
-                      "type": "System"
-                    },
-                    {
-                      "id": "UNREAD",
-                      "name": "UNREAD",
-                      "type": "System"
+                      "name": "INBOX"
                     },
                     {
                       "id": "STARRED",
-                      "name": "STARRED",
-                      "type": "System"
-                    },
-                    {
-                      "id": "IMPORTANT",
-                      "name": "IMPORTANT",
-                      "type": "System"
+                      "name": "STARRED"
                     },
                     {
                       "id": "SENT",
                       "name": "SENT"
-                    }
-                  ]
-                }
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 13646,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateDataModel": {
-                "surfaceId": "labels-list",
-                "value": {
-                  "labels": [
-                    {
-                      "id": "Label_1",
-                      "name": "question agen",
-                      "type": "User label"
-                    },
-                    {
-                      "id": "INBOX",
-                      "name": "INBOX",
-                      "type": "System"
-                    },
-                    {
-                      "id": "UNREAD",
-                      "name": "UNREAD",
-                      "type": "System"
-                    },
-                    {
-                      "id": "STARRED",
-                      "name": "STARRED",
-                      "type": "System"
-                    },
-                    {
-                      "id": "IMPORTANT",
-                      "name": "IMPORTANT",
-                      "type": "System"
-                    },
-                    {
-                      "id": "SENT",
-                      "name": "SENT",
-                      "type": "System"
-                    },
-                    {
-                      "id": "DRAFT"
-                    }
-                  ]
-                }
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 13709,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateDataModel": {
-                "surfaceId": "labels-list",
-                "value": {
-                  "labels": [
-                    {
-                      "id": "Label_1",
-                      "name": "question agen",
-                      "type": "User label"
-                    },
-                    {
-                      "id": "INBOX",
-                      "name": "INBOX",
-                      "type": "System"
-                    },
-                    {
-                      "id": "UNREAD",
-                      "name": "UNREAD",
-                      "type": "System"
-                    },
-                    {
-                      "id": "STARRED",
-                      "name": "STARRED",
-                      "type": "System"
-                    },
-                    {
-                      "id": "IMPORTANT",
-                      "name": "IMPORTANT",
-                      "type": "System"
-                    },
-                    {
-                      "id": "SENT",
-                      "name": "SENT",
-                      "type": "System"
                     },
                     {
                       "id": "DRAFT",
-                      "name": "DRAFT",
-                      "type": "System"
+                      "name": "DRAFT"
+                    },
+                    {
+                      "id": "IMPORTANT",
+                      "name": "IMPORTANT"
+                    },
+                    {
+                      "id": "UNREAD",
+                      "name": "UNREAD"
                     }
                   ]
                 }
@@ -349,53 +220,45 @@
           "texts": []
         },
         {
-          "offsetMs": 13787,
+          "offsetMs": 13941,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "labels-list",
+                "surfaceId": "labels",
                 "value": {
                   "labels": [
                     {
                       "id": "Label_1",
-                      "name": "question agen",
-                      "type": "User label"
+                      "name": "question agen"
                     },
                     {
                       "id": "INBOX",
-                      "name": "INBOX",
-                      "type": "System"
-                    },
-                    {
-                      "id": "UNREAD",
-                      "name": "UNREAD",
-                      "type": "System"
+                      "name": "INBOX"
                     },
                     {
                       "id": "STARRED",
-                      "name": "STARRED",
-                      "type": "System"
-                    },
-                    {
-                      "id": "IMPORTANT",
-                      "name": "IMPORTANT",
-                      "type": "System"
+                      "name": "STARRED"
                     },
                     {
                       "id": "SENT",
-                      "name": "SENT",
-                      "type": "System"
+                      "name": "SENT"
                     },
                     {
                       "id": "DRAFT",
-                      "name": "DRAFT",
-                      "type": "System"
+                      "name": "DRAFT"
+                    },
+                    {
+                      "id": "IMPORTANT",
+                      "name": "IMPORTANT"
+                    },
+                    {
+                      "id": "UNREAD",
+                      "name": "UNREAD"
                     },
                     {
                       "id": "SPAM",
-                      "name": "SPAM",
-                      "type": "System"
+                      "name": "SPAM"
                     }
                   ]
                 }
@@ -405,53 +268,45 @@
           "texts": []
         },
         {
-          "offsetMs": 13849,
+          "offsetMs": 14150,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "labels-list",
+                "surfaceId": "labels",
                 "value": {
                   "labels": [
                     {
                       "id": "Label_1",
-                      "name": "question agen",
-                      "type": "User label"
+                      "name": "question agen"
                     },
                     {
                       "id": "INBOX",
-                      "name": "INBOX",
-                      "type": "System"
-                    },
-                    {
-                      "id": "UNREAD",
-                      "name": "UNREAD",
-                      "type": "System"
+                      "name": "INBOX"
                     },
                     {
                       "id": "STARRED",
-                      "name": "STARRED",
-                      "type": "System"
-                    },
-                    {
-                      "id": "IMPORTANT",
-                      "name": "IMPORTANT",
-                      "type": "System"
+                      "name": "STARRED"
                     },
                     {
                       "id": "SENT",
-                      "name": "SENT",
-                      "type": "System"
+                      "name": "SENT"
                     },
                     {
                       "id": "DRAFT",
-                      "name": "DRAFT",
-                      "type": "System"
+                      "name": "DRAFT"
+                    },
+                    {
+                      "id": "IMPORTANT",
+                      "name": "IMPORTANT"
+                    },
+                    {
+                      "id": "UNREAD",
+                      "name": "UNREAD"
                     },
                     {
                       "id": "SPAM",
-                      "name": "SPAM",
-                      "type": "System"
+                      "name": "SPAM"
                     },
                     {
                       "id": "TRASH",
@@ -465,127 +320,53 @@
           "texts": []
         },
         {
-          "offsetMs": 13908,
+          "offsetMs": 14308,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "labels-list",
+                "surfaceId": "labels",
                 "value": {
                   "labels": [
                     {
                       "id": "Label_1",
-                      "name": "question agen",
-                      "type": "User label"
+                      "name": "question agen"
                     },
                     {
                       "id": "INBOX",
-                      "name": "INBOX",
-                      "type": "System"
-                    },
-                    {
-                      "id": "UNREAD",
-                      "name": "UNREAD",
-                      "type": "System"
+                      "name": "INBOX"
                     },
                     {
                       "id": "STARRED",
-                      "name": "STARRED",
-                      "type": "System"
-                    },
-                    {
-                      "id": "IMPORTANT",
-                      "name": "IMPORTANT",
-                      "type": "System"
+                      "name": "STARRED"
                     },
                     {
                       "id": "SENT",
-                      "name": "SENT",
-                      "type": "System"
+                      "name": "SENT"
                     },
                     {
                       "id": "DRAFT",
-                      "name": "DRAFT",
-                      "type": "System"
+                      "name": "DRAFT"
                     },
                     {
-                      "id": "SPAM",
-                      "name": "SPAM",
-                      "type": "System"
-                    },
-                    {
-                      "id": "TRASH",
-                      "name": "TRASH",
-                      "type": "System"
-                    },
-                    {
-                      "id": "CHAT"
-                    }
-                  ]
-                }
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 13972,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateDataModel": {
-                "surfaceId": "labels-list",
-                "value": {
-                  "labels": [
-                    {
-                      "id": "Label_1",
-                      "name": "question agen",
-                      "type": "User label"
-                    },
-                    {
-                      "id": "INBOX",
-                      "name": "INBOX",
-                      "type": "System"
+                      "id": "IMPORTANT",
+                      "name": "IMPORTANT"
                     },
                     {
                       "id": "UNREAD",
-                      "name": "UNREAD",
-                      "type": "System"
-                    },
-                    {
-                      "id": "STARRED",
-                      "name": "STARRED",
-                      "type": "System"
-                    },
-                    {
-                      "id": "IMPORTANT",
-                      "name": "IMPORTANT",
-                      "type": "System"
-                    },
-                    {
-                      "id": "SENT",
-                      "name": "SENT",
-                      "type": "System"
-                    },
-                    {
-                      "id": "DRAFT",
-                      "name": "DRAFT",
-                      "type": "System"
+                      "name": "UNREAD"
                     },
                     {
                       "id": "SPAM",
-                      "name": "SPAM",
-                      "type": "System"
+                      "name": "SPAM"
                     },
                     {
                       "id": "TRASH",
-                      "name": "TRASH",
-                      "type": "System"
+                      "name": "TRASH"
                     },
                     {
                       "id": "CHAT",
-                      "name": "CHAT",
-                      "type": "System"
+                      "name": "CHAT"
                     }
                   ]
                 }
@@ -595,64 +376,54 @@
           "texts": []
         },
         {
-          "offsetMs": 14046,
+          "offsetMs": 14483,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "labels-list",
+                "surfaceId": "labels",
                 "path": "/",
                 "value": {
                   "labels": [
                     {
                       "id": "Label_1",
-                      "name": "question agen",
-                      "type": "User label"
+                      "name": "question agen"
                     },
                     {
                       "id": "INBOX",
-                      "name": "INBOX",
-                      "type": "System"
-                    },
-                    {
-                      "id": "UNREAD",
-                      "name": "UNREAD",
-                      "type": "System"
+                      "name": "INBOX"
                     },
                     {
                       "id": "STARRED",
-                      "name": "STARRED",
-                      "type": "System"
-                    },
-                    {
-                      "id": "IMPORTANT",
-                      "name": "IMPORTANT",
-                      "type": "System"
+                      "name": "STARRED"
                     },
                     {
                       "id": "SENT",
-                      "name": "SENT",
-                      "type": "System"
+                      "name": "SENT"
                     },
                     {
                       "id": "DRAFT",
-                      "name": "DRAFT",
-                      "type": "System"
+                      "name": "DRAFT"
+                    },
+                    {
+                      "id": "IMPORTANT",
+                      "name": "IMPORTANT"
+                    },
+                    {
+                      "id": "UNREAD",
+                      "name": "UNREAD"
                     },
                     {
                       "id": "SPAM",
-                      "name": "SPAM",
-                      "type": "System"
+                      "name": "SPAM"
                     },
                     {
                       "id": "TRASH",
-                      "name": "TRASH",
-                      "type": "System"
+                      "name": "TRASH"
                     },
                     {
                       "id": "CHAT",
-                      "name": "CHAT",
-                      "type": "System"
+                      "name": "CHAT"
                     }
                   ]
                 }
@@ -662,7 +433,7 @@
           "texts": []
         },
         {
-          "offsetMs": 14175,
+          "offsetMs": 14818,
           "messages": [
             {
               "version": "v0.9",
@@ -670,18 +441,160 @@
                 "components": [
                   {
                     "id": "body",
-                    "component": "Column",
-                    "children": [
-                      "loading_heading",
-                      "loading_sub",
-                      "loading_divider",
-                      "loading_label-list"
-                    ]
+                    "component": "Stack"
                   },
                   {
                     "id": "root",
-                    "component": "Card",
-                    "child": "body"
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  }
+                ],
+                "surfaceId": "labels"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 14992,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "loading_header",
+                      "loading_sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "loading_header",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_sheet",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "labels"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 15473,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "loading_heading",
+                      "loading_sub"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface"
+                  },
+                  {
+                    "id": "loading_heading",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_sub",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "labels"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 15795,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "loading_heading",
+                      "loading_sub"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "loading_label-list",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
                   },
                   {
                     "id": "loading_heading",
@@ -694,24 +607,19 @@
                     "children": []
                   },
                   {
-                    "id": "loading_divider",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
                     "id": "loading_label-list",
                     "component": "Row",
                     "children": []
                   }
                 ],
-                "surfaceId": "labels-list"
+                "surfaceId": "labels"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 14294,
+          "offsetMs": 15950,
           "messages": [
             {
               "version": "v0.9",
@@ -719,24 +627,44 @@
                 "components": [
                   {
                     "id": "body",
-                    "component": "Column",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
                     "children": [
                       "heading",
-                      "loading_sub",
-                      "loading_divider",
-                      "loading_label-list"
-                    ]
+                      "loading_sub"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
                   },
                   {
                     "id": "heading",
                     "component": "Text",
-                    "variant": "h3",
-                    "text": "Labels"
+                    "text": "Labels",
+                    "variant": "titleLarge"
                   },
                   {
                     "id": "root",
-                    "component": "Card",
-                    "child": "body"
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "loading_label-list",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
                   },
                   {
                     "id": "loading_sub",
@@ -744,24 +672,19 @@
                     "children": []
                   },
                   {
-                    "id": "loading_divider",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
                     "id": "loading_label-list",
                     "component": "Row",
                     "children": []
                   }
                 ],
-                "surfaceId": "labels-list"
+                "surfaceId": "labels"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 14365,
+          "offsetMs": 16146,
           "messages": [
             {
               "version": "v0.9",
@@ -769,35 +692,49 @@
                 "components": [
                   {
                     "id": "body",
-                    "component": "Column",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
                     "children": [
                       "heading",
-                      "sub",
-                      "loading_divider",
-                      "loading_label-list"
-                    ]
+                      "sub"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
                   },
                   {
                     "id": "heading",
                     "component": "Text",
-                    "variant": "h3",
-                    "text": "Labels"
+                    "text": "Labels",
+                    "variant": "titleLarge"
                   },
                   {
                     "id": "root",
-                    "component": "Card",
-                    "child": "body"
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "loading_label-list",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
                   },
                   {
                     "id": "sub",
                     "component": "Text",
-                    "variant": "caption",
-                    "text": "1 custom label and 9 system labels"
-                  },
-                  {
-                    "id": "loading_divider",
-                    "component": "Row",
-                    "children": []
+                    "text": "10"
                   },
                   {
                     "id": "loading_label-list",
@@ -805,14 +742,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "labels-list"
+                "surfaceId": "labels"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 14454,
+          "offsetMs": 16313,
           "messages": [
             {
               "version": "v0.9",
@@ -820,34 +757,51 @@
                 "components": [
                   {
                     "id": "body",
-                    "component": "Column",
+                    "component": "Stack",
                     "children": [
-                      "heading",
-                      "sub",
-                      "divider",
-                      "loading_label-list"
-                    ]
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
                   },
                   {
-                    "id": "divider",
-                    "component": "Divider"
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "heading",
+                      "sub"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
                   },
                   {
                     "id": "heading",
                     "component": "Text",
-                    "variant": "h3",
-                    "text": "Labels"
+                    "text": "Labels",
+                    "variant": "titleLarge"
                   },
                   {
                     "id": "root",
-                    "component": "Card",
-                    "child": "body"
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "loading_label-list",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
                   },
                   {
                     "id": "sub",
                     "component": "Text",
-                    "variant": "caption",
-                    "text": "1 custom label and 9 system labels"
+                    "text": "10 labels in your mailbox",
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
                   },
                   {
                     "id": "loading_label-list",
@@ -855,14 +809,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "labels-list"
+                "surfaceId": "labels"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 14594,
+          "offsetMs": 16494,
           "messages": [
             {
               "version": "v0.9",
@@ -870,42 +824,126 @@
                 "components": [
                   {
                     "id": "body",
-                    "component": "Column",
+                    "component": "Stack",
                     "children": [
-                      "heading",
-                      "sub",
-                      "divider",
-                      "label-list"
-                    ]
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
                   },
                   {
-                    "id": "divider",
-                    "component": "Divider"
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "heading",
+                      "sub"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
                   },
                   {
                     "id": "heading",
                     "component": "Text",
-                    "variant": "h3",
-                    "text": "Labels"
+                    "text": "Labels",
+                    "variant": "titleLarge"
                   },
                   {
                     "id": "label-list",
-                    "component": "Column",
-                    "children": {
-                      "componentId": "loading_label-row",
-                      "path": "/labels"
-                    }
+                    "component": "Stack"
                   },
                   {
                     "id": "root",
-                    "component": "Card",
-                    "child": "body"
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "label-list",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
                   },
                   {
                     "id": "sub",
                     "component": "Text",
-                    "variant": "caption",
-                    "text": "1 custom label and 9 system labels"
+                    "text": "10 labels in your mailbox",
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  }
+                ],
+                "surfaceId": "labels"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 16966,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "heading",
+                      "sub"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": "Labels",
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "label-list",
+                    "component": "Stack",
+                    "children": {
+                      "path": "/labels",
+                      "componentId": "loading_label-row"
+                    },
+                    "gap": "none"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "label-list",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": "10 labels in your mailbox",
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
                   },
                   {
                     "id": "loading_label-row",
@@ -913,14 +951,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "labels-list"
+                "surfaceId": "labels"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 14800,
+          "offsetMs": 17114,
           "messages": [
             {
               "version": "v0.9",
@@ -928,147 +966,77 @@
                 "components": [
                   {
                     "id": "body",
-                    "component": "Column",
+                    "component": "Stack",
                     "children": [
-                      "heading",
-                      "sub",
-                      "divider",
-                      "label-list"
-                    ]
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
                   },
                   {
-                    "id": "divider",
-                    "component": "Divider"
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "heading",
+                      "sub"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
                   },
                   {
                     "id": "heading",
                     "component": "Text",
-                    "variant": "h3",
-                    "text": "Labels"
+                    "text": "Labels",
+                    "variant": "titleLarge"
                   },
                   {
                     "id": "label-list",
-                    "component": "Column",
+                    "component": "Stack",
                     "children": {
-                      "componentId": "label-row",
-                      "path": "/labels"
-                    }
+                      "path": "/labels",
+                      "componentId": "label-row"
+                    },
+                    "gap": "none"
                   },
                   {
                     "id": "label-row",
-                    "component": "Row",
-                    "justify": "spaceBetween",
-                    "align": "center",
-                    "children": [
-                      "loading_label-name",
-                      "loading_label-type"
-                    ]
-                  },
-                  {
-                    "id": "root",
-                    "component": "Card",
-                    "child": "body"
-                  },
-                  {
-                    "id": "sub",
-                    "component": "Text",
-                    "variant": "caption",
-                    "text": "1 custom label and 9 system labels"
-                  },
-                  {
-                    "id": "loading_label-name",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_label-type",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "labels-list"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 14875,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "body",
-                    "component": "Column",
-                    "children": [
-                      "heading",
-                      "sub",
-                      "divider",
-                      "label-list"
-                    ]
-                  },
-                  {
-                    "id": "divider",
-                    "component": "Divider"
-                  },
-                  {
-                    "id": "heading",
-                    "component": "Text",
-                    "variant": "h3",
-                    "text": "Labels"
-                  },
-                  {
-                    "id": "label-list",
-                    "component": "Column",
-                    "children": {
-                      "componentId": "label-row",
-                      "path": "/labels"
-                    }
-                  },
-                  {
-                    "id": "label-name",
-                    "component": "Text",
-                    "text": {
+                    "component": "NavigationItem",
+                    "label": {
                       "path": "name"
                     }
                   },
                   {
-                    "id": "label-row",
-                    "component": "Row",
-                    "justify": "spaceBetween",
-                    "align": "center",
-                    "children": [
-                      "label-name",
-                      "loading_label-type"
-                    ]
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
                   },
                   {
-                    "id": "root",
-                    "component": "Card",
-                    "child": "body"
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "label-list",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
                   },
                   {
                     "id": "sub",
                     "component": "Text",
-                    "variant": "caption",
-                    "text": "1 custom label and 9 system labels"
-                  },
-                  {
-                    "id": "loading_label-type",
-                    "component": "Row",
-                    "children": []
+                    "text": "10 labels in your mailbox",
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
                   }
                 ],
-                "surfaceId": "labels-list"
+                "surfaceId": "labels"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 14957,
+          "offsetMs": 17489,
           "messages": [
             {
               "version": "v0.9",
@@ -1076,145 +1044,81 @@
                 "components": [
                   {
                     "id": "body",
-                    "component": "Column",
+                    "component": "Stack",
                     "children": [
-                      "heading",
-                      "sub",
-                      "divider",
-                      "label-list"
-                    ]
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
                   },
                   {
-                    "id": "divider",
-                    "component": "Divider"
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "heading",
+                      "sub"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
                   },
                   {
                     "id": "heading",
                     "component": "Text",
-                    "variant": "h3",
-                    "text": "Labels"
+                    "text": "Labels",
+                    "variant": "titleLarge"
                   },
                   {
                     "id": "label-list",
-                    "component": "Column",
+                    "component": "Stack",
                     "children": {
-                      "componentId": "label-row",
-                      "path": "/labels"
-                    }
-                  },
-                  {
-                    "id": "label-name",
-                    "component": "Text",
-                    "text": {
-                      "path": "name"
-                    }
+                      "path": "/labels",
+                      "componentId": "label-row"
+                    },
+                    "gap": "none"
                   },
                   {
                     "id": "label-row",
-                    "component": "Row",
-                    "justify": "spaceBetween",
-                    "align": "center",
-                    "children": [
-                      "label-name",
-                      "label-type"
-                    ]
-                  },
-                  {
-                    "id": "label-type",
-                    "component": "Text",
-                    "variant": "caption"
-                  },
-                  {
-                    "id": "root",
-                    "component": "Card",
-                    "child": "body"
-                  },
-                  {
-                    "id": "sub",
-                    "component": "Text",
-                    "variant": "caption",
-                    "text": "1 custom label and 9 system labels"
-                  }
-                ],
-                "surfaceId": "labels-list"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 15028,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "body",
-                    "component": "Column",
-                    "children": [
-                      "heading",
-                      "sub",
-                      "divider",
-                      "label-list"
-                    ]
-                  },
-                  {
-                    "id": "divider",
-                    "component": "Divider"
-                  },
-                  {
-                    "id": "heading",
-                    "component": "Text",
-                    "variant": "h3",
-                    "text": "Labels"
-                  },
-                  {
-                    "id": "label-list",
-                    "component": "Column",
-                    "children": {
-                      "componentId": "label-row",
-                      "path": "/labels"
-                    }
-                  },
-                  {
-                    "id": "label-name",
-                    "component": "Text",
-                    "text": {
+                    "component": "NavigationItem",
+                    "label": {
                       "path": "name"
-                    }
-                  },
-                  {
-                    "id": "label-row",
-                    "component": "Row",
-                    "justify": "spaceBetween",
-                    "align": "center",
-                    "children": [
-                      "label-name",
-                      "label-type"
-                    ]
-                  },
-                  {
-                    "id": "label-type",
-                    "component": "Text",
-                    "variant": "caption",
-                    "text": {
-                      "path": "type"
+                    },
+                    "icon": "label",
+                    "action": {
+                      "event": {
+                        "name": "open-label",
+                        "context": {
+                          "labelId": {
+                            "path": "id"
+                          }
+                        }
+                      }
                     }
                   },
                   {
                     "id": "root",
-                    "component": "Card",
-                    "child": "body"
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "label-list",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
                   },
                   {
                     "id": "sub",
                     "component": "Text",
-                    "variant": "caption",
-                    "text": "1 custom label and 9 system labels"
+                    "text": "10 labels in your mailbox",
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
                   }
                 ],
-                "surfaceId": "labels-list"
+                "surfaceId": "labels"
               }
             }
           ],
@@ -1222,7 +1126,7 @@
         }
       ],
       "outcome": "completed",
-      "durationMs": 15209
+      "durationMs": 17956
     }
   ]
 }

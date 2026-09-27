@@ -4,23 +4,23 @@
   "title": "Compose-and-confirm reply",
   "prompt": "Draft a short reply saying I will get to it this week.",
   "model": "gemini-3.7-flash",
-  "recordedAt": "2026-09-05T06:09:10+00:00",
-  "contextId": "7c933a7c-8d7b-417b-9055-d479bf6024b2",
+  "recordedAt": "2026-09-27T01:53:30+00:00",
+  "contextId": "f01d8155-ce86-4932-9106-c4a0d6288e67",
   "chainedFrom": "beat-2-thread-detail",
   "turns": [
     {
-      "taskId": "243350ad-57d0-4383-8798-0c307d5b13f2",
+      "taskId": "4f4567f2-6c17-4508-8532-62f3ce1211b0",
       "kind": "utterance",
       "prompt": "Draft a short reply saying I will get to it this week.",
       "action": null,
       "batches": [
         {
-          "offsetMs": 7058,
+          "offsetMs": 5628,
           "messages": [
             {
               "paintMeta": {
                 "surfaceId": "draft-1a06f2abedf045ce",
-                "title": "Save reply draft?",
+                "title": "Draft reply",
                 "kind": "question"
               }
             }
@@ -30,7 +30,7 @@
           ]
         },
         {
-          "offsetMs": 7116,
+          "offsetMs": 5811,
           "messages": [
             {
               "version": "v0.9",
@@ -44,7 +44,7 @@
           "texts": []
         },
         {
-          "offsetMs": 7303,
+          "offsetMs": 6324,
           "messages": [
             {
               "version": "v0.9",
@@ -59,14 +59,15 @@
           "texts": []
         },
         {
-          "offsetMs": 7365,
+          "offsetMs": 6476,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
                 "surfaceId": "draft-1a06f2abedf045ce",
                 "value": {
-                  "subject": "Re: estimate review thread status agenda confirm summ"
+                  "subject": "Re: estimate review thread status agenda confirm summ",
+                  "body": "I will get to it this week."
                 }
               }
             }
@@ -74,7 +75,7 @@
           "texts": []
         },
         {
-          "offsetMs": 7432,
+          "offsetMs": 6662,
           "messages": [
             {
               "version": "v0.9",
@@ -92,7 +93,7 @@
           "texts": []
         },
         {
-          "offsetMs": 7638,
+          "offsetMs": 7192,
           "messages": [
             {
               "version": "v0.9",
@@ -100,8 +101,12 @@
                 "components": [
                   {
                     "id": "root",
-                    "component": "Card",
-                    "child": "loading_body"
+                    "component": "Surface",
+                    "child": "loading_body",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none",
+                    "elevation": "level2"
                   },
                   {
                     "id": "loading_body",
@@ -116,7 +121,7 @@
           "texts": []
         },
         {
-          "offsetMs": 7704,
+          "offsetMs": 7565,
           "messages": [
             {
               "version": "v0.9",
@@ -124,44 +129,93 @@
                 "components": [
                   {
                     "id": "body",
-                    "component": "Column",
+                    "component": "Stack",
                     "children": [
-                      "loading_heading",
-                      "loading_to-row",
-                      "loading_subject-field",
-                      "loading_body-field",
+                      "loading_title-bar",
+                      "loading_fields",
                       "loading_actions"
-                    ]
+                    ],
+                    "gap": "none"
                   },
                   {
                     "id": "root",
-                    "component": "Card",
-                    "child": "body"
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none",
+                    "elevation": "level2"
+                  },
+                  {
+                    "id": "loading_title-bar",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_fields",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "draft-1a06f2abedf045ce"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 8086,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "title-bar",
+                      "loading_fields",
+                      "loading_actions"
+                    ],
+                    "gap": "none"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none",
+                    "elevation": "level2"
+                  },
+                  {
+                    "id": "title-bar",
+                    "component": "Surface",
+                    "child": "loading_heading",
+                    "container": "high",
+                    "shape": "none",
+                    "padding": "medium"
+                  },
+                  {
+                    "id": "loading_fields",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
                   },
                   {
                     "id": "loading_heading",
                     "component": "Row",
                     "children": []
-                  },
-                  {
-                    "id": "loading_to-row",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_subject-field",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_body-field",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_actions",
-                    "component": "Row",
-                    "children": []
                   }
                 ],
                 "surfaceId": "draft-1a06f2abedf045ce"
@@ -171,7 +225,7 @@
           "texts": []
         },
         {
-          "offsetMs": 7824,
+          "offsetMs": 8440,
           "messages": [
             {
               "version": "v0.9",
@@ -179,28 +233,49 @@
                 "components": [
                   {
                     "id": "body",
-                    "component": "Column",
+                    "component": "Stack",
                     "children": [
-                      "heading",
-                      "loading_to-row",
+                      "title-bar",
+                      "fields",
+                      "loading_actions"
+                    ],
+                    "gap": "none"
+                  },
+                  {
+                    "id": "fields",
+                    "component": "Stack",
+                    "children": [
+                      "loading_to-field",
                       "loading_subject-field",
-                      "loading_body-field",
-                      "loading_actions"
-                    ]
-                  },
-                  {
-                    "id": "heading",
-                    "component": "Text",
-                    "variant": "h3",
-                    "text": "Save this reply?"
+                      "loading_body-field"
+                    ],
+                    "gap": "none",
+                    "padding": "md"
                   },
                   {
                     "id": "root",
-                    "component": "Card",
-                    "child": "body"
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none",
+                    "elevation": "level2"
                   },
                   {
-                    "id": "loading_to-row",
+                    "id": "title-bar",
+                    "component": "Surface",
+                    "child": "loading_heading",
+                    "container": "high",
+                    "shape": "none",
+                    "padding": "medium"
+                  },
+                  {
+                    "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_to-field",
                     "component": "Row",
                     "children": []
                   },
@@ -215,7 +290,7 @@
                     "children": []
                   },
                   {
-                    "id": "loading_actions",
+                    "id": "loading_heading",
                     "component": "Row",
                     "children": []
                   }
@@ -227,424 +302,7 @@
           "texts": []
         },
         {
-          "offsetMs": 7896,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "body",
-                    "component": "Column",
-                    "children": [
-                      "heading",
-                      "to-row",
-                      "loading_subject-field",
-                      "loading_body-field",
-                      "loading_actions"
-                    ]
-                  },
-                  {
-                    "id": "heading",
-                    "component": "Text",
-                    "variant": "h3",
-                    "text": "Save this reply?"
-                  },
-                  {
-                    "id": "root",
-                    "component": "Card",
-                    "child": "body"
-                  },
-                  {
-                    "id": "to-row",
-                    "component": "Row",
-                    "align": "center"
-                  },
-                  {
-                    "id": "loading_subject-field",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_body-field",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_actions",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "draft-1a06f2abedf045ce"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 7949,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "body",
-                    "component": "Column",
-                    "children": [
-                      "heading",
-                      "to-row",
-                      "loading_subject-field",
-                      "loading_body-field",
-                      "loading_actions"
-                    ]
-                  },
-                  {
-                    "id": "heading",
-                    "component": "Text",
-                    "variant": "h3",
-                    "text": "Save this reply?"
-                  },
-                  {
-                    "id": "root",
-                    "component": "Card",
-                    "child": "body"
-                  },
-                  {
-                    "id": "to-row",
-                    "component": "Row",
-                    "align": "center",
-                    "children": [
-                      "loading_to-label",
-                      "loading_to-value"
-                    ]
-                  },
-                  {
-                    "id": "loading_subject-field",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_body-field",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_actions",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_to-label",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_to-value",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "draft-1a06f2abedf045ce"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 8018,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "body",
-                    "component": "Column",
-                    "children": [
-                      "heading",
-                      "to-row",
-                      "subject-field",
-                      "loading_body-field",
-                      "loading_actions"
-                    ]
-                  },
-                  {
-                    "id": "heading",
-                    "component": "Text",
-                    "variant": "h3",
-                    "text": "Save this reply?"
-                  },
-                  {
-                    "id": "root",
-                    "component": "Card",
-                    "child": "body"
-                  },
-                  {
-                    "id": "subject-field",
-                    "component": "TextField"
-                  },
-                  {
-                    "id": "to-row",
-                    "component": "Row",
-                    "align": "center",
-                    "children": [
-                      "loading_to-label",
-                      "loading_to-value"
-                    ]
-                  },
-                  {
-                    "id": "loading_body-field",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_actions",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_to-label",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_to-value",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "draft-1a06f2abedf045ce"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 8087,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "body",
-                    "component": "Column",
-                    "children": [
-                      "heading",
-                      "to-row",
-                      "subject-field",
-                      "loading_body-field",
-                      "loading_actions"
-                    ]
-                  },
-                  {
-                    "id": "heading",
-                    "component": "Text",
-                    "variant": "h3",
-                    "text": "Save this reply?"
-                  },
-                  {
-                    "id": "root",
-                    "component": "Card",
-                    "child": "body"
-                  },
-                  {
-                    "id": "subject-field",
-                    "component": "TextField",
-                    "label": "Subject",
-                    "value": {
-                      "path": "/subject"
-                    }
-                  },
-                  {
-                    "id": "to-row",
-                    "component": "Row",
-                    "align": "center",
-                    "children": [
-                      "loading_to-label",
-                      "loading_to-value"
-                    ]
-                  },
-                  {
-                    "id": "loading_body-field",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_actions",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_to-label",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_to-value",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "draft-1a06f2abedf045ce"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 8150,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "body",
-                    "component": "Column",
-                    "children": [
-                      "heading",
-                      "to-row",
-                      "subject-field",
-                      "body-field",
-                      "loading_actions"
-                    ]
-                  },
-                  {
-                    "id": "body-field",
-                    "component": "TextField"
-                  },
-                  {
-                    "id": "heading",
-                    "component": "Text",
-                    "variant": "h3",
-                    "text": "Save this reply?"
-                  },
-                  {
-                    "id": "root",
-                    "component": "Card",
-                    "child": "body"
-                  },
-                  {
-                    "id": "subject-field",
-                    "component": "TextField",
-                    "label": "Subject",
-                    "value": {
-                      "path": "/subject"
-                    }
-                  },
-                  {
-                    "id": "to-row",
-                    "component": "Row",
-                    "align": "center",
-                    "children": [
-                      "loading_to-label",
-                      "loading_to-value"
-                    ]
-                  },
-                  {
-                    "id": "loading_actions",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_to-label",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_to-value",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "draft-1a06f2abedf045ce"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 8292,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "body",
-                    "component": "Column",
-                    "children": [
-                      "heading",
-                      "to-row",
-                      "subject-field",
-                      "body-field",
-                      "loading_actions"
-                    ]
-                  },
-                  {
-                    "id": "body-field",
-                    "component": "TextField",
-                    "label": "Message",
-                    "variant": "longText",
-                    "value": {
-                      "path": "/body"
-                    }
-                  },
-                  {
-                    "id": "heading",
-                    "component": "Text",
-                    "variant": "h3",
-                    "text": "Save this reply?"
-                  },
-                  {
-                    "id": "root",
-                    "component": "Card",
-                    "child": "body"
-                  },
-                  {
-                    "id": "subject-field",
-                    "component": "TextField",
-                    "label": "Subject",
-                    "value": {
-                      "path": "/subject"
-                    }
-                  },
-                  {
-                    "id": "to-row",
-                    "component": "Row",
-                    "align": "center",
-                    "children": [
-                      "loading_to-label",
-                      "loading_to-value"
-                    ]
-                  },
-                  {
-                    "id": "loading_actions",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_to-label",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_to-value",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "draft-1a06f2abedf045ce"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 8363,
+          "offsetMs": 8578,
           "messages": [
             {
               "version": "v0.9",
@@ -652,59 +310,128 @@
                 "components": [
                   {
                     "id": "actions",
-                    "component": "Row",
-                    "children": [
-                      "loading_save",
-                      "loading_cancel"
-                    ]
+                    "component": "Stack"
                   },
                   {
                     "id": "body",
-                    "component": "Column",
+                    "component": "Stack",
                     "children": [
-                      "heading",
-                      "to-row",
-                      "subject-field",
-                      "body-field",
+                      "title-bar",
+                      "fields",
                       "actions"
-                    ]
+                    ],
+                    "gap": "none"
                   },
                   {
-                    "id": "body-field",
-                    "component": "TextField",
-                    "label": "Message",
-                    "variant": "longText",
-                    "value": {
-                      "path": "/body"
-                    }
-                  },
-                  {
-                    "id": "heading",
-                    "component": "Text",
-                    "variant": "h3",
-                    "text": "Save this reply?"
+                    "id": "fields",
+                    "component": "Stack",
+                    "children": [
+                      "loading_to-field",
+                      "loading_subject-field",
+                      "loading_body-field"
+                    ],
+                    "gap": "none",
+                    "padding": "md"
                   },
                   {
                     "id": "root",
-                    "component": "Card",
-                    "child": "body"
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none",
+                    "elevation": "level2"
                   },
                   {
-                    "id": "subject-field",
-                    "component": "TextField",
-                    "label": "Subject",
-                    "value": {
-                      "path": "/subject"
-                    }
+                    "id": "title-bar",
+                    "component": "Surface",
+                    "child": "loading_heading",
+                    "container": "high",
+                    "shape": "none",
+                    "padding": "medium"
                   },
                   {
-                    "id": "to-row",
+                    "id": "loading_to-field",
                     "component": "Row",
-                    "align": "center",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_subject-field",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_body-field",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_heading",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "draft-1a06f2abedf045ce"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 8942,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "actions",
+                    "component": "Stack",
                     "children": [
-                      "loading_to-label",
-                      "loading_to-value"
-                    ]
+                      "loading_save",
+                      "loading_cancel"
+                    ],
+                    "direction": "horizontal",
+                    "gap": "sm",
+                    "padding": "md"
+                  },
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "title-bar",
+                      "fields",
+                      "actions"
+                    ],
+                    "gap": "none"
+                  },
+                  {
+                    "id": "fields",
+                    "component": "Stack",
+                    "children": [
+                      "loading_to-field",
+                      "loading_subject-field",
+                      "loading_body-field"
+                    ],
+                    "gap": "none",
+                    "padding": "md"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none",
+                    "elevation": "level2"
+                  },
+                  {
+                    "id": "title-bar",
+                    "component": "Surface",
+                    "child": "loading_heading",
+                    "container": "high",
+                    "shape": "none",
+                    "padding": "medium"
                   },
                   {
                     "id": "loading_save",
@@ -717,12 +444,22 @@
                     "children": []
                   },
                   {
-                    "id": "loading_to-label",
+                    "id": "loading_to-field",
                     "component": "Row",
                     "children": []
                   },
                   {
-                    "id": "loading_to-value",
+                    "id": "loading_subject-field",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_body-field",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_heading",
                     "component": "Row",
                     "children": []
                   }
@@ -734,7 +471,7 @@
           "texts": []
         },
         {
-          "offsetMs": 8501,
+          "offsetMs": 9306,
           "messages": [
             {
               "version": "v0.9",
@@ -742,65 +479,58 @@
                 "components": [
                   {
                     "id": "actions",
-                    "component": "Row",
+                    "component": "Stack",
                     "children": [
                       "loading_save",
                       "loading_cancel"
-                    ]
+                    ],
+                    "direction": "horizontal",
+                    "gap": "sm",
+                    "padding": "md"
                   },
                   {
                     "id": "body",
-                    "component": "Column",
+                    "component": "Stack",
                     "children": [
-                      "heading",
-                      "to-row",
-                      "subject-field",
-                      "body-field",
+                      "title-bar",
+                      "fields",
                       "actions"
-                    ]
+                    ],
+                    "gap": "none"
                   },
                   {
-                    "id": "body-field",
-                    "component": "TextField",
-                    "label": "Message",
-                    "variant": "longText",
-                    "value": {
-                      "path": "/body"
-                    }
+                    "id": "fields",
+                    "component": "Stack",
+                    "children": [
+                      "loading_to-field",
+                      "loading_subject-field",
+                      "loading_body-field"
+                    ],
+                    "gap": "none",
+                    "padding": "md"
                   },
                   {
                     "id": "heading",
                     "component": "Text",
-                    "variant": "h3",
-                    "text": "Save this reply?"
+                    "text": "Save this reply?",
+                    "variant": "titleSmall"
                   },
                   {
                     "id": "root",
-                    "component": "Card",
-                    "child": "body"
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none",
+                    "elevation": "level2"
                   },
                   {
-                    "id": "subject-field",
-                    "component": "TextField",
-                    "label": "Subject",
-                    "value": {
-                      "path": "/subject"
-                    }
-                  },
-                  {
-                    "id": "to-label",
-                    "component": "Text",
-                    "variant": "caption",
-                    "text": "TO"
-                  },
-                  {
-                    "id": "to-row",
-                    "component": "Row",
-                    "align": "center",
-                    "children": [
-                      "to-label",
-                      "loading_to-value"
-                    ]
+                    "id": "title-bar",
+                    "component": "Surface",
+                    "child": "heading",
+                    "container": "high",
+                    "shape": "none",
+                    "padding": "medium"
                   },
                   {
                     "id": "loading_save",
@@ -813,7 +543,17 @@
                     "children": []
                   },
                   {
-                    "id": "loading_to-value",
+                    "id": "loading_to-field",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_subject-field",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_body-field",
                     "component": "Row",
                     "children": []
                   }
@@ -825,7 +565,7 @@
           "texts": []
         },
         {
-          "offsetMs": 8569,
+          "offsetMs": 9481,
           "messages": [
             {
               "version": "v0.9",
@@ -833,72 +573,383 @@
                 "components": [
                   {
                     "id": "actions",
-                    "component": "Row",
+                    "component": "Stack",
                     "children": [
                       "loading_save",
                       "loading_cancel"
-                    ]
+                    ],
+                    "direction": "horizontal",
+                    "gap": "sm",
+                    "padding": "md"
                   },
                   {
                     "id": "body",
-                    "component": "Column",
+                    "component": "Stack",
                     "children": [
-                      "heading",
-                      "to-row",
-                      "subject-field",
-                      "body-field",
+                      "title-bar",
+                      "fields",
                       "actions"
-                    ]
+                    ],
+                    "gap": "none"
                   },
                   {
-                    "id": "body-field",
-                    "component": "TextField",
-                    "label": "Message",
-                    "variant": "longText",
-                    "value": {
-                      "path": "/body"
-                    }
+                    "id": "fields",
+                    "component": "Stack",
+                    "children": [
+                      "to-field",
+                      "loading_subject-field",
+                      "loading_body-field"
+                    ],
+                    "gap": "none",
+                    "padding": "md"
                   },
                   {
                     "id": "heading",
                     "component": "Text",
-                    "variant": "h3",
-                    "text": "Save this reply?"
+                    "text": "Save this reply?",
+                    "variant": "titleSmall"
                   },
                   {
                     "id": "root",
-                    "component": "Card",
-                    "child": "body"
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none",
+                    "elevation": "level2"
                   },
                   {
-                    "id": "subject-field",
+                    "id": "title-bar",
+                    "component": "Surface",
+                    "child": "heading",
+                    "container": "high",
+                    "shape": "none",
+                    "padding": "medium"
+                  },
+                  {
+                    "id": "to-field",
                     "component": "TextField",
-                    "label": "Subject",
+                    "label": "To",
                     "value": {
-                      "path": "/subject"
-                    }
-                  },
-                  {
-                    "id": "to-label",
-                    "component": "Text",
-                    "variant": "caption",
-                    "text": "TO"
-                  },
-                  {
-                    "id": "to-row",
-                    "component": "Row",
-                    "align": "center",
-                    "children": [
-                      "to-label",
-                      "to-value"
-                    ]
-                  },
-                  {
-                    "id": "to-value",
-                    "component": "Text",
-                    "text": {
                       "path": "/to"
                     }
+                  },
+                  {
+                    "id": "loading_save",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_cancel",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_subject-field",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_body-field",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "draft-1a06f2abedf045ce"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 9642,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "actions",
+                    "component": "Stack",
+                    "children": [
+                      "loading_save",
+                      "loading_cancel"
+                    ],
+                    "direction": "horizontal",
+                    "gap": "sm",
+                    "padding": "md"
+                  },
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "title-bar",
+                      "fields",
+                      "actions"
+                    ],
+                    "gap": "none"
+                  },
+                  {
+                    "id": "fields",
+                    "component": "Stack",
+                    "children": [
+                      "to-field",
+                      "loading_subject-field",
+                      "loading_body-field"
+                    ],
+                    "gap": "none",
+                    "padding": "md"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": "Save this reply?",
+                    "variant": "titleSmall"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none",
+                    "elevation": "level2"
+                  },
+                  {
+                    "id": "title-bar",
+                    "component": "Surface",
+                    "child": "heading",
+                    "container": "high",
+                    "shape": "none",
+                    "padding": "medium"
+                  },
+                  {
+                    "id": "to-field",
+                    "component": "TextField",
+                    "label": "To",
+                    "value": {
+                      "path": "/to"
+                    },
+                    "variant": "plain"
+                  },
+                  {
+                    "id": "loading_save",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_cancel",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_subject-field",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_body-field",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "draft-1a06f2abedf045ce"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 9945,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "actions",
+                    "component": "Stack",
+                    "children": [
+                      "loading_save",
+                      "loading_cancel"
+                    ],
+                    "direction": "horizontal",
+                    "gap": "sm",
+                    "padding": "md"
+                  },
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "title-bar",
+                      "fields",
+                      "actions"
+                    ],
+                    "gap": "none"
+                  },
+                  {
+                    "id": "fields",
+                    "component": "Stack",
+                    "children": [
+                      "to-field",
+                      "subject-field",
+                      "loading_body-field"
+                    ],
+                    "gap": "none",
+                    "padding": "md"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": "Save this reply?",
+                    "variant": "titleSmall"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none",
+                    "elevation": "level2"
+                  },
+                  {
+                    "id": "subject-field",
+                    "component": "TextField",
+                    "label": "Subject",
+                    "value": {
+                      "path": "/subject"
+                    },
+                    "variant": "plain"
+                  },
+                  {
+                    "id": "title-bar",
+                    "component": "Surface",
+                    "child": "heading",
+                    "container": "high",
+                    "shape": "none",
+                    "padding": "medium"
+                  },
+                  {
+                    "id": "to-field",
+                    "component": "TextField",
+                    "label": "To",
+                    "value": {
+                      "path": "/to"
+                    },
+                    "variant": "plain"
+                  },
+                  {
+                    "id": "loading_save",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_cancel",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_body-field",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "draft-1a06f2abedf045ce"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 10282,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "actions",
+                    "component": "Stack",
+                    "children": [
+                      "loading_save",
+                      "loading_cancel"
+                    ],
+                    "direction": "horizontal",
+                    "gap": "sm",
+                    "padding": "md"
+                  },
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "title-bar",
+                      "fields",
+                      "actions"
+                    ],
+                    "gap": "none"
+                  },
+                  {
+                    "id": "body-field",
+                    "component": "TextField",
+                    "label": "Message",
+                    "value": {
+                      "path": "/body"
+                    },
+                    "variant": "plain",
+                    "multiline": true
+                  },
+                  {
+                    "id": "fields",
+                    "component": "Stack",
+                    "children": [
+                      "to-field",
+                      "subject-field",
+                      "body-field"
+                    ],
+                    "gap": "none",
+                    "padding": "md"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": "Save this reply?",
+                    "variant": "titleSmall"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none",
+                    "elevation": "level2"
+                  },
+                  {
+                    "id": "subject-field",
+                    "component": "TextField",
+                    "label": "Subject",
+                    "value": {
+                      "path": "/subject"
+                    },
+                    "variant": "plain"
+                  },
+                  {
+                    "id": "title-bar",
+                    "component": "Surface",
+                    "child": "heading",
+                    "container": "high",
+                    "shape": "none",
+                    "padding": "medium"
+                  },
+                  {
+                    "id": "to-field",
+                    "component": "TextField",
+                    "label": "To",
+                    "value": {
+                      "path": "/to"
+                    },
+                    "variant": "plain"
                   },
                   {
                     "id": "loading_save",
@@ -918,7 +969,7 @@
           "texts": []
         },
         {
-          "offsetMs": 8846,
+          "offsetMs": 10804,
           "messages": [
             {
               "version": "v0.9",
@@ -926,48 +977,66 @@
                 "components": [
                   {
                     "id": "actions",
-                    "component": "Row",
+                    "component": "Stack",
                     "children": [
                       "save",
                       "loading_cancel"
-                    ]
+                    ],
+                    "direction": "horizontal",
+                    "gap": "sm",
+                    "padding": "md"
                   },
                   {
                     "id": "body",
-                    "component": "Column",
+                    "component": "Stack",
                     "children": [
-                      "heading",
-                      "to-row",
-                      "subject-field",
-                      "body-field",
+                      "title-bar",
+                      "fields",
                       "actions"
-                    ]
+                    ],
+                    "gap": "none"
                   },
                   {
                     "id": "body-field",
                     "component": "TextField",
                     "label": "Message",
-                    "variant": "longText",
                     "value": {
                       "path": "/body"
-                    }
+                    },
+                    "variant": "plain",
+                    "multiline": true
+                  },
+                  {
+                    "id": "fields",
+                    "component": "Stack",
+                    "children": [
+                      "to-field",
+                      "subject-field",
+                      "body-field"
+                    ],
+                    "gap": "none",
+                    "padding": "md"
                   },
                   {
                     "id": "heading",
                     "component": "Text",
-                    "variant": "h3",
-                    "text": "Save this reply?"
+                    "text": "Save this reply?",
+                    "variant": "titleSmall"
                   },
                   {
                     "id": "root",
-                    "component": "Card",
-                    "child": "body"
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none",
+                    "elevation": "level2"
                   },
                   {
                     "id": "save",
                     "component": "Button",
-                    "variant": "primary",
-                    "child": "loading_save-label",
+                    "label": "Save draft",
+                    "icon": "draft",
                     "action": {
                       "event": {
                         "name": "confirm-draft",
@@ -983,39 +1052,30 @@
                     "label": "Subject",
                     "value": {
                       "path": "/subject"
-                    }
+                    },
+                    "variant": "plain"
                   },
                   {
-                    "id": "to-label",
-                    "component": "Text",
-                    "variant": "caption",
-                    "text": "TO"
+                    "id": "title-bar",
+                    "component": "Surface",
+                    "child": "heading",
+                    "container": "high",
+                    "shape": "none",
+                    "padding": "medium"
                   },
                   {
-                    "id": "to-row",
-                    "component": "Row",
-                    "align": "center",
-                    "children": [
-                      "to-label",
-                      "to-value"
-                    ]
-                  },
-                  {
-                    "id": "to-value",
-                    "component": "Text",
-                    "text": {
+                    "id": "to-field",
+                    "component": "TextField",
+                    "label": "To",
+                    "value": {
                       "path": "/to"
-                    }
+                    },
+                    "variant": "plain"
                   },
                   {
                     "id": "loading_cancel",
                     "component": "Row",
                     "children": []
-                  },
-                  {
-                    "id": "loading_save-label",
-                    "component": "Row",
-                    "children": []
                   }
                 ],
                 "surfaceId": "draft-1a06f2abedf045ce"
@@ -1025,7 +1085,7 @@
           "texts": []
         },
         {
-          "offsetMs": 8921,
+          "offsetMs": 11473,
           "messages": [
             {
               "version": "v0.9",
@@ -1033,144 +1093,40 @@
                 "components": [
                   {
                     "id": "actions",
-                    "component": "Row",
+                    "component": "Stack",
                     "children": [
                       "save",
                       "cancel"
-                    ]
+                    ],
+                    "direction": "horizontal",
+                    "gap": "sm",
+                    "padding": "md"
                   },
                   {
                     "id": "body",
-                    "component": "Column",
+                    "component": "Stack",
                     "children": [
-                      "heading",
-                      "to-row",
-                      "subject-field",
-                      "body-field",
+                      "title-bar",
+                      "fields",
                       "actions"
-                    ]
+                    ],
+                    "gap": "none"
                   },
                   {
                     "id": "body-field",
                     "component": "TextField",
                     "label": "Message",
-                    "variant": "longText",
                     "value": {
                       "path": "/body"
-                    }
+                    },
+                    "variant": "plain",
+                    "multiline": true
                   },
                   {
                     "id": "cancel",
                     "component": "Button",
-                    "variant": "borderless"
-                  },
-                  {
-                    "id": "heading",
-                    "component": "Text",
-                    "variant": "h3",
-                    "text": "Save this reply?"
-                  },
-                  {
-                    "id": "root",
-                    "component": "Card",
-                    "child": "body"
-                  },
-                  {
-                    "id": "save",
-                    "component": "Button",
-                    "variant": "primary",
-                    "child": "loading_save-label",
-                    "action": {
-                      "event": {
-                        "name": "confirm-draft",
-                        "context": {
-                          "threadId": "1a06f2abedf045ce"
-                        }
-                      }
-                    }
-                  },
-                  {
-                    "id": "subject-field",
-                    "component": "TextField",
-                    "label": "Subject",
-                    "value": {
-                      "path": "/subject"
-                    }
-                  },
-                  {
-                    "id": "to-label",
-                    "component": "Text",
-                    "variant": "caption",
-                    "text": "TO"
-                  },
-                  {
-                    "id": "to-row",
-                    "component": "Row",
-                    "align": "center",
-                    "children": [
-                      "to-label",
-                      "to-value"
-                    ]
-                  },
-                  {
-                    "id": "to-value",
-                    "component": "Text",
-                    "text": {
-                      "path": "/to"
-                    }
-                  },
-                  {
-                    "id": "loading_save-label",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "draft-1a06f2abedf045ce"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 9131,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "actions",
-                    "component": "Row",
-                    "children": [
-                      "save",
-                      "cancel"
-                    ]
-                  },
-                  {
-                    "id": "body",
-                    "component": "Column",
-                    "children": [
-                      "heading",
-                      "to-row",
-                      "subject-field",
-                      "body-field",
-                      "actions"
-                    ]
-                  },
-                  {
-                    "id": "body-field",
-                    "component": "TextField",
-                    "label": "Message",
-                    "variant": "longText",
-                    "value": {
-                      "path": "/body"
-                    }
-                  },
-                  {
-                    "id": "cancel",
-                    "component": "Button",
-                    "variant": "borderless",
-                    "child": "loading_cancel-label",
+                    "label": "Discard",
+                    "variant": "text",
                     "action": {
                       "event": {
                         "name": "cancel-draft",
@@ -1181,142 +1137,36 @@
                     }
                   },
                   {
-                    "id": "heading",
-                    "component": "Text",
-                    "variant": "h3",
-                    "text": "Save this reply?"
-                  },
-                  {
-                    "id": "root",
-                    "component": "Card",
-                    "child": "body"
-                  },
-                  {
-                    "id": "save",
-                    "component": "Button",
-                    "variant": "primary",
-                    "child": "loading_save-label",
-                    "action": {
-                      "event": {
-                        "name": "confirm-draft",
-                        "context": {
-                          "threadId": "1a06f2abedf045ce"
-                        }
-                      }
-                    }
-                  },
-                  {
-                    "id": "subject-field",
-                    "component": "TextField",
-                    "label": "Subject",
-                    "value": {
-                      "path": "/subject"
-                    }
-                  },
-                  {
-                    "id": "to-label",
-                    "component": "Text",
-                    "variant": "caption",
-                    "text": "TO"
-                  },
-                  {
-                    "id": "to-row",
-                    "component": "Row",
-                    "align": "center",
+                    "id": "fields",
+                    "component": "Stack",
                     "children": [
-                      "to-label",
-                      "to-value"
-                    ]
-                  },
-                  {
-                    "id": "to-value",
-                    "component": "Text",
-                    "text": {
-                      "path": "/to"
-                    }
-                  },
-                  {
-                    "id": "loading_cancel-label",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_save-label",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "draft-1a06f2abedf045ce"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 9296,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "actions",
-                    "component": "Row",
-                    "children": [
-                      "save",
-                      "cancel"
-                    ]
-                  },
-                  {
-                    "id": "body",
-                    "component": "Column",
-                    "children": [
-                      "heading",
-                      "to-row",
+                      "to-field",
                       "subject-field",
-                      "body-field",
-                      "actions"
-                    ]
-                  },
-                  {
-                    "id": "body-field",
-                    "component": "TextField",
-                    "label": "Message",
-                    "variant": "longText",
-                    "value": {
-                      "path": "/body"
-                    }
-                  },
-                  {
-                    "id": "cancel",
-                    "component": "Button",
-                    "variant": "borderless",
-                    "child": "loading_cancel-label",
-                    "action": {
-                      "event": {
-                        "name": "cancel-draft",
-                        "context": {
-                          "threadId": "1a06f2abedf045ce"
-                        }
-                      }
-                    }
+                      "body-field"
+                    ],
+                    "gap": "none",
+                    "padding": "md"
                   },
                   {
                     "id": "heading",
                     "component": "Text",
-                    "variant": "h3",
-                    "text": "Save this reply?"
+                    "text": "Save this reply?",
+                    "variant": "titleSmall"
                   },
                   {
                     "id": "root",
-                    "component": "Card",
-                    "child": "body"
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none",
+                    "elevation": "level2"
                   },
                   {
                     "id": "save",
                     "component": "Button",
-                    "variant": "primary",
-                    "child": "save-label",
+                    "label": "Save draft",
+                    "icon": "draft",
                     "action": {
                       "event": {
                         "name": "confirm-draft",
@@ -1327,165 +1177,30 @@
                     }
                   },
                   {
-                    "id": "save-label",
-                    "component": "Text",
-                    "text": "Save draft"
-                  },
-                  {
                     "id": "subject-field",
                     "component": "TextField",
                     "label": "Subject",
                     "value": {
                       "path": "/subject"
-                    }
+                    },
+                    "variant": "plain"
                   },
                   {
-                    "id": "to-label",
-                    "component": "Text",
-                    "variant": "caption",
-                    "text": "TO"
+                    "id": "title-bar",
+                    "component": "Surface",
+                    "child": "heading",
+                    "container": "high",
+                    "shape": "none",
+                    "padding": "medium"
                   },
                   {
-                    "id": "to-row",
-                    "component": "Row",
-                    "align": "center",
-                    "children": [
-                      "to-label",
-                      "to-value"
-                    ]
-                  },
-                  {
-                    "id": "to-value",
-                    "component": "Text",
-                    "text": {
-                      "path": "/to"
-                    }
-                  },
-                  {
-                    "id": "loading_cancel-label",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "draft-1a06f2abedf045ce"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 9369,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "actions",
-                    "component": "Row",
-                    "children": [
-                      "save",
-                      "cancel"
-                    ]
-                  },
-                  {
-                    "id": "body",
-                    "component": "Column",
-                    "children": [
-                      "heading",
-                      "to-row",
-                      "subject-field",
-                      "body-field",
-                      "actions"
-                    ]
-                  },
-                  {
-                    "id": "body-field",
+                    "id": "to-field",
                     "component": "TextField",
-                    "label": "Message",
-                    "variant": "longText",
+                    "label": "To",
                     "value": {
-                      "path": "/body"
-                    }
-                  },
-                  {
-                    "id": "cancel",
-                    "component": "Button",
-                    "variant": "borderless",
-                    "child": "cancel-label",
-                    "action": {
-                      "event": {
-                        "name": "cancel-draft",
-                        "context": {
-                          "threadId": "1a06f2abedf045ce"
-                        }
-                      }
-                    }
-                  },
-                  {
-                    "id": "cancel-label",
-                    "component": "Text",
-                    "text": "Discard"
-                  },
-                  {
-                    "id": "heading",
-                    "component": "Text",
-                    "variant": "h3",
-                    "text": "Save this reply?"
-                  },
-                  {
-                    "id": "root",
-                    "component": "Card",
-                    "child": "body"
-                  },
-                  {
-                    "id": "save",
-                    "component": "Button",
-                    "variant": "primary",
-                    "child": "save-label",
-                    "action": {
-                      "event": {
-                        "name": "confirm-draft",
-                        "context": {
-                          "threadId": "1a06f2abedf045ce"
-                        }
-                      }
-                    }
-                  },
-                  {
-                    "id": "save-label",
-                    "component": "Text",
-                    "text": "Save draft"
-                  },
-                  {
-                    "id": "subject-field",
-                    "component": "TextField",
-                    "label": "Subject",
-                    "value": {
-                      "path": "/subject"
-                    }
-                  },
-                  {
-                    "id": "to-label",
-                    "component": "Text",
-                    "variant": "caption",
-                    "text": "TO"
-                  },
-                  {
-                    "id": "to-row",
-                    "component": "Row",
-                    "align": "center",
-                    "children": [
-                      "to-label",
-                      "to-value"
-                    ]
-                  },
-                  {
-                    "id": "to-value",
-                    "component": "Text",
-                    "text": {
                       "path": "/to"
-                    }
+                    },
+                    "variant": "plain"
                   }
                 ],
                 "surfaceId": "draft-1a06f2abedf045ce"
@@ -1496,7 +1211,7 @@
         }
       ],
       "outcome": "completed",
-      "durationMs": 9566
+      "durationMs": 11739
     }
   ]
 }
