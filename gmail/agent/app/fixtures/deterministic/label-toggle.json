@@ -4,10 +4,19 @@
     "updateDataModel": {
       "surfaceId": "labels",
       "value": {
-        "userLabels": [
+        "labels": [
           {
             "id": "Label_1",
-            "name": "question agen"
+            "name": "a2uiverse",
+            "count": "3"
+          },
+          {
+            "id": "Label_2",
+            "name": "Design",
+            "count": "1"
+          },
+          {
+            "id": "Label_3"
           }
         ]
       }
@@ -18,234 +27,21 @@
     "updateDataModel": {
       "surfaceId": "labels",
       "value": {
-        "systemLabels": [
+        "labels": [
           {
-            "id": "INBOX",
-            "name": "INBOX"
+            "id": "Label_1",
+            "name": "a2uiverse",
+            "count": "3"
           },
           {
-            "id": "SENT",
-            "name": "SENT"
+            "id": "Label_2",
+            "name": "Design",
+            "count": "1"
           },
           {
-            "id": "STARRED",
-            "name": "STARRED"
-          }
-        ]
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "labels",
-      "value": {
-        "systemLabels": [
-          {
-            "id": "INBOX",
-            "name": "INBOX"
-          },
-          {
-            "id": "SENT",
-            "name": "SENT"
-          },
-          {
-            "id": "STARRED",
-            "name": "STARRED"
-          },
-          {
-            "id": "UNREAD",
-            "name": "UNREAD"
-          }
-        ]
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "labels",
-      "value": {
-        "systemLabels": [
-          {
-            "id": "INBOX",
-            "name": "INBOX"
-          },
-          {
-            "id": "SENT",
-            "name": "SENT"
-          },
-          {
-            "id": "STARRED",
-            "name": "STARRED"
-          },
-          {
-            "id": "UNREAD",
-            "name": "UNREAD"
-          },
-          {
-            "id": "DRAFT",
-            "name": "DRAFT"
-          }
-        ]
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "labels",
-      "value": {
-        "systemLabels": [
-          {
-            "id": "INBOX",
-            "name": "INBOX"
-          },
-          {
-            "id": "SENT",
-            "name": "SENT"
-          },
-          {
-            "id": "STARRED",
-            "name": "STARRED"
-          },
-          {
-            "id": "UNREAD",
-            "name": "UNREAD"
-          },
-          {
-            "id": "DRAFT",
-            "name": "DRAFT"
-          },
-          {
-            "id": "IMPORTANT",
-            "name": "IMPORTANT"
-          }
-        ]
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "labels",
-      "value": {
-        "systemLabels": [
-          {
-            "id": "INBOX",
-            "name": "INBOX"
-          },
-          {
-            "id": "SENT",
-            "name": "SENT"
-          },
-          {
-            "id": "STARRED",
-            "name": "STARRED"
-          },
-          {
-            "id": "UNREAD",
-            "name": "UNREAD"
-          },
-          {
-            "id": "DRAFT",
-            "name": "DRAFT"
-          },
-          {
-            "id": "IMPORTANT",
-            "name": "IMPORTANT"
-          },
-          {
-            "id": "SPAM",
-            "name": "SPAM"
-          }
-        ]
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "labels",
-      "value": {
-        "systemLabels": [
-          {
-            "id": "INBOX",
-            "name": "INBOX"
-          },
-          {
-            "id": "SENT",
-            "name": "SENT"
-          },
-          {
-            "id": "STARRED",
-            "name": "STARRED"
-          },
-          {
-            "id": "UNREAD",
-            "name": "UNREAD"
-          },
-          {
-            "id": "DRAFT",
-            "name": "DRAFT"
-          },
-          {
-            "id": "IMPORTANT",
-            "name": "IMPORTANT"
-          },
-          {
-            "id": "SPAM",
-            "name": "SPAM"
-          },
-          {
-            "id": "TRASH",
-            "name": "TRASH"
-          }
-        ]
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "labels",
-      "value": {
-        "systemLabels": [
-          {
-            "id": "INBOX",
-            "name": "INBOX"
-          },
-          {
-            "id": "SENT",
-            "name": "SENT"
-          },
-          {
-            "id": "STARRED",
-            "name": "STARRED"
-          },
-          {
-            "id": "UNREAD",
-            "name": "UNREAD"
-          },
-          {
-            "id": "DRAFT",
-            "name": "DRAFT"
-          },
-          {
-            "id": "IMPORTANT",
-            "name": "IMPORTANT"
-          },
-          {
-            "id": "SPAM",
-            "name": "SPAM"
-          },
-          {
-            "id": "TRASH",
-            "name": "TRASH"
-          },
-          {
-            "id": "CHAT",
-            "name": "CHAT"
+            "id": "Label_3",
+            "name": "Receipts",
+            "count": "1"
           }
         ]
       }
@@ -257,48 +53,21 @@
       "surfaceId": "labels",
       "path": "/",
       "value": {
-        "userLabels": [
+        "labels": [
           {
             "id": "Label_1",
-            "name": "question agen"
-          }
-        ],
-        "systemLabels": [
-          {
-            "id": "INBOX",
-            "name": "INBOX"
+            "name": "a2uiverse",
+            "count": "3"
           },
           {
-            "id": "SENT",
-            "name": "SENT"
+            "id": "Label_2",
+            "name": "Design",
+            "count": "1"
           },
           {
-            "id": "STARRED",
-            "name": "STARRED"
-          },
-          {
-            "id": "UNREAD",
-            "name": "UNREAD"
-          },
-          {
-            "id": "DRAFT",
-            "name": "DRAFT"
-          },
-          {
-            "id": "IMPORTANT",
-            "name": "IMPORTANT"
-          },
-          {
-            "id": "SPAM",
-            "name": "SPAM"
-          },
-          {
-            "id": "TRASH",
-            "name": "TRASH"
-          },
-          {
-            "id": "CHAT",
-            "name": "CHAT"
+            "id": "Label_3",
+            "name": "Receipts",
+            "count": "1"
           }
         ]
       }
@@ -336,6 +105,14 @@
           "padding": "sm"
         },
         {
+          "id": "sheet",
+          "component": "Surface",
+          "child": "label-list",
+          "container": "lowest",
+          "shape": "large",
+          "padding": "none"
+        },
+        {
           "id": "heading",
           "component": "Text",
           "text": "Labels",
@@ -344,108 +121,29 @@
         {
           "id": "sub",
           "component": "Text",
-          "text": "1 custom label, 9 system labels",
+          "text": "3 custom labels in your mailbox",
           "variant": "bodySmall",
           "color": "onSurfaceVariant"
         },
         {
-          "id": "sheet",
-          "component": "Surface",
-          "child": "sheet-content",
-          "container": "lowest",
-          "shape": "large",
-          "padding": "none"
-        },
-        {
-          "id": "sheet-content",
-          "component": "Stack",
-          "children": [
-            "user-section-header",
-            "user-labels-list",
-            "divider-1",
-            "system-section-header",
-            "system-labels-list"
-          ],
-          "gap": "none"
-        },
-        {
-          "id": "user-section-header",
-          "component": "Stack",
-          "children": [
-            "user-section-title"
-          ],
-          "padding": "sm"
-        },
-        {
-          "id": "user-section-title",
-          "component": "Text",
-          "text": "User labels",
-          "variant": "titleSmall",
-          "color": "onSurfaceVariant"
-        },
-        {
-          "id": "user-labels-list",
+          "id": "label-list",
           "component": "Stack",
           "children": {
-            "path": "/userLabels",
-            "componentId": "user-label-row"
+            "path": "/labels",
+            "componentId": "label-row"
           },
           "gap": "none"
         },
         {
-          "id": "user-label-row",
+          "id": "label-row",
           "component": "NavigationItem",
           "label": {
             "path": "name"
           },
           "icon": "label",
-          "action": {
-            "event": {
-              "name": "open-label",
-              "context": {
-                "labelId": {
-                  "path": "id"
-                }
-              }
-            }
-          }
-        },
-        {
-          "id": "divider-1",
-          "component": "Divider",
-          "inset": "none"
-        },
-        {
-          "id": "system-section-header",
-          "component": "Stack",
-          "children": [
-            "system-section-title"
-          ],
-          "padding": "sm"
-        },
-        {
-          "id": "system-section-title",
-          "component": "Text",
-          "text": "System labels",
-          "variant": "titleSmall",
-          "color": "onSurfaceVariant"
-        },
-        {
-          "id": "system-labels-list",
-          "component": "Stack",
-          "children": {
-            "path": "/systemLabels",
-            "componentId": "system-label-row"
+          "count": {
+            "path": "count"
           },
-          "gap": "none"
-        },
-        {
-          "id": "system-label-row",
-          "component": "NavigationItem",
-          "label": {
-            "path": "name"
-          },
-          "icon": "mail",
           "action": {
             "event": {
               "name": "open-label",
@@ -463,7 +161,7 @@
   {
     "paintMeta": {
       "surfaceId": "labels",
-      "title": "Labels"
+      "title": "Mailbox labels"
     }
   }
 ]

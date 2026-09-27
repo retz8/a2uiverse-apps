@@ -81,25 +81,16 @@ No model calls, no Gmail calls, no credentials needed.
 
 ## Recording
 
-The canned data behind `deterministic` and `stub` comes from recorded live runs, not hand-written.
+The stub's mail is written by hand, in the shapes Gmail's MCP server returns: a week of one developer's work mail, from the same people as the Calendar app's demo calendar, in `app/fixtures/stub/`. The deterministic corpus is derived from beats the model paints over it, so nothing reaches Gmail.
 
 ```bash
-A2UI_RECORD_DIR=.recordings uv run python -m app --mode live --host localhost
+A2UI_RECORD_DIR=.recordings uv run python -m app --mode stub --host localhost
 uv run python scripts/record_beats.py --model <model>
 uv run python scripts/derive_corpus.py
 uv run pytest tests/test_corpus_is_publishable.py
 ```
 
-**Setting `A2UI_RECORD_DIR` also turns on pseudonymization.** Every mail payload gets stand-in names and subjects before the model sees it, so no real mail reaches the recordings or the model provider. The stand-ins are seeded, so re-recording gives the same ones.
-
-To repaint the beats after a catalog change, record them against the stub instead: the model paints over the recorded data, nothing reaches Gmail, and only the deterministic corpus is derived again.
-
-```bash
-A2UI_RECORD_DIR=.recordings uv run python -m app --mode stub --host localhost
-uv run python scripts/record_beats.py --model <model>
-uv run python scripts/derive_corpus.py --beats-only
-uv run pytest tests/test_corpus_is_publishable.py
-```
+**Recording live turns on pseudonymization.** With `A2UI_RECORD_DIR` set in `live` mode, every mail payload gets stand-in names and subjects before the model sees it, so no real mail reaches the recordings or the model provider. The stand-ins are seeded, so re-recording gives the same ones.
 
 ## Allowing more tools
 
@@ -110,7 +101,7 @@ To allow a tool, change these together:
 1. Check its name and arguments against the server's live `tools/list`.
 2. Add it to `GMAIL_TOOLS` in `app/mcp.py`, and take it out of the comment.
 3. Update the pin in `tests/test_llm_mcp.py`.
-4. Add it to the stub, `STUB_TOOLS` in `app/tools.py`, over data from a recorded run (`scripts/derive_corpus.py` writes it).
+4. Add it to the stub, `STUB_TOOLS` in `app/tools.py`, over hand-written data in the shape a live run returns.
 5. Describe what it returns in `app/knowledge/gmail-domain.md`. For a write, add a proposal to the prompt, so it runs only when you confirm.
 
 A tool that needs a scope the login doesn't have also needs it in `GMAIL_SCOPES` in `app/mcp.py` and in the login command above.

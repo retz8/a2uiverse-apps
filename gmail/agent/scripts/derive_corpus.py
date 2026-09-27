@@ -1,10 +1,11 @@
-"""Derives the stub and deterministic corpora from a recorded live run.
+"""Derives the deterministic corpus from the recorded beats.
 
-Task-2.6 decision 11: one live run, three consumers. The pseudonymized MCP payloads become
-the stub backend's fixtures; the pseudonymized painted streams become the deterministic
-agent's fixtures. Neither is hand-authored — that is what keeps the canned data real-shaped.
+The stub's mail is written by hand in the MCP payloads' captured shapes (task 10.11,
+amending task-2.6 decision 11), so the stub is its own source and nothing here writes it. The
+beats are recorded against it, and their painted streams become the deterministic agent's
+fixtures.
 
-    A2UI_RECORD_DIR=.recordings uv run python -m app --mode live --host localhost
+    A2UI_RECORD_DIR=.recordings uv run python -m app --mode stub --host localhost
     uv run python scripts/record_beats.py --beats 1,2,3,4 --model <model>
     uv run python scripts/derive_corpus.py
 
@@ -15,77 +16,19 @@ runs over the result. Do not commit a corpus that fails it.
 from __future__ import annotations
 
 import json
-import sys
 from pathlib import Path
 
 from a2ui_agent_kit.corpus import settled_messages
 
 AGENT = Path(__file__).resolve().parent.parent
-CAPTURED = AGENT / ".recordings" / "payloads"
 BEATS = AGENT / "recordings" / "beats"
-STUB = AGENT / "app" / "fixtures" / "stub"
 DETERMINISTIC = AGENT / "app" / "fixtures" / "deterministic"
-
-# Mailbox scale is not content, but it is still a fact about the person that the fixtures do
-# not need: the stub exists so the model can map INBOX/UNREAD correctly, and the label SET is
-# what carries that. The counts are inert payload, so they are blanked rather than published.
-COUNT_FIELDS = ("threadsTotal", "threadsUnread", "messagesTotal", "messagesUnread")
-
-
-def richest(path: Path, key: str) -> dict | None:
-    """The captured payload carrying the most of `key` — the most useful one to replay."""
-    best = None
-    if not path.is_file():
-        return None
-    for line in path.read_text(encoding="utf-8").splitlines():
-        try:
-            doc = json.loads(line)
-        except ValueError:
-            continue
-        if not isinstance(doc, dict) or key not in doc:
-            continue
-        if best is None or len(doc.get(key) or []) > len(best.get(key) or []):
-            best = doc
-    return best
 
 
 def write(path: Path, payload: object, note: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
     print(f"{path.name:22} <- {note}")
-
-def derive_stub() -> None:
-    search = richest(CAPTURED / "search_threads.jsonl", "threads")
-    if search:
-        write(STUB / "search-threads.json", search, f"{len(search['threads'])} threads")
-
-    thread_file = CAPTURED / "get_thread.jsonl"
-    if thread_file.is_file():
-        threads: dict[str, dict] = {}
-        for line in thread_file.read_text(encoding="utf-8").splitlines():
-            try:
-                doc = json.loads(line)
-            except ValueError:
-                continue
-            if isinstance(doc, dict) and doc.get("id"):
-                threads[doc["id"]] = doc
-        if threads:
-            write(STUB / "get-thread.json", threads, f"{len(threads)} threads")
-
-    labels = richest(CAPTURED / "list_labels.jsonl", "labels")
-    if labels:
-        blanked = {
-            **labels,
-            "labels": [
-                {**label, **{field: 0 for field in COUNT_FIELDS if field in label}}
-                for label in labels["labels"]
-            ],
-        }
-        write(
-            STUB / "list-labels.json",
-            blanked,
-            f"{len(blanked['labels'])} labels, counts blanked",
-        )
 
 
 def derive_deterministic() -> None:
@@ -141,13 +84,5 @@ def derive_deterministic() -> None:
 
 
 if __name__ == "__main__":
-    # --beats-only: a repaint recorded against the stub has no fresh MCP payloads, so only
-    # the deterministic corpus is derived and the stub's fixtures stay as they are.
-    if "--beats-only" not in sys.argv:
-        if not CAPTURED.is_dir():
-            raise SystemExit(
-                f"no captured payloads at {CAPTURED}. Record a run first — see agent/README.md."
-            )
-        derive_stub()
     derive_deterministic()
     print("\nNow run: uv run pytest tests/test_corpus_is_publishable.py")

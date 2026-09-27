@@ -2,7 +2,7 @@
   {
     "version": "v0.9",
     "createSurface": {
-      "surfaceId": "thread-1a06f2abedf045ce",
+      "surfaceId": "thread-19829cbece7facf1",
       "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/gmail/gmail-catalog/catalogs/v0.9.1/catalog.json",
       "sendDataModel": true
     }
@@ -10,23 +10,23 @@
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "thread-1a06f2abedf045ce",
+      "surfaceId": "thread-19829cbece7facf1",
       "value": {
-        "subject": "estimate review thread status agenda confirm summ",
-        "count": "1 message"
+        "subject": "Notes ahead of the design review: agenda surface",
+        "count": "2 messages"
       }
     }
   },
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "thread-1a06f2abedf045ce",
+      "surfaceId": "thread-19829cbece7facf1",
       "value": {
         "messages": [
           {
-            "id": "1a06f2abedf045ce",
-            "sender": "elin.tanaka@example.com",
-            "when": "2026-09-05 01:24 UTC"
+            "id": "19829cbece7facf1",
+            "sender": "Idris Haddad",
+            "when": "2026-09-19 11:52 UTC"
           }
         ]
       }
@@ -35,17 +35,80 @@
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "thread-1a06f2abedf045ce",
-      "path": "/",
+      "surfaceId": "thread-19829cbece7facf1",
       "value": {
-        "subject": "estimate review thread status agenda confirm summ",
-        "count": "1 message",
         "messages": [
           {
-            "id": "1a06f2abedf045ce",
-            "sender": "elin.tanaka@example.com",
-            "when": "2026-09-05 01:24 UTC",
-            "body": "section summary feedback update meeting confirm thread section summary schedule pending attached thread review update confirm agenda proposal proposal status meeting timeline timeline agenda estimate update reply confirm feedback update attached schedule proposal update confirm review timeline update attached pending proposal question revision update notes section attached section update feedback pending review confirm schedule proposal estimate notes question update question attached confirm proposal estimate proposal status notes meeting draft schedule proposal summary section notes question revision meeting thread review update thread confirm confirm follow proposal review confirm question notes question agenda agenda notes proposal estimate schedule follow question confirm proposal estimate pending attached update draft notes confirm section attached attached pending reply notes follow notes thread reply estimate feedback pending feedback section proposal follow pr"
+            "id": "19829cbece7facf1",
+            "sender": "Idris Haddad",
+            "when": "2026-09-19 11:52 UTC",
+            "body": "Hi all,\n\nA few notes before we meet at 11:\n\n1. The agenda surface still stacks every source in one column. I'd like to try two columns above 1100px and see how the merged table sits over them.\n2. We need copy for an app that answers with nothing. Right now its slot just stays empty.\n3. Mei, could you bring the latest spacing tokens?\n\nScreenshots are in the review doc. See you at 11.\n\nIdris"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "thread-19829cbece7facf1",
+      "value": {
+        "messages": [
+          {
+            "id": "19829cbece7facf1",
+            "sender": "Idris Haddad",
+            "when": "2026-09-19 11:52 UTC",
+            "body": "Hi all,\n\nA few notes before we meet at 11:\n\n1. The agenda surface still stacks every source in one column. I'd like to try two columns above 1100px and see how the merged table sits over them.\n2. We need copy for an app that answers with nothing. Right now its slot just stays empty.\n3. Mei, could you bring the latest spacing tokens?\n\nScreenshots are in the review doc. See you at 11.\n\nIdris"
+          },
+          {
+            "id": "19b4f47699adac9a",
+            "sender": "Mei Silva"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "thread-19829cbece7facf1",
+      "value": {
+        "messages": [
+          {
+            "id": "19829cbece7facf1",
+            "sender": "Idris Haddad",
+            "when": "2026-09-19 11:52 UTC",
+            "body": "Hi all,\n\nA few notes before we meet at 11:\n\n1. The agenda surface still stacks every source in one column. I'd like to try two columns above 1100px and see how the merged table sits over them.\n2. We need copy for an app that answers with nothing. Right now its slot just stays empty.\n3. Mei, could you bring the latest spacing tokens?\n\nScreenshots are in the review doc. See you at 11.\n\nIdris"
+          },
+          {
+            "id": "19b4f47699adac9a",
+            "sender": "Mei Silva",
+            "when": "2026-09-19 12:41 UTC"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "thread-19829cbece7facf1",
+      "path": "/",
+      "value": {
+        "subject": "Notes ahead of the design review: agenda surface",
+        "count": "2 messages",
+        "messages": [
+          {
+            "id": "19829cbece7facf1",
+            "sender": "Idris Haddad",
+            "when": "2026-09-19 11:52 UTC",
+            "body": "Hi all,\n\nA few notes before we meet at 11:\n\n1. The agenda surface still stacks every source in one column. I'd like to try two columns above 1100px and see how the merged table sits over them.\n2. We need copy for an app that answers with nothing. Right now its slot just stays empty.\n3. Mei, could you bring the latest spacing tokens?\n\nScreenshots are in the review doc. See you at 11.\n\nIdris"
+          },
+          {
+            "id": "19b4f47699adac9a",
+            "sender": "Mei Silva",
+            "when": "2026-09-19 12:41 UTC",
+            "body": "Will do. I'll bring the tokens and a side-by-side of the 24px and 32px gaps between the regions.\n\nOne question for the room: when you go back inside an app, should the merged table keep its sort? I think yes, but let's decide it together.\n\nMei"
           }
         ]
       }
@@ -123,18 +186,8 @@
             "path": "/messages",
             "componentId": "message"
           },
-          "dividers": true
-        },
-        {
-          "id": "actions",
-          "component": "Stack",
-          "children": [
-            "reply",
-            "archive"
-          ],
-          "direction": "horizontal",
-          "gap": "sm",
-          "padding": "md"
+          "dividers": true,
+          "layout": "stacked"
         },
         {
           "id": "message",
@@ -179,6 +232,17 @@
           }
         },
         {
+          "id": "actions",
+          "component": "Stack",
+          "children": [
+            "reply",
+            "archive"
+          ],
+          "direction": "horizontal",
+          "gap": "sm",
+          "padding": "md"
+        },
+        {
           "id": "reply",
           "component": "Button",
           "label": "Draft a reply",
@@ -188,7 +252,7 @@
             "event": {
               "name": "draft-reply",
               "context": {
-                "threadId": "1a06f2abedf045ce"
+                "threadId": "19829cbece7facf1"
               }
             }
           }
@@ -203,7 +267,7 @@
             "event": {
               "name": "label-toggle",
               "context": {
-                "threadId": "1a06f2abedf045ce",
+                "threadId": "19829cbece7facf1",
                 "labelId": "INBOX",
                 "add": false
               }
@@ -215,8 +279,8 @@
   },
   {
     "paintMeta": {
-      "surfaceId": "thread-1a06f2abedf045ce",
-      "title": "Thread: estimate review thread status agenda confirm summ"
+      "surfaceId": "thread-19829cbece7facf1",
+      "title": "Thread: agenda surface"
     }
   }
 ]

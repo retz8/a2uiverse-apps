@@ -1,8 +1,8 @@
 """Stub Gmail toolset: canned, real-shaped mailbox data.
 
-A mirror of the Gmail read/write surface the beats need, over fixtures captured from live
-MCP with the pseudonymizer armed (task-2.6 decision 11) — so the canned data is derived
-from real payloads rather than invented, and carries no real mail.
+A mirror of the Gmail read/write surface the beats need, over mail written by hand in the
+shapes captured from live MCP (task 10.11, amending task-2.6 decision 11) — real payload
+shapes, no real mail.
 
 The stub exists so client work, prompt iteration and beat replay need not touch the
 mailbox or consume MCP call allowance. It is always an explicit opt-in (`--mode stub`).
@@ -23,7 +23,7 @@ _FIXTURES = Path(__file__).resolve().parent / "fixtures" / "stub"
 _fixture = stub_fixture_loader(
     _FIXTURES,
     hint=(
-        "The stub corpus is derived from a live MCP run with the recorder armed; "
+        "The stub's mail is written by hand in the captured MCP shapes; "
         "see agent/README.md."
     ),
 )

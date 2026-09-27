@@ -4,22 +4,22 @@
   "title": "Compose-and-confirm reply",
   "prompt": "Draft a short reply saying I will get to it this week.",
   "model": "gemini-3.7-flash",
-  "recordedAt": "2026-09-27T04:14:33+00:00",
-  "contextId": "6bc89055-c6c3-435b-bd53-bf2ca546bf53",
+  "recordedAt": "2026-09-27T10:06:58+00:00",
+  "contextId": "4bc37258-21f8-49e4-82fe-2a59a84b0c99",
   "chainedFrom": "beat-2-thread-detail",
   "turns": [
     {
-      "taskId": "21039f99-3408-4d8f-ab7e-cc3cfa92f759",
+      "taskId": "b94b53d9-94a2-45a0-91fc-a6d5bf300792",
       "kind": "utterance",
       "prompt": "Draft a short reply saying I will get to it this week.",
       "action": null,
       "batches": [
         {
-          "offsetMs": 5746,
+          "offsetMs": 36053,
           "messages": [
             {
               "paintMeta": {
-                "surfaceId": "draft-1a06f2abedf045ce",
+                "surfaceId": "draft-19829cbece7facf1",
                 "title": "Save reply draft?",
                 "kind": "question"
               }
@@ -30,12 +30,12 @@
           ]
         },
         {
-          "offsetMs": 6222,
+          "offsetMs": 36585,
           "messages": [
             {
               "version": "v0.9",
               "createSurface": {
-                "surfaceId": "draft-1a06f2abedf045ce",
+                "surfaceId": "draft-19829cbece7facf1",
                 "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/gmail/gmail-catalog/catalogs/v0.9.1/catalog.json",
                 "sendDataModel": true
               }
@@ -44,14 +44,15 @@
           "texts": []
         },
         {
-          "offsetMs": 6729,
+          "offsetMs": 37144,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "draft-1a06f2abedf045ce",
+                "surfaceId": "draft-19829cbece7facf1",
                 "value": {
-                  "to": "elin.tanaka@example.com"
+                  "to": "Mei Silva, Idris Haddad, Alex Bergman",
+                  "subject": "Re: Notes ahead of the design review: agenda surface"
                 }
               }
             }
@@ -59,32 +60,16 @@
           "texts": []
         },
         {
-          "offsetMs": 6897,
+          "offsetMs": 37332,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "draft-1a06f2abedf045ce",
-                "value": {
-                  "subject": "Re: estimate review thread status agenda confirm summ",
-                  "body": "I will get to it this week."
-                }
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 7073,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateDataModel": {
-                "surfaceId": "draft-1a06f2abedf045ce",
+                "surfaceId": "draft-19829cbece7facf1",
                 "path": "/",
                 "value": {
-                  "to": "elin.tanaka@example.com",
-                  "subject": "Re: estimate review thread status agenda confirm summ",
+                  "to": "Mei Silva, Idris Haddad, Alex Bergman",
+                  "subject": "Re: Notes ahead of the design review: agenda surface",
                   "body": "I will get to it this week."
                 }
               }
@@ -93,7 +78,7 @@
           "texts": []
         },
         {
-          "offsetMs": 7440,
+          "offsetMs": 37852,
           "messages": [
             {
               "version": "v0.9",
@@ -114,14 +99,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "draft-1a06f2abedf045ce"
+                "surfaceId": "draft-19829cbece7facf1"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 7795,
+          "offsetMs": 38214,
           "messages": [
             {
               "version": "v0.9",
@@ -162,14 +147,116 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "draft-1a06f2abedf045ce"
+                "surfaceId": "draft-19829cbece7facf1"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 8093,
+          "offsetMs": 38360,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "title-bar",
+                      "loading_fields",
+                      "loading_actions"
+                    ],
+                    "gap": "none"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none",
+                    "elevation": "level2"
+                  },
+                  {
+                    "id": "title-bar",
+                    "component": "Surface"
+                  },
+                  {
+                    "id": "loading_fields",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "draft-19829cbece7facf1"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 38539,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "title-bar",
+                      "loading_fields",
+                      "loading_actions"
+                    ],
+                    "gap": "none"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none",
+                    "elevation": "level2"
+                  },
+                  {
+                    "id": "title-bar",
+                    "component": "Surface",
+                    "child": "loading_heading",
+                    "container": "high",
+                    "shape": "none"
+                  },
+                  {
+                    "id": "loading_fields",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_heading",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "draft-19829cbece7facf1"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 38714,
           "messages": [
             {
               "version": "v0.9",
@@ -218,70 +305,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "draft-1a06f2abedf045ce"
+                "surfaceId": "draft-19829cbece7facf1"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 8278,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "body",
-                    "component": "Stack",
-                    "children": [
-                      "title-bar",
-                      "loading_fields",
-                      "loading_actions"
-                    ],
-                    "gap": "none"
-                  },
-                  {
-                    "id": "heading",
-                    "component": "Text",
-                    "text": "Save this reply?"
-                  },
-                  {
-                    "id": "root",
-                    "component": "Surface",
-                    "child": "body",
-                    "container": "lowest",
-                    "shape": "large",
-                    "padding": "none",
-                    "elevation": "level2"
-                  },
-                  {
-                    "id": "title-bar",
-                    "component": "Surface",
-                    "child": "heading",
-                    "container": "high",
-                    "shape": "none",
-                    "padding": "medium"
-                  },
-                  {
-                    "id": "loading_fields",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_actions",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "draft-1a06f2abedf045ce"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 8453,
+          "offsetMs": 38905,
           "messages": [
             {
               "version": "v0.9",
@@ -331,14 +362,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "draft-1a06f2abedf045ce"
+                "surfaceId": "draft-19829cbece7facf1"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 8940,
+          "offsetMs": 39449,
           "messages": [
             {
               "version": "v0.9",
@@ -358,7 +389,7 @@
                     "id": "fields",
                     "component": "Stack",
                     "children": [
-                      "to-field",
+                      "loading_to-field",
                       "loading_subject-field",
                       "loading_body-field"
                     ],
@@ -389,11 +420,12 @@
                     "padding": "medium"
                   },
                   {
-                    "id": "to-field",
-                    "component": "TextField"
+                    "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
                   },
                   {
-                    "id": "loading_actions",
+                    "id": "loading_to-field",
                     "component": "Row",
                     "children": []
                   },
@@ -408,14 +440,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "draft-1a06f2abedf045ce"
+                "surfaceId": "draft-19829cbece7facf1"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 9128,
+          "offsetMs": 39651,
           "messages": [
             {
               "version": "v0.9",
@@ -468,10 +500,7 @@
                   {
                     "id": "to-field",
                     "component": "TextField",
-                    "label": "To",
-                    "value": {
-                      "path": "/to"
-                    }
+                    "label": ""
                   },
                   {
                     "id": "loading_actions",
@@ -489,14 +518,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "draft-1a06f2abedf045ce"
+                "surfaceId": "draft-19829cbece7facf1"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 9303,
+          "offsetMs": 39804,
           "messages": [
             {
               "version": "v0.9",
@@ -571,14 +600,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "draft-1a06f2abedf045ce"
+                "surfaceId": "draft-19829cbece7facf1"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 9674,
+          "offsetMs": 40279,
           "messages": [
             {
               "version": "v0.9",
@@ -657,14 +686,103 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "draft-1a06f2abedf045ce"
+                "surfaceId": "draft-19829cbece7facf1"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 10012,
+          "offsetMs": 40444,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "title-bar",
+                      "fields",
+                      "loading_actions"
+                    ],
+                    "gap": "none"
+                  },
+                  {
+                    "id": "body-field",
+                    "component": "TextField",
+                    "label": "Message",
+                    "value": {
+                      "path": "/body"
+                    }
+                  },
+                  {
+                    "id": "fields",
+                    "component": "Stack",
+                    "children": [
+                      "to-field",
+                      "subject-field",
+                      "body-field"
+                    ],
+                    "gap": "none",
+                    "padding": "md"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": "Save this reply?",
+                    "variant": "titleSmall"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none",
+                    "elevation": "level2"
+                  },
+                  {
+                    "id": "subject-field",
+                    "component": "TextField",
+                    "label": "Subject",
+                    "value": {
+                      "path": "/subject"
+                    },
+                    "variant": "plain"
+                  },
+                  {
+                    "id": "title-bar",
+                    "component": "Surface",
+                    "child": "heading",
+                    "container": "high",
+                    "shape": "none",
+                    "padding": "medium"
+                  },
+                  {
+                    "id": "to-field",
+                    "component": "TextField",
+                    "label": "To",
+                    "value": {
+                      "path": "/to"
+                    },
+                    "variant": "plain"
+                  },
+                  {
+                    "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "draft-19829cbece7facf1"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 40632,
           "messages": [
             {
               "version": "v0.9",
@@ -748,14 +866,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "draft-1a06f2abedf045ce"
+                "surfaceId": "draft-19829cbece7facf1"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 10394,
+          "offsetMs": 40975,
           "messages": [
             {
               "version": "v0.9",
@@ -768,7 +886,8 @@
                       "loading_save",
                       "loading_cancel"
                     ],
-                    "direction": "horizontal"
+                    "direction": "horizontal",
+                    "gap": "sm"
                   },
                   {
                     "id": "body",
@@ -853,14 +972,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "draft-1a06f2abedf045ce"
+                "surfaceId": "draft-19829cbece7facf1"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 10545,
+          "offsetMs": 41173,
           "messages": [
             {
               "version": "v0.9",
@@ -960,14 +1079,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "draft-1a06f2abedf045ce"
+                "surfaceId": "draft-19829cbece7facf1"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 11183,
+          "offsetMs": 41741,
           "messages": [
             {
               "version": "v0.9",
@@ -1039,7 +1158,7 @@
                       "event": {
                         "name": "confirm-draft",
                         "context": {
-                          "threadId": "1a06f2abedf045ce"
+                          "threadId": "19829cbece7facf1"
                         }
                       }
                     }
@@ -1076,14 +1195,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "draft-1a06f2abedf045ce"
+                "surfaceId": "draft-19829cbece7facf1"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 11936,
+          "offsetMs": 42498,
           "messages": [
             {
               "version": "v0.9",
@@ -1129,7 +1248,7 @@
                       "event": {
                         "name": "cancel-draft",
                         "context": {
-                          "threadId": "1a06f2abedf045ce"
+                          "threadId": "19829cbece7facf1"
                         }
                       }
                     }
@@ -1169,7 +1288,7 @@
                       "event": {
                         "name": "confirm-draft",
                         "context": {
-                          "threadId": "1a06f2abedf045ce"
+                          "threadId": "19829cbece7facf1"
                         }
                       }
                     }
@@ -1201,7 +1320,7 @@
                     "variant": "plain"
                   }
                 ],
-                "surfaceId": "draft-1a06f2abedf045ce"
+                "surfaceId": "draft-19829cbece7facf1"
               }
             }
           ],
@@ -1209,7 +1328,7 @@
         }
       ],
       "outcome": "completed",
-      "durationMs": 12224
+      "durationMs": 42823
     }
   ]
 }

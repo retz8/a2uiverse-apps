@@ -2,30 +2,21 @@
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "draft-1a06f2abedf045ce",
+      "surfaceId": "draft-19829cbece7facf1",
       "value": {
-        "to": "elin.tanaka@example.com"
+        "to": "Mei Silva, Idris Haddad, Alex Bergman",
+        "subject": "Re: Notes ahead of the design review: agenda surface"
       }
     }
   },
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "draft-1a06f2abedf045ce",
-      "value": {
-        "subject": "Re: estimate review thread status agenda confirm summ",
-        "body": "I will get to it this week."
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "draft-1a06f2abedf045ce",
+      "surfaceId": "draft-19829cbece7facf1",
       "path": "/",
       "value": {
-        "to": "elin.tanaka@example.com",
-        "subject": "Re: estimate review thread status agenda confirm summ",
+        "to": "Mei Silva, Idris Haddad, Alex Bergman",
+        "subject": "Re: Notes ahead of the design review: agenda surface",
         "body": "I will get to it this week."
       }
     }
@@ -126,7 +117,7 @@
             "event": {
               "name": "confirm-draft",
               "context": {
-                "threadId": "1a06f2abedf045ce"
+                "threadId": "19829cbece7facf1"
               }
             }
           }
@@ -140,7 +131,7 @@
             "event": {
               "name": "cancel-draft",
               "context": {
-                "threadId": "1a06f2abedf045ce"
+                "threadId": "19829cbece7facf1"
               }
             }
           }

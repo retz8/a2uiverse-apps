@@ -7,8 +7,9 @@ toggling a label. That is what lets the three-agent composed screen be driven en
 no LLM call and no Gmail MCP quota, which is the difference between iterating on plan/fill/
 collapse in seconds and iterating on it in minutes against three live agents.
 
-The canned content is derived from a live MCP run with the pseudonymizer armed, not authored
-here — so it carries real payload shapes and no real mail. The playing machinery — fixture
+The canned content is derived from beats recorded against the stub, whose mail is written by
+hand in the MCP payloads' captured shapes (task 10.11) — so it carries real payload shapes and
+no real mail. The playing machinery — fixture
 load, surfaceId stamping, the visible fallback, fresh text surfaces — is the kit's.
 """
 

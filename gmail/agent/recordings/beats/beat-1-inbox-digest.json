@@ -4,23 +4,23 @@
   "title": "Inbox digest",
   "prompt": "What emails need my attention today, especially those waiting on a reply or unread? Provide a brief description of the thread and the time of the latest message, along with an identifier.",
   "model": "gemini-3.7-flash",
-  "recordedAt": "2026-09-27T04:14:33+00:00",
-  "contextId": "6bc89055-c6c3-435b-bd53-bf2ca546bf53",
+  "recordedAt": "2026-09-27T10:06:58+00:00",
+  "contextId": "4bc37258-21f8-49e4-82fe-2a59a84b0c99",
   "chainedFrom": null,
   "turns": [
     {
-      "taskId": "6da09d96-8581-48b5-8d2f-ebd5e6ad3081",
+      "taskId": "7b369cf8-90aa-45c7-9484-6d582ffd1870",
       "kind": "utterance",
       "prompt": "What emails need my attention today, especially those waiting on a reply or unread? Provide a brief description of the thread and the time of the latest message, along with an identifier.",
       "action": null,
       "batches": [
         {
-          "offsetMs": 14317,
+          "offsetMs": 9355,
           "messages": [
             {
               "paintMeta": {
-                "surfaceId": "unread-threads",
-                "title": "Unread emails"
+                "surfaceId": "needs-attention",
+                "title": "Needs attention"
               }
             }
           ],
@@ -29,12 +29,12 @@
           ]
         },
         {
-          "offsetMs": 14661,
+          "offsetMs": 9606,
           "messages": [
             {
               "version": "v0.9",
               "createSurface": {
-                "surfaceId": "unread-threads",
+                "surfaceId": "needs-attention",
                 "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/gmail/gmail-catalog/catalogs/v0.9.1/catalog.json",
                 "sendDataModel": true
               }
@@ -43,18 +43,18 @@
           "texts": []
         },
         {
-          "offsetMs": 15143,
+          "offsetMs": 10105,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "unread-threads",
+                "surfaceId": "needs-attention",
                 "value": {
                   "threads": [
                     {
-                      "id": "1a06ef027e683325",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "draft section summary reply agenda meeting pending notes pending estimat"
+                      "id": "19829cbece7facf1",
+                      "sender": "Mei Silva",
+                      "subject": "Re: Notes ahead of the design review: agenda surface"
                     }
                   ]
                 }
@@ -64,19 +64,19 @@
           "texts": []
         },
         {
-          "offsetMs": 15476,
+          "offsetMs": 10553,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "unread-threads",
+                "surfaceId": "needs-attention",
                 "value": {
                   "threads": [
                     {
-                      "id": "1a06ef027e683325",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
-                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu"
+                      "id": "19829cbece7facf1",
+                      "sender": "Mei Silva",
+                      "subject": "Re: Notes ahead of the design review: agenda surface",
+                      "snippet": "Will do. I'll bring the tokens and a side-by-side of the 24px and 32px gaps between the regions. One question for the room: when you go back inside an app, should the merged table keep its sort?"
                     }
                   ]
                 }
@@ -86,20 +86,20 @@
           "texts": []
         },
         {
-          "offsetMs": 15666,
+          "offsetMs": 10735,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "unread-threads",
+                "surfaceId": "needs-attention",
                 "value": {
                   "threads": [
                     {
-                      "id": "1a06ef027e683325",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
-                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
-                      "when": "2026-09-05 00:20 UTC"
+                      "id": "19829cbece7facf1",
+                      "sender": "Mei Silva",
+                      "subject": "Re: Notes ahead of the design review: agenda surface",
+                      "snippet": "Will do. I'll bring the tokens and a side-by-side of the 24px and 32px gaps between the regions. One question for the room: when you go back inside an app, should the merged table keep its sort?",
+                      "when": "2026-09-19 12:41 UTC"
                     }
                   ]
                 }
@@ -109,23 +109,24 @@
           "texts": []
         },
         {
-          "offsetMs": 15819,
+          "offsetMs": 10880,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "unread-threads",
+                "surfaceId": "needs-attention",
                 "value": {
                   "threads": [
                     {
-                      "id": "1a06ef027e683325",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
-                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
-                      "when": "2026-09-05 00:20 UTC"
+                      "id": "19829cbece7facf1",
+                      "sender": "Mei Silva",
+                      "subject": "Re: Notes ahead of the design review: agenda surface",
+                      "snippet": "Will do. I'll bring the tokens and a side-by-side of the 24px and 32px gaps between the regions. One question for the room: when you go back inside an app, should the merged table keep its sort?",
+                      "when": "2026-09-19 12:41 UTC"
                     },
                     {
-                      "id": "1a06dec28a4d6853"
+                      "id": "1956e7633ba626aa",
+                      "sender": "Alex Bergman"
                     }
                   ]
                 }
@@ -135,25 +136,25 @@
           "texts": []
         },
         {
-          "offsetMs": 15970,
+          "offsetMs": 11069,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "unread-threads",
+                "surfaceId": "needs-attention",
                 "value": {
                   "threads": [
                     {
-                      "id": "1a06ef027e683325",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
-                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
-                      "when": "2026-09-05 00:20 UTC"
+                      "id": "19829cbece7facf1",
+                      "sender": "Mei Silva",
+                      "subject": "Re: Notes ahead of the design review: agenda surface",
+                      "snippet": "Will do. I'll bring the tokens and a side-by-side of the 24px and 32px gaps between the regions. One question for the room: when you go back inside an app, should the merged table keep its sort?",
+                      "when": "2026-09-19 12:41 UTC"
                     },
                     {
-                      "id": "1a06dec28a4d6853",
-                      "sender": "nora.haddad@example.com",
-                      "subject": "revision schedule draft question review"
+                      "id": "1956e7633ba626aa",
+                      "sender": "Alex Bergman",
+                      "subject": "Could you review #8 before quarter planning?"
                     }
                   ]
                 }
@@ -163,26 +164,26 @@
           "texts": []
         },
         {
-          "offsetMs": 16337,
+          "offsetMs": 11390,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "unread-threads",
+                "surfaceId": "needs-attention",
                 "value": {
                   "threads": [
                     {
-                      "id": "1a06ef027e683325",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
-                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
-                      "when": "2026-09-05 00:20 UTC"
+                      "id": "19829cbece7facf1",
+                      "sender": "Mei Silva",
+                      "subject": "Re: Notes ahead of the design review: agenda surface",
+                      "snippet": "Will do. I'll bring the tokens and a side-by-side of the 24px and 32px gaps between the regions. One question for the room: when you go back inside an app, should the merged table keep its sort?",
+                      "when": "2026-09-19 12:41 UTC"
                     },
                     {
-                      "id": "1a06dec28a4d6853",
-                      "sender": "nora.haddad@example.com",
-                      "subject": "revision schedule draft question review",
-                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting"
+                      "id": "1956e7633ba626aa",
+                      "sender": "Alex Bergman",
+                      "subject": "Could you review #8 before quarter planning?",
+                      "snippet": "Hey, Could you take a look at #8 today? I'd like to show the effort split at quarter planning tomorrow at 10, and it would be good to have your review on it first. Mostly the part where the"
                     }
                   ]
                 }
@@ -192,27 +193,27 @@
           "texts": []
         },
         {
-          "offsetMs": 16520,
+          "offsetMs": 11558,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "unread-threads",
+                "surfaceId": "needs-attention",
                 "value": {
                   "threads": [
                     {
-                      "id": "1a06ef027e683325",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
-                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
-                      "when": "2026-09-05 00:20 UTC"
+                      "id": "19829cbece7facf1",
+                      "sender": "Mei Silva",
+                      "subject": "Re: Notes ahead of the design review: agenda surface",
+                      "snippet": "Will do. I'll bring the tokens and a side-by-side of the 24px and 32px gaps between the regions. One question for the room: when you go back inside an app, should the merged table keep its sort?",
+                      "when": "2026-09-19 12:41 UTC"
                     },
                     {
-                      "id": "1a06dec28a4d6853",
-                      "sender": "nora.haddad@example.com",
-                      "subject": "revision schedule draft question review",
-                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
-                      "when": "2026-09-04 19:36 UTC"
+                      "id": "1956e7633ba626aa",
+                      "sender": "Alex Bergman",
+                      "subject": "Could you review #8 before quarter planning?",
+                      "snippet": "Hey, Could you take a look at #8 today? I'd like to show the effort split at quarter planning tomorrow at 10, and it would be good to have your review on it first. Mostly the part where the",
+                      "when": "2026-09-19 11:30 UTC"
                     }
                   ]
                 }
@@ -222,31 +223,30 @@
           "texts": []
         },
         {
-          "offsetMs": 16708,
+          "offsetMs": 11691,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "unread-threads",
+                "surfaceId": "needs-attention",
                 "value": {
                   "threads": [
                     {
-                      "id": "1a06ef027e683325",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
-                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
-                      "when": "2026-09-05 00:20 UTC"
+                      "id": "19829cbece7facf1",
+                      "sender": "Mei Silva",
+                      "subject": "Re: Notes ahead of the design review: agenda surface",
+                      "snippet": "Will do. I'll bring the tokens and a side-by-side of the 24px and 32px gaps between the regions. One question for the room: when you go back inside an app, should the merged table keep its sort?",
+                      "when": "2026-09-19 12:41 UTC"
                     },
                     {
-                      "id": "1a06dec28a4d6853",
-                      "sender": "nora.haddad@example.com",
-                      "subject": "revision schedule draft question review",
-                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
-                      "when": "2026-09-04 19:36 UTC"
+                      "id": "1956e7633ba626aa",
+                      "sender": "Alex Bergman",
+                      "subject": "Could you review #8 before quarter planning?",
+                      "snippet": "Hey, Could you take a look at #8 today? I'd like to show the effort split at quarter planning tomorrow at 10, and it would be good to have your review on it first. Mostly the part where the",
+                      "when": "2026-09-19 11:30 UTC"
                     },
                     {
-                      "id": "1a06d38b96f68239",
-                      "sender": "yuki.nakamura@example.com"
+                      "id": "19fd40c07b154538"
                     }
                   ]
                 }
@@ -256,32 +256,32 @@
           "texts": []
         },
         {
-          "offsetMs": 16882,
+          "offsetMs": 11892,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "unread-threads",
+                "surfaceId": "needs-attention",
                 "value": {
                   "threads": [
                     {
-                      "id": "1a06ef027e683325",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
-                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
-                      "when": "2026-09-05 00:20 UTC"
+                      "id": "19829cbece7facf1",
+                      "sender": "Mei Silva",
+                      "subject": "Re: Notes ahead of the design review: agenda surface",
+                      "snippet": "Will do. I'll bring the tokens and a side-by-side of the 24px and 32px gaps between the regions. One question for the room: when you go back inside an app, should the merged table keep its sort?",
+                      "when": "2026-09-19 12:41 UTC"
                     },
                     {
-                      "id": "1a06dec28a4d6853",
-                      "sender": "nora.haddad@example.com",
-                      "subject": "revision schedule draft question review",
-                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
-                      "when": "2026-09-04 19:36 UTC"
+                      "id": "1956e7633ba626aa",
+                      "sender": "Alex Bergman",
+                      "subject": "Could you review #8 before quarter planning?",
+                      "snippet": "Hey, Could you take a look at #8 today? I'd like to show the effort split at quarter planning tomorrow at 10, and it would be good to have your review on it first. Mostly the part where the",
+                      "when": "2026-09-19 11:30 UTC"
                     },
                     {
-                      "id": "1a06d38b96f68239",
-                      "sender": "yuki.nakamura@example.com",
-                      "subject": "agenda reply estimate"
+                      "id": "19fd40c07b154538",
+                      "sender": "Mei Silva",
+                      "subject": "CI failing on synthesizer-effort-apart-from-planner"
                     }
                   ]
                 }
@@ -291,33 +291,33 @@
           "texts": []
         },
         {
-          "offsetMs": 17057,
+          "offsetMs": 12424,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "unread-threads",
+                "surfaceId": "needs-attention",
                 "value": {
                   "threads": [
                     {
-                      "id": "1a06ef027e683325",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
-                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
-                      "when": "2026-09-05 00:20 UTC"
+                      "id": "19829cbece7facf1",
+                      "sender": "Mei Silva",
+                      "subject": "Re: Notes ahead of the design review: agenda surface",
+                      "snippet": "Will do. I'll bring the tokens and a side-by-side of the 24px and 32px gaps between the regions. One question for the room: when you go back inside an app, should the merged table keep its sort?",
+                      "when": "2026-09-19 12:41 UTC"
                     },
                     {
-                      "id": "1a06dec28a4d6853",
-                      "sender": "nora.haddad@example.com",
-                      "subject": "revision schedule draft question review",
-                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
-                      "when": "2026-09-04 19:36 UTC"
+                      "id": "1956e7633ba626aa",
+                      "sender": "Alex Bergman",
+                      "subject": "Could you review #8 before quarter planning?",
+                      "snippet": "Hey, Could you take a look at #8 today? I'd like to show the effort split at quarter planning tomorrow at 10, and it would be good to have your review on it first. Mostly the part where the",
+                      "when": "2026-09-19 11:30 UTC"
                     },
                     {
-                      "id": "1a06d38b96f68239",
-                      "sender": "yuki.nakamura@example.com",
-                      "subject": "agenda reply estimate",
-                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta"
+                      "id": "19fd40c07b154538",
+                      "sender": "Mei Silva",
+                      "subject": "CI failing on synthesizer-effort-apart-from-planner",
+                      "snippet": "Morning! The latest run on synthesizer-effort-apart-from-planner failed in lint-format. Prettier flagged apps/orchestrator/src/config.ts, so it looks like formatting, not the tests. Want me to push"
                     }
                   ]
                 }
@@ -327,75 +327,34 @@
           "texts": []
         },
         {
-          "offsetMs": 17207,
+          "offsetMs": 12588,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "unread-threads",
+                "surfaceId": "needs-attention",
                 "value": {
                   "threads": [
                     {
-                      "id": "1a06ef027e683325",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
-                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
-                      "when": "2026-09-05 00:20 UTC"
+                      "id": "19829cbece7facf1",
+                      "sender": "Mei Silva",
+                      "subject": "Re: Notes ahead of the design review: agenda surface",
+                      "snippet": "Will do. I'll bring the tokens and a side-by-side of the 24px and 32px gaps between the regions. One question for the room: when you go back inside an app, should the merged table keep its sort?",
+                      "when": "2026-09-19 12:41 UTC"
                     },
                     {
-                      "id": "1a06dec28a4d6853",
-                      "sender": "nora.haddad@example.com",
-                      "subject": "revision schedule draft question review",
-                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
-                      "when": "2026-09-04 19:36 UTC"
+                      "id": "1956e7633ba626aa",
+                      "sender": "Alex Bergman",
+                      "subject": "Could you review #8 before quarter planning?",
+                      "snippet": "Hey, Could you take a look at #8 today? I'd like to show the effort split at quarter planning tomorrow at 10, and it would be good to have your review on it first. Mostly the part where the",
+                      "when": "2026-09-19 11:30 UTC"
                     },
                     {
-                      "id": "1a06d38b96f68239",
-                      "sender": "yuki.nakamura@example.com",
-                      "subject": "agenda reply estimate",
-                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
-                      "when": "2026-09-04 16:20 UTC"
-                    },
-                    {}
-                  ]
-                }
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 17361,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateDataModel": {
-                "surfaceId": "unread-threads",
-                "value": {
-                  "threads": [
-                    {
-                      "id": "1a06ef027e683325",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
-                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
-                      "when": "2026-09-05 00:20 UTC"
-                    },
-                    {
-                      "id": "1a06dec28a4d6853",
-                      "sender": "nora.haddad@example.com",
-                      "subject": "revision schedule draft question review",
-                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
-                      "when": "2026-09-04 19:36 UTC"
-                    },
-                    {
-                      "id": "1a06d38b96f68239",
-                      "sender": "yuki.nakamura@example.com",
-                      "subject": "agenda reply estimate",
-                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
-                      "when": "2026-09-04 16:20 UTC"
-                    },
-                    {
-                      "id": "1a06d1e51d11c891"
+                      "id": "19fd40c07b154538",
+                      "sender": "Mei Silva",
+                      "subject": "CI failing on synthesizer-effort-apart-from-planner",
+                      "snippet": "Morning! The latest run on synthesizer-effort-apart-from-planner failed in lint-format. Prettier flagged apps/orchestrator/src/config.ts, so it looks like formatting, not the tests. Want me to push",
+                      "when": "2026-09-19 11:05 UTC"
                     }
                   ]
                 }
@@ -405,38 +364,38 @@
           "texts": []
         },
         {
-          "offsetMs": 17558,
+          "offsetMs": 12790,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "unread-threads",
+                "surfaceId": "needs-attention",
                 "value": {
                   "threads": [
                     {
-                      "id": "1a06ef027e683325",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
-                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
-                      "when": "2026-09-05 00:20 UTC"
+                      "id": "19829cbece7facf1",
+                      "sender": "Mei Silva",
+                      "subject": "Re: Notes ahead of the design review: agenda surface",
+                      "snippet": "Will do. I'll bring the tokens and a side-by-side of the 24px and 32px gaps between the regions. One question for the room: when you go back inside an app, should the merged table keep its sort?",
+                      "when": "2026-09-19 12:41 UTC"
                     },
                     {
-                      "id": "1a06dec28a4d6853",
-                      "sender": "nora.haddad@example.com",
-                      "subject": "revision schedule draft question review",
-                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
-                      "when": "2026-09-04 19:36 UTC"
+                      "id": "1956e7633ba626aa",
+                      "sender": "Alex Bergman",
+                      "subject": "Could you review #8 before quarter planning?",
+                      "snippet": "Hey, Could you take a look at #8 today? I'd like to show the effort split at quarter planning tomorrow at 10, and it would be good to have your review on it first. Mostly the part where the",
+                      "when": "2026-09-19 11:30 UTC"
                     },
                     {
-                      "id": "1a06d38b96f68239",
-                      "sender": "yuki.nakamura@example.com",
-                      "subject": "agenda reply estimate",
-                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
-                      "when": "2026-09-04 16:20 UTC"
+                      "id": "19fd40c07b154538",
+                      "sender": "Mei Silva",
+                      "subject": "CI failing on synthesizer-effort-apart-from-planner",
+                      "snippet": "Morning! The latest run on synthesizer-effort-apart-from-planner failed in lint-format. Prettier flagged apps/orchestrator/src/config.ts, so it looks like formatting, not the tests. Want me to push",
+                      "when": "2026-09-19 11:05 UTC"
                     },
                     {
-                      "id": "1a06d1e51d11c891",
-                      "sender": "clara.vasquez@example.com"
+                      "id": "19b6cefab66744cf",
+                      "sender": "Clara Moreau"
                     }
                   ]
                 }
@@ -446,39 +405,39 @@
           "texts": []
         },
         {
-          "offsetMs": 17709,
+          "offsetMs": 12954,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "unread-threads",
+                "surfaceId": "needs-attention",
                 "value": {
                   "threads": [
                     {
-                      "id": "1a06ef027e683325",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
-                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
-                      "when": "2026-09-05 00:20 UTC"
+                      "id": "19829cbece7facf1",
+                      "sender": "Mei Silva",
+                      "subject": "Re: Notes ahead of the design review: agenda surface",
+                      "snippet": "Will do. I'll bring the tokens and a side-by-side of the 24px and 32px gaps between the regions. One question for the room: when you go back inside an app, should the merged table keep its sort?",
+                      "when": "2026-09-19 12:41 UTC"
                     },
                     {
-                      "id": "1a06dec28a4d6853",
-                      "sender": "nora.haddad@example.com",
-                      "subject": "revision schedule draft question review",
-                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
-                      "when": "2026-09-04 19:36 UTC"
+                      "id": "1956e7633ba626aa",
+                      "sender": "Alex Bergman",
+                      "subject": "Could you review #8 before quarter planning?",
+                      "snippet": "Hey, Could you take a look at #8 today? I'd like to show the effort split at quarter planning tomorrow at 10, and it would be good to have your review on it first. Mostly the part where the",
+                      "when": "2026-09-19 11:30 UTC"
                     },
                     {
-                      "id": "1a06d38b96f68239",
-                      "sender": "yuki.nakamura@example.com",
-                      "subject": "agenda reply estimate",
-                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
-                      "when": "2026-09-04 16:20 UTC"
+                      "id": "19fd40c07b154538",
+                      "sender": "Mei Silva",
+                      "subject": "CI failing on synthesizer-effort-apart-from-planner",
+                      "snippet": "Morning! The latest run on synthesizer-effort-apart-from-planner failed in lint-format. Prettier flagged apps/orchestrator/src/config.ts, so it looks like formatting, not the tests. Want me to push",
+                      "when": "2026-09-19 11:05 UTC"
                     },
                     {
-                      "id": "1a06d1e51d11c891",
-                      "sender": "clara.vasquez@example.com",
-                      "subject": "timeline meeting meeting revie"
+                      "id": "19b6cefab66744cf",
+                      "sender": "Clara Moreau",
+                      "subject": "Numbers for the 11:30 budget sync"
                     }
                   ]
                 }
@@ -488,40 +447,40 @@
           "texts": []
         },
         {
-          "offsetMs": 17884,
+          "offsetMs": 13327,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "unread-threads",
+                "surfaceId": "needs-attention",
                 "value": {
                   "threads": [
                     {
-                      "id": "1a06ef027e683325",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
-                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
-                      "when": "2026-09-05 00:20 UTC"
+                      "id": "19829cbece7facf1",
+                      "sender": "Mei Silva",
+                      "subject": "Re: Notes ahead of the design review: agenda surface",
+                      "snippet": "Will do. I'll bring the tokens and a side-by-side of the 24px and 32px gaps between the regions. One question for the room: when you go back inside an app, should the merged table keep its sort?",
+                      "when": "2026-09-19 12:41 UTC"
                     },
                     {
-                      "id": "1a06dec28a4d6853",
-                      "sender": "nora.haddad@example.com",
-                      "subject": "revision schedule draft question review",
-                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
-                      "when": "2026-09-04 19:36 UTC"
+                      "id": "1956e7633ba626aa",
+                      "sender": "Alex Bergman",
+                      "subject": "Could you review #8 before quarter planning?",
+                      "snippet": "Hey, Could you take a look at #8 today? I'd like to show the effort split at quarter planning tomorrow at 10, and it would be good to have your review on it first. Mostly the part where the",
+                      "when": "2026-09-19 11:30 UTC"
                     },
                     {
-                      "id": "1a06d38b96f68239",
-                      "sender": "yuki.nakamura@example.com",
-                      "subject": "agenda reply estimate",
-                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
-                      "when": "2026-09-04 16:20 UTC"
+                      "id": "19fd40c07b154538",
+                      "sender": "Mei Silva",
+                      "subject": "CI failing on synthesizer-effort-apart-from-planner",
+                      "snippet": "Morning! The latest run on synthesizer-effort-apart-from-planner failed in lint-format. Prettier flagged apps/orchestrator/src/config.ts, so it looks like formatting, not the tests. Want me to push",
+                      "when": "2026-09-19 11:05 UTC"
                     },
                     {
-                      "id": "1a06d1e51d11c891",
-                      "sender": "clara.vasquez@example.com",
-                      "subject": "timeline meeting meeting revie",
-                      "snippet": "agenda follow question follow pending pending pending meeting timeline follow meeting pending update follow notes reply status proposal confirm agenda meeting notes summary summary status schedule atta"
+                      "id": "19b6cefab66744cf",
+                      "sender": "Clara Moreau",
+                      "subject": "Numbers for the 11:30 budget sync",
+                      "snippet": "Hi, Ahead of our 11:30, I've put the Q4 numbers in the budget sheet. Everything is in except the model spend. Could you bring an estimate for October, even a rough one? Thanks, Clara"
                     }
                   ]
                 }
@@ -531,41 +490,41 @@
           "texts": []
         },
         {
-          "offsetMs": 18116,
+          "offsetMs": 13476,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "unread-threads",
+                "surfaceId": "needs-attention",
                 "value": {
                   "threads": [
                     {
-                      "id": "1a06ef027e683325",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
-                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
-                      "when": "2026-09-05 00:20 UTC"
+                      "id": "19829cbece7facf1",
+                      "sender": "Mei Silva",
+                      "subject": "Re: Notes ahead of the design review: agenda surface",
+                      "snippet": "Will do. I'll bring the tokens and a side-by-side of the 24px and 32px gaps between the regions. One question for the room: when you go back inside an app, should the merged table keep its sort?",
+                      "when": "2026-09-19 12:41 UTC"
                     },
                     {
-                      "id": "1a06dec28a4d6853",
-                      "sender": "nora.haddad@example.com",
-                      "subject": "revision schedule draft question review",
-                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
-                      "when": "2026-09-04 19:36 UTC"
+                      "id": "1956e7633ba626aa",
+                      "sender": "Alex Bergman",
+                      "subject": "Could you review #8 before quarter planning?",
+                      "snippet": "Hey, Could you take a look at #8 today? I'd like to show the effort split at quarter planning tomorrow at 10, and it would be good to have your review on it first. Mostly the part where the",
+                      "when": "2026-09-19 11:30 UTC"
                     },
                     {
-                      "id": "1a06d38b96f68239",
-                      "sender": "yuki.nakamura@example.com",
-                      "subject": "agenda reply estimate",
-                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
-                      "when": "2026-09-04 16:20 UTC"
+                      "id": "19fd40c07b154538",
+                      "sender": "Mei Silva",
+                      "subject": "CI failing on synthesizer-effort-apart-from-planner",
+                      "snippet": "Morning! The latest run on synthesizer-effort-apart-from-planner failed in lint-format. Prettier flagged apps/orchestrator/src/config.ts, so it looks like formatting, not the tests. Want me to push",
+                      "when": "2026-09-19 11:05 UTC"
                     },
                     {
-                      "id": "1a06d1e51d11c891",
-                      "sender": "clara.vasquez@example.com",
-                      "subject": "timeline meeting meeting revie",
-                      "snippet": "agenda follow question follow pending pending pending meeting timeline follow meeting pending update follow notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
-                      "when": "2026-09-04 15:51 UTC"
+                      "id": "19b6cefab66744cf",
+                      "sender": "Clara Moreau",
+                      "subject": "Numbers for the 11:30 budget sync",
+                      "snippet": "Hi, Ahead of our 11:30, I've put the Q4 numbers in the budget sheet. Everything is in except the model spend. Could you bring an estimate for October, even a rough one? Thanks, Clara",
+                      "when": "2026-09-19 10:48 UTC"
                     }
                   ]
                 }
@@ -575,1087 +534,42 @@
           "texts": []
         },
         {
-          "offsetMs": 18303,
+          "offsetMs": 13648,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "unread-threads",
-                "value": {
-                  "threads": [
-                    {
-                      "id": "1a06ef027e683325",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
-                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
-                      "when": "2026-09-05 00:20 UTC"
-                    },
-                    {
-                      "id": "1a06dec28a4d6853",
-                      "sender": "nora.haddad@example.com",
-                      "subject": "revision schedule draft question review",
-                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
-                      "when": "2026-09-04 19:36 UTC"
-                    },
-                    {
-                      "id": "1a06d38b96f68239",
-                      "sender": "yuki.nakamura@example.com",
-                      "subject": "agenda reply estimate",
-                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
-                      "when": "2026-09-04 16:20 UTC"
-                    },
-                    {
-                      "id": "1a06d1e51d11c891",
-                      "sender": "clara.vasquez@example.com",
-                      "subject": "timeline meeting meeting revie",
-                      "snippet": "agenda follow question follow pending pending pending meeting timeline follow meeting pending update follow notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
-                      "when": "2026-09-04 15:51 UTC"
-                    },
-                    {
-                      "id": "1a06cee261fd278a"
-                    }
-                  ]
-                }
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 18486,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateDataModel": {
-                "surfaceId": "unread-threads",
-                "value": {
-                  "threads": [
-                    {
-                      "id": "1a06ef027e683325",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
-                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
-                      "when": "2026-09-05 00:20 UTC"
-                    },
-                    {
-                      "id": "1a06dec28a4d6853",
-                      "sender": "nora.haddad@example.com",
-                      "subject": "revision schedule draft question review",
-                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
-                      "when": "2026-09-04 19:36 UTC"
-                    },
-                    {
-                      "id": "1a06d38b96f68239",
-                      "sender": "yuki.nakamura@example.com",
-                      "subject": "agenda reply estimate",
-                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
-                      "when": "2026-09-04 16:20 UTC"
-                    },
-                    {
-                      "id": "1a06d1e51d11c891",
-                      "sender": "clara.vasquez@example.com",
-                      "subject": "timeline meeting meeting revie",
-                      "snippet": "agenda follow question follow pending pending pending meeting timeline follow meeting pending update follow notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
-                      "when": "2026-09-04 15:51 UTC"
-                    },
-                    {
-                      "id": "1a06cee261fd278a",
-                      "sender": "nora.haddad@example.com"
-                    }
-                  ]
-                }
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 18668,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateDataModel": {
-                "surfaceId": "unread-threads",
-                "value": {
-                  "threads": [
-                    {
-                      "id": "1a06ef027e683325",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
-                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
-                      "when": "2026-09-05 00:20 UTC"
-                    },
-                    {
-                      "id": "1a06dec28a4d6853",
-                      "sender": "nora.haddad@example.com",
-                      "subject": "revision schedule draft question review",
-                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
-                      "when": "2026-09-04 19:36 UTC"
-                    },
-                    {
-                      "id": "1a06d38b96f68239",
-                      "sender": "yuki.nakamura@example.com",
-                      "subject": "agenda reply estimate",
-                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
-                      "when": "2026-09-04 16:20 UTC"
-                    },
-                    {
-                      "id": "1a06d1e51d11c891",
-                      "sender": "clara.vasquez@example.com",
-                      "subject": "timeline meeting meeting revie",
-                      "snippet": "agenda follow question follow pending pending pending meeting timeline follow meeting pending update follow notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
-                      "when": "2026-09-04 15:51 UTC"
-                    },
-                    {
-                      "id": "1a06cee261fd278a",
-                      "sender": "nora.haddad@example.com",
-                      "subject": "thread follow timeline attached schedule timeline update section confirm question attached schedu"
-                    }
-                  ]
-                }
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 18851,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateDataModel": {
-                "surfaceId": "unread-threads",
-                "value": {
-                  "threads": [
-                    {
-                      "id": "1a06ef027e683325",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
-                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
-                      "when": "2026-09-05 00:20 UTC"
-                    },
-                    {
-                      "id": "1a06dec28a4d6853",
-                      "sender": "nora.haddad@example.com",
-                      "subject": "revision schedule draft question review",
-                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
-                      "when": "2026-09-04 19:36 UTC"
-                    },
-                    {
-                      "id": "1a06d38b96f68239",
-                      "sender": "yuki.nakamura@example.com",
-                      "subject": "agenda reply estimate",
-                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
-                      "when": "2026-09-04 16:20 UTC"
-                    },
-                    {
-                      "id": "1a06d1e51d11c891",
-                      "sender": "clara.vasquez@example.com",
-                      "subject": "timeline meeting meeting revie",
-                      "snippet": "agenda follow question follow pending pending pending meeting timeline follow meeting pending update follow notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
-                      "when": "2026-09-04 15:51 UTC"
-                    },
-                    {
-                      "id": "1a06cee261fd278a",
-                      "sender": "nora.haddad@example.com",
-                      "subject": "thread follow timeline attached schedule timeline update section confirm question attached schedu",
-                      "snippet": "summary reply timeline update reply feedback draft thread thread summary schedule meeting section reply confirm question agenda follow status meeting status proposal timeline reply thread question sect"
-                    }
-                  ]
-                }
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 19008,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateDataModel": {
-                "surfaceId": "unread-threads",
-                "value": {
-                  "threads": [
-                    {
-                      "id": "1a06ef027e683325",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
-                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
-                      "when": "2026-09-05 00:20 UTC"
-                    },
-                    {
-                      "id": "1a06dec28a4d6853",
-                      "sender": "nora.haddad@example.com",
-                      "subject": "revision schedule draft question review",
-                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
-                      "when": "2026-09-04 19:36 UTC"
-                    },
-                    {
-                      "id": "1a06d38b96f68239",
-                      "sender": "yuki.nakamura@example.com",
-                      "subject": "agenda reply estimate",
-                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
-                      "when": "2026-09-04 16:20 UTC"
-                    },
-                    {
-                      "id": "1a06d1e51d11c891",
-                      "sender": "clara.vasquez@example.com",
-                      "subject": "timeline meeting meeting revie",
-                      "snippet": "agenda follow question follow pending pending pending meeting timeline follow meeting pending update follow notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
-                      "when": "2026-09-04 15:51 UTC"
-                    },
-                    {
-                      "id": "1a06cee261fd278a",
-                      "sender": "nora.haddad@example.com",
-                      "subject": "thread follow timeline attached schedule timeline update section confirm question attached schedu",
-                      "snippet": "summary reply timeline update reply feedback draft thread thread summary schedule meeting section reply confirm question agenda follow status meeting status proposal timeline reply thread question sect",
-                      "when": "2026-09-04 14:57 UTC"
-                    }
-                  ]
-                }
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 19182,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateDataModel": {
-                "surfaceId": "unread-threads",
-                "value": {
-                  "threads": [
-                    {
-                      "id": "1a06ef027e683325",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
-                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
-                      "when": "2026-09-05 00:20 UTC"
-                    },
-                    {
-                      "id": "1a06dec28a4d6853",
-                      "sender": "nora.haddad@example.com",
-                      "subject": "revision schedule draft question review",
-                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
-                      "when": "2026-09-04 19:36 UTC"
-                    },
-                    {
-                      "id": "1a06d38b96f68239",
-                      "sender": "yuki.nakamura@example.com",
-                      "subject": "agenda reply estimate",
-                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
-                      "when": "2026-09-04 16:20 UTC"
-                    },
-                    {
-                      "id": "1a06d1e51d11c891",
-                      "sender": "clara.vasquez@example.com",
-                      "subject": "timeline meeting meeting revie",
-                      "snippet": "agenda follow question follow pending pending pending meeting timeline follow meeting pending update follow notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
-                      "when": "2026-09-04 15:51 UTC"
-                    },
-                    {
-                      "id": "1a06cee261fd278a",
-                      "sender": "nora.haddad@example.com",
-                      "subject": "thread follow timeline attached schedule timeline update section confirm question attached schedu",
-                      "snippet": "summary reply timeline update reply feedback draft thread thread summary schedule meeting section reply confirm question agenda follow status meeting status proposal timeline reply thread question sect",
-                      "when": "2026-09-04 14:57 UTC"
-                    },
-                    {
-                      "id": "1a06c8d16ea71568"
-                    }
-                  ]
-                }
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 19404,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateDataModel": {
-                "surfaceId": "unread-threads",
-                "value": {
-                  "threads": [
-                    {
-                      "id": "1a06ef027e683325",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
-                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
-                      "when": "2026-09-05 00:20 UTC"
-                    },
-                    {
-                      "id": "1a06dec28a4d6853",
-                      "sender": "nora.haddad@example.com",
-                      "subject": "revision schedule draft question review",
-                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
-                      "when": "2026-09-04 19:36 UTC"
-                    },
-                    {
-                      "id": "1a06d38b96f68239",
-                      "sender": "yuki.nakamura@example.com",
-                      "subject": "agenda reply estimate",
-                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
-                      "when": "2026-09-04 16:20 UTC"
-                    },
-                    {
-                      "id": "1a06d1e51d11c891",
-                      "sender": "clara.vasquez@example.com",
-                      "subject": "timeline meeting meeting revie",
-                      "snippet": "agenda follow question follow pending pending pending meeting timeline follow meeting pending update follow notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
-                      "when": "2026-09-04 15:51 UTC"
-                    },
-                    {
-                      "id": "1a06cee261fd278a",
-                      "sender": "nora.haddad@example.com",
-                      "subject": "thread follow timeline attached schedule timeline update section confirm question attached schedu",
-                      "snippet": "summary reply timeline update reply feedback draft thread thread summary schedule meeting section reply confirm question agenda follow status meeting status proposal timeline reply thread question sect",
-                      "when": "2026-09-04 14:57 UTC"
-                    },
-                    {
-                      "id": "1a06c8d16ea71568",
-                      "sender": "clara.ferreira@example.com",
-                      "subject": "follow reply attached update confirm confirm sche"
-                    }
-                  ]
-                }
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 19761,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateDataModel": {
-                "surfaceId": "unread-threads",
-                "value": {
-                  "threads": [
-                    {
-                      "id": "1a06ef027e683325",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
-                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
-                      "when": "2026-09-05 00:20 UTC"
-                    },
-                    {
-                      "id": "1a06dec28a4d6853",
-                      "sender": "nora.haddad@example.com",
-                      "subject": "revision schedule draft question review",
-                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
-                      "when": "2026-09-04 19:36 UTC"
-                    },
-                    {
-                      "id": "1a06d38b96f68239",
-                      "sender": "yuki.nakamura@example.com",
-                      "subject": "agenda reply estimate",
-                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
-                      "when": "2026-09-04 16:20 UTC"
-                    },
-                    {
-                      "id": "1a06d1e51d11c891",
-                      "sender": "clara.vasquez@example.com",
-                      "subject": "timeline meeting meeting revie",
-                      "snippet": "agenda follow question follow pending pending pending meeting timeline follow meeting pending update follow notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
-                      "when": "2026-09-04 15:51 UTC"
-                    },
-                    {
-                      "id": "1a06cee261fd278a",
-                      "sender": "nora.haddad@example.com",
-                      "subject": "thread follow timeline attached schedule timeline update section confirm question attached schedu",
-                      "snippet": "summary reply timeline update reply feedback draft thread thread summary schedule meeting section reply confirm question agenda follow status meeting status proposal timeline reply thread question sect",
-                      "when": "2026-09-04 14:57 UTC"
-                    },
-                    {
-                      "id": "1a06c8d16ea71568",
-                      "sender": "clara.ferreira@example.com",
-                      "subject": "follow reply attached update confirm confirm sche",
-                      "snippet": "update notes draft attached summary revision summary attached agenda thread follow summary agenda section update estimate timeline timeline status feedback agenda confirm summary notes follow section",
-                      "when": "2026-09-04 13:11 UTC"
-                    }
-                  ]
-                }
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 20109,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateDataModel": {
-                "surfaceId": "unread-threads",
-                "value": {
-                  "threads": [
-                    {
-                      "id": "1a06ef027e683325",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
-                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
-                      "when": "2026-09-05 00:20 UTC"
-                    },
-                    {
-                      "id": "1a06dec28a4d6853",
-                      "sender": "nora.haddad@example.com",
-                      "subject": "revision schedule draft question review",
-                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
-                      "when": "2026-09-04 19:36 UTC"
-                    },
-                    {
-                      "id": "1a06d38b96f68239",
-                      "sender": "yuki.nakamura@example.com",
-                      "subject": "agenda reply estimate",
-                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
-                      "when": "2026-09-04 16:20 UTC"
-                    },
-                    {
-                      "id": "1a06d1e51d11c891",
-                      "sender": "clara.vasquez@example.com",
-                      "subject": "timeline meeting meeting revie",
-                      "snippet": "agenda follow question follow pending pending pending meeting timeline follow meeting pending update follow notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
-                      "when": "2026-09-04 15:51 UTC"
-                    },
-                    {
-                      "id": "1a06cee261fd278a",
-                      "sender": "nora.haddad@example.com",
-                      "subject": "thread follow timeline attached schedule timeline update section confirm question attached schedu",
-                      "snippet": "summary reply timeline update reply feedback draft thread thread summary schedule meeting section reply confirm question agenda follow status meeting status proposal timeline reply thread question sect",
-                      "when": "2026-09-04 14:57 UTC"
-                    },
-                    {
-                      "id": "1a06c8d16ea71568",
-                      "sender": "clara.ferreira@example.com",
-                      "subject": "follow reply attached update confirm confirm sche",
-                      "snippet": "update notes draft attached summary revision summary attached agenda thread follow summary agenda section update estimate timeline timeline status feedback agenda confirm summary notes follow section",
-                      "when": "2026-09-04 13:11 UTC"
-                    },
-                    {
-                      "id": "1a06a9c1934e9e83",
-                      "sender": "priya.nakamura@example.com"
-                    }
-                  ]
-                }
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 20285,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateDataModel": {
-                "surfaceId": "unread-threads",
-                "value": {
-                  "threads": [
-                    {
-                      "id": "1a06ef027e683325",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
-                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
-                      "when": "2026-09-05 00:20 UTC"
-                    },
-                    {
-                      "id": "1a06dec28a4d6853",
-                      "sender": "nora.haddad@example.com",
-                      "subject": "revision schedule draft question review",
-                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
-                      "when": "2026-09-04 19:36 UTC"
-                    },
-                    {
-                      "id": "1a06d38b96f68239",
-                      "sender": "yuki.nakamura@example.com",
-                      "subject": "agenda reply estimate",
-                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
-                      "when": "2026-09-04 16:20 UTC"
-                    },
-                    {
-                      "id": "1a06d1e51d11c891",
-                      "sender": "clara.vasquez@example.com",
-                      "subject": "timeline meeting meeting revie",
-                      "snippet": "agenda follow question follow pending pending pending meeting timeline follow meeting pending update follow notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
-                      "when": "2026-09-04 15:51 UTC"
-                    },
-                    {
-                      "id": "1a06cee261fd278a",
-                      "sender": "nora.haddad@example.com",
-                      "subject": "thread follow timeline attached schedule timeline update section confirm question attached schedu",
-                      "snippet": "summary reply timeline update reply feedback draft thread thread summary schedule meeting section reply confirm question agenda follow status meeting status proposal timeline reply thread question sect",
-                      "when": "2026-09-04 14:57 UTC"
-                    },
-                    {
-                      "id": "1a06c8d16ea71568",
-                      "sender": "clara.ferreira@example.com",
-                      "subject": "follow reply attached update confirm confirm sche",
-                      "snippet": "update notes draft attached summary revision summary attached agenda thread follow summary agenda section update estimate timeline timeline status feedback agenda confirm summary notes follow section",
-                      "when": "2026-09-04 13:11 UTC"
-                    },
-                    {
-                      "id": "1a06a9c1934e9e83",
-                      "sender": "priya.nakamura@example.com",
-                      "subject": "feedback reply summary notes threa"
-                    }
-                  ]
-                }
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 20450,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateDataModel": {
-                "surfaceId": "unread-threads",
-                "value": {
-                  "threads": [
-                    {
-                      "id": "1a06ef027e683325",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
-                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
-                      "when": "2026-09-05 00:20 UTC"
-                    },
-                    {
-                      "id": "1a06dec28a4d6853",
-                      "sender": "nora.haddad@example.com",
-                      "subject": "revision schedule draft question review",
-                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
-                      "when": "2026-09-04 19:36 UTC"
-                    },
-                    {
-                      "id": "1a06d38b96f68239",
-                      "sender": "yuki.nakamura@example.com",
-                      "subject": "agenda reply estimate",
-                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
-                      "when": "2026-09-04 16:20 UTC"
-                    },
-                    {
-                      "id": "1a06d1e51d11c891",
-                      "sender": "clara.vasquez@example.com",
-                      "subject": "timeline meeting meeting revie",
-                      "snippet": "agenda follow question follow pending pending pending meeting timeline follow meeting pending update follow notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
-                      "when": "2026-09-04 15:51 UTC"
-                    },
-                    {
-                      "id": "1a06cee261fd278a",
-                      "sender": "nora.haddad@example.com",
-                      "subject": "thread follow timeline attached schedule timeline update section confirm question attached schedu",
-                      "snippet": "summary reply timeline update reply feedback draft thread thread summary schedule meeting section reply confirm question agenda follow status meeting status proposal timeline reply thread question sect",
-                      "when": "2026-09-04 14:57 UTC"
-                    },
-                    {
-                      "id": "1a06c8d16ea71568",
-                      "sender": "clara.ferreira@example.com",
-                      "subject": "follow reply attached update confirm confirm sche",
-                      "snippet": "update notes draft attached summary revision summary attached agenda thread follow summary agenda section update estimate timeline timeline status feedback agenda confirm summary notes follow section",
-                      "when": "2026-09-04 13:11 UTC"
-                    },
-                    {
-                      "id": "1a06a9c1934e9e83",
-                      "sender": "priya.nakamura@example.com",
-                      "subject": "feedback reply summary notes threa",
-                      "snippet": "notes thread timeline summary status update confirm review schedule notes meeting estimate attached update update update status estimate status reply estimate notes schedule section confirm notes propo"
-                    }
-                  ]
-                }
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 20628,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateDataModel": {
-                "surfaceId": "unread-threads",
-                "value": {
-                  "threads": [
-                    {
-                      "id": "1a06ef027e683325",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
-                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
-                      "when": "2026-09-05 00:20 UTC"
-                    },
-                    {
-                      "id": "1a06dec28a4d6853",
-                      "sender": "nora.haddad@example.com",
-                      "subject": "revision schedule draft question review",
-                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
-                      "when": "2026-09-04 19:36 UTC"
-                    },
-                    {
-                      "id": "1a06d38b96f68239",
-                      "sender": "yuki.nakamura@example.com",
-                      "subject": "agenda reply estimate",
-                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
-                      "when": "2026-09-04 16:20 UTC"
-                    },
-                    {
-                      "id": "1a06d1e51d11c891",
-                      "sender": "clara.vasquez@example.com",
-                      "subject": "timeline meeting meeting revie",
-                      "snippet": "agenda follow question follow pending pending pending meeting timeline follow meeting pending update follow notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
-                      "when": "2026-09-04 15:51 UTC"
-                    },
-                    {
-                      "id": "1a06cee261fd278a",
-                      "sender": "nora.haddad@example.com",
-                      "subject": "thread follow timeline attached schedule timeline update section confirm question attached schedu",
-                      "snippet": "summary reply timeline update reply feedback draft thread thread summary schedule meeting section reply confirm question agenda follow status meeting status proposal timeline reply thread question sect",
-                      "when": "2026-09-04 14:57 UTC"
-                    },
-                    {
-                      "id": "1a06c8d16ea71568",
-                      "sender": "clara.ferreira@example.com",
-                      "subject": "follow reply attached update confirm confirm sche",
-                      "snippet": "update notes draft attached summary revision summary attached agenda thread follow summary agenda section update estimate timeline timeline status feedback agenda confirm summary notes follow section",
-                      "when": "2026-09-04 13:11 UTC"
-                    },
-                    {
-                      "id": "1a06a9c1934e9e83",
-                      "sender": "priya.nakamura@example.com",
-                      "subject": "feedback reply summary notes threa",
-                      "snippet": "notes thread timeline summary status update confirm review schedule notes meeting estimate attached update update update status estimate status reply estimate notes schedule section confirm notes propo",
-                      "when": "2026-09-04 04:09 UTC"
-                    }
-                  ]
-                }
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 20811,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateDataModel": {
-                "surfaceId": "unread-threads",
-                "value": {
-                  "threads": [
-                    {
-                      "id": "1a06ef027e683325",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
-                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
-                      "when": "2026-09-05 00:20 UTC"
-                    },
-                    {
-                      "id": "1a06dec28a4d6853",
-                      "sender": "nora.haddad@example.com",
-                      "subject": "revision schedule draft question review",
-                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
-                      "when": "2026-09-04 19:36 UTC"
-                    },
-                    {
-                      "id": "1a06d38b96f68239",
-                      "sender": "yuki.nakamura@example.com",
-                      "subject": "agenda reply estimate",
-                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
-                      "when": "2026-09-04 16:20 UTC"
-                    },
-                    {
-                      "id": "1a06d1e51d11c891",
-                      "sender": "clara.vasquez@example.com",
-                      "subject": "timeline meeting meeting revie",
-                      "snippet": "agenda follow question follow pending pending pending meeting timeline follow meeting pending update follow notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
-                      "when": "2026-09-04 15:51 UTC"
-                    },
-                    {
-                      "id": "1a06cee261fd278a",
-                      "sender": "nora.haddad@example.com",
-                      "subject": "thread follow timeline attached schedule timeline update section confirm question attached schedu",
-                      "snippet": "summary reply timeline update reply feedback draft thread thread summary schedule meeting section reply confirm question agenda follow status meeting status proposal timeline reply thread question sect",
-                      "when": "2026-09-04 14:57 UTC"
-                    },
-                    {
-                      "id": "1a06c8d16ea71568",
-                      "sender": "clara.ferreira@example.com",
-                      "subject": "follow reply attached update confirm confirm sche",
-                      "snippet": "update notes draft attached summary revision summary attached agenda thread follow summary agenda section update estimate timeline timeline status feedback agenda confirm summary notes follow section",
-                      "when": "2026-09-04 13:11 UTC"
-                    },
-                    {
-                      "id": "1a06a9c1934e9e83",
-                      "sender": "priya.nakamura@example.com",
-                      "subject": "feedback reply summary notes threa",
-                      "snippet": "notes thread timeline summary status update confirm review schedule notes meeting estimate attached update update update status estimate status reply estimate notes schedule section confirm notes propo",
-                      "when": "2026-09-04 04:09 UTC"
-                    },
-                    {
-                      "id": "1a069c9cdbdf646b"
-                    }
-                  ]
-                }
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 20981,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateDataModel": {
-                "surfaceId": "unread-threads",
-                "value": {
-                  "threads": [
-                    {
-                      "id": "1a06ef027e683325",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
-                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
-                      "when": "2026-09-05 00:20 UTC"
-                    },
-                    {
-                      "id": "1a06dec28a4d6853",
-                      "sender": "nora.haddad@example.com",
-                      "subject": "revision schedule draft question review",
-                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
-                      "when": "2026-09-04 19:36 UTC"
-                    },
-                    {
-                      "id": "1a06d38b96f68239",
-                      "sender": "yuki.nakamura@example.com",
-                      "subject": "agenda reply estimate",
-                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
-                      "when": "2026-09-04 16:20 UTC"
-                    },
-                    {
-                      "id": "1a06d1e51d11c891",
-                      "sender": "clara.vasquez@example.com",
-                      "subject": "timeline meeting meeting revie",
-                      "snippet": "agenda follow question follow pending pending pending meeting timeline follow meeting pending update follow notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
-                      "when": "2026-09-04 15:51 UTC"
-                    },
-                    {
-                      "id": "1a06cee261fd278a",
-                      "sender": "nora.haddad@example.com",
-                      "subject": "thread follow timeline attached schedule timeline update section confirm question attached schedu",
-                      "snippet": "summary reply timeline update reply feedback draft thread thread summary schedule meeting section reply confirm question agenda follow status meeting status proposal timeline reply thread question sect",
-                      "when": "2026-09-04 14:57 UTC"
-                    },
-                    {
-                      "id": "1a06c8d16ea71568",
-                      "sender": "clara.ferreira@example.com",
-                      "subject": "follow reply attached update confirm confirm sche",
-                      "snippet": "update notes draft attached summary revision summary attached agenda thread follow summary agenda section update estimate timeline timeline status feedback agenda confirm summary notes follow section",
-                      "when": "2026-09-04 13:11 UTC"
-                    },
-                    {
-                      "id": "1a06a9c1934e9e83",
-                      "sender": "priya.nakamura@example.com",
-                      "subject": "feedback reply summary notes threa",
-                      "snippet": "notes thread timeline summary status update confirm review schedule notes meeting estimate attached update update update status estimate status reply estimate notes schedule section confirm notes propo",
-                      "when": "2026-09-04 04:09 UTC"
-                    },
-                    {
-                      "id": "1a069c9cdbdf646b",
-                      "sender": "sara.moreau@example.com"
-                    }
-                  ]
-                }
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 21159,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateDataModel": {
-                "surfaceId": "unread-threads",
-                "value": {
-                  "threads": [
-                    {
-                      "id": "1a06ef027e683325",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
-                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
-                      "when": "2026-09-05 00:20 UTC"
-                    },
-                    {
-                      "id": "1a06dec28a4d6853",
-                      "sender": "nora.haddad@example.com",
-                      "subject": "revision schedule draft question review",
-                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
-                      "when": "2026-09-04 19:36 UTC"
-                    },
-                    {
-                      "id": "1a06d38b96f68239",
-                      "sender": "yuki.nakamura@example.com",
-                      "subject": "agenda reply estimate",
-                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
-                      "when": "2026-09-04 16:20 UTC"
-                    },
-                    {
-                      "id": "1a06d1e51d11c891",
-                      "sender": "clara.vasquez@example.com",
-                      "subject": "timeline meeting meeting revie",
-                      "snippet": "agenda follow question follow pending pending pending meeting timeline follow meeting pending update follow notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
-                      "when": "2026-09-04 15:51 UTC"
-                    },
-                    {
-                      "id": "1a06cee261fd278a",
-                      "sender": "nora.haddad@example.com",
-                      "subject": "thread follow timeline attached schedule timeline update section confirm question attached schedu",
-                      "snippet": "summary reply timeline update reply feedback draft thread thread summary schedule meeting section reply confirm question agenda follow status meeting status proposal timeline reply thread question sect",
-                      "when": "2026-09-04 14:57 UTC"
-                    },
-                    {
-                      "id": "1a06c8d16ea71568",
-                      "sender": "clara.ferreira@example.com",
-                      "subject": "follow reply attached update confirm confirm sche",
-                      "snippet": "update notes draft attached summary revision summary attached agenda thread follow summary agenda section update estimate timeline timeline status feedback agenda confirm summary notes follow section",
-                      "when": "2026-09-04 13:11 UTC"
-                    },
-                    {
-                      "id": "1a06a9c1934e9e83",
-                      "sender": "priya.nakamura@example.com",
-                      "subject": "feedback reply summary notes threa",
-                      "snippet": "notes thread timeline summary status update confirm review schedule notes meeting estimate attached update update update status estimate status reply estimate notes schedule section confirm notes propo",
-                      "when": "2026-09-04 04:09 UTC"
-                    },
-                    {
-                      "id": "1a069c9cdbdf646b",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "agenda feedback status meeting prop"
-                    }
-                  ]
-                }
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 21345,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateDataModel": {
-                "surfaceId": "unread-threads",
-                "value": {
-                  "threads": [
-                    {
-                      "id": "1a06ef027e683325",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
-                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
-                      "when": "2026-09-05 00:20 UTC"
-                    },
-                    {
-                      "id": "1a06dec28a4d6853",
-                      "sender": "nora.haddad@example.com",
-                      "subject": "revision schedule draft question review",
-                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
-                      "when": "2026-09-04 19:36 UTC"
-                    },
-                    {
-                      "id": "1a06d38b96f68239",
-                      "sender": "yuki.nakamura@example.com",
-                      "subject": "agenda reply estimate",
-                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
-                      "when": "2026-09-04 16:20 UTC"
-                    },
-                    {
-                      "id": "1a06d1e51d11c891",
-                      "sender": "clara.vasquez@example.com",
-                      "subject": "timeline meeting meeting revie",
-                      "snippet": "agenda follow question follow pending pending pending meeting timeline follow meeting pending update follow notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
-                      "when": "2026-09-04 15:51 UTC"
-                    },
-                    {
-                      "id": "1a06cee261fd278a",
-                      "sender": "nora.haddad@example.com",
-                      "subject": "thread follow timeline attached schedule timeline update section confirm question attached schedu",
-                      "snippet": "summary reply timeline update reply feedback draft thread thread summary schedule meeting section reply confirm question agenda follow status meeting status proposal timeline reply thread question sect",
-                      "when": "2026-09-04 14:57 UTC"
-                    },
-                    {
-                      "id": "1a06c8d16ea71568",
-                      "sender": "clara.ferreira@example.com",
-                      "subject": "follow reply attached update confirm confirm sche",
-                      "snippet": "update notes draft attached summary revision summary attached agenda thread follow summary agenda section update estimate timeline timeline status feedback agenda confirm summary notes follow section",
-                      "when": "2026-09-04 13:11 UTC"
-                    },
-                    {
-                      "id": "1a06a9c1934e9e83",
-                      "sender": "priya.nakamura@example.com",
-                      "subject": "feedback reply summary notes threa",
-                      "snippet": "notes thread timeline summary status update confirm review schedule notes meeting estimate attached update update update status estimate status reply estimate notes schedule section confirm notes propo",
-                      "when": "2026-09-04 04:09 UTC"
-                    },
-                    {
-                      "id": "1a069c9cdbdf646b",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "agenda feedback status meeting prop",
-                      "snippet": "feedback draft confirm section estimate reply review agenda feedback section notes proposal feedback update update schedule question follow estimate feedback revision feedback summary notes section fo"
-                    }
-                  ]
-                }
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 21495,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateDataModel": {
-                "surfaceId": "unread-threads",
-                "value": {
-                  "threads": [
-                    {
-                      "id": "1a06ef027e683325",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
-                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
-                      "when": "2026-09-05 00:20 UTC"
-                    },
-                    {
-                      "id": "1a06dec28a4d6853",
-                      "sender": "nora.haddad@example.com",
-                      "subject": "revision schedule draft question review",
-                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
-                      "when": "2026-09-04 19:36 UTC"
-                    },
-                    {
-                      "id": "1a06d38b96f68239",
-                      "sender": "yuki.nakamura@example.com",
-                      "subject": "agenda reply estimate",
-                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
-                      "when": "2026-09-04 16:20 UTC"
-                    },
-                    {
-                      "id": "1a06d1e51d11c891",
-                      "sender": "clara.vasquez@example.com",
-                      "subject": "timeline meeting meeting revie",
-                      "snippet": "agenda follow question follow pending pending pending meeting timeline follow meeting pending update follow notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
-                      "when": "2026-09-04 15:51 UTC"
-                    },
-                    {
-                      "id": "1a06cee261fd278a",
-                      "sender": "nora.haddad@example.com",
-                      "subject": "thread follow timeline attached schedule timeline update section confirm question attached schedu",
-                      "snippet": "summary reply timeline update reply feedback draft thread thread summary schedule meeting section reply confirm question agenda follow status meeting status proposal timeline reply thread question sect",
-                      "when": "2026-09-04 14:57 UTC"
-                    },
-                    {
-                      "id": "1a06c8d16ea71568",
-                      "sender": "clara.ferreira@example.com",
-                      "subject": "follow reply attached update confirm confirm sche",
-                      "snippet": "update notes draft attached summary revision summary attached agenda thread follow summary agenda section update estimate timeline timeline status feedback agenda confirm summary notes follow section",
-                      "when": "2026-09-04 13:11 UTC"
-                    },
-                    {
-                      "id": "1a06a9c1934e9e83",
-                      "sender": "priya.nakamura@example.com",
-                      "subject": "feedback reply summary notes threa",
-                      "snippet": "notes thread timeline summary status update confirm review schedule notes meeting estimate attached update update update status estimate status reply estimate notes schedule section confirm notes propo",
-                      "when": "2026-09-04 04:09 UTC"
-                    },
-                    {
-                      "id": "1a069c9cdbdf646b",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "agenda feedback status meeting prop",
-                      "snippet": "feedback draft confirm section estimate reply review agenda feedback section notes proposal feedback update update schedule question follow estimate feedback revision feedback summary notes section fo",
-                      "when": "2026-09-04 00:20 UTC"
-                    }
-                  ]
-                }
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 21705,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateDataModel": {
-                "surfaceId": "unread-threads",
+                "surfaceId": "needs-attention",
                 "path": "/",
                 "value": {
                   "threads": [
                     {
-                      "id": "1a06ef027e683325",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "draft section summary reply agenda meeting pending notes pending estimat",
-                      "snippet": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu",
-                      "when": "2026-09-05 00:20 UTC"
+                      "id": "19829cbece7facf1",
+                      "sender": "Mei Silva",
+                      "subject": "Re: Notes ahead of the design review: agenda surface",
+                      "snippet": "Will do. I'll bring the tokens and a side-by-side of the 24px and 32px gaps between the regions. One question for the room: when you go back inside an app, should the merged table keep its sort?",
+                      "when": "2026-09-19 12:41 UTC"
                     },
                     {
-                      "id": "1a06dec28a4d6853",
-                      "sender": "nora.haddad@example.com",
-                      "subject": "revision schedule draft question review",
-                      "snippet": "thread question review review follow summary attached pending thread schedule attached summary attached summary question confirm agenda thread draft status timeline update confirm section notes meeting",
-                      "when": "2026-09-04 19:36 UTC"
+                      "id": "1956e7633ba626aa",
+                      "sender": "Alex Bergman",
+                      "subject": "Could you review #8 before quarter planning?",
+                      "snippet": "Hey, Could you take a look at #8 today? I'd like to show the effort split at quarter planning tomorrow at 10, and it would be good to have your review on it first. Mostly the part where the",
+                      "when": "2026-09-19 11:30 UTC"
                     },
                     {
-                      "id": "1a06d38b96f68239",
-                      "sender": "yuki.nakamura@example.com",
-                      "subject": "agenda reply estimate",
-                      "snippet": "confirm update feedback review meeting schedule status reply revision pending feedback follow notes section notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
-                      "when": "2026-09-04 16:20 UTC"
+                      "id": "19fd40c07b154538",
+                      "sender": "Mei Silva",
+                      "subject": "CI failing on synthesizer-effort-apart-from-planner",
+                      "snippet": "Morning! The latest run on synthesizer-effort-apart-from-planner failed in lint-format. Prettier flagged apps/orchestrator/src/config.ts, so it looks like formatting, not the tests. Want me to push",
+                      "when": "2026-09-19 11:05 UTC"
                     },
                     {
-                      "id": "1a06d1e51d11c891",
-                      "sender": "clara.vasquez@example.com",
-                      "subject": "timeline meeting meeting revie",
-                      "snippet": "agenda follow question follow pending pending pending meeting timeline follow meeting pending update follow notes reply status proposal confirm agenda meeting notes summary summary status schedule atta",
-                      "when": "2026-09-04 15:51 UTC"
-                    },
-                    {
-                      "id": "1a06cee261fd278a",
-                      "sender": "nora.haddad@example.com",
-                      "subject": "thread follow timeline attached schedule timeline update section confirm question attached schedu",
-                      "snippet": "summary reply timeline update reply feedback draft thread thread summary schedule meeting section reply confirm question agenda follow status meeting status proposal timeline reply thread question sect",
-                      "when": "2026-09-04 14:57 UTC"
-                    },
-                    {
-                      "id": "1a06c8d16ea71568",
-                      "sender": "clara.ferreira@example.com",
-                      "subject": "follow reply attached update confirm confirm sche",
-                      "snippet": "update notes draft attached summary revision summary attached agenda thread follow summary agenda section update estimate timeline timeline status feedback agenda confirm summary notes follow section",
-                      "when": "2026-09-04 13:11 UTC"
-                    },
-                    {
-                      "id": "1a06a9c1934e9e83",
-                      "sender": "priya.nakamura@example.com",
-                      "subject": "feedback reply summary notes threa",
-                      "snippet": "notes thread timeline summary status update confirm review schedule notes meeting estimate attached update update update status estimate status reply estimate notes schedule section confirm notes propo",
-                      "when": "2026-09-04 04:09 UTC"
-                    },
-                    {
-                      "id": "1a069c9cdbdf646b",
-                      "sender": "sara.moreau@example.com",
-                      "subject": "agenda feedback status meeting prop",
-                      "snippet": "feedback draft confirm section estimate reply review agenda feedback section notes proposal feedback update update schedule question follow estimate feedback revision feedback summary notes section fo",
-                      "when": "2026-09-04 00:20 UTC"
+                      "id": "19b6cefab66744cf",
+                      "sender": "Clara Moreau",
+                      "subject": "Numbers for the 11:30 budget sync",
+                      "snippet": "Hi, Ahead of our 11:30, I've put the Q4 numbers in the budget sheet. Everything is in except the model spend. Could you bring an estimate for October, even a rough one? Thanks, Clara",
+                      "when": "2026-09-19 10:48 UTC"
                     }
                   ]
                 }
@@ -1665,7 +579,7 @@
           "texts": []
         },
         {
-          "offsetMs": 22064,
+          "offsetMs": 14026,
           "messages": [
             {
               "version": "v0.9",
@@ -1685,14 +599,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "unread-threads"
+                "surfaceId": "needs-attention"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 22318,
+          "offsetMs": 14424,
           "messages": [
             {
               "version": "v0.9",
@@ -1726,14 +640,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "unread-threads"
+                "surfaceId": "needs-attention"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 22678,
+          "offsetMs": 14775,
           "messages": [
             {
               "version": "v0.9",
@@ -1782,14 +696,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "unread-threads"
+                "surfaceId": "needs-attention"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 22872,
+          "offsetMs": 14954,
           "messages": [
             {
               "version": "v0.9",
@@ -1800,189 +714,7 @@
                     "component": "Stack",
                     "children": [
                       "header",
-                      "sheet"
-                    ],
-                    "gap": "xs"
-                  },
-                  {
-                    "id": "header",
-                    "component": "Stack",
-                    "children": [
-                      "loading_heading",
-                      "loading_sub"
-                    ],
-                    "gap": "xs",
-                    "padding": "sm"
-                  },
-                  {
-                    "id": "root",
-                    "component": "Surface",
-                    "child": "body",
-                    "container": "low",
-                    "shape": "large",
-                    "padding": "small"
-                  },
-                  {
-                    "id": "sheet",
-                    "component": "Surface"
-                  },
-                  {
-                    "id": "loading_heading",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_sub",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "unread-threads"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 23062,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "body",
-                    "component": "Stack",
-                    "children": [
-                      "header",
-                      "sheet"
-                    ],
-                    "gap": "xs"
-                  },
-                  {
-                    "id": "header",
-                    "component": "Stack",
-                    "children": [
-                      "loading_heading",
-                      "loading_sub"
-                    ],
-                    "gap": "xs",
-                    "padding": "sm"
-                  },
-                  {
-                    "id": "root",
-                    "component": "Surface",
-                    "child": "body",
-                    "container": "low",
-                    "shape": "large",
-                    "padding": "small"
-                  },
-                  {
-                    "id": "sheet",
-                    "component": "Surface",
-                    "child": "loading_thread-list",
-                    "container": "lowest",
-                    "shape": "large"
-                  },
-                  {
-                    "id": "loading_heading",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_sub",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_thread-list",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "unread-threads"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 23232,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "body",
-                    "component": "Stack",
-                    "children": [
-                      "header",
-                      "sheet"
-                    ],
-                    "gap": "xs"
-                  },
-                  {
-                    "id": "header",
-                    "component": "Stack",
-                    "children": [
-                      "loading_heading",
-                      "loading_sub"
-                    ],
-                    "gap": "xs",
-                    "padding": "sm"
-                  },
-                  {
-                    "id": "root",
-                    "component": "Surface",
-                    "child": "body",
-                    "container": "low",
-                    "shape": "large",
-                    "padding": "small"
-                  },
-                  {
-                    "id": "sheet",
-                    "component": "Surface",
-                    "child": "loading_thread-list",
-                    "container": "lowest",
-                    "shape": "large",
-                    "padding": "none"
-                  },
-                  {
-                    "id": "loading_heading",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_sub",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_thread-list",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "unread-threads"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 23439,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "body",
-                    "component": "Stack",
-                    "children": [
-                      "header",
-                      "sheet"
+                      "loading_sheet"
                     ],
                     "gap": "xs"
                   },
@@ -1999,7 +731,63 @@
                   {
                     "id": "heading",
                     "component": "Text",
-                    "text": "Needs attention",
+                    "text": "Needs attention today"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "loading_sheet",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_sub",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 15144,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "loading_sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "heading",
+                      "loading_sub"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": "Needs attention today",
                     "variant": "titleLarge"
                   },
                   {
@@ -2011,32 +799,83 @@
                     "padding": "small"
                   },
                   {
-                    "id": "sheet",
-                    "component": "Surface",
-                    "child": "loading_thread-list",
-                    "container": "lowest",
-                    "shape": "large",
-                    "padding": "none"
+                    "id": "loading_sheet",
+                    "component": "Row",
+                    "children": []
                   },
                   {
                     "id": "loading_sub",
                     "component": "Row",
                     "children": []
-                  },
-                  {
-                    "id": "loading_thread-list",
-                    "component": "Row",
-                    "children": []
                   }
                 ],
-                "surfaceId": "unread-threads"
+                "surfaceId": "needs-attention"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 23623,
+          "offsetMs": 15455,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "loading_sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "heading",
+                      "sub"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": "Needs attention today",
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": "4 unread threads waiting on your review or reply",
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "loading_sheet",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 15664,
           "messages": [
             {
               "version": "v0.9",
@@ -2064,7 +903,7 @@
                   {
                     "id": "heading",
                     "component": "Text",
-                    "text": "Needs attention",
+                    "text": "Needs attention today",
                     "variant": "titleLarge"
                   },
                   {
@@ -2079,79 +918,12 @@
                     "id": "sheet",
                     "component": "Surface",
                     "child": "loading_thread-list",
-                    "container": "lowest",
-                    "shape": "large",
-                    "padding": "none"
+                    "container": "lowest"
                   },
                   {
                     "id": "sub",
                     "component": "Text",
-                    "text": "Un"
-                  },
-                  {
-                    "id": "loading_thread-list",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "unread-threads"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 23810,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "body",
-                    "component": "Stack",
-                    "children": [
-                      "header",
-                      "sheet"
-                    ],
-                    "gap": "xs"
-                  },
-                  {
-                    "id": "header",
-                    "component": "Stack",
-                    "children": [
-                      "heading",
-                      "sub"
-                    ],
-                    "gap": "xs",
-                    "padding": "sm"
-                  },
-                  {
-                    "id": "heading",
-                    "component": "Text",
-                    "text": "Needs attention",
-                    "variant": "titleLarge"
-                  },
-                  {
-                    "id": "root",
-                    "component": "Surface",
-                    "child": "body",
-                    "container": "low",
-                    "shape": "large",
-                    "padding": "small"
-                  },
-                  {
-                    "id": "sheet",
-                    "component": "Surface",
-                    "child": "loading_thread-list",
-                    "container": "lowest",
-                    "shape": "large",
-                    "padding": "none"
-                  },
-                  {
-                    "id": "sub",
-                    "component": "Text",
-                    "text": "Unread threads in your inbox",
+                    "text": "4 unread threads waiting on your review or reply",
                     "variant": "bodySmall",
                     "color": "onSurfaceVariant"
                   },
@@ -2161,14 +933,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "unread-threads"
+                "surfaceId": "needs-attention"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 24425,
+          "offsetMs": 15856,
           "messages": [
             {
               "version": "v0.9",
@@ -2196,7 +968,74 @@
                   {
                     "id": "heading",
                     "component": "Text",
-                    "text": "Needs attention",
+                    "text": "Needs attention today",
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "loading_thread-list",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": "4 unread threads waiting on your review or reply",
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "loading_thread-list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 16397,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "heading",
+                      "sub"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": "Needs attention today",
                     "variant": "titleLarge"
                   },
                   {
@@ -2218,7 +1057,7 @@
                   {
                     "id": "sub",
                     "component": "Text",
-                    "text": "Unread threads in your inbox",
+                    "text": "4 unread threads waiting on your review or reply",
                     "variant": "bodySmall",
                     "color": "onSurfaceVariant"
                   },
@@ -2238,14 +1077,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "unread-threads"
+                "surfaceId": "needs-attention"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 24943,
+          "offsetMs": 16918,
           "messages": [
             {
               "version": "v0.9",
@@ -2273,7 +1112,7 @@
                   {
                     "id": "heading",
                     "component": "Text",
-                    "text": "Needs attention",
+                    "text": "Needs attention today",
                     "variant": "titleLarge"
                   },
                   {
@@ -2295,7 +1134,7 @@
                   {
                     "id": "sub",
                     "component": "Text",
-                    "text": "Unread threads in your inbox",
+                    "text": "4 unread threads waiting on your review or reply",
                     "variant": "bodySmall",
                     "color": "onSurfaceVariant"
                   },
@@ -2325,14 +1164,14 @@
                     }
                   }
                 ],
-                "surfaceId": "unread-threads"
+                "surfaceId": "needs-attention"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 25148,
+          "offsetMs": 17090,
           "messages": [
             {
               "version": "v0.9",
@@ -2360,7 +1199,7 @@
                   {
                     "id": "heading",
                     "component": "Text",
-                    "text": "Needs attention",
+                    "text": "Needs attention today",
                     "variant": "titleLarge"
                   },
                   {
@@ -2382,7 +1221,7 @@
                   {
                     "id": "sub",
                     "component": "Text",
-                    "text": "Unread threads in your inbox",
+                    "text": "4 unread threads waiting on your review or reply",
                     "variant": "bodySmall",
                     "color": "onSurfaceVariant"
                   },
@@ -2417,14 +1256,14 @@
                     }
                   }
                 ],
-                "surfaceId": "unread-threads"
+                "surfaceId": "needs-attention"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 25523,
+          "offsetMs": 17599,
           "messages": [
             {
               "version": "v0.9",
@@ -2452,7 +1291,7 @@
                   {
                     "id": "heading",
                     "component": "Text",
-                    "text": "Needs attention",
+                    "text": "Needs attention today",
                     "variant": "titleLarge"
                   },
                   {
@@ -2474,107 +1313,7 @@
                   {
                     "id": "sub",
                     "component": "Text",
-                    "text": "Unread threads in your inbox",
-                    "variant": "bodySmall",
-                    "color": "onSurfaceVariant"
-                  },
-                  {
-                    "id": "thread-avatar",
-                    "component": "Avatar",
-                    "name": {
-                      "path": "sender"
-                    },
-                    "size": "medium"
-                  },
-                  {
-                    "id": "thread-list",
-                    "component": "List",
-                    "children": {
-                      "path": "/threads",
-                      "componentId": "thread-row"
-                    },
-                    "dividers": true,
-                    "layout": "inline"
-                  },
-                  {
-                    "id": "thread-row",
-                    "component": "ListItem",
-                    "headline": "thread-sender",
-                    "supporting": "thread-preview",
-                    "meta": "thread-when",
-                    "leading": [
-                      "thread-avatar"
-                    ],
-                    "action": {
-                      "event": {
-                        "name": "open-thread",
-                        "context": {
-                          "threadId": {
-                            "path": "id"
-                          }
-                        }
-                      }
-                    }
-                  }
-                ],
-                "surfaceId": "unread-threads"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 25688,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "body",
-                    "component": "Stack",
-                    "children": [
-                      "header",
-                      "sheet"
-                    ],
-                    "gap": "xs"
-                  },
-                  {
-                    "id": "header",
-                    "component": "Stack",
-                    "children": [
-                      "heading",
-                      "sub"
-                    ],
-                    "gap": "xs",
-                    "padding": "sm"
-                  },
-                  {
-                    "id": "heading",
-                    "component": "Text",
-                    "text": "Needs attention",
-                    "variant": "titleLarge"
-                  },
-                  {
-                    "id": "root",
-                    "component": "Surface",
-                    "child": "body",
-                    "container": "low",
-                    "shape": "large",
-                    "padding": "small"
-                  },
-                  {
-                    "id": "sheet",
-                    "component": "Surface",
-                    "child": "thread-list",
-                    "container": "lowest",
-                    "shape": "large",
-                    "padding": "none"
-                  },
-                  {
-                    "id": "sub",
-                    "component": "Text",
-                    "text": "Unread threads in your inbox",
+                    "text": "4 unread threads waiting on your review or reply",
                     "variant": "bodySmall",
                     "color": "onSurfaceVariant"
                   },
@@ -2615,20 +1354,16 @@
                         }
                       }
                     }
-                  },
-                  {
-                    "id": "thread-sender",
-                    "component": "Text"
                   }
                 ],
-                "surfaceId": "unread-threads"
+                "surfaceId": "needs-attention"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 25890,
+          "offsetMs": 17949,
           "messages": [
             {
               "version": "v0.9",
@@ -2656,7 +1391,7 @@
                   {
                     "id": "heading",
                     "component": "Text",
-                    "text": "Needs attention",
+                    "text": "Needs attention today",
                     "variant": "titleLarge"
                   },
                   {
@@ -2678,115 +1413,7 @@
                   {
                     "id": "sub",
                     "component": "Text",
-                    "text": "Unread threads in your inbox",
-                    "variant": "bodySmall",
-                    "color": "onSurfaceVariant"
-                  },
-                  {
-                    "id": "thread-avatar",
-                    "component": "Avatar",
-                    "name": {
-                      "path": "sender"
-                    },
-                    "size": "medium"
-                  },
-                  {
-                    "id": "thread-list",
-                    "component": "List",
-                    "children": {
-                      "path": "/threads",
-                      "componentId": "thread-row"
-                    },
-                    "dividers": true,
-                    "layout": "inline"
-                  },
-                  {
-                    "id": "thread-row",
-                    "component": "ListItem",
-                    "headline": "thread-sender",
-                    "supporting": "thread-preview",
-                    "meta": "thread-when",
-                    "leading": [
-                      "thread-avatar"
-                    ],
-                    "action": {
-                      "event": {
-                        "name": "open-thread",
-                        "context": {
-                          "threadId": {
-                            "path": "id"
-                          }
-                        }
-                      }
-                    }
-                  },
-                  {
-                    "id": "thread-sender",
-                    "component": "Text",
-                    "text": {
-                      "path": "sender"
-                    },
-                    "weight": "bold"
-                  }
-                ],
-                "surfaceId": "unread-threads"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 26080,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "body",
-                    "component": "Stack",
-                    "children": [
-                      "header",
-                      "sheet"
-                    ],
-                    "gap": "xs"
-                  },
-                  {
-                    "id": "header",
-                    "component": "Stack",
-                    "children": [
-                      "heading",
-                      "sub"
-                    ],
-                    "gap": "xs",
-                    "padding": "sm"
-                  },
-                  {
-                    "id": "heading",
-                    "component": "Text",
-                    "text": "Needs attention",
-                    "variant": "titleLarge"
-                  },
-                  {
-                    "id": "root",
-                    "component": "Surface",
-                    "child": "body",
-                    "container": "low",
-                    "shape": "large",
-                    "padding": "small"
-                  },
-                  {
-                    "id": "sheet",
-                    "component": "Surface",
-                    "child": "thread-list",
-                    "container": "lowest",
-                    "shape": "large",
-                    "padding": "none"
-                  },
-                  {
-                    "id": "sub",
-                    "component": "Text",
-                    "text": "Unread threads in your inbox",
+                    "text": "4 unread threads waiting on your review or reply",
                     "variant": "bodySmall",
                     "color": "onSurfaceVariant"
                   },
@@ -2838,14 +1465,14 @@
                     "maxLines": 1
                   }
                 ],
-                "surfaceId": "unread-threads"
+                "surfaceId": "needs-attention"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 26226,
+          "offsetMs": 18135,
           "messages": [
             {
               "version": "v0.9",
@@ -2873,7 +1500,7 @@
                   {
                     "id": "heading",
                     "component": "Text",
-                    "text": "Needs attention",
+                    "text": "Needs attention today",
                     "variant": "titleLarge"
                   },
                   {
@@ -2895,7 +1522,7 @@
                   {
                     "id": "sub",
                     "component": "Text",
-                    "text": "Unread threads in your inbox",
+                    "text": "4 unread threads waiting on your review or reply",
                     "variant": "bodySmall",
                     "color": "onSurfaceVariant"
                   },
@@ -2954,14 +1581,14 @@
                     }
                   }
                 ],
-                "surfaceId": "unread-threads"
+                "surfaceId": "needs-attention"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 26421,
+          "offsetMs": 18305,
           "messages": [
             {
               "version": "v0.9",
@@ -2989,7 +1616,7 @@
                   {
                     "id": "heading",
                     "component": "Text",
-                    "text": "Needs attention",
+                    "text": "Needs attention today",
                     "variant": "titleLarge"
                   },
                   {
@@ -3011,7 +1638,7 @@
                   {
                     "id": "sub",
                     "component": "Text",
-                    "text": "Unread threads in your inbox",
+                    "text": "4 unread threads waiting on your review or reply",
                     "variant": "bodySmall",
                     "color": "onSurfaceVariant"
                   },
@@ -3072,14 +1699,14 @@
                     "color": "onSurfaceVariant"
                   }
                 ],
-                "surfaceId": "unread-threads"
+                "surfaceId": "needs-attention"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 26789,
+          "offsetMs": 18677,
           "messages": [
             {
               "version": "v0.9",
@@ -3107,7 +1734,7 @@
                   {
                     "id": "heading",
                     "component": "Text",
-                    "text": "Needs attention",
+                    "text": "Needs attention today",
                     "variant": "titleLarge"
                   },
                   {
@@ -3129,7 +1756,7 @@
                   {
                     "id": "sub",
                     "component": "Text",
-                    "text": "Unread threads in your inbox",
+                    "text": "4 unread threads waiting on your review or reply",
                     "variant": "bodySmall",
                     "color": "onSurfaceVariant"
                   },
@@ -3209,14 +1836,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "unread-threads"
+                "surfaceId": "needs-attention"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 27153,
+          "offsetMs": 19064,
           "messages": [
             {
               "version": "v0.9",
@@ -3244,7 +1871,7 @@
                   {
                     "id": "heading",
                     "component": "Text",
-                    "text": "Needs attention",
+                    "text": "Needs attention today",
                     "variant": "titleLarge"
                   },
                   {
@@ -3266,7 +1893,7 @@
                   {
                     "id": "sub",
                     "component": "Text",
-                    "text": "Unread threads in your inbox",
+                    "text": "4 unread threads waiting on your review or reply",
                     "variant": "bodySmall",
                     "color": "onSurfaceVariant"
                   },
@@ -3350,14 +1977,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "unread-threads"
+                "surfaceId": "needs-attention"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 27357,
+          "offsetMs": 19256,
           "messages": [
             {
               "version": "v0.9",
@@ -3385,7 +2012,7 @@
                   {
                     "id": "heading",
                     "component": "Text",
-                    "text": "Needs attention",
+                    "text": "Needs attention today",
                     "variant": "titleLarge"
                   },
                   {
@@ -3407,7 +2034,7 @@
                   {
                     "id": "sub",
                     "component": "Text",
-                    "text": "Unread threads in your inbox",
+                    "text": "4 unread threads waiting on your review or reply",
                     "variant": "bodySmall",
                     "color": "onSurfaceVariant"
                   },
@@ -3490,14 +2117,14 @@
                     "color": "onSurfaceVariant"
                   }
                 ],
-                "surfaceId": "unread-threads"
+                "surfaceId": "needs-attention"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 27736,
+          "offsetMs": 19582,
           "messages": [
             {
               "version": "v0.9",
@@ -3525,7 +2152,7 @@
                   {
                     "id": "heading",
                     "component": "Text",
-                    "text": "Needs attention",
+                    "text": "Needs attention today",
                     "variant": "titleLarge"
                   },
                   {
@@ -3547,7 +2174,7 @@
                   {
                     "id": "sub",
                     "component": "Text",
-                    "text": "Unread threads in your inbox",
+                    "text": "4 unread threads waiting on your review or reply",
                     "variant": "bodySmall",
                     "color": "onSurfaceVariant"
                   },
@@ -3635,7 +2262,7 @@
                     "color": "onSurfaceVariant"
                   }
                 ],
-                "surfaceId": "unread-threads"
+                "surfaceId": "needs-attention"
               }
             }
           ],
@@ -3643,7 +2270,7 @@
         }
       ],
       "outcome": "completed",
-      "durationMs": 27878
+      "durationMs": 19690
     }
   ]
 }

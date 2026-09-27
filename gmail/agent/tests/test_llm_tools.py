@@ -1,9 +1,8 @@
 """The stub Gmail toolset.
 
-The stub's fixtures are derived from a live MCP run with the pseudonymizer armed, so they do
-not exist until that run has happened. These tests skip until then rather than asserting
-against hand-authored data — a fixture written to satisfy a test would defeat the point of
-deriving the corpus from real payloads.
+The stub's mail is written by hand in the MCP payloads' captured shapes (task 10.11). These
+tests assert the stub's shape and behaviour, never its content, so the mail can change without
+them.
 """
 
 from __future__ import annotations
@@ -27,7 +26,7 @@ requires_corpus = pytest.mark.skipif(
         / "fixtures" / "stub"
         / "search-threads.json"
     ).is_file(),
-    reason="stub corpus not recorded yet (see agent/README.md)",
+    reason="stub fixtures missing (see agent/README.md)",
 )
 
 

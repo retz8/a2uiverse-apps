@@ -14,31 +14,31 @@
     {
       "labelId": "SENT",
       "labelType": "SYSTEM",
-      "messagesTotal": 0,
+      "messagesTotal": 2,
       "messagesUnread": 0,
       "name": "SENT",
-      "threadsTotal": 0,
+      "threadsTotal": 2,
       "threadsUnread": 0
     },
     {
       "labelId": "INBOX",
       "labelType": "SYSTEM",
-      "messagesTotal": 0,
-      "messagesUnread": 0,
+      "messagesTotal": 13,
+      "messagesUnread": 5,
       "name": "INBOX",
-      "threadsTotal": 0,
-      "threadsUnread": 0
+      "threadsTotal": 10,
+      "threadsUnread": 4
     },
     {
       "labelId": "IMPORTANT",
       "labelListVisibility": "LABEL_HIDE",
       "labelType": "SYSTEM",
       "messageListVisibility": "HIDE",
-      "messagesTotal": 0,
-      "messagesUnread": 0,
+      "messagesTotal": 3,
+      "messagesUnread": 3,
       "name": "IMPORTANT",
-      "threadsTotal": 0,
-      "threadsUnread": 0
+      "threadsTotal": 2,
+      "threadsUnread": 2
     },
     {
       "labelId": "TRASH",
@@ -85,19 +85,37 @@
     {
       "labelId": "UNREAD",
       "labelType": "SYSTEM",
-      "messagesTotal": 0,
-      "messagesUnread": 0,
+      "messagesTotal": 5,
+      "messagesUnread": 5,
       "name": "UNREAD",
-      "threadsTotal": 0,
-      "threadsUnread": 0
+      "threadsTotal": 4,
+      "threadsUnread": 4
     },
     {
       "labelId": "Label_1",
       "labelType": "USER",
-      "messagesTotal": 0,
+      "name": "a2uiverse",
+      "messagesTotal": 4,
+      "messagesUnread": 2,
+      "threadsTotal": 3,
+      "threadsUnread": 2
+    },
+    {
+      "labelId": "Label_2",
+      "labelType": "USER",
+      "name": "Design",
+      "messagesTotal": 2,
+      "messagesUnread": 2,
+      "threadsTotal": 1,
+      "threadsUnread": 1
+    },
+    {
+      "labelId": "Label_3",
+      "labelType": "USER",
+      "name": "Receipts",
+      "messagesTotal": 1,
       "messagesUnread": 0,
-      "name": "question agen",
-      "threadsTotal": 0,
+      "threadsTotal": 1,
       "threadsUnread": 0
     }
   ]
