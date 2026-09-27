@@ -116,6 +116,12 @@ mocks/                  the two mock stores and their shared dataset
 
 </details>
 
+## Feedback
+
+These apps are part of A2UIVerse, which is in active development and isn't done. Feedback from anyone interested is welcome in the platform repo's [Discussions](https://github.com/retz8/a2uiverse/discussions); bugs in an app go to this repo's [issues](https://github.com/retz8/a2uiverse-apps/issues). [CONTRIBUTING](CONTRIBUTING.md) says more.
+
 ## License
 
 MIT. See [LICENSE](LICENSE).
+
+A2UIVerse is an independent project, not affiliated with or endorsed by GitHub, Google, Linear or CircleCI. Their product names identify the services the apps connect to and are trademarks of their owners.

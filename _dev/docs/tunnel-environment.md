@@ -1,8 +1,9 @@
 # Tunnel environment
 
 Instead of `localhost:<port>`, use the tunnel URL:
-`https://vnw20xbg-<port>.asse.devtunnels.ms`. This applies to every URL the
+`https://<tunnel-id>-<port>.asse.devtunnels.ms`. This applies to every URL the
 browser touches and every server URL the platform is configured with.
+`<tunnel-id>` is kept in the git-ignored `../a2uiverse/CLAUDE.local.md`.
 
 This setup is only for Jioh In (@retz8); it does not apply to anyone else
 working with this repo.
