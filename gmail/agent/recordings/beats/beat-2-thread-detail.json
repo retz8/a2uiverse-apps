@@ -4,23 +4,23 @@
   "title": "Thread detail",
   "prompt": "Open the most recent one of those.",
   "model": "gemini-3.7-flash",
-  "recordedAt": "2026-09-27T01:53:30+00:00",
-  "contextId": "f01d8155-ce86-4932-9106-c4a0d6288e67",
+  "recordedAt": "2026-09-27T03:08:25+00:00",
+  "contextId": "44c72fc8-3a21-4dac-a63c-415def841a38",
   "chainedFrom": "beat-1-inbox-digest",
   "turns": [
     {
-      "taskId": "5adbcdb1-44d4-4250-bb2f-05c812b82cd4",
+      "taskId": "028df310-efc1-4d32-8e63-5071c67d9bfa",
       "kind": "utterance",
       "prompt": "Open the most recent one of those.",
       "action": null,
       "batches": [
         {
-          "offsetMs": 7765,
+          "offsetMs": 27262,
           "messages": [
             {
               "paintMeta": {
-                "surfaceId": "thread-1a06f2abedf045ce",
-                "title": "Thread: estimate review thread status agenda confirm summ"
+                "surfaceId": "thread-1a06ef027e683325",
+                "title": "Thread: draft section summary"
               }
             }
           ],
@@ -29,12 +29,12 @@
           ]
         },
         {
-          "offsetMs": 8059,
+          "offsetMs": 27648,
           "messages": [
             {
               "version": "v0.9",
               "createSurface": {
-                "surfaceId": "thread-1a06f2abedf045ce",
+                "surfaceId": "thread-1a06ef027e683325",
                 "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/gmail/gmail-catalog/catalogs/v0.9.1/catalog.json",
                 "sendDataModel": true
               }
@@ -43,14 +43,14 @@
           "texts": []
         },
         {
-          "offsetMs": 8556,
+          "offsetMs": 28202,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "thread-1a06f2abedf045ce",
+                "surfaceId": "thread-1a06ef027e683325",
                 "value": {
-                  "subject": "estimate review thread status agenda confirm summ",
+                  "subject": "draft section summary reply agenda meeting pending notes pending estimat",
                   "count": "1 message"
                 }
               }
@@ -59,18 +59,18 @@
           "texts": []
         },
         {
-          "offsetMs": 8737,
+          "offsetMs": 28396,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "thread-1a06f2abedf045ce",
+                "surfaceId": "thread-1a06ef027e683325",
                 "value": {
                   "messages": [
                     {
-                      "id": "1a06f2abedf045ce",
-                      "sender": "elin.tanaka@example.com",
-                      "when": "Sep 5, 01:24"
+                      "id": "1a06ef027e683325",
+                      "sender": "sara.moreau@example.com",
+                      "when": "2026-09-05 00:20"
                     }
                   ]
                 }
@@ -80,19 +80,19 @@
           "texts": []
         },
         {
-          "offsetMs": 9347,
+          "offsetMs": 28568,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "thread-1a06f2abedf045ce",
+                "surfaceId": "thread-1a06ef027e683325",
                 "value": {
                   "messages": [
                     {
-                      "id": "1a06f2abedf045ce",
-                      "sender": "elin.tanaka@example.com",
-                      "when": "Sep 5, 01:24",
-                      "body": "section summary feedback update meeting confirm thread section summary schedule pending attached thread review update confirm agenda proposal proposal status meeting timeline timeline agenda estimate update reply confirm feedback update attached schedule proposal update confirm review timeline update attached pending proposal question revision update notes section attached section update feedback pending review confirm schedule proposal estimate notes question update question attached confirm proposal estimate proposal status notes meeting draft schedule proposal summary section notes question revision meeting thread review update thread confirm confirm follow proposal review confirm question notes question agenda agenda notes proposal estimate schedule follow question confirm proposal estimate pending attached update draft notes confirm section attached attached pending reply notes follow notes thread reply estimate feedback pending feedback section proposal follow pr"
+                      "id": "1a06ef027e683325",
+                      "sender": "sara.moreau@example.com",
+                      "when": "2026-09-05 00:20",
+                      "body": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu"
                     }
                   ]
                 }
@@ -102,22 +102,22 @@
           "texts": []
         },
         {
-          "offsetMs": 9528,
+          "offsetMs": 28737,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "thread-1a06f2abedf045ce",
+                "surfaceId": "thread-1a06ef027e683325",
                 "path": "/",
                 "value": {
-                  "subject": "estimate review thread status agenda confirm summ",
+                  "subject": "draft section summary reply agenda meeting pending notes pending estimat",
                   "count": "1 message",
                   "messages": [
                     {
-                      "id": "1a06f2abedf045ce",
-                      "sender": "elin.tanaka@example.com",
-                      "when": "Sep 5, 01:24",
-                      "body": "section summary feedback update meeting confirm thread section summary schedule pending attached thread review update confirm agenda proposal proposal status meeting timeline timeline agenda estimate update reply confirm feedback update attached schedule proposal update confirm review timeline update attached pending proposal question revision update notes section attached section update feedback pending review confirm schedule proposal estimate notes question update question attached confirm proposal estimate proposal status notes meeting draft schedule proposal summary section notes question revision meeting thread review update thread confirm confirm follow proposal review confirm question notes question agenda agenda notes proposal estimate schedule follow question confirm proposal estimate pending attached update draft notes confirm section attached attached pending reply notes follow notes thread reply estimate feedback pending feedback section proposal follow pr"
+                      "id": "1a06ef027e683325",
+                      "sender": "sara.moreau@example.com",
+                      "when": "2026-09-05 00:20",
+                      "body": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu"
                     }
                   ]
                 }
@@ -127,7 +127,7 @@
           "texts": []
         },
         {
-          "offsetMs": 10051,
+          "offsetMs": 29274,
           "messages": [
             {
               "version": "v0.9",
@@ -147,14 +147,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "thread-1a06f2abedf045ce"
+                "surfaceId": "thread-1a06ef027e683325"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 10428,
+          "offsetMs": 29594,
           "messages": [
             {
               "version": "v0.9",
@@ -188,68 +188,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "thread-1a06f2abedf045ce"
+                "surfaceId": "thread-1a06ef027e683325"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 10576,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "body",
-                    "component": "Stack",
-                    "children": [
-                      "header",
-                      "loading_sheet"
-                    ],
-                    "gap": "xs"
-                  },
-                  {
-                    "id": "header",
-                    "component": "Stack",
-                    "children": [
-                      "loading_subject",
-                      "loading_count"
-                    ]
-                  },
-                  {
-                    "id": "root",
-                    "component": "Surface",
-                    "child": "body",
-                    "container": "low",
-                    "shape": "large",
-                    "padding": "small"
-                  },
-                  {
-                    "id": "loading_sheet",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_subject",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_count",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "thread-1a06f2abedf045ce"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 10740,
+          "offsetMs": 29958,
           "messages": [
             {
               "version": "v0.9",
@@ -298,14 +244,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "thread-1a06f2abedf045ce"
+                "surfaceId": "thread-1a06ef027e683325"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 11082,
+          "offsetMs": 30303,
           "messages": [
             {
               "version": "v0.9",
@@ -316,71 +262,7 @@
                     "component": "Stack",
                     "children": [
                       "header",
-                      "sheet"
-                    ],
-                    "gap": "xs"
-                  },
-                  {
-                    "id": "header",
-                    "component": "Stack",
-                    "children": [
-                      "loading_subject",
-                      "loading_count"
-                    ],
-                    "gap": "xs",
-                    "padding": "sm"
-                  },
-                  {
-                    "id": "root",
-                    "component": "Surface",
-                    "child": "body",
-                    "container": "low",
-                    "shape": "large",
-                    "padding": "small"
-                  },
-                  {
-                    "id": "sheet",
-                    "component": "Surface",
-                    "child": "loading_thread",
-                    "container": "lowest",
-                    "shape": "large",
-                    "padding": "none"
-                  },
-                  {
-                    "id": "loading_subject",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_count",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_thread",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "thread-1a06f2abedf045ce"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 11406,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "body",
-                    "component": "Stack",
-                    "children": [
-                      "header",
-                      "sheet"
+                      "loading_sheet"
                     ],
                     "gap": "xs"
                   },
@@ -403,12 +285,72 @@
                     "padding": "small"
                   },
                   {
-                    "id": "sheet",
+                    "id": "subject",
+                    "component": "Text",
+                    "text": {
+                      "path": "/subject"
+                    },
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "loading_sheet",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_count",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "thread-1a06ef027e683325"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 30646,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "loading_sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "count",
+                    "component": "Text",
+                    "text": {
+                      "path": "/count"
+                    },
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "subject",
+                      "count"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "root",
                     "component": "Surface",
-                    "child": "loading_thread",
-                    "container": "lowest",
+                    "child": "body",
+                    "container": "low",
                     "shape": "large",
-                    "padding": "none"
+                    "padding": "small"
                   },
                   {
                     "id": "subject",
@@ -419,9 +361,136 @@
                     "variant": "titleLarge"
                   },
                   {
-                    "id": "loading_count",
+                    "id": "loading_sheet",
                     "component": "Row",
                     "children": []
+                  }
+                ],
+                "surfaceId": "thread-1a06ef027e683325"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 30799,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "count",
+                    "component": "Text",
+                    "text": {
+                      "path": "/count"
+                    },
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "subject",
+                      "count"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface"
+                  },
+                  {
+                    "id": "subject",
+                    "component": "Text",
+                    "text": {
+                      "path": "/subject"
+                    },
+                    "variant": "titleLarge"
+                  }
+                ],
+                "surfaceId": "thread-1a06ef027e683325"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 30982,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "count",
+                    "component": "Text",
+                    "text": {
+                      "path": "/count"
+                    },
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "subject",
+                      "count"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "loading_thread",
+                    "container": "lowest",
+                    "shape": "large"
+                  },
+                  {
+                    "id": "subject",
+                    "component": "Text",
+                    "text": {
+                      "path": "/subject"
+                    },
+                    "variant": "titleLarge"
                   },
                   {
                     "id": "loading_thread",
@@ -429,14 +498,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "thread-1a06f2abedf045ce"
+                "surfaceId": "thread-1a06ef027e683325"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 11935,
+          "offsetMs": 31154,
           "messages": [
             {
               "version": "v0.9",
@@ -500,99 +569,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "thread-1a06f2abedf045ce"
+                "surfaceId": "thread-1a06ef027e683325"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 12105,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "body",
-                    "component": "Stack",
-                    "children": [
-                      "header",
-                      "sheet"
-                    ],
-                    "gap": "xs"
-                  },
-                  {
-                    "id": "count",
-                    "component": "Text",
-                    "text": {
-                      "path": "/count"
-                    },
-                    "variant": "bodySmall",
-                    "color": "onSurfaceVariant"
-                  },
-                  {
-                    "id": "header",
-                    "component": "Stack",
-                    "children": [
-                      "subject",
-                      "count"
-                    ],
-                    "gap": "xs",
-                    "padding": "sm"
-                  },
-                  {
-                    "id": "root",
-                    "component": "Surface",
-                    "child": "body",
-                    "container": "low",
-                    "shape": "large",
-                    "padding": "small"
-                  },
-                  {
-                    "id": "sheet",
-                    "component": "Surface",
-                    "child": "thread",
-                    "container": "lowest",
-                    "shape": "large",
-                    "padding": "none"
-                  },
-                  {
-                    "id": "subject",
-                    "component": "Text",
-                    "text": {
-                      "path": "/subject"
-                    },
-                    "variant": "titleLarge"
-                  },
-                  {
-                    "id": "thread",
-                    "component": "Stack",
-                    "children": [
-                      "loading_messages",
-                      "loading_actions"
-                    ],
-                    "gap": "none"
-                  },
-                  {
-                    "id": "loading_messages",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_actions",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "thread-1a06f2abedf045ce"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 12284,
+          "offsetMs": 31443,
           "messages": [
             {
               "version": "v0.9",
@@ -669,19 +653,23 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "thread-1a06f2abedf045ce"
+                "surfaceId": "thread-1a06ef027e683325"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 12687,
+          "offsetMs": 31830,
           "messages": [
             {
               "version": "v0.9",
               "updateComponents": {
                 "components": [
+                  {
+                    "id": "actions",
+                    "component": "Stack"
+                  },
                   {
                     "id": "body",
                     "component": "Stack",
@@ -717,8 +705,7 @@
                       "path": "/messages",
                       "componentId": "loading_message"
                     },
-                    "dividers": true,
-                    "layout": "stacked"
+                    "dividers": true
                   },
                   {
                     "id": "root",
@@ -749,7 +736,7 @@
                     "component": "Stack",
                     "children": [
                       "messages",
-                      "loading_actions"
+                      "actions"
                     ],
                     "gap": "none"
                   },
@@ -757,21 +744,16 @@
                     "id": "loading_message",
                     "component": "Row",
                     "children": []
-                  },
-                  {
-                    "id": "loading_actions",
-                    "component": "Row",
-                    "children": []
                   }
                 ],
-                "surfaceId": "thread-1a06f2abedf045ce"
+                "surfaceId": "thread-1a06ef027e683325"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 13066,
+          "offsetMs": 32199,
           "messages": [
             {
               "version": "v0.9",
@@ -823,8 +805,7 @@
                       "path": "/messages",
                       "componentId": "loading_message"
                     },
-                    "dividers": true,
-                    "layout": "stacked"
+                    "dividers": true
                   },
                   {
                     "id": "root",
@@ -875,14 +856,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "thread-1a06f2abedf045ce"
+                "surfaceId": "thread-1a06ef027e683325"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 13562,
+          "offsetMs": 32781,
           "messages": [
             {
               "version": "v0.9",
@@ -931,8 +912,8 @@
                     "id": "message",
                     "component": "ListItem",
                     "headline": "message-sender",
-                    "supporting": "message-body",
                     "meta": "message-when",
+                    "supporting": "message-body",
                     "leading": [
                       "message-avatar"
                     ]
@@ -944,8 +925,7 @@
                       "path": "/messages",
                       "componentId": "message"
                     },
-                    "dividers": true,
-                    "layout": "stacked"
+                    "dividers": true
                   },
                   {
                     "id": "root",
@@ -991,14 +971,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "thread-1a06f2abedf045ce"
+                "surfaceId": "thread-1a06ef027e683325"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 13737,
+          "offsetMs": 32934,
           "messages": [
             {
               "version": "v0.9",
@@ -1047,8 +1027,8 @@
                     "id": "message",
                     "component": "ListItem",
                     "headline": "message-sender",
-                    "supporting": "message-body",
                     "meta": "message-when",
+                    "supporting": "message-body",
                     "leading": [
                       "message-avatar"
                     ]
@@ -1060,8 +1040,7 @@
                       "path": "/messages",
                       "componentId": "message"
                     },
-                    "dividers": true,
-                    "layout": "stacked"
+                    "dividers": true
                   },
                   {
                     "id": "reply",
@@ -1108,14 +1087,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "thread-1a06f2abedf045ce"
+                "surfaceId": "thread-1a06ef027e683325"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 14271,
+          "offsetMs": 33119,
           "messages": [
             {
               "version": "v0.9",
@@ -1164,8 +1143,8 @@
                     "id": "message",
                     "component": "ListItem",
                     "headline": "message-sender",
-                    "supporting": "message-body",
                     "meta": "message-when",
+                    "supporting": "message-body",
                     "leading": [
                       "message-avatar"
                     ]
@@ -1177,8 +1156,129 @@
                       "path": "/messages",
                       "componentId": "message"
                     },
-                    "dividers": true,
-                    "layout": "stacked"
+                    "dividers": true
+                  },
+                  {
+                    "id": "reply",
+                    "component": "Button",
+                    "label": "Draft a reply",
+                    "variant": "outlined",
+                    "icon": "reply",
+                    "action": {
+                      "event": {
+                        "name": "draft-reply"
+                      }
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "thread",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "subject",
+                    "component": "Text",
+                    "text": {
+                      "path": "/subject"
+                    },
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "thread",
+                    "component": "Stack",
+                    "children": [
+                      "messages",
+                      "actions"
+                    ],
+                    "gap": "none"
+                  },
+                  {
+                    "id": "loading_archive",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "thread-1a06ef027e683325"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 33474,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "actions",
+                    "component": "Stack",
+                    "children": [
+                      "reply",
+                      "loading_archive"
+                    ],
+                    "direction": "horizontal",
+                    "gap": "sm",
+                    "padding": "md"
+                  },
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "count",
+                    "component": "Text",
+                    "text": {
+                      "path": "/count"
+                    },
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "subject",
+                      "count"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "message",
+                    "component": "ListItem",
+                    "headline": "message-sender",
+                    "meta": "message-when",
+                    "supporting": "message-body",
+                    "leading": [
+                      "message-avatar"
+                    ]
+                  },
+                  {
+                    "id": "messages",
+                    "component": "List",
+                    "children": {
+                      "path": "/messages",
+                      "componentId": "message"
+                    },
+                    "dividers": true
                   },
                   {
                     "id": "reply",
@@ -1190,7 +1290,7 @@
                       "event": {
                         "name": "draft-reply",
                         "context": {
-                          "threadId": "1a06f2abedf045ce"
+                          "threadId": "1a06ef027e683325"
                         }
                       }
                     }
@@ -1234,140 +1334,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "thread-1a06f2abedf045ce"
+                "surfaceId": "thread-1a06ef027e683325"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 14447,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "actions",
-                    "component": "Stack",
-                    "children": [
-                      "reply",
-                      "archive"
-                    ],
-                    "direction": "horizontal",
-                    "gap": "sm",
-                    "padding": "md"
-                  },
-                  {
-                    "id": "archive",
-                    "component": "Button",
-                    "label": "Archive"
-                  },
-                  {
-                    "id": "body",
-                    "component": "Stack",
-                    "children": [
-                      "header",
-                      "sheet"
-                    ],
-                    "gap": "xs"
-                  },
-                  {
-                    "id": "count",
-                    "component": "Text",
-                    "text": {
-                      "path": "/count"
-                    },
-                    "variant": "bodySmall",
-                    "color": "onSurfaceVariant"
-                  },
-                  {
-                    "id": "header",
-                    "component": "Stack",
-                    "children": [
-                      "subject",
-                      "count"
-                    ],
-                    "gap": "xs",
-                    "padding": "sm"
-                  },
-                  {
-                    "id": "message",
-                    "component": "ListItem",
-                    "headline": "message-sender",
-                    "supporting": "message-body",
-                    "meta": "message-when",
-                    "leading": [
-                      "message-avatar"
-                    ]
-                  },
-                  {
-                    "id": "messages",
-                    "component": "List",
-                    "children": {
-                      "path": "/messages",
-                      "componentId": "message"
-                    },
-                    "dividers": true,
-                    "layout": "stacked"
-                  },
-                  {
-                    "id": "reply",
-                    "component": "Button",
-                    "label": "Draft a reply",
-                    "variant": "outlined",
-                    "icon": "reply",
-                    "action": {
-                      "event": {
-                        "name": "draft-reply",
-                        "context": {
-                          "threadId": "1a06f2abedf045ce"
-                        }
-                      }
-                    }
-                  },
-                  {
-                    "id": "root",
-                    "component": "Surface",
-                    "child": "body",
-                    "container": "low",
-                    "shape": "large",
-                    "padding": "small"
-                  },
-                  {
-                    "id": "sheet",
-                    "component": "Surface",
-                    "child": "thread",
-                    "container": "lowest",
-                    "shape": "large",
-                    "padding": "none"
-                  },
-                  {
-                    "id": "subject",
-                    "component": "Text",
-                    "text": {
-                      "path": "/subject"
-                    },
-                    "variant": "titleLarge"
-                  },
-                  {
-                    "id": "thread",
-                    "component": "Stack",
-                    "children": [
-                      "messages",
-                      "actions"
-                    ],
-                    "gap": "none"
-                  }
-                ],
-                "surfaceId": "thread-1a06f2abedf045ce"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 15029,
+          "offsetMs": 34385,
           "messages": [
             {
               "version": "v0.9",
@@ -1394,7 +1368,7 @@
                       "event": {
                         "name": "label-toggle",
                         "context": {
-                          "threadId": "1a06f2abedf045ce",
+                          "threadId": "1a06ef027e683325",
                           "labelId": "INBOX",
                           "add": false
                         }
@@ -1433,8 +1407,8 @@
                     "id": "message",
                     "component": "ListItem",
                     "headline": "message-sender",
-                    "supporting": "message-body",
                     "meta": "message-when",
+                    "supporting": "message-body",
                     "leading": [
                       "message-avatar"
                     ]
@@ -1446,8 +1420,7 @@
                       "path": "/messages",
                       "componentId": "message"
                     },
-                    "dividers": true,
-                    "layout": "stacked"
+                    "dividers": true
                   },
                   {
                     "id": "reply",
@@ -1459,7 +1432,7 @@
                       "event": {
                         "name": "draft-reply",
                         "context": {
-                          "threadId": "1a06f2abedf045ce"
+                          "threadId": "1a06ef027e683325"
                         }
                       }
                     }
@@ -1498,14 +1471,14 @@
                     "gap": "none"
                   }
                 ],
-                "surfaceId": "thread-1a06f2abedf045ce"
+                "surfaceId": "thread-1a06ef027e683325"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 15513,
+          "offsetMs": 34571,
           "messages": [
             {
               "version": "v0.9",
@@ -1532,7 +1505,7 @@
                       "event": {
                         "name": "label-toggle",
                         "context": {
-                          "threadId": "1a06f2abedf045ce",
+                          "threadId": "1a06ef027e683325",
                           "labelId": "INBOX",
                           "add": false
                         }
@@ -1571,8 +1544,8 @@
                     "id": "message",
                     "component": "ListItem",
                     "headline": "message-sender",
-                    "supporting": "message-body",
                     "meta": "message-when",
+                    "supporting": "message-body",
                     "leading": [
                       "message-avatar"
                     ]
@@ -1582,8 +1555,7 @@
                     "component": "Avatar",
                     "name": {
                       "path": "sender"
-                    },
-                    "size": "large"
+                    }
                   },
                   {
                     "id": "messages",
@@ -1592,8 +1564,7 @@
                       "path": "/messages",
                       "componentId": "message"
                     },
-                    "dividers": true,
-                    "layout": "stacked"
+                    "dividers": true
                   },
                   {
                     "id": "reply",
@@ -1605,7 +1576,7 @@
                       "event": {
                         "name": "draft-reply",
                         "context": {
-                          "threadId": "1a06f2abedf045ce"
+                          "threadId": "1a06ef027e683325"
                         }
                       }
                     }
@@ -1644,14 +1615,14 @@
                     "gap": "none"
                   }
                 ],
-                "surfaceId": "thread-1a06f2abedf045ce"
+                "surfaceId": "thread-1a06ef027e683325"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 15863,
+          "offsetMs": 35105,
           "messages": [
             {
               "version": "v0.9",
@@ -1678,7 +1649,7 @@
                       "event": {
                         "name": "label-toggle",
                         "context": {
-                          "threadId": "1a06f2abedf045ce",
+                          "threadId": "1a06ef027e683325",
                           "labelId": "INBOX",
                           "add": false
                         }
@@ -1717,8 +1688,8 @@
                     "id": "message",
                     "component": "ListItem",
                     "headline": "message-sender",
-                    "supporting": "message-body",
                     "meta": "message-when",
+                    "supporting": "message-body",
                     "leading": [
                       "message-avatar"
                     ]
@@ -1728,8 +1699,7 @@
                     "component": "Avatar",
                     "name": {
                       "path": "sender"
-                    },
-                    "size": "large"
+                    }
                   },
                   {
                     "id": "message-sender",
@@ -1747,8 +1717,7 @@
                       "path": "/messages",
                       "componentId": "message"
                     },
-                    "dividers": true,
-                    "layout": "stacked"
+                    "dividers": true
                   },
                   {
                     "id": "reply",
@@ -1760,7 +1729,7 @@
                       "event": {
                         "name": "draft-reply",
                         "context": {
-                          "threadId": "1a06f2abedf045ce"
+                          "threadId": "1a06ef027e683325"
                         }
                       }
                     }
@@ -1799,14 +1768,14 @@
                     "gap": "none"
                   }
                 ],
-                "surfaceId": "thread-1a06f2abedf045ce"
+                "surfaceId": "thread-1a06ef027e683325"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 16028,
+          "offsetMs": 35481,
           "messages": [
             {
               "version": "v0.9",
@@ -1833,7 +1802,7 @@
                       "event": {
                         "name": "label-toggle",
                         "context": {
-                          "threadId": "1a06f2abedf045ce",
+                          "threadId": "1a06ef027e683325",
                           "labelId": "INBOX",
                           "add": false
                         }
@@ -1872,8 +1841,8 @@
                     "id": "message",
                     "component": "ListItem",
                     "headline": "message-sender",
-                    "supporting": "message-body",
                     "meta": "message-when",
+                    "supporting": "message-body",
                     "leading": [
                       "message-avatar"
                     ]
@@ -1883,170 +1852,7 @@
                     "component": "Avatar",
                     "name": {
                       "path": "sender"
-                    },
-                    "size": "large"
-                  },
-                  {
-                    "id": "message-sender",
-                    "component": "Text",
-                    "text": {
-                      "path": "sender"
-                    },
-                    "variant": "titleSmall",
-                    "weight": "bold"
-                  },
-                  {
-                    "id": "message-when",
-                    "component": "Text",
-                    "text": {
-                      "path": "when"
                     }
-                  },
-                  {
-                    "id": "messages",
-                    "component": "List",
-                    "children": {
-                      "path": "/messages",
-                      "componentId": "message"
-                    },
-                    "dividers": true,
-                    "layout": "stacked"
-                  },
-                  {
-                    "id": "reply",
-                    "component": "Button",
-                    "label": "Draft a reply",
-                    "variant": "outlined",
-                    "icon": "reply",
-                    "action": {
-                      "event": {
-                        "name": "draft-reply",
-                        "context": {
-                          "threadId": "1a06f2abedf045ce"
-                        }
-                      }
-                    }
-                  },
-                  {
-                    "id": "root",
-                    "component": "Surface",
-                    "child": "body",
-                    "container": "low",
-                    "shape": "large",
-                    "padding": "small"
-                  },
-                  {
-                    "id": "sheet",
-                    "component": "Surface",
-                    "child": "thread",
-                    "container": "lowest",
-                    "shape": "large",
-                    "padding": "none"
-                  },
-                  {
-                    "id": "subject",
-                    "component": "Text",
-                    "text": {
-                      "path": "/subject"
-                    },
-                    "variant": "titleLarge"
-                  },
-                  {
-                    "id": "thread",
-                    "component": "Stack",
-                    "children": [
-                      "messages",
-                      "actions"
-                    ],
-                    "gap": "none"
-                  }
-                ],
-                "surfaceId": "thread-1a06f2abedf045ce"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 16221,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "actions",
-                    "component": "Stack",
-                    "children": [
-                      "reply",
-                      "archive"
-                    ],
-                    "direction": "horizontal",
-                    "gap": "sm",
-                    "padding": "md"
-                  },
-                  {
-                    "id": "archive",
-                    "component": "Button",
-                    "label": "Archive",
-                    "variant": "outlined",
-                    "icon": "archive",
-                    "action": {
-                      "event": {
-                        "name": "label-toggle",
-                        "context": {
-                          "threadId": "1a06f2abedf045ce",
-                          "labelId": "INBOX",
-                          "add": false
-                        }
-                      }
-                    }
-                  },
-                  {
-                    "id": "body",
-                    "component": "Stack",
-                    "children": [
-                      "header",
-                      "sheet"
-                    ],
-                    "gap": "xs"
-                  },
-                  {
-                    "id": "count",
-                    "component": "Text",
-                    "text": {
-                      "path": "/count"
-                    },
-                    "variant": "bodySmall",
-                    "color": "onSurfaceVariant"
-                  },
-                  {
-                    "id": "header",
-                    "component": "Stack",
-                    "children": [
-                      "subject",
-                      "count"
-                    ],
-                    "gap": "xs",
-                    "padding": "sm"
-                  },
-                  {
-                    "id": "message",
-                    "component": "ListItem",
-                    "headline": "message-sender",
-                    "supporting": "message-body",
-                    "meta": "message-when",
-                    "leading": [
-                      "message-avatar"
-                    ]
-                  },
-                  {
-                    "id": "message-avatar",
-                    "component": "Avatar",
-                    "name": {
-                      "path": "sender"
-                    },
-                    "size": "large"
                   },
                   {
                     "id": "message-sender",
@@ -2073,8 +1879,7 @@
                       "path": "/messages",
                       "componentId": "message"
                     },
-                    "dividers": true,
-                    "layout": "stacked"
+                    "dividers": true
                   },
                   {
                     "id": "reply",
@@ -2086,7 +1891,7 @@
                       "event": {
                         "name": "draft-reply",
                         "context": {
-                          "threadId": "1a06f2abedf045ce"
+                          "threadId": "1a06ef027e683325"
                         }
                       }
                     }
@@ -2125,14 +1930,14 @@
                     "gap": "none"
                   }
                 ],
-                "surfaceId": "thread-1a06f2abedf045ce"
+                "surfaceId": "thread-1a06ef027e683325"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 16599,
+          "offsetMs": 35655,
           "messages": [
             {
               "version": "v0.9",
@@ -2159,7 +1964,7 @@
                       "event": {
                         "name": "label-toggle",
                         "context": {
-                          "threadId": "1a06f2abedf045ce",
+                          "threadId": "1a06ef027e683325",
                           "labelId": "INBOX",
                           "add": false
                         }
@@ -2198,8 +2003,8 @@
                     "id": "message",
                     "component": "ListItem",
                     "headline": "message-sender",
-                    "supporting": "message-body",
                     "meta": "message-when",
+                    "supporting": "message-body",
                     "leading": [
                       "message-avatar"
                     ]
@@ -2209,8 +2014,7 @@
                     "component": "Avatar",
                     "name": {
                       "path": "sender"
-                    },
-                    "size": "large"
+                    }
                   },
                   {
                     "id": "message-body",
@@ -2244,8 +2048,7 @@
                       "path": "/messages",
                       "componentId": "message"
                     },
-                    "dividers": true,
-                    "layout": "stacked"
+                    "dividers": true
                   },
                   {
                     "id": "reply",
@@ -2257,7 +2060,7 @@
                       "event": {
                         "name": "draft-reply",
                         "context": {
-                          "threadId": "1a06f2abedf045ce"
+                          "threadId": "1a06ef027e683325"
                         }
                       }
                     }
@@ -2296,7 +2099,7 @@
                     "gap": "none"
                   }
                 ],
-                "surfaceId": "thread-1a06f2abedf045ce"
+                "surfaceId": "thread-1a06ef027e683325"
               }
             }
           ],
@@ -2304,7 +2107,7 @@
         }
       ],
       "outcome": "completed",
-      "durationMs": 16860
+      "durationMs": 35969
     }
   ]
 }

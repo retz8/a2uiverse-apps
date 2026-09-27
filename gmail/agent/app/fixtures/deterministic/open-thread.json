@@ -2,7 +2,7 @@
   {
     "version": "v0.9",
     "createSurface": {
-      "surfaceId": "thread-1a06f2abedf045ce",
+      "surfaceId": "thread-1a06ef027e683325",
       "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/gmail/gmail-catalog/catalogs/v0.9.1/catalog.json",
       "sendDataModel": true
     }
@@ -10,9 +10,9 @@
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "thread-1a06f2abedf045ce",
+      "surfaceId": "thread-1a06ef027e683325",
       "value": {
-        "subject": "estimate review thread status agenda confirm summ",
+        "subject": "draft section summary reply agenda meeting pending notes pending estimat",
         "count": "1 message"
       }
     }
@@ -20,13 +20,13 @@
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "thread-1a06f2abedf045ce",
+      "surfaceId": "thread-1a06ef027e683325",
       "value": {
         "messages": [
           {
-            "id": "1a06f2abedf045ce",
-            "sender": "elin.tanaka@example.com",
-            "when": "Sep 5, 01:24"
+            "id": "1a06ef027e683325",
+            "sender": "sara.moreau@example.com",
+            "when": "2026-09-05 00:20"
           }
         ]
       }
@@ -35,14 +35,14 @@
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "thread-1a06f2abedf045ce",
+      "surfaceId": "thread-1a06ef027e683325",
       "value": {
         "messages": [
           {
-            "id": "1a06f2abedf045ce",
-            "sender": "elin.tanaka@example.com",
-            "when": "Sep 5, 01:24",
-            "body": "section summary feedback update meeting confirm thread section summary schedule pending attached thread review update confirm agenda proposal proposal status meeting timeline timeline agenda estimate update reply confirm feedback update attached schedule proposal update confirm review timeline update attached pending proposal question revision update notes section attached section update feedback pending review confirm schedule proposal estimate notes question update question attached confirm proposal estimate proposal status notes meeting draft schedule proposal summary section notes question revision meeting thread review update thread confirm confirm follow proposal review confirm question notes question agenda agenda notes proposal estimate schedule follow question confirm proposal estimate pending attached update draft notes confirm section attached attached pending reply notes follow notes thread reply estimate feedback pending feedback section proposal follow pr"
+            "id": "1a06ef027e683325",
+            "sender": "sara.moreau@example.com",
+            "when": "2026-09-05 00:20",
+            "body": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu"
           }
         ]
       }
@@ -51,17 +51,17 @@
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "thread-1a06f2abedf045ce",
+      "surfaceId": "thread-1a06ef027e683325",
       "path": "/",
       "value": {
-        "subject": "estimate review thread status agenda confirm summ",
+        "subject": "draft section summary reply agenda meeting pending notes pending estimat",
         "count": "1 message",
         "messages": [
           {
-            "id": "1a06f2abedf045ce",
-            "sender": "elin.tanaka@example.com",
-            "when": "Sep 5, 01:24",
-            "body": "section summary feedback update meeting confirm thread section summary schedule pending attached thread review update confirm agenda proposal proposal status meeting timeline timeline agenda estimate update reply confirm feedback update attached schedule proposal update confirm review timeline update attached pending proposal question revision update notes section attached section update feedback pending review confirm schedule proposal estimate notes question update question attached confirm proposal estimate proposal status notes meeting draft schedule proposal summary section notes question revision meeting thread review update thread confirm confirm follow proposal review confirm question notes question agenda agenda notes proposal estimate schedule follow question confirm proposal estimate pending attached update draft notes confirm section attached attached pending reply notes follow notes thread reply estimate feedback pending feedback section proposal follow pr"
+            "id": "1a06ef027e683325",
+            "sender": "sara.moreau@example.com",
+            "when": "2026-09-05 00:20",
+            "body": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu"
           }
         ]
       }
@@ -99,14 +99,6 @@
           "padding": "sm"
         },
         {
-          "id": "sheet",
-          "component": "Surface",
-          "child": "thread",
-          "container": "lowest",
-          "shape": "large",
-          "padding": "none"
-        },
-        {
           "id": "subject",
           "component": "Text",
           "text": {
@@ -124,13 +116,12 @@
           "color": "onSurfaceVariant"
         },
         {
-          "id": "thread",
-          "component": "Stack",
-          "children": [
-            "messages",
-            "actions"
-          ],
-          "gap": "none"
+          "id": "sheet",
+          "component": "Surface",
+          "child": "thread",
+          "container": "lowest",
+          "shape": "large",
+          "padding": "none"
         },
         {
           "id": "messages",
@@ -139,8 +130,16 @@
             "path": "/messages",
             "componentId": "message"
           },
-          "dividers": true,
-          "layout": "stacked"
+          "dividers": true
+        },
+        {
+          "id": "thread",
+          "component": "Stack",
+          "children": [
+            "messages",
+            "actions"
+          ],
+          "gap": "none"
         },
         {
           "id": "actions",
@@ -157,8 +156,8 @@
           "id": "message",
           "component": "ListItem",
           "headline": "message-sender",
-          "supporting": "message-body",
           "meta": "message-when",
+          "supporting": "message-body",
           "leading": [
             "message-avatar"
           ]
@@ -173,7 +172,7 @@
             "event": {
               "name": "draft-reply",
               "context": {
-                "threadId": "1a06f2abedf045ce"
+                "threadId": "1a06ef027e683325"
               }
             }
           }
@@ -188,7 +187,7 @@
             "event": {
               "name": "label-toggle",
               "context": {
-                "threadId": "1a06f2abedf045ce",
+                "threadId": "1a06ef027e683325",
                 "labelId": "INBOX",
                 "add": false
               }
@@ -200,8 +199,7 @@
           "component": "Avatar",
           "name": {
             "path": "sender"
-          },
-          "size": "large"
+          }
         },
         {
           "id": "message-sender",

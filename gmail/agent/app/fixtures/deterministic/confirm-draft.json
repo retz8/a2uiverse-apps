@@ -2,30 +2,29 @@
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "draft-1a06f2abedf045ce",
+      "surfaceId": "draft-1a06ef027e683325",
       "value": {
-        "to": "elin.tanaka@example.com"
+        "to": "sara.moreau@example.com"
       }
     }
   },
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "draft-1a06f2abedf045ce",
+      "surfaceId": "draft-1a06ef027e683325",
       "value": {
-        "subject": "Re: estimate review thread status agenda confirm summ",
-        "body": "I will get to it this week."
+        "subject": "Re: draft section summary reply agenda meeting pending notes pending estimat"
       }
     }
   },
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "draft-1a06f2abedf045ce",
+      "surfaceId": "draft-1a06ef027e683325",
       "path": "/",
       "value": {
-        "to": "elin.tanaka@example.com",
-        "subject": "Re: estimate review thread status agenda confirm summ",
+        "to": "sara.moreau@example.com",
+        "subject": "Re: draft section summary reply agenda meeting pending notes pending estimat",
         "body": "I will get to it this week."
       }
     }
@@ -126,7 +125,7 @@
             "event": {
               "name": "confirm-draft",
               "context": {
-                "threadId": "1a06f2abedf045ce"
+                "threadId": "1a06ef027e683325"
               }
             }
           }
@@ -140,7 +139,7 @@
             "event": {
               "name": "cancel-draft",
               "context": {
-                "threadId": "1a06f2abedf045ce"
+                "threadId": "1a06ef027e683325"
               }
             }
           }
