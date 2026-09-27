@@ -345,6 +345,7 @@
   margin: 0;
   padding: 0;
   list-style: none;
+  container: lc-list / inline-size;
 }
 
 .linear-catalog .lc-list-item + .lc-list-item,
@@ -407,6 +408,53 @@
 
 .linear-catalog .lc-list-item-trailing > * {
   max-width: 220px;
+}
+
+/* A narrow list keeps the title's line: the trailing items move under the title, the last of
+   them (the time) on a line of its own, so every row has the same shape; the items before it
+   share one line, the second taking what the first leaves. */
+@container lc-list (max-width: 720px) {
+  .linear-catalog .lc-row {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    column-gap: 10px;
+    row-gap: 2px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .linear-catalog .lc-list-item-leading {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .linear-catalog .lc-list-item-content {
+    grid-column: 2;
+    grid-row: 1;
+    width: auto;
+  }
+
+  .linear-catalog .lc-list-item-trailing {
+    display: grid;
+    grid-column: 2;
+    grid-row: 2;
+    grid-template-columns: auto minmax(0, 1fr);
+    justify-items: start;
+    align-items: center;
+    column-gap: 8px;
+    row-gap: 2px;
+    width: 100%;
+    max-width: none;
+  }
+
+  .linear-catalog .lc-list-item-trailing > * {
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .linear-catalog .lc-list-item-trailing > :last-child:not(:first-child) {
+    grid-column: 1 / -1;
+  }
 }
 
 .linear-catalog .lc-list-group-head {
