@@ -39,7 +39,15 @@
           "id": "4b5fd10b-e26a-48db-b138-cf0fa64e8c9d",
           "name": "lint-format",
           "workflowId": "6da68785-d209-4441-95a9-174080b2428c"
-        },
+        }
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "job-failure",
+      "value": {
         "step": {
           "name": "Format check"
         }
@@ -94,7 +102,7 @@
             "text": "[warn] apps/orchestrator/src/config.ts"
           },
           {
-            "text": "[warn] Code style issues found in the above file. Run Prettier with --write to fix"
+            "text": "[warn] Code style issues found in the above file. Run Prettier with --write to fix."
           }
         ]
       }
@@ -197,6 +205,7 @@
         {
           "id": "step-body",
           "component": "Stack",
+          "gap": "small",
           "children": [
             "step-top",
             "log"
@@ -206,22 +215,23 @@
           "id": "step-top",
           "component": "Stack",
           "direction": "horizontal",
+          "align": "center",
+          "justify": "spaceBetween",
           "children": [
             "step-lead",
             "step-exit"
-          ],
-          "align": "center",
-          "justify": "spaceBetween"
+          ]
         },
         {
           "id": "step-lead",
           "component": "Stack",
           "direction": "horizontal",
+          "align": "center",
+          "gap": "small",
           "children": [
             "step-status",
             "step-name"
-          ],
-          "align": "center"
+          ]
         },
         {
           "id": "step-status",
@@ -238,6 +248,14 @@
           "weight": "medium"
         },
         {
+          "id": "log",
+          "component": "LogBlock",
+          "children": {
+            "path": "/lines",
+            "componentId": "log-line"
+          }
+        },
+        {
           "id": "step-exit",
           "component": "Text",
           "text": {
@@ -245,14 +263,6 @@
           },
           "tone": "muted",
           "size": "small"
-        },
-        {
-          "id": "log",
-          "component": "LogBlock",
-          "children": {
-            "path": "/lines",
-            "componentId": "log-line"
-          }
         },
         {
           "id": "log-line",

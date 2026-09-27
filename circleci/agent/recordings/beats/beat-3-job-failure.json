@@ -4,23 +4,23 @@
   "title": "Failed job logs",
   "prompt": "Why did it fail? Show me the failed job's step and the end of its log.",
   "model": "gemini-3.7-flash",
-  "recordedAt": "2026-09-27T01:27:02+00:00",
-  "contextId": "d71bd7df-52a7-4473-b7c6-7599ea279a1f",
+  "recordedAt": "2026-09-27T06:44:53+00:00",
+  "contextId": "42442614-9e08-48d4-a720-a692049ddf7e",
   "chainedFrom": "beat-2-run-detail",
   "turns": [
     {
-      "taskId": "582071f7-604b-40a9-b364-33ab977f0378",
+      "taskId": "34a91ffc-bfb5-4f9a-a9ff-44024285863b",
       "kind": "utterance",
       "prompt": "Why did it fail? Show me the failed job's step and the end of its log.",
       "action": null,
       "batches": [
         {
-          "offsetMs": 10600,
+          "offsetMs": 10629,
           "messages": [
             {
               "paintMeta": {
                 "surfaceId": "job-failure",
-                "title": "Failed Step Output"
+                "title": "Failed step: Format check"
               }
             }
           ],
@@ -29,7 +29,7 @@
           ]
         },
         {
-          "offsetMs": 10935,
+          "offsetMs": 11069,
           "messages": [
             {
               "version": "v0.9",
@@ -43,7 +43,7 @@
           "texts": []
         },
         {
-          "offsetMs": 11425,
+          "offsetMs": 11624,
           "messages": [
             {
               "version": "v0.9",
@@ -60,7 +60,7 @@
           "texts": []
         },
         {
-          "offsetMs": 11603,
+          "offsetMs": 11798,
           "messages": [
             {
               "version": "v0.9",
@@ -78,7 +78,7 @@
           "texts": []
         },
         {
-          "offsetMs": 11916,
+          "offsetMs": 11999,
           "messages": [
             {
               "version": "v0.9",
@@ -89,7 +89,21 @@
                     "id": "4b5fd10b-e26a-48db-b138-cf0fa64e8c9d",
                     "name": "lint-format",
                     "workflowId": "6da68785-d209-4441-95a9-174080b2428c"
-                  },
+                  }
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 12253,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "job-failure",
+                "value": {
                   "step": {
                     "name": "Format check"
                   }
@@ -100,7 +114,7 @@
           "texts": []
         },
         {
-          "offsetMs": 12060,
+          "offsetMs": 12427,
           "messages": [
             {
               "version": "v0.9",
@@ -118,7 +132,7 @@
           "texts": []
         },
         {
-          "offsetMs": 12237,
+          "offsetMs": 12604,
           "messages": [
             {
               "version": "v0.9",
@@ -144,7 +158,7 @@
           "texts": []
         },
         {
-          "offsetMs": 12421,
+          "offsetMs": 12803,
           "messages": [
             {
               "version": "v0.9",
@@ -162,7 +176,7 @@
                       "text": "[warn] apps/orchestrator/src/config.ts"
                     },
                     {
-                      "text": "[warn] Code style issues found in the above file. Run Prettier with --write to fix"
+                      "text": "[warn] Code style issues found in the above file. Run Prettier with --write to fix."
                     }
                   ]
                 }
@@ -172,7 +186,7 @@
           "texts": []
         },
         {
-          "offsetMs": 12547,
+          "offsetMs": 12979,
           "messages": [
             {
               "version": "v0.9",
@@ -203,7 +217,7 @@
           "texts": []
         },
         {
-          "offsetMs": 12697,
+          "offsetMs": 13160,
           "messages": [
             {
               "version": "v0.9",
@@ -244,7 +258,7 @@
           "texts": []
         },
         {
-          "offsetMs": 13152,
+          "offsetMs": 13733,
           "messages": [
             {
               "version": "v0.9",
@@ -268,7 +282,7 @@
           "texts": []
         },
         {
-          "offsetMs": 13331,
+          "offsetMs": 13930,
           "messages": [
             {
               "version": "v0.9",
@@ -312,7 +326,100 @@
           "texts": []
         },
         {
-          "offsetMs": 13683,
+          "offsetMs": 14106,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "gap": "medium",
+                    "children": [
+                      "heading",
+                      "loading_step",
+                      "loading_actions"
+                    ]
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Heading",
+                    "text": {
+                      "path": "/job/name"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Panel",
+                    "child": "body"
+                  },
+                  {
+                    "id": "loading_step",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "job-failure"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 14300,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "gap": "medium",
+                    "children": [
+                      "heading",
+                      "loading_step",
+                      "loading_actions"
+                    ]
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Heading",
+                    "text": {
+                      "path": "/job/name"
+                    },
+                    "size": "large"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Panel",
+                    "child": "body"
+                  },
+                  {
+                    "id": "loading_step",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "job-failure"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 14479,
           "messages": [
             {
               "version": "v0.9",
@@ -343,7 +450,9 @@
                   },
                   {
                     "id": "step",
-                    "component": "Panel"
+                    "component": "Panel",
+                    "tone": "danger",
+                    "padding": "small"
                   },
                   {
                     "id": "loading_actions",
@@ -358,7 +467,7 @@
           "texts": []
         },
         {
-          "offsetMs": 14017,
+          "offsetMs": 14659,
           "messages": [
             {
               "version": "v0.9",
@@ -412,7 +521,7 @@
           "texts": []
         },
         {
-          "offsetMs": 14151,
+          "offsetMs": 14981,
           "messages": [
             {
               "version": "v0.9",
@@ -451,6 +560,7 @@
                   {
                     "id": "step-body",
                     "component": "Stack",
+                    "gap": "small",
                     "children": [
                       "loading_step-top",
                       "loading_log"
@@ -479,7 +589,7 @@
           "texts": []
         },
         {
-          "offsetMs": 14319,
+          "offsetMs": 15142,
           "messages": [
             {
               "version": "v0.9",
@@ -518,6 +628,7 @@
                   {
                     "id": "step-body",
                     "component": "Stack",
+                    "gap": "small",
                     "children": [
                       "step-top",
                       "loading_log"
@@ -525,7 +636,8 @@
                   },
                   {
                     "id": "step-top",
-                    "component": "Stack"
+                    "component": "Stack",
+                    "direction": "horizontal"
                   },
                   {
                     "id": "loading_actions",
@@ -545,7 +657,7 @@
           "texts": []
         },
         {
-          "offsetMs": 14662,
+          "offsetMs": 15503,
           "messages": [
             {
               "version": "v0.9",
@@ -584,6 +696,7 @@
                   {
                     "id": "step-body",
                     "component": "Stack",
+                    "gap": "small",
                     "children": [
                       "step-top",
                       "loading_log"
@@ -593,12 +706,12 @@
                     "id": "step-top",
                     "component": "Stack",
                     "direction": "horizontal",
+                    "align": "center",
+                    "justify": "spaceBetween",
                     "children": [
                       "loading_step-lead",
                       "loading_step-exit"
-                    ],
-                    "align": "center",
-                    "justify": "spaceBetween"
+                    ]
                   },
                   {
                     "id": "loading_actions",
@@ -628,7 +741,7 @@
           "texts": []
         },
         {
-          "offsetMs": 15163,
+          "offsetMs": 15909,
           "messages": [
             {
               "version": "v0.9",
@@ -667,6 +780,7 @@
                   {
                     "id": "step-body",
                     "component": "Stack",
+                    "gap": "small",
                     "children": [
                       "step-top",
                       "loading_log"
@@ -676,22 +790,23 @@
                     "id": "step-lead",
                     "component": "Stack",
                     "direction": "horizontal",
+                    "align": "center",
+                    "gap": "small",
                     "children": [
                       "loading_step-status",
                       "loading_step-name"
-                    ],
-                    "align": "center"
+                    ]
                   },
                   {
                     "id": "step-top",
                     "component": "Stack",
                     "direction": "horizontal",
+                    "align": "center",
+                    "justify": "spaceBetween",
                     "children": [
                       "step-lead",
                       "loading_step-exit"
-                    ],
-                    "align": "center",
-                    "justify": "spaceBetween"
+                    ]
                   },
                   {
                     "id": "loading_actions",
@@ -726,7 +841,7 @@
           "texts": []
         },
         {
-          "offsetMs": 15342,
+          "offsetMs": 16283,
           "messages": [
             {
               "version": "v0.9",
@@ -765,6 +880,7 @@
                   {
                     "id": "step-body",
                     "component": "Stack",
+                    "gap": "small",
                     "children": [
                       "step-top",
                       "loading_log"
@@ -774,11 +890,12 @@
                     "id": "step-lead",
                     "component": "Stack",
                     "direction": "horizontal",
+                    "align": "center",
+                    "gap": "small",
                     "children": [
                       "step-status",
                       "loading_step-name"
-                    ],
-                    "align": "center"
+                    ]
                   },
                   {
                     "id": "step-status",
@@ -790,12 +907,12 @@
                     "id": "step-top",
                     "component": "Stack",
                     "direction": "horizontal",
+                    "align": "center",
+                    "justify": "spaceBetween",
                     "children": [
                       "step-lead",
                       "loading_step-exit"
-                    ],
-                    "align": "center",
-                    "justify": "spaceBetween"
+                    ]
                   },
                   {
                     "id": "loading_actions",
@@ -825,7 +942,7 @@
           "texts": []
         },
         {
-          "offsetMs": 15511,
+          "offsetMs": 16681,
           "messages": [
             {
               "version": "v0.9",
@@ -864,6 +981,7 @@
                   {
                     "id": "step-body",
                     "component": "Stack",
+                    "gap": "small",
                     "children": [
                       "step-top",
                       "loading_log"
@@ -873,109 +991,12 @@
                     "id": "step-lead",
                     "component": "Stack",
                     "direction": "horizontal",
-                    "children": [
-                      "step-status",
-                      "step-name"
-                    ],
-                    "align": "center"
-                  },
-                  {
-                    "id": "step-name",
-                    "component": "Text"
-                  },
-                  {
-                    "id": "step-status",
-                    "component": "StatusIcon",
-                    "status": "Failed",
-                    "size": "small"
-                  },
-                  {
-                    "id": "step-top",
-                    "component": "Stack",
-                    "direction": "horizontal",
-                    "children": [
-                      "step-lead",
-                      "loading_step-exit"
-                    ],
                     "align": "center",
-                    "justify": "spaceBetween"
-                  },
-                  {
-                    "id": "loading_actions",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_log",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_step-exit",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "job-failure"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 15829,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "body",
-                    "component": "Stack",
-                    "gap": "medium",
-                    "children": [
-                      "heading",
-                      "step",
-                      "loading_actions"
-                    ]
-                  },
-                  {
-                    "id": "heading",
-                    "component": "Heading",
-                    "text": {
-                      "path": "/job/name"
-                    },
-                    "size": "large"
-                  },
-                  {
-                    "id": "root",
-                    "component": "Panel",
-                    "child": "body"
-                  },
-                  {
-                    "id": "step",
-                    "component": "Panel",
-                    "tone": "danger",
-                    "padding": "small",
-                    "child": "step-body"
-                  },
-                  {
-                    "id": "step-body",
-                    "component": "Stack",
-                    "children": [
-                      "step-top",
-                      "loading_log"
-                    ]
-                  },
-                  {
-                    "id": "step-lead",
-                    "component": "Stack",
-                    "direction": "horizontal",
+                    "gap": "small",
                     "children": [
                       "step-status",
                       "step-name"
-                    ],
-                    "align": "center"
+                    ]
                   },
                   {
                     "id": "step-name",
@@ -995,12 +1016,12 @@
                     "id": "step-top",
                     "component": "Stack",
                     "direction": "horizontal",
+                    "align": "center",
+                    "justify": "spaceBetween",
                     "children": [
                       "step-lead",
                       "loading_step-exit"
-                    ],
-                    "align": "center",
-                    "justify": "spaceBetween"
+                    ]
                   },
                   {
                     "id": "loading_actions",
@@ -1025,7 +1046,7 @@
           "texts": []
         },
         {
-          "offsetMs": 16141,
+          "offsetMs": 17272,
           "messages": [
             {
               "version": "v0.9",
@@ -1050,6 +1071,10 @@
                     "size": "large"
                   },
                   {
+                    "id": "log",
+                    "component": "LogBlock"
+                  },
+                  {
                     "id": "root",
                     "component": "Panel",
                     "child": "body"
@@ -1064,9 +1089,10 @@
                   {
                     "id": "step-body",
                     "component": "Stack",
+                    "gap": "small",
                     "children": [
                       "step-top",
-                      "loading_log"
+                      "log"
                     ]
                   },
                   {
@@ -1082,11 +1108,12 @@
                     "id": "step-lead",
                     "component": "Stack",
                     "direction": "horizontal",
+                    "align": "center",
+                    "gap": "small",
                     "children": [
                       "step-status",
                       "step-name"
-                    ],
-                    "align": "center"
+                    ]
                   },
                   {
                     "id": "step-name",
@@ -1106,20 +1133,15 @@
                     "id": "step-top",
                     "component": "Stack",
                     "direction": "horizontal",
+                    "align": "center",
+                    "justify": "spaceBetween",
                     "children": [
                       "step-lead",
                       "step-exit"
-                    ],
-                    "align": "center",
-                    "justify": "spaceBetween"
+                    ]
                   },
                   {
                     "id": "loading_actions",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_log",
                     "component": "Row",
                     "children": []
                   }
@@ -1131,7 +1153,7 @@
           "texts": []
         },
         {
-          "offsetMs": 16482,
+          "offsetMs": 17421,
           "messages": [
             {
               "version": "v0.9",
@@ -1178,6 +1200,7 @@
                   {
                     "id": "step-body",
                     "component": "Stack",
+                    "gap": "small",
                     "children": [
                       "step-top",
                       "log"
@@ -1196,11 +1219,12 @@
                     "id": "step-lead",
                     "component": "Stack",
                     "direction": "horizontal",
+                    "align": "center",
+                    "gap": "small",
                     "children": [
                       "step-status",
                       "step-name"
-                    ],
-                    "align": "center"
+                    ]
                   },
                   {
                     "id": "step-name",
@@ -1220,12 +1244,12 @@
                     "id": "step-top",
                     "component": "Stack",
                     "direction": "horizontal",
+                    "align": "center",
+                    "justify": "spaceBetween",
                     "children": [
                       "step-lead",
                       "step-exit"
-                    ],
-                    "align": "center",
-                    "justify": "spaceBetween"
+                    ]
                   },
                   {
                     "id": "loading_actions",
@@ -1245,7 +1269,7 @@
           "texts": []
         },
         {
-          "offsetMs": 16799,
+          "offsetMs": 17826,
           "messages": [
             {
               "version": "v0.9",
@@ -1299,6 +1323,7 @@
                   {
                     "id": "step-body",
                     "component": "Stack",
+                    "gap": "small",
                     "children": [
                       "step-top",
                       "log"
@@ -1317,11 +1342,12 @@
                     "id": "step-lead",
                     "component": "Stack",
                     "direction": "horizontal",
+                    "align": "center",
+                    "gap": "small",
                     "children": [
                       "step-status",
                       "step-name"
-                    ],
-                    "align": "center"
+                    ]
                   },
                   {
                     "id": "step-name",
@@ -1341,12 +1367,12 @@
                     "id": "step-top",
                     "component": "Stack",
                     "direction": "horizontal",
+                    "align": "center",
+                    "justify": "spaceBetween",
                     "children": [
                       "step-lead",
                       "step-exit"
-                    ],
-                    "align": "center",
-                    "justify": "spaceBetween"
+                    ]
                   },
                   {
                     "id": "loading_actions",
@@ -1361,7 +1387,133 @@
           "texts": []
         },
         {
-          "offsetMs": 17106,
+          "offsetMs": 18183,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "actions",
+                    "component": "Stack",
+                    "direction": "horizontal",
+                    "children": [
+                      "loading_rerun-failed"
+                    ]
+                  },
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "gap": "medium",
+                    "children": [
+                      "heading",
+                      "step",
+                      "actions"
+                    ]
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Heading",
+                    "text": {
+                      "path": "/job/name"
+                    },
+                    "size": "large"
+                  },
+                  {
+                    "id": "log",
+                    "component": "LogBlock",
+                    "children": {
+                      "path": "/lines",
+                      "componentId": "log-line"
+                    }
+                  },
+                  {
+                    "id": "log-line",
+                    "component": "LogLine",
+                    "text": {
+                      "path": "text"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Panel",
+                    "child": "body"
+                  },
+                  {
+                    "id": "step",
+                    "component": "Panel",
+                    "tone": "danger",
+                    "padding": "small",
+                    "child": "step-body"
+                  },
+                  {
+                    "id": "step-body",
+                    "component": "Stack",
+                    "gap": "small",
+                    "children": [
+                      "step-top",
+                      "log"
+                    ]
+                  },
+                  {
+                    "id": "step-exit",
+                    "component": "Text",
+                    "text": {
+                      "path": "/step/exitCode"
+                    },
+                    "tone": "muted",
+                    "size": "small"
+                  },
+                  {
+                    "id": "step-lead",
+                    "component": "Stack",
+                    "direction": "horizontal",
+                    "align": "center",
+                    "gap": "small",
+                    "children": [
+                      "step-status",
+                      "step-name"
+                    ]
+                  },
+                  {
+                    "id": "step-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "/step/name"
+                    },
+                    "weight": "medium"
+                  },
+                  {
+                    "id": "step-status",
+                    "component": "StatusIcon",
+                    "status": "Failed",
+                    "size": "small"
+                  },
+                  {
+                    "id": "step-top",
+                    "component": "Stack",
+                    "direction": "horizontal",
+                    "align": "center",
+                    "justify": "spaceBetween",
+                    "children": [
+                      "step-lead",
+                      "step-exit"
+                    ]
+                  },
+                  {
+                    "id": "loading_rerun-failed",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "job-failure"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 18363,
           "messages": [
             {
               "version": "v0.9",
@@ -1410,7 +1562,8 @@
                   },
                   {
                     "id": "rerun-failed",
-                    "component": "Button"
+                    "component": "Button",
+                    "label": "Rerun from failed"
                   },
                   {
                     "id": "root",
@@ -1427,6 +1580,7 @@
                   {
                     "id": "step-body",
                     "component": "Stack",
+                    "gap": "small",
                     "children": [
                       "step-top",
                       "log"
@@ -1445,11 +1599,12 @@
                     "id": "step-lead",
                     "component": "Stack",
                     "direction": "horizontal",
+                    "align": "center",
+                    "gap": "small",
                     "children": [
                       "step-status",
                       "step-name"
-                    ],
-                    "align": "center"
+                    ]
                   },
                   {
                     "id": "step-name",
@@ -1469,12 +1624,12 @@
                     "id": "step-top",
                     "component": "Stack",
                     "direction": "horizontal",
+                    "align": "center",
+                    "justify": "spaceBetween",
                     "children": [
                       "step-lead",
                       "step-exit"
-                    ],
-                    "align": "center",
-                    "justify": "spaceBetween"
+                    ]
                   }
                 ],
                 "surfaceId": "job-failure"
@@ -1484,7 +1639,138 @@
           "texts": []
         },
         {
-          "offsetMs": 17660,
+          "offsetMs": 18574,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "actions",
+                    "component": "Stack",
+                    "direction": "horizontal",
+                    "children": [
+                      "rerun-failed"
+                    ]
+                  },
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "gap": "medium",
+                    "children": [
+                      "heading",
+                      "step",
+                      "actions"
+                    ]
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Heading",
+                    "text": {
+                      "path": "/job/name"
+                    },
+                    "size": "large"
+                  },
+                  {
+                    "id": "log",
+                    "component": "LogBlock",
+                    "children": {
+                      "path": "/lines",
+                      "componentId": "log-line"
+                    }
+                  },
+                  {
+                    "id": "log-line",
+                    "component": "LogLine",
+                    "text": {
+                      "path": "text"
+                    }
+                  },
+                  {
+                    "id": "rerun-failed",
+                    "component": "Button",
+                    "label": "Rerun from failed",
+                    "action": {
+                      "event": {
+                        "name": "rerun-workflow"
+                      }
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Panel",
+                    "child": "body"
+                  },
+                  {
+                    "id": "step",
+                    "component": "Panel",
+                    "tone": "danger",
+                    "padding": "small",
+                    "child": "step-body"
+                  },
+                  {
+                    "id": "step-body",
+                    "component": "Stack",
+                    "gap": "small",
+                    "children": [
+                      "step-top",
+                      "log"
+                    ]
+                  },
+                  {
+                    "id": "step-exit",
+                    "component": "Text",
+                    "text": {
+                      "path": "/step/exitCode"
+                    },
+                    "tone": "muted",
+                    "size": "small"
+                  },
+                  {
+                    "id": "step-lead",
+                    "component": "Stack",
+                    "direction": "horizontal",
+                    "align": "center",
+                    "gap": "small",
+                    "children": [
+                      "step-status",
+                      "step-name"
+                    ]
+                  },
+                  {
+                    "id": "step-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "/step/name"
+                    },
+                    "weight": "medium"
+                  },
+                  {
+                    "id": "step-status",
+                    "component": "StatusIcon",
+                    "status": "Failed",
+                    "size": "small"
+                  },
+                  {
+                    "id": "step-top",
+                    "component": "Stack",
+                    "direction": "horizontal",
+                    "align": "center",
+                    "justify": "spaceBetween",
+                    "children": [
+                      "step-lead",
+                      "step-exit"
+                    ]
+                  }
+                ],
+                "surfaceId": "job-failure"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 18935,
           "messages": [
             {
               "version": "v0.9",
@@ -1562,6 +1848,7 @@
                   {
                     "id": "step-body",
                     "component": "Stack",
+                    "gap": "small",
                     "children": [
                       "step-top",
                       "log"
@@ -1580,11 +1867,12 @@
                     "id": "step-lead",
                     "component": "Stack",
                     "direction": "horizontal",
+                    "align": "center",
+                    "gap": "small",
                     "children": [
                       "step-status",
                       "step-name"
-                    ],
-                    "align": "center"
+                    ]
                   },
                   {
                     "id": "step-name",
@@ -1604,12 +1892,12 @@
                     "id": "step-top",
                     "component": "Stack",
                     "direction": "horizontal",
+                    "align": "center",
+                    "justify": "spaceBetween",
                     "children": [
                       "step-lead",
                       "step-exit"
-                    ],
-                    "align": "center",
-                    "justify": "spaceBetween"
+                    ]
                   }
                 ],
                 "surfaceId": "job-failure"
@@ -1620,7 +1908,7 @@
         }
       ],
       "outcome": "completed",
-      "durationMs": 17897
+      "durationMs": 19225
     }
   ]
 }

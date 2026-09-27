@@ -52,6 +52,9 @@ language.
 - A row that opens its object carries the action on its `ListItem` — the whole row is the target.
   Bind the event context by relative path — `{"context": {"jobId": {"path": "id"}}}` — so every row
   carries its own target. Never put a `Link` or a `Button` inside a row that already acts.
+- Both horizontal `Stack`s of a run row — the one holding its `StatusBadge`, repository and branch,
+  and the one around it holding the time — have `align: "start"`, never `"center"`: a branch that
+  wraps keeps the badge, the repository and the time on its first line.
 - A run row reads, left to right: its `StatusBadge`, the branch, the commit subject
   (`truncate: true`) with the short hash beside it in `font: "mono"`, then the time and author,
   `tone: "muted"`. A job row reads: its `StatusIcon`, the job name, its duration at the end,

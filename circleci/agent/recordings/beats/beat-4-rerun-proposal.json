@@ -4,23 +4,23 @@
   "title": "Rerun proposed",
   "prompt": "Rerun only the failed jobs of that workflow.",
   "model": "gemini-3.7-flash",
-  "recordedAt": "2026-09-27T01:27:02+00:00",
-  "contextId": "d71bd7df-52a7-4473-b7c6-7599ea279a1f",
+  "recordedAt": "2026-09-27T06:44:53+00:00",
+  "contextId": "42442614-9e08-48d4-a720-a692049ddf7e",
   "chainedFrom": "beat-3-job-failure",
   "turns": [
     {
-      "taskId": "0c8b00b1-66a8-4648-82f5-6e8909bb11be",
+      "taskId": "8ffc5b70-5ae0-44af-8791-ea9cccc53783",
       "kind": "utterance",
       "prompt": "Rerun only the failed jobs of that workflow.",
       "action": null,
       "batches": [
         {
-          "offsetMs": 9224,
+          "offsetMs": 5585,
           "messages": [
             {
               "paintMeta": {
                 "surfaceId": "rerun-proposal",
-                "title": "Rerun Workflow",
+                "title": "Rerun workflow?",
                 "kind": "question"
               }
             }
@@ -30,7 +30,7 @@
           ]
         },
         {
-          "offsetMs": 9501,
+          "offsetMs": 5999,
           "messages": [
             {
               "version": "v0.9",
@@ -44,15 +44,14 @@
           "texts": []
         },
         {
-          "offsetMs": 9963,
+          "offsetMs": 6386,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
                 "surfaceId": "rerun-proposal",
                 "value": {
-                  "project": "a2uiverse",
-                  "branch": "synthesizer-effort-apart-from-planner"
+                  "project": "a2uiverse"
                 }
               }
             }
@@ -60,13 +59,14 @@
           "texts": []
         },
         {
-          "offsetMs": 10117,
+          "offsetMs": 6634,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
                 "surfaceId": "rerun-proposal",
                 "value": {
+                  "branch": "synthesizer-effort-apart-from-planner",
                   "workflow": "verify"
                 }
               }
@@ -75,7 +75,7 @@
           "texts": []
         },
         {
-          "offsetMs": 10304,
+          "offsetMs": 7081,
           "messages": [
             {
               "version": "v0.9",
@@ -90,7 +90,7 @@
           "texts": []
         },
         {
-          "offsetMs": 10458,
+          "offsetMs": 7245,
           "messages": [
             {
               "version": "v0.9",
@@ -110,7 +110,7 @@
           "texts": []
         },
         {
-          "offsetMs": 10991,
+          "offsetMs": 7672,
           "messages": [
             {
               "version": "v0.9",
@@ -134,7 +134,7 @@
           "texts": []
         },
         {
-          "offsetMs": 11127,
+          "offsetMs": 7933,
           "messages": [
             {
               "version": "v0.9",
@@ -184,57 +184,7 @@
           "texts": []
         },
         {
-          "offsetMs": 11280,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "body",
-                    "component": "Stack",
-                    "gap": "medium",
-                    "children": [
-                      "heading",
-                      "loading_facts",
-                      "loading_scope",
-                      "loading_actions"
-                    ]
-                  },
-                  {
-                    "id": "heading",
-                    "component": "Heading",
-                    "text": "Rerun this"
-                  },
-                  {
-                    "id": "root",
-                    "component": "Panel",
-                    "child": "body"
-                  },
-                  {
-                    "id": "loading_facts",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_scope",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_actions",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "rerun-proposal"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 11428,
+          "offsetMs": 8142,
           "messages": [
             {
               "version": "v0.9",
@@ -285,7 +235,7 @@
           "texts": []
         },
         {
-          "offsetMs": 11768,
+          "offsetMs": 8798,
           "messages": [
             {
               "version": "v0.9",
@@ -306,14 +256,14 @@
                     "id": "facts",
                     "component": "Stack",
                     "direction": "horizontal",
+                    "gap": "medium",
                     "children": [
                       "loading_project",
                       "loading_rule-1",
                       "loading_branch",
                       "loading_rule-2",
                       "loading_workflow"
-                    ],
-                    "gap": "medium"
+                    ]
                   },
                   {
                     "id": "heading",
@@ -369,7 +319,7 @@
           "texts": []
         },
         {
-          "offsetMs": 12112,
+          "offsetMs": 9030,
           "messages": [
             {
               "version": "v0.9",
@@ -390,14 +340,14 @@
                     "id": "facts",
                     "component": "Stack",
                     "direction": "horizontal",
+                    "gap": "medium",
                     "children": [
                       "project",
                       "loading_rule-1",
                       "loading_branch",
                       "loading_rule-2",
                       "loading_workflow"
-                    ],
-                    "gap": "medium"
+                    ]
                   },
                   {
                     "id": "heading",
@@ -459,7 +409,7 @@
           "texts": []
         },
         {
-          "offsetMs": 12263,
+          "offsetMs": 9233,
           "messages": [
             {
               "version": "v0.9",
@@ -480,14 +430,103 @@
                     "id": "facts",
                     "component": "Stack",
                     "direction": "horizontal",
+                    "gap": "medium",
                     "children": [
                       "project",
                       "loading_rule-1",
                       "loading_branch",
                       "loading_rule-2",
                       "loading_workflow"
-                    ],
-                    "gap": "medium"
+                    ]
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Heading",
+                    "text": "Rerun this workflow?",
+                    "size": "large"
+                  },
+                  {
+                    "id": "project",
+                    "component": "Field",
+                    "label": "Project",
+                    "child": "project-value"
+                  },
+                  {
+                    "id": "project-value",
+                    "component": "Text"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Panel",
+                    "child": "body"
+                  },
+                  {
+                    "id": "loading_scope",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_rule-1",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_branch",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_rule-2",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_workflow",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "rerun-proposal"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 9352,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "gap": "medium",
+                    "children": [
+                      "heading",
+                      "facts",
+                      "loading_scope",
+                      "loading_actions"
+                    ]
+                  },
+                  {
+                    "id": "facts",
+                    "component": "Stack",
+                    "direction": "horizontal",
+                    "gap": "medium",
+                    "children": [
+                      "project",
+                      "loading_rule-1",
+                      "loading_branch",
+                      "loading_rule-2",
+                      "loading_workflow"
+                    ]
                   },
                   {
                     "id": "heading",
@@ -551,7 +590,7 @@
           "texts": []
         },
         {
-          "offsetMs": 12439,
+          "offsetMs": 9564,
           "messages": [
             {
               "version": "v0.9",
@@ -572,14 +611,14 @@
                     "id": "facts",
                     "component": "Stack",
                     "direction": "horizontal",
+                    "gap": "medium",
                     "children": [
                       "project",
                       "rule-1",
                       "loading_branch",
                       "loading_rule-2",
                       "loading_workflow"
-                    ],
-                    "gap": "medium"
+                    ]
                   },
                   {
                     "id": "heading",
@@ -643,7 +682,99 @@
           "texts": []
         },
         {
-          "offsetMs": 12753,
+          "offsetMs": 9776,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "gap": "medium",
+                    "children": [
+                      "heading",
+                      "facts",
+                      "loading_scope",
+                      "loading_actions"
+                    ]
+                  },
+                  {
+                    "id": "branch",
+                    "component": "Field",
+                    "label": "Branch"
+                  },
+                  {
+                    "id": "facts",
+                    "component": "Stack",
+                    "direction": "horizontal",
+                    "gap": "medium",
+                    "children": [
+                      "project",
+                      "rule-1",
+                      "branch",
+                      "loading_rule-2",
+                      "loading_workflow"
+                    ]
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Heading",
+                    "text": "Rerun this workflow?",
+                    "size": "large"
+                  },
+                  {
+                    "id": "project",
+                    "component": "Field",
+                    "label": "Project",
+                    "child": "project-value"
+                  },
+                  {
+                    "id": "project-value",
+                    "component": "Text",
+                    "text": {
+                      "path": "/project"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Panel",
+                    "child": "body"
+                  },
+                  {
+                    "id": "rule-1",
+                    "component": "Divider",
+                    "orientation": "vertical"
+                  },
+                  {
+                    "id": "loading_scope",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_rule-2",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_workflow",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "rerun-proposal"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 9993,
           "messages": [
             {
               "version": "v0.9",
@@ -670,14 +801,14 @@
                     "id": "facts",
                     "component": "Stack",
                     "direction": "horizontal",
+                    "gap": "medium",
                     "children": [
                       "project",
                       "rule-1",
                       "branch",
                       "loading_rule-2",
                       "loading_workflow"
-                    ],
-                    "gap": "medium"
+                    ]
                   },
                   {
                     "id": "heading",
@@ -741,7 +872,7 @@
           "texts": []
         },
         {
-          "offsetMs": 13080,
+          "offsetMs": 10204,
           "messages": [
             {
               "version": "v0.9",
@@ -775,14 +906,14 @@
                     "id": "facts",
                     "component": "Stack",
                     "direction": "horizontal",
+                    "gap": "medium",
                     "children": [
                       "project",
                       "rule-1",
                       "branch",
                       "loading_rule-2",
                       "loading_workflow"
-                    ],
-                    "gap": "medium"
+                    ]
                   },
                   {
                     "id": "heading",
@@ -841,7 +972,7 @@
           "texts": []
         },
         {
-          "offsetMs": 13266,
+          "offsetMs": 10653,
           "messages": [
             {
               "version": "v0.9",
@@ -875,14 +1006,14 @@
                     "id": "facts",
                     "component": "Stack",
                     "direction": "horizontal",
+                    "gap": "medium",
                     "children": [
                       "project",
                       "rule-1",
                       "branch",
                       "rule-2",
                       "loading_workflow"
-                    ],
-                    "gap": "medium"
+                    ]
                   },
                   {
                     "id": "heading",
@@ -941,7 +1072,7 @@
           "texts": []
         },
         {
-          "offsetMs": 13602,
+          "offsetMs": 10883,
           "messages": [
             {
               "version": "v0.9",
@@ -975,14 +1106,14 @@
                     "id": "facts",
                     "component": "Stack",
                     "direction": "horizontal",
+                    "gap": "medium",
                     "children": [
                       "project",
                       "rule-1",
                       "branch",
                       "rule-2",
                       "workflow"
-                    ],
-                    "gap": "medium"
+                    ]
                   },
                   {
                     "id": "heading",
@@ -1047,7 +1178,7 @@
           "texts": []
         },
         {
-          "offsetMs": 13724,
+          "offsetMs": 11296,
           "messages": [
             {
               "version": "v0.9",
@@ -1081,14 +1212,14 @@
                     "id": "facts",
                     "component": "Stack",
                     "direction": "horizontal",
+                    "gap": "medium",
                     "children": [
                       "project",
                       "rule-1",
                       "branch",
                       "rule-2",
                       "workflow"
-                    ],
-                    "gap": "medium"
+                    ]
                   },
                   {
                     "id": "heading",
@@ -1155,7 +1286,7 @@
           "texts": []
         },
         {
-          "offsetMs": 14073,
+          "offsetMs": 11715,
           "messages": [
             {
               "version": "v0.9",
@@ -1189,14 +1320,14 @@
                     "id": "facts",
                     "component": "Stack",
                     "direction": "horizontal",
+                    "gap": "medium",
                     "children": [
                       "project",
                       "rule-1",
                       "branch",
                       "rule-2",
                       "workflow"
-                    ],
-                    "gap": "medium"
+                    ]
                   },
                   {
                     "id": "heading",
@@ -1266,7 +1397,7 @@
           "texts": []
         },
         {
-          "offsetMs": 14418,
+          "offsetMs": 12192,
           "messages": [
             {
               "version": "v0.9",
@@ -1276,6 +1407,7 @@
                     "id": "actions",
                     "component": "Stack",
                     "direction": "horizontal",
+                    "gap": "small",
                     "children": [
                       "loading_confirm",
                       "loading_decline"
@@ -1309,14 +1441,14 @@
                     "id": "facts",
                     "component": "Stack",
                     "direction": "horizontal",
+                    "gap": "medium",
                     "children": [
                       "project",
                       "rule-1",
                       "branch",
                       "rule-2",
                       "workflow"
-                    ],
-                    "gap": "medium"
+                    ]
                   },
                   {
                     "id": "heading",
@@ -1391,7 +1523,7 @@
           "texts": []
         },
         {
-          "offsetMs": 14908,
+          "offsetMs": 12597,
           "messages": [
             {
               "version": "v0.9",
@@ -1401,6 +1533,7 @@
                     "id": "actions",
                     "component": "Stack",
                     "direction": "horizontal",
+                    "gap": "small",
                     "children": [
                       "confirm",
                       "loading_decline"
@@ -1437,13 +1570,7 @@
                     "variant": "primary",
                     "action": {
                       "event": {
-                        "name": "confirm-rerun",
-                        "context": {
-                          "workflowId": {
-                            "path": "/workflowId"
-                          },
-                          "fromFailed": true
-                        }
+                        "name": "confirm-rerun"
                       }
                     }
                   },
@@ -1451,14 +1578,14 @@
                     "id": "facts",
                     "component": "Stack",
                     "direction": "horizontal",
+                    "gap": "medium",
                     "children": [
                       "project",
                       "rule-1",
                       "branch",
                       "rule-2",
                       "workflow"
-                    ],
-                    "gap": "medium"
+                    ]
                   },
                   {
                     "id": "heading",
@@ -1528,7 +1655,7 @@
           "texts": []
         },
         {
-          "offsetMs": 15269,
+          "offsetMs": 12908,
           "messages": [
             {
               "version": "v0.9",
@@ -1538,6 +1665,282 @@
                     "id": "actions",
                     "component": "Stack",
                     "direction": "horizontal",
+                    "gap": "small",
+                    "children": [
+                      "confirm",
+                      "loading_decline"
+                    ]
+                  },
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "gap": "medium",
+                    "children": [
+                      "heading",
+                      "facts",
+                      "scope",
+                      "actions"
+                    ]
+                  },
+                  {
+                    "id": "branch",
+                    "component": "Field",
+                    "label": "Branch",
+                    "child": "branch-value"
+                  },
+                  {
+                    "id": "branch-value",
+                    "component": "Text",
+                    "text": {
+                      "path": "/branch"
+                    }
+                  },
+                  {
+                    "id": "confirm",
+                    "component": "Button",
+                    "label": "Rerun failed jobs",
+                    "variant": "primary",
+                    "action": {
+                      "event": {
+                        "name": "confirm-rerun",
+                        "context": {
+                          "workflowId": {
+                            "path": "/workflowId"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "facts",
+                    "component": "Stack",
+                    "direction": "horizontal",
+                    "gap": "medium",
+                    "children": [
+                      "project",
+                      "rule-1",
+                      "branch",
+                      "rule-2",
+                      "workflow"
+                    ]
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Heading",
+                    "text": "Rerun this workflow?",
+                    "size": "large"
+                  },
+                  {
+                    "id": "project",
+                    "component": "Field",
+                    "label": "Project",
+                    "child": "project-value"
+                  },
+                  {
+                    "id": "project-value",
+                    "component": "Text",
+                    "text": {
+                      "path": "/project"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Panel",
+                    "child": "body"
+                  },
+                  {
+                    "id": "rule-1",
+                    "component": "Divider",
+                    "orientation": "vertical"
+                  },
+                  {
+                    "id": "rule-2",
+                    "component": "Divider",
+                    "orientation": "vertical"
+                  },
+                  {
+                    "id": "scope",
+                    "component": "Text",
+                    "text": {
+                      "path": "/scope"
+                    },
+                    "tone": "muted"
+                  },
+                  {
+                    "id": "workflow",
+                    "component": "Field",
+                    "label": "Workflow",
+                    "child": "workflow-value"
+                  },
+                  {
+                    "id": "workflow-value",
+                    "component": "Text",
+                    "text": {
+                      "path": "/workflow"
+                    }
+                  },
+                  {
+                    "id": "loading_decline",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "rerun-proposal"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 13129,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "actions",
+                    "component": "Stack",
+                    "direction": "horizontal",
+                    "gap": "small",
+                    "children": [
+                      "confirm",
+                      "loading_decline"
+                    ]
+                  },
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "gap": "medium",
+                    "children": [
+                      "heading",
+                      "facts",
+                      "scope",
+                      "actions"
+                    ]
+                  },
+                  {
+                    "id": "branch",
+                    "component": "Field",
+                    "label": "Branch",
+                    "child": "branch-value"
+                  },
+                  {
+                    "id": "branch-value",
+                    "component": "Text",
+                    "text": {
+                      "path": "/branch"
+                    }
+                  },
+                  {
+                    "id": "confirm",
+                    "component": "Button",
+                    "label": "Rerun failed jobs",
+                    "variant": "primary",
+                    "action": {
+                      "event": {
+                        "name": "confirm-rerun",
+                        "context": {
+                          "workflowId": {
+                            "path": "/workflowId"
+                          },
+                          "fromFailed": true
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "facts",
+                    "component": "Stack",
+                    "direction": "horizontal",
+                    "gap": "medium",
+                    "children": [
+                      "project",
+                      "rule-1",
+                      "branch",
+                      "rule-2",
+                      "workflow"
+                    ]
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Heading",
+                    "text": "Rerun this workflow?",
+                    "size": "large"
+                  },
+                  {
+                    "id": "project",
+                    "component": "Field",
+                    "label": "Project",
+                    "child": "project-value"
+                  },
+                  {
+                    "id": "project-value",
+                    "component": "Text",
+                    "text": {
+                      "path": "/project"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Panel",
+                    "child": "body"
+                  },
+                  {
+                    "id": "rule-1",
+                    "component": "Divider",
+                    "orientation": "vertical"
+                  },
+                  {
+                    "id": "rule-2",
+                    "component": "Divider",
+                    "orientation": "vertical"
+                  },
+                  {
+                    "id": "scope",
+                    "component": "Text",
+                    "text": {
+                      "path": "/scope"
+                    },
+                    "tone": "muted"
+                  },
+                  {
+                    "id": "workflow",
+                    "component": "Field",
+                    "label": "Workflow",
+                    "child": "workflow-value"
+                  },
+                  {
+                    "id": "workflow-value",
+                    "component": "Text",
+                    "text": {
+                      "path": "/workflow"
+                    }
+                  },
+                  {
+                    "id": "loading_decline",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "rerun-proposal"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 13288,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "actions",
+                    "component": "Stack",
+                    "direction": "horizontal",
+                    "gap": "small",
                     "children": [
                       "confirm",
                       "decline"
@@ -1587,21 +1990,20 @@
                   {
                     "id": "decline",
                     "component": "Button",
-                    "label": "Keep as is",
-                    "variant": "ghost"
+                    "label": "Keep as is"
                   },
                   {
                     "id": "facts",
                     "component": "Stack",
                     "direction": "horizontal",
+                    "gap": "medium",
                     "children": [
                       "project",
                       "rule-1",
                       "branch",
                       "rule-2",
                       "workflow"
-                    ],
-                    "gap": "medium"
+                    ]
                   },
                   {
                     "id": "heading",
@@ -1666,7 +2068,7 @@
           "texts": []
         },
         {
-          "offsetMs": 15644,
+          "offsetMs": 13725,
           "messages": [
             {
               "version": "v0.9",
@@ -1676,6 +2078,7 @@
                     "id": "actions",
                     "component": "Stack",
                     "direction": "horizontal",
+                    "gap": "small",
                     "children": [
                       "confirm",
                       "decline"
@@ -1742,14 +2145,14 @@
                     "id": "facts",
                     "component": "Stack",
                     "direction": "horizontal",
+                    "gap": "medium",
                     "children": [
                       "project",
                       "rule-1",
                       "branch",
                       "rule-2",
                       "workflow"
-                    ],
-                    "gap": "medium"
+                    ]
                   },
                   {
                     "id": "heading",
@@ -1815,7 +2218,7 @@
         }
       ],
       "outcome": "completed",
-      "durationMs": 15910
+      "durationMs": 14324
     }
   ]
 }

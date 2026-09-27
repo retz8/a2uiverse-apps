@@ -145,7 +145,7 @@
               "run-lead",
               "run-when"
             ],
-            "align": "center",
+            "align": "start",
             "justify": "spaceBetween"
           },
           {
@@ -156,7 +156,7 @@
               "run-status",
               "run-branch"
             ],
-            "align": "center"
+            "align": "start"
           },
           {
             "id": "run-status",

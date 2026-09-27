@@ -17,7 +17,8 @@
       "value": {
         "run": {
           "id": "8a6c87c2-978c-4f4b-a304-dc17e50b726c",
-          "branch": "synthesizer-effort-apart-from-planner"
+          "branch": "synthesizer-effort-apart-from-planner",
+          "status": "Running"
         }
       }
     }
@@ -30,7 +31,8 @@
         "run": {
           "id": "8a6c87c2-978c-4f4b-a304-dc17e50b726c",
           "branch": "synthesizer-effort-apart-from-planner",
-          "summary": "d5b8057 \u00b7 chore: note where the Synthesizer's effort would rise apart from the Planner's \u00b7 retz8"
+          "status": "Running",
+          "commit": "d5b8057"
         }
       }
     }
@@ -43,13 +45,47 @@
         "run": {
           "id": "8a6c87c2-978c-4f4b-a304-dc17e50b726c",
           "branch": "synthesizer-effort-apart-from-planner",
-          "summary": "d5b8057 \u00b7 chore: note where the Synthesizer's effort would rise apart from the Planner's \u00b7 retz8",
+          "status": "Running",
+          "commit": "d5b8057",
+          "subject": "chore: note where the Synthesizer's effort would rise apart from the Planner's"
+        }
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "run-detail",
+      "value": {
+        "run": {
+          "id": "8a6c87c2-978c-4f4b-a304-dc17e50b726c",
+          "branch": "synthesizer-effort-apart-from-planner",
+          "status": "Running",
+          "commit": "d5b8057",
+          "subject": "chore: note where the Synthesizer's effort would rise apart from the Planner's",
+          "author": "retz8"
+        }
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "run-detail",
+      "value": {
+        "run": {
+          "id": "8a6c87c2-978c-4f4b-a304-dc17e50b726c",
+          "branch": "synthesizer-effort-apart-from-planner",
+          "status": "Running",
+          "commit": "d5b8057",
+          "subject": "chore: note where the Synthesizer's effort would rise apart from the Planner's",
+          "author": "retz8",
           "workflows": [
             {
               "id": "12a5795f-7280-429f-9e13-e63272cfd5f9",
               "name": "verify",
               "status": "Running",
-              "when": "2026-09-19 09:30:32 UTC"
+              "when": "Sep 19, 2026, 09:30:32 UTC"
             }
           ]
         }
@@ -64,49 +100,22 @@
         "run": {
           "id": "8a6c87c2-978c-4f4b-a304-dc17e50b726c",
           "branch": "synthesizer-effort-apart-from-planner",
-          "summary": "d5b8057 \u00b7 chore: note where the Synthesizer's effort would rise apart from the Planner's \u00b7 retz8",
+          "status": "Running",
+          "commit": "d5b8057",
+          "subject": "chore: note where the Synthesizer's effort would rise apart from the Planner's",
+          "author": "retz8",
           "workflows": [
             {
               "id": "12a5795f-7280-429f-9e13-e63272cfd5f9",
               "name": "verify",
               "status": "Running",
-              "when": "2026-09-19 09:30:32 UTC",
+              "when": "Sep 19, 2026, 09:30:32 UTC",
               "jobs": [
                 {
                   "id": "cb27eb95-da70-428d-bb35-c5d8706447f0",
                   "name": "lint-format",
                   "status": "Running",
-                  "duration": "Running"
-                },
-                {}
-              ]
-            }
-          ]
-        }
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "run-detail",
-      "value": {
-        "run": {
-          "id": "8a6c87c2-978c-4f4b-a304-dc17e50b726c",
-          "branch": "synthesizer-effort-apart-from-planner",
-          "summary": "d5b8057 \u00b7 chore: note where the Synthesizer's effort would rise apart from the Planner's \u00b7 retz8",
-          "workflows": [
-            {
-              "id": "12a5795f-7280-429f-9e13-e63272cfd5f9",
-              "name": "verify",
-              "status": "Running",
-              "when": "2026-09-19 09:30:32 UTC",
-              "jobs": [
-                {
-                  "id": "cb27eb95-da70-428d-bb35-c5d8706447f0",
-                  "name": "lint-format",
-                  "status": "Running",
-                  "duration": "Running"
+                  "duration": "in progress"
                 }
               ]
             }
@@ -123,22 +132,27 @@
         "run": {
           "id": "8a6c87c2-978c-4f4b-a304-dc17e50b726c",
           "branch": "synthesizer-effort-apart-from-planner",
-          "summary": "d5b8057 \u00b7 chore: note where the Synthesizer's effort would rise apart from the Planner's \u00b7 retz8",
+          "status": "Running",
+          "commit": "d5b8057",
+          "subject": "chore: note where the Synthesizer's effort would rise apart from the Planner's",
+          "author": "retz8",
           "workflows": [
             {
               "id": "12a5795f-7280-429f-9e13-e63272cfd5f9",
               "name": "verify",
               "status": "Running",
-              "when": "2026-09-19 09:30:32 UTC",
+              "when": "Sep 19, 2026, 09:30:32 UTC",
               "jobs": [
                 {
                   "id": "cb27eb95-da70-428d-bb35-c5d8706447f0",
                   "name": "lint-format",
                   "status": "Running",
-                  "duration": "Running"
+                  "duration": "in progress"
                 },
                 {
-                  "id": "ec7c4e03-38bc-4d1b-b682-e2e2f56eb98b"
+                  "id": "ec7c4e03-38bc-4d1b-b682-e2e2f56eb98b",
+                  "name": "build-typecheck-test",
+                  "status": "Success"
                 }
               ]
             }
@@ -155,19 +169,61 @@
         "run": {
           "id": "8a6c87c2-978c-4f4b-a304-dc17e50b726c",
           "branch": "synthesizer-effort-apart-from-planner",
-          "summary": "d5b8057 \u00b7 chore: note where the Synthesizer's effort would rise apart from the Planner's \u00b7 retz8",
+          "status": "Running",
+          "commit": "d5b8057",
+          "subject": "chore: note where the Synthesizer's effort would rise apart from the Planner's",
+          "author": "retz8",
           "workflows": [
             {
               "id": "12a5795f-7280-429f-9e13-e63272cfd5f9",
               "name": "verify",
               "status": "Running",
-              "when": "2026-09-19 09:30:32 UTC",
+              "when": "Sep 19, 2026, 09:30:32 UTC",
               "jobs": [
                 {
                   "id": "cb27eb95-da70-428d-bb35-c5d8706447f0",
                   "name": "lint-format",
                   "status": "Running",
-                  "duration": "Running"
+                  "duration": "in progress"
+                },
+                {
+                  "id": "ec7c4e03-38bc-4d1b-b682-e2e2f56eb98b",
+                  "name": "build-typecheck-test",
+                  "status": "Success",
+                  "duration": "2m 27s"
+                }
+              ]
+            },
+            {}
+          ]
+        }
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "run-detail",
+      "value": {
+        "run": {
+          "id": "8a6c87c2-978c-4f4b-a304-dc17e50b726c",
+          "branch": "synthesizer-effort-apart-from-planner",
+          "status": "Running",
+          "commit": "d5b8057",
+          "subject": "chore: note where the Synthesizer's effort would rise apart from the Planner's",
+          "author": "retz8",
+          "workflows": [
+            {
+              "id": "12a5795f-7280-429f-9e13-e63272cfd5f9",
+              "name": "verify",
+              "status": "Running",
+              "when": "Sep 19, 2026, 09:30:32 UTC",
+              "jobs": [
+                {
+                  "id": "cb27eb95-da70-428d-bb35-c5d8706447f0",
+                  "name": "lint-format",
+                  "status": "Running",
+                  "duration": "in progress"
                 },
                 {
                   "id": "ec7c4e03-38bc-4d1b-b682-e2e2f56eb98b",
@@ -190,19 +246,63 @@
         "run": {
           "id": "8a6c87c2-978c-4f4b-a304-dc17e50b726c",
           "branch": "synthesizer-effort-apart-from-planner",
-          "summary": "d5b8057 \u00b7 chore: note where the Synthesizer's effort would rise apart from the Planner's \u00b7 retz8",
+          "status": "Running",
+          "commit": "d5b8057",
+          "subject": "chore: note where the Synthesizer's effort would rise apart from the Planner's",
+          "author": "retz8",
           "workflows": [
             {
               "id": "12a5795f-7280-429f-9e13-e63272cfd5f9",
               "name": "verify",
               "status": "Running",
-              "when": "2026-09-19 09:30:32 UTC",
+              "when": "Sep 19, 2026, 09:30:32 UTC",
               "jobs": [
                 {
                   "id": "cb27eb95-da70-428d-bb35-c5d8706447f0",
                   "name": "lint-format",
                   "status": "Running",
-                  "duration": "Running"
+                  "duration": "in progress"
+                },
+                {
+                  "id": "ec7c4e03-38bc-4d1b-b682-e2e2f56eb98b",
+                  "name": "build-typecheck-test",
+                  "status": "Success",
+                  "duration": "2m 27s"
+                }
+              ]
+            },
+            {
+              "id": "6da68785-d209-4441-95a9-174080b2428c"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "run-detail",
+      "value": {
+        "run": {
+          "id": "8a6c87c2-978c-4f4b-a304-dc17e50b726c",
+          "branch": "synthesizer-effort-apart-from-planner",
+          "status": "Running",
+          "commit": "d5b8057",
+          "subject": "chore: note where the Synthesizer's effort would rise apart from the Planner's",
+          "author": "retz8",
+          "workflows": [
+            {
+              "id": "12a5795f-7280-429f-9e13-e63272cfd5f9",
+              "name": "verify",
+              "status": "Running",
+              "when": "Sep 19, 2026, 09:30:32 UTC",
+              "jobs": [
+                {
+                  "id": "cb27eb95-da70-428d-bb35-c5d8706447f0",
+                  "name": "lint-format",
+                  "status": "Running",
+                  "duration": "in progress"
                 },
                 {
                   "id": "ec7c4e03-38bc-4d1b-b682-e2e2f56eb98b",
@@ -230,19 +330,22 @@
         "run": {
           "id": "8a6c87c2-978c-4f4b-a304-dc17e50b726c",
           "branch": "synthesizer-effort-apart-from-planner",
-          "summary": "d5b8057 \u00b7 chore: note where the Synthesizer's effort would rise apart from the Planner's \u00b7 retz8",
+          "status": "Running",
+          "commit": "d5b8057",
+          "subject": "chore: note where the Synthesizer's effort would rise apart from the Planner's",
+          "author": "retz8",
           "workflows": [
             {
               "id": "12a5795f-7280-429f-9e13-e63272cfd5f9",
               "name": "verify",
               "status": "Running",
-              "when": "2026-09-19 09:30:32 UTC",
+              "when": "Sep 19, 2026, 09:30:32 UTC",
               "jobs": [
                 {
                   "id": "cb27eb95-da70-428d-bb35-c5d8706447f0",
                   "name": "lint-format",
                   "status": "Running",
-                  "duration": "Running"
+                  "duration": "in progress"
                 },
                 {
                   "id": "ec7c4e03-38bc-4d1b-b682-e2e2f56eb98b",
@@ -256,7 +359,7 @@
               "id": "6da68785-d209-4441-95a9-174080b2428c",
               "name": "verify",
               "status": "Failed",
-              "when": "2026-09-19 07:07:26 UTC"
+              "when": "Sep 19, 2026, 07:07:26 UTC"
             }
           ]
         }
@@ -271,19 +374,22 @@
         "run": {
           "id": "8a6c87c2-978c-4f4b-a304-dc17e50b726c",
           "branch": "synthesizer-effort-apart-from-planner",
-          "summary": "d5b8057 \u00b7 chore: note where the Synthesizer's effort would rise apart from the Planner's \u00b7 retz8",
+          "status": "Running",
+          "commit": "d5b8057",
+          "subject": "chore: note where the Synthesizer's effort would rise apart from the Planner's",
+          "author": "retz8",
           "workflows": [
             {
               "id": "12a5795f-7280-429f-9e13-e63272cfd5f9",
               "name": "verify",
               "status": "Running",
-              "when": "2026-09-19 09:30:32 UTC",
+              "when": "Sep 19, 2026, 09:30:32 UTC",
               "jobs": [
                 {
                   "id": "cb27eb95-da70-428d-bb35-c5d8706447f0",
                   "name": "lint-format",
                   "status": "Running",
-                  "duration": "Running"
+                  "duration": "in progress"
                 },
                 {
                   "id": "ec7c4e03-38bc-4d1b-b682-e2e2f56eb98b",
@@ -297,7 +403,7 @@
               "id": "6da68785-d209-4441-95a9-174080b2428c",
               "name": "verify",
               "status": "Failed",
-              "when": "2026-09-19 07:07:26 UTC",
+              "when": "Sep 19, 2026, 07:07:26 UTC",
               "jobs": [
                 {
                   "id": "4b5fd10b-e26a-48db-b138-cf0fa64e8c9d",
@@ -320,19 +426,22 @@
         "run": {
           "id": "8a6c87c2-978c-4f4b-a304-dc17e50b726c",
           "branch": "synthesizer-effort-apart-from-planner",
-          "summary": "d5b8057 \u00b7 chore: note where the Synthesizer's effort would rise apart from the Planner's \u00b7 retz8",
+          "status": "Running",
+          "commit": "d5b8057",
+          "subject": "chore: note where the Synthesizer's effort would rise apart from the Planner's",
+          "author": "retz8",
           "workflows": [
             {
               "id": "12a5795f-7280-429f-9e13-e63272cfd5f9",
               "name": "verify",
               "status": "Running",
-              "when": "2026-09-19 09:30:32 UTC",
+              "when": "Sep 19, 2026, 09:30:32 UTC",
               "jobs": [
                 {
                   "id": "cb27eb95-da70-428d-bb35-c5d8706447f0",
                   "name": "lint-format",
                   "status": "Running",
-                  "duration": "Running"
+                  "duration": "in progress"
                 },
                 {
                   "id": "ec7c4e03-38bc-4d1b-b682-e2e2f56eb98b",
@@ -346,7 +455,7 @@
               "id": "6da68785-d209-4441-95a9-174080b2428c",
               "name": "verify",
               "status": "Failed",
-              "when": "2026-09-19 07:07:26 UTC",
+              "when": "Sep 19, 2026, 07:07:26 UTC",
               "jobs": [
                 {
                   "id": "4b5fd10b-e26a-48db-b138-cf0fa64e8c9d",
@@ -372,19 +481,22 @@
         "run": {
           "id": "8a6c87c2-978c-4f4b-a304-dc17e50b726c",
           "branch": "synthesizer-effort-apart-from-planner",
-          "summary": "d5b8057 \u00b7 chore: note where the Synthesizer's effort would rise apart from the Planner's \u00b7 retz8",
+          "status": "Running",
+          "commit": "d5b8057",
+          "subject": "chore: note where the Synthesizer's effort would rise apart from the Planner's",
+          "author": "retz8",
           "workflows": [
             {
               "id": "12a5795f-7280-429f-9e13-e63272cfd5f9",
               "name": "verify",
               "status": "Running",
-              "when": "2026-09-19 09:30:32 UTC",
+              "when": "Sep 19, 2026, 09:30:32 UTC",
               "jobs": [
                 {
                   "id": "cb27eb95-da70-428d-bb35-c5d8706447f0",
                   "name": "lint-format",
                   "status": "Running",
-                  "duration": "Running"
+                  "duration": "in progress"
                 },
                 {
                   "id": "ec7c4e03-38bc-4d1b-b682-e2e2f56eb98b",
@@ -398,61 +510,7 @@
               "id": "6da68785-d209-4441-95a9-174080b2428c",
               "name": "verify",
               "status": "Failed",
-              "when": "2026-09-19 07:07:26 UTC",
-              "jobs": [
-                {
-                  "id": "4b5fd10b-e26a-48db-b138-cf0fa64e8c9d",
-                  "name": "lint-format",
-                  "status": "Failed",
-                  "duration": "40s"
-                },
-                {
-                  "id": "ec7c4e03-38bc-4d1b-b682-e2e2f56eb98b",
-                  "name": "build-typecheck-test",
-                  "status": "Success"
-                }
-              ]
-            }
-          ]
-        }
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "run-detail",
-      "value": {
-        "run": {
-          "id": "8a6c87c2-978c-4f4b-a304-dc17e50b726c",
-          "branch": "synthesizer-effort-apart-from-planner",
-          "summary": "d5b8057 \u00b7 chore: note where the Synthesizer's effort would rise apart from the Planner's \u00b7 retz8",
-          "workflows": [
-            {
-              "id": "12a5795f-7280-429f-9e13-e63272cfd5f9",
-              "name": "verify",
-              "status": "Running",
-              "when": "2026-09-19 09:30:32 UTC",
-              "jobs": [
-                {
-                  "id": "cb27eb95-da70-428d-bb35-c5d8706447f0",
-                  "name": "lint-format",
-                  "status": "Running",
-                  "duration": "Running"
-                },
-                {
-                  "id": "ec7c4e03-38bc-4d1b-b682-e2e2f56eb98b",
-                  "name": "build-typecheck-test",
-                  "status": "Success",
-                  "duration": "2m 27s"
-                }
-              ]
-            },
-            {
-              "id": "6da68785-d209-4441-95a9-174080b2428c",
-              "name": "verify",
-              "status": "Failed",
-              "when": "2026-09-19 07:07:26 UTC",
+              "when": "Sep 19, 2026, 07:07:26 UTC",
               "jobs": [
                 {
                   "id": "4b5fd10b-e26a-48db-b138-cf0fa64e8c9d",
@@ -482,19 +540,22 @@
         "run": {
           "id": "8a6c87c2-978c-4f4b-a304-dc17e50b726c",
           "branch": "synthesizer-effort-apart-from-planner",
-          "summary": "d5b8057 \u00b7 chore: note where the Synthesizer's effort would rise apart from the Planner's \u00b7 retz8",
+          "status": "Running",
+          "commit": "d5b8057",
+          "subject": "chore: note where the Synthesizer's effort would rise apart from the Planner's",
+          "author": "retz8",
           "workflows": [
             {
               "id": "12a5795f-7280-429f-9e13-e63272cfd5f9",
               "name": "verify",
               "status": "Running",
-              "when": "2026-09-19 09:30:32 UTC",
+              "when": "Sep 19, 2026, 09:30:32 UTC",
               "jobs": [
                 {
                   "id": "cb27eb95-da70-428d-bb35-c5d8706447f0",
                   "name": "lint-format",
                   "status": "Running",
-                  "duration": "Running"
+                  "duration": "in progress"
                 },
                 {
                   "id": "ec7c4e03-38bc-4d1b-b682-e2e2f56eb98b",
@@ -508,7 +569,7 @@
               "id": "6da68785-d209-4441-95a9-174080b2428c",
               "name": "verify",
               "status": "Failed",
-              "when": "2026-09-19 07:07:26 UTC",
+              "when": "Sep 19, 2026, 07:07:26 UTC",
               "jobs": [
                 {
                   "id": "4b5fd10b-e26a-48db-b138-cf0fa64e8c9d",
@@ -543,10 +604,22 @@
           "component": "Stack",
           "gap": "medium",
           "children": [
-            "heading",
-            "sub",
+            "heading-row",
+            "facts-row",
+            "subject-text",
             "divider",
             "wf-list"
+          ]
+        },
+        {
+          "id": "heading-row",
+          "component": "Stack",
+          "direction": "horizontal",
+          "align": "center",
+          "gap": "small",
+          "children": [
+            "heading",
+            "run-status"
           ]
         },
         {
@@ -558,10 +631,80 @@
           "size": "large"
         },
         {
-          "id": "sub",
+          "id": "run-status",
+          "component": "StatusBadge",
+          "status": {
+            "path": "/run/status"
+          }
+        },
+        {
+          "id": "facts-row",
+          "component": "Stack",
+          "direction": "horizontal",
+          "gap": "medium",
+          "children": [
+            "field-branch",
+            "div-1",
+            "field-commit",
+            "div-2",
+            "field-author"
+          ]
+        },
+        {
+          "id": "field-branch",
+          "component": "Field",
+          "label": "Branch",
+          "child": "text-branch"
+        },
+        {
+          "id": "text-branch",
           "component": "Text",
           "text": {
-            "path": "/run/summary"
+            "path": "/run/branch"
+          }
+        },
+        {
+          "id": "div-1",
+          "component": "Divider",
+          "orientation": "vertical"
+        },
+        {
+          "id": "field-commit",
+          "component": "Field",
+          "label": "Commit",
+          "child": "text-commit"
+        },
+        {
+          "id": "text-commit",
+          "component": "Text",
+          "text": {
+            "path": "/run/commit"
+          },
+          "font": "mono"
+        },
+        {
+          "id": "div-2",
+          "component": "Divider",
+          "orientation": "vertical"
+        },
+        {
+          "id": "field-author",
+          "component": "Field",
+          "label": "Author",
+          "child": "text-author"
+        },
+        {
+          "id": "text-author",
+          "component": "Text",
+          "text": {
+            "path": "/run/author"
+          }
+        },
+        {
+          "id": "subject-text",
+          "component": "Text",
+          "text": {
+            "path": "/run/subject"
           },
           "tone": "muted"
         },
@@ -585,6 +728,7 @@
         {
           "id": "wf-body",
           "component": "Stack",
+          "gap": "small",
           "children": [
             "wf-top",
             "job-list",
@@ -595,23 +739,23 @@
           "id": "wf-top",
           "component": "Stack",
           "direction": "horizontal",
+          "align": "center",
+          "justify": "spaceBetween",
           "children": [
             "wf-lead",
             "wf-when"
-          ],
-          "align": "center",
-          "justify": "spaceBetween"
+          ]
         },
         {
           "id": "wf-lead",
           "component": "Stack",
           "direction": "horizontal",
+          "align": "center",
+          "gap": "small",
           "children": [
             "wf-name",
             "wf-status"
-          ],
-          "align": "center",
-          "gap": "small"
+          ]
         },
         {
           "id": "wf-name",
@@ -665,23 +809,23 @@
           "id": "job-body",
           "component": "Stack",
           "direction": "horizontal",
+          "align": "center",
+          "justify": "spaceBetween",
           "children": [
             "job-lead",
             "job-duration"
-          ],
-          "align": "center",
-          "justify": "spaceBetween"
+          ]
         },
         {
           "id": "job-lead",
           "component": "Stack",
           "direction": "horizontal",
+          "align": "center",
+          "gap": "small",
           "children": [
             "job-status",
             "job-name"
-          ],
-          "align": "center",
-          "gap": "small"
+          ]
         },
         {
           "id": "job-status",
@@ -711,11 +855,11 @@
           "id": "wf-actions",
           "component": "Stack",
           "direction": "horizontal",
+          "gap": "small",
           "children": [
             "rerun-failed",
             "rerun-all"
-          ],
-          "gap": "small"
+          ]
         },
         {
           "id": "rerun-failed",
