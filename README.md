@@ -19,10 +19,10 @@ An app answers a question with UI.
 | [GitHub](github/)            | repositories, issues, pull requests and notifications | Primer, GitHub's own design system                                 | `11001` |
 | [Gmail](gmail/)              | your mail                                             | the basic catalog in Gmail's Material 3 look                       | `11002` |
 | [Google Calendar](calendar/) | your calendar                                         | the basic catalog in Calendar's Material 3 look                    | `11003` |
-| [CircleCI](circleci/)        | your pipelines                                        | the basic catalog in CircleCI's look, plus a status badge          | `11004` |
+| [CircleCI](circleci/)        | your pipelines                                        | CircleCI's own components in its look                              | `11004` |
 | [Linear](linear/)            | your issues                                           | the basic catalog in Linear's look, plus status and priority icons | `11005` |
 
-Every app is backed by its vendor's official MCP server. GitHub's catalog is built on Primer; the rest are the A2UI basic catalog under the product's theme, with a component of their own only where the basic set can't draw what the product shows. Each app's README says what it covers, and its agent's README what it can and can't do.
+Every app is backed by its vendor's official MCP server. GitHub's catalog is built on Primer and CircleCI's is its own set of components in its look; the rest are the A2UI basic catalog under the product's theme, with a component of their own only where the basic set can't draw what the product shows. Each app's README says what it covers, and its agent's README what it can and can't do.
 
 ## Running an app
 
