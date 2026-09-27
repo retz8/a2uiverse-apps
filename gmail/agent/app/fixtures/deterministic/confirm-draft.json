@@ -2,29 +2,30 @@
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "draft-1a06ef027e683325",
+      "surfaceId": "draft-1a06f2abedf045ce",
       "value": {
-        "to": "sara.moreau@example.com"
+        "to": "elin.tanaka@example.com"
       }
     }
   },
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "draft-1a06ef027e683325",
+      "surfaceId": "draft-1a06f2abedf045ce",
       "value": {
-        "subject": "Re: draft section summary reply agenda meeting pending notes pending estimat"
+        "subject": "Re: estimate review thread status agenda confirm summ",
+        "body": "I will get to it this week."
       }
     }
   },
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "draft-1a06ef027e683325",
+      "surfaceId": "draft-1a06f2abedf045ce",
       "path": "/",
       "value": {
-        "to": "sara.moreau@example.com",
-        "subject": "Re: draft section summary reply agenda meeting pending notes pending estimat",
+        "to": "elin.tanaka@example.com",
+        "subject": "Re: estimate review thread status agenda confirm summ",
         "body": "I will get to it this week."
       }
     }
@@ -61,6 +62,12 @@
           "padding": "medium"
         },
         {
+          "id": "heading",
+          "component": "Text",
+          "text": "Save this reply?",
+          "variant": "titleSmall"
+        },
+        {
           "id": "fields",
           "component": "Stack",
           "children": [
@@ -70,23 +77,6 @@
           ],
           "gap": "none",
           "padding": "md"
-        },
-        {
-          "id": "actions",
-          "component": "Stack",
-          "children": [
-            "save",
-            "cancel"
-          ],
-          "direction": "horizontal",
-          "gap": "sm",
-          "padding": "md"
-        },
-        {
-          "id": "heading",
-          "component": "Text",
-          "text": "Save this reply?",
-          "variant": "titleSmall"
         },
         {
           "id": "to-field",
@@ -117,6 +107,17 @@
           "multiline": true
         },
         {
+          "id": "actions",
+          "component": "Stack",
+          "children": [
+            "save",
+            "cancel"
+          ],
+          "direction": "horizontal",
+          "gap": "sm",
+          "padding": "md"
+        },
+        {
           "id": "save",
           "component": "Button",
           "label": "Save draft",
@@ -125,7 +126,7 @@
             "event": {
               "name": "confirm-draft",
               "context": {
-                "threadId": "1a06ef027e683325"
+                "threadId": "1a06f2abedf045ce"
               }
             }
           }
@@ -139,7 +140,7 @@
             "event": {
               "name": "cancel-draft",
               "context": {
-                "threadId": "1a06ef027e683325"
+                "threadId": "1a06f2abedf045ce"
               }
             }
           }

@@ -4,23 +4,23 @@
   "title": "Thread detail",
   "prompt": "Open the most recent one of those.",
   "model": "gemini-3.7-flash",
-  "recordedAt": "2026-09-27T03:08:25+00:00",
-  "contextId": "44c72fc8-3a21-4dac-a63c-415def841a38",
+  "recordedAt": "2026-09-27T04:14:33+00:00",
+  "contextId": "6bc89055-c6c3-435b-bd53-bf2ca546bf53",
   "chainedFrom": "beat-1-inbox-digest",
   "turns": [
     {
-      "taskId": "028df310-efc1-4d32-8e63-5071c67d9bfa",
+      "taskId": "bbdbeebd-b540-4dc2-bed8-196c360d1f04",
       "kind": "utterance",
       "prompt": "Open the most recent one of those.",
       "action": null,
       "batches": [
         {
-          "offsetMs": 27262,
+          "offsetMs": 40420,
           "messages": [
             {
               "paintMeta": {
-                "surfaceId": "thread-1a06ef027e683325",
-                "title": "Thread: draft section summary"
+                "surfaceId": "thread-1a06f2abedf045ce",
+                "title": "Thread: estimate review thread status agenda confirm summ"
               }
             }
           ],
@@ -29,12 +29,12 @@
           ]
         },
         {
-          "offsetMs": 27648,
+          "offsetMs": 40829,
           "messages": [
             {
               "version": "v0.9",
               "createSurface": {
-                "surfaceId": "thread-1a06ef027e683325",
+                "surfaceId": "thread-1a06f2abedf045ce",
                 "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/gmail/gmail-catalog/catalogs/v0.9.1/catalog.json",
                 "sendDataModel": true
               }
@@ -43,14 +43,14 @@
           "texts": []
         },
         {
-          "offsetMs": 28202,
+          "offsetMs": 41306,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "thread-1a06ef027e683325",
+                "surfaceId": "thread-1a06f2abedf045ce",
                 "value": {
-                  "subject": "draft section summary reply agenda meeting pending notes pending estimat",
+                  "subject": "estimate review thread status agenda confirm summ",
                   "count": "1 message"
                 }
               }
@@ -59,18 +59,18 @@
           "texts": []
         },
         {
-          "offsetMs": 28396,
+          "offsetMs": 41490,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "thread-1a06ef027e683325",
+                "surfaceId": "thread-1a06f2abedf045ce",
                 "value": {
                   "messages": [
                     {
-                      "id": "1a06ef027e683325",
-                      "sender": "sara.moreau@example.com",
-                      "when": "2026-09-05 00:20"
+                      "id": "1a06f2abedf045ce",
+                      "sender": "elin.tanaka@example.com",
+                      "when": "2026-09-05 01:24 UTC"
                     }
                   ]
                 }
@@ -80,44 +80,22 @@
           "texts": []
         },
         {
-          "offsetMs": 28568,
+          "offsetMs": 42384,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
-                "surfaceId": "thread-1a06ef027e683325",
-                "value": {
-                  "messages": [
-                    {
-                      "id": "1a06ef027e683325",
-                      "sender": "sara.moreau@example.com",
-                      "when": "2026-09-05 00:20",
-                      "body": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu"
-                    }
-                  ]
-                }
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 28737,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateDataModel": {
-                "surfaceId": "thread-1a06ef027e683325",
+                "surfaceId": "thread-1a06f2abedf045ce",
                 "path": "/",
                 "value": {
-                  "subject": "draft section summary reply agenda meeting pending notes pending estimat",
+                  "subject": "estimate review thread status agenda confirm summ",
                   "count": "1 message",
                   "messages": [
                     {
-                      "id": "1a06ef027e683325",
-                      "sender": "sara.moreau@example.com",
-                      "when": "2026-09-05 00:20",
-                      "body": "confirm timeline schedule follow thread revision section update feedback confirm agenda question estimate agenda update pending confirm notes estimate thread follow section section question notes statu"
+                      "id": "1a06f2abedf045ce",
+                      "sender": "elin.tanaka@example.com",
+                      "when": "2026-09-05 01:24 UTC",
+                      "body": "section summary feedback update meeting confirm thread section summary schedule pending attached thread review update confirm agenda proposal proposal status meeting timeline timeline agenda estimate update reply confirm feedback update attached schedule proposal update confirm review timeline update attached pending proposal question revision update notes section attached section update feedback pending review confirm schedule proposal estimate notes question update question attached confirm proposal estimate proposal status notes meeting draft schedule proposal summary section notes question revision meeting thread review update thread confirm confirm follow proposal review confirm question notes question agenda agenda notes proposal estimate schedule follow question confirm proposal estimate pending attached update draft notes confirm section attached attached pending reply notes follow notes thread reply estimate feedback pending feedback section proposal follow pr"
                     }
                   ]
                 }
@@ -127,7 +105,7 @@
           "texts": []
         },
         {
-          "offsetMs": 29274,
+          "offsetMs": 42886,
           "messages": [
             {
               "version": "v0.9",
@@ -147,14 +125,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "thread-1a06ef027e683325"
+                "surfaceId": "thread-1a06f2abedf045ce"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 29594,
+          "offsetMs": 43032,
           "messages": [
             {
               "version": "v0.9",
@@ -188,14 +166,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "thread-1a06ef027e683325"
+                "surfaceId": "thread-1a06f2abedf045ce"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 29958,
+          "offsetMs": 43348,
           "messages": [
             {
               "version": "v0.9",
@@ -244,14 +222,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "thread-1a06ef027e683325"
+                "surfaceId": "thread-1a06f2abedf045ce"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 30303,
+          "offsetMs": 43600,
           "messages": [
             {
               "version": "v0.9",
@@ -262,7 +240,7 @@
                     "component": "Stack",
                     "children": [
                       "header",
-                      "loading_sheet"
+                      "sheet"
                     ],
                     "gap": "xs"
                   },
@@ -270,7 +248,7 @@
                     "id": "header",
                     "component": "Stack",
                     "children": [
-                      "subject",
+                      "loading_subject",
                       "loading_count"
                     ],
                     "gap": "xs",
@@ -285,15 +263,12 @@
                     "padding": "small"
                   },
                   {
-                    "id": "subject",
-                    "component": "Text",
-                    "text": {
-                      "path": "/subject"
-                    },
-                    "variant": "titleLarge"
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "loading_thread"
                   },
                   {
-                    "id": "loading_sheet",
+                    "id": "loading_subject",
                     "component": "Row",
                     "children": []
                   },
@@ -301,79 +276,21 @@
                     "id": "loading_count",
                     "component": "Row",
                     "children": []
-                  }
-                ],
-                "surfaceId": "thread-1a06ef027e683325"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 30646,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "body",
-                    "component": "Stack",
-                    "children": [
-                      "header",
-                      "loading_sheet"
-                    ],
-                    "gap": "xs"
                   },
                   {
-                    "id": "count",
-                    "component": "Text",
-                    "text": {
-                      "path": "/count"
-                    },
-                    "variant": "bodySmall",
-                    "color": "onSurfaceVariant"
-                  },
-                  {
-                    "id": "header",
-                    "component": "Stack",
-                    "children": [
-                      "subject",
-                      "count"
-                    ],
-                    "gap": "xs",
-                    "padding": "sm"
-                  },
-                  {
-                    "id": "root",
-                    "component": "Surface",
-                    "child": "body",
-                    "container": "low",
-                    "shape": "large",
-                    "padding": "small"
-                  },
-                  {
-                    "id": "subject",
-                    "component": "Text",
-                    "text": {
-                      "path": "/subject"
-                    },
-                    "variant": "titleLarge"
-                  },
-                  {
-                    "id": "loading_sheet",
+                    "id": "loading_thread",
                     "component": "Row",
                     "children": []
                   }
                 ],
-                "surfaceId": "thread-1a06ef027e683325"
+                "surfaceId": "thread-1a06f2abedf045ce"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 30799,
+          "offsetMs": 43758,
           "messages": [
             {
               "version": "v0.9",
@@ -389,82 +306,11 @@
                     "gap": "xs"
                   },
                   {
-                    "id": "count",
-                    "component": "Text",
-                    "text": {
-                      "path": "/count"
-                    },
-                    "variant": "bodySmall",
-                    "color": "onSurfaceVariant"
-                  },
-                  {
                     "id": "header",
                     "component": "Stack",
                     "children": [
-                      "subject",
-                      "count"
-                    ],
-                    "gap": "xs",
-                    "padding": "sm"
-                  },
-                  {
-                    "id": "root",
-                    "component": "Surface",
-                    "child": "body",
-                    "container": "low",
-                    "shape": "large",
-                    "padding": "small"
-                  },
-                  {
-                    "id": "sheet",
-                    "component": "Surface"
-                  },
-                  {
-                    "id": "subject",
-                    "component": "Text",
-                    "text": {
-                      "path": "/subject"
-                    },
-                    "variant": "titleLarge"
-                  }
-                ],
-                "surfaceId": "thread-1a06ef027e683325"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 30982,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "body",
-                    "component": "Stack",
-                    "children": [
-                      "header",
-                      "sheet"
-                    ],
-                    "gap": "xs"
-                  },
-                  {
-                    "id": "count",
-                    "component": "Text",
-                    "text": {
-                      "path": "/count"
-                    },
-                    "variant": "bodySmall",
-                    "color": "onSurfaceVariant"
-                  },
-                  {
-                    "id": "header",
-                    "component": "Stack",
-                    "children": [
-                      "subject",
-                      "count"
+                      "loading_subject",
+                      "loading_count"
                     ],
                     "gap": "xs",
                     "padding": "sm"
@@ -482,15 +328,18 @@
                     "component": "Surface",
                     "child": "loading_thread",
                     "container": "lowest",
-                    "shape": "large"
+                    "shape": "large",
+                    "padding": "none"
                   },
                   {
-                    "id": "subject",
-                    "component": "Text",
-                    "text": {
-                      "path": "/subject"
-                    },
-                    "variant": "titleLarge"
+                    "id": "loading_subject",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_count",
+                    "component": "Row",
+                    "children": []
                   },
                   {
                     "id": "loading_thread",
@@ -498,14 +347,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "thread-1a06ef027e683325"
+                "surfaceId": "thread-1a06f2abedf045ce"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 31154,
+          "offsetMs": 44113,
           "messages": [
             {
               "version": "v0.9",
@@ -521,20 +370,11 @@
                     "gap": "xs"
                   },
                   {
-                    "id": "count",
-                    "component": "Text",
-                    "text": {
-                      "path": "/count"
-                    },
-                    "variant": "bodySmall",
-                    "color": "onSurfaceVariant"
-                  },
-                  {
                     "id": "header",
                     "component": "Stack",
                     "children": [
                       "subject",
-                      "count"
+                      "loading_count"
                     ],
                     "gap": "xs",
                     "padding": "sm"
@@ -564,19 +404,179 @@
                     "variant": "titleLarge"
                   },
                   {
+                    "id": "loading_count",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
                     "id": "loading_thread",
                     "component": "Row",
                     "children": []
                   }
                 ],
-                "surfaceId": "thread-1a06ef027e683325"
+                "surfaceId": "thread-1a06f2abedf045ce"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 31443,
+          "offsetMs": 44639,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "count",
+                    "component": "Text",
+                    "text": {
+                      "path": "/count"
+                    },
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "subject",
+                      "count"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "thread",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "subject",
+                    "component": "Text",
+                    "text": {
+                      "path": "/subject"
+                    },
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "thread",
+                    "component": "Stack"
+                  }
+                ],
+                "surfaceId": "thread-1a06f2abedf045ce"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 44807,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "count",
+                    "component": "Text",
+                    "text": {
+                      "path": "/count"
+                    },
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "subject",
+                      "count"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "thread",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "subject",
+                    "component": "Text",
+                    "text": {
+                      "path": "/subject"
+                    },
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "thread",
+                    "component": "Stack",
+                    "children": [
+                      "loading_messages",
+                      "loading_actions"
+                    ],
+                    "gap": "none"
+                  },
+                  {
+                    "id": "loading_messages",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "thread-1a06f2abedf045ce"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 45338,
           "messages": [
             {
               "version": "v0.9",
@@ -612,7 +612,12 @@
                   },
                   {
                     "id": "messages",
-                    "component": "List"
+                    "component": "List",
+                    "children": {
+                      "path": "/messages",
+                      "componentId": "loading_message"
+                    },
+                    "dividers": true
                   },
                   {
                     "id": "root",
@@ -648,112 +653,24 @@
                     "gap": "none"
                   },
                   {
+                    "id": "loading_message",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
                     "id": "loading_actions",
                     "component": "Row",
                     "children": []
                   }
                 ],
-                "surfaceId": "thread-1a06ef027e683325"
+                "surfaceId": "thread-1a06f2abedf045ce"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 31830,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "actions",
-                    "component": "Stack"
-                  },
-                  {
-                    "id": "body",
-                    "component": "Stack",
-                    "children": [
-                      "header",
-                      "sheet"
-                    ],
-                    "gap": "xs"
-                  },
-                  {
-                    "id": "count",
-                    "component": "Text",
-                    "text": {
-                      "path": "/count"
-                    },
-                    "variant": "bodySmall",
-                    "color": "onSurfaceVariant"
-                  },
-                  {
-                    "id": "header",
-                    "component": "Stack",
-                    "children": [
-                      "subject",
-                      "count"
-                    ],
-                    "gap": "xs",
-                    "padding": "sm"
-                  },
-                  {
-                    "id": "messages",
-                    "component": "List",
-                    "children": {
-                      "path": "/messages",
-                      "componentId": "loading_message"
-                    },
-                    "dividers": true
-                  },
-                  {
-                    "id": "root",
-                    "component": "Surface",
-                    "child": "body",
-                    "container": "low",
-                    "shape": "large",
-                    "padding": "small"
-                  },
-                  {
-                    "id": "sheet",
-                    "component": "Surface",
-                    "child": "thread",
-                    "container": "lowest",
-                    "shape": "large",
-                    "padding": "none"
-                  },
-                  {
-                    "id": "subject",
-                    "component": "Text",
-                    "text": {
-                      "path": "/subject"
-                    },
-                    "variant": "titleLarge"
-                  },
-                  {
-                    "id": "thread",
-                    "component": "Stack",
-                    "children": [
-                      "messages",
-                      "actions"
-                    ],
-                    "gap": "none"
-                  },
-                  {
-                    "id": "loading_message",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "thread-1a06ef027e683325"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 32199,
+          "offsetMs": 45703,
           "messages": [
             {
               "version": "v0.9",
@@ -856,14 +773,126 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "thread-1a06ef027e683325"
+                "surfaceId": "thread-1a06f2abedf045ce"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 32781,
+          "offsetMs": 46027,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "actions",
+                    "component": "Stack",
+                    "children": [
+                      "loading_reply",
+                      "loading_archive"
+                    ],
+                    "direction": "horizontal",
+                    "gap": "sm",
+                    "padding": "md"
+                  },
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "count",
+                    "component": "Text",
+                    "text": {
+                      "path": "/count"
+                    },
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "subject",
+                      "count"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "message",
+                    "component": "ListItem",
+                    "headline": "message-sender",
+                    "meta": "message-when",
+                    "supporting": "message-body"
+                  },
+                  {
+                    "id": "messages",
+                    "component": "List",
+                    "children": {
+                      "path": "/messages",
+                      "componentId": "message"
+                    },
+                    "dividers": true
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "thread",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "subject",
+                    "component": "Text",
+                    "text": {
+                      "path": "/subject"
+                    },
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "thread",
+                    "component": "Stack",
+                    "children": [
+                      "messages",
+                      "actions"
+                    ],
+                    "gap": "none"
+                  },
+                  {
+                    "id": "loading_reply",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_archive",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "thread-1a06f2abedf045ce"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 46218,
           "messages": [
             {
               "version": "v0.9",
@@ -971,14 +1000,14 @@
                     "children": []
                   }
                 ],
-                "surfaceId": "thread-1a06ef027e683325"
+                "surfaceId": "thread-1a06f2abedf045ce"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 32934,
+          "offsetMs": 46575,
           "messages": [
             {
               "version": "v0.9",
@@ -988,529 +1017,12 @@
                     "id": "actions",
                     "component": "Stack",
                     "children": [
-                      "reply",
+                      "loading_reply",
                       "loading_archive"
                     ],
                     "direction": "horizontal",
                     "gap": "sm",
                     "padding": "md"
-                  },
-                  {
-                    "id": "body",
-                    "component": "Stack",
-                    "children": [
-                      "header",
-                      "sheet"
-                    ],
-                    "gap": "xs"
-                  },
-                  {
-                    "id": "count",
-                    "component": "Text",
-                    "text": {
-                      "path": "/count"
-                    },
-                    "variant": "bodySmall",
-                    "color": "onSurfaceVariant"
-                  },
-                  {
-                    "id": "header",
-                    "component": "Stack",
-                    "children": [
-                      "subject",
-                      "count"
-                    ],
-                    "gap": "xs",
-                    "padding": "sm"
-                  },
-                  {
-                    "id": "message",
-                    "component": "ListItem",
-                    "headline": "message-sender",
-                    "meta": "message-when",
-                    "supporting": "message-body",
-                    "leading": [
-                      "message-avatar"
-                    ]
-                  },
-                  {
-                    "id": "messages",
-                    "component": "List",
-                    "children": {
-                      "path": "/messages",
-                      "componentId": "message"
-                    },
-                    "dividers": true
-                  },
-                  {
-                    "id": "reply",
-                    "component": "Button",
-                    "label": "Draft a reply",
-                    "variant": "outlined"
-                  },
-                  {
-                    "id": "root",
-                    "component": "Surface",
-                    "child": "body",
-                    "container": "low",
-                    "shape": "large",
-                    "padding": "small"
-                  },
-                  {
-                    "id": "sheet",
-                    "component": "Surface",
-                    "child": "thread",
-                    "container": "lowest",
-                    "shape": "large",
-                    "padding": "none"
-                  },
-                  {
-                    "id": "subject",
-                    "component": "Text",
-                    "text": {
-                      "path": "/subject"
-                    },
-                    "variant": "titleLarge"
-                  },
-                  {
-                    "id": "thread",
-                    "component": "Stack",
-                    "children": [
-                      "messages",
-                      "actions"
-                    ],
-                    "gap": "none"
-                  },
-                  {
-                    "id": "loading_archive",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "thread-1a06ef027e683325"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 33119,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "actions",
-                    "component": "Stack",
-                    "children": [
-                      "reply",
-                      "loading_archive"
-                    ],
-                    "direction": "horizontal",
-                    "gap": "sm",
-                    "padding": "md"
-                  },
-                  {
-                    "id": "body",
-                    "component": "Stack",
-                    "children": [
-                      "header",
-                      "sheet"
-                    ],
-                    "gap": "xs"
-                  },
-                  {
-                    "id": "count",
-                    "component": "Text",
-                    "text": {
-                      "path": "/count"
-                    },
-                    "variant": "bodySmall",
-                    "color": "onSurfaceVariant"
-                  },
-                  {
-                    "id": "header",
-                    "component": "Stack",
-                    "children": [
-                      "subject",
-                      "count"
-                    ],
-                    "gap": "xs",
-                    "padding": "sm"
-                  },
-                  {
-                    "id": "message",
-                    "component": "ListItem",
-                    "headline": "message-sender",
-                    "meta": "message-when",
-                    "supporting": "message-body",
-                    "leading": [
-                      "message-avatar"
-                    ]
-                  },
-                  {
-                    "id": "messages",
-                    "component": "List",
-                    "children": {
-                      "path": "/messages",
-                      "componentId": "message"
-                    },
-                    "dividers": true
-                  },
-                  {
-                    "id": "reply",
-                    "component": "Button",
-                    "label": "Draft a reply",
-                    "variant": "outlined",
-                    "icon": "reply",
-                    "action": {
-                      "event": {
-                        "name": "draft-reply"
-                      }
-                    }
-                  },
-                  {
-                    "id": "root",
-                    "component": "Surface",
-                    "child": "body",
-                    "container": "low",
-                    "shape": "large",
-                    "padding": "small"
-                  },
-                  {
-                    "id": "sheet",
-                    "component": "Surface",
-                    "child": "thread",
-                    "container": "lowest",
-                    "shape": "large",
-                    "padding": "none"
-                  },
-                  {
-                    "id": "subject",
-                    "component": "Text",
-                    "text": {
-                      "path": "/subject"
-                    },
-                    "variant": "titleLarge"
-                  },
-                  {
-                    "id": "thread",
-                    "component": "Stack",
-                    "children": [
-                      "messages",
-                      "actions"
-                    ],
-                    "gap": "none"
-                  },
-                  {
-                    "id": "loading_archive",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "thread-1a06ef027e683325"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 33474,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "actions",
-                    "component": "Stack",
-                    "children": [
-                      "reply",
-                      "loading_archive"
-                    ],
-                    "direction": "horizontal",
-                    "gap": "sm",
-                    "padding": "md"
-                  },
-                  {
-                    "id": "body",
-                    "component": "Stack",
-                    "children": [
-                      "header",
-                      "sheet"
-                    ],
-                    "gap": "xs"
-                  },
-                  {
-                    "id": "count",
-                    "component": "Text",
-                    "text": {
-                      "path": "/count"
-                    },
-                    "variant": "bodySmall",
-                    "color": "onSurfaceVariant"
-                  },
-                  {
-                    "id": "header",
-                    "component": "Stack",
-                    "children": [
-                      "subject",
-                      "count"
-                    ],
-                    "gap": "xs",
-                    "padding": "sm"
-                  },
-                  {
-                    "id": "message",
-                    "component": "ListItem",
-                    "headline": "message-sender",
-                    "meta": "message-when",
-                    "supporting": "message-body",
-                    "leading": [
-                      "message-avatar"
-                    ]
-                  },
-                  {
-                    "id": "messages",
-                    "component": "List",
-                    "children": {
-                      "path": "/messages",
-                      "componentId": "message"
-                    },
-                    "dividers": true
-                  },
-                  {
-                    "id": "reply",
-                    "component": "Button",
-                    "label": "Draft a reply",
-                    "variant": "outlined",
-                    "icon": "reply",
-                    "action": {
-                      "event": {
-                        "name": "draft-reply",
-                        "context": {
-                          "threadId": "1a06ef027e683325"
-                        }
-                      }
-                    }
-                  },
-                  {
-                    "id": "root",
-                    "component": "Surface",
-                    "child": "body",
-                    "container": "low",
-                    "shape": "large",
-                    "padding": "small"
-                  },
-                  {
-                    "id": "sheet",
-                    "component": "Surface",
-                    "child": "thread",
-                    "container": "lowest",
-                    "shape": "large",
-                    "padding": "none"
-                  },
-                  {
-                    "id": "subject",
-                    "component": "Text",
-                    "text": {
-                      "path": "/subject"
-                    },
-                    "variant": "titleLarge"
-                  },
-                  {
-                    "id": "thread",
-                    "component": "Stack",
-                    "children": [
-                      "messages",
-                      "actions"
-                    ],
-                    "gap": "none"
-                  },
-                  {
-                    "id": "loading_archive",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "thread-1a06ef027e683325"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 34385,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "actions",
-                    "component": "Stack",
-                    "children": [
-                      "reply",
-                      "archive"
-                    ],
-                    "direction": "horizontal",
-                    "gap": "sm",
-                    "padding": "md"
-                  },
-                  {
-                    "id": "archive",
-                    "component": "Button",
-                    "label": "Archive",
-                    "variant": "outlined",
-                    "icon": "archive",
-                    "action": {
-                      "event": {
-                        "name": "label-toggle",
-                        "context": {
-                          "threadId": "1a06ef027e683325",
-                          "labelId": "INBOX",
-                          "add": false
-                        }
-                      }
-                    }
-                  },
-                  {
-                    "id": "body",
-                    "component": "Stack",
-                    "children": [
-                      "header",
-                      "sheet"
-                    ],
-                    "gap": "xs"
-                  },
-                  {
-                    "id": "count",
-                    "component": "Text",
-                    "text": {
-                      "path": "/count"
-                    },
-                    "variant": "bodySmall",
-                    "color": "onSurfaceVariant"
-                  },
-                  {
-                    "id": "header",
-                    "component": "Stack",
-                    "children": [
-                      "subject",
-                      "count"
-                    ],
-                    "gap": "xs",
-                    "padding": "sm"
-                  },
-                  {
-                    "id": "message",
-                    "component": "ListItem",
-                    "headline": "message-sender",
-                    "meta": "message-when",
-                    "supporting": "message-body",
-                    "leading": [
-                      "message-avatar"
-                    ]
-                  },
-                  {
-                    "id": "messages",
-                    "component": "List",
-                    "children": {
-                      "path": "/messages",
-                      "componentId": "message"
-                    },
-                    "dividers": true
-                  },
-                  {
-                    "id": "reply",
-                    "component": "Button",
-                    "label": "Draft a reply",
-                    "variant": "outlined",
-                    "icon": "reply",
-                    "action": {
-                      "event": {
-                        "name": "draft-reply",
-                        "context": {
-                          "threadId": "1a06ef027e683325"
-                        }
-                      }
-                    }
-                  },
-                  {
-                    "id": "root",
-                    "component": "Surface",
-                    "child": "body",
-                    "container": "low",
-                    "shape": "large",
-                    "padding": "small"
-                  },
-                  {
-                    "id": "sheet",
-                    "component": "Surface",
-                    "child": "thread",
-                    "container": "lowest",
-                    "shape": "large",
-                    "padding": "none"
-                  },
-                  {
-                    "id": "subject",
-                    "component": "Text",
-                    "text": {
-                      "path": "/subject"
-                    },
-                    "variant": "titleLarge"
-                  },
-                  {
-                    "id": "thread",
-                    "component": "Stack",
-                    "children": [
-                      "messages",
-                      "actions"
-                    ],
-                    "gap": "none"
-                  }
-                ],
-                "surfaceId": "thread-1a06ef027e683325"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 34571,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "actions",
-                    "component": "Stack",
-                    "children": [
-                      "reply",
-                      "archive"
-                    ],
-                    "direction": "horizontal",
-                    "gap": "sm",
-                    "padding": "md"
-                  },
-                  {
-                    "id": "archive",
-                    "component": "Button",
-                    "label": "Archive",
-                    "variant": "outlined",
-                    "icon": "archive",
-                    "action": {
-                      "event": {
-                        "name": "label-toggle",
-                        "context": {
-                          "threadId": "1a06ef027e683325",
-                          "labelId": "INBOX",
-                          "add": false
-                        }
-                      }
-                    }
                   },
                   {
                     "id": "body",
@@ -1567,19 +1079,133 @@
                     "dividers": true
                   },
                   {
-                    "id": "reply",
-                    "component": "Button",
-                    "label": "Draft a reply",
-                    "variant": "outlined",
-                    "icon": "reply",
-                    "action": {
-                      "event": {
-                        "name": "draft-reply",
-                        "context": {
-                          "threadId": "1a06ef027e683325"
-                        }
-                      }
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "thread",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "subject",
+                    "component": "Text",
+                    "text": {
+                      "path": "/subject"
+                    },
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "thread",
+                    "component": "Stack",
+                    "children": [
+                      "messages",
+                      "actions"
+                    ],
+                    "gap": "none"
+                  },
+                  {
+                    "id": "loading_reply",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_archive",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "thread-1a06f2abedf045ce"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 46746,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "actions",
+                    "component": "Stack",
+                    "children": [
+                      "loading_reply",
+                      "loading_archive"
+                    ],
+                    "direction": "horizontal",
+                    "gap": "sm",
+                    "padding": "md"
+                  },
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "count",
+                    "component": "Text",
+                    "text": {
+                      "path": "/count"
+                    },
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "subject",
+                      "count"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "message",
+                    "component": "ListItem",
+                    "headline": "message-sender",
+                    "meta": "message-when",
+                    "supporting": "message-body",
+                    "leading": [
+                      "message-avatar"
+                    ]
+                  },
+                  {
+                    "id": "message-avatar",
+                    "component": "Avatar",
+                    "name": {
+                      "path": "sender"
                     }
+                  },
+                  {
+                    "id": "message-sender",
+                    "component": "Text",
+                    "text": {
+                      "path": "sender"
+                    }
+                  },
+                  {
+                    "id": "messages",
+                    "component": "List",
+                    "children": {
+                      "path": "/messages",
+                      "componentId": "message"
+                    },
+                    "dividers": true
                   },
                   {
                     "id": "root",
@@ -1613,16 +1239,26 @@
                       "actions"
                     ],
                     "gap": "none"
+                  },
+                  {
+                    "id": "loading_reply",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_archive",
+                    "component": "Row",
+                    "children": []
                   }
                 ],
-                "surfaceId": "thread-1a06ef027e683325"
+                "surfaceId": "thread-1a06f2abedf045ce"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 35105,
+          "offsetMs": 46939,
           "messages": [
             {
               "version": "v0.9",
@@ -1632,29 +1268,12 @@
                     "id": "actions",
                     "component": "Stack",
                     "children": [
-                      "reply",
-                      "archive"
+                      "loading_reply",
+                      "loading_archive"
                     ],
                     "direction": "horizontal",
                     "gap": "sm",
                     "padding": "md"
-                  },
-                  {
-                    "id": "archive",
-                    "component": "Button",
-                    "label": "Archive",
-                    "variant": "outlined",
-                    "icon": "archive",
-                    "action": {
-                      "event": {
-                        "name": "label-toggle",
-                        "context": {
-                          "threadId": "1a06ef027e683325",
-                          "labelId": "INBOX",
-                          "add": false
-                        }
-                      }
-                    }
                   },
                   {
                     "id": "body",
@@ -1720,21 +1339,6 @@
                     "dividers": true
                   },
                   {
-                    "id": "reply",
-                    "component": "Button",
-                    "label": "Draft a reply",
-                    "variant": "outlined",
-                    "icon": "reply",
-                    "action": {
-                      "event": {
-                        "name": "draft-reply",
-                        "context": {
-                          "threadId": "1a06ef027e683325"
-                        }
-                      }
-                    }
-                  },
-                  {
                     "id": "root",
                     "component": "Surface",
                     "child": "body",
@@ -1766,16 +1370,26 @@
                       "actions"
                     ],
                     "gap": "none"
+                  },
+                  {
+                    "id": "loading_reply",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_archive",
+                    "component": "Row",
+                    "children": []
                   }
                 ],
-                "surfaceId": "thread-1a06ef027e683325"
+                "surfaceId": "thread-1a06f2abedf045ce"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 35481,
+          "offsetMs": 47239,
           "messages": [
             {
               "version": "v0.9",
@@ -1785,29 +1399,12 @@
                     "id": "actions",
                     "component": "Stack",
                     "children": [
-                      "reply",
-                      "archive"
+                      "loading_reply",
+                      "loading_archive"
                     ],
                     "direction": "horizontal",
                     "gap": "sm",
                     "padding": "md"
-                  },
-                  {
-                    "id": "archive",
-                    "component": "Button",
-                    "label": "Archive",
-                    "variant": "outlined",
-                    "icon": "archive",
-                    "action": {
-                      "event": {
-                        "name": "label-toggle",
-                        "context": {
-                          "threadId": "1a06ef027e683325",
-                          "labelId": "INBOX",
-                          "add": false
-                        }
-                      }
-                    }
                   },
                   {
                     "id": "body",
@@ -1882,6 +1479,300 @@
                     "dividers": true
                   },
                   {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "thread",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "subject",
+                    "component": "Text",
+                    "text": {
+                      "path": "/subject"
+                    },
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "thread",
+                    "component": "Stack",
+                    "children": [
+                      "messages",
+                      "actions"
+                    ],
+                    "gap": "none"
+                  },
+                  {
+                    "id": "loading_reply",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_archive",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "thread-1a06f2abedf045ce"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 47588,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "actions",
+                    "component": "Stack",
+                    "children": [
+                      "loading_reply",
+                      "loading_archive"
+                    ],
+                    "direction": "horizontal",
+                    "gap": "sm",
+                    "padding": "md"
+                  },
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "count",
+                    "component": "Text",
+                    "text": {
+                      "path": "/count"
+                    },
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "subject",
+                      "count"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "message",
+                    "component": "ListItem",
+                    "headline": "message-sender",
+                    "meta": "message-when",
+                    "supporting": "message-body",
+                    "leading": [
+                      "message-avatar"
+                    ]
+                  },
+                  {
+                    "id": "message-avatar",
+                    "component": "Avatar",
+                    "name": {
+                      "path": "sender"
+                    }
+                  },
+                  {
+                    "id": "message-body",
+                    "component": "Text",
+                    "text": {
+                      "path": "body"
+                    }
+                  },
+                  {
+                    "id": "message-sender",
+                    "component": "Text",
+                    "text": {
+                      "path": "sender"
+                    },
+                    "variant": "titleSmall",
+                    "weight": "bold"
+                  },
+                  {
+                    "id": "message-when",
+                    "component": "Text",
+                    "text": {
+                      "path": "when"
+                    },
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "messages",
+                    "component": "List",
+                    "children": {
+                      "path": "/messages",
+                      "componentId": "message"
+                    },
+                    "dividers": true
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "thread",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "subject",
+                    "component": "Text",
+                    "text": {
+                      "path": "/subject"
+                    },
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "thread",
+                    "component": "Stack",
+                    "children": [
+                      "messages",
+                      "actions"
+                    ],
+                    "gap": "none"
+                  },
+                  {
+                    "id": "loading_reply",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_archive",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "thread-1a06f2abedf045ce"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 48306,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "actions",
+                    "component": "Stack",
+                    "children": [
+                      "reply",
+                      "loading_archive"
+                    ],
+                    "direction": "horizontal",
+                    "gap": "sm",
+                    "padding": "md"
+                  },
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "count",
+                    "component": "Text",
+                    "text": {
+                      "path": "/count"
+                    },
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "subject",
+                      "count"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "message",
+                    "component": "ListItem",
+                    "headline": "message-sender",
+                    "meta": "message-when",
+                    "supporting": "message-body",
+                    "leading": [
+                      "message-avatar"
+                    ]
+                  },
+                  {
+                    "id": "message-avatar",
+                    "component": "Avatar",
+                    "name": {
+                      "path": "sender"
+                    }
+                  },
+                  {
+                    "id": "message-body",
+                    "component": "Text",
+                    "text": {
+                      "path": "body"
+                    }
+                  },
+                  {
+                    "id": "message-sender",
+                    "component": "Text",
+                    "text": {
+                      "path": "sender"
+                    },
+                    "variant": "titleSmall",
+                    "weight": "bold"
+                  },
+                  {
+                    "id": "message-when",
+                    "component": "Text",
+                    "text": {
+                      "path": "when"
+                    },
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "messages",
+                    "component": "List",
+                    "children": {
+                      "path": "/messages",
+                      "componentId": "message"
+                    },
+                    "dividers": true
+                  },
+                  {
                     "id": "reply",
                     "component": "Button",
                     "label": "Draft a reply",
@@ -1891,7 +1782,169 @@
                       "event": {
                         "name": "draft-reply",
                         "context": {
-                          "threadId": "1a06ef027e683325"
+                          "threadId": "1a06f2abedf045ce"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "thread",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "subject",
+                    "component": "Text",
+                    "text": {
+                      "path": "/subject"
+                    },
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "thread",
+                    "component": "Stack",
+                    "children": [
+                      "messages",
+                      "actions"
+                    ],
+                    "gap": "none"
+                  },
+                  {
+                    "id": "loading_archive",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "thread-1a06f2abedf045ce"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 48496,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "actions",
+                    "component": "Stack",
+                    "children": [
+                      "reply",
+                      "archive"
+                    ],
+                    "direction": "horizontal",
+                    "gap": "sm",
+                    "padding": "md"
+                  },
+                  {
+                    "id": "archive",
+                    "component": "Button",
+                    "label": "Archive"
+                  },
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "count",
+                    "component": "Text",
+                    "text": {
+                      "path": "/count"
+                    },
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "subject",
+                      "count"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "message",
+                    "component": "ListItem",
+                    "headline": "message-sender",
+                    "meta": "message-when",
+                    "supporting": "message-body",
+                    "leading": [
+                      "message-avatar"
+                    ]
+                  },
+                  {
+                    "id": "message-avatar",
+                    "component": "Avatar",
+                    "name": {
+                      "path": "sender"
+                    }
+                  },
+                  {
+                    "id": "message-body",
+                    "component": "Text",
+                    "text": {
+                      "path": "body"
+                    }
+                  },
+                  {
+                    "id": "message-sender",
+                    "component": "Text",
+                    "text": {
+                      "path": "sender"
+                    },
+                    "variant": "titleSmall",
+                    "weight": "bold"
+                  },
+                  {
+                    "id": "message-when",
+                    "component": "Text",
+                    "text": {
+                      "path": "when"
+                    },
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "messages",
+                    "component": "List",
+                    "children": {
+                      "path": "/messages",
+                      "componentId": "message"
+                    },
+                    "dividers": true
+                  },
+                  {
+                    "id": "reply",
+                    "component": "Button",
+                    "label": "Draft a reply",
+                    "variant": "outlined",
+                    "icon": "reply",
+                    "action": {
+                      "event": {
+                        "name": "draft-reply",
+                        "context": {
+                          "threadId": "1a06f2abedf045ce"
                         }
                       }
                     }
@@ -1930,14 +1983,14 @@
                     "gap": "none"
                   }
                 ],
-                "surfaceId": "thread-1a06ef027e683325"
+                "surfaceId": "thread-1a06f2abedf045ce"
               }
             }
           ],
           "texts": []
         },
         {
-          "offsetMs": 35655,
+          "offsetMs": 49160,
           "messages": [
             {
               "version": "v0.9",
@@ -1964,7 +2017,7 @@
                       "event": {
                         "name": "label-toggle",
                         "context": {
-                          "threadId": "1a06ef027e683325",
+                          "threadId": "1a06f2abedf045ce",
                           "labelId": "INBOX",
                           "add": false
                         }
@@ -2060,7 +2113,7 @@
                       "event": {
                         "name": "draft-reply",
                         "context": {
-                          "threadId": "1a06ef027e683325"
+                          "threadId": "1a06f2abedf045ce"
                         }
                       }
                     }
@@ -2099,7 +2152,7 @@
                     "gap": "none"
                   }
                 ],
-                "surfaceId": "thread-1a06ef027e683325"
+                "surfaceId": "thread-1a06f2abedf045ce"
               }
             }
           ],
@@ -2107,7 +2160,7 @@
         }
       ],
       "outcome": "completed",
-      "durationMs": 35969
+      "durationMs": 49489
     }
   ]
 }

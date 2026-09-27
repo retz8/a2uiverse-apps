@@ -12,7 +12,15 @@
     "updateDataModel": {
       "surfaceId": "issue-detail",
       "value": {
-        "team": "A2uiverse",
+        "team": "A2uiverse"
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "issue-detail",
+      "value": {
         "id": "A2U-5"
       }
     }
@@ -23,7 +31,8 @@
       "surfaceId": "issue-detail",
       "value": {
         "title": "Say on the canvas when an utterance fails",
-        "status": "In Review"
+        "status": "In Review",
+        "statusType": "started"
       }
     }
   },
@@ -32,8 +41,8 @@
     "updateDataModel": {
       "surfaceId": "issue-detail",
       "value": {
-        "statusType": "started",
-        "priority": "High"
+        "priority": "High",
+        "assignee": "Jioh In"
       }
     }
   },
@@ -42,7 +51,6 @@
     "updateDataModel": {
       "surfaceId": "issue-detail",
       "value": {
-        "assignee": "Jioh In",
         "labels": "Bug"
       }
     }
@@ -87,7 +95,7 @@
         "comments": [
           {
             "author": "GitHub",
-            "when": "Sep 18"
+            "when": "Sep 18, 2026, 11:50 AM UTC"
           }
         ]
       }
@@ -101,7 +109,7 @@
         "comments": [
           {
             "author": "GitHub",
-            "when": "Sep 18",
+            "when": "Sep 18, 2026, 11:50 AM UTC",
             "body": "This comment thread is synced to a corresponding [GitHub issue](https://github.com/retz8/a2uiverse/issues/3). All replies are displayed in both locations."
           }
         ]
@@ -133,7 +141,7 @@
         "comments": [
           {
             "author": "GitHub",
-            "when": "Sep 18",
+            "when": "Sep 18, 2026, 11:50 AM UTC",
             "body": "This comment thread is synced to a corresponding [GitHub issue](https://github.com/retz8/a2uiverse/issues/3). All replies are displayed in both locations."
           }
         ]
@@ -145,12 +153,6 @@
     "updateComponents": {
       "components": [
         {
-          "id": "root",
-          "component": "Panel",
-          "padding": "none",
-          "child": "body"
-        },
-        {
           "id": "body",
           "component": "Stack",
           "gap": "none",
@@ -158,6 +160,12 @@
             "header",
             "content"
           ]
+        },
+        {
+          "id": "root",
+          "component": "Panel",
+          "padding": "none",
+          "child": "body"
         },
         {
           "id": "header",
@@ -184,14 +192,6 @@
           ]
         },
         {
-          "id": "title",
-          "component": "Text",
-          "text": {
-            "path": "/title"
-          },
-          "variant": "title"
-        },
-        {
           "id": "props",
           "component": "Stack",
           "gap": "xs",
@@ -201,6 +201,14 @@
             "assignee-prop",
             "labels-prop"
           ]
+        },
+        {
+          "id": "title",
+          "component": "Text",
+          "text": {
+            "path": "/title"
+          },
+          "variant": "title"
         },
         {
           "id": "status-prop",
@@ -304,7 +312,6 @@
           "id": "links",
           "component": "Section",
           "title": "Links",
-          "count": "2",
           "children": [
             "pr-list",
             "branch"
@@ -345,6 +352,14 @@
           "weight": "medium"
         },
         {
+          "id": "pr-number",
+          "component": "Text",
+          "text": {
+            "path": "number"
+          },
+          "variant": "caption"
+        },
+        {
           "id": "branch",
           "component": "Stack",
           "direction": "horizontal",
@@ -354,14 +369,6 @@
             "branch-icon",
             "branch-name"
           ]
-        },
-        {
-          "id": "pr-number",
-          "component": "Text",
-          "text": {
-            "path": "number"
-          },
-          "variant": "caption"
         },
         {
           "id": "branch-icon",
@@ -380,7 +387,6 @@
           "id": "activity",
           "component": "Section",
           "title": "Activity",
-          "count": "1",
           "children": {
             "path": "/comments",
             "componentId": "comment"

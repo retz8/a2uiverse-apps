@@ -4,18 +4,18 @@
   "title": "My issues",
   "prompt": "Show my in-progress and assigned issues as a compact list. For each issue, include its identifier, title, status, priority, linked branch or pull request, and the full date and time it was last updated.",
   "model": "gemini-3.7-flash",
-  "recordedAt": "2026-09-27T01:25:32+00:00",
-  "contextId": "5f617a22-124e-4660-a86e-045c202f1ec8",
+  "recordedAt": "2026-09-27T04:17:06+00:00",
+  "contextId": "23da9f55-04f5-4027-b119-886404c08114",
   "chainedFrom": null,
   "turns": [
     {
-      "taskId": "06ee7164-678a-4680-9a62-a1686fda7d56",
+      "taskId": "770b654d-aa32-4c62-abd6-77e224262b6d",
       "kind": "utterance",
       "prompt": "Show my in-progress and assigned issues as a compact list. For each issue, include its identifier, title, status, priority, linked branch or pull request, and the full date and time it was last updated.",
       "action": null,
       "batches": [
         {
-          "offsetMs": 15182,
+          "offsetMs": 11976,
           "messages": [
             {
               "paintMeta": {
@@ -29,7 +29,7 @@
           ]
         },
         {
-          "offsetMs": 15525,
+          "offsetMs": 11979,
           "messages": [
             {
               "version": "v0.9",
@@ -43,7 +43,7 @@
           "texts": []
         },
         {
-          "offsetMs": 15872,
+          "offsetMs": 12494,
           "messages": [
             {
               "version": "v0.9",
@@ -58,7 +58,7 @@
           "texts": []
         },
         {
-          "offsetMs": 16045,
+          "offsetMs": 12664,
           "messages": [
             {
               "version": "v0.9",
@@ -72,7 +72,7 @@
                       "status": "In Review",
                       "statusType": "started",
                       "priority": "High",
-                      "link": "PR #6"
+                      "labels": "Bug"
                     }
                   ]
                 }
@@ -82,7 +82,7 @@
           "texts": []
         },
         {
-          "offsetMs": 16186,
+          "offsetMs": 12840,
           "messages": [
             {
               "version": "v0.9",
@@ -96,37 +96,8 @@
                       "status": "In Review",
                       "statusType": "started",
                       "priority": "High",
-                      "link": "PR #6",
-                      "updatedAt": "Sep 19, 2026, 11:00 AM"
-                    },
-                    {}
-                  ]
-                }
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 16308,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateDataModel": {
-                "surfaceId": "my-issues",
-                "value": {
-                  "issues": [
-                    {
-                      "id": "A2U-5",
-                      "title": "Say on the canvas when an utterance fails",
-                      "status": "In Review",
-                      "statusType": "started",
-                      "priority": "High",
-                      "link": "PR #6",
-                      "updatedAt": "Sep 19, 2026, 11:00 AM"
-                    },
-                    {
-                      "id": "A2U-6"
+                      "labels": "Bug",
+                      "link": "#6"
                     }
                   ]
                 }
@@ -136,7 +107,7 @@
           "texts": []
         },
         {
-          "offsetMs": 16466,
+          "offsetMs": 13015,
           "messages": [
             {
               "version": "v0.9",
@@ -150,114 +121,9 @@
                       "status": "In Review",
                       "statusType": "started",
                       "priority": "High",
-                      "link": "PR #6",
-                      "updatedAt": "Sep 19, 2026, 11:00 AM"
-                    },
-                    {
-                      "id": "A2U-6",
-                      "title": "Name the workflow, not its id, in the confirm status line",
-                      "status": "In Progress"
-                    }
-                  ]
-                }
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 16590,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateDataModel": {
-                "surfaceId": "my-issues",
-                "value": {
-                  "issues": [
-                    {
-                      "id": "A2U-5",
-                      "title": "Say on the canvas when an utterance fails",
-                      "status": "In Review",
-                      "statusType": "started",
-                      "priority": "High",
-                      "link": "PR #6",
-                      "updatedAt": "Sep 19, 2026, 11:00 AM"
-                    },
-                    {
-                      "id": "A2U-6",
-                      "title": "Name the workflow, not its id, in the confirm status line",
-                      "status": "In Progress",
-                      "statusType": "started",
-                      "priority": "Medium",
-                      "link": "PR #7"
-                    }
-                  ]
-                }
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 16718,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateDataModel": {
-                "surfaceId": "my-issues",
-                "value": {
-                  "issues": [
-                    {
-                      "id": "A2U-5",
-                      "title": "Say on the canvas when an utterance fails",
-                      "status": "In Review",
-                      "statusType": "started",
-                      "priority": "High",
-                      "link": "PR #6",
-                      "updatedAt": "Sep 19, 2026, 11:00 AM"
-                    },
-                    {
-                      "id": "A2U-6",
-                      "title": "Name the workflow, not its id, in the confirm status line",
-                      "status": "In Progress",
-                      "statusType": "started",
-                      "priority": "Medium",
-                      "link": "PR #7",
-                      "updatedAt": "Sep 18, 2026, 11:53 AM"
-                    }
-                  ]
-                }
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 16898,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateDataModel": {
-                "surfaceId": "my-issues",
-                "value": {
-                  "issues": [
-                    {
-                      "id": "A2U-5",
-                      "title": "Say on the canvas when an utterance fails",
-                      "status": "In Review",
-                      "statusType": "started",
-                      "priority": "High",
-                      "link": "PR #6",
-                      "updatedAt": "Sep 19, 2026, 11:00 AM"
-                    },
-                    {
-                      "id": "A2U-6",
-                      "title": "Name the workflow, not its id, in the confirm status line",
-                      "status": "In Progress",
-                      "statusType": "started",
-                      "priority": "Medium",
-                      "link": "PR #7",
-                      "updatedAt": "Sep 18, 2026, 11:53 AM"
+                      "labels": "Bug",
+                      "link": "#6",
+                      "updated": "Sep 19, 2026, 11:00 AM UTC"
                     },
                     {
                       "id": "A2U-7"
@@ -270,7 +136,7 @@
           "texts": []
         },
         {
-          "offsetMs": 17062,
+          "offsetMs": 13207,
           "messages": [
             {
               "version": "v0.9",
@@ -284,17 +150,9 @@
                       "status": "In Review",
                       "statusType": "started",
                       "priority": "High",
-                      "link": "PR #6",
-                      "updatedAt": "Sep 19, 2026, 11:00 AM"
-                    },
-                    {
-                      "id": "A2U-6",
-                      "title": "Name the workflow, not its id, in the confirm status line",
-                      "status": "In Progress",
-                      "statusType": "started",
-                      "priority": "Medium",
-                      "link": "PR #7",
-                      "updatedAt": "Sep 18, 2026, 11:53 AM"
+                      "labels": "Bug",
+                      "link": "#6",
+                      "updated": "Sep 19, 2026, 11:00 AM UTC"
                     },
                     {
                       "id": "A2U-7",
@@ -309,7 +167,7 @@
           "texts": []
         },
         {
-          "offsetMs": 17205,
+          "offsetMs": 13343,
           "messages": [
             {
               "version": "v0.9",
@@ -323,24 +181,17 @@
                       "status": "In Review",
                       "statusType": "started",
                       "priority": "High",
-                      "link": "PR #6",
-                      "updatedAt": "Sep 19, 2026, 11:00 AM"
-                    },
-                    {
-                      "id": "A2U-6",
-                      "title": "Name the workflow, not its id, in the confirm status line",
-                      "status": "In Progress",
-                      "statusType": "started",
-                      "priority": "Medium",
-                      "link": "PR #7",
-                      "updatedAt": "Sep 18, 2026, 11:53 AM"
+                      "labels": "Bug",
+                      "link": "#6",
+                      "updated": "Sep 19, 2026, 11:00 AM UTC"
                     },
                     {
                       "id": "A2U-7",
                       "title": "Shell-action report hangs through the tunnel",
                       "status": "In Progress",
                       "statusType": "started",
-                      "priority": "Low"
+                      "priority": "Low",
+                      "labels": "Bug"
                     }
                   ]
                 }
@@ -350,7 +201,7 @@
           "texts": []
         },
         {
-          "offsetMs": 17350,
+          "offsetMs": 13704,
           "messages": [
             {
               "version": "v0.9",
@@ -364,17 +215,9 @@
                       "status": "In Review",
                       "statusType": "started",
                       "priority": "High",
-                      "link": "PR #6",
-                      "updatedAt": "Sep 19, 2026, 11:00 AM"
-                    },
-                    {
-                      "id": "A2U-6",
-                      "title": "Name the workflow, not its id, in the confirm status line",
-                      "status": "In Progress",
-                      "statusType": "started",
-                      "priority": "Medium",
-                      "link": "PR #7",
-                      "updatedAt": "Sep 18, 2026, 11:53 AM"
+                      "labels": "Bug",
+                      "link": "#6",
+                      "updated": "Sep 19, 2026, 11:00 AM UTC"
                     },
                     {
                       "id": "A2U-7",
@@ -382,6 +225,7 @@
                       "status": "In Progress",
                       "statusType": "started",
                       "priority": "Low",
+                      "labels": "Bug",
                       "link": "ekkicb71/a2u-7-shell-action-report-hangs-through-the-tunnel"
                     }
                   ]
@@ -392,7 +236,7 @@
           "texts": []
         },
         {
-          "offsetMs": 17531,
+          "offsetMs": 13906,
           "messages": [
             {
               "version": "v0.9",
@@ -406,17 +250,9 @@
                       "status": "In Review",
                       "statusType": "started",
                       "priority": "High",
-                      "link": "PR #6",
-                      "updatedAt": "Sep 19, 2026, 11:00 AM"
-                    },
-                    {
-                      "id": "A2U-6",
-                      "title": "Name the workflow, not its id, in the confirm status line",
-                      "status": "In Progress",
-                      "statusType": "started",
-                      "priority": "Medium",
-                      "link": "PR #7",
-                      "updatedAt": "Sep 18, 2026, 11:53 AM"
+                      "labels": "Bug",
+                      "link": "#6",
+                      "updated": "Sep 19, 2026, 11:00 AM UTC"
                     },
                     {
                       "id": "A2U-7",
@@ -424,8 +260,9 @@
                       "status": "In Progress",
                       "statusType": "started",
                       "priority": "Low",
+                      "labels": "Bug",
                       "link": "ekkicb71/a2u-7-shell-action-report-hangs-through-the-tunnel",
-                      "updatedAt": "Sep 19, 2026, 10:53 AM"
+                      "updated": "Sep 19, 2026, 10:53 AM UTC"
                     }
                   ]
                 }
@@ -435,7 +272,180 @@
           "texts": []
         },
         {
-          "offsetMs": 17697,
+          "offsetMs": 14089,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "my-issues",
+                "value": {
+                  "issues": [
+                    {
+                      "id": "A2U-5",
+                      "title": "Say on the canvas when an utterance fails",
+                      "status": "In Review",
+                      "statusType": "started",
+                      "priority": "High",
+                      "labels": "Bug",
+                      "link": "#6",
+                      "updated": "Sep 19, 2026, 11:00 AM UTC"
+                    },
+                    {
+                      "id": "A2U-7",
+                      "title": "Shell-action report hangs through the tunnel",
+                      "status": "In Progress",
+                      "statusType": "started",
+                      "priority": "Low",
+                      "labels": "Bug",
+                      "link": "ekkicb71/a2u-7-shell-action-report-hangs-through-the-tunnel",
+                      "updated": "Sep 19, 2026, 10:53 AM UTC"
+                    },
+                    {
+                      "id": "A2U-6"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 14273,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "my-issues",
+                "value": {
+                  "issues": [
+                    {
+                      "id": "A2U-5",
+                      "title": "Say on the canvas when an utterance fails",
+                      "status": "In Review",
+                      "statusType": "started",
+                      "priority": "High",
+                      "labels": "Bug",
+                      "link": "#6",
+                      "updated": "Sep 19, 2026, 11:00 AM UTC"
+                    },
+                    {
+                      "id": "A2U-7",
+                      "title": "Shell-action report hangs through the tunnel",
+                      "status": "In Progress",
+                      "statusType": "started",
+                      "priority": "Low",
+                      "labels": "Bug",
+                      "link": "ekkicb71/a2u-7-shell-action-report-hangs-through-the-tunnel",
+                      "updated": "Sep 19, 2026, 10:53 AM UTC"
+                    },
+                    {
+                      "id": "A2U-6",
+                      "title": "Name the workflow, not its id, in the confirm status line",
+                      "status": "In Progress",
+                      "statusType": "started",
+                      "priority": "Medium"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 14459,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "my-issues",
+                "value": {
+                  "issues": [
+                    {
+                      "id": "A2U-5",
+                      "title": "Say on the canvas when an utterance fails",
+                      "status": "In Review",
+                      "statusType": "started",
+                      "priority": "High",
+                      "labels": "Bug",
+                      "link": "#6",
+                      "updated": "Sep 19, 2026, 11:00 AM UTC"
+                    },
+                    {
+                      "id": "A2U-7",
+                      "title": "Shell-action report hangs through the tunnel",
+                      "status": "In Progress",
+                      "statusType": "started",
+                      "priority": "Low",
+                      "labels": "Bug",
+                      "link": "ekkicb71/a2u-7-shell-action-report-hangs-through-the-tunnel",
+                      "updated": "Sep 19, 2026, 10:53 AM UTC"
+                    },
+                    {
+                      "id": "A2U-6",
+                      "title": "Name the workflow, not its id, in the confirm status line",
+                      "status": "In Progress",
+                      "statusType": "started",
+                      "priority": "Medium",
+                      "labels": "Improvement",
+                      "link": "#7"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 14637,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "my-issues",
+                "value": {
+                  "issues": [
+                    {
+                      "id": "A2U-5",
+                      "title": "Say on the canvas when an utterance fails",
+                      "status": "In Review",
+                      "statusType": "started",
+                      "priority": "High",
+                      "labels": "Bug",
+                      "link": "#6",
+                      "updated": "Sep 19, 2026, 11:00 AM UTC"
+                    },
+                    {
+                      "id": "A2U-7",
+                      "title": "Shell-action report hangs through the tunnel",
+                      "status": "In Progress",
+                      "statusType": "started",
+                      "priority": "Low",
+                      "labels": "Bug",
+                      "link": "ekkicb71/a2u-7-shell-action-report-hangs-through-the-tunnel",
+                      "updated": "Sep 19, 2026, 10:53 AM UTC"
+                    },
+                    {
+                      "id": "A2U-6",
+                      "title": "Name the workflow, not its id, in the confirm status line",
+                      "status": "In Progress",
+                      "statusType": "started",
+                      "priority": "Medium",
+                      "labels": "Improvement",
+                      "link": "#7",
+                      "updated": "Sep 18, 2026, 11:53 AM UTC"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 14829,
           "messages": [
             {
               "version": "v0.9",
@@ -451,17 +461,9 @@
                       "status": "In Review",
                       "statusType": "started",
                       "priority": "High",
-                      "link": "PR #6",
-                      "updatedAt": "Sep 19, 2026, 11:00 AM"
-                    },
-                    {
-                      "id": "A2U-6",
-                      "title": "Name the workflow, not its id, in the confirm status line",
-                      "status": "In Progress",
-                      "statusType": "started",
-                      "priority": "Medium",
-                      "link": "PR #7",
-                      "updatedAt": "Sep 18, 2026, 11:53 AM"
+                      "labels": "Bug",
+                      "link": "#6",
+                      "updated": "Sep 19, 2026, 11:00 AM UTC"
                     },
                     {
                       "id": "A2U-7",
@@ -469,8 +471,19 @@
                       "status": "In Progress",
                       "statusType": "started",
                       "priority": "Low",
+                      "labels": "Bug",
                       "link": "ekkicb71/a2u-7-shell-action-report-hangs-through-the-tunnel",
-                      "updatedAt": "Sep 19, 2026, 10:53 AM"
+                      "updated": "Sep 19, 2026, 10:53 AM UTC"
+                    },
+                    {
+                      "id": "A2U-6",
+                      "title": "Name the workflow, not its id, in the confirm status line",
+                      "status": "In Progress",
+                      "statusType": "started",
+                      "priority": "Medium",
+                      "labels": "Improvement",
+                      "link": "#7",
+                      "updated": "Sep 18, 2026, 11:53 AM UTC"
                     }
                   ]
                 }
@@ -480,22 +493,21 @@
           "texts": []
         },
         {
-          "offsetMs": 18049,
+          "offsetMs": 15163,
           "messages": [
             {
               "version": "v0.9",
               "updateComponents": {
                 "components": [
                   {
+                    "id": "body",
+                    "component": "Stack"
+                  },
+                  {
                     "id": "root",
                     "component": "Panel",
                     "padding": "none",
-                    "child": "loading_body"
-                  },
-                  {
-                    "id": "loading_body",
-                    "component": "Row",
-                    "children": []
+                    "child": "body"
                   }
                 ],
                 "surfaceId": "my-issues"
@@ -505,7 +517,7 @@
           "texts": []
         },
         {
-          "offsetMs": 18222,
+          "offsetMs": 15346,
           "messages": [
             {
               "version": "v0.9",
@@ -516,19 +528,20 @@
                     "component": "Stack",
                     "gap": "none",
                     "children": [
-                      "header",
+                      "loading_header",
                       "loading_list"
                     ]
-                  },
-                  {
-                    "id": "header",
-                    "component": "ViewHeader"
                   },
                   {
                     "id": "root",
                     "component": "Panel",
                     "padding": "none",
                     "child": "body"
+                  },
+                  {
+                    "id": "loading_header",
+                    "component": "Row",
+                    "children": []
                   },
                   {
                     "id": "loading_list",
@@ -543,7 +556,7 @@
           "texts": []
         },
         {
-          "offsetMs": 18397,
+          "offsetMs": 15702,
           "messages": [
             {
               "version": "v0.9",
@@ -585,7 +598,7 @@
           "texts": []
         },
         {
-          "offsetMs": 18710,
+          "offsetMs": 16109,
           "messages": [
             {
               "version": "v0.9",
@@ -635,7 +648,7 @@
           "texts": []
         },
         {
-          "offsetMs": 19434,
+          "offsetMs": 17178,
           "messages": [
             {
               "version": "v0.9",
@@ -668,77 +681,9 @@
                       "row-status"
                     ],
                     "trailing": [
+                      "row-labels",
                       "row-link",
-                      "row-updated"
-                    ],
-                    "action": {
-                      "event": {
-                        "name": "open-issue"
-                      }
-                    }
-                  },
-                  {
-                    "id": "list",
-                    "component": "List",
-                    "children": {
-                      "path": "/issues",
-                      "componentId": "issue-row"
-                    }
-                  },
-                  {
-                    "id": "root",
-                    "component": "Panel",
-                    "padding": "none",
-                    "child": "body"
-                  },
-                  {
-                    "id": "loading_row-title",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "my-issues"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 19581,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "body",
-                    "component": "Stack",
-                    "gap": "none",
-                    "children": [
-                      "header",
-                      "list"
-                    ]
-                  },
-                  {
-                    "id": "header",
-                    "component": "ViewHeader",
-                    "context": {
-                      "path": "/team"
-                    },
-                    "title": "My issues"
-                  },
-                  {
-                    "id": "issue-row",
-                    "component": "ListItem",
-                    "child": "loading_row-title",
-                    "leading": [
-                      "row-priority",
-                      "row-id",
-                      "row-status"
-                    ],
-                    "trailing": [
-                      "row-link",
-                      "row-updated"
+                      "row-when"
                     ],
                     "action": {
                       "event": {
@@ -778,7 +723,7 @@
           "texts": []
         },
         {
-          "offsetMs": 19734,
+          "offsetMs": 17591,
           "messages": [
             {
               "version": "v0.9",
@@ -811,86 +756,9 @@
                       "row-status"
                     ],
                     "trailing": [
+                      "row-labels",
                       "row-link",
-                      "row-updated"
-                    ],
-                    "action": {
-                      "event": {
-                        "name": "open-issue",
-                        "context": {
-                          "issueId": {
-                            "path": "id"
-                          }
-                        }
-                      }
-                    }
-                  },
-                  {
-                    "id": "list",
-                    "component": "List",
-                    "children": {
-                      "path": "/issues",
-                      "componentId": "issue-row"
-                    }
-                  },
-                  {
-                    "id": "root",
-                    "component": "Panel",
-                    "padding": "none",
-                    "child": "body"
-                  },
-                  {
-                    "id": "row-priority",
-                    "component": "PriorityIcon"
-                  },
-                  {
-                    "id": "loading_row-title",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "my-issues"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 19906,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "body",
-                    "component": "Stack",
-                    "gap": "none",
-                    "children": [
-                      "header",
-                      "list"
-                    ]
-                  },
-                  {
-                    "id": "header",
-                    "component": "ViewHeader",
-                    "context": {
-                      "path": "/team"
-                    },
-                    "title": "My issues"
-                  },
-                  {
-                    "id": "issue-row",
-                    "component": "ListItem",
-                    "child": "loading_row-title",
-                    "leading": [
-                      "row-priority",
-                      "row-id",
-                      "row-status"
-                    ],
-                    "trailing": [
-                      "row-link",
-                      "row-updated"
+                      "row-when"
                     ],
                     "action": {
                       "event": {
@@ -937,7 +805,7 @@
           "texts": []
         },
         {
-          "offsetMs": 20258,
+          "offsetMs": 17778,
           "messages": [
             {
               "version": "v0.9",
@@ -970,8 +838,98 @@
                       "row-status"
                     ],
                     "trailing": [
+                      "row-labels",
                       "row-link",
-                      "row-updated"
+                      "row-when"
+                    ],
+                    "action": {
+                      "event": {
+                        "name": "open-issue",
+                        "context": {
+                          "issueId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "list",
+                    "component": "List",
+                    "children": {
+                      "path": "/issues",
+                      "componentId": "issue-row"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Panel",
+                    "padding": "none",
+                    "child": "body"
+                  },
+                  {
+                    "id": "row-id",
+                    "component": "Text",
+                    "text": {
+                      "path": "id"
+                    }
+                  },
+                  {
+                    "id": "row-priority",
+                    "component": "PriorityIcon",
+                    "priority": {
+                      "path": "priority"
+                    }
+                  },
+                  {
+                    "id": "loading_row-title",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "my-issues"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 17939,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "gap": "none",
+                    "children": [
+                      "header",
+                      "list"
+                    ]
+                  },
+                  {
+                    "id": "header",
+                    "component": "ViewHeader",
+                    "context": {
+                      "path": "/team"
+                    },
+                    "title": "My issues"
+                  },
+                  {
+                    "id": "issue-row",
+                    "component": "ListItem",
+                    "child": "loading_row-title",
+                    "leading": [
+                      "row-priority",
+                      "row-id",
+                      "row-status"
+                    ],
+                    "trailing": [
+                      "row-labels",
+                      "row-link",
+                      "row-when"
                     ],
                     "action": {
                       "event": {
@@ -1026,7 +984,7 @@
           "texts": []
         },
         {
-          "offsetMs": 20579,
+          "offsetMs": 18118,
           "messages": [
             {
               "version": "v0.9",
@@ -1059,8 +1017,106 @@
                       "row-status"
                     ],
                     "trailing": [
+                      "row-labels",
                       "row-link",
-                      "row-updated"
+                      "row-when"
+                    ],
+                    "action": {
+                      "event": {
+                        "name": "open-issue",
+                        "context": {
+                          "issueId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "list",
+                    "component": "List",
+                    "children": {
+                      "path": "/issues",
+                      "componentId": "issue-row"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Panel",
+                    "padding": "none",
+                    "child": "body"
+                  },
+                  {
+                    "id": "row-id",
+                    "component": "Text",
+                    "text": {
+                      "path": "id"
+                    },
+                    "variant": "secondary"
+                  },
+                  {
+                    "id": "row-priority",
+                    "component": "PriorityIcon",
+                    "priority": {
+                      "path": "priority"
+                    }
+                  },
+                  {
+                    "id": "row-status",
+                    "component": "StatusIcon",
+                    "status": {
+                      "path": "status"
+                    }
+                  },
+                  {
+                    "id": "loading_row-title",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "my-issues"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 18277,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "gap": "none",
+                    "children": [
+                      "header",
+                      "list"
+                    ]
+                  },
+                  {
+                    "id": "header",
+                    "component": "ViewHeader",
+                    "context": {
+                      "path": "/team"
+                    },
+                    "title": "My issues"
+                  },
+                  {
+                    "id": "issue-row",
+                    "component": "ListItem",
+                    "child": "loading_row-title",
+                    "leading": [
+                      "row-priority",
+                      "row-id",
+                      "row-status"
+                    ],
+                    "trailing": [
+                      "row-labels",
+                      "row-link",
+                      "row-when"
                     ],
                     "action": {
                       "event": {
@@ -1125,7 +1181,7 @@
           "texts": []
         },
         {
-          "offsetMs": 20882,
+          "offsetMs": 18647,
           "messages": [
             {
               "version": "v0.9",
@@ -1158,8 +1214,9 @@
                       "row-status"
                     ],
                     "trailing": [
+                      "row-labels",
                       "row-link",
-                      "row-updated"
+                      "row-when"
                     ],
                     "action": {
                       "event": {
@@ -1227,7 +1284,7 @@
           "texts": []
         },
         {
-          "offsetMs": 21190,
+          "offsetMs": 19009,
           "messages": [
             {
               "version": "v0.9",
@@ -1260,8 +1317,9 @@
                       "row-status"
                     ],
                     "trailing": [
+                      "row-labels",
                       "row-link",
-                      "row-updated"
+                      "row-when"
                     ],
                     "action": {
                       "event": {
@@ -1295,6 +1353,240 @@
                       "path": "id"
                     },
                     "variant": "secondary"
+                  },
+                  {
+                    "id": "row-labels",
+                    "component": "Chip",
+                    "label": {
+                      "path": "labels"
+                    }
+                  },
+                  {
+                    "id": "row-priority",
+                    "component": "PriorityIcon",
+                    "priority": {
+                      "path": "priority"
+                    }
+                  },
+                  {
+                    "id": "row-status",
+                    "component": "StatusIcon",
+                    "status": {
+                      "path": "status"
+                    },
+                    "type": {
+                      "path": "statusType"
+                    }
+                  },
+                  {
+                    "id": "row-title",
+                    "component": "Text",
+                    "text": {
+                      "path": "title"
+                    },
+                    "weight": "medium"
+                  }
+                ],
+                "surfaceId": "my-issues"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 19196,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "gap": "none",
+                    "children": [
+                      "header",
+                      "list"
+                    ]
+                  },
+                  {
+                    "id": "header",
+                    "component": "ViewHeader",
+                    "context": {
+                      "path": "/team"
+                    },
+                    "title": "My issues"
+                  },
+                  {
+                    "id": "issue-row",
+                    "component": "ListItem",
+                    "child": "row-title",
+                    "leading": [
+                      "row-priority",
+                      "row-id",
+                      "row-status"
+                    ],
+                    "trailing": [
+                      "row-labels",
+                      "row-link",
+                      "row-when"
+                    ],
+                    "action": {
+                      "event": {
+                        "name": "open-issue",
+                        "context": {
+                          "issueId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "list",
+                    "component": "List",
+                    "children": {
+                      "path": "/issues",
+                      "componentId": "issue-row"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Panel",
+                    "padding": "none",
+                    "child": "body"
+                  },
+                  {
+                    "id": "row-id",
+                    "component": "Text",
+                    "text": {
+                      "path": "id"
+                    },
+                    "variant": "secondary"
+                  },
+                  {
+                    "id": "row-labels",
+                    "component": "Chip",
+                    "label": {
+                      "path": "labels"
+                    }
+                  },
+                  {
+                    "id": "row-link",
+                    "component": "Text",
+                    "text": {
+                      "path": "link"
+                    }
+                  },
+                  {
+                    "id": "row-priority",
+                    "component": "PriorityIcon",
+                    "priority": {
+                      "path": "priority"
+                    }
+                  },
+                  {
+                    "id": "row-status",
+                    "component": "StatusIcon",
+                    "status": {
+                      "path": "status"
+                    },
+                    "type": {
+                      "path": "statusType"
+                    }
+                  },
+                  {
+                    "id": "row-title",
+                    "component": "Text",
+                    "text": {
+                      "path": "title"
+                    },
+                    "weight": "medium"
+                  }
+                ],
+                "surfaceId": "my-issues"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 19379,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "gap": "none",
+                    "children": [
+                      "header",
+                      "list"
+                    ]
+                  },
+                  {
+                    "id": "header",
+                    "component": "ViewHeader",
+                    "context": {
+                      "path": "/team"
+                    },
+                    "title": "My issues"
+                  },
+                  {
+                    "id": "issue-row",
+                    "component": "ListItem",
+                    "child": "row-title",
+                    "leading": [
+                      "row-priority",
+                      "row-id",
+                      "row-status"
+                    ],
+                    "trailing": [
+                      "row-labels",
+                      "row-link",
+                      "row-when"
+                    ],
+                    "action": {
+                      "event": {
+                        "name": "open-issue",
+                        "context": {
+                          "issueId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "list",
+                    "component": "List",
+                    "children": {
+                      "path": "/issues",
+                      "componentId": "issue-row"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Panel",
+                    "padding": "none",
+                    "child": "body"
+                  },
+                  {
+                    "id": "row-id",
+                    "component": "Text",
+                    "text": {
+                      "path": "id"
+                    },
+                    "variant": "secondary"
+                  },
+                  {
+                    "id": "row-labels",
+                    "component": "Chip",
+                    "label": {
+                      "path": "labels"
+                    }
                   },
                   {
                     "id": "row-link",
@@ -1337,7 +1629,7 @@
           "texts": []
         },
         {
-          "offsetMs": 21526,
+          "offsetMs": 19535,
           "messages": [
             {
               "version": "v0.9",
@@ -1370,8 +1662,9 @@
                       "row-status"
                     ],
                     "trailing": [
+                      "row-labels",
                       "row-link",
-                      "row-updated"
+                      "row-when"
                     ],
                     "action": {
                       "event": {
@@ -1407,6 +1700,13 @@
                     "variant": "secondary"
                   },
                   {
+                    "id": "row-labels",
+                    "component": "Chip",
+                    "label": {
+                      "path": "labels"
+                    }
+                  },
+                  {
                     "id": "row-link",
                     "component": "Text",
                     "text": {
@@ -1440,10 +1740,135 @@
                     "weight": "medium"
                   },
                   {
-                    "id": "row-updated",
+                    "id": "row-when",
                     "component": "Text",
                     "text": {
-                      "path": "updatedAt"
+                      "path": "updated"
+                    }
+                  }
+                ],
+                "surfaceId": "my-issues"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 19709,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "gap": "none",
+                    "children": [
+                      "header",
+                      "list"
+                    ]
+                  },
+                  {
+                    "id": "header",
+                    "component": "ViewHeader",
+                    "context": {
+                      "path": "/team"
+                    },
+                    "title": "My issues"
+                  },
+                  {
+                    "id": "issue-row",
+                    "component": "ListItem",
+                    "child": "row-title",
+                    "leading": [
+                      "row-priority",
+                      "row-id",
+                      "row-status"
+                    ],
+                    "trailing": [
+                      "row-labels",
+                      "row-link",
+                      "row-when"
+                    ],
+                    "action": {
+                      "event": {
+                        "name": "open-issue",
+                        "context": {
+                          "issueId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "list",
+                    "component": "List",
+                    "children": {
+                      "path": "/issues",
+                      "componentId": "issue-row"
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Panel",
+                    "padding": "none",
+                    "child": "body"
+                  },
+                  {
+                    "id": "row-id",
+                    "component": "Text",
+                    "text": {
+                      "path": "id"
+                    },
+                    "variant": "secondary"
+                  },
+                  {
+                    "id": "row-labels",
+                    "component": "Chip",
+                    "label": {
+                      "path": "labels"
+                    }
+                  },
+                  {
+                    "id": "row-link",
+                    "component": "Text",
+                    "text": {
+                      "path": "link"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "row-priority",
+                    "component": "PriorityIcon",
+                    "priority": {
+                      "path": "priority"
+                    }
+                  },
+                  {
+                    "id": "row-status",
+                    "component": "StatusIcon",
+                    "status": {
+                      "path": "status"
+                    },
+                    "type": {
+                      "path": "statusType"
+                    }
+                  },
+                  {
+                    "id": "row-title",
+                    "component": "Text",
+                    "text": {
+                      "path": "title"
+                    },
+                    "weight": "medium"
+                  },
+                  {
+                    "id": "row-when",
+                    "component": "Text",
+                    "text": {
+                      "path": "updated"
                     },
                     "variant": "caption"
                   }
@@ -1456,7 +1881,7 @@
         }
       ],
       "outcome": "completed",
-      "durationMs": 21772
+      "durationMs": 20033
     }
   ]
 }

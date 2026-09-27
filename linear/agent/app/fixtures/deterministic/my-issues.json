@@ -28,7 +28,7 @@
             "status": "In Review",
             "statusType": "started",
             "priority": "High",
-            "link": "PR #6"
+            "labels": "Bug"
           }
         ]
       }
@@ -46,31 +46,8 @@
             "status": "In Review",
             "statusType": "started",
             "priority": "High",
-            "link": "PR #6",
-            "updatedAt": "Sep 19, 2026, 11:00 AM"
-          },
-          {}
-        ]
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "my-issues",
-      "value": {
-        "issues": [
-          {
-            "id": "A2U-5",
-            "title": "Say on the canvas when an utterance fails",
-            "status": "In Review",
-            "statusType": "started",
-            "priority": "High",
-            "link": "PR #6",
-            "updatedAt": "Sep 19, 2026, 11:00 AM"
-          },
-          {
-            "id": "A2U-6"
+            "labels": "Bug",
+            "link": "#6"
           }
         ]
       }
@@ -88,96 +65,9 @@
             "status": "In Review",
             "statusType": "started",
             "priority": "High",
-            "link": "PR #6",
-            "updatedAt": "Sep 19, 2026, 11:00 AM"
-          },
-          {
-            "id": "A2U-6",
-            "title": "Name the workflow, not its id, in the confirm status line",
-            "status": "In Progress"
-          }
-        ]
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "my-issues",
-      "value": {
-        "issues": [
-          {
-            "id": "A2U-5",
-            "title": "Say on the canvas when an utterance fails",
-            "status": "In Review",
-            "statusType": "started",
-            "priority": "High",
-            "link": "PR #6",
-            "updatedAt": "Sep 19, 2026, 11:00 AM"
-          },
-          {
-            "id": "A2U-6",
-            "title": "Name the workflow, not its id, in the confirm status line",
-            "status": "In Progress",
-            "statusType": "started",
-            "priority": "Medium",
-            "link": "PR #7"
-          }
-        ]
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "my-issues",
-      "value": {
-        "issues": [
-          {
-            "id": "A2U-5",
-            "title": "Say on the canvas when an utterance fails",
-            "status": "In Review",
-            "statusType": "started",
-            "priority": "High",
-            "link": "PR #6",
-            "updatedAt": "Sep 19, 2026, 11:00 AM"
-          },
-          {
-            "id": "A2U-6",
-            "title": "Name the workflow, not its id, in the confirm status line",
-            "status": "In Progress",
-            "statusType": "started",
-            "priority": "Medium",
-            "link": "PR #7",
-            "updatedAt": "Sep 18, 2026, 11:53 AM"
-          }
-        ]
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "my-issues",
-      "value": {
-        "issues": [
-          {
-            "id": "A2U-5",
-            "title": "Say on the canvas when an utterance fails",
-            "status": "In Review",
-            "statusType": "started",
-            "priority": "High",
-            "link": "PR #6",
-            "updatedAt": "Sep 19, 2026, 11:00 AM"
-          },
-          {
-            "id": "A2U-6",
-            "title": "Name the workflow, not its id, in the confirm status line",
-            "status": "In Progress",
-            "statusType": "started",
-            "priority": "Medium",
-            "link": "PR #7",
-            "updatedAt": "Sep 18, 2026, 11:53 AM"
+            "labels": "Bug",
+            "link": "#6",
+            "updated": "Sep 19, 2026, 11:00 AM UTC"
           },
           {
             "id": "A2U-7"
@@ -198,17 +88,9 @@
             "status": "In Review",
             "statusType": "started",
             "priority": "High",
-            "link": "PR #6",
-            "updatedAt": "Sep 19, 2026, 11:00 AM"
-          },
-          {
-            "id": "A2U-6",
-            "title": "Name the workflow, not its id, in the confirm status line",
-            "status": "In Progress",
-            "statusType": "started",
-            "priority": "Medium",
-            "link": "PR #7",
-            "updatedAt": "Sep 18, 2026, 11:53 AM"
+            "labels": "Bug",
+            "link": "#6",
+            "updated": "Sep 19, 2026, 11:00 AM UTC"
           },
           {
             "id": "A2U-7",
@@ -231,24 +113,17 @@
             "status": "In Review",
             "statusType": "started",
             "priority": "High",
-            "link": "PR #6",
-            "updatedAt": "Sep 19, 2026, 11:00 AM"
-          },
-          {
-            "id": "A2U-6",
-            "title": "Name the workflow, not its id, in the confirm status line",
-            "status": "In Progress",
-            "statusType": "started",
-            "priority": "Medium",
-            "link": "PR #7",
-            "updatedAt": "Sep 18, 2026, 11:53 AM"
+            "labels": "Bug",
+            "link": "#6",
+            "updated": "Sep 19, 2026, 11:00 AM UTC"
           },
           {
             "id": "A2U-7",
             "title": "Shell-action report hangs through the tunnel",
             "status": "In Progress",
             "statusType": "started",
-            "priority": "Low"
+            "priority": "Low",
+            "labels": "Bug"
           }
         ]
       }
@@ -266,17 +141,9 @@
             "status": "In Review",
             "statusType": "started",
             "priority": "High",
-            "link": "PR #6",
-            "updatedAt": "Sep 19, 2026, 11:00 AM"
-          },
-          {
-            "id": "A2U-6",
-            "title": "Name the workflow, not its id, in the confirm status line",
-            "status": "In Progress",
-            "statusType": "started",
-            "priority": "Medium",
-            "link": "PR #7",
-            "updatedAt": "Sep 18, 2026, 11:53 AM"
+            "labels": "Bug",
+            "link": "#6",
+            "updated": "Sep 19, 2026, 11:00 AM UTC"
           },
           {
             "id": "A2U-7",
@@ -284,6 +151,7 @@
             "status": "In Progress",
             "statusType": "started",
             "priority": "Low",
+            "labels": "Bug",
             "link": "ekkicb71/a2u-7-shell-action-report-hangs-through-the-tunnel"
           }
         ]
@@ -302,17 +170,9 @@
             "status": "In Review",
             "statusType": "started",
             "priority": "High",
-            "link": "PR #6",
-            "updatedAt": "Sep 19, 2026, 11:00 AM"
-          },
-          {
-            "id": "A2U-6",
-            "title": "Name the workflow, not its id, in the confirm status line",
-            "status": "In Progress",
-            "statusType": "started",
-            "priority": "Medium",
-            "link": "PR #7",
-            "updatedAt": "Sep 18, 2026, 11:53 AM"
+            "labels": "Bug",
+            "link": "#6",
+            "updated": "Sep 19, 2026, 11:00 AM UTC"
           },
           {
             "id": "A2U-7",
@@ -320,8 +180,158 @@
             "status": "In Progress",
             "statusType": "started",
             "priority": "Low",
+            "labels": "Bug",
             "link": "ekkicb71/a2u-7-shell-action-report-hangs-through-the-tunnel",
-            "updatedAt": "Sep 19, 2026, 10:53 AM"
+            "updated": "Sep 19, 2026, 10:53 AM UTC"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "my-issues",
+      "value": {
+        "issues": [
+          {
+            "id": "A2U-5",
+            "title": "Say on the canvas when an utterance fails",
+            "status": "In Review",
+            "statusType": "started",
+            "priority": "High",
+            "labels": "Bug",
+            "link": "#6",
+            "updated": "Sep 19, 2026, 11:00 AM UTC"
+          },
+          {
+            "id": "A2U-7",
+            "title": "Shell-action report hangs through the tunnel",
+            "status": "In Progress",
+            "statusType": "started",
+            "priority": "Low",
+            "labels": "Bug",
+            "link": "ekkicb71/a2u-7-shell-action-report-hangs-through-the-tunnel",
+            "updated": "Sep 19, 2026, 10:53 AM UTC"
+          },
+          {
+            "id": "A2U-6"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "my-issues",
+      "value": {
+        "issues": [
+          {
+            "id": "A2U-5",
+            "title": "Say on the canvas when an utterance fails",
+            "status": "In Review",
+            "statusType": "started",
+            "priority": "High",
+            "labels": "Bug",
+            "link": "#6",
+            "updated": "Sep 19, 2026, 11:00 AM UTC"
+          },
+          {
+            "id": "A2U-7",
+            "title": "Shell-action report hangs through the tunnel",
+            "status": "In Progress",
+            "statusType": "started",
+            "priority": "Low",
+            "labels": "Bug",
+            "link": "ekkicb71/a2u-7-shell-action-report-hangs-through-the-tunnel",
+            "updated": "Sep 19, 2026, 10:53 AM UTC"
+          },
+          {
+            "id": "A2U-6",
+            "title": "Name the workflow, not its id, in the confirm status line",
+            "status": "In Progress",
+            "statusType": "started",
+            "priority": "Medium"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "my-issues",
+      "value": {
+        "issues": [
+          {
+            "id": "A2U-5",
+            "title": "Say on the canvas when an utterance fails",
+            "status": "In Review",
+            "statusType": "started",
+            "priority": "High",
+            "labels": "Bug",
+            "link": "#6",
+            "updated": "Sep 19, 2026, 11:00 AM UTC"
+          },
+          {
+            "id": "A2U-7",
+            "title": "Shell-action report hangs through the tunnel",
+            "status": "In Progress",
+            "statusType": "started",
+            "priority": "Low",
+            "labels": "Bug",
+            "link": "ekkicb71/a2u-7-shell-action-report-hangs-through-the-tunnel",
+            "updated": "Sep 19, 2026, 10:53 AM UTC"
+          },
+          {
+            "id": "A2U-6",
+            "title": "Name the workflow, not its id, in the confirm status line",
+            "status": "In Progress",
+            "statusType": "started",
+            "priority": "Medium",
+            "labels": "Improvement",
+            "link": "#7"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "my-issues",
+      "value": {
+        "issues": [
+          {
+            "id": "A2U-5",
+            "title": "Say on the canvas when an utterance fails",
+            "status": "In Review",
+            "statusType": "started",
+            "priority": "High",
+            "labels": "Bug",
+            "link": "#6",
+            "updated": "Sep 19, 2026, 11:00 AM UTC"
+          },
+          {
+            "id": "A2U-7",
+            "title": "Shell-action report hangs through the tunnel",
+            "status": "In Progress",
+            "statusType": "started",
+            "priority": "Low",
+            "labels": "Bug",
+            "link": "ekkicb71/a2u-7-shell-action-report-hangs-through-the-tunnel",
+            "updated": "Sep 19, 2026, 10:53 AM UTC"
+          },
+          {
+            "id": "A2U-6",
+            "title": "Name the workflow, not its id, in the confirm status line",
+            "status": "In Progress",
+            "statusType": "started",
+            "priority": "Medium",
+            "labels": "Improvement",
+            "link": "#7",
+            "updated": "Sep 18, 2026, 11:53 AM UTC"
           }
         ]
       }
@@ -341,17 +351,9 @@
             "status": "In Review",
             "statusType": "started",
             "priority": "High",
-            "link": "PR #6",
-            "updatedAt": "Sep 19, 2026, 11:00 AM"
-          },
-          {
-            "id": "A2U-6",
-            "title": "Name the workflow, not its id, in the confirm status line",
-            "status": "In Progress",
-            "statusType": "started",
-            "priority": "Medium",
-            "link": "PR #7",
-            "updatedAt": "Sep 18, 2026, 11:53 AM"
+            "labels": "Bug",
+            "link": "#6",
+            "updated": "Sep 19, 2026, 11:00 AM UTC"
           },
           {
             "id": "A2U-7",
@@ -359,8 +361,19 @@
             "status": "In Progress",
             "statusType": "started",
             "priority": "Low",
+            "labels": "Bug",
             "link": "ekkicb71/a2u-7-shell-action-report-hangs-through-the-tunnel",
-            "updatedAt": "Sep 19, 2026, 10:53 AM"
+            "updated": "Sep 19, 2026, 10:53 AM UTC"
+          },
+          {
+            "id": "A2U-6",
+            "title": "Name the workflow, not its id, in the confirm status line",
+            "status": "In Progress",
+            "statusType": "started",
+            "priority": "Medium",
+            "labels": "Improvement",
+            "link": "#7",
+            "updated": "Sep 18, 2026, 11:53 AM UTC"
           }
         ]
       }
@@ -371,12 +384,6 @@
     "updateComponents": {
       "components": [
         {
-          "id": "root",
-          "component": "Panel",
-          "padding": "none",
-          "child": "body"
-        },
-        {
           "id": "body",
           "component": "Stack",
           "gap": "none",
@@ -384,6 +391,12 @@
             "header",
             "list"
           ]
+        },
+        {
+          "id": "root",
+          "component": "Panel",
+          "padding": "none",
+          "child": "body"
         },
         {
           "id": "header",
@@ -411,8 +424,9 @@
             "row-status"
           ],
           "trailing": [
+            "row-labels",
             "row-link",
-            "row-updated"
+            "row-when"
           ],
           "action": {
             "event": {
@@ -459,6 +473,13 @@
           "weight": "medium"
         },
         {
+          "id": "row-labels",
+          "component": "Chip",
+          "label": {
+            "path": "labels"
+          }
+        },
+        {
           "id": "row-link",
           "component": "Text",
           "text": {
@@ -467,10 +488,10 @@
           "variant": "caption"
         },
         {
-          "id": "row-updated",
+          "id": "row-when",
           "component": "Text",
           "text": {
-            "path": "updatedAt"
+            "path": "updated"
           },
           "variant": "caption"
         }

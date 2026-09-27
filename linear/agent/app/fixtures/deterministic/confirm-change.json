@@ -4,7 +4,8 @@
     "updateDataModel": {
       "surfaceId": "issue-detail",
       "value": {
-        "team": "A2uiverse"
+        "team": "A2uiverse",
+        "id": "A2U-5"
       }
     }
   },
@@ -13,8 +14,8 @@
     "updateDataModel": {
       "surfaceId": "issue-detail",
       "value": {
-        "id": "A2U-5",
-        "title": "Say on the canvas when an utterance fails"
+        "title": "Say on the canvas when an utterance fails",
+        "status": "In Progress"
       }
     }
   },
@@ -23,9 +24,9 @@
     "updateDataModel": {
       "surfaceId": "issue-detail",
       "value": {
-        "status": "In Progress",
         "statusType": "started",
-        "priority": "High"
+        "priority": "High",
+        "assignee": "Jioh In"
       }
     }
   },
@@ -34,7 +35,6 @@
     "updateDataModel": {
       "surfaceId": "issue-detail",
       "value": {
-        "assignee": "Jioh In",
         "labels": "Bug"
       }
     }
@@ -79,7 +79,7 @@
         "comments": [
           {
             "author": "GitHub",
-            "when": "Sep 18"
+            "when": "Sep 18, 2026, 11:50 AM UTC"
           }
         ]
       }
@@ -93,7 +93,7 @@
         "comments": [
           {
             "author": "GitHub",
-            "when": "Sep 18",
+            "when": "Sep 18, 2026, 11:50 AM UTC",
             "body": "This comment thread is synced to a corresponding [GitHub issue](https://github.com/retz8/a2uiverse/issues/3). All replies are displayed in both locations."
           }
         ]
@@ -125,7 +125,7 @@
         "comments": [
           {
             "author": "GitHub",
-            "when": "Sep 18",
+            "when": "Sep 18, 2026, 11:50 AM UTC",
             "body": "This comment thread is synced to a corresponding [GitHub issue](https://github.com/retz8/a2uiverse/issues/3). All replies are displayed in both locations."
           }
         ]
@@ -176,14 +176,6 @@
           ]
         },
         {
-          "id": "title",
-          "component": "Text",
-          "text": {
-            "path": "/title"
-          },
-          "variant": "title"
-        },
-        {
           "id": "props",
           "component": "Stack",
           "gap": "xs",
@@ -193,6 +185,14 @@
             "assignee-prop",
             "labels-prop"
           ]
+        },
+        {
+          "id": "title",
+          "component": "Text",
+          "text": {
+            "path": "/title"
+          },
+          "variant": "title"
         },
         {
           "id": "status-prop",
@@ -282,10 +282,6 @@
           }
         },
         {
-          "id": "divider",
-          "component": "Divider"
-        },
-        {
           "id": "description",
           "component": "Markdown",
           "text": {
@@ -293,10 +289,13 @@
           }
         },
         {
+          "id": "divider",
+          "component": "Divider"
+        },
+        {
           "id": "links",
           "component": "Section",
           "title": "Links",
-          "count": "2",
           "children": [
             "pr-list",
             "branch"
@@ -361,22 +360,21 @@
           "name": "branch"
         },
         {
+          "id": "activity",
+          "component": "Section",
+          "title": "Activity",
+          "children": {
+            "path": "/comments",
+            "componentId": "comment"
+          }
+        },
+        {
           "id": "branch-name",
           "component": "Text",
           "text": {
             "path": "/branch"
           },
           "variant": "caption"
-        },
-        {
-          "id": "activity",
-          "component": "Section",
-          "title": "Activity",
-          "count": "1",
-          "children": {
-            "path": "/comments",
-            "componentId": "comment"
-          }
         },
         {
           "id": "comment",

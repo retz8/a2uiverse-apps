@@ -4,23 +4,23 @@
   "title": "Status change proposed",
   "prompt": "Move it to In Progress.",
   "model": "gemini-3.7-flash",
-  "recordedAt": "2026-09-27T01:25:32+00:00",
-  "contextId": "5f617a22-124e-4660-a86e-045c202f1ec8",
+  "recordedAt": "2026-09-27T04:17:06+00:00",
+  "contextId": "23da9f55-04f5-4027-b119-886404c08114",
   "chainedFrom": "beat-2-issue-detail",
   "turns": [
     {
-      "taskId": "a4a06410-66d5-4e8e-b3ea-cedfa65edd07",
+      "taskId": "45018505-3ee1-41e8-a081-dbe2594d6168",
       "kind": "utterance",
       "prompt": "Move it to In Progress.",
       "action": null,
       "batches": [
         {
-          "offsetMs": 6262,
+          "offsetMs": 6901,
           "messages": [
             {
               "paintMeta": {
                 "surfaceId": "status-proposal",
-                "title": "Move A2U-5 to In Progress?",
+                "title": "Move to In Progress?",
                 "kind": "question"
               }
             }
@@ -30,7 +30,7 @@
           ]
         },
         {
-          "offsetMs": 6573,
+          "offsetMs": 7258,
           "messages": [
             {
               "version": "v0.9",
@@ -44,7 +44,7 @@
           "texts": []
         },
         {
-          "offsetMs": 6897,
+          "offsetMs": 7604,
           "messages": [
             {
               "version": "v0.9",
@@ -59,7 +59,7 @@
           "texts": []
         },
         {
-          "offsetMs": 7075,
+          "offsetMs": 7779,
           "messages": [
             {
               "version": "v0.9",
@@ -67,7 +67,8 @@
                 "surfaceId": "status-proposal",
                 "value": {
                   "id": "A2U-5",
-                  "title": "Say on the canvas when an utterance fails"
+                  "title": "Say on the canvas when an utterance fails",
+                  "from": "In Review"
                 }
               }
             }
@@ -75,16 +76,16 @@
           "texts": []
         },
         {
-          "offsetMs": 7255,
+          "offsetMs": 7927,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
                 "surfaceId": "status-proposal",
                 "value": {
-                  "from": "In Review",
                   "fromType": "started",
-                  "to": "In Progress"
+                  "to": "In Progress",
+                  "toType": "started"
                 }
               }
             }
@@ -92,7 +93,7 @@
           "texts": []
         },
         {
-          "offsetMs": 7434,
+          "offsetMs": 8108,
           "messages": [
             {
               "version": "v0.9",
@@ -114,7 +115,7 @@
           "texts": []
         },
         {
-          "offsetMs": 7932,
+          "offsetMs": 8440,
           "messages": [
             {
               "version": "v0.9",
@@ -139,7 +140,7 @@
           "texts": []
         },
         {
-          "offsetMs": 8075,
+          "offsetMs": 8640,
           "messages": [
             {
               "version": "v0.9",
@@ -178,48 +179,7 @@
           "texts": []
         },
         {
-          "offsetMs": 8251,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "body",
-                    "component": "Stack",
-                    "gap": "none",
-                    "children": [
-                      "header",
-                      "loading_content"
-                    ]
-                  },
-                  {
-                    "id": "header",
-                    "component": "ViewHeader",
-                    "context": {
-                      "path": "/team"
-                    }
-                  },
-                  {
-                    "id": "root",
-                    "component": "Panel",
-                    "padding": "none",
-                    "child": "body"
-                  },
-                  {
-                    "id": "loading_content",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "status-proposal"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 8420,
+          "offsetMs": 8982,
           "messages": [
             {
               "version": "v0.9",
@@ -263,7 +223,7 @@
           "texts": []
         },
         {
-          "offsetMs": 8571,
+          "offsetMs": 9139,
           "messages": [
             {
               "version": "v0.9",
@@ -281,7 +241,8 @@
                   {
                     "id": "content",
                     "component": "Stack",
-                    "padding": "l"
+                    "padding": "l",
+                    "gap": "m"
                   },
                   {
                     "id": "header",
@@ -307,7 +268,7 @@
           "texts": []
         },
         {
-          "offsetMs": 8899,
+          "offsetMs": 9518,
           "messages": [
             {
               "version": "v0.9",
@@ -378,7 +339,7 @@
           "texts": []
         },
         {
-          "offsetMs": 9072,
+          "offsetMs": 9691,
           "messages": [
             {
               "version": "v0.9",
@@ -450,78 +411,7 @@
           "texts": []
         },
         {
-          "offsetMs": 9219,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "body",
-                    "component": "Stack",
-                    "gap": "none",
-                    "children": [
-                      "header",
-                      "content"
-                    ]
-                  },
-                  {
-                    "id": "content",
-                    "component": "Stack",
-                    "padding": "l",
-                    "gap": "m",
-                    "children": [
-                      "question",
-                      "issue-title",
-                      "loading_change",
-                      "loading_actions"
-                    ]
-                  },
-                  {
-                    "id": "header",
-                    "component": "ViewHeader",
-                    "context": {
-                      "path": "/team"
-                    },
-                    "title": {
-                      "path": "/id"
-                    }
-                  },
-                  {
-                    "id": "issue-title",
-                    "component": "Text"
-                  },
-                  {
-                    "id": "question",
-                    "component": "Text",
-                    "text": "Change this issue's status?",
-                    "variant": "title"
-                  },
-                  {
-                    "id": "root",
-                    "component": "Panel",
-                    "padding": "none",
-                    "child": "body"
-                  },
-                  {
-                    "id": "loading_change",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_actions",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "status-proposal"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 9376,
+          "offsetMs": 10066,
           "messages": [
             {
               "version": "v0.9",
@@ -596,7 +486,7 @@
           "texts": []
         },
         {
-          "offsetMs": 9960,
+          "offsetMs": 10644,
           "messages": [
             {
               "version": "v0.9",
@@ -703,7 +593,116 @@
           "texts": []
         },
         {
-          "offsetMs": 10249,
+          "offsetMs": 10822,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "gap": "none",
+                    "children": [
+                      "header",
+                      "content"
+                    ]
+                  },
+                  {
+                    "id": "change",
+                    "component": "Property",
+                    "label": "Status",
+                    "children": [
+                      "from-icon",
+                      "loading_from-name",
+                      "loading_arrow",
+                      "loading_to-icon",
+                      "loading_to-name"
+                    ]
+                  },
+                  {
+                    "id": "content",
+                    "component": "Stack",
+                    "padding": "l",
+                    "gap": "m",
+                    "children": [
+                      "question",
+                      "issue-title",
+                      "change",
+                      "loading_actions"
+                    ]
+                  },
+                  {
+                    "id": "from-icon",
+                    "component": "StatusIcon",
+                    "status": {
+                      "path": "/from"
+                    }
+                  },
+                  {
+                    "id": "header",
+                    "component": "ViewHeader",
+                    "context": {
+                      "path": "/team"
+                    },
+                    "title": {
+                      "path": "/id"
+                    }
+                  },
+                  {
+                    "id": "issue-title",
+                    "component": "Text",
+                    "text": {
+                      "path": "/title"
+                    },
+                    "weight": "medium"
+                  },
+                  {
+                    "id": "question",
+                    "component": "Text",
+                    "text": "Change this issue's status?",
+                    "variant": "title"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Panel",
+                    "padding": "none",
+                    "child": "body"
+                  },
+                  {
+                    "id": "loading_from-name",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_arrow",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_to-icon",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_to-name",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "status-proposal"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 10986,
           "messages": [
             {
               "version": "v0.9",
@@ -815,7 +814,7 @@
           "texts": []
         },
         {
-          "offsetMs": 10537,
+          "offsetMs": 11303,
           "messages": [
             {
               "version": "v0.9",
@@ -929,7 +928,7 @@
           "texts": []
         },
         {
-          "offsetMs": 10700,
+          "offsetMs": 11477,
           "messages": [
             {
               "version": "v0.9",
@@ -1043,7 +1042,7 @@
           "texts": []
         },
         {
-          "offsetMs": 10997,
+          "offsetMs": 11857,
           "messages": [
             {
               "version": "v0.9",
@@ -1162,125 +1161,7 @@
           "texts": []
         },
         {
-          "offsetMs": 11171,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "arrow",
-                    "component": "Icon",
-                    "name": "arrow-right"
-                  },
-                  {
-                    "id": "body",
-                    "component": "Stack",
-                    "gap": "none",
-                    "children": [
-                      "header",
-                      "content"
-                    ]
-                  },
-                  {
-                    "id": "change",
-                    "component": "Property",
-                    "label": "Status",
-                    "children": [
-                      "from-icon",
-                      "from-name",
-                      "arrow",
-                      "to-icon",
-                      "to-name"
-                    ]
-                  },
-                  {
-                    "id": "content",
-                    "component": "Stack",
-                    "padding": "l",
-                    "gap": "m",
-                    "children": [
-                      "question",
-                      "issue-title",
-                      "change",
-                      "loading_actions"
-                    ]
-                  },
-                  {
-                    "id": "from-icon",
-                    "component": "StatusIcon",
-                    "status": {
-                      "path": "/from"
-                    },
-                    "type": {
-                      "path": "/fromType"
-                    }
-                  },
-                  {
-                    "id": "from-name",
-                    "component": "Text",
-                    "text": {
-                      "path": "/from"
-                    }
-                  },
-                  {
-                    "id": "header",
-                    "component": "ViewHeader",
-                    "context": {
-                      "path": "/team"
-                    },
-                    "title": {
-                      "path": "/id"
-                    }
-                  },
-                  {
-                    "id": "issue-title",
-                    "component": "Text",
-                    "text": {
-                      "path": "/title"
-                    },
-                    "weight": "medium"
-                  },
-                  {
-                    "id": "question",
-                    "component": "Text",
-                    "text": "Change this issue's status?",
-                    "variant": "title"
-                  },
-                  {
-                    "id": "root",
-                    "component": "Panel",
-                    "padding": "none",
-                    "child": "body"
-                  },
-                  {
-                    "id": "to-icon",
-                    "component": "StatusIcon",
-                    "status": {
-                      "path": "/to"
-                    },
-                    "type": {
-                      "path": "/toType"
-                    }
-                  },
-                  {
-                    "id": "to-name",
-                    "component": "Text"
-                  },
-                  {
-                    "id": "loading_actions",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "status-proposal"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 11302,
+          "offsetMs": 12206,
           "messages": [
             {
               "version": "v0.9",
@@ -1401,128 +1282,7 @@
           "texts": []
         },
         {
-          "offsetMs": 11472,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "actions",
-                    "component": "Stack",
-                    "direction": "horizontal"
-                  },
-                  {
-                    "id": "arrow",
-                    "component": "Icon",
-                    "name": "arrow-right"
-                  },
-                  {
-                    "id": "body",
-                    "component": "Stack",
-                    "gap": "none",
-                    "children": [
-                      "header",
-                      "content"
-                    ]
-                  },
-                  {
-                    "id": "change",
-                    "component": "Property",
-                    "label": "Status",
-                    "children": [
-                      "from-icon",
-                      "from-name",
-                      "arrow",
-                      "to-icon",
-                      "to-name"
-                    ]
-                  },
-                  {
-                    "id": "content",
-                    "component": "Stack",
-                    "padding": "l",
-                    "gap": "m",
-                    "children": [
-                      "question",
-                      "issue-title",
-                      "change",
-                      "actions"
-                    ]
-                  },
-                  {
-                    "id": "from-icon",
-                    "component": "StatusIcon",
-                    "status": {
-                      "path": "/from"
-                    },
-                    "type": {
-                      "path": "/fromType"
-                    }
-                  },
-                  {
-                    "id": "from-name",
-                    "component": "Text",
-                    "text": {
-                      "path": "/from"
-                    }
-                  },
-                  {
-                    "id": "header",
-                    "component": "ViewHeader",
-                    "context": {
-                      "path": "/team"
-                    },
-                    "title": {
-                      "path": "/id"
-                    }
-                  },
-                  {
-                    "id": "issue-title",
-                    "component": "Text",
-                    "text": {
-                      "path": "/title"
-                    },
-                    "weight": "medium"
-                  },
-                  {
-                    "id": "question",
-                    "component": "Text",
-                    "text": "Change this issue's status?",
-                    "variant": "title"
-                  },
-                  {
-                    "id": "root",
-                    "component": "Panel",
-                    "padding": "none",
-                    "child": "body"
-                  },
-                  {
-                    "id": "to-icon",
-                    "component": "StatusIcon",
-                    "status": {
-                      "path": "/to"
-                    },
-                    "type": {
-                      "path": "/toType"
-                    }
-                  },
-                  {
-                    "id": "to-name",
-                    "component": "Text",
-                    "text": {
-                      "path": "/to"
-                    }
-                  }
-                ],
-                "surfaceId": "status-proposal"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 11608,
+          "offsetMs": 12535,
           "messages": [
             {
               "version": "v0.9",
@@ -1658,7 +1418,144 @@
           "texts": []
         },
         {
-          "offsetMs": 12284,
+          "offsetMs": 12729,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "actions",
+                    "component": "Stack",
+                    "direction": "horizontal",
+                    "gap": "s",
+                    "children": [
+                      "confirm",
+                      "loading_decline"
+                    ]
+                  },
+                  {
+                    "id": "arrow",
+                    "component": "Icon",
+                    "name": "arrow-right"
+                  },
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "gap": "none",
+                    "children": [
+                      "header",
+                      "content"
+                    ]
+                  },
+                  {
+                    "id": "change",
+                    "component": "Property",
+                    "label": "Status",
+                    "children": [
+                      "from-icon",
+                      "from-name",
+                      "arrow",
+                      "to-icon",
+                      "to-name"
+                    ]
+                  },
+                  {
+                    "id": "confirm",
+                    "component": "Button",
+                    "variant": "primary",
+                    "label": "Move to In Progress"
+                  },
+                  {
+                    "id": "content",
+                    "component": "Stack",
+                    "padding": "l",
+                    "gap": "m",
+                    "children": [
+                      "question",
+                      "issue-title",
+                      "change",
+                      "actions"
+                    ]
+                  },
+                  {
+                    "id": "from-icon",
+                    "component": "StatusIcon",
+                    "status": {
+                      "path": "/from"
+                    },
+                    "type": {
+                      "path": "/fromType"
+                    }
+                  },
+                  {
+                    "id": "from-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "/from"
+                    }
+                  },
+                  {
+                    "id": "header",
+                    "component": "ViewHeader",
+                    "context": {
+                      "path": "/team"
+                    },
+                    "title": {
+                      "path": "/id"
+                    }
+                  },
+                  {
+                    "id": "issue-title",
+                    "component": "Text",
+                    "text": {
+                      "path": "/title"
+                    },
+                    "weight": "medium"
+                  },
+                  {
+                    "id": "question",
+                    "component": "Text",
+                    "text": "Change this issue's status?",
+                    "variant": "title"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Panel",
+                    "padding": "none",
+                    "child": "body"
+                  },
+                  {
+                    "id": "to-icon",
+                    "component": "StatusIcon",
+                    "status": {
+                      "path": "/to"
+                    },
+                    "type": {
+                      "path": "/toType"
+                    }
+                  },
+                  {
+                    "id": "to-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "/to"
+                    }
+                  },
+                  {
+                    "id": "loading_decline",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "status-proposal"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 13243,
           "messages": [
             {
               "version": "v0.9",
@@ -1808,7 +1705,7 @@
           "texts": []
         },
         {
-          "offsetMs": 12610,
+          "offsetMs": 13596,
           "messages": [
             {
               "version": "v0.9",
@@ -1885,7 +1782,12 @@
                     "id": "decline",
                     "component": "Button",
                     "variant": "ghost",
-                    "label": "Keep as is"
+                    "label": "Keep as is",
+                    "action": {
+                      "event": {
+                        "name": "decline-change"
+                      }
+                    }
                   },
                   {
                     "id": "from-icon",
@@ -1959,7 +1861,7 @@
           "texts": []
         },
         {
-          "offsetMs": 12942,
+          "offsetMs": 13752,
           "messages": [
             {
               "version": "v0.9",
@@ -2121,7 +2023,7 @@
         }
       ],
       "outcome": "completed",
-      "durationMs": 13196
+      "durationMs": 14220
     }
   ]
 }

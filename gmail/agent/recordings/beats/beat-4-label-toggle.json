@@ -4,18 +4,18 @@
   "title": "Label toggle",
   "prompt": "What labels do I have?",
   "model": "gemini-3.7-flash",
-  "recordedAt": "2026-09-27T01:55:41+00:00",
-  "contextId": "d95aab80-04bc-42d8-a9fd-b6c2c6f14ee0",
+  "recordedAt": "2026-09-27T04:14:58+00:00",
+  "contextId": "b417c3a6-a2fc-49a2-b4d0-81a6e35009de",
   "chainedFrom": null,
   "turns": [
     {
-      "taskId": "bce618fe-0d18-4d75-b93f-347997a98b1a",
+      "taskId": "972fa26f-61b1-4906-859b-29ab1a1c30ca",
       "kind": "utterance",
       "prompt": "What labels do I have?",
       "action": null,
       "batches": [
         {
-          "offsetMs": 12313,
+          "offsetMs": 15449,
           "messages": [
             {
               "paintMeta": {
@@ -29,7 +29,7 @@
           ]
         },
         {
-          "offsetMs": 12619,
+          "offsetMs": 15807,
           "messages": [
             {
               "version": "v0.9",
@@ -43,24 +43,17 @@
           "texts": []
         },
         {
-          "offsetMs": 13127,
+          "offsetMs": 16304,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
                 "surfaceId": "labels",
                 "value": {
-                  "labels": [
+                  "userLabels": [
                     {
                       "id": "Label_1",
                       "name": "question agen"
-                    },
-                    {
-                      "id": "INBOX",
-                      "name": "INBOX"
-                    },
-                    {
-                      "id": "STARRED"
                     }
                   ]
                 }
@@ -70,63 +63,25 @@
           "texts": []
         },
         {
-          "offsetMs": 13268,
+          "offsetMs": 16459,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
                 "surfaceId": "labels",
                 "value": {
-                  "labels": [
-                    {
-                      "id": "Label_1",
-                      "name": "question agen"
-                    },
+                  "systemLabels": [
                     {
                       "id": "INBOX",
                       "name": "INBOX"
-                    },
-                    {
-                      "id": "STARRED",
-                      "name": "STARRED"
-                    },
-                    {
-                      "id": "SENT"
-                    }
-                  ]
-                }
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 13440,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateDataModel": {
-                "surfaceId": "labels",
-                "value": {
-                  "labels": [
-                    {
-                      "id": "Label_1",
-                      "name": "question agen"
-                    },
-                    {
-                      "id": "INBOX",
-                      "name": "INBOX"
-                    },
-                    {
-                      "id": "STARRED",
-                      "name": "STARRED"
                     },
                     {
                       "id": "SENT",
                       "name": "SENT"
                     },
                     {
-                      "id": "DRAFT"
+                      "id": "STARRED",
+                      "name": "STARRED"
                     }
                   ]
                 }
@@ -136,77 +91,25 @@
           "texts": []
         },
         {
-          "offsetMs": 13609,
+          "offsetMs": 16629,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
                 "surfaceId": "labels",
                 "value": {
-                  "labels": [
-                    {
-                      "id": "Label_1",
-                      "name": "question agen"
-                    },
+                  "systemLabels": [
                     {
                       "id": "INBOX",
                       "name": "INBOX"
-                    },
-                    {
-                      "id": "STARRED",
-                      "name": "STARRED"
                     },
                     {
                       "id": "SENT",
                       "name": "SENT"
                     },
                     {
-                      "id": "DRAFT",
-                      "name": "DRAFT"
-                    },
-                    {
-                      "id": "IMPORTANT",
-                      "name": "IMPORTANT"
-                    }
-                  ]
-                }
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 13756,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateDataModel": {
-                "surfaceId": "labels",
-                "value": {
-                  "labels": [
-                    {
-                      "id": "Label_1",
-                      "name": "question agen"
-                    },
-                    {
-                      "id": "INBOX",
-                      "name": "INBOX"
-                    },
-                    {
                       "id": "STARRED",
                       "name": "STARRED"
-                    },
-                    {
-                      "id": "SENT",
-                      "name": "SENT"
-                    },
-                    {
-                      "id": "DRAFT",
-                      "name": "DRAFT"
-                    },
-                    {
-                      "id": "IMPORTANT",
-                      "name": "IMPORTANT"
                     },
                     {
                       "id": "UNREAD",
@@ -220,29 +123,65 @@
           "texts": []
         },
         {
-          "offsetMs": 13941,
+          "offsetMs": 16779,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
                 "surfaceId": "labels",
                 "value": {
-                  "labels": [
-                    {
-                      "id": "Label_1",
-                      "name": "question agen"
-                    },
+                  "systemLabels": [
                     {
                       "id": "INBOX",
                       "name": "INBOX"
+                    },
+                    {
+                      "id": "SENT",
+                      "name": "SENT"
                     },
                     {
                       "id": "STARRED",
                       "name": "STARRED"
                     },
                     {
+                      "id": "UNREAD",
+                      "name": "UNREAD"
+                    },
+                    {
+                      "id": "DRAFT",
+                      "name": "DRAFT"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 16949,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "labels",
+                "value": {
+                  "systemLabels": [
+                    {
+                      "id": "INBOX",
+                      "name": "INBOX"
+                    },
+                    {
                       "id": "SENT",
                       "name": "SENT"
+                    },
+                    {
+                      "id": "STARRED",
+                      "name": "STARRED"
+                    },
+                    {
+                      "id": "UNREAD",
+                      "name": "UNREAD"
                     },
                     {
                       "id": "DRAFT",
@@ -251,10 +190,46 @@
                     {
                       "id": "IMPORTANT",
                       "name": "IMPORTANT"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 17125,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "labels",
+                "value": {
+                  "systemLabels": [
+                    {
+                      "id": "INBOX",
+                      "name": "INBOX"
+                    },
+                    {
+                      "id": "SENT",
+                      "name": "SENT"
+                    },
+                    {
+                      "id": "STARRED",
+                      "name": "STARRED"
                     },
                     {
                       "id": "UNREAD",
                       "name": "UNREAD"
+                    },
+                    {
+                      "id": "DRAFT",
+                      "name": "DRAFT"
+                    },
+                    {
+                      "id": "IMPORTANT",
+                      "name": "IMPORTANT"
                     },
                     {
                       "id": "SPAM",
@@ -268,29 +243,29 @@
           "texts": []
         },
         {
-          "offsetMs": 14150,
+          "offsetMs": 17274,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
                 "surfaceId": "labels",
                 "value": {
-                  "labels": [
-                    {
-                      "id": "Label_1",
-                      "name": "question agen"
-                    },
+                  "systemLabels": [
                     {
                       "id": "INBOX",
                       "name": "INBOX"
+                    },
+                    {
+                      "id": "SENT",
+                      "name": "SENT"
                     },
                     {
                       "id": "STARRED",
                       "name": "STARRED"
                     },
                     {
-                      "id": "SENT",
-                      "name": "SENT"
+                      "id": "UNREAD",
+                      "name": "UNREAD"
                     },
                     {
                       "id": "DRAFT",
@@ -299,10 +274,6 @@
                     {
                       "id": "IMPORTANT",
                       "name": "IMPORTANT"
-                    },
-                    {
-                      "id": "UNREAD",
-                      "name": "UNREAD"
                     },
                     {
                       "id": "SPAM",
@@ -320,29 +291,29 @@
           "texts": []
         },
         {
-          "offsetMs": 14308,
+          "offsetMs": 17455,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
                 "surfaceId": "labels",
                 "value": {
-                  "labels": [
-                    {
-                      "id": "Label_1",
-                      "name": "question agen"
-                    },
+                  "systemLabels": [
                     {
                       "id": "INBOX",
                       "name": "INBOX"
+                    },
+                    {
+                      "id": "SENT",
+                      "name": "SENT"
                     },
                     {
                       "id": "STARRED",
                       "name": "STARRED"
                     },
                     {
-                      "id": "SENT",
-                      "name": "SENT"
+                      "id": "UNREAD",
+                      "name": "UNREAD"
                     },
                     {
                       "id": "DRAFT",
@@ -351,10 +322,6 @@
                     {
                       "id": "IMPORTANT",
                       "name": "IMPORTANT"
-                    },
-                    {
-                      "id": "UNREAD",
-                      "name": "UNREAD"
                     },
                     {
                       "id": "SPAM",
@@ -376,7 +343,7 @@
           "texts": []
         },
         {
-          "offsetMs": 14483,
+          "offsetMs": 17642,
           "messages": [
             {
               "version": "v0.9",
@@ -384,22 +351,28 @@
                 "surfaceId": "labels",
                 "path": "/",
                 "value": {
-                  "labels": [
+                  "userLabels": [
                     {
                       "id": "Label_1",
                       "name": "question agen"
-                    },
+                    }
+                  ],
+                  "systemLabels": [
                     {
                       "id": "INBOX",
                       "name": "INBOX"
+                    },
+                    {
+                      "id": "SENT",
+                      "name": "SENT"
                     },
                     {
                       "id": "STARRED",
                       "name": "STARRED"
                     },
                     {
-                      "id": "SENT",
-                      "name": "SENT"
+                      "id": "UNREAD",
+                      "name": "UNREAD"
                     },
                     {
                       "id": "DRAFT",
@@ -408,10 +381,6 @@
                     {
                       "id": "IMPORTANT",
                       "name": "IMPORTANT"
-                    },
-                    {
-                      "id": "UNREAD",
-                      "name": "UNREAD"
                     },
                     {
                       "id": "SPAM",
@@ -433,23 +402,24 @@
           "texts": []
         },
         {
-          "offsetMs": 14818,
+          "offsetMs": 18004,
           "messages": [
             {
               "version": "v0.9",
               "updateComponents": {
                 "components": [
                   {
-                    "id": "body",
-                    "component": "Stack"
-                  },
-                  {
                     "id": "root",
                     "component": "Surface",
-                    "child": "body",
+                    "child": "loading_body",
                     "container": "low",
                     "shape": "large",
                     "padding": "small"
+                  },
+                  {
+                    "id": "loading_body",
+                    "component": "Row",
+                    "children": []
                   }
                 ],
                 "surfaceId": "labels"
@@ -459,7 +429,7 @@
           "texts": []
         },
         {
-          "offsetMs": 14992,
+          "offsetMs": 18193,
           "messages": [
             {
               "version": "v0.9",
@@ -500,7 +470,7 @@
           "texts": []
         },
         {
-          "offsetMs": 15473,
+          "offsetMs": 18594,
           "messages": [
             {
               "version": "v0.9",
@@ -511,7 +481,7 @@
                     "component": "Stack",
                     "children": [
                       "header",
-                      "sheet"
+                      "loading_sheet"
                     ],
                     "gap": "xs"
                   },
@@ -534,8 +504,9 @@
                     "padding": "small"
                   },
                   {
-                    "id": "sheet",
-                    "component": "Surface"
+                    "id": "loading_sheet",
+                    "component": "Row",
+                    "children": []
                   },
                   {
                     "id": "loading_heading",
@@ -555,7 +526,7 @@
           "texts": []
         },
         {
-          "offsetMs": 15795,
+          "offsetMs": 18957,
           "messages": [
             {
               "version": "v0.9",
@@ -566,71 +537,7 @@
                     "component": "Stack",
                     "children": [
                       "header",
-                      "sheet"
-                    ],
-                    "gap": "xs"
-                  },
-                  {
-                    "id": "header",
-                    "component": "Stack",
-                    "children": [
-                      "loading_heading",
-                      "loading_sub"
-                    ],
-                    "gap": "xs",
-                    "padding": "sm"
-                  },
-                  {
-                    "id": "root",
-                    "component": "Surface",
-                    "child": "body",
-                    "container": "low",
-                    "shape": "large",
-                    "padding": "small"
-                  },
-                  {
-                    "id": "sheet",
-                    "component": "Surface",
-                    "child": "loading_label-list",
-                    "container": "lowest",
-                    "shape": "large",
-                    "padding": "none"
-                  },
-                  {
-                    "id": "loading_heading",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_sub",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_label-list",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "labels"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 15950,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "body",
-                    "component": "Stack",
-                    "children": [
-                      "header",
-                      "sheet"
+                      "loading_sheet"
                     ],
                     "gap": "xs"
                   },
@@ -659,22 +566,14 @@
                     "padding": "small"
                   },
                   {
-                    "id": "sheet",
-                    "component": "Surface",
-                    "child": "loading_label-list",
-                    "container": "lowest",
-                    "shape": "large",
-                    "padding": "none"
+                    "id": "loading_sheet",
+                    "component": "Row",
+                    "children": []
                   },
                   {
                     "id": "loading_sub",
                     "component": "Row",
                     "children": []
-                  },
-                  {
-                    "id": "loading_label-list",
-                    "component": "Row",
-                    "children": []
                   }
                 ],
                 "surfaceId": "labels"
@@ -684,7 +583,7 @@
           "texts": []
         },
         {
-          "offsetMs": 16146,
+          "offsetMs": 19335,
           "messages": [
             {
               "version": "v0.9",
@@ -695,7 +594,7 @@
                     "component": "Stack",
                     "children": [
                       "header",
-                      "sheet"
+                      "loading_sheet"
                     ],
                     "gap": "xs"
                   },
@@ -724,87 +623,14 @@
                     "padding": "small"
                   },
                   {
-                    "id": "sheet",
-                    "component": "Surface",
-                    "child": "loading_label-list",
-                    "container": "lowest",
-                    "shape": "large",
-                    "padding": "none"
-                  },
-                  {
                     "id": "sub",
                     "component": "Text",
-                    "text": "10"
-                  },
-                  {
-                    "id": "loading_label-list",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "labels"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 16313,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "body",
-                    "component": "Stack",
-                    "children": [
-                      "header",
-                      "sheet"
-                    ],
-                    "gap": "xs"
-                  },
-                  {
-                    "id": "header",
-                    "component": "Stack",
-                    "children": [
-                      "heading",
-                      "sub"
-                    ],
-                    "gap": "xs",
-                    "padding": "sm"
-                  },
-                  {
-                    "id": "heading",
-                    "component": "Text",
-                    "text": "Labels",
-                    "variant": "titleLarge"
-                  },
-                  {
-                    "id": "root",
-                    "component": "Surface",
-                    "child": "body",
-                    "container": "low",
-                    "shape": "large",
-                    "padding": "small"
-                  },
-                  {
-                    "id": "sheet",
-                    "component": "Surface",
-                    "child": "loading_label-list",
-                    "container": "lowest",
-                    "shape": "large",
-                    "padding": "none"
-                  },
-                  {
-                    "id": "sub",
-                    "component": "Text",
-                    "text": "10 labels in your mailbox",
+                    "text": "1 custom label, 9 system labels",
                     "variant": "bodySmall",
                     "color": "onSurfaceVariant"
                   },
                   {
-                    "id": "loading_label-list",
+                    "id": "loading_sheet",
                     "component": "Row",
                     "children": []
                   }
@@ -816,7 +642,7 @@
           "texts": []
         },
         {
-          "offsetMs": 16494,
+          "offsetMs": 19527,
           "messages": [
             {
               "version": "v0.9",
@@ -846,10 +672,6 @@
                     "component": "Text",
                     "text": "Labels",
                     "variant": "titleLarge"
-                  },
-                  {
-                    "id": "label-list",
-                    "component": "Stack"
                   },
                   {
                     "id": "root",
@@ -862,17 +684,20 @@
                   {
                     "id": "sheet",
                     "component": "Surface",
-                    "child": "label-list",
-                    "container": "lowest",
-                    "shape": "large",
-                    "padding": "none"
+                    "child": "loading_sheet-content",
+                    "container": "lowest"
                   },
                   {
                     "id": "sub",
                     "component": "Text",
-                    "text": "10 labels in your mailbox",
+                    "text": "1 custom label, 9 system labels",
                     "variant": "bodySmall",
                     "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "loading_sheet-content",
+                    "component": "Row",
+                    "children": []
                   }
                 ],
                 "surfaceId": "labels"
@@ -882,7 +707,7 @@
           "texts": []
         },
         {
-          "offsetMs": 16966,
+          "offsetMs": 19730,
           "messages": [
             {
               "version": "v0.9",
@@ -914,39 +739,677 @@
                     "variant": "titleLarge"
                   },
                   {
-                    "id": "label-list",
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "loading_sheet-content",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": "1 custom label, 9 system labels",
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "loading_sheet-content",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "labels"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 20238,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "heading",
+                      "sub"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": "Labels",
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "sheet-content",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "sheet-content",
+                    "component": "Stack",
+                    "children": [
+                      "loading_user-section-header",
+                      "loading_user-labels-list",
+                      "loading_divider-1",
+                      "loading_system-section-header",
+                      "loading_system-labels-list"
+                    ],
+                    "gap": "none"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": "1 custom label, 9 system labels",
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "loading_user-section-header",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_user-labels-list",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_divider-1",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_system-section-header",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_system-labels-list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "labels"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 20418,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "heading",
+                      "sub"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": "Labels",
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "sheet-content",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "sheet-content",
+                    "component": "Stack",
+                    "children": [
+                      "user-section-header",
+                      "loading_user-labels-list",
+                      "loading_divider-1",
+                      "loading_system-section-header",
+                      "loading_system-labels-list"
+                    ],
+                    "gap": "none"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": "1 custom label, 9 system labels",
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "user-section-header",
+                    "component": "Stack",
+                    "children": [
+                      "loading_user-section-title"
+                    ]
+                  },
+                  {
+                    "id": "loading_user-labels-list",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_divider-1",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_system-section-header",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_system-labels-list",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_user-section-title",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "labels"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 20587,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "heading",
+                      "sub"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": "Labels",
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "sheet-content",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "sheet-content",
+                    "component": "Stack",
+                    "children": [
+                      "user-section-header",
+                      "loading_user-labels-list",
+                      "loading_divider-1",
+                      "loading_system-section-header",
+                      "loading_system-labels-list"
+                    ],
+                    "gap": "none"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": "1 custom label, 9 system labels",
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "user-section-header",
+                    "component": "Stack",
+                    "children": [
+                      "loading_user-section-title"
+                    ],
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "loading_user-labels-list",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_divider-1",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_system-section-header",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_system-labels-list",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_user-section-title",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "labels"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 20761,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "heading",
+                      "sub"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": "Labels",
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "sheet-content",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "sheet-content",
+                    "component": "Stack",
+                    "children": [
+                      "user-section-header",
+                      "loading_user-labels-list",
+                      "loading_divider-1",
+                      "loading_system-section-header",
+                      "loading_system-labels-list"
+                    ],
+                    "gap": "none"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": "1 custom label, 9 system labels",
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "user-section-header",
+                    "component": "Stack",
+                    "children": [
+                      "user-section-title"
+                    ],
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "user-section-title",
+                    "component": "Text",
+                    "text": "User labels",
+                    "variant": "titleSmall"
+                  },
+                  {
+                    "id": "loading_user-labels-list",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_divider-1",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_system-section-header",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_system-labels-list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "labels"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 20943,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "heading",
+                      "sub"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": "Labels",
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "sheet-content",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "sheet-content",
+                    "component": "Stack",
+                    "children": [
+                      "user-section-header",
+                      "loading_user-labels-list",
+                      "loading_divider-1",
+                      "loading_system-section-header",
+                      "loading_system-labels-list"
+                    ],
+                    "gap": "none"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": "1 custom label, 9 system labels",
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "user-section-header",
+                    "component": "Stack",
+                    "children": [
+                      "user-section-title"
+                    ],
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "user-section-title",
+                    "component": "Text",
+                    "text": "User labels",
+                    "variant": "titleSmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "loading_user-labels-list",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_divider-1",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_system-section-header",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_system-labels-list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "labels"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 21427,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "heading",
+                      "sub"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": "Labels",
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "sheet-content",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "sheet-content",
+                    "component": "Stack",
+                    "children": [
+                      "user-section-header",
+                      "user-labels-list",
+                      "loading_divider-1",
+                      "loading_system-section-header",
+                      "loading_system-labels-list"
+                    ],
+                    "gap": "none"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": "1 custom label, 9 system labels",
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "user-labels-list",
                     "component": "Stack",
                     "children": {
-                      "path": "/labels",
-                      "componentId": "loading_label-row"
+                      "path": "/userLabels",
+                      "componentId": "loading_user-label-row"
                     },
                     "gap": "none"
                   },
                   {
-                    "id": "root",
-                    "component": "Surface",
-                    "child": "body",
-                    "container": "low",
-                    "shape": "large",
-                    "padding": "small"
+                    "id": "user-section-header",
+                    "component": "Stack",
+                    "children": [
+                      "user-section-title"
+                    ],
+                    "padding": "sm"
                   },
                   {
-                    "id": "sheet",
-                    "component": "Surface",
-                    "child": "label-list",
-                    "container": "lowest",
-                    "shape": "large",
-                    "padding": "none"
-                  },
-                  {
-                    "id": "sub",
+                    "id": "user-section-title",
                     "component": "Text",
-                    "text": "10 labels in your mailbox",
-                    "variant": "bodySmall",
+                    "text": "User labels",
+                    "variant": "titleSmall",
                     "color": "onSurfaceVariant"
                   },
                   {
-                    "id": "loading_label-row",
+                    "id": "loading_divider-1",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_system-section-header",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_system-labels-list",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_user-label-row",
                     "component": "Row",
                     "children": []
                   }
@@ -958,7 +1421,7 @@
           "texts": []
         },
         {
-          "offsetMs": 17114,
+          "offsetMs": 21677,
           "messages": [
             {
               "version": "v0.9",
@@ -990,43 +1453,86 @@
                     "variant": "titleLarge"
                   },
                   {
-                    "id": "label-list",
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "sheet-content",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "sheet-content",
                     "component": "Stack",
-                    "children": {
-                      "path": "/labels",
-                      "componentId": "label-row"
-                    },
+                    "children": [
+                      "user-section-header",
+                      "user-labels-list",
+                      "loading_divider-1",
+                      "loading_system-section-header",
+                      "loading_system-labels-list"
+                    ],
                     "gap": "none"
                   },
                   {
-                    "id": "label-row",
+                    "id": "sub",
+                    "component": "Text",
+                    "text": "1 custom label, 9 system labels",
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "user-label-row",
                     "component": "NavigationItem",
                     "label": {
                       "path": "name"
-                    }
+                    },
+                    "icon": "label"
                   },
                   {
-                    "id": "root",
-                    "component": "Surface",
-                    "child": "body",
-                    "container": "low",
-                    "shape": "large",
-                    "padding": "small"
+                    "id": "user-labels-list",
+                    "component": "Stack",
+                    "children": {
+                      "path": "/userLabels",
+                      "componentId": "user-label-row"
+                    },
+                    "gap": "none"
                   },
                   {
-                    "id": "sheet",
-                    "component": "Surface",
-                    "child": "label-list",
-                    "container": "lowest",
-                    "shape": "large",
-                    "padding": "none"
+                    "id": "user-section-header",
+                    "component": "Stack",
+                    "children": [
+                      "user-section-title"
+                    ],
+                    "padding": "sm"
                   },
                   {
-                    "id": "sub",
+                    "id": "user-section-title",
                     "component": "Text",
-                    "text": "10 labels in your mailbox",
-                    "variant": "bodySmall",
+                    "text": "User labels",
+                    "variant": "titleSmall",
                     "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "loading_divider-1",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_system-section-header",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_system-labels-list",
+                    "component": "Row",
+                    "children": []
                   }
                 ],
                 "surfaceId": "labels"
@@ -1036,7 +1542,7 @@
           "texts": []
         },
         {
-          "offsetMs": 17489,
+          "offsetMs": 22029,
           "messages": [
             {
               "version": "v0.9",
@@ -1068,16 +1574,42 @@
                     "variant": "titleLarge"
                   },
                   {
-                    "id": "label-list",
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "sheet-content",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "sheet-content",
                     "component": "Stack",
-                    "children": {
-                      "path": "/labels",
-                      "componentId": "label-row"
-                    },
+                    "children": [
+                      "user-section-header",
+                      "user-labels-list",
+                      "loading_divider-1",
+                      "loading_system-section-header",
+                      "loading_system-labels-list"
+                    ],
                     "gap": "none"
                   },
                   {
-                    "id": "label-row",
+                    "id": "sub",
+                    "component": "Text",
+                    "text": "1 custom label, 9 system labels",
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "user-label-row",
                     "component": "NavigationItem",
                     "label": {
                       "path": "name"
@@ -1095,6 +1627,89 @@
                     }
                   },
                   {
+                    "id": "user-labels-list",
+                    "component": "Stack",
+                    "children": {
+                      "path": "/userLabels",
+                      "componentId": "user-label-row"
+                    },
+                    "gap": "none"
+                  },
+                  {
+                    "id": "user-section-header",
+                    "component": "Stack",
+                    "children": [
+                      "user-section-title"
+                    ],
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "user-section-title",
+                    "component": "Text",
+                    "text": "User labels",
+                    "variant": "titleSmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "loading_divider-1",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_system-section-header",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_system-labels-list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "labels"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 22206,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "divider-1",
+                    "component": "Divider",
+                    "inset": "none"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "heading",
+                      "sub"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": "Labels",
+                    "variant": "titleLarge"
+                  },
+                  {
                     "id": "root",
                     "component": "Surface",
                     "child": "body",
@@ -1105,16 +1720,971 @@
                   {
                     "id": "sheet",
                     "component": "Surface",
-                    "child": "label-list",
+                    "child": "sheet-content",
                     "container": "lowest",
                     "shape": "large",
                     "padding": "none"
                   },
                   {
+                    "id": "sheet-content",
+                    "component": "Stack",
+                    "children": [
+                      "user-section-header",
+                      "user-labels-list",
+                      "divider-1",
+                      "loading_system-section-header",
+                      "loading_system-labels-list"
+                    ],
+                    "gap": "none"
+                  },
+                  {
                     "id": "sub",
                     "component": "Text",
-                    "text": "10 labels in your mailbox",
+                    "text": "1 custom label, 9 system labels",
                     "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "user-label-row",
+                    "component": "NavigationItem",
+                    "label": {
+                      "path": "name"
+                    },
+                    "icon": "label",
+                    "action": {
+                      "event": {
+                        "name": "open-label",
+                        "context": {
+                          "labelId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "user-labels-list",
+                    "component": "Stack",
+                    "children": {
+                      "path": "/userLabels",
+                      "componentId": "user-label-row"
+                    },
+                    "gap": "none"
+                  },
+                  {
+                    "id": "user-section-header",
+                    "component": "Stack",
+                    "children": [
+                      "user-section-title"
+                    ],
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "user-section-title",
+                    "component": "Text",
+                    "text": "User labels",
+                    "variant": "titleSmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "loading_system-section-header",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_system-labels-list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "labels"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 22737,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "divider-1",
+                    "component": "Divider",
+                    "inset": "none"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "heading",
+                      "sub"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": "Labels",
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "sheet-content",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "sheet-content",
+                    "component": "Stack",
+                    "children": [
+                      "user-section-header",
+                      "user-labels-list",
+                      "divider-1",
+                      "system-section-header",
+                      "loading_system-labels-list"
+                    ],
+                    "gap": "none"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": "1 custom label, 9 system labels",
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "system-section-header",
+                    "component": "Stack",
+                    "children": [
+                      "loading_system-section-title"
+                    ],
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "user-label-row",
+                    "component": "NavigationItem",
+                    "label": {
+                      "path": "name"
+                    },
+                    "icon": "label",
+                    "action": {
+                      "event": {
+                        "name": "open-label",
+                        "context": {
+                          "labelId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "user-labels-list",
+                    "component": "Stack",
+                    "children": {
+                      "path": "/userLabels",
+                      "componentId": "user-label-row"
+                    },
+                    "gap": "none"
+                  },
+                  {
+                    "id": "user-section-header",
+                    "component": "Stack",
+                    "children": [
+                      "user-section-title"
+                    ],
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "user-section-title",
+                    "component": "Text",
+                    "text": "User labels",
+                    "variant": "titleSmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "loading_system-labels-list",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_system-section-title",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "labels"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 22943,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "divider-1",
+                    "component": "Divider",
+                    "inset": "none"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "heading",
+                      "sub"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": "Labels",
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "sheet-content",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "sheet-content",
+                    "component": "Stack",
+                    "children": [
+                      "user-section-header",
+                      "user-labels-list",
+                      "divider-1",
+                      "system-section-header",
+                      "loading_system-labels-list"
+                    ],
+                    "gap": "none"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": "1 custom label, 9 system labels",
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "system-section-header",
+                    "component": "Stack",
+                    "children": [
+                      "system-section-title"
+                    ],
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "system-section-title",
+                    "component": "Text",
+                    "text": "System labels",
+                    "variant": "titleSmall"
+                  },
+                  {
+                    "id": "user-label-row",
+                    "component": "NavigationItem",
+                    "label": {
+                      "path": "name"
+                    },
+                    "icon": "label",
+                    "action": {
+                      "event": {
+                        "name": "open-label",
+                        "context": {
+                          "labelId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "user-labels-list",
+                    "component": "Stack",
+                    "children": {
+                      "path": "/userLabels",
+                      "componentId": "user-label-row"
+                    },
+                    "gap": "none"
+                  },
+                  {
+                    "id": "user-section-header",
+                    "component": "Stack",
+                    "children": [
+                      "user-section-title"
+                    ],
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "user-section-title",
+                    "component": "Text",
+                    "text": "User labels",
+                    "variant": "titleSmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "loading_system-labels-list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "labels"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 23128,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "divider-1",
+                    "component": "Divider",
+                    "inset": "none"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "heading",
+                      "sub"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": "Labels",
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "sheet-content",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "sheet-content",
+                    "component": "Stack",
+                    "children": [
+                      "user-section-header",
+                      "user-labels-list",
+                      "divider-1",
+                      "system-section-header",
+                      "loading_system-labels-list"
+                    ],
+                    "gap": "none"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": "1 custom label, 9 system labels",
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "system-section-header",
+                    "component": "Stack",
+                    "children": [
+                      "system-section-title"
+                    ],
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "system-section-title",
+                    "component": "Text",
+                    "text": "System labels",
+                    "variant": "titleSmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "user-label-row",
+                    "component": "NavigationItem",
+                    "label": {
+                      "path": "name"
+                    },
+                    "icon": "label",
+                    "action": {
+                      "event": {
+                        "name": "open-label",
+                        "context": {
+                          "labelId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "user-labels-list",
+                    "component": "Stack",
+                    "children": {
+                      "path": "/userLabels",
+                      "componentId": "user-label-row"
+                    },
+                    "gap": "none"
+                  },
+                  {
+                    "id": "user-section-header",
+                    "component": "Stack",
+                    "children": [
+                      "user-section-title"
+                    ],
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "user-section-title",
+                    "component": "Text",
+                    "text": "User labels",
+                    "variant": "titleSmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "loading_system-labels-list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "labels"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 23494,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "divider-1",
+                    "component": "Divider",
+                    "inset": "none"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "heading",
+                      "sub"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": "Labels",
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "sheet-content",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "sheet-content",
+                    "component": "Stack",
+                    "children": [
+                      "user-section-header",
+                      "user-labels-list",
+                      "divider-1",
+                      "system-section-header",
+                      "system-labels-list"
+                    ],
+                    "gap": "none"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": "1 custom label, 9 system labels",
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "system-labels-list",
+                    "component": "Stack",
+                    "children": {
+                      "path": "/systemLabels",
+                      "componentId": "loading_system-label-row"
+                    },
+                    "gap": "none"
+                  },
+                  {
+                    "id": "system-section-header",
+                    "component": "Stack",
+                    "children": [
+                      "system-section-title"
+                    ],
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "system-section-title",
+                    "component": "Text",
+                    "text": "System labels",
+                    "variant": "titleSmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "user-label-row",
+                    "component": "NavigationItem",
+                    "label": {
+                      "path": "name"
+                    },
+                    "icon": "label",
+                    "action": {
+                      "event": {
+                        "name": "open-label",
+                        "context": {
+                          "labelId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "user-labels-list",
+                    "component": "Stack",
+                    "children": {
+                      "path": "/userLabels",
+                      "componentId": "user-label-row"
+                    },
+                    "gap": "none"
+                  },
+                  {
+                    "id": "user-section-header",
+                    "component": "Stack",
+                    "children": [
+                      "user-section-title"
+                    ],
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "user-section-title",
+                    "component": "Text",
+                    "text": "User labels",
+                    "variant": "titleSmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "loading_system-label-row",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "labels"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 24090,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "divider-1",
+                    "component": "Divider",
+                    "inset": "none"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "heading",
+                      "sub"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": "Labels",
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "sheet-content",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "sheet-content",
+                    "component": "Stack",
+                    "children": [
+                      "user-section-header",
+                      "user-labels-list",
+                      "divider-1",
+                      "system-section-header",
+                      "system-labels-list"
+                    ],
+                    "gap": "none"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": "1 custom label, 9 system labels",
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "system-label-row",
+                    "component": "NavigationItem",
+                    "label": {
+                      "path": "name"
+                    },
+                    "icon": "mail",
+                    "action": {
+                      "event": {
+                        "name": "open-label"
+                      }
+                    }
+                  },
+                  {
+                    "id": "system-labels-list",
+                    "component": "Stack",
+                    "children": {
+                      "path": "/systemLabels",
+                      "componentId": "system-label-row"
+                    },
+                    "gap": "none"
+                  },
+                  {
+                    "id": "system-section-header",
+                    "component": "Stack",
+                    "children": [
+                      "system-section-title"
+                    ],
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "system-section-title",
+                    "component": "Text",
+                    "text": "System labels",
+                    "variant": "titleSmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "user-label-row",
+                    "component": "NavigationItem",
+                    "label": {
+                      "path": "name"
+                    },
+                    "icon": "label",
+                    "action": {
+                      "event": {
+                        "name": "open-label",
+                        "context": {
+                          "labelId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "user-labels-list",
+                    "component": "Stack",
+                    "children": {
+                      "path": "/userLabels",
+                      "componentId": "user-label-row"
+                    },
+                    "gap": "none"
+                  },
+                  {
+                    "id": "user-section-header",
+                    "component": "Stack",
+                    "children": [
+                      "user-section-title"
+                    ],
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "user-section-title",
+                    "component": "Text",
+                    "text": "User labels",
+                    "variant": "titleSmall",
+                    "color": "onSurfaceVariant"
+                  }
+                ],
+                "surfaceId": "labels"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 24282,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "divider-1",
+                    "component": "Divider",
+                    "inset": "none"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "heading",
+                      "sub"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": "Labels",
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "sheet-content",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "sheet-content",
+                    "component": "Stack",
+                    "children": [
+                      "user-section-header",
+                      "user-labels-list",
+                      "divider-1",
+                      "system-section-header",
+                      "system-labels-list"
+                    ],
+                    "gap": "none"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": "1 custom label, 9 system labels",
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "system-label-row",
+                    "component": "NavigationItem",
+                    "label": {
+                      "path": "name"
+                    },
+                    "icon": "mail",
+                    "action": {
+                      "event": {
+                        "name": "open-label",
+                        "context": {
+                          "labelId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "system-labels-list",
+                    "component": "Stack",
+                    "children": {
+                      "path": "/systemLabels",
+                      "componentId": "system-label-row"
+                    },
+                    "gap": "none"
+                  },
+                  {
+                    "id": "system-section-header",
+                    "component": "Stack",
+                    "children": [
+                      "system-section-title"
+                    ],
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "system-section-title",
+                    "component": "Text",
+                    "text": "System labels",
+                    "variant": "titleSmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "user-label-row",
+                    "component": "NavigationItem",
+                    "label": {
+                      "path": "name"
+                    },
+                    "icon": "label",
+                    "action": {
+                      "event": {
+                        "name": "open-label",
+                        "context": {
+                          "labelId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "user-labels-list",
+                    "component": "Stack",
+                    "children": {
+                      "path": "/userLabels",
+                      "componentId": "user-label-row"
+                    },
+                    "gap": "none"
+                  },
+                  {
+                    "id": "user-section-header",
+                    "component": "Stack",
+                    "children": [
+                      "user-section-title"
+                    ],
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "user-section-title",
+                    "component": "Text",
+                    "text": "User labels",
+                    "variant": "titleSmall",
                     "color": "onSurfaceVariant"
                   }
                 ],
@@ -1126,7 +2696,7 @@
         }
       ],
       "outcome": "completed",
-      "durationMs": 17956
+      "durationMs": 24786
     }
   ]
 }

@@ -110,5 +110,6 @@ sits beside a `Text` of the same name.
 - Use exactly one `title` `Text` per surface, for the issue's or the question's title. A list's
   name is its `ViewHeader`'s title.
 - Identifiers, state names, labels and branch names are shown exactly as the payload spells them.
-- A time is secondary and never emphasized: `Sep 18`, `2h ago`, in the `caption` register.
+- A time is secondary and never emphasized, in the `caption` register. It keeps its date, year, clock
+  and zone — `Sep 18, 2026, 11:00 AM UTC`, the payload's UTC clock with `UTC` after it.
 - Do not set whole rows in `semibold`; the title carries the row at `medium`.

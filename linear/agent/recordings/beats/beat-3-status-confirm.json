@@ -4,18 +4,18 @@
   "title": "Status change confirmed",
   "prompt": "Yes, move it.",
   "model": "gemini-3.7-flash",
-  "recordedAt": "2026-09-27T01:25:32+00:00",
-  "contextId": "5f617a22-124e-4660-a86e-045c202f1ec8",
+  "recordedAt": "2026-09-27T04:17:06+00:00",
+  "contextId": "23da9f55-04f5-4027-b119-886404c08114",
   "chainedFrom": "beat-3-status-proposal",
   "turns": [
     {
-      "taskId": "4ef39140-5ee1-4978-90f6-8f69274816c6",
+      "taskId": "c3b30b11-2913-4fd1-9aa4-9352fefd1560",
       "kind": "utterance",
       "prompt": "Yes, move it.",
       "action": null,
       "batches": [
         {
-          "offsetMs": 8190,
+          "offsetMs": 8863,
           "messages": [
             {
               "paintMeta": {
@@ -29,7 +29,7 @@
           ]
         },
         {
-          "offsetMs": 8552,
+          "offsetMs": 9226,
           "messages": [
             {
               "version": "v0.9",
@@ -43,14 +43,15 @@
           "texts": []
         },
         {
-          "offsetMs": 8879,
+          "offsetMs": 9595,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
                 "surfaceId": "issue-detail",
                 "value": {
-                  "team": "A2uiverse"
+                  "team": "A2uiverse",
+                  "id": "A2U-5"
                 }
               }
             }
@@ -58,15 +59,15 @@
           "texts": []
         },
         {
-          "offsetMs": 9060,
+          "offsetMs": 9775,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
                 "surfaceId": "issue-detail",
                 "value": {
-                  "id": "A2U-5",
-                  "title": "Say on the canvas when an utterance fails"
+                  "title": "Say on the canvas when an utterance fails",
+                  "status": "In Progress"
                 }
               }
             }
@@ -74,16 +75,16 @@
           "texts": []
         },
         {
-          "offsetMs": 9412,
+          "offsetMs": 9981,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
                 "surfaceId": "issue-detail",
                 "value": {
-                  "status": "In Progress",
                   "statusType": "started",
-                  "priority": "High"
+                  "priority": "High",
+                  "assignee": "Jioh In"
                 }
               }
             }
@@ -91,14 +92,13 @@
           "texts": []
         },
         {
-          "offsetMs": 9592,
+          "offsetMs": 10168,
           "messages": [
             {
               "version": "v0.9",
               "updateDataModel": {
                 "surfaceId": "issue-detail",
                 "value": {
-                  "assignee": "Jioh In",
                   "labels": "Bug"
                 }
               }
@@ -107,7 +107,7 @@
           "texts": []
         },
         {
-          "offsetMs": 10119,
+          "offsetMs": 10653,
           "messages": [
             {
               "version": "v0.9",
@@ -122,7 +122,7 @@
           "texts": []
         },
         {
-          "offsetMs": 10269,
+          "offsetMs": 10830,
           "messages": [
             {
               "version": "v0.9",
@@ -142,7 +142,7 @@
           "texts": []
         },
         {
-          "offsetMs": 10452,
+          "offsetMs": 11142,
           "messages": [
             {
               "version": "v0.9",
@@ -157,7 +157,7 @@
           "texts": []
         },
         {
-          "offsetMs": 10624,
+          "offsetMs": 11339,
           "messages": [
             {
               "version": "v0.9",
@@ -167,7 +167,7 @@
                   "comments": [
                     {
                       "author": "GitHub",
-                      "when": "Sep 18"
+                      "when": "Sep 18, 2026, 11:50 AM UTC"
                     }
                   ]
                 }
@@ -177,7 +177,7 @@
           "texts": []
         },
         {
-          "offsetMs": 10777,
+          "offsetMs": 11519,
           "messages": [
             {
               "version": "v0.9",
@@ -187,7 +187,7 @@
                   "comments": [
                     {
                       "author": "GitHub",
-                      "when": "Sep 18",
+                      "when": "Sep 18, 2026, 11:50 AM UTC",
                       "body": "This comment thread is synced to a corresponding [GitHub issue](https://github.com/retz8/a2uiverse/issues/3). All replies are displayed in both locations."
                     }
                   ]
@@ -198,7 +198,7 @@
           "texts": []
         },
         {
-          "offsetMs": 10943,
+          "offsetMs": 11709,
           "messages": [
             {
               "version": "v0.9",
@@ -225,7 +225,7 @@
                   "comments": [
                     {
                       "author": "GitHub",
-                      "when": "Sep 18",
+                      "when": "Sep 18, 2026, 11:50 AM UTC",
                       "body": "This comment thread is synced to a corresponding [GitHub issue](https://github.com/retz8/a2uiverse/issues/3). All replies are displayed in both locations."
                     }
                   ]
@@ -236,7 +236,7 @@
           "texts": []
         },
         {
-          "offsetMs": 11264,
+          "offsetMs": 12049,
           "messages": [
             {
               "version": "v0.9",
@@ -261,7 +261,7 @@
           "texts": []
         },
         {
-          "offsetMs": 11431,
+          "offsetMs": 12235,
           "messages": [
             {
               "version": "v0.9",
@@ -300,45 +300,7 @@
           "texts": []
         },
         {
-          "offsetMs": 11607,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "body",
-                    "component": "Stack",
-                    "gap": "none",
-                    "children": [
-                      "header",
-                      "loading_content"
-                    ]
-                  },
-                  {
-                    "id": "header",
-                    "component": "ViewHeader"
-                  },
-                  {
-                    "id": "root",
-                    "component": "Panel",
-                    "padding": "none",
-                    "child": "body"
-                  },
-                  {
-                    "id": "loading_content",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "issue-detail"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 11940,
+          "offsetMs": 12563,
           "messages": [
             {
               "version": "v0.9",
@@ -382,7 +344,7 @@
           "texts": []
         },
         {
-          "offsetMs": 12125,
+          "offsetMs": 12746,
           "messages": [
             {
               "version": "v0.9",
@@ -427,7 +389,7 @@
           "texts": []
         },
         {
-          "offsetMs": 12425,
+          "offsetMs": 13119,
           "messages": [
             {
               "version": "v0.9",
@@ -510,7 +472,7 @@
           "texts": []
         },
         {
-          "offsetMs": 12560,
+          "offsetMs": 13487,
           "messages": [
             {
               "version": "v0.9",
@@ -532,7 +494,7 @@
                     "gap": "l",
                     "children": [
                       "title",
-                      "loading_props",
+                      "props",
                       "loading_divider",
                       "loading_description",
                       "loading_links",
@@ -550,89 +512,8 @@
                     }
                   },
                   {
-                    "id": "root",
-                    "component": "Panel",
-                    "padding": "none",
-                    "child": "body"
-                  },
-                  {
-                    "id": "title",
-                    "component": "Text",
-                    "text": {
-                      "path": "/title"
-                    }
-                  },
-                  {
-                    "id": "loading_props",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_divider",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_description",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_links",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_activity",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "issue-detail"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 12750,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "body",
-                    "component": "Stack",
-                    "gap": "none",
-                    "children": [
-                      "header",
-                      "content"
-                    ]
-                  },
-                  {
-                    "id": "content",
-                    "component": "Stack",
-                    "padding": "l",
-                    "gap": "l",
-                    "children": [
-                      "title",
-                      "loading_props",
-                      "loading_divider",
-                      "loading_description",
-                      "loading_links",
-                      "loading_activity"
-                    ]
-                  },
-                  {
-                    "id": "header",
-                    "component": "ViewHeader",
-                    "context": {
-                      "path": "/team"
-                    },
-                    "title": {
-                      "path": "/id"
-                    }
+                    "id": "props",
+                    "component": "Stack"
                   },
                   {
                     "id": "root",
@@ -649,11 +530,6 @@
                     "variant": "title"
                   },
                   {
-                    "id": "loading_props",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
                     "id": "loading_divider",
                     "component": "Row",
                     "children": []
@@ -681,7 +557,7 @@
           "texts": []
         },
         {
-          "offsetMs": 13107,
+          "offsetMs": 13872,
           "messages": [
             {
               "version": "v0.9",
@@ -793,7 +669,7 @@
           "texts": []
         },
         {
-          "offsetMs": 13240,
+          "offsetMs": 14035,
           "messages": [
             {
               "version": "v0.9",
@@ -851,7 +727,8 @@
                   },
                   {
                     "id": "status-prop",
-                    "component": "Property"
+                    "component": "Property",
+                    "label": "Status"
                   },
                   {
                     "id": "title",
@@ -904,7 +781,7 @@
           "texts": []
         },
         {
-          "offsetMs": 13576,
+          "offsetMs": 14228,
           "messages": [
             {
               "version": "v0.9",
@@ -1030,7 +907,132 @@
           "texts": []
         },
         {
-          "offsetMs": 13932,
+          "offsetMs": 14406,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "gap": "none",
+                    "children": [
+                      "header",
+                      "content"
+                    ]
+                  },
+                  {
+                    "id": "content",
+                    "component": "Stack",
+                    "padding": "l",
+                    "gap": "l",
+                    "children": [
+                      "title",
+                      "props",
+                      "loading_divider",
+                      "loading_description",
+                      "loading_links",
+                      "loading_activity"
+                    ]
+                  },
+                  {
+                    "id": "header",
+                    "component": "ViewHeader",
+                    "context": {
+                      "path": "/team"
+                    },
+                    "title": {
+                      "path": "/id"
+                    }
+                  },
+                  {
+                    "id": "props",
+                    "component": "Stack",
+                    "gap": "xs",
+                    "children": [
+                      "status-prop",
+                      "loading_priority-prop",
+                      "loading_assignee-prop",
+                      "loading_labels-prop"
+                    ]
+                  },
+                  {
+                    "id": "root",
+                    "component": "Panel",
+                    "padding": "none",
+                    "child": "body"
+                  },
+                  {
+                    "id": "status-icon",
+                    "component": "StatusIcon"
+                  },
+                  {
+                    "id": "status-prop",
+                    "component": "Property",
+                    "label": "Status",
+                    "children": [
+                      "status-icon",
+                      "loading_status-name"
+                    ]
+                  },
+                  {
+                    "id": "title",
+                    "component": "Text",
+                    "text": {
+                      "path": "/title"
+                    },
+                    "variant": "title"
+                  },
+                  {
+                    "id": "loading_divider",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_description",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_links",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_activity",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_priority-prop",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_assignee-prop",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_labels-prop",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_status-name",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "issue-detail"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 14757,
           "messages": [
             {
               "version": "v0.9",
@@ -1161,7 +1163,7 @@
           "texts": []
         },
         {
-          "offsetMs": 14087,
+          "offsetMs": 14926,
           "messages": [
             {
               "version": "v0.9",
@@ -1294,7 +1296,139 @@
           "texts": []
         },
         {
-          "offsetMs": 14573,
+          "offsetMs": 15135,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "gap": "none",
+                    "children": [
+                      "header",
+                      "content"
+                    ]
+                  },
+                  {
+                    "id": "content",
+                    "component": "Stack",
+                    "padding": "l",
+                    "gap": "l",
+                    "children": [
+                      "title",
+                      "props",
+                      "loading_divider",
+                      "loading_description",
+                      "loading_links",
+                      "loading_activity"
+                    ]
+                  },
+                  {
+                    "id": "header",
+                    "component": "ViewHeader",
+                    "context": {
+                      "path": "/team"
+                    },
+                    "title": {
+                      "path": "/id"
+                    }
+                  },
+                  {
+                    "id": "priority-prop",
+                    "component": "Property"
+                  },
+                  {
+                    "id": "props",
+                    "component": "Stack",
+                    "gap": "xs",
+                    "children": [
+                      "status-prop",
+                      "priority-prop",
+                      "loading_assignee-prop",
+                      "loading_labels-prop"
+                    ]
+                  },
+                  {
+                    "id": "root",
+                    "component": "Panel",
+                    "padding": "none",
+                    "child": "body"
+                  },
+                  {
+                    "id": "status-icon",
+                    "component": "StatusIcon",
+                    "status": {
+                      "path": "/status"
+                    },
+                    "type": {
+                      "path": "/statusType"
+                    }
+                  },
+                  {
+                    "id": "status-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "/status"
+                    }
+                  },
+                  {
+                    "id": "status-prop",
+                    "component": "Property",
+                    "label": "Status",
+                    "children": [
+                      "status-icon",
+                      "status-name"
+                    ]
+                  },
+                  {
+                    "id": "title",
+                    "component": "Text",
+                    "text": {
+                      "path": "/title"
+                    },
+                    "variant": "title"
+                  },
+                  {
+                    "id": "loading_divider",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_description",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_links",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_activity",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_assignee-prop",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_labels-prop",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "issue-detail"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 15459,
           "messages": [
             {
               "version": "v0.9",
@@ -1441,7 +1575,7 @@
           "texts": []
         },
         {
-          "offsetMs": 14767,
+          "offsetMs": 15647,
           "messages": [
             {
               "version": "v0.9",
@@ -1590,7 +1724,7 @@
           "texts": []
         },
         {
-          "offsetMs": 14936,
+          "offsetMs": 15807,
           "messages": [
             {
               "version": "v0.9",
@@ -1738,7 +1872,7 @@
           "texts": []
         },
         {
-          "offsetMs": 15115,
+          "offsetMs": 16004,
           "messages": [
             {
               "version": "v0.9",
@@ -1889,7 +2023,7 @@
           "texts": []
         },
         {
-          "offsetMs": 15256,
+          "offsetMs": 16154,
           "messages": [
             {
               "version": "v0.9",
@@ -2040,7 +2174,7 @@
           "texts": []
         },
         {
-          "offsetMs": 15628,
+          "offsetMs": 16356,
           "messages": [
             {
               "version": "v0.9",
@@ -2205,7 +2339,7 @@
           "texts": []
         },
         {
-          "offsetMs": 15785,
+          "offsetMs": 16742,
           "messages": [
             {
               "version": "v0.9",
@@ -2372,7 +2506,7 @@
           "texts": []
         },
         {
-          "offsetMs": 16123,
+          "offsetMs": 16937,
           "messages": [
             {
               "version": "v0.9",
@@ -2541,7 +2675,175 @@
           "texts": []
         },
         {
-          "offsetMs": 16498,
+          "offsetMs": 17159,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "assignee-avatar",
+                    "component": "Avatar",
+                    "name": {
+                      "path": "/assignee"
+                    }
+                  },
+                  {
+                    "id": "assignee-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "/assignee"
+                    }
+                  },
+                  {
+                    "id": "assignee-prop",
+                    "component": "Property",
+                    "label": "Assignee",
+                    "children": [
+                      "assignee-avatar",
+                      "assignee-name"
+                    ]
+                  },
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "gap": "none",
+                    "children": [
+                      "header",
+                      "content"
+                    ]
+                  },
+                  {
+                    "id": "content",
+                    "component": "Stack",
+                    "padding": "l",
+                    "gap": "l",
+                    "children": [
+                      "title",
+                      "props",
+                      "loading_divider",
+                      "loading_description",
+                      "loading_links",
+                      "loading_activity"
+                    ]
+                  },
+                  {
+                    "id": "header",
+                    "component": "ViewHeader",
+                    "context": {
+                      "path": "/team"
+                    },
+                    "title": {
+                      "path": "/id"
+                    }
+                  },
+                  {
+                    "id": "labels-prop",
+                    "component": "Property"
+                  },
+                  {
+                    "id": "priority-icon",
+                    "component": "PriorityIcon",
+                    "priority": {
+                      "path": "/priority"
+                    }
+                  },
+                  {
+                    "id": "priority-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "/priority"
+                    }
+                  },
+                  {
+                    "id": "priority-prop",
+                    "component": "Property",
+                    "label": "Priority",
+                    "children": [
+                      "priority-icon",
+                      "priority-name"
+                    ]
+                  },
+                  {
+                    "id": "props",
+                    "component": "Stack",
+                    "gap": "xs",
+                    "children": [
+                      "status-prop",
+                      "priority-prop",
+                      "assignee-prop",
+                      "labels-prop"
+                    ]
+                  },
+                  {
+                    "id": "root",
+                    "component": "Panel",
+                    "padding": "none",
+                    "child": "body"
+                  },
+                  {
+                    "id": "status-icon",
+                    "component": "StatusIcon",
+                    "status": {
+                      "path": "/status"
+                    },
+                    "type": {
+                      "path": "/statusType"
+                    }
+                  },
+                  {
+                    "id": "status-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "/status"
+                    }
+                  },
+                  {
+                    "id": "status-prop",
+                    "component": "Property",
+                    "label": "Status",
+                    "children": [
+                      "status-icon",
+                      "status-name"
+                    ]
+                  },
+                  {
+                    "id": "title",
+                    "component": "Text",
+                    "text": {
+                      "path": "/title"
+                    },
+                    "variant": "title"
+                  },
+                  {
+                    "id": "loading_divider",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_description",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_links",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_activity",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "issue-detail"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 17340,
           "messages": [
             {
               "version": "v0.9",
@@ -2718,7 +3020,7 @@
           "texts": []
         },
         {
-          "offsetMs": 16699,
+          "offsetMs": 17737,
           "messages": [
             {
               "version": "v0.9",
@@ -2897,7 +3199,7 @@
           "texts": []
         },
         {
-          "offsetMs": 16865,
+          "offsetMs": 17905,
           "messages": [
             {
               "version": "v0.9",
@@ -2944,10 +3246,14 @@
                       "title",
                       "props",
                       "divider",
-                      "loading_description",
+                      "description",
                       "loading_links",
                       "loading_activity"
                     ]
+                  },
+                  {
+                    "id": "description",
+                    "component": "Markdown"
                   },
                   {
                     "id": "divider",
@@ -3053,11 +3359,6 @@
                     "variant": "title"
                   },
                   {
-                    "id": "loading_description",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
                     "id": "loading_links",
                     "component": "Row",
                     "children": []
@@ -3075,7 +3376,7 @@
           "texts": []
         },
         {
-          "offsetMs": 17030,
+          "offsetMs": 18110,
           "messages": [
             {
               "version": "v0.9",
@@ -3255,7 +3556,7 @@
           "texts": []
         },
         {
-          "offsetMs": 17524,
+          "offsetMs": 18521,
           "messages": [
             {
               "version": "v0.9",
@@ -3347,7 +3648,6 @@
                     "id": "links",
                     "component": "Section",
                     "title": "Links",
-                    "count": "2",
                     "children": [
                       "loading_pr-list",
                       "loading_branch"
@@ -3450,7 +3750,7 @@
           "texts": []
         },
         {
-          "offsetMs": 17824,
+          "offsetMs": 19029,
           "messages": [
             {
               "version": "v0.9",
@@ -3542,7 +3842,6 @@
                     "id": "links",
                     "component": "Section",
                     "title": "Links",
-                    "count": "2",
                     "children": [
                       "pr-list",
                       "loading_branch"
@@ -3654,7 +3953,7 @@
           "texts": []
         },
         {
-          "offsetMs": 17975,
+          "offsetMs": 19182,
           "messages": [
             {
               "version": "v0.9",
@@ -3746,210 +4045,6 @@
                     "id": "links",
                     "component": "Section",
                     "title": "Links",
-                    "count": "2",
-                    "children": [
-                      "pr-list",
-                      "loading_branch"
-                    ]
-                  },
-                  {
-                    "id": "pr-list",
-                    "component": "Stack",
-                    "gap": "xs",
-                    "children": {
-                      "path": "/pullRequests",
-                      "componentId": "pr-row"
-                    }
-                  },
-                  {
-                    "id": "pr-row",
-                    "component": "Stack"
-                  },
-                  {
-                    "id": "priority-icon",
-                    "component": "PriorityIcon",
-                    "priority": {
-                      "path": "/priority"
-                    }
-                  },
-                  {
-                    "id": "priority-name",
-                    "component": "Text",
-                    "text": {
-                      "path": "/priority"
-                    }
-                  },
-                  {
-                    "id": "priority-prop",
-                    "component": "Property",
-                    "label": "Priority",
-                    "children": [
-                      "priority-icon",
-                      "priority-name"
-                    ]
-                  },
-                  {
-                    "id": "props",
-                    "component": "Stack",
-                    "gap": "xs",
-                    "children": [
-                      "status-prop",
-                      "priority-prop",
-                      "assignee-prop",
-                      "labels-prop"
-                    ]
-                  },
-                  {
-                    "id": "root",
-                    "component": "Panel",
-                    "padding": "none",
-                    "child": "body"
-                  },
-                  {
-                    "id": "status-icon",
-                    "component": "StatusIcon",
-                    "status": {
-                      "path": "/status"
-                    },
-                    "type": {
-                      "path": "/statusType"
-                    }
-                  },
-                  {
-                    "id": "status-name",
-                    "component": "Text",
-                    "text": {
-                      "path": "/status"
-                    }
-                  },
-                  {
-                    "id": "status-prop",
-                    "component": "Property",
-                    "label": "Status",
-                    "children": [
-                      "status-icon",
-                      "status-name"
-                    ]
-                  },
-                  {
-                    "id": "title",
-                    "component": "Text",
-                    "text": {
-                      "path": "/title"
-                    },
-                    "variant": "title"
-                  },
-                  {
-                    "id": "loading_activity",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_branch",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "issue-detail"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 18168,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "assignee-avatar",
-                    "component": "Avatar",
-                    "name": {
-                      "path": "/assignee"
-                    }
-                  },
-                  {
-                    "id": "assignee-name",
-                    "component": "Text",
-                    "text": {
-                      "path": "/assignee"
-                    }
-                  },
-                  {
-                    "id": "assignee-prop",
-                    "component": "Property",
-                    "label": "Assignee",
-                    "children": [
-                      "assignee-avatar",
-                      "assignee-name"
-                    ]
-                  },
-                  {
-                    "id": "body",
-                    "component": "Stack",
-                    "gap": "none",
-                    "children": [
-                      "header",
-                      "content"
-                    ]
-                  },
-                  {
-                    "id": "content",
-                    "component": "Stack",
-                    "padding": "l",
-                    "gap": "l",
-                    "children": [
-                      "title",
-                      "props",
-                      "divider",
-                      "description",
-                      "links",
-                      "loading_activity"
-                    ]
-                  },
-                  {
-                    "id": "description",
-                    "component": "Markdown",
-                    "text": {
-                      "path": "/description"
-                    }
-                  },
-                  {
-                    "id": "divider",
-                    "component": "Divider"
-                  },
-                  {
-                    "id": "header",
-                    "component": "ViewHeader",
-                    "context": {
-                      "path": "/team"
-                    },
-                    "title": {
-                      "path": "/id"
-                    }
-                  },
-                  {
-                    "id": "labels-chip",
-                    "component": "Chip",
-                    "label": {
-                      "path": "/labels"
-                    }
-                  },
-                  {
-                    "id": "labels-prop",
-                    "component": "Property",
-                    "label": "Labels",
-                    "children": [
-                      "labels-chip"
-                    ]
-                  },
-                  {
-                    "id": "links",
-                    "component": "Section",
-                    "title": "Links",
-                    "count": "2",
                     "children": [
                       "pr-list",
                       "loading_branch"
@@ -3968,8 +4063,7 @@
                     "id": "pr-row",
                     "component": "Stack",
                     "direction": "horizontal",
-                    "gap": "s",
-                    "align": "center"
+                    "gap": "s"
                   },
                   {
                     "id": "priority-icon",
@@ -4063,7 +4157,7 @@
           "texts": []
         },
         {
-          "offsetMs": 18536,
+          "offsetMs": 19551,
           "messages": [
             {
               "version": "v0.9",
@@ -4155,7 +4249,6 @@
                     "id": "links",
                     "component": "Section",
                     "title": "Links",
-                    "count": "2",
                     "children": [
                       "pr-list",
                       "loading_branch"
@@ -4289,7 +4382,7 @@
           "texts": []
         },
         {
-          "offsetMs": 18728,
+          "offsetMs": 19758,
           "messages": [
             {
               "version": "v0.9",
@@ -4381,7 +4474,6 @@
                     "id": "links",
                     "component": "Section",
                     "title": "Links",
-                    "count": "2",
                     "children": [
                       "pr-list",
                       "loading_branch"
@@ -4515,7 +4607,7 @@
           "texts": []
         },
         {
-          "offsetMs": 19122,
+          "offsetMs": 19911,
           "messages": [
             {
               "version": "v0.9",
@@ -4607,7 +4699,230 @@
                     "id": "links",
                     "component": "Section",
                     "title": "Links",
-                    "count": "2",
+                    "children": [
+                      "pr-list",
+                      "loading_branch"
+                    ]
+                  },
+                  {
+                    "id": "pr-icon",
+                    "component": "Icon",
+                    "name": "pull-request"
+                  },
+                  {
+                    "id": "pr-list",
+                    "component": "Stack",
+                    "gap": "xs",
+                    "children": {
+                      "path": "/pullRequests",
+                      "componentId": "pr-row"
+                    }
+                  },
+                  {
+                    "id": "pr-row",
+                    "component": "Stack",
+                    "direction": "horizontal",
+                    "gap": "s",
+                    "align": "center",
+                    "children": [
+                      "pr-icon",
+                      "pr-title",
+                      "loading_pr-number"
+                    ]
+                  },
+                  {
+                    "id": "pr-title",
+                    "component": "Text"
+                  },
+                  {
+                    "id": "priority-icon",
+                    "component": "PriorityIcon",
+                    "priority": {
+                      "path": "/priority"
+                    }
+                  },
+                  {
+                    "id": "priority-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "/priority"
+                    }
+                  },
+                  {
+                    "id": "priority-prop",
+                    "component": "Property",
+                    "label": "Priority",
+                    "children": [
+                      "priority-icon",
+                      "priority-name"
+                    ]
+                  },
+                  {
+                    "id": "props",
+                    "component": "Stack",
+                    "gap": "xs",
+                    "children": [
+                      "status-prop",
+                      "priority-prop",
+                      "assignee-prop",
+                      "labels-prop"
+                    ]
+                  },
+                  {
+                    "id": "root",
+                    "component": "Panel",
+                    "padding": "none",
+                    "child": "body"
+                  },
+                  {
+                    "id": "status-icon",
+                    "component": "StatusIcon",
+                    "status": {
+                      "path": "/status"
+                    },
+                    "type": {
+                      "path": "/statusType"
+                    }
+                  },
+                  {
+                    "id": "status-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "/status"
+                    }
+                  },
+                  {
+                    "id": "status-prop",
+                    "component": "Property",
+                    "label": "Status",
+                    "children": [
+                      "status-icon",
+                      "status-name"
+                    ]
+                  },
+                  {
+                    "id": "title",
+                    "component": "Text",
+                    "text": {
+                      "path": "/title"
+                    },
+                    "variant": "title"
+                  },
+                  {
+                    "id": "loading_activity",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_branch",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_pr-number",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "issue-detail"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 20116,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "assignee-avatar",
+                    "component": "Avatar",
+                    "name": {
+                      "path": "/assignee"
+                    }
+                  },
+                  {
+                    "id": "assignee-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "/assignee"
+                    }
+                  },
+                  {
+                    "id": "assignee-prop",
+                    "component": "Property",
+                    "label": "Assignee",
+                    "children": [
+                      "assignee-avatar",
+                      "assignee-name"
+                    ]
+                  },
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "gap": "none",
+                    "children": [
+                      "header",
+                      "content"
+                    ]
+                  },
+                  {
+                    "id": "content",
+                    "component": "Stack",
+                    "padding": "l",
+                    "gap": "l",
+                    "children": [
+                      "title",
+                      "props",
+                      "divider",
+                      "description",
+                      "links",
+                      "loading_activity"
+                    ]
+                  },
+                  {
+                    "id": "description",
+                    "component": "Markdown",
+                    "text": {
+                      "path": "/description"
+                    }
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "header",
+                    "component": "ViewHeader",
+                    "context": {
+                      "path": "/team"
+                    },
+                    "title": {
+                      "path": "/id"
+                    }
+                  },
+                  {
+                    "id": "labels-chip",
+                    "component": "Chip",
+                    "label": {
+                      "path": "/labels"
+                    }
+                  },
+                  {
+                    "id": "labels-prop",
+                    "component": "Property",
+                    "label": "Labels",
+                    "children": [
+                      "labels-chip"
+                    ]
+                  },
+                  {
+                    "id": "links",
+                    "component": "Section",
+                    "title": "Links",
                     "children": [
                       "pr-list",
                       "loading_branch"
@@ -4744,7 +5059,7 @@
           "texts": []
         },
         {
-          "offsetMs": 19305,
+          "offsetMs": 20464,
           "messages": [
             {
               "version": "v0.9",
@@ -4836,238 +5151,6 @@
                     "id": "links",
                     "component": "Section",
                     "title": "Links",
-                    "count": "2",
-                    "children": [
-                      "pr-list",
-                      "loading_branch"
-                    ]
-                  },
-                  {
-                    "id": "pr-icon",
-                    "component": "Icon",
-                    "name": "pull-request"
-                  },
-                  {
-                    "id": "pr-list",
-                    "component": "Stack",
-                    "gap": "xs",
-                    "children": {
-                      "path": "/pullRequests",
-                      "componentId": "pr-row"
-                    }
-                  },
-                  {
-                    "id": "pr-number",
-                    "component": "Text",
-                    "text": {
-                      "path": "number"
-                    }
-                  },
-                  {
-                    "id": "pr-row",
-                    "component": "Stack",
-                    "direction": "horizontal",
-                    "gap": "s",
-                    "align": "center",
-                    "children": [
-                      "pr-icon",
-                      "pr-title",
-                      "pr-number"
-                    ]
-                  },
-                  {
-                    "id": "pr-title",
-                    "component": "Text",
-                    "text": {
-                      "path": "title"
-                    },
-                    "weight": "medium"
-                  },
-                  {
-                    "id": "priority-icon",
-                    "component": "PriorityIcon",
-                    "priority": {
-                      "path": "/priority"
-                    }
-                  },
-                  {
-                    "id": "priority-name",
-                    "component": "Text",
-                    "text": {
-                      "path": "/priority"
-                    }
-                  },
-                  {
-                    "id": "priority-prop",
-                    "component": "Property",
-                    "label": "Priority",
-                    "children": [
-                      "priority-icon",
-                      "priority-name"
-                    ]
-                  },
-                  {
-                    "id": "props",
-                    "component": "Stack",
-                    "gap": "xs",
-                    "children": [
-                      "status-prop",
-                      "priority-prop",
-                      "assignee-prop",
-                      "labels-prop"
-                    ]
-                  },
-                  {
-                    "id": "root",
-                    "component": "Panel",
-                    "padding": "none",
-                    "child": "body"
-                  },
-                  {
-                    "id": "status-icon",
-                    "component": "StatusIcon",
-                    "status": {
-                      "path": "/status"
-                    },
-                    "type": {
-                      "path": "/statusType"
-                    }
-                  },
-                  {
-                    "id": "status-name",
-                    "component": "Text",
-                    "text": {
-                      "path": "/status"
-                    }
-                  },
-                  {
-                    "id": "status-prop",
-                    "component": "Property",
-                    "label": "Status",
-                    "children": [
-                      "status-icon",
-                      "status-name"
-                    ]
-                  },
-                  {
-                    "id": "title",
-                    "component": "Text",
-                    "text": {
-                      "path": "/title"
-                    },
-                    "variant": "title"
-                  },
-                  {
-                    "id": "loading_activity",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_branch",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "issue-detail"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 19492,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "assignee-avatar",
-                    "component": "Avatar",
-                    "name": {
-                      "path": "/assignee"
-                    }
-                  },
-                  {
-                    "id": "assignee-name",
-                    "component": "Text",
-                    "text": {
-                      "path": "/assignee"
-                    }
-                  },
-                  {
-                    "id": "assignee-prop",
-                    "component": "Property",
-                    "label": "Assignee",
-                    "children": [
-                      "assignee-avatar",
-                      "assignee-name"
-                    ]
-                  },
-                  {
-                    "id": "body",
-                    "component": "Stack",
-                    "gap": "none",
-                    "children": [
-                      "header",
-                      "content"
-                    ]
-                  },
-                  {
-                    "id": "content",
-                    "component": "Stack",
-                    "padding": "l",
-                    "gap": "l",
-                    "children": [
-                      "title",
-                      "props",
-                      "divider",
-                      "description",
-                      "links",
-                      "loading_activity"
-                    ]
-                  },
-                  {
-                    "id": "description",
-                    "component": "Markdown",
-                    "text": {
-                      "path": "/description"
-                    }
-                  },
-                  {
-                    "id": "divider",
-                    "component": "Divider"
-                  },
-                  {
-                    "id": "header",
-                    "component": "ViewHeader",
-                    "context": {
-                      "path": "/team"
-                    },
-                    "title": {
-                      "path": "/id"
-                    }
-                  },
-                  {
-                    "id": "labels-chip",
-                    "component": "Chip",
-                    "label": {
-                      "path": "/labels"
-                    }
-                  },
-                  {
-                    "id": "labels-prop",
-                    "component": "Property",
-                    "label": "Labels",
-                    "children": [
-                      "labels-chip"
-                    ]
-                  },
-                  {
-                    "id": "links",
-                    "component": "Section",
-                    "title": "Links",
-                    "count": "2",
                     "children": [
                       "pr-list",
                       "loading_branch"
@@ -5207,7 +5290,7 @@
           "texts": []
         },
         {
-          "offsetMs": 19657,
+          "offsetMs": 20667,
           "messages": [
             {
               "version": "v0.9",
@@ -5305,7 +5388,6 @@
                     "id": "links",
                     "component": "Section",
                     "title": "Links",
-                    "count": "2",
                     "children": [
                       "pr-list",
                       "branch"
@@ -5440,7 +5522,7 @@
           "texts": []
         },
         {
-          "offsetMs": 20018,
+          "offsetMs": 21051,
           "messages": [
             {
               "version": "v0.9",
@@ -5485,13 +5567,9 @@
                     "gap": "s",
                     "align": "center",
                     "children": [
-                      "branch-icon",
+                      "loading_branch-icon",
                       "loading_branch-name"
                     ]
-                  },
-                  {
-                    "id": "branch-icon",
-                    "component": "Icon"
                   },
                   {
                     "id": "content",
@@ -5547,7 +5625,258 @@
                     "id": "links",
                     "component": "Section",
                     "title": "Links",
-                    "count": "2",
+                    "children": [
+                      "pr-list",
+                      "branch"
+                    ]
+                  },
+                  {
+                    "id": "pr-icon",
+                    "component": "Icon",
+                    "name": "pull-request"
+                  },
+                  {
+                    "id": "pr-list",
+                    "component": "Stack",
+                    "gap": "xs",
+                    "children": {
+                      "path": "/pullRequests",
+                      "componentId": "pr-row"
+                    }
+                  },
+                  {
+                    "id": "pr-number",
+                    "component": "Text",
+                    "text": {
+                      "path": "number"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "pr-row",
+                    "component": "Stack",
+                    "direction": "horizontal",
+                    "gap": "s",
+                    "align": "center",
+                    "children": [
+                      "pr-icon",
+                      "pr-title",
+                      "pr-number"
+                    ]
+                  },
+                  {
+                    "id": "pr-title",
+                    "component": "Text",
+                    "text": {
+                      "path": "title"
+                    },
+                    "weight": "medium"
+                  },
+                  {
+                    "id": "priority-icon",
+                    "component": "PriorityIcon",
+                    "priority": {
+                      "path": "/priority"
+                    }
+                  },
+                  {
+                    "id": "priority-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "/priority"
+                    }
+                  },
+                  {
+                    "id": "priority-prop",
+                    "component": "Property",
+                    "label": "Priority",
+                    "children": [
+                      "priority-icon",
+                      "priority-name"
+                    ]
+                  },
+                  {
+                    "id": "props",
+                    "component": "Stack",
+                    "gap": "xs",
+                    "children": [
+                      "status-prop",
+                      "priority-prop",
+                      "assignee-prop",
+                      "labels-prop"
+                    ]
+                  },
+                  {
+                    "id": "root",
+                    "component": "Panel",
+                    "padding": "none",
+                    "child": "body"
+                  },
+                  {
+                    "id": "status-icon",
+                    "component": "StatusIcon",
+                    "status": {
+                      "path": "/status"
+                    },
+                    "type": {
+                      "path": "/statusType"
+                    }
+                  },
+                  {
+                    "id": "status-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "/status"
+                    }
+                  },
+                  {
+                    "id": "status-prop",
+                    "component": "Property",
+                    "label": "Status",
+                    "children": [
+                      "status-icon",
+                      "status-name"
+                    ]
+                  },
+                  {
+                    "id": "title",
+                    "component": "Text",
+                    "text": {
+                      "path": "/title"
+                    },
+                    "variant": "title"
+                  },
+                  {
+                    "id": "loading_branch-icon",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_branch-name",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_activity",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "issue-detail"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 21252,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "assignee-avatar",
+                    "component": "Avatar",
+                    "name": {
+                      "path": "/assignee"
+                    }
+                  },
+                  {
+                    "id": "assignee-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "/assignee"
+                    }
+                  },
+                  {
+                    "id": "assignee-prop",
+                    "component": "Property",
+                    "label": "Assignee",
+                    "children": [
+                      "assignee-avatar",
+                      "assignee-name"
+                    ]
+                  },
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "gap": "none",
+                    "children": [
+                      "header",
+                      "content"
+                    ]
+                  },
+                  {
+                    "id": "branch",
+                    "component": "Stack",
+                    "direction": "horizontal",
+                    "gap": "s",
+                    "align": "center",
+                    "children": [
+                      "branch-icon",
+                      "loading_branch-name"
+                    ]
+                  },
+                  {
+                    "id": "branch-icon",
+                    "component": "Icon",
+                    "name": "branch"
+                  },
+                  {
+                    "id": "content",
+                    "component": "Stack",
+                    "padding": "l",
+                    "gap": "l",
+                    "children": [
+                      "title",
+                      "props",
+                      "divider",
+                      "description",
+                      "links",
+                      "loading_activity"
+                    ]
+                  },
+                  {
+                    "id": "description",
+                    "component": "Markdown",
+                    "text": {
+                      "path": "/description"
+                    }
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "header",
+                    "component": "ViewHeader",
+                    "context": {
+                      "path": "/team"
+                    },
+                    "title": {
+                      "path": "/id"
+                    }
+                  },
+                  {
+                    "id": "labels-chip",
+                    "component": "Chip",
+                    "label": {
+                      "path": "/labels"
+                    }
+                  },
+                  {
+                    "id": "labels-prop",
+                    "component": "Property",
+                    "label": "Labels",
+                    "children": [
+                      "labels-chip"
+                    ]
+                  },
+                  {
+                    "id": "links",
+                    "component": "Section",
+                    "title": "Links",
                     "children": [
                       "pr-list",
                       "branch"
@@ -5687,506 +6016,7 @@
           "texts": []
         },
         {
-          "offsetMs": 20200,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "assignee-avatar",
-                    "component": "Avatar",
-                    "name": {
-                      "path": "/assignee"
-                    }
-                  },
-                  {
-                    "id": "assignee-name",
-                    "component": "Text",
-                    "text": {
-                      "path": "/assignee"
-                    }
-                  },
-                  {
-                    "id": "assignee-prop",
-                    "component": "Property",
-                    "label": "Assignee",
-                    "children": [
-                      "assignee-avatar",
-                      "assignee-name"
-                    ]
-                  },
-                  {
-                    "id": "body",
-                    "component": "Stack",
-                    "gap": "none",
-                    "children": [
-                      "header",
-                      "content"
-                    ]
-                  },
-                  {
-                    "id": "branch",
-                    "component": "Stack",
-                    "direction": "horizontal",
-                    "gap": "s",
-                    "align": "center",
-                    "children": [
-                      "branch-icon",
-                      "loading_branch-name"
-                    ]
-                  },
-                  {
-                    "id": "branch-icon",
-                    "component": "Icon",
-                    "name": "branch"
-                  },
-                  {
-                    "id": "content",
-                    "component": "Stack",
-                    "padding": "l",
-                    "gap": "l",
-                    "children": [
-                      "title",
-                      "props",
-                      "divider",
-                      "description",
-                      "links",
-                      "loading_activity"
-                    ]
-                  },
-                  {
-                    "id": "description",
-                    "component": "Markdown",
-                    "text": {
-                      "path": "/description"
-                    }
-                  },
-                  {
-                    "id": "divider",
-                    "component": "Divider"
-                  },
-                  {
-                    "id": "header",
-                    "component": "ViewHeader",
-                    "context": {
-                      "path": "/team"
-                    },
-                    "title": {
-                      "path": "/id"
-                    }
-                  },
-                  {
-                    "id": "labels-chip",
-                    "component": "Chip",
-                    "label": {
-                      "path": "/labels"
-                    }
-                  },
-                  {
-                    "id": "labels-prop",
-                    "component": "Property",
-                    "label": "Labels",
-                    "children": [
-                      "labels-chip"
-                    ]
-                  },
-                  {
-                    "id": "links",
-                    "component": "Section",
-                    "title": "Links",
-                    "count": "2",
-                    "children": [
-                      "pr-list",
-                      "branch"
-                    ]
-                  },
-                  {
-                    "id": "pr-icon",
-                    "component": "Icon",
-                    "name": "pull-request"
-                  },
-                  {
-                    "id": "pr-list",
-                    "component": "Stack",
-                    "gap": "xs",
-                    "children": {
-                      "path": "/pullRequests",
-                      "componentId": "pr-row"
-                    }
-                  },
-                  {
-                    "id": "pr-number",
-                    "component": "Text",
-                    "text": {
-                      "path": "number"
-                    },
-                    "variant": "caption"
-                  },
-                  {
-                    "id": "pr-row",
-                    "component": "Stack",
-                    "direction": "horizontal",
-                    "gap": "s",
-                    "align": "center",
-                    "children": [
-                      "pr-icon",
-                      "pr-title",
-                      "pr-number"
-                    ]
-                  },
-                  {
-                    "id": "pr-title",
-                    "component": "Text",
-                    "text": {
-                      "path": "title"
-                    },
-                    "weight": "medium"
-                  },
-                  {
-                    "id": "priority-icon",
-                    "component": "PriorityIcon",
-                    "priority": {
-                      "path": "/priority"
-                    }
-                  },
-                  {
-                    "id": "priority-name",
-                    "component": "Text",
-                    "text": {
-                      "path": "/priority"
-                    }
-                  },
-                  {
-                    "id": "priority-prop",
-                    "component": "Property",
-                    "label": "Priority",
-                    "children": [
-                      "priority-icon",
-                      "priority-name"
-                    ]
-                  },
-                  {
-                    "id": "props",
-                    "component": "Stack",
-                    "gap": "xs",
-                    "children": [
-                      "status-prop",
-                      "priority-prop",
-                      "assignee-prop",
-                      "labels-prop"
-                    ]
-                  },
-                  {
-                    "id": "root",
-                    "component": "Panel",
-                    "padding": "none",
-                    "child": "body"
-                  },
-                  {
-                    "id": "status-icon",
-                    "component": "StatusIcon",
-                    "status": {
-                      "path": "/status"
-                    },
-                    "type": {
-                      "path": "/statusType"
-                    }
-                  },
-                  {
-                    "id": "status-name",
-                    "component": "Text",
-                    "text": {
-                      "path": "/status"
-                    }
-                  },
-                  {
-                    "id": "status-prop",
-                    "component": "Property",
-                    "label": "Status",
-                    "children": [
-                      "status-icon",
-                      "status-name"
-                    ]
-                  },
-                  {
-                    "id": "title",
-                    "component": "Text",
-                    "text": {
-                      "path": "/title"
-                    },
-                    "variant": "title"
-                  },
-                  {
-                    "id": "loading_branch-name",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_activity",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "issue-detail"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 20594,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "assignee-avatar",
-                    "component": "Avatar",
-                    "name": {
-                      "path": "/assignee"
-                    }
-                  },
-                  {
-                    "id": "assignee-name",
-                    "component": "Text",
-                    "text": {
-                      "path": "/assignee"
-                    }
-                  },
-                  {
-                    "id": "assignee-prop",
-                    "component": "Property",
-                    "label": "Assignee",
-                    "children": [
-                      "assignee-avatar",
-                      "assignee-name"
-                    ]
-                  },
-                  {
-                    "id": "body",
-                    "component": "Stack",
-                    "gap": "none",
-                    "children": [
-                      "header",
-                      "content"
-                    ]
-                  },
-                  {
-                    "id": "branch",
-                    "component": "Stack",
-                    "direction": "horizontal",
-                    "gap": "s",
-                    "align": "center",
-                    "children": [
-                      "branch-icon",
-                      "branch-name"
-                    ]
-                  },
-                  {
-                    "id": "branch-icon",
-                    "component": "Icon",
-                    "name": "branch"
-                  },
-                  {
-                    "id": "branch-name",
-                    "component": "Text",
-                    "text": {
-                      "path": "/branch"
-                    },
-                    "variant": "caption"
-                  },
-                  {
-                    "id": "content",
-                    "component": "Stack",
-                    "padding": "l",
-                    "gap": "l",
-                    "children": [
-                      "title",
-                      "props",
-                      "divider",
-                      "description",
-                      "links",
-                      "loading_activity"
-                    ]
-                  },
-                  {
-                    "id": "description",
-                    "component": "Markdown",
-                    "text": {
-                      "path": "/description"
-                    }
-                  },
-                  {
-                    "id": "divider",
-                    "component": "Divider"
-                  },
-                  {
-                    "id": "header",
-                    "component": "ViewHeader",
-                    "context": {
-                      "path": "/team"
-                    },
-                    "title": {
-                      "path": "/id"
-                    }
-                  },
-                  {
-                    "id": "labels-chip",
-                    "component": "Chip",
-                    "label": {
-                      "path": "/labels"
-                    }
-                  },
-                  {
-                    "id": "labels-prop",
-                    "component": "Property",
-                    "label": "Labels",
-                    "children": [
-                      "labels-chip"
-                    ]
-                  },
-                  {
-                    "id": "links",
-                    "component": "Section",
-                    "title": "Links",
-                    "count": "2",
-                    "children": [
-                      "pr-list",
-                      "branch"
-                    ]
-                  },
-                  {
-                    "id": "pr-icon",
-                    "component": "Icon",
-                    "name": "pull-request"
-                  },
-                  {
-                    "id": "pr-list",
-                    "component": "Stack",
-                    "gap": "xs",
-                    "children": {
-                      "path": "/pullRequests",
-                      "componentId": "pr-row"
-                    }
-                  },
-                  {
-                    "id": "pr-number",
-                    "component": "Text",
-                    "text": {
-                      "path": "number"
-                    },
-                    "variant": "caption"
-                  },
-                  {
-                    "id": "pr-row",
-                    "component": "Stack",
-                    "direction": "horizontal",
-                    "gap": "s",
-                    "align": "center",
-                    "children": [
-                      "pr-icon",
-                      "pr-title",
-                      "pr-number"
-                    ]
-                  },
-                  {
-                    "id": "pr-title",
-                    "component": "Text",
-                    "text": {
-                      "path": "title"
-                    },
-                    "weight": "medium"
-                  },
-                  {
-                    "id": "priority-icon",
-                    "component": "PriorityIcon",
-                    "priority": {
-                      "path": "/priority"
-                    }
-                  },
-                  {
-                    "id": "priority-name",
-                    "component": "Text",
-                    "text": {
-                      "path": "/priority"
-                    }
-                  },
-                  {
-                    "id": "priority-prop",
-                    "component": "Property",
-                    "label": "Priority",
-                    "children": [
-                      "priority-icon",
-                      "priority-name"
-                    ]
-                  },
-                  {
-                    "id": "props",
-                    "component": "Stack",
-                    "gap": "xs",
-                    "children": [
-                      "status-prop",
-                      "priority-prop",
-                      "assignee-prop",
-                      "labels-prop"
-                    ]
-                  },
-                  {
-                    "id": "root",
-                    "component": "Panel",
-                    "padding": "none",
-                    "child": "body"
-                  },
-                  {
-                    "id": "status-icon",
-                    "component": "StatusIcon",
-                    "status": {
-                      "path": "/status"
-                    },
-                    "type": {
-                      "path": "/statusType"
-                    }
-                  },
-                  {
-                    "id": "status-name",
-                    "component": "Text",
-                    "text": {
-                      "path": "/status"
-                    }
-                  },
-                  {
-                    "id": "status-prop",
-                    "component": "Property",
-                    "label": "Status",
-                    "children": [
-                      "status-icon",
-                      "status-name"
-                    ]
-                  },
-                  {
-                    "id": "title",
-                    "component": "Text",
-                    "text": {
-                      "path": "/title"
-                    },
-                    "variant": "title"
-                  },
-                  {
-                    "id": "loading_activity",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "issue-detail"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 20754,
+          "offsetMs": 21643,
           "messages": [
             {
               "version": "v0.9",
@@ -6194,12 +6024,7 @@
                 "components": [
                   {
                     "id": "activity",
-                    "component": "Section",
-                    "title": "Activity",
-                    "count": "1",
-                    "children": {
-                      "path": "/comments"
-                    }
+                    "component": "Section"
                   },
                   {
                     "id": "assignee-avatar",
@@ -6311,7 +6136,6 @@
                     "id": "links",
                     "component": "Section",
                     "title": "Links",
-                    "count": "2",
                     "children": [
                       "pr-list",
                       "branch"
@@ -6441,7 +6265,7 @@
           "texts": []
         },
         {
-          "offsetMs": 20939,
+          "offsetMs": 22023,
           "messages": [
             {
               "version": "v0.9",
@@ -6451,7 +6275,6 @@
                     "id": "activity",
                     "component": "Section",
                     "title": "Activity",
-                    "count": "1",
                     "children": {
                       "path": "/comments",
                       "componentId": "loading_comment"
@@ -6567,7 +6390,6 @@
                     "id": "links",
                     "component": "Section",
                     "title": "Links",
-                    "count": "2",
                     "children": [
                       "pr-list",
                       "branch"
@@ -6702,7 +6524,7 @@
           "texts": []
         },
         {
-          "offsetMs": 21306,
+          "offsetMs": 22410,
           "messages": [
             {
               "version": "v0.9",
@@ -6712,7 +6534,6 @@
                     "id": "activity",
                     "component": "Section",
                     "title": "Activity",
-                    "count": "1",
                     "children": {
                       "path": "/comments",
                       "componentId": "comment"
@@ -6837,7 +6658,6 @@
                     "id": "links",
                     "component": "Section",
                     "title": "Links",
-                    "count": "2",
                     "children": [
                       "pr-list",
                       "branch"
@@ -6977,7 +6797,7 @@
           "texts": []
         },
         {
-          "offsetMs": 21838,
+          "offsetMs": 23007,
           "messages": [
             {
               "version": "v0.9",
@@ -6987,7 +6807,6 @@
                     "id": "activity",
                     "component": "Section",
                     "title": "Activity",
-                    "count": "1",
                     "children": {
                       "path": "/comments",
                       "componentId": "comment"
@@ -7124,7 +6943,6 @@
                     "id": "links",
                     "component": "Section",
                     "title": "Links",
-                    "count": "2",
                     "children": [
                       "pr-list",
                       "branch"
@@ -7274,7 +7092,7 @@
           "texts": []
         },
         {
-          "offsetMs": 21997,
+          "offsetMs": 23431,
           "messages": [
             {
               "version": "v0.9",
@@ -7284,7 +7102,6 @@
                     "id": "activity",
                     "component": "Section",
                     "title": "Activity",
-                    "count": "1",
                     "children": {
                       "path": "/comments",
                       "componentId": "comment"
@@ -7428,7 +7245,6 @@
                     "id": "links",
                     "component": "Section",
                     "title": "Links",
-                    "count": "2",
                     "children": [
                       "pr-list",
                       "branch"
@@ -7573,7 +7389,7 @@
           "texts": []
         },
         {
-          "offsetMs": 22174,
+          "offsetMs": 23605,
           "messages": [
             {
               "version": "v0.9",
@@ -7583,7 +7399,6 @@
                     "id": "activity",
                     "component": "Section",
                     "title": "Activity",
-                    "count": "1",
                     "children": {
                       "path": "/comments",
                       "componentId": "comment"
@@ -7734,7 +7549,6 @@
                     "id": "links",
                     "component": "Section",
                     "title": "Links",
-                    "count": "2",
                     "children": [
                       "pr-list",
                       "branch"
@@ -7874,7 +7688,7 @@
           "texts": []
         },
         {
-          "offsetMs": 22369,
+          "offsetMs": 23777,
           "messages": [
             {
               "version": "v0.9",
@@ -7884,7 +7698,6 @@
                     "id": "activity",
                     "component": "Section",
                     "title": "Activity",
-                    "count": "1",
                     "children": {
                       "path": "/comments",
                       "componentId": "comment"
@@ -8036,7 +7849,6 @@
                     "id": "links",
                     "component": "Section",
                     "title": "Links",
-                    "count": "2",
                     "children": [
                       "pr-list",
                       "branch"
@@ -8176,7 +7988,7 @@
           "texts": []
         },
         {
-          "offsetMs": 22698,
+          "offsetMs": 23930,
           "messages": [
             {
               "version": "v0.9",
@@ -8186,7 +7998,308 @@
                     "id": "activity",
                     "component": "Section",
                     "title": "Activity",
-                    "count": "1",
+                    "children": {
+                      "path": "/comments",
+                      "componentId": "comment"
+                    }
+                  },
+                  {
+                    "id": "assignee-avatar",
+                    "component": "Avatar",
+                    "name": {
+                      "path": "/assignee"
+                    }
+                  },
+                  {
+                    "id": "assignee-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "/assignee"
+                    }
+                  },
+                  {
+                    "id": "assignee-prop",
+                    "component": "Property",
+                    "label": "Assignee",
+                    "children": [
+                      "assignee-avatar",
+                      "assignee-name"
+                    ]
+                  },
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "gap": "none",
+                    "children": [
+                      "header",
+                      "content"
+                    ]
+                  },
+                  {
+                    "id": "branch",
+                    "component": "Stack",
+                    "direction": "horizontal",
+                    "gap": "s",
+                    "align": "center",
+                    "children": [
+                      "branch-icon",
+                      "branch-name"
+                    ]
+                  },
+                  {
+                    "id": "branch-icon",
+                    "component": "Icon",
+                    "name": "branch"
+                  },
+                  {
+                    "id": "branch-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "/branch"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "comment",
+                    "component": "Stack",
+                    "gap": "xs",
+                    "children": [
+                      "comment-meta",
+                      "loading_comment-body"
+                    ]
+                  },
+                  {
+                    "id": "comment-author",
+                    "component": "Text",
+                    "text": {
+                      "path": "author"
+                    },
+                    "weight": "medium"
+                  },
+                  {
+                    "id": "comment-avatar",
+                    "component": "Avatar",
+                    "name": {
+                      "path": "author"
+                    }
+                  },
+                  {
+                    "id": "comment-meta",
+                    "component": "Stack",
+                    "direction": "horizontal",
+                    "gap": "s",
+                    "align": "center",
+                    "children": [
+                      "comment-avatar",
+                      "comment-author",
+                      "comment-when"
+                    ]
+                  },
+                  {
+                    "id": "comment-when",
+                    "component": "Text",
+                    "text": {
+                      "path": "when"
+                    }
+                  },
+                  {
+                    "id": "content",
+                    "component": "Stack",
+                    "padding": "l",
+                    "gap": "l",
+                    "children": [
+                      "title",
+                      "props",
+                      "divider",
+                      "description",
+                      "links",
+                      "activity"
+                    ]
+                  },
+                  {
+                    "id": "description",
+                    "component": "Markdown",
+                    "text": {
+                      "path": "/description"
+                    }
+                  },
+                  {
+                    "id": "divider",
+                    "component": "Divider"
+                  },
+                  {
+                    "id": "header",
+                    "component": "ViewHeader",
+                    "context": {
+                      "path": "/team"
+                    },
+                    "title": {
+                      "path": "/id"
+                    }
+                  },
+                  {
+                    "id": "labels-chip",
+                    "component": "Chip",
+                    "label": {
+                      "path": "/labels"
+                    }
+                  },
+                  {
+                    "id": "labels-prop",
+                    "component": "Property",
+                    "label": "Labels",
+                    "children": [
+                      "labels-chip"
+                    ]
+                  },
+                  {
+                    "id": "links",
+                    "component": "Section",
+                    "title": "Links",
+                    "children": [
+                      "pr-list",
+                      "branch"
+                    ]
+                  },
+                  {
+                    "id": "pr-icon",
+                    "component": "Icon",
+                    "name": "pull-request"
+                  },
+                  {
+                    "id": "pr-list",
+                    "component": "Stack",
+                    "gap": "xs",
+                    "children": {
+                      "path": "/pullRequests",
+                      "componentId": "pr-row"
+                    }
+                  },
+                  {
+                    "id": "pr-number",
+                    "component": "Text",
+                    "text": {
+                      "path": "number"
+                    },
+                    "variant": "caption"
+                  },
+                  {
+                    "id": "pr-row",
+                    "component": "Stack",
+                    "direction": "horizontal",
+                    "gap": "s",
+                    "align": "center",
+                    "children": [
+                      "pr-icon",
+                      "pr-title",
+                      "pr-number"
+                    ]
+                  },
+                  {
+                    "id": "pr-title",
+                    "component": "Text",
+                    "text": {
+                      "path": "title"
+                    },
+                    "weight": "medium"
+                  },
+                  {
+                    "id": "priority-icon",
+                    "component": "PriorityIcon",
+                    "priority": {
+                      "path": "/priority"
+                    }
+                  },
+                  {
+                    "id": "priority-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "/priority"
+                    }
+                  },
+                  {
+                    "id": "priority-prop",
+                    "component": "Property",
+                    "label": "Priority",
+                    "children": [
+                      "priority-icon",
+                      "priority-name"
+                    ]
+                  },
+                  {
+                    "id": "props",
+                    "component": "Stack",
+                    "gap": "xs",
+                    "children": [
+                      "status-prop",
+                      "priority-prop",
+                      "assignee-prop",
+                      "labels-prop"
+                    ]
+                  },
+                  {
+                    "id": "root",
+                    "component": "Panel",
+                    "padding": "none",
+                    "child": "body"
+                  },
+                  {
+                    "id": "status-icon",
+                    "component": "StatusIcon",
+                    "status": {
+                      "path": "/status"
+                    },
+                    "type": {
+                      "path": "/statusType"
+                    }
+                  },
+                  {
+                    "id": "status-name",
+                    "component": "Text",
+                    "text": {
+                      "path": "/status"
+                    }
+                  },
+                  {
+                    "id": "status-prop",
+                    "component": "Property",
+                    "label": "Status",
+                    "children": [
+                      "status-icon",
+                      "status-name"
+                    ]
+                  },
+                  {
+                    "id": "title",
+                    "component": "Text",
+                    "text": {
+                      "path": "/title"
+                    },
+                    "variant": "title"
+                  },
+                  {
+                    "id": "loading_comment-body",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "issue-detail"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 24081,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "activity",
+                    "component": "Section",
+                    "title": "Activity",
                     "children": {
                       "path": "/comments",
                       "componentId": "comment"
@@ -8346,7 +8459,6 @@
                     "id": "links",
                     "component": "Section",
                     "title": "Links",
-                    "count": "2",
                     "children": [
                       "pr-list",
                       "branch"
@@ -8481,7 +8593,7 @@
           "texts": []
         },
         {
-          "offsetMs": 22887,
+          "offsetMs": 24301,
           "messages": [
             {
               "version": "v0.9",
@@ -8491,7 +8603,6 @@
                     "id": "activity",
                     "component": "Section",
                     "title": "Activity",
-                    "count": "1",
                     "children": {
                       "path": "/comments",
                       "componentId": "comment"
@@ -8658,7 +8769,6 @@
                     "id": "links",
                     "component": "Section",
                     "title": "Links",
-                    "count": "2",
                     "children": [
                       "pr-list",
                       "branch"
@@ -8789,7 +8899,7 @@
         }
       ],
       "outcome": "completed",
-      "durationMs": 23195
+      "durationMs": 24621
     }
   ]
 }

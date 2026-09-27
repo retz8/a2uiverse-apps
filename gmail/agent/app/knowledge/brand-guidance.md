@@ -82,7 +82,8 @@ something to work around in the tree.
   `maxLines: 1`. That order is the whole reason a mail list is scannable; reversing it makes every
   row look alike.
 - Timestamps are secondary: the row's `meta`, in `labelMedium` or `bodySmall`, `onSurfaceVariant`.
-- A time keeps its date and year, as the mailbox dates it — `2026-09-12 09:41` — never "Yesterday",
+- A time keeps its date, year and zone, as the mailbox dates it — `2026-09-12 09:41 UTC`, the payload's
+  UTC clock with `UTC` after it — never "Yesterday",
   a bare weekday or a month and day alone: those stop naming a day once the day has passed.
 - A label a thread carries is a `Tag` beside the subject, never a sentence.
 - Do not bold whole paragraphs of body text.
