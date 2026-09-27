@@ -411,5 +411,11 @@
         }
       ]
     }
+  },
+  {
+    "paintMeta": {
+      "surfaceId": "needs-attention",
+      "title": "Needs attention today"
+    }
   }
 ]

@@ -3538,5 +3538,11 @@
         }
       ]
     }
+  },
+  {
+    "paintMeta": {
+      "surfaceId": "recent-runs",
+      "title": "Recent pipeline runs"
+    }
   }
 ]

@@ -1,7 +1,9 @@
 """Deterministic AgentExecutor: returns canned A2UI for the incoming action or text prompt.
 
 The response content comes from the app: the executor is constructed with the config's
-(build_response, build_text_response) pair and owns only the A2A mechanics around them.
+(build_response, build_text_response) pair and owns only the A2A mechanics around them. A
+canned `paintMeta` rides as the shell part the live executor emits, ahead of every A2UI part,
+so the paint it names is titled and a question is marked (task-10.9 decision 8).
 """
 
 from __future__ import annotations
@@ -14,6 +16,7 @@ from a2a.utils import new_agent_parts_message, new_task
 from a2ui.a2a.parts import create_a2ui_part
 
 from a2ui_agent_kit.config import BuildResponse, BuildTextResponse
+from a2ui_agent_kit.paint_meta import create_paint_meta_part
 from a2ui_agent_kit.versions import WIRE_VERSION
 
 
@@ -55,7 +58,14 @@ class DeterministicAgentExecutor(AgentExecutor):
         else:
             # No parseable A2UI action or text -> unknown-event fallback.
             messages = self._build_response(action or {"name": "", "surfaceId": ""})
-        parts: list[Part] = [create_a2ui_part(msg, version=WIRE_VERSION) for msg in messages]
+        parts: list[Part] = [
+            *(create_paint_meta_part(msg["paintMeta"]) for msg in messages if "paintMeta" in msg),
+            *(
+                create_a2ui_part(msg, version=WIRE_VERSION)
+                for msg in messages
+                if "paintMeta" not in msg
+            ),
+        ]
 
         task = context.current_task
         if not task:

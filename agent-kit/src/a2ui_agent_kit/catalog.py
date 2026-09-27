@@ -305,9 +305,13 @@ class CatalogContext:
         validation; for `basic` it is retained (ComponentCommon requires it).
         strict_integrity=False skips root/orphan topology checks, since a canned
         action response is a partial update against a surface the client already
-        holds.
+        holds. A canned `paintMeta` is not A2UI and not the catalog's to judge: it is
+        left out.
         """
-        probe = _strip_framework_ids(payload) if self._config.catalog_kind == "custom" else payload
+        messages = [m for m in payload if not (isinstance(m, dict) and "paintMeta" in m)]
+        probe = (
+            _strip_framework_ids(messages) if self._config.catalog_kind == "custom" else messages
+        )
         self.get_catalog().validator.validate(probe, strict_integrity=False)
 
     def validate_update(self, payload: list[dict]) -> None:

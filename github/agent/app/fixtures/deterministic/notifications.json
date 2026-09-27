@@ -1417,5 +1417,11 @@
         }
       ]
     }
+  },
+  {
+    "paintMeta": {
+      "surfaceId": "my-open-prs",
+      "title": "My Open Pull Requests"
+    }
   }
 ]

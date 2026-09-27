@@ -20,8 +20,9 @@ from typing import Any
 from a2ui_agent_kit.config import BuildResponse, BuildTextResponse
 from a2ui_agent_kit.versions import WIRE_VERSION
 
-# The operation keys whose object carries the surfaceId we stamp.
-_OPERATION_KEYS = ("updateComponents", "updateDataModel", "createSurface")
+# The keys whose object carries the surfaceId we stamp: the A2UI operations, and the paint's
+# shell metadata, which names the surface it titles (task-10.9 decision 8).
+_OPERATION_KEYS = ("updateComponents", "updateDataModel", "createSurface", "paintMeta")
 
 
 def load_fixture(fixtures_dir: Path, name: str) -> list[dict]:
@@ -91,10 +92,12 @@ def fixture_responder(
     every turn renderable. An action's fixture that carries a `createSurface` is a
     new screen — a drill-down, as the live agent paints it — and answers on a fresh
     surface too, so the platform counts it a paint of its own with a way back; one
-    without is an update in place, on the surface the action came from. The text path does not route: whatever it is asked, it
-    answers with the canned digest the fan-out beat expects — discriminating on the
-    utterance would be a second, worse router; the live modes are where intent is
-    read.
+    without is an update in place, on the surface the action came from. A fixture's
+    `paintMeta` is stamped with the same surface, so its title names the paint and its
+    question kind marks the surface it lands on. The text path does not route: whatever
+    it is asked, it answers with the canned digest the fan-out beat expects —
+    discriminating on the utterance would be a second, worse router; the live modes are
+    where intent is read.
     """
     surface_counter = count(1)
 

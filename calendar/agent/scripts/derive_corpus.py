@@ -157,7 +157,11 @@ def derive_deterministic() -> None:
         if not path.is_file():
             continue
         messages = [
-            m for m in settled_messages(path) if name == "open-event.json" or "createSurface" not in m
+            m
+            for m in settled_messages(path)
+            if (name == "open-event.json" or "createSurface" not in m)
+            # The confirm replays the question's paint as its answer: the answer is no question.
+            and not (name == "confirm-event.json" and "paintMeta" in m)
         ]
         if messages:
             write(DETERMINISTIC / name, messages, f"{len(messages)} messages")

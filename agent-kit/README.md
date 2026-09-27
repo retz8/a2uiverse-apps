@@ -49,17 +49,17 @@ Flags: `--mode`, `--port`, `--host`, and `--base-url`, the address the agent car
 
 ## What's in it
 
-| Module                                | What it does                                                                                       |
-| ------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `cli`, `server`, `modes`              | The entrypoint, the A2A server with one agent card for every mode, and the executor per mode       |
-| `executor_llm`                        | Streams the model's A2UI as it's written, validates it against the catalog at the end, and retries |
-| `executor_deterministic`, `responses` | Deterministic mode: canned A2UI per action or question, from the app's fixtures                    |
-| `catalog`, `prompt`, `knowledge`      | Loads the app's catalog, validates surfaces against it, and assembles the system prompt            |
-| `toolset`, `tool_shaping`             | A hook on every MCP call, to change its arguments on the way out or its result on the way back     |
-| `recorder`, `corpus`, `beats`         | Recording: what the agent painted and what the MCP server returned, and scripted conversations     |
-| `google_adc`                          | Optional: sign in to a Google MCP server with Application Default Credentials                      |
-| `paint_meta`                          | Optional: a short title per painted surface, and a mark on a surface that asks something           |
-| `testing`                             | Runs an executor in-process, for an app's own tests                                                |
+| Module                                | What it does                                                                                        |
+| ------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `cli`, `server`, `modes`              | The entrypoint, the A2A server with one agent card for every mode, and the executor per mode        |
+| `executor_llm`                        | Streams the model's A2UI as it's written, validates it against the catalog at the end, and retries  |
+| `executor_deterministic`, `responses` | Deterministic mode: canned A2UI per action or question, from the app's fixtures, titled as recorded |
+| `catalog`, `prompt`, `knowledge`      | Loads the app's catalog, validates surfaces against it, and assembles the system prompt             |
+| `toolset`, `tool_shaping`             | A hook on every MCP call, to change its arguments on the way out or its result on the way back      |
+| `recorder`, `corpus`, `beats`         | Recording: what the agent painted and what the MCP server returned, and scripted conversations      |
+| `google_adc`                          | Optional: sign in to a Google MCP server with Application Default Credentials                       |
+| `paint_meta`                          | Optional: a short title per painted surface, and a mark on a surface that asks something            |
+| `testing`                             | Runs an executor in-process, for an app's own tests                                                 |
 
 ## Depending on it
 

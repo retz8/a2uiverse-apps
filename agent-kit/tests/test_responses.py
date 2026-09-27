@@ -68,6 +68,17 @@ def test_stamp_surface_touches_only_operation_keys():
     assert messages[0]["somethingElse"]["surfaceId"] == "keep"
 
 
+def test_stamp_surface_names_the_surface_in_a_paint_meta():
+    # task-10.9 decision 8: the title and the question kind land on the surface stamped.
+    messages = [{"paintMeta": {"surfaceId": "recorded", "title": "Run", "kind": "question"}}]
+    stamp_surface(messages, "circleci-3")
+    assert messages[0]["paintMeta"] == {
+        "surfaceId": "circleci-3",
+        "title": "Run",
+        "kind": "question",
+    }
+
+
 def test_fallback_shape():
     messages = fallback("x", "s")
     assert messages[0]["version"] == "v0.9"

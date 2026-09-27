@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import json
 
-from a2ui_agent_kit.corpus import capture_payload, corpus_payload, recording
+from a2ui_agent_kit.corpus import capture_payload, corpus_payload, recording, settled_messages
 from a2ui_agent_kit.recorder import RECORD_DIR_ENV
 
 
@@ -60,3 +60,37 @@ class TestCorpusPayload:
     def test_an_empty_result_decodes_to_an_empty_object(self):
         assert corpus_payload({}) == {}
         assert corpus_payload({"content": None}) == {}
+
+
+class TestSettledMessages:
+    def test_keeps_the_paint_meta_one_per_surface_last_written_after_the_a2ui(self, tmp_path):
+        # task-10.9 decision 8: a derived fixture keeps the title and the question kind.
+        beat = tmp_path / "beat.json"
+        create = {"version": "v0.9", "createSurface": {"surfaceId": "run", "catalogId": "c"}}
+        root = {"id": "root", "component": "Text", "text": "run"}
+        update = {"version": "v0.9", "updateComponents": {"surfaceId": "run", "components": [root]}}
+        beat.write_text(
+            json.dumps(
+                {
+                    "turns": [
+                        {
+                            "batches": [
+                                {"messages": [{"paintMeta": {"surfaceId": "run", "title": "Draft"}}]},
+                                {
+                                    "messages": [
+                                        {"paintMeta": {"surfaceId": "run", "title": "Run 812"}},
+                                        create,
+                                        update,
+                                    ]
+                                },
+                            ]
+                        }
+                    ]
+                }
+            )
+        )
+        settled = settled_messages(beat)
+        assert settled[0] == create
+        assert "updateComponents" in settled[1]
+        assert settled[-1] == {"paintMeta": {"surfaceId": "run", "title": "Run 812"}}
+        assert sum("paintMeta" in m for m in settled) == 1

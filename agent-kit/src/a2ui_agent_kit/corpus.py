@@ -62,8 +62,10 @@ def settled_messages(beat_path: Path) -> list[dict]:
 
     The recorder captures the stream, so a component can appear several times as it is built
     up — a half-written component is a valid thing to see mid-stream and an invalid thing to
-    can. Components are merged by id, last write winning, and emitted once. Non-A2UI envelopes
-    the recorder interleaves (`paintMeta`) carry no `version` and are dropped.
+    can. Components are merged by id, last write winning, and emitted once. The `paintMeta`
+    envelopes the recorder interleaves — the paint's title and its question kind — are kept,
+    one per surface, the last written winning, after the A2UI messages: the deterministic
+    executor emits them ahead of the createSurface they name (task-10.9 decision 8).
 
     Lifted here in task 5.6, from the verbatim copies Gmail's and Calendar's derive scripts
     each carried: a third vendor needed it, and a canned corpus taken from the raw stream
@@ -73,10 +75,17 @@ def settled_messages(beat_path: Path) -> list[dict]:
     creates: list[dict] = []
     data: list[dict] = []
     components: dict[str, dict] = {}
+    metas: dict[str, dict] = {}
     for turn in doc.get("turns", []):
         for batch in turn.get("batches", []):
             for message in batch.get("messages", []):
-                if not isinstance(message, dict) or not message.get("version"):
+                if not isinstance(message, dict):
+                    continue
+                meta = message.get("paintMeta")
+                if isinstance(meta, dict) and isinstance(meta.get("surfaceId"), str):
+                    metas[meta["surfaceId"]] = {"paintMeta": dict(meta)}
+                    continue
+                if not message.get("version"):
                     continue
                 if "createSurface" in message:
                     creates.append(message)
@@ -98,6 +107,7 @@ def settled_messages(beat_path: Path) -> list[dict]:
                 "updateComponents": {"components": kept},
             }
         )
+    out.extend(metas.values())
     return out
 
 

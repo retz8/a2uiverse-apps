@@ -297,5 +297,11 @@
         }
       ]
     }
+  },
+  {
+    "paintMeta": {
+      "surfaceId": "job-failure",
+      "title": "Failed step: Format check"
+    }
   }
 ]
