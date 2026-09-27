@@ -4,23 +4,23 @@
   "title": "Failed job logs",
   "prompt": "Why did it fail? Show me the failed job's step and the end of its log.",
   "model": "gemini-3.7-flash",
-  "recordedAt": "2026-09-19T09:30:54+00:00",
-  "contextId": "03103136-0360-4a1c-aaf5-857c83b77468",
+  "recordedAt": "2026-09-27T01:27:02+00:00",
+  "contextId": "d71bd7df-52a7-4473-b7c6-7599ea279a1f",
   "chainedFrom": "beat-2-run-detail",
   "turns": [
     {
-      "taskId": "5ed75ee7-21ba-4383-9078-e4e72ad69806",
+      "taskId": "582071f7-604b-40a9-b364-33ab977f0378",
       "kind": "utterance",
       "prompt": "Why did it fail? Show me the failed job's step and the end of its log.",
       "action": null,
       "batches": [
         {
-          "offsetMs": 12025,
+          "offsetMs": 10600,
           "messages": [
             {
               "paintMeta": {
                 "surfaceId": "job-failure",
-                "title": "Job Failure"
+                "title": "Failed Step Output"
               }
             }
           ],
@@ -29,7 +29,7 @@
           ]
         },
         {
-          "offsetMs": 12260,
+          "offsetMs": 10935,
           "messages": [
             {
               "version": "v0.9",
@@ -43,7 +43,24 @@
           "texts": []
         },
         {
-          "offsetMs": 12873,
+          "offsetMs": 11425,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "job-failure",
+                "value": {
+                  "job": {
+                    "id": "4b5fd10b-e26a-48db-b138-cf0fa64e8c9d"
+                  }
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 11603,
           "messages": [
             {
               "version": "v0.9",
@@ -61,7 +78,7 @@
           "texts": []
         },
         {
-          "offsetMs": 13143,
+          "offsetMs": 11916,
           "messages": [
             {
               "version": "v0.9",
@@ -72,6 +89,9 @@
                     "id": "4b5fd10b-e26a-48db-b138-cf0fa64e8c9d",
                     "name": "lint-format",
                     "workflowId": "6da68785-d209-4441-95a9-174080b2428c"
+                  },
+                  "step": {
+                    "name": "Format check"
                   }
                 }
               }
@@ -80,7 +100,7 @@
           "texts": []
         },
         {
-          "offsetMs": 13314,
+          "offsetMs": 12060,
           "messages": [
             {
               "version": "v0.9",
@@ -98,32 +118,7 @@
           "texts": []
         },
         {
-          "offsetMs": 13467,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateDataModel": {
-                "surfaceId": "job-failure",
-                "value": {
-                  "lines": [
-                    {
-                      "text": "$ prettier --check ."
-                    },
-                    {
-                      "text": "Checking formatting..."
-                    },
-                    {
-                      "text": "[warn] apps/orchestrator/src/config.ts"
-                    }
-                  ]
-                }
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 13618,
+          "offsetMs": 12237,
           "messages": [
             {
               "version": "v0.9",
@@ -140,9 +135,7 @@
                     {
                       "text": "[warn] apps/orchestrator/src/config.ts"
                     },
-                    {
-                      "text": "[warn] Code style issues found in the above file."
-                    }
+                    {}
                   ]
                 }
               }
@@ -151,7 +144,7 @@
           "texts": []
         },
         {
-          "offsetMs": 13770,
+          "offsetMs": 12421,
           "messages": [
             {
               "version": "v0.9",
@@ -169,10 +162,7 @@
                       "text": "[warn] apps/orchestrator/src/config.ts"
                     },
                     {
-                      "text": "[warn] Code style issues found in the above file. Run Prettier with --write to fix."
-                    },
-                    {
-                      "text": ""
+                      "text": "[warn] Code style issues found in the above file. Run Prettier with --write to fix"
                     }
                   ]
                 }
@@ -182,7 +172,7 @@
           "texts": []
         },
         {
-          "offsetMs": 13947,
+          "offsetMs": 12547,
           "messages": [
             {
               "version": "v0.9",
@@ -203,7 +193,7 @@
                       "text": "[warn] Code style issues found in the above file. Run Prettier with --write to fix."
                     },
                     {
-                      "text": "[ELIFECYCLE] Command failed with exit code 1."
+                      "text": "[ELIFECYCLE] Command failed with exit code"
                     }
                   ]
                 }
@@ -213,7 +203,7 @@
           "texts": []
         },
         {
-          "offsetMs": 14133,
+          "offsetMs": 12697,
           "messages": [
             {
               "version": "v0.9",
@@ -254,7 +244,7 @@
           "texts": []
         },
         {
-          "offsetMs": 14435,
+          "offsetMs": 13152,
           "messages": [
             {
               "version": "v0.9",
@@ -262,7 +252,7 @@
                 "components": [
                   {
                     "id": "root",
-                    "component": "Card",
+                    "component": "Panel",
                     "child": "loading_body"
                   },
                   {
@@ -278,7 +268,7 @@
           "texts": []
         },
         {
-          "offsetMs": 14597,
+          "offsetMs": 13331,
           "messages": [
             {
               "version": "v0.9",
@@ -286,36 +276,26 @@
                 "components": [
                   {
                     "id": "body",
-                    "component": "Column",
+                    "component": "Stack",
+                    "gap": "medium",
                     "children": [
-                      "heading",
-                      "loading_step-row",
-                      "loading_divider",
-                      "loading_log",
+                      "loading_heading",
+                      "loading_step",
                       "loading_actions"
                     ]
                   },
                   {
-                    "id": "heading",
-                    "component": "Text"
-                  },
-                  {
                     "id": "root",
-                    "component": "Card",
+                    "component": "Panel",
                     "child": "body"
                   },
                   {
-                    "id": "loading_step-row",
+                    "id": "loading_heading",
                     "component": "Row",
                     "children": []
                   },
                   {
-                    "id": "loading_divider",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_log",
+                    "id": "loading_step",
                     "component": "Row",
                     "children": []
                   },
@@ -332,7 +312,7 @@
           "texts": []
         },
         {
-          "offsetMs": 14907,
+          "offsetMs": 13683,
           "messages": [
             {
               "version": "v0.9",
@@ -340,42 +320,30 @@
                 "components": [
                   {
                     "id": "body",
-                    "component": "Column",
+                    "component": "Stack",
+                    "gap": "medium",
                     "children": [
                       "heading",
-                      "loading_step-row",
-                      "loading_divider",
-                      "loading_log",
+                      "step",
                       "loading_actions"
                     ]
                   },
                   {
                     "id": "heading",
-                    "component": "Text",
+                    "component": "Heading",
                     "text": {
                       "path": "/job/name"
                     },
-                    "variant": "h3"
+                    "size": "large"
                   },
                   {
                     "id": "root",
-                    "component": "Card",
+                    "component": "Panel",
                     "child": "body"
                   },
                   {
-                    "id": "loading_step-row",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_divider",
-                    "component": "Row",
-                    "children": []
-                  },
-                  {
-                    "id": "loading_log",
-                    "component": "Row",
-                    "children": []
+                    "id": "step",
+                    "component": "Panel"
                   },
                   {
                     "id": "loading_actions",
@@ -390,7 +358,7 @@
           "texts": []
         },
         {
-          "offsetMs": 15187,
+          "offsetMs": 14017,
           "messages": [
             {
               "version": "v0.9",
@@ -398,39 +366,242 @@
                 "components": [
                   {
                     "id": "body",
-                    "component": "Column",
+                    "component": "Stack",
+                    "gap": "medium",
                     "children": [
                       "heading",
-                      "step-row",
-                      "loading_divider",
-                      "loading_log",
+                      "step",
                       "loading_actions"
                     ]
                   },
                   {
                     "id": "heading",
-                    "component": "Text",
+                    "component": "Heading",
                     "text": {
                       "path": "/job/name"
                     },
-                    "variant": "h3"
+                    "size": "large"
                   },
                   {
                     "id": "root",
-                    "component": "Card",
+                    "component": "Panel",
                     "child": "body"
                   },
                   {
-                    "id": "step-row",
+                    "id": "step",
+                    "component": "Panel",
+                    "tone": "danger",
+                    "padding": "small",
+                    "child": "loading_step-body"
+                  },
+                  {
+                    "id": "loading_actions",
                     "component": "Row",
-                    "justify": "spaceBetween",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_step-body",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "job-failure"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 14151,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "gap": "medium",
                     "children": [
-                      "loading_step-name",
+                      "heading",
+                      "step",
+                      "loading_actions"
+                    ]
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Heading",
+                    "text": {
+                      "path": "/job/name"
+                    },
+                    "size": "large"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Panel",
+                    "child": "body"
+                  },
+                  {
+                    "id": "step",
+                    "component": "Panel",
+                    "tone": "danger",
+                    "padding": "small",
+                    "child": "step-body"
+                  },
+                  {
+                    "id": "step-body",
+                    "component": "Stack",
+                    "children": [
+                      "loading_step-top",
+                      "loading_log"
+                    ]
+                  },
+                  {
+                    "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_step-top",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_log",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "job-failure"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 14319,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "gap": "medium",
+                    "children": [
+                      "heading",
+                      "step",
+                      "loading_actions"
+                    ]
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Heading",
+                    "text": {
+                      "path": "/job/name"
+                    },
+                    "size": "large"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Panel",
+                    "child": "body"
+                  },
+                  {
+                    "id": "step",
+                    "component": "Panel",
+                    "tone": "danger",
+                    "padding": "small",
+                    "child": "step-body"
+                  },
+                  {
+                    "id": "step-body",
+                    "component": "Stack",
+                    "children": [
+                      "step-top",
+                      "loading_log"
+                    ]
+                  },
+                  {
+                    "id": "step-top",
+                    "component": "Stack"
+                  },
+                  {
+                    "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_log",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "job-failure"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 14662,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "gap": "medium",
+                    "children": [
+                      "heading",
+                      "step",
+                      "loading_actions"
+                    ]
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Heading",
+                    "text": {
+                      "path": "/job/name"
+                    },
+                    "size": "large"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Panel",
+                    "child": "body"
+                  },
+                  {
+                    "id": "step",
+                    "component": "Panel",
+                    "tone": "danger",
+                    "padding": "small",
+                    "child": "step-body"
+                  },
+                  {
+                    "id": "step-body",
+                    "component": "Stack",
+                    "children": [
+                      "step-top",
+                      "loading_log"
+                    ]
+                  },
+                  {
+                    "id": "step-top",
+                    "component": "Stack",
+                    "direction": "horizontal",
+                    "children": [
+                      "loading_step-lead",
                       "loading_step-exit"
-                    ]
+                    ],
+                    "align": "center",
+                    "justify": "spaceBetween"
                   },
                   {
-                    "id": "loading_divider",
+                    "id": "loading_actions",
                     "component": "Row",
                     "children": []
                   },
@@ -440,7 +611,100 @@
                     "children": []
                   },
                   {
+                    "id": "loading_step-lead",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_step-exit",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "job-failure"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 15163,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "gap": "medium",
+                    "children": [
+                      "heading",
+                      "step",
+                      "loading_actions"
+                    ]
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Heading",
+                    "text": {
+                      "path": "/job/name"
+                    },
+                    "size": "large"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Panel",
+                    "child": "body"
+                  },
+                  {
+                    "id": "step",
+                    "component": "Panel",
+                    "tone": "danger",
+                    "padding": "small",
+                    "child": "step-body"
+                  },
+                  {
+                    "id": "step-body",
+                    "component": "Stack",
+                    "children": [
+                      "step-top",
+                      "loading_log"
+                    ]
+                  },
+                  {
+                    "id": "step-lead",
+                    "component": "Stack",
+                    "direction": "horizontal",
+                    "children": [
+                      "loading_step-status",
+                      "loading_step-name"
+                    ],
+                    "align": "center"
+                  },
+                  {
+                    "id": "step-top",
+                    "component": "Stack",
+                    "direction": "horizontal",
+                    "children": [
+                      "step-lead",
+                      "loading_step-exit"
+                    ],
+                    "align": "center",
+                    "justify": "spaceBetween"
+                  },
+                  {
                     "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_log",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_step-status",
                     "component": "Row",
                     "children": []
                   },
@@ -462,7 +726,7 @@
           "texts": []
         },
         {
-          "offsetMs": 15523,
+          "offsetMs": 15342,
           "messages": [
             {
               "version": "v0.9",
@@ -470,46 +734,71 @@
                 "components": [
                   {
                     "id": "body",
-                    "component": "Column",
+                    "component": "Stack",
+                    "gap": "medium",
                     "children": [
                       "heading",
-                      "step-row",
-                      "loading_divider",
-                      "loading_log",
+                      "step",
                       "loading_actions"
                     ]
                   },
                   {
                     "id": "heading",
-                    "component": "Text",
+                    "component": "Heading",
                     "text": {
                       "path": "/job/name"
                     },
-                    "variant": "h3"
+                    "size": "large"
                   },
                   {
                     "id": "root",
-                    "component": "Card",
+                    "component": "Panel",
                     "child": "body"
                   },
                   {
-                    "id": "step-name",
-                    "component": "Text",
-                    "text": {
-                      "path": "/step/name"
-                    }
+                    "id": "step",
+                    "component": "Panel",
+                    "tone": "danger",
+                    "padding": "small",
+                    "child": "step-body"
                   },
                   {
-                    "id": "step-row",
-                    "component": "Row",
-                    "justify": "spaceBetween",
+                    "id": "step-body",
+                    "component": "Stack",
                     "children": [
-                      "step-name",
-                      "loading_step-exit"
+                      "step-top",
+                      "loading_log"
                     ]
                   },
                   {
-                    "id": "loading_divider",
+                    "id": "step-lead",
+                    "component": "Stack",
+                    "direction": "horizontal",
+                    "children": [
+                      "step-status",
+                      "loading_step-name"
+                    ],
+                    "align": "center"
+                  },
+                  {
+                    "id": "step-status",
+                    "component": "StatusIcon",
+                    "status": "Failed",
+                    "size": "small"
+                  },
+                  {
+                    "id": "step-top",
+                    "component": "Stack",
+                    "direction": "horizontal",
+                    "children": [
+                      "step-lead",
+                      "loading_step-exit"
+                    ],
+                    "align": "center",
+                    "justify": "spaceBetween"
+                  },
+                  {
+                    "id": "loading_actions",
                     "component": "Row",
                     "children": []
                   },
@@ -519,7 +808,7 @@
                     "children": []
                   },
                   {
-                    "id": "loading_actions",
+                    "id": "loading_step-name",
                     "component": "Row",
                     "children": []
                   },
@@ -536,7 +825,7 @@
           "texts": []
         },
         {
-          "offsetMs": 15667,
+          "offsetMs": 15511,
           "messages": [
             {
               "version": "v0.9",
@@ -544,53 +833,75 @@
                 "components": [
                   {
                     "id": "body",
-                    "component": "Column",
+                    "component": "Stack",
+                    "gap": "medium",
                     "children": [
                       "heading",
-                      "step-row",
-                      "loading_divider",
-                      "loading_log",
+                      "step",
                       "loading_actions"
                     ]
                   },
                   {
                     "id": "heading",
-                    "component": "Text",
+                    "component": "Heading",
                     "text": {
                       "path": "/job/name"
                     },
-                    "variant": "h3"
+                    "size": "large"
                   },
                   {
                     "id": "root",
-                    "component": "Card",
+                    "component": "Panel",
                     "child": "body"
                   },
                   {
-                    "id": "step-exit",
-                    "component": "Text",
-                    "text": {
-                      "path": "/step/exitCode"
-                    }
+                    "id": "step",
+                    "component": "Panel",
+                    "tone": "danger",
+                    "padding": "small",
+                    "child": "step-body"
                   },
                   {
-                    "id": "step-name",
-                    "component": "Text",
-                    "text": {
-                      "path": "/step/name"
-                    }
-                  },
-                  {
-                    "id": "step-row",
-                    "component": "Row",
-                    "justify": "spaceBetween",
+                    "id": "step-body",
+                    "component": "Stack",
                     "children": [
-                      "step-name",
-                      "step-exit"
+                      "step-top",
+                      "loading_log"
                     ]
                   },
                   {
-                    "id": "loading_divider",
+                    "id": "step-lead",
+                    "component": "Stack",
+                    "direction": "horizontal",
+                    "children": [
+                      "step-status",
+                      "step-name"
+                    ],
+                    "align": "center"
+                  },
+                  {
+                    "id": "step-name",
+                    "component": "Text"
+                  },
+                  {
+                    "id": "step-status",
+                    "component": "StatusIcon",
+                    "status": "Failed",
+                    "size": "small"
+                  },
+                  {
+                    "id": "step-top",
+                    "component": "Stack",
+                    "direction": "horizontal",
+                    "children": [
+                      "step-lead",
+                      "loading_step-exit"
+                    ],
+                    "align": "center",
+                    "justify": "spaceBetween"
+                  },
+                  {
+                    "id": "loading_actions",
                     "component": "Row",
                     "children": []
                   },
@@ -600,7 +911,7 @@
                     "children": []
                   },
                   {
-                    "id": "loading_actions",
+                    "id": "loading_step-exit",
                     "component": "Row",
                     "children": []
                   }
@@ -612,7 +923,7 @@
           "texts": []
         },
         {
-          "offsetMs": 15856,
+          "offsetMs": 15829,
           "messages": [
             {
               "version": "v0.9",
@@ -620,54 +931,79 @@
                 "components": [
                   {
                     "id": "body",
-                    "component": "Column",
+                    "component": "Stack",
+                    "gap": "medium",
                     "children": [
                       "heading",
-                      "step-row",
-                      "loading_divider",
-                      "loading_log",
+                      "step",
                       "loading_actions"
                     ]
                   },
                   {
                     "id": "heading",
-                    "component": "Text",
+                    "component": "Heading",
                     "text": {
                       "path": "/job/name"
                     },
-                    "variant": "h3"
+                    "size": "large"
                   },
                   {
                     "id": "root",
-                    "component": "Card",
+                    "component": "Panel",
                     "child": "body"
                   },
                   {
-                    "id": "step-exit",
-                    "component": "Text",
-                    "text": {
-                      "path": "/step/exitCode"
-                    },
-                    "variant": "caption"
+                    "id": "step",
+                    "component": "Panel",
+                    "tone": "danger",
+                    "padding": "small",
+                    "child": "step-body"
+                  },
+                  {
+                    "id": "step-body",
+                    "component": "Stack",
+                    "children": [
+                      "step-top",
+                      "loading_log"
+                    ]
+                  },
+                  {
+                    "id": "step-lead",
+                    "component": "Stack",
+                    "direction": "horizontal",
+                    "children": [
+                      "step-status",
+                      "step-name"
+                    ],
+                    "align": "center"
                   },
                   {
                     "id": "step-name",
                     "component": "Text",
                     "text": {
                       "path": "/step/name"
-                    }
+                    },
+                    "weight": "medium"
                   },
                   {
-                    "id": "step-row",
-                    "component": "Row",
-                    "justify": "spaceBetween",
+                    "id": "step-status",
+                    "component": "StatusIcon",
+                    "status": "Failed",
+                    "size": "small"
+                  },
+                  {
+                    "id": "step-top",
+                    "component": "Stack",
+                    "direction": "horizontal",
                     "children": [
-                      "step-name",
-                      "step-exit"
-                    ]
+                      "step-lead",
+                      "loading_step-exit"
+                    ],
+                    "align": "center",
+                    "justify": "spaceBetween"
                   },
                   {
-                    "id": "loading_divider",
+                    "id": "loading_actions",
                     "component": "Row",
                     "children": []
                   },
@@ -677,7 +1013,7 @@
                     "children": []
                   },
                   {
-                    "id": "loading_actions",
+                    "id": "loading_step-exit",
                     "component": "Row",
                     "children": []
                   }
@@ -689,7 +1025,7 @@
           "texts": []
         },
         {
-          "offsetMs": 15930,
+          "offsetMs": 16141,
           "messages": [
             {
               "version": "v0.9",
@@ -697,35 +1033,41 @@
                 "components": [
                   {
                     "id": "body",
-                    "component": "Column",
+                    "component": "Stack",
+                    "gap": "medium",
                     "children": [
                       "heading",
-                      "step-row",
-                      "divider",
-                      "log",
+                      "step",
                       "loading_actions"
                     ]
                   },
                   {
-                    "id": "divider",
-                    "component": "Divider"
-                  },
-                  {
                     "id": "heading",
-                    "component": "Text",
+                    "component": "Heading",
                     "text": {
                       "path": "/job/name"
                     },
-                    "variant": "h3"
-                  },
-                  {
-                    "id": "log",
-                    "component": "Column"
+                    "size": "large"
                   },
                   {
                     "id": "root",
-                    "component": "Card",
+                    "component": "Panel",
                     "child": "body"
+                  },
+                  {
+                    "id": "step",
+                    "component": "Panel",
+                    "tone": "danger",
+                    "padding": "small",
+                    "child": "step-body"
+                  },
+                  {
+                    "id": "step-body",
+                    "component": "Stack",
+                    "children": [
+                      "step-top",
+                      "loading_log"
+                    ]
                   },
                   {
                     "id": "step-exit",
@@ -733,26 +1075,51 @@
                     "text": {
                       "path": "/step/exitCode"
                     },
-                    "variant": "caption"
+                    "tone": "muted",
+                    "size": "small"
+                  },
+                  {
+                    "id": "step-lead",
+                    "component": "Stack",
+                    "direction": "horizontal",
+                    "children": [
+                      "step-status",
+                      "step-name"
+                    ],
+                    "align": "center"
                   },
                   {
                     "id": "step-name",
                     "component": "Text",
                     "text": {
                       "path": "/step/name"
-                    }
+                    },
+                    "weight": "medium"
                   },
                   {
-                    "id": "step-row",
-                    "component": "Row",
-                    "justify": "spaceBetween",
+                    "id": "step-status",
+                    "component": "StatusIcon",
+                    "status": "Failed",
+                    "size": "small"
+                  },
+                  {
+                    "id": "step-top",
+                    "component": "Stack",
+                    "direction": "horizontal",
                     "children": [
-                      "step-name",
+                      "step-lead",
                       "step-exit"
-                    ]
+                    ],
+                    "align": "center",
+                    "justify": "spaceBetween"
                   },
                   {
                     "id": "loading_actions",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_log",
                     "component": "Row",
                     "children": []
                   }
@@ -764,7 +1131,7 @@
           "texts": []
         },
         {
-          "offsetMs": 16076,
+          "offsetMs": 16482,
           "messages": [
             {
               "version": "v0.9",
@@ -772,30 +1139,25 @@
                 "components": [
                   {
                     "id": "body",
-                    "component": "Column",
+                    "component": "Stack",
+                    "gap": "medium",
                     "children": [
                       "heading",
-                      "step-row",
-                      "divider",
-                      "log",
+                      "step",
                       "loading_actions"
                     ]
                   },
                   {
-                    "id": "divider",
-                    "component": "Divider"
-                  },
-                  {
                     "id": "heading",
-                    "component": "Text",
+                    "component": "Heading",
                     "text": {
                       "path": "/job/name"
                     },
-                    "variant": "h3"
+                    "size": "large"
                   },
                   {
                     "id": "log",
-                    "component": "Column",
+                    "component": "LogBlock",
                     "children": {
                       "path": "/lines",
                       "componentId": "loading_log-line"
@@ -803,8 +1165,23 @@
                   },
                   {
                     "id": "root",
-                    "component": "Card",
+                    "component": "Panel",
                     "child": "body"
+                  },
+                  {
+                    "id": "step",
+                    "component": "Panel",
+                    "tone": "danger",
+                    "padding": "small",
+                    "child": "step-body"
+                  },
+                  {
+                    "id": "step-body",
+                    "component": "Stack",
+                    "children": [
+                      "step-top",
+                      "log"
+                    ]
                   },
                   {
                     "id": "step-exit",
@@ -812,23 +1189,43 @@
                     "text": {
                       "path": "/step/exitCode"
                     },
-                    "variant": "caption"
+                    "tone": "muted",
+                    "size": "small"
+                  },
+                  {
+                    "id": "step-lead",
+                    "component": "Stack",
+                    "direction": "horizontal",
+                    "children": [
+                      "step-status",
+                      "step-name"
+                    ],
+                    "align": "center"
                   },
                   {
                     "id": "step-name",
                     "component": "Text",
                     "text": {
                       "path": "/step/name"
-                    }
+                    },
+                    "weight": "medium"
                   },
                   {
-                    "id": "step-row",
-                    "component": "Row",
-                    "justify": "spaceBetween",
+                    "id": "step-status",
+                    "component": "StatusIcon",
+                    "status": "Failed",
+                    "size": "small"
+                  },
+                  {
+                    "id": "step-top",
+                    "component": "Stack",
+                    "direction": "horizontal",
                     "children": [
-                      "step-name",
+                      "step-lead",
                       "step-exit"
-                    ]
+                    ],
+                    "align": "center",
+                    "justify": "spaceBetween"
                   },
                   {
                     "id": "loading_actions",
@@ -848,7 +1245,7 @@
           "texts": []
         },
         {
-          "offsetMs": 16544,
+          "offsetMs": 16799,
           "messages": [
             {
               "version": "v0.9",
@@ -856,30 +1253,25 @@
                 "components": [
                   {
                     "id": "body",
-                    "component": "Column",
+                    "component": "Stack",
+                    "gap": "medium",
                     "children": [
                       "heading",
-                      "step-row",
-                      "divider",
-                      "log",
+                      "step",
                       "loading_actions"
                     ]
                   },
                   {
-                    "id": "divider",
-                    "component": "Divider"
-                  },
-                  {
                     "id": "heading",
-                    "component": "Text",
+                    "component": "Heading",
                     "text": {
                       "path": "/job/name"
                     },
-                    "variant": "h3"
+                    "size": "large"
                   },
                   {
                     "id": "log",
-                    "component": "Column",
+                    "component": "LogBlock",
                     "children": {
                       "path": "/lines",
                       "componentId": "log-line"
@@ -887,16 +1279,30 @@
                   },
                   {
                     "id": "log-line",
-                    "component": "Text",
+                    "component": "LogLine",
                     "text": {
                       "path": "text"
-                    },
-                    "variant": "caption"
+                    }
                   },
                   {
                     "id": "root",
-                    "component": "Card",
+                    "component": "Panel",
                     "child": "body"
+                  },
+                  {
+                    "id": "step",
+                    "component": "Panel",
+                    "tone": "danger",
+                    "padding": "small",
+                    "child": "step-body"
+                  },
+                  {
+                    "id": "step-body",
+                    "component": "Stack",
+                    "children": [
+                      "step-top",
+                      "log"
+                    ]
                   },
                   {
                     "id": "step-exit",
@@ -904,23 +1310,43 @@
                     "text": {
                       "path": "/step/exitCode"
                     },
-                    "variant": "caption"
+                    "tone": "muted",
+                    "size": "small"
+                  },
+                  {
+                    "id": "step-lead",
+                    "component": "Stack",
+                    "direction": "horizontal",
+                    "children": [
+                      "step-status",
+                      "step-name"
+                    ],
+                    "align": "center"
                   },
                   {
                     "id": "step-name",
                     "component": "Text",
                     "text": {
                       "path": "/step/name"
-                    }
+                    },
+                    "weight": "medium"
                   },
                   {
-                    "id": "step-row",
-                    "component": "Row",
-                    "justify": "spaceBetween",
+                    "id": "step-status",
+                    "component": "StatusIcon",
+                    "status": "Failed",
+                    "size": "small"
+                  },
+                  {
+                    "id": "step-top",
+                    "component": "Stack",
+                    "direction": "horizontal",
                     "children": [
-                      "step-name",
+                      "step-lead",
                       "step-exit"
-                    ]
+                    ],
+                    "align": "center",
+                    "justify": "spaceBetween"
                   },
                   {
                     "id": "loading_actions",
@@ -935,7 +1361,7 @@
           "texts": []
         },
         {
-          "offsetMs": 16710,
+          "offsetMs": 17106,
           "messages": [
             {
               "version": "v0.9",
@@ -943,37 +1369,33 @@
                 "components": [
                   {
                     "id": "actions",
-                    "component": "Row",
+                    "component": "Stack",
+                    "direction": "horizontal",
                     "children": [
-                      "loading_rerun-failed"
+                      "rerun-failed"
                     ]
                   },
                   {
                     "id": "body",
-                    "component": "Column",
+                    "component": "Stack",
+                    "gap": "medium",
                     "children": [
                       "heading",
-                      "step-row",
-                      "divider",
-                      "log",
+                      "step",
                       "actions"
                     ]
                   },
                   {
-                    "id": "divider",
-                    "component": "Divider"
-                  },
-                  {
                     "id": "heading",
-                    "component": "Text",
+                    "component": "Heading",
                     "text": {
                       "path": "/job/name"
                     },
-                    "variant": "h3"
+                    "size": "large"
                   },
                   {
                     "id": "log",
-                    "component": "Column",
+                    "component": "LogBlock",
                     "children": {
                       "path": "/lines",
                       "componentId": "log-line"
@@ -981,16 +1403,34 @@
                   },
                   {
                     "id": "log-line",
-                    "component": "Text",
+                    "component": "LogLine",
                     "text": {
                       "path": "text"
-                    },
-                    "variant": "caption"
+                    }
+                  },
+                  {
+                    "id": "rerun-failed",
+                    "component": "Button"
                   },
                   {
                     "id": "root",
-                    "component": "Card",
+                    "component": "Panel",
                     "child": "body"
+                  },
+                  {
+                    "id": "step",
+                    "component": "Panel",
+                    "tone": "danger",
+                    "padding": "small",
+                    "child": "step-body"
+                  },
+                  {
+                    "id": "step-body",
+                    "component": "Stack",
+                    "children": [
+                      "step-top",
+                      "log"
+                    ]
                   },
                   {
                     "id": "step-exit",
@@ -998,28 +1438,43 @@
                     "text": {
                       "path": "/step/exitCode"
                     },
-                    "variant": "caption"
+                    "tone": "muted",
+                    "size": "small"
+                  },
+                  {
+                    "id": "step-lead",
+                    "component": "Stack",
+                    "direction": "horizontal",
+                    "children": [
+                      "step-status",
+                      "step-name"
+                    ],
+                    "align": "center"
                   },
                   {
                     "id": "step-name",
                     "component": "Text",
                     "text": {
                       "path": "/step/name"
-                    }
+                    },
+                    "weight": "medium"
                   },
                   {
-                    "id": "step-row",
-                    "component": "Row",
-                    "justify": "spaceBetween",
+                    "id": "step-status",
+                    "component": "StatusIcon",
+                    "status": "Failed",
+                    "size": "small"
+                  },
+                  {
+                    "id": "step-top",
+                    "component": "Stack",
+                    "direction": "horizontal",
                     "children": [
-                      "step-name",
+                      "step-lead",
                       "step-exit"
-                    ]
-                  },
-                  {
-                    "id": "loading_rerun-failed",
-                    "component": "Row",
-                    "children": []
+                    ],
+                    "align": "center",
+                    "justify": "spaceBetween"
                   }
                 ],
                 "surfaceId": "job-failure"
@@ -1029,7 +1484,7 @@
           "texts": []
         },
         {
-          "offsetMs": 17251,
+          "offsetMs": 17660,
           "messages": [
             {
               "version": "v0.9",
@@ -1037,37 +1492,33 @@
                 "components": [
                   {
                     "id": "actions",
-                    "component": "Row",
+                    "component": "Stack",
+                    "direction": "horizontal",
                     "children": [
                       "rerun-failed"
                     ]
                   },
                   {
                     "id": "body",
-                    "component": "Column",
+                    "component": "Stack",
+                    "gap": "medium",
                     "children": [
                       "heading",
-                      "step-row",
-                      "divider",
-                      "log",
+                      "step",
                       "actions"
                     ]
                   },
                   {
-                    "id": "divider",
-                    "component": "Divider"
-                  },
-                  {
                     "id": "heading",
-                    "component": "Text",
+                    "component": "Heading",
                     "text": {
                       "path": "/job/name"
                     },
-                    "variant": "h3"
+                    "size": "large"
                   },
                   {
                     "id": "log",
-                    "component": "Column",
+                    "component": "LogBlock",
                     "children": {
                       "path": "/lines",
                       "componentId": "log-line"
@@ -1075,16 +1526,15 @@
                   },
                   {
                     "id": "log-line",
-                    "component": "Text",
+                    "component": "LogLine",
                     "text": {
                       "path": "text"
-                    },
-                    "variant": "caption"
+                    }
                   },
                   {
                     "id": "rerun-failed",
                     "component": "Button",
-                    "child": "loading_rerun-failed-label",
+                    "label": "Rerun from failed",
                     "action": {
                       "event": {
                         "name": "rerun-workflow",
@@ -1099,8 +1549,23 @@
                   },
                   {
                     "id": "root",
-                    "component": "Card",
+                    "component": "Panel",
                     "child": "body"
+                  },
+                  {
+                    "id": "step",
+                    "component": "Panel",
+                    "tone": "danger",
+                    "padding": "small",
+                    "child": "step-body"
+                  },
+                  {
+                    "id": "step-body",
+                    "component": "Stack",
+                    "children": [
+                      "step-top",
+                      "log"
+                    ]
                   },
                   {
                     "id": "step-exit",
@@ -1108,247 +1573,43 @@
                     "text": {
                       "path": "/step/exitCode"
                     },
-                    "variant": "caption"
+                    "tone": "muted",
+                    "size": "small"
+                  },
+                  {
+                    "id": "step-lead",
+                    "component": "Stack",
+                    "direction": "horizontal",
+                    "children": [
+                      "step-status",
+                      "step-name"
+                    ],
+                    "align": "center"
                   },
                   {
                     "id": "step-name",
                     "component": "Text",
                     "text": {
                       "path": "/step/name"
-                    }
+                    },
+                    "weight": "medium"
                   },
                   {
-                    "id": "step-row",
-                    "component": "Row",
-                    "justify": "spaceBetween",
+                    "id": "step-status",
+                    "component": "StatusIcon",
+                    "status": "Failed",
+                    "size": "small"
+                  },
+                  {
+                    "id": "step-top",
+                    "component": "Stack",
+                    "direction": "horizontal",
                     "children": [
-                      "step-name",
+                      "step-lead",
                       "step-exit"
-                    ]
-                  },
-                  {
-                    "id": "loading_rerun-failed-label",
-                    "component": "Row",
-                    "children": []
-                  }
-                ],
-                "surfaceId": "job-failure"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 17415,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "actions",
-                    "component": "Row",
-                    "children": [
-                      "rerun-failed"
-                    ]
-                  },
-                  {
-                    "id": "body",
-                    "component": "Column",
-                    "children": [
-                      "heading",
-                      "step-row",
-                      "divider",
-                      "log",
-                      "actions"
-                    ]
-                  },
-                  {
-                    "id": "divider",
-                    "component": "Divider"
-                  },
-                  {
-                    "id": "heading",
-                    "component": "Text",
-                    "text": {
-                      "path": "/job/name"
-                    },
-                    "variant": "h3"
-                  },
-                  {
-                    "id": "log",
-                    "component": "Column",
-                    "children": {
-                      "path": "/lines",
-                      "componentId": "log-line"
-                    }
-                  },
-                  {
-                    "id": "log-line",
-                    "component": "Text",
-                    "text": {
-                      "path": "text"
-                    },
-                    "variant": "caption"
-                  },
-                  {
-                    "id": "rerun-failed",
-                    "component": "Button",
-                    "child": "rerun-failed-label",
-                    "action": {
-                      "event": {
-                        "name": "rerun-workflow",
-                        "context": {
-                          "workflowId": {
-                            "path": "/job/workflowId"
-                          },
-                          "fromFailed": true
-                        }
-                      }
-                    }
-                  },
-                  {
-                    "id": "rerun-failed-label",
-                    "component": "Text"
-                  },
-                  {
-                    "id": "root",
-                    "component": "Card",
-                    "child": "body"
-                  },
-                  {
-                    "id": "step-exit",
-                    "component": "Text",
-                    "text": {
-                      "path": "/step/exitCode"
-                    },
-                    "variant": "caption"
-                  },
-                  {
-                    "id": "step-name",
-                    "component": "Text",
-                    "text": {
-                      "path": "/step/name"
-                    }
-                  },
-                  {
-                    "id": "step-row",
-                    "component": "Row",
-                    "justify": "spaceBetween",
-                    "children": [
-                      "step-name",
-                      "step-exit"
-                    ]
-                  }
-                ],
-                "surfaceId": "job-failure"
-              }
-            }
-          ],
-          "texts": []
-        },
-        {
-          "offsetMs": 17597,
-          "messages": [
-            {
-              "version": "v0.9",
-              "updateComponents": {
-                "components": [
-                  {
-                    "id": "actions",
-                    "component": "Row",
-                    "children": [
-                      "rerun-failed"
-                    ]
-                  },
-                  {
-                    "id": "body",
-                    "component": "Column",
-                    "children": [
-                      "heading",
-                      "step-row",
-                      "divider",
-                      "log",
-                      "actions"
-                    ]
-                  },
-                  {
-                    "id": "divider",
-                    "component": "Divider"
-                  },
-                  {
-                    "id": "heading",
-                    "component": "Text",
-                    "text": {
-                      "path": "/job/name"
-                    },
-                    "variant": "h3"
-                  },
-                  {
-                    "id": "log",
-                    "component": "Column",
-                    "children": {
-                      "path": "/lines",
-                      "componentId": "log-line"
-                    }
-                  },
-                  {
-                    "id": "log-line",
-                    "component": "Text",
-                    "text": {
-                      "path": "text"
-                    },
-                    "variant": "caption"
-                  },
-                  {
-                    "id": "rerun-failed",
-                    "component": "Button",
-                    "child": "rerun-failed-label",
-                    "action": {
-                      "event": {
-                        "name": "rerun-workflow",
-                        "context": {
-                          "workflowId": {
-                            "path": "/job/workflowId"
-                          },
-                          "fromFailed": true
-                        }
-                      }
-                    }
-                  },
-                  {
-                    "id": "rerun-failed-label",
-                    "component": "Text",
-                    "text": "Rerun from failed"
-                  },
-                  {
-                    "id": "root",
-                    "component": "Card",
-                    "child": "body"
-                  },
-                  {
-                    "id": "step-exit",
-                    "component": "Text",
-                    "text": {
-                      "path": "/step/exitCode"
-                    },
-                    "variant": "caption"
-                  },
-                  {
-                    "id": "step-name",
-                    "component": "Text",
-                    "text": {
-                      "path": "/step/name"
-                    }
-                  },
-                  {
-                    "id": "step-row",
-                    "component": "Row",
-                    "justify": "spaceBetween",
-                    "children": [
-                      "step-name",
-                      "step-exit"
-                    ]
+                    ],
+                    "align": "center",
+                    "justify": "spaceBetween"
                   }
                 ],
                 "surfaceId": "job-failure"
@@ -1359,7 +1620,7 @@
         }
       ],
       "outcome": "completed",
-      "durationMs": 17854
+      "durationMs": 17897
     }
   ]
 }

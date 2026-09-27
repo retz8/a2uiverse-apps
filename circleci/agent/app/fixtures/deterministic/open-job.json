@@ -13,6 +13,17 @@
       "surfaceId": "job-failure",
       "value": {
         "job": {
+          "id": "4b5fd10b-e26a-48db-b138-cf0fa64e8c9d"
+        }
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "job-failure",
+      "value": {
+        "job": {
           "id": "4b5fd10b-e26a-48db-b138-cf0fa64e8c9d",
           "name": "lint-format"
         }
@@ -28,6 +39,9 @@
           "id": "4b5fd10b-e26a-48db-b138-cf0fa64e8c9d",
           "name": "lint-format",
           "workflowId": "6da68785-d209-4441-95a9-174080b2428c"
+        },
+        "step": {
+          "name": "Format check"
         }
       }
     }
@@ -58,7 +72,8 @@
           },
           {
             "text": "[warn] apps/orchestrator/src/config.ts"
-          }
+          },
+          {}
         ]
       }
     }
@@ -79,32 +94,7 @@
             "text": "[warn] apps/orchestrator/src/config.ts"
           },
           {
-            "text": "[warn] Code style issues found in the above file."
-          }
-        ]
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "job-failure",
-      "value": {
-        "lines": [
-          {
-            "text": "$ prettier --check ."
-          },
-          {
-            "text": "Checking formatting..."
-          },
-          {
-            "text": "[warn] apps/orchestrator/src/config.ts"
-          },
-          {
-            "text": "[warn] Code style issues found in the above file. Run Prettier with --write to fix."
-          },
-          {
-            "text": ""
+            "text": "[warn] Code style issues found in the above file. Run Prettier with --write to fix"
           }
         ]
       }
@@ -129,7 +119,7 @@
             "text": "[warn] Code style issues found in the above file. Run Prettier with --write to fix."
           },
           {
-            "text": "[ELIFECYCLE] Command failed with exit code 1."
+            "text": "[ELIFECYCLE] Command failed with exit code"
           }
         ]
       }
@@ -176,43 +166,76 @@
       "components": [
         {
           "id": "root",
-          "component": "Card",
+          "component": "Panel",
           "child": "body"
         },
         {
           "id": "body",
-          "component": "Column",
+          "component": "Stack",
+          "gap": "medium",
           "children": [
             "heading",
-            "step-row",
-            "divider",
-            "log",
+            "step",
             "actions"
           ]
         },
         {
           "id": "heading",
-          "component": "Text",
+          "component": "Heading",
           "text": {
             "path": "/job/name"
           },
-          "variant": "h3"
+          "size": "large"
         },
         {
-          "id": "step-row",
-          "component": "Row",
-          "justify": "spaceBetween",
+          "id": "step",
+          "component": "Panel",
+          "tone": "danger",
+          "padding": "small",
+          "child": "step-body"
+        },
+        {
+          "id": "step-body",
+          "component": "Stack",
           "children": [
-            "step-name",
-            "step-exit"
+            "step-top",
+            "log"
           ]
+        },
+        {
+          "id": "step-top",
+          "component": "Stack",
+          "direction": "horizontal",
+          "children": [
+            "step-lead",
+            "step-exit"
+          ],
+          "align": "center",
+          "justify": "spaceBetween"
+        },
+        {
+          "id": "step-lead",
+          "component": "Stack",
+          "direction": "horizontal",
+          "children": [
+            "step-status",
+            "step-name"
+          ],
+          "align": "center"
+        },
+        {
+          "id": "step-status",
+          "component": "StatusIcon",
+          "status": "Failed",
+          "size": "small"
         },
         {
           "id": "step-name",
           "component": "Text",
           "text": {
             "path": "/step/name"
-          }
+          },
+          "weight": "medium"
         },
         {
           "id": "step-exit",
@@ -220,15 +243,12 @@
           "text": {
             "path": "/step/exitCode"
           },
-          "variant": "caption"
-        },
-        {
-          "id": "divider",
-          "component": "Divider"
+          "tone": "muted",
+          "size": "small"
         },
         {
           "id": "log",
-          "component": "Column",
+          "component": "LogBlock",
           "children": {
             "path": "/lines",
             "componentId": "log-line"
@@ -236,15 +256,15 @@
         },
         {
           "id": "log-line",
-          "component": "Text",
+          "component": "LogLine",
           "text": {
             "path": "text"
-          },
-          "variant": "caption"
+          }
         },
         {
           "id": "actions",
-          "component": "Row",
+          "component": "Stack",
+          "direction": "horizontal",
           "children": [
             "rerun-failed"
           ]
@@ -252,7 +272,7 @@
         {
           "id": "rerun-failed",
           "component": "Button",
-          "child": "rerun-failed-label",
+          "label": "Rerun from failed",
           "action": {
             "event": {
               "name": "rerun-workflow",
@@ -264,11 +284,6 @@
               }
             }
           }
-        },
-        {
-          "id": "rerun-failed-label",
-          "component": "Text",
-          "text": "Rerun from failed"
         }
       ]
     }

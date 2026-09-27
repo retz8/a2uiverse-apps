@@ -5,13 +5,12 @@
       "components": [
         {
           "id": "root",
-          "component": "Card",
+          "component": "Panel",
           "child": "declined"
         },
         {
           "id": "declined",
           "component": "Text",
-          "variant": "body",
           "text": "Nothing was rerun."
         }
       ]

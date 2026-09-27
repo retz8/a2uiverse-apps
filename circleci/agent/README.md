@@ -1,6 +1,6 @@
 # CircleCI agent
 
-An A2A agent for CircleCI. It answers CI questions by painting A2UI surfaces with [`circleci-catalog`](../circleci-catalog/), the basic A2UI catalog in CircleCI's look. It runs on port **11004** and is built on [`a2ui-agent-kit`](../../agent-kit/).
+An A2A agent for CircleCI. It answers CI questions by painting A2UI surfaces with [`circleci-catalog`](../circleci-catalog/), CircleCI's own set of A2UI components in its look. It runs on port **11004** and is built on [`a2ui-agent-kit`](../../agent-kit/).
 
 ## What it can do
 
@@ -57,6 +57,14 @@ uv run pytest tests/test_corpus_is_publishable.py
 ```
 
 Recording needs a failed run in a configured project, and its last step **really reruns** that workflow on CircleCI. Nothing is pseudonymized, since the data is a public repository's CI, and the last test fails the recordings if anything token-shaped got in.
+
+To repaint the beats after a catalog change, record them against the stub instead: the model paints over the recorded data, nothing reaches CircleCI, and only the deterministic corpus is derived again.
+
+```bash
+A2UI_RECORD_DIR=<scratch dir> uv run python -m app --mode stub --port <free port> --host localhost
+uv run python scripts/record_beats.py --model <model> --record-dir <scratch dir> --url http://localhost:<free port>
+uv run python scripts/derive_corpus.py --beats-only
+```
 
 ## Allowing more tools
 

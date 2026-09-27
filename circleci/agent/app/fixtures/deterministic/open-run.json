@@ -43,10 +43,10 @@
           "summary": "d5b8057 \u00b7 chore: note where the Synthesizer's effort would rise apart from the Planner's \u00b7 retz8",
           "workflows": [
             {
-              "id": "6da68785-d209-4441-95a9-174080b2428c",
+              "id": "12a5795f-7280-429f-9e13-e63272cfd5f9",
               "name": "verify",
-              "status": "Failed",
-              "when": "2026-09-19 07:07:26 UTC"
+              "status": "Running",
+              "when": "2026-09-19 09:30:32 UTC"
             }
           ]
         }
@@ -64,16 +64,16 @@
           "summary": "d5b8057 \u00b7 chore: note where the Synthesizer's effort would rise apart from the Planner's \u00b7 retz8",
           "workflows": [
             {
-              "id": "6da68785-d209-4441-95a9-174080b2428c",
+              "id": "12a5795f-7280-429f-9e13-e63272cfd5f9",
               "name": "verify",
-              "status": "Failed",
-              "when": "2026-09-19 07:07:26 UTC",
+              "status": "Running",
+              "when": "2026-09-19 09:30:32 UTC",
               "jobs": [
                 {
-                  "id": "4b5fd10b-e26a-48db-b138-cf0fa64e8c9d",
+                  "id": "cb27eb95-da70-428d-bb35-c5d8706447f0",
                   "name": "lint-format",
-                  "status": "Failed",
-                  "duration": "41s"
+                  "status": "Running",
+                  "duration": "Running"
                 }
               ]
             }
@@ -93,16 +93,16 @@
           "summary": "d5b8057 \u00b7 chore: note where the Synthesizer's effort would rise apart from the Planner's \u00b7 retz8",
           "workflows": [
             {
-              "id": "6da68785-d209-4441-95a9-174080b2428c",
+              "id": "12a5795f-7280-429f-9e13-e63272cfd5f9",
               "name": "verify",
-              "status": "Failed",
-              "when": "2026-09-19 07:07:26 UTC",
+              "status": "Running",
+              "when": "2026-09-19 09:30:32 UTC",
               "jobs": [
                 {
-                  "id": "4b5fd10b-e26a-48db-b138-cf0fa64e8c9d",
+                  "id": "cb27eb95-da70-428d-bb35-c5d8706447f0",
                   "name": "lint-format",
-                  "status": "Failed",
-                  "duration": "41s"
+                  "status": "Running",
+                  "duration": "Running"
                 },
                 {
                   "id": "ec7c4e03-38bc-4d1b-b682-e2e2f56eb98b"
@@ -125,16 +125,16 @@
           "summary": "d5b8057 \u00b7 chore: note where the Synthesizer's effort would rise apart from the Planner's \u00b7 retz8",
           "workflows": [
             {
-              "id": "6da68785-d209-4441-95a9-174080b2428c",
+              "id": "12a5795f-7280-429f-9e13-e63272cfd5f9",
               "name": "verify",
-              "status": "Failed",
-              "when": "2026-09-19 07:07:26 UTC",
+              "status": "Running",
+              "when": "2026-09-19 09:30:32 UTC",
               "jobs": [
                 {
-                  "id": "4b5fd10b-e26a-48db-b138-cf0fa64e8c9d",
+                  "id": "cb27eb95-da70-428d-bb35-c5d8706447f0",
                   "name": "lint-format",
-                  "status": "Failed",
-                  "duration": "41s"
+                  "status": "Running",
+                  "duration": "Running"
                 },
                 {
                   "id": "ec7c4e03-38bc-4d1b-b682-e2e2f56eb98b",
@@ -159,6 +159,142 @@
           "summary": "d5b8057 \u00b7 chore: note where the Synthesizer's effort would rise apart from the Planner's \u00b7 retz8",
           "workflows": [
             {
+              "id": "12a5795f-7280-429f-9e13-e63272cfd5f9",
+              "name": "verify",
+              "status": "Running",
+              "when": "2026-09-19 09:30:32 UTC",
+              "jobs": [
+                {
+                  "id": "cb27eb95-da70-428d-bb35-c5d8706447f0",
+                  "name": "lint-format",
+                  "status": "Running",
+                  "duration": "Running"
+                },
+                {
+                  "id": "ec7c4e03-38bc-4d1b-b682-e2e2f56eb98b",
+                  "name": "build-typecheck-test",
+                  "status": "Success",
+                  "duration": "2m 27s"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "run-detail",
+      "value": {
+        "run": {
+          "id": "8a6c87c2-978c-4f4b-a304-dc17e50b726c",
+          "branch": "synthesizer-effort-apart-from-planner",
+          "summary": "d5b8057 \u00b7 chore: note where the Synthesizer's effort would rise apart from the Planner's \u00b7 retz8",
+          "workflows": [
+            {
+              "id": "12a5795f-7280-429f-9e13-e63272cfd5f9",
+              "name": "verify",
+              "status": "Running",
+              "when": "2026-09-19 09:30:32 UTC",
+              "jobs": [
+                {
+                  "id": "cb27eb95-da70-428d-bb35-c5d8706447f0",
+                  "name": "lint-format",
+                  "status": "Running",
+                  "duration": "Running"
+                },
+                {
+                  "id": "ec7c4e03-38bc-4d1b-b682-e2e2f56eb98b",
+                  "name": "build-typecheck-test",
+                  "status": "Success",
+                  "duration": "2m 27s"
+                }
+              ]
+            },
+            {
+              "id": "6da68785-d209-4441-95a9-174080b2428c",
+              "name": "verify",
+              "status": "Failed"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "run-detail",
+      "value": {
+        "run": {
+          "id": "8a6c87c2-978c-4f4b-a304-dc17e50b726c",
+          "branch": "synthesizer-effort-apart-from-planner",
+          "summary": "d5b8057 \u00b7 chore: note where the Synthesizer's effort would rise apart from the Planner's \u00b7 retz8",
+          "workflows": [
+            {
+              "id": "12a5795f-7280-429f-9e13-e63272cfd5f9",
+              "name": "verify",
+              "status": "Running",
+              "when": "2026-09-19 09:30:32 UTC",
+              "jobs": [
+                {
+                  "id": "cb27eb95-da70-428d-bb35-c5d8706447f0",
+                  "name": "lint-format",
+                  "status": "Running",
+                  "duration": "Running"
+                },
+                {
+                  "id": "ec7c4e03-38bc-4d1b-b682-e2e2f56eb98b",
+                  "name": "build-typecheck-test",
+                  "status": "Success",
+                  "duration": "2m 27s"
+                }
+              ]
+            },
+            {
+              "id": "6da68785-d209-4441-95a9-174080b2428c",
+              "name": "verify",
+              "status": "Failed",
+              "when": "2026-09-19 07:07:26 UTC"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "run-detail",
+      "value": {
+        "run": {
+          "id": "8a6c87c2-978c-4f4b-a304-dc17e50b726c",
+          "branch": "synthesizer-effort-apart-from-planner",
+          "summary": "d5b8057 \u00b7 chore: note where the Synthesizer's effort would rise apart from the Planner's \u00b7 retz8",
+          "workflows": [
+            {
+              "id": "12a5795f-7280-429f-9e13-e63272cfd5f9",
+              "name": "verify",
+              "status": "Running",
+              "when": "2026-09-19 09:30:32 UTC",
+              "jobs": [
+                {
+                  "id": "cb27eb95-da70-428d-bb35-c5d8706447f0",
+                  "name": "lint-format",
+                  "status": "Running",
+                  "duration": "Running"
+                },
+                {
+                  "id": "ec7c4e03-38bc-4d1b-b682-e2e2f56eb98b",
+                  "name": "build-typecheck-test",
+                  "status": "Success",
+                  "duration": "2m 27s"
+                }
+              ]
+            },
+            {
               "id": "6da68785-d209-4441-95a9-174080b2428c",
               "name": "verify",
               "status": "Failed",
@@ -168,13 +304,116 @@
                   "id": "4b5fd10b-e26a-48db-b138-cf0fa64e8c9d",
                   "name": "lint-format",
                   "status": "Failed",
-                  "duration": "41s"
+                  "duration": "40s"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "run-detail",
+      "value": {
+        "run": {
+          "id": "8a6c87c2-978c-4f4b-a304-dc17e50b726c",
+          "branch": "synthesizer-effort-apart-from-planner",
+          "summary": "d5b8057 \u00b7 chore: note where the Synthesizer's effort would rise apart from the Planner's \u00b7 retz8",
+          "workflows": [
+            {
+              "id": "12a5795f-7280-429f-9e13-e63272cfd5f9",
+              "name": "verify",
+              "status": "Running",
+              "when": "2026-09-19 09:30:32 UTC",
+              "jobs": [
+                {
+                  "id": "cb27eb95-da70-428d-bb35-c5d8706447f0",
+                  "name": "lint-format",
+                  "status": "Running",
+                  "duration": "Running"
                 },
                 {
                   "id": "ec7c4e03-38bc-4d1b-b682-e2e2f56eb98b",
                   "name": "build-typecheck-test",
                   "status": "Success",
-                  "duration": "2m 28s"
+                  "duration": "2m 27s"
+                }
+              ]
+            },
+            {
+              "id": "6da68785-d209-4441-95a9-174080b2428c",
+              "name": "verify",
+              "status": "Failed",
+              "when": "2026-09-19 07:07:26 UTC",
+              "jobs": [
+                {
+                  "id": "4b5fd10b-e26a-48db-b138-cf0fa64e8c9d",
+                  "name": "lint-format",
+                  "status": "Failed",
+                  "duration": "40s"
+                },
+                {
+                  "id": "ec7c4e03-38bc-4d1b-b682-e2e2f56eb98b",
+                  "name": "build-typecheck-test",
+                  "status": "Success"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "run-detail",
+      "value": {
+        "run": {
+          "id": "8a6c87c2-978c-4f4b-a304-dc17e50b726c",
+          "branch": "synthesizer-effort-apart-from-planner",
+          "summary": "d5b8057 \u00b7 chore: note where the Synthesizer's effort would rise apart from the Planner's \u00b7 retz8",
+          "workflows": [
+            {
+              "id": "12a5795f-7280-429f-9e13-e63272cfd5f9",
+              "name": "verify",
+              "status": "Running",
+              "when": "2026-09-19 09:30:32 UTC",
+              "jobs": [
+                {
+                  "id": "cb27eb95-da70-428d-bb35-c5d8706447f0",
+                  "name": "lint-format",
+                  "status": "Running",
+                  "duration": "Running"
+                },
+                {
+                  "id": "ec7c4e03-38bc-4d1b-b682-e2e2f56eb98b",
+                  "name": "build-typecheck-test",
+                  "status": "Success",
+                  "duration": "2m 27s"
+                }
+              ]
+            },
+            {
+              "id": "6da68785-d209-4441-95a9-174080b2428c",
+              "name": "verify",
+              "status": "Failed",
+              "when": "2026-09-19 07:07:26 UTC",
+              "jobs": [
+                {
+                  "id": "4b5fd10b-e26a-48db-b138-cf0fa64e8c9d",
+                  "name": "lint-format",
+                  "status": "Failed",
+                  "duration": "40s"
+                },
+                {
+                  "id": "ec7c4e03-38bc-4d1b-b682-e2e2f56eb98b",
+                  "name": "build-typecheck-test",
+                  "status": "Success",
+                  "duration": "2m 27s"
                 }
               ]
             }
@@ -195,6 +434,26 @@
           "summary": "d5b8057 \u00b7 chore: note where the Synthesizer's effort would rise apart from the Planner's \u00b7 retz8",
           "workflows": [
             {
+              "id": "12a5795f-7280-429f-9e13-e63272cfd5f9",
+              "name": "verify",
+              "status": "Running",
+              "when": "2026-09-19 09:30:32 UTC",
+              "jobs": [
+                {
+                  "id": "cb27eb95-da70-428d-bb35-c5d8706447f0",
+                  "name": "lint-format",
+                  "status": "Running",
+                  "duration": "Running"
+                },
+                {
+                  "id": "ec7c4e03-38bc-4d1b-b682-e2e2f56eb98b",
+                  "name": "build-typecheck-test",
+                  "status": "Success",
+                  "duration": "2m 27s"
+                }
+              ]
+            },
+            {
               "id": "6da68785-d209-4441-95a9-174080b2428c",
               "name": "verify",
               "status": "Failed",
@@ -204,13 +463,13 @@
                   "id": "4b5fd10b-e26a-48db-b138-cf0fa64e8c9d",
                   "name": "lint-format",
                   "status": "Failed",
-                  "duration": "41s"
+                  "duration": "40s"
                 },
                 {
                   "id": "ec7c4e03-38bc-4d1b-b682-e2e2f56eb98b",
                   "name": "build-typecheck-test",
                   "status": "Success",
-                  "duration": "2m 28s"
+                  "duration": "2m 27s"
                 }
               ]
             }
@@ -225,12 +484,13 @@
       "components": [
         {
           "id": "root",
-          "component": "Card",
+          "component": "Panel",
           "child": "body"
         },
         {
           "id": "body",
-          "component": "Column",
+          "component": "Stack",
+          "gap": "medium",
           "children": [
             "heading",
             "sub",
@@ -240,11 +500,11 @@
         },
         {
           "id": "heading",
-          "component": "Text",
+          "component": "Heading",
           "text": {
             "path": "/run/branch"
           },
-          "variant": "h3"
+          "size": "large"
         },
         {
           "id": "sub",
@@ -252,7 +512,7 @@
           "text": {
             "path": "/run/summary"
           },
-          "variant": "caption"
+          "tone": "muted"
         },
         {
           "id": "divider",
@@ -260,7 +520,7 @@
         },
         {
           "id": "wf-list",
-          "component": "Column",
+          "component": "List",
           "children": {
             "path": "/run/workflows",
             "componentId": "wf-block"
@@ -268,7 +528,12 @@
         },
         {
           "id": "wf-block",
-          "component": "Column",
+          "component": "ListItem",
+          "child": "wf-body"
+        },
+        {
+          "id": "wf-body",
+          "component": "Stack",
           "children": [
             "wf-top",
             "job-list",
@@ -277,14 +542,33 @@
         },
         {
           "id": "wf-top",
-          "component": "Row",
-          "justify": "spaceBetween",
-          "align": "center",
+          "component": "Stack",
+          "direction": "horizontal",
           "children": [
-            "wf-status",
-            "wf-name",
+            "wf-lead",
             "wf-when"
-          ]
+          ],
+          "align": "center",
+          "justify": "spaceBetween"
+        },
+        {
+          "id": "wf-lead",
+          "component": "Stack",
+          "direction": "horizontal",
+          "children": [
+            "wf-name",
+            "wf-status"
+          ],
+          "align": "center",
+          "gap": "small"
+        },
+        {
+          "id": "wf-name",
+          "component": "Heading",
+          "text": {
+            "path": "name"
+          },
+          "size": "small"
         },
         {
           "id": "wf-status",
@@ -294,24 +578,18 @@
           }
         },
         {
-          "id": "wf-name",
-          "component": "Text",
-          "text": {
-            "path": "name"
-          },
-          "variant": "h4"
-        },
-        {
           "id": "wf-when",
           "component": "Text",
           "text": {
             "path": "when"
           },
-          "variant": "caption"
+          "tone": "muted",
+          "size": "small"
         },
         {
           "id": "job-list",
-          "component": "Column",
+          "component": "List",
+          "connector": "tree",
           "children": {
             "path": "jobs",
             "componentId": "job-row"
@@ -319,8 +597,7 @@
         },
         {
           "id": "job-row",
-          "component": "Button",
-          "variant": "borderless",
+          "component": "ListItem",
           "child": "job-body",
           "action": {
             "event": {
@@ -335,21 +612,33 @@
         },
         {
           "id": "job-body",
-          "component": "Row",
-          "justify": "spaceBetween",
+          "component": "Stack",
+          "direction": "horizontal",
+          "children": [
+            "job-lead",
+            "job-duration"
+          ],
           "align": "center",
+          "justify": "spaceBetween"
+        },
+        {
+          "id": "job-lead",
+          "component": "Stack",
+          "direction": "horizontal",
           "children": [
             "job-status",
-            "job-name",
-            "job-duration"
-          ]
+            "job-name"
+          ],
+          "align": "center",
+          "gap": "small"
         },
         {
           "id": "job-status",
-          "component": "StatusBadge",
+          "component": "StatusIcon",
           "status": {
             "path": "status"
-          }
+          },
+          "size": "small"
         },
         {
           "id": "job-name",
@@ -364,20 +653,23 @@
           "text": {
             "path": "duration"
           },
-          "variant": "caption"
+          "tone": "muted",
+          "size": "small"
         },
         {
           "id": "wf-actions",
-          "component": "Row",
+          "component": "Stack",
+          "direction": "horizontal",
           "children": [
             "rerun-failed",
             "rerun-all"
-          ]
+          ],
+          "gap": "small"
         },
         {
           "id": "rerun-failed",
           "component": "Button",
-          "child": "rerun-failed-label",
+          "label": "Rerun from failed",
           "action": {
             "event": {
               "name": "rerun-workflow",
@@ -391,15 +683,9 @@
           }
         },
         {
-          "id": "rerun-failed-label",
-          "component": "Text",
-          "text": "Rerun from failed"
-        },
-        {
           "id": "rerun-all",
           "component": "Button",
-          "variant": "borderless",
-          "child": "rerun-all-label",
+          "label": "Rerun from start",
           "action": {
             "event": {
               "name": "rerun-workflow",
@@ -411,11 +697,6 @@
               }
             }
           }
-        },
-        {
-          "id": "rerun-all-label",
-          "component": "Text",
-          "text": "Rerun from start"
         }
       ]
     }

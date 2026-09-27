@@ -59,12 +59,13 @@
         "components": [
           {
             "id": "root",
-            "component": "Card",
+            "component": "Panel",
             "child": "body"
           },
           {
             "id": "body",
-            "component": "Column",
+            "component": "Stack",
+            "gap": "medium",
             "children": [
               "heading",
               "sub",
@@ -74,11 +75,11 @@
           },
           {
             "id": "heading",
-            "component": "Text",
+            "component": "Heading",
             "text": {
               "path": "/run/branch"
             },
-            "variant": "h3"
+            "size": "large"
           },
           {
             "id": "sub",
@@ -86,7 +87,7 @@
             "text": {
               "path": "/run/summary"
             },
-            "variant": "caption"
+            "tone": "muted"
           },
           {
             "id": "divider",
@@ -94,7 +95,7 @@
           },
           {
             "id": "wf-list",
-            "component": "Column",
+            "component": "List",
             "children": {
               "path": "/run/workflows",
               "componentId": "wf-block"
@@ -102,7 +103,12 @@
           },
           {
             "id": "wf-block",
-            "component": "Column",
+            "component": "ListItem",
+            "child": "wf-body"
+          },
+          {
+            "id": "wf-body",
+            "component": "Stack",
             "children": [
               "wf-top",
               "job-list",
@@ -111,14 +117,32 @@
           },
           {
             "id": "wf-top",
-            "component": "Row",
-            "justify": "spaceBetween",
-            "align": "center",
+            "component": "Stack",
+            "direction": "horizontal",
             "children": [
-              "wf-status",
-              "wf-name",
+              "wf-lead",
               "wf-when"
-            ]
+            ],
+            "align": "center",
+            "justify": "spaceBetween"
+          },
+          {
+            "id": "wf-lead",
+            "component": "Stack",
+            "direction": "horizontal",
+            "children": [
+              "wf-name",
+              "wf-status"
+            ],
+            "align": "center"
+          },
+          {
+            "id": "wf-name",
+            "component": "Heading",
+            "text": {
+              "path": "name"
+            },
+            "size": "small"
           },
           {
             "id": "wf-status",
@@ -128,24 +152,18 @@
             }
           },
           {
-            "id": "wf-name",
-            "component": "Text",
-            "text": {
-              "path": "name"
-            },
-            "variant": "h4"
-          },
-          {
             "id": "wf-when",
             "component": "Text",
             "text": {
               "path": "when"
             },
-            "variant": "caption"
+            "tone": "muted",
+            "size": "small"
           },
           {
             "id": "job-list",
-            "component": "Column",
+            "component": "List",
+            "connector": "tree",
             "children": {
               "path": "jobs",
               "componentId": "job-row"
@@ -153,8 +171,7 @@
           },
           {
             "id": "job-row",
-            "component": "Button",
-            "variant": "borderless",
+            "component": "ListItem",
             "child": "job-body",
             "action": {
               "event": {
@@ -169,21 +186,32 @@
           },
           {
             "id": "job-body",
-            "component": "Row",
-            "justify": "spaceBetween",
+            "component": "Stack",
+            "direction": "horizontal",
+            "children": [
+              "job-lead",
+              "job-duration"
+            ],
             "align": "center",
+            "justify": "spaceBetween"
+          },
+          {
+            "id": "job-lead",
+            "component": "Stack",
+            "direction": "horizontal",
             "children": [
               "job-status",
-              "job-name",
-              "job-duration"
-            ]
+              "job-name"
+            ],
+            "align": "center"
           },
           {
             "id": "job-status",
-            "component": "StatusBadge",
+            "component": "StatusIcon",
             "status": {
               "path": "status"
-            }
+            },
+            "size": "small"
           },
           {
             "id": "job-name",
@@ -198,11 +226,13 @@
             "text": {
               "path": "duration"
             },
-            "variant": "caption"
+            "tone": "muted",
+            "size": "small"
           },
           {
             "id": "wf-actions",
-            "component": "Row",
+            "component": "Stack",
+            "direction": "horizontal",
             "children": [
               "rerun-failed",
               "rerun-all"
@@ -211,7 +241,7 @@
           {
             "id": "rerun-failed",
             "component": "Button",
-            "child": "rerun-failed-label",
+            "label": "Rerun from failed",
             "action": {
               "event": {
                 "name": "rerun-workflow",
@@ -225,15 +255,9 @@
             }
           },
           {
-            "id": "rerun-failed-label",
-            "component": "Text",
-            "text": "Rerun from failed"
-          },
-          {
             "id": "rerun-all",
             "component": "Button",
-            "variant": "borderless",
-            "child": "rerun-all-label",
+            "label": "Rerun from start",
             "action": {
               "event": {
                 "name": "rerun-workflow",
@@ -245,11 +269,6 @@
                 }
               }
             }
-          },
-          {
-            "id": "rerun-all-label",
-            "component": "Text",
-            "text": "Rerun from start"
           }
         ]
       }

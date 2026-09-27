@@ -49,43 +49,76 @@
         "components": [
           {
             "id": "root",
-            "component": "Card",
+            "component": "Panel",
             "child": "body"
           },
           {
             "id": "body",
-            "component": "Column",
+            "component": "Stack",
+            "gap": "medium",
             "children": [
               "heading",
-              "step-row",
-              "divider",
-              "log",
+              "step",
               "actions"
             ]
           },
           {
             "id": "heading",
-            "component": "Text",
+            "component": "Heading",
             "text": {
               "path": "/job/name"
             },
-            "variant": "h3"
+            "size": "large"
           },
           {
-            "id": "step-row",
-            "component": "Row",
-            "justify": "spaceBetween",
+            "id": "step",
+            "component": "Panel",
+            "tone": "danger",
+            "padding": "small",
+            "child": "step-body"
+          },
+          {
+            "id": "step-body",
+            "component": "Stack",
             "children": [
-              "step-name",
-              "step-exit"
+              "step-top",
+              "log"
             ]
+          },
+          {
+            "id": "step-top",
+            "component": "Stack",
+            "direction": "horizontal",
+            "children": [
+              "step-lead",
+              "step-exit"
+            ],
+            "align": "center",
+            "justify": "spaceBetween"
+          },
+          {
+            "id": "step-lead",
+            "component": "Stack",
+            "direction": "horizontal",
+            "children": [
+              "step-status",
+              "step-name"
+            ],
+            "align": "center"
+          },
+          {
+            "id": "step-status",
+            "component": "StatusIcon",
+            "status": "Failed",
+            "size": "small"
           },
           {
             "id": "step-name",
             "component": "Text",
             "text": {
               "path": "/step/name"
-            }
+            },
+            "weight": "medium"
           },
           {
             "id": "step-exit",
@@ -93,15 +126,12 @@
             "text": {
               "path": "/step/exitCode"
             },
-            "variant": "caption"
-          },
-          {
-            "id": "divider",
-            "component": "Divider"
+            "tone": "muted",
+            "size": "small"
           },
           {
             "id": "log",
-            "component": "Column",
+            "component": "LogBlock",
             "children": {
               "path": "/lines",
               "componentId": "log-line"
@@ -109,15 +139,15 @@
           },
           {
             "id": "log-line",
-            "component": "Text",
+            "component": "LogLine",
             "text": {
               "path": "text"
-            },
-            "variant": "caption"
+            }
           },
           {
             "id": "actions",
-            "component": "Row",
+            "component": "Stack",
+            "direction": "horizontal",
             "children": [
               "rerun-failed"
             ]
@@ -125,7 +155,7 @@
           {
             "id": "rerun-failed",
             "component": "Button",
-            "child": "rerun-failed-label",
+            "label": "Rerun from failed",
             "action": {
               "event": {
                 "name": "rerun-workflow",
@@ -137,11 +167,6 @@
                 }
               }
             }
-          },
-          {
-            "id": "rerun-failed-label",
-            "component": "Text",
-            "text": "Rerun from failed"
           }
         ]
       }

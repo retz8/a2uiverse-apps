@@ -77,12 +77,13 @@
         "components": [
           {
             "id": "root",
-            "component": "Card",
+            "component": "Panel",
             "child": "body"
           },
           {
             "id": "body",
-            "component": "Column",
+            "component": "Stack",
+            "gap": "medium",
             "children": [
               "heading",
               "sub",
@@ -91,9 +92,9 @@
           },
           {
             "id": "heading",
-            "component": "Text",
+            "component": "Heading",
             "text": "Recent pipelines",
-            "variant": "h3"
+            "size": "large"
           },
           {
             "id": "sub",
@@ -101,11 +102,11 @@
             "text": {
               "path": "/project"
             },
-            "variant": "caption"
+            "tone": "muted"
           },
           {
             "id": "run-list",
-            "component": "Column",
+            "component": "List",
             "children": {
               "path": "/runs",
               "componentId": "run-row"
@@ -113,8 +114,7 @@
           },
           {
             "id": "run-row",
-            "component": "Button",
-            "variant": "borderless",
+            "component": "ListItem",
             "child": "run-body",
             "action": {
               "event": {
@@ -129,24 +129,34 @@
           },
           {
             "id": "run-body",
-            "component": "Column",
+            "component": "Stack",
+            "gap": "xsmall",
             "children": [
               "run-top",
-              "run-subject",
               "run-meta",
               "run-workflows"
             ]
           },
           {
             "id": "run-top",
-            "component": "Row",
-            "justify": "spaceBetween",
+            "component": "Stack",
+            "direction": "horizontal",
+            "children": [
+              "run-lead",
+              "run-when"
+            ],
             "align": "center",
+            "justify": "spaceBetween"
+          },
+          {
+            "id": "run-lead",
+            "component": "Stack",
+            "direction": "horizontal",
             "children": [
               "run-status",
-              "run-branch",
-              "run-when"
-            ]
+              "run-branch"
+            ],
+            "align": "center"
           },
           {
             "id": "run-status",
@@ -160,7 +170,8 @@
             "component": "Text",
             "text": {
               "path": "branch"
-            }
+            },
+            "weight": "medium"
           },
           {
             "id": "run-when",
@@ -168,22 +179,19 @@
             "text": {
               "path": "when"
             },
-            "variant": "caption"
-          },
-          {
-            "id": "run-subject",
-            "component": "Text",
-            "text": {
-              "path": "subject"
-            }
+            "tone": "muted",
+            "size": "small"
           },
           {
             "id": "run-meta",
-            "component": "Row",
+            "component": "Stack",
+            "direction": "horizontal",
             "children": [
               "run-commit",
+              "run-subject",
               "run-author"
-            ]
+            ],
+            "align": "baseline"
           },
           {
             "id": "run-commit",
@@ -191,7 +199,16 @@
             "text": {
               "path": "commit"
             },
-            "variant": "caption"
+            "font": "mono",
+            "tone": "muted"
+          },
+          {
+            "id": "run-subject",
+            "component": "Text",
+            "text": {
+              "path": "subject"
+            },
+            "truncate": true
           },
           {
             "id": "run-author",
@@ -199,11 +216,13 @@
             "text": {
               "path": "author"
             },
-            "variant": "caption"
+            "tone": "muted",
+            "size": "small"
           },
           {
             "id": "run-workflows",
-            "component": "Column",
+            "component": "List",
+            "connector": "tree",
             "children": {
               "path": "workflows",
               "componentId": "wf-row"
@@ -211,12 +230,26 @@
           },
           {
             "id": "wf-row",
-            "component": "Row",
-            "justify": "spaceBetween",
+            "component": "ListItem",
+            "child": "wf-body"
+          },
+          {
+            "id": "wf-body",
+            "component": "Stack",
+            "direction": "horizontal",
             "children": [
-              "wf-name",
-              "wf-status"
-            ]
+              "wf-status",
+              "wf-name"
+            ],
+            "align": "center"
+          },
+          {
+            "id": "wf-status",
+            "component": "StatusIcon",
+            "status": {
+              "path": "status"
+            },
+            "size": "small"
           },
           {
             "id": "wf-name",
@@ -224,14 +257,7 @@
             "text": {
               "path": "name"
             },
-            "variant": "caption"
-          },
-          {
-            "id": "wf-status",
-            "component": "StatusBadge",
-            "status": {
-              "path": "status"
-            }
+            "size": "small"
           }
         ]
       }
