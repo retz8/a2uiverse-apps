@@ -1,8 +1,7 @@
 /**
- * How a workflow state is drawn. Keyed on the state's type as Linear's server returns it
- * (`statusType`), falling back to Linear's default state names when the type is missing or
- * unknown. A started state is drawn part-filled; Linear's default "In Review" state is drawn
- * with more of the circle filled than "In Progress", in its own color.
+ * How a workflow state is drawn, keyed on its type as the data carries it (`statusType`), falling
+ * back to Linear's default state names when the type is missing or unknown. A started state named
+ * like a review is drawn further along than one in progress.
  */
 export type StatusTone =
   'backlog' | 'unstarted' | 'started' | 'review' | 'completed' | 'canceled' | 'triage' | 'neutral';
@@ -38,5 +37,5 @@ export function toneOf(type: string, status: string): StatusTone {
   return byType ?? byName ?? 'neutral';
 }
 
-/** The share of the circle a started state fills. */
+/** The share of the centre a started state fills. */
 export const FILL: Partial<Record<StatusTone, number>> = {started: 0.5, review: 0.75};

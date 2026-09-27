@@ -16,6 +16,7 @@
         "surfaceId": "issue-detail",
         "path": "/",
         "value": {
+          "team": "Engineering",
           "id": "ENG-212",
           "title": "Retry webhook deliveries with exponential backoff",
           "status": "In Progress",
@@ -53,30 +54,42 @@
         "components": [
           {
             "id": "root",
-            "component": "Card",
+            "component": "Panel",
+            "padding": "none",
             "child": "body"
           },
           {
             "id": "body",
-            "component": "Column",
+            "component": "Stack",
+            "gap": "none",
             "children": [
-              "identifier",
-              "title",
-              "props",
-              "divider-1",
-              "description",
-              "links",
-              "divider-2",
-              "activity"
+              "header",
+              "content"
             ]
           },
           {
-            "id": "identifier",
-            "component": "Text",
-            "text": {
-              "path": "/id"
+            "id": "header",
+            "component": "ViewHeader",
+            "context": {
+              "path": "/team"
             },
-            "variant": "caption"
+            "title": {
+              "path": "/id"
+            }
+          },
+          {
+            "id": "content",
+            "component": "Stack",
+            "padding": "l",
+            "gap": "l",
+            "children": [
+              "title",
+              "props",
+              "divider",
+              "description",
+              "links",
+              "activity"
+            ]
           },
           {
             "id": "title",
@@ -84,38 +97,23 @@
             "text": {
               "path": "/title"
             },
-            "variant": "h3"
+            "variant": "title"
           },
           {
             "id": "props",
-            "component": "Column",
+            "component": "Stack",
+            "gap": "xs",
             "children": [
-              "status-row",
-              "priority-row",
-              "assignee-row",
-              "labels-row"
+              "status-prop",
+              "priority-prop",
+              "assignee-prop",
+              "labels-prop"
             ]
           },
           {
-            "id": "status-row",
-            "component": "Row",
-            "align": "center",
-            "children": [
-              "status-label",
-              "status-value"
-            ]
-          },
-          {
-            "id": "status-label",
-            "component": "Text",
-            "text": "Status",
-            "variant": "caption",
-            "weight": 1
-          },
-          {
-            "id": "status-value",
-            "component": "Row",
-            "align": "center",
+            "id": "status-prop",
+            "component": "Property",
+            "label": "Status",
             "children": [
               "status-icon",
               "status-name"
@@ -139,25 +137,9 @@
             }
           },
           {
-            "id": "priority-row",
-            "component": "Row",
-            "align": "center",
-            "children": [
-              "priority-label",
-              "priority-value"
-            ]
-          },
-          {
-            "id": "priority-label",
-            "component": "Text",
-            "text": "Priority",
-            "variant": "caption",
-            "weight": 1
-          },
-          {
-            "id": "priority-value",
-            "component": "Row",
-            "align": "center",
+            "id": "priority-prop",
+            "component": "Property",
+            "label": "Priority",
             "children": [
               "priority-icon",
               "priority-name"
@@ -178,28 +160,20 @@
             }
           },
           {
-            "id": "assignee-row",
-            "component": "Row",
-            "align": "center",
+            "id": "assignee-prop",
+            "component": "Property",
+            "label": "Assignee",
             "children": [
-              "assignee-label",
-              "assignee-value"
-            ]
-          },
-          {
-            "id": "assignee-label",
-            "component": "Text",
-            "text": "Assignee",
-            "variant": "caption",
-            "weight": 1
-          },
-          {
-            "id": "assignee-value",
-            "component": "Row",
-            "align": "center",
-            "children": [
+              "assignee-avatar",
               "assignee-name"
             ]
+          },
+          {
+            "id": "assignee-avatar",
+            "component": "Avatar",
+            "name": {
+              "path": "/assignee"
+            }
           },
           {
             "id": "assignee-name",
@@ -209,50 +183,35 @@
             }
           },
           {
-            "id": "labels-row",
-            "component": "Row",
-            "align": "center",
+            "id": "labels-prop",
+            "component": "Property",
+            "label": "Labels",
             "children": [
-              "labels-label",
-              "labels-value"
+              "labels-chip"
             ]
           },
           {
-            "id": "labels-label",
-            "component": "Text",
-            "text": "Labels",
-            "variant": "caption",
-            "weight": 1
-          },
-          {
-            "id": "labels-value",
-            "component": "Row",
-            "align": "center",
-            "children": [
-              "labels-names"
-            ]
-          },
-          {
-            "id": "labels-names",
-            "component": "Text",
-            "text": {
+            "id": "labels-chip",
+            "component": "Chip",
+            "label": {
               "path": "/labels"
             }
           },
           {
-            "id": "divider-1",
+            "id": "divider",
             "component": "Divider"
           },
           {
             "id": "description",
-            "component": "Text",
+            "component": "Markdown",
             "text": {
               "path": "/description"
             }
           },
           {
             "id": "links",
-            "component": "Column",
+            "component": "Section",
+            "title": "Links",
             "children": [
               "pr-list",
               "branch"
@@ -260,7 +219,8 @@
           },
           {
             "id": "pr-list",
-            "component": "Column",
+            "component": "Stack",
+            "gap": "xs",
             "children": {
               "path": "/pullRequests",
               "componentId": "pr-row"
@@ -268,12 +228,20 @@
           },
           {
             "id": "pr-row",
-            "component": "Row",
+            "component": "Stack",
+            "direction": "horizontal",
+            "gap": "s",
             "align": "center",
             "children": [
+              "pr-icon",
               "pr-title",
               "pr-number"
             ]
+          },
+          {
+            "id": "pr-icon",
+            "component": "Icon",
+            "name": "pull-request"
           },
           {
             "id": "pr-title",
@@ -281,7 +249,7 @@
             "text": {
               "path": "title"
             },
-            "weight": 1
+            "weight": "medium"
           },
           {
             "id": "pr-number",
@@ -293,6 +261,22 @@
           },
           {
             "id": "branch",
+            "component": "Stack",
+            "direction": "horizontal",
+            "gap": "s",
+            "align": "center",
+            "children": [
+              "branch-icon",
+              "branch-name"
+            ]
+          },
+          {
+            "id": "branch-icon",
+            "component": "Icon",
+            "name": "branch"
+          },
+          {
+            "id": "branch-name",
             "component": "Text",
             "text": {
               "path": "/branch"
@@ -300,12 +284,9 @@
             "variant": "caption"
           },
           {
-            "id": "divider-2",
-            "component": "Divider"
-          },
-          {
             "id": "activity",
-            "component": "Column",
+            "component": "Section",
+            "title": "Activity",
             "children": {
               "path": "/comments",
               "componentId": "comment"
@@ -313,7 +294,8 @@
           },
           {
             "id": "comment",
-            "component": "Column",
+            "component": "Stack",
+            "gap": "xs",
             "children": [
               "comment-meta",
               "comment-body"
@@ -321,11 +303,22 @@
           },
           {
             "id": "comment-meta",
-            "component": "Row",
+            "component": "Stack",
+            "direction": "horizontal",
+            "gap": "s",
+            "align": "center",
             "children": [
+              "comment-avatar",
               "comment-author",
               "comment-when"
             ]
+          },
+          {
+            "id": "comment-avatar",
+            "component": "Avatar",
+            "name": {
+              "path": "author"
+            }
           },
           {
             "id": "comment-author",
@@ -333,7 +326,7 @@
             "text": {
               "path": "author"
             },
-            "variant": "caption"
+            "weight": "medium"
           },
           {
             "id": "comment-when",
@@ -345,7 +338,7 @@
           },
           {
             "id": "comment-body",
-            "component": "Text",
+            "component": "Markdown",
             "text": {
               "path": "body"
             }

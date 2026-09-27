@@ -1,7 +1,7 @@
 {
   "name": "linear-catalog",
   "version": "0.1.0",
-  "description": "The Linear app catalog: the A2UI basic catalog under a product theme, as schema + implementation + Provider. The host supplies React, the A2UI runtime, and zod.",
+  "description": "The Linear app catalog: Linear's component vocabulary in its design language, as schema + implementation + Provider, with Inter. The host supplies React, the A2UI runtime, and zod.",
   "license": "MIT",
   "repository": {
     "type": "git",

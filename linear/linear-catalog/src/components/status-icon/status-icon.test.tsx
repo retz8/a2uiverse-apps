@@ -1,31 +1,32 @@
-import {render, screen} from '@testing-library/react';
+import {render} from '@testing-library/react';
 import {expect, test} from 'vitest';
 import {StatusIconView} from './status-icon';
 import {toneOf} from './tone';
 
-test("the server's state types decide the drawing", () => {
+test('the state type decides the drawing', () => {
   expect(toneOf('backlog', 'Backlog')).toBe('backlog');
   expect(toneOf('unstarted', 'Todo')).toBe('unstarted');
   expect(toneOf('started', 'In Progress')).toBe('started');
-  expect(toneOf('completed', 'Done')).toBe('completed');
-  expect(toneOf('canceled', 'Canceled')).toBe('canceled');
+  expect(toneOf('started', 'In Review')).toBe('review');
+  expect(toneOf('completed', 'Shipped')).toBe('completed');
   expect(toneOf('duplicate', 'Duplicate')).toBe('canceled');
 });
 
-test('a team-named started state draws as started; In Review keeps its own look', () => {
-  expect(toneOf('started', 'Coding')).toBe('started');
-  expect(toneOf('started', 'In Review')).toBe('review');
+test('a missing type falls back to the default state names', () => {
+  expect(toneOf('', 'In Progress')).toBe('started');
+  expect(toneOf('', 'Something else')).toBe('neutral');
 });
 
-test("with no type, Linear's default names still resolve; anything else is neutral", () => {
-  expect(toneOf('', 'Todo')).toBe('unstarted');
-  expect(toneOf('', 'Done')).toBe('completed');
-  expect(toneOf('', 'Waiting')).toBe('neutral');
+test('the glyph is labelled with the team’s own name for the state', () => {
+  const {getByRole} = render(<StatusIconView status="In Review" type="started" />);
+  const icon = getByRole('img', {name: 'In Review'});
+  expect(icon.getAttribute('data-tone')).toBe('review');
 });
 
-test("the icon is labelled with the team's own name for the state", () => {
-  render(<StatusIconView status="In Progress" type="started" />);
-  const icon = screen.getByRole('img', {name: 'In Progress'});
-  expect(icon).toHaveAttribute('data-tone', 'started');
-  expect(icon).toHaveClass('linear-status');
+test('backlog is a dashed ring; completed a disc with a mark', () => {
+  const {container, rerender} = render(<StatusIconView status="Backlog" type="backlog" />);
+  expect(container.querySelector('circle')?.getAttribute('stroke-dasharray')).toBeTruthy();
+  rerender(<StatusIconView status="Done" type="completed" />);
+  expect(container.querySelector('circle')?.getAttribute('fill')).toBe('currentColor');
+  expect(container.querySelector('path')).not.toBeNull();
 });

@@ -2,20 +2,15 @@ import {z} from 'zod';
 import {CommonSchemas} from '@a2ui/web_core/v0_9';
 
 /**
- * Runtime (zod) representation of `PriorityIcon`, props-only. Mirrors the component's entry in
- * `catalogs/v0.9.1/catalog.json` — the parity test keeps the two in lockstep.
- *
- * `priority` is bound runtime state, per row in a list template: Linear's word for the
- * priority, which decides the drawing and is the icon's label.
+ * A priority's glyph: bars rising with the priority, a mark for urgent, dashes for none.
+ * `priority` is the priority's name as the data carries it — Urgent, High, Medium, Low, No
+ * priority — or its number, 0 to 4; it is also the glyph's label. Bind it per row in a list.
  */
 export const PriorityIconApi = {
   name: 'PriorityIcon',
   schema: z
     .object({
       priority: CommonSchemas.DynamicString,
-      weight: z.number().optional(),
     })
     .strict(),
 } as const;
-
-export type PriorityIconProps = z.infer<typeof PriorityIconApi.schema>;

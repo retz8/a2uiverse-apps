@@ -1,6 +1,6 @@
 # Linear agent
 
-An A2A agent for Linear. It answers issue-tracking questions by painting A2UI surfaces with [`linear-catalog`](../linear-catalog/), the basic A2UI catalog in Linear's look. It runs on port **11005** and is built on [`a2ui-agent-kit`](../../agent-kit/).
+An A2A agent for Linear. It answers issue-tracking questions by painting A2UI surfaces with [`linear-catalog`](../linear-catalog/), Linear's own set of A2UI components in its look. It runs on port **11005** and is built on [`a2ui-agent-kit`](../../agent-kit/).
 
 ## What it can do
 
@@ -57,6 +57,14 @@ uv run pytest tests/test_corpus_is_publishable.py
 ```
 
 Recording's last step **really changes** an issue's status in the workspace.
+
+To repaint the beats after a catalog change, record them against the stub instead: the model paints over the recorded data, nothing reaches Linear, and only the deterministic corpus is derived again. The stub holds A2U-5 as the live run left it, already In Progress, so for the recording set its `status` in `app/fixtures/stub/get-issue.json` to `In Review`, as the live run first read it, and put the file back afterwards; otherwise beat 3 has nothing to propose.
+
+```bash
+A2UI_RECORD_DIR=<scratch dir> uv run python -m app --mode stub --host localhost
+uv run python scripts/record_beats.py --model <model> --record-dir <scratch dir>
+uv run python scripts/derive_corpus.py --beats-only
+```
 
 Values stay real except your email: while recording, the agent replaces the key owner's address with `me@example.com` before the model reads anything. Set a full name on the Linear account first. Without one, Linear shows the email as your name, and every assignee and author records as the placeholder. The last test fails the recordings on anything token-shaped or any other email address.
 

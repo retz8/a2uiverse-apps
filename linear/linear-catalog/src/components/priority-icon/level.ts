@@ -1,7 +1,4 @@
-/**
- * A priority's level, from Linear's word for it (`priority.name`) or its number
- * (`priority.value`: 0 none, 1 urgent, 2 high, 3 medium, 4 low).
- */
+/** A priority's level, from its name or its number: 0 none, 1 urgent, 2 high, 3 medium, 4 low. */
 export type PriorityLevel = 'urgent' | 'high' | 'medium' | 'low' | 'none';
 
 const LEVELS: Record<string, PriorityLevel> = {

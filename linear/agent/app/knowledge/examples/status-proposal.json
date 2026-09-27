@@ -16,6 +16,7 @@
         "surfaceId": "status-proposal",
         "path": "/",
         "value": {
+          "team": "Engineering",
           "id": "ENG-230",
           "title": "Empty state for the archive view",
           "from": "Todo",
@@ -32,68 +33,66 @@
         "components": [
           {
             "id": "root",
-            "component": "Card",
+            "component": "Panel",
+            "padding": "none",
             "child": "body"
           },
           {
             "id": "body",
-            "component": "Column",
+            "component": "Stack",
+            "gap": "none",
             "children": [
-              "heading",
-              "issue",
+              "header",
+              "content"
+            ]
+          },
+          {
+            "id": "header",
+            "component": "ViewHeader",
+            "context": {
+              "path": "/team"
+            },
+            "title": {
+              "path": "/id"
+            }
+          },
+          {
+            "id": "content",
+            "component": "Stack",
+            "padding": "l",
+            "gap": "m",
+            "children": [
+              "question",
+              "issue-title",
               "change",
               "actions"
             ]
           },
           {
-            "id": "heading",
+            "id": "question",
             "component": "Text",
             "text": "Change this issue's status?",
-            "variant": "h3"
-          },
-          {
-            "id": "issue",
-            "component": "Row",
-            "align": "center",
-            "children": [
-              "issue-id",
-              "issue-title"
-            ]
-          },
-          {
-            "id": "issue-id",
-            "component": "Text",
-            "text": {
-              "path": "/id"
-            },
-            "variant": "caption"
+            "variant": "title"
           },
           {
             "id": "issue-title",
             "component": "Text",
             "text": {
               "path": "/title"
-            }
+            },
+            "weight": "medium"
           },
           {
             "id": "change",
-            "component": "Row",
-            "align": "center",
+            "component": "Property",
+            "label": "Status",
             "children": [
-              "change-label",
               "from-icon",
               "from-name",
               "arrow",
               "to-icon",
               "to-name"
             ]
-          },
-          {
-            "id": "change-label",
-            "component": "Text",
-            "text": "Status",
-            "variant": "caption",
-            "weight": 1
           },
           {
             "id": "from-icon",
@@ -114,9 +113,8 @@
           },
           {
             "id": "arrow",
-            "component": "Text",
-            "text": "→",
-            "variant": "caption"
+            "component": "Icon",
+            "name": "arrow-right"
           },
           {
             "id": "to-icon",
@@ -137,7 +135,9 @@
           },
           {
             "id": "actions",
-            "component": "Row",
+            "component": "Stack",
+            "direction": "horizontal",
+            "gap": "s",
             "children": [
               "confirm",
               "decline"
@@ -147,7 +147,7 @@
             "id": "confirm",
             "component": "Button",
             "variant": "primary",
-            "child": "confirm-label",
+            "label": "Move to In Progress",
             "action": {
               "event": {
                 "name": "confirm-change",
@@ -163,15 +163,10 @@
             }
           },
           {
-            "id": "confirm-label",
-            "component": "Text",
-            "text": "Move to In Progress"
-          },
-          {
             "id": "decline",
             "component": "Button",
-            "variant": "borderless",
-            "child": "decline-label",
+            "variant": "ghost",
+            "label": "Keep as is",
             "action": {
               "event": {
                 "name": "decline-change",
@@ -182,11 +177,6 @@
                 }
               }
             }
-          },
-          {
-            "id": "decline-label",
-            "component": "Text",
-            "text": "Keep as is"
           }
         ]
       }

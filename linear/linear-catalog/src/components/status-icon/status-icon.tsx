@@ -2,83 +2,83 @@ import {createComponentImplementation} from '@a2ui/react/v0_9';
 import {StatusIconApi} from './status-icon.schema.js';
 import {FILL, toneOf, type StatusTone} from './tone.js';
 
-// Measured on Linear's status icons: a ring about a seventh of the diameter wide, a wedge about
-// 0.55 of the outer radius, twelve dashes around a backlog ring.
+// Drawn for this catalog on a 14-unit grid: a ring of radius 5.5, a centre of radius 3.
 const C = 7;
-const R = 6;
-const RING = 2;
-const DASH = (2 * Math.PI * R) / 24;
+const RING = 5.5;
+const STROKE = 1.5;
+const CORE = 3;
+/** Eight dashes around a backlog ring. */
+const DASH = (2 * Math.PI * RING) / 16;
 
-/** A pie wedge from twelve o'clock, clockwise, covering `share` of the inner disc. */
-function wedge(share: number): string {
-  const r = 3.85;
+/** A wedge from twelve o'clock, clockwise, covering `share` of the centre. */
+export function wedge(share: number): string {
   const angle = share * 2 * Math.PI;
-  const x = C + r * Math.sin(angle);
-  const y = C - r * Math.cos(angle);
+  const x = C + CORE * Math.sin(angle);
+  const y = C - CORE * Math.cos(angle);
   const large = share > 0.5 ? 1 : 0;
-  return `M ${C} ${C} L ${C} ${C - r} A ${r} ${r} 0 ${large} 1 ${x.toFixed(3)} ${y.toFixed(3)} Z`;
+  return `M${C} ${C}L${C} ${C - CORE}A${CORE} ${CORE} 0 ${large} 1 ${x.toFixed(3)} ${y.toFixed(3)}Z`;
 }
+
+const ring = (dashed = false) => (
+  <circle
+    cx={C}
+    cy={C}
+    r={RING}
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={STROKE}
+    strokeDasharray={dashed ? `${DASH} ${DASH}` : undefined}
+  />
+);
+
+/** A filled disc with a mark knocked out of it in the panel's colour. */
+const disc = (mark: string) => (
+  <>
+    <circle cx={C} cy={C} r={RING + STROKE / 2} fill="currentColor" />
+    <path
+      d={mark}
+      className="lc-knockout"
+      fill="none"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </>
+);
 
 function Glyph({tone}: {tone: StatusTone}) {
   switch (tone) {
     case 'backlog':
-      return (
-        <circle
-          cx={C}
-          cy={C}
-          r={R}
-          fill="none"
-          stroke="currentColor"
-          strokeWidth={RING}
-          strokeDasharray={`${DASH} ${DASH}`}
-        />
-      );
+      return ring(true);
     case 'started':
     case 'review':
       return (
         <>
-          <circle cx={C} cy={C} r={R} fill="none" stroke="currentColor" strokeWidth={RING} />
+          {ring()}
           <path d={wedge(FILL[tone] ?? 0.5)} fill="currentColor" />
         </>
       );
     case 'completed':
-      return (
-        <>
-          <circle cx={C} cy={C} r={R + RING / 2} fill="currentColor" />
-          <path
-            d="M4.3 7.2 L6.2 9 L9.8 5.2"
-            fill="none"
-            stroke="var(--linear-icon-knockout, #ffffff)"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </>
-      );
+      return disc('M4.5 7.25 6.25 9 9.5 5.25');
     case 'canceled':
+      return disc('M5 5l4 4M9 5 5 9');
+    case 'triage':
       return (
         <>
-          <circle cx={C} cy={C} r={R + RING / 2} fill="currentColor" />
-          <path
-            d="M5 5 L9 9 M9 5 L5 9"
-            fill="none"
-            stroke="var(--linear-icon-knockout, #ffffff)"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-          />
+          {ring()}
+          <circle cx={C} cy={C} r={1.5} fill="currentColor" />
         </>
       );
     default:
-      return <circle cx={C} cy={C} r={R} fill="none" stroke="currentColor" strokeWidth={RING} />;
+      return ring();
   }
 }
 
-/** Resolved props: plain strings after the binder resolves the DynamicStrings. */
 export function StatusIconView({status, type}: {status: string; type: string}) {
   const tone = toneOf(type, status);
   return (
     <svg
-      className="linear-status"
+      className="lc-status"
       data-tone={tone}
       role="img"
       aria-label={status}
@@ -92,7 +92,6 @@ export function StatusIconView({status, type}: {status: string; type: string}) {
   );
 }
 
-/** Catalog entry: the generic binder resolves props, then renders StatusIconView. */
 export const StatusIcon = createComponentImplementation(StatusIconApi, ({props}) => (
   <StatusIconView status={props.status ?? ''} type={props.type ?? ''} />
 ));

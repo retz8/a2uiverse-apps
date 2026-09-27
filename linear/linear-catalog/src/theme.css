@@ -1,179 +1,562 @@
 /*
- * Linear product styling over the basic catalog's runtime DOM, scoped to the Provider's wrapper
- * class. Upstream ships no classes on Button, Row, Column or caption Text (its CSS-module maps
- * compile to empty objects), so the hooks are element and structural selectors: a tappable row
- * is a Button wrapping a classless layout div, an action button is a Button wrapping a lone
- * `.body` Text, and a caption is a `span > em`.
- *
- * Values are Linear's, measured on its web app's documentation screenshots — see provider.tsx.
- * A status and a priority are drawn by the catalog's two product components, StatusIcon and
- * PriorityIcon, which carry what they draw as attributes — no basic component can vary a row's
- * look by data.
- *
- * Every var() read carries a fallback: the token definitions live as inline style on the
- * wrapper, which stylesheet analysis cannot see.
+ * The Linear catalog's sheet, scoped to the Provider's wrapper class. Every class the catalog
+ * renders is prefixed `lc-`. The tokens are inline style on the wrapper, which stylesheet
+ * analysis cannot see, so every var() read carries a fallback: the light palette's value.
  */
 
-/* Neutralize UA button chrome; rows and action buttons both build on this. */
-.linear-catalog button {
-  font: inherit;
-  appearance: none;
-  color: inherit;
-  text-align: left;
-  cursor: pointer;
-  border: none;
-  background: none;
+/* Inter, with its optical sizes from text to display; OFL-1.1, see fonts/OFL.txt. */
+@font-face {
+  font-family: 'linear-catalog-inter';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url('./fonts/inter-latin-opsz-normal.woff2') format('woff2-variations');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+.linear-catalog {
+  color: var(--lc-text, lch(16.52% 1.57 272));
+  font-size: 14px;
+  line-height: 1.5;
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Panel */
+.linear-catalog .lc-panel {
+  background: var(--lc-surface, lch(98.12% 1.57 272));
+  border: 1px solid var(--lc-border, lch(88.52% 1.57 272));
+  border-radius: 10px;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.linear-catalog .lc-panel[data-padding='normal'] {
+  padding: 16px 20px;
+}
+
+/* Stack */
+.linear-catalog .lc-stack {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.linear-catalog .lc-stack[data-direction='horizontal'] {
+  flex-direction: row;
+}
+
+.linear-catalog .lc-stack[data-wrap] {
+  flex-wrap: wrap;
+}
+
+.linear-catalog .lc-stack[data-gap='none'] {
+  gap: 0;
+}
+.linear-catalog .lc-stack[data-gap='xs'] {
+  gap: 4px;
+}
+.linear-catalog .lc-stack[data-gap='s'] {
+  gap: 8px;
+}
+.linear-catalog .lc-stack[data-gap='m'] {
+  gap: 12px;
+}
+.linear-catalog .lc-stack[data-gap='l'] {
+  gap: 16px;
+}
+.linear-catalog .lc-stack[data-gap='xl'] {
+  gap: 24px;
+}
+
+.linear-catalog .lc-stack[data-padding='s'] {
+  padding: 8px 12px;
+}
+.linear-catalog .lc-stack[data-padding='m'] {
+  padding: 12px 16px;
+}
+.linear-catalog .lc-stack[data-padding='l'] {
+  padding: 20px;
+}
+
+.linear-catalog .lc-stack[data-align='stretch'] {
+  align-items: stretch;
+}
+.linear-catalog .lc-stack[data-align='start'] {
+  align-items: flex-start;
+}
+.linear-catalog .lc-stack[data-align='center'] {
+  align-items: center;
+}
+.linear-catalog .lc-stack[data-align='end'] {
+  align-items: flex-end;
+}
+.linear-catalog .lc-stack[data-align='baseline'] {
+  align-items: baseline;
+}
+
+.linear-catalog .lc-stack[data-justify='center'] {
+  justify-content: center;
+}
+.linear-catalog .lc-stack[data-justify='end'] {
+  justify-content: flex-end;
+}
+.linear-catalog .lc-stack[data-justify='space-between'] {
+  justify-content: space-between;
+}
+
+/* Divider */
+.linear-catalog .lc-divider {
+  align-self: stretch;
   margin: 0;
+  border: 0;
+  border-top: 1px solid var(--lc-border, lch(88.52% 1.57 272));
 }
 
-/* A tappable row: full width, quiet until hovered — Linear's row wash. */
-.linear-catalog button:has(> div:not([class])) {
-  display: block;
-  width: 100%;
-  border-radius: var(--a2ui-border-radius, 6px);
-  padding: 0.375rem 0.75rem;
+/* ViewHeader */
+.linear-catalog .lc-view-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 20px;
+  border-bottom: 1px solid var(--lc-border, lch(88.52% 1.57 272));
+  font-size: 13px;
 }
 
-.linear-catalog button:has(> div:not([class])):hover {
-  background: var(--a2ui-row-hover, #f6f6f7);
+.linear-catalog .lc-view-header-path {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
 }
 
-/* The issue title keeps to one line inside a row. */
-.linear-catalog button .body,
-.linear-catalog button .body > p {
+.linear-catalog .lc-view-header-context {
+  color: var(--lc-text-secondary, lch(44.52% 1.57 272));
+  white-space: nowrap;
+}
+
+.linear-catalog .lc-view-header-sep {
+  color: var(--lc-text-tertiary, lch(58.52% 1.57 272));
+}
+
+.linear-catalog .lc-view-header-title {
+  font-weight: 500;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-/*
- * Body text arrives as rendered Markdown (see markdown.ts): its blocks sit flush with the text
- * around them and are spaced only from each other.
- */
-.linear-catalog .body > p,
-.linear-catalog .body > ul,
-.linear-catalog .body > ol,
-.linear-catalog .body > pre,
-.linear-catalog .body > blockquote {
+.linear-catalog .lc-view-header-trailing {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+}
+
+/* Section */
+.linear-catalog .lc-section-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.linear-catalog .lc-section-title {
   margin: 0;
-}
-
-.linear-catalog .body > * + * {
-  margin-top: 0.5em;
-}
-
-.linear-catalog .body ul,
-.linear-catalog .body ol {
-  padding-left: 1.25em;
-}
-
-.linear-catalog .body code {
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 0.9em;
-  padding: 0.0625rem 0.25rem;
-  border-radius: 4px;
-  background: var(--a2ui-color-secondary, #ededed);
-}
-
-.linear-catalog .body pre code {
-  display: block;
-  padding: 0.5rem 0.75rem;
-  overflow-x: auto;
-}
-
-/* The detail title sits between medium and semibold. */
-.linear-catalog h1,
-.linear-catalog h2,
-.linear-catalog h3,
-.linear-catalog h4,
-.linear-catalog h5 {
+  font-size: 14px;
   font-weight: 600;
+  font-variation-settings: 'opsz' 32;
 }
 
-/* Captions render as <em>: quiet and upright, never italic; identifiers keep even digits. */
-.linear-catalog em {
-  font-style: normal;
-  font-variant-numeric: tabular-nums;
-  color: var(--a2ui-text-caption-color, #5d5d5f);
-}
-
-.linear-catalog a {
-  color: var(--linear-link, #3f60d8);
-}
-
-/* StatusIcon: the workflow-state circle, colored by its tone. */
-.linear-catalog .linear-status,
-.linear-catalog .linear-priority {
-  flex-shrink: 0;
-  display: inline-block;
-  vertical-align: middle;
-}
-
-.linear-catalog .linear-status {
-  color: var(--linear-status-unstarted, #b9b9b9);
-}
-
-.linear-catalog .linear-status[data-tone='backlog'] {
-  color: var(--linear-status-backlog, #959a9f);
-}
-
-.linear-catalog .linear-status[data-tone='started'] {
-  color: var(--linear-status-started, #f0c000);
-}
-
-.linear-catalog .linear-status[data-tone='review'] {
-  color: var(--linear-status-review, #27a644);
-}
-
-.linear-catalog .linear-status[data-tone='completed'] {
-  color: var(--linear-status-completed, #5e6ad3);
-}
-
-.linear-catalog .linear-status[data-tone='canceled'] {
-  color: var(--linear-status-canceled, #96a2b4);
-}
-
-/* PriorityIcon: muted bars; urgent in its own color. */
-.linear-catalog .linear-priority {
-  color: var(--linear-priority, #6d6d6e);
-}
-
-.linear-catalog .linear-priority[data-level='urgent'] {
-  color: var(--linear-priority-urgent, #ff7236);
-}
-
-/* Action buttons: Linear's quiet bordered button; the leading one is the filled primary. */
-.linear-catalog button:has(> .body:only-child) {
-  display: inline-block;
-  width: auto;
-  border-radius: var(--a2ui-button-border-radius, 6px);
-  padding: 0.375rem 0.875rem;
-  border: 1px solid var(--a2ui-color-border, #e0e0e0);
-  color: var(--a2ui-color-on-surface, #1b1b1b);
+.linear-catalog .lc-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 4px;
+  background: var(--lc-band, lch(94.52% 1.57 272));
+  color: var(--lc-text-secondary, lch(44.52% 1.57 272));
+  font-size: 11px;
   font-weight: 500;
 }
 
-.linear-catalog button:has(> .body:only-child):hover {
-  background: var(--a2ui-row-hover, #f6f6f7);
+.linear-catalog .lc-section-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
 }
 
-.linear-catalog button:has(> .body:only-child):first-child {
-  border-color: transparent;
-  background: var(--a2ui-color-primary, #6e78d5);
-  color: var(--a2ui-color-on-primary, #ffffff);
+/* Text */
+.linear-catalog .lc-text {
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
-.linear-catalog button:has(> .body:only-child):first-child:hover {
-  filter: brightness(1.08);
+.linear-catalog .lc-text[data-variant='title'] {
+  font-size: 22px;
+  line-height: 1.3;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  font-variation-settings: 'opsz' 32;
 }
 
-/* Inputs: rounded quiet fields. */
-.linear-catalog input,
-.linear-catalog textarea {
+.linear-catalog .lc-text[data-variant='heading'] {
+  font-size: 15px;
+  line-height: 1.4;
+  font-weight: 600;
+  font-variation-settings: 'opsz' 32;
+}
+
+.linear-catalog .lc-text[data-variant='secondary'] {
+  color: var(--lc-text-secondary, lch(44.52% 1.57 272));
+}
+
+.linear-catalog .lc-text[data-variant='caption'] {
+  font-size: 12px;
+  color: var(--lc-text-secondary, lch(44.52% 1.57 272));
+}
+
+.linear-catalog .lc-text[data-weight='normal'] {
+  font-weight: 400;
+}
+.linear-catalog .lc-text[data-weight='medium'] {
+  font-weight: 500;
+}
+.linear-catalog .lc-text[data-weight='semibold'] {
+  font-weight: 600;
+}
+
+.linear-catalog .lc-text[data-truncate] {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Markdown */
+.linear-catalog .lc-markdown {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.linear-catalog .lc-markdown > * {
+  margin: 0;
+}
+
+.linear-catalog .lc-markdown > * + * {
+  margin-top: 0.5em;
+}
+
+.linear-catalog .lc-markdown ul,
+.linear-catalog .lc-markdown ol {
+  padding-left: 1.25em;
+}
+
+.linear-catalog .lc-markdown code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.9em;
+  padding: 1px 4px;
+  border-radius: 4px;
+  background: var(--lc-band, lch(94.52% 1.57 272));
+}
+
+.linear-catalog .lc-markdown pre code {
+  display: block;
+  padding: 8px 12px;
+  overflow-x: auto;
+}
+
+.linear-catalog .lc-markdown blockquote {
+  padding-left: 12px;
+  border-left: 2px solid var(--lc-border-strong, lch(82.52% 1.57 272));
+  color: var(--lc-text-secondary, lch(44.52% 1.57 272));
+}
+
+/* Button */
+.linear-catalog .lc-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 30px;
+  padding: 0 12px;
+  margin: 0;
+  border: 1px solid transparent;
+  border-radius: 6px;
   font: inherit;
-  border: 1px solid var(--a2ui-color-border, #e0e0e0);
-  border-radius: var(--a2ui-textfield-border-radius, 6px);
-  padding: 0.5rem 0.75rem;
-  background: var(--a2ui-color-input, #fcfcfc);
-  color: var(--a2ui-color-on-input, #1b1b1b);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  appearance: none;
+}
+
+.linear-catalog .lc-button[data-variant='primary'] {
+  background: var(--lc-accent, lch(50% 38 272));
+  color: var(--lc-on-accent, lch(99% 0 0));
+}
+
+.linear-catalog .lc-button[data-variant='primary']:hover {
+  background: var(--lc-accent-hover, lch(46% 38 272));
+}
+
+.linear-catalog .lc-button[data-variant='secondary'] {
+  background: var(--lc-surface, lch(98.12% 1.57 272));
+  border-color: var(--lc-border-strong, lch(82.52% 1.57 272));
+  color: var(--lc-text, lch(16.52% 1.57 272));
+}
+
+.linear-catalog .lc-button[data-variant='ghost'] {
+  background: transparent;
+  color: var(--lc-text-secondary, lch(44.52% 1.57 272));
+}
+
+.linear-catalog .lc-button[data-variant='secondary']:hover,
+.linear-catalog .lc-button[data-variant='ghost']:hover {
+  background: var(--lc-hover, lch(93.02% 1.57 272));
+  color: var(--lc-text, lch(16.52% 1.57 272));
+}
+
+.linear-catalog .lc-button:focus-visible {
+  outline: 2px solid var(--lc-focus, lch(50% 38 272 / 0.5));
+  outline-offset: 1px;
+}
+
+.linear-catalog .lc-button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.linear-catalog .lc-button-leading {
+  display: inline-flex;
+}
+
+/* List, ListGroup, ListItem */
+.linear-catalog .lc-list {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.linear-catalog .lc-list-item + .lc-list-item,
+.linear-catalog .lc-list-group + .lc-list-group {
+  border-top: 1px solid var(--lc-border, lch(88.52% 1.57 272));
+}
+
+.linear-catalog .lc-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 40px;
+  padding: 0 20px;
+}
+
+.linear-catalog .lc-row[data-interactive] {
+  cursor: pointer;
+}
+
+.linear-catalog .lc-row[data-interactive]:hover {
+  background: var(--lc-hover, lch(93.02% 1.57 272));
+}
+
+.linear-catalog .lc-row[data-interactive]:focus-visible {
+  outline: 2px solid var(--lc-focus, lch(50% 38 272 / 0.5));
+  outline-offset: -2px;
+}
+
+.linear-catalog .lc-list-item-leading,
+.linear-catalog .lc-list-item-trailing {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex: none;
+}
+
+/* The content takes what the row leaves and adds nothing to the row's own minimum width. */
+.linear-catalog .lc-list-item-content {
+  flex: 1 1 0;
+  width: 0;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.linear-catalog .lc-list-item-content > .lc-text,
+.linear-catalog .lc-list-item-trailing .lc-text {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.linear-catalog .lc-list-item-trailing {
+  flex: 0 1 auto;
+  max-width: 35%;
+  min-width: 0;
+  overflow: hidden;
+  gap: 8px;
+}
+
+.linear-catalog .lc-list-item-trailing > * {
+  max-width: 220px;
+}
+
+.linear-catalog .lc-list-group-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 36px;
+  padding: 0 20px;
+  background: var(--lc-band, lch(94.52% 1.57 272));
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.linear-catalog .lc-list-group-leading {
+  display: inline-flex;
+}
+
+.linear-catalog .lc-list-group-count {
+  color: var(--lc-text-tertiary, lch(58.52% 1.57 272));
+  font-weight: 400;
+}
+
+.linear-catalog .lc-list-group > .lc-list {
+  border-top: 1px solid var(--lc-border, lch(88.52% 1.57 272));
+}
+
+/* Property */
+.linear-catalog .lc-property {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 30px;
+}
+
+.linear-catalog .lc-property-label {
+  flex: none;
+  width: 88px;
+  font-size: 12px;
+  color: var(--lc-text-secondary, lch(44.52% 1.57 272));
+}
+
+.linear-catalog .lc-property-value {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+/* Chip */
+.linear-catalog .lc-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 24px;
+  padding: 0 9px;
+  border: 1px solid var(--lc-border, lch(88.52% 1.57 272));
+  border-radius: 999px;
+  background: var(--lc-surface, lch(98.12% 1.57 272));
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.linear-catalog .lc-chip-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.linear-catalog .lc-chip-leading {
+  display: inline-flex;
+}
+
+/* Avatar */
+.linear-catalog .lc-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  color: var(--lc-on-accent, lch(99% 0 0));
+  font-size: 9px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.linear-catalog .lc-avatar[data-size='medium'] {
+  width: 24px;
+  height: 24px;
+  font-size: 11px;
+}
+
+/* Icon */
+.linear-catalog .lc-icon {
+  flex: none;
+  color: var(--lc-text-secondary, lch(44.52% 1.57 272));
+}
+
+/* StatusIcon */
+.linear-catalog .lc-status {
+  display: block;
+  flex: none;
+}
+
+.linear-catalog .lc-status[data-tone='backlog'] {
+  color: var(--lc-status-backlog, lch(58.52% 1.57 272));
+}
+.linear-catalog .lc-status[data-tone='unstarted'],
+.linear-catalog .lc-status[data-tone='neutral'] {
+  color: var(--lc-status-unstarted, lch(50.52% 1.57 272));
+}
+.linear-catalog .lc-status[data-tone='started'] {
+  color: var(--lc-status-started, lch(74% 72 84));
+}
+.linear-catalog .lc-status[data-tone='review'] {
+  color: var(--lc-status-review, lch(58% 52 148));
+}
+.linear-catalog .lc-status[data-tone='completed'] {
+  color: var(--lc-status-completed, lch(50% 38 272));
+}
+.linear-catalog .lc-status[data-tone='canceled'] {
+  color: var(--lc-status-canceled, lch(54.52% 1.57 272));
+}
+.linear-catalog .lc-status[data-tone='triage'] {
+  color: var(--lc-status-triage, lch(62% 62 52));
+}
+
+/* A mark knocked out of a filled glyph, in the panel's colour. */
+.linear-catalog .lc-knockout {
+  stroke: var(--lc-knockout, lch(98.12% 1.57 272));
+}
+
+/* PriorityIcon */
+.linear-catalog .lc-priority {
+  display: block;
+  flex: none;
+  color: var(--lc-priority, lch(44.52% 1.57 272));
+}
+
+.linear-catalog .lc-priority rect {
+  fill: var(--lc-priority-empty, lch(78.52% 1.57 272));
+}
+
+.linear-catalog .lc-priority rect[data-filled] {
+  fill: var(--lc-priority, lch(44.52% 1.57 272));
+}
+
+.linear-catalog .lc-priority rect.lc-priority-urgent {
+  fill: var(--lc-priority-urgent, lch(60% 70 42));
 }
