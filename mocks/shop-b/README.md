@@ -26,4 +26,4 @@ Shop A and Shop B are a matched pair for testing [A2UIVerse](https://github.com/
 pnpm dev:all --agents-dir ../a2uiverse-apps/mocks
 ```
 
-[`manifest.json`](manifest.json) is the app's A2UIVerse manifest: its id, agent URL and catalog. It's a placeholder until A2UIVerse's bundle format lands. How the agent and the catalog connect is in their own READMEs: the [agent](agent/README.md#connecting-to-a2uiverse) and the [catalog](shop-b-catalog/README.md#connecting-to-a2uiverse).
+A2UIVerse installs the app from its agent's card, with its catalog packed by Stellify. How the agent and the catalog connect is in their own READMEs: the [agent](agent/README.md#connecting-to-a2uiverse) and the [catalog](shop-b-catalog/README.md#connecting-to-a2uiverse).

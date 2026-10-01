@@ -88,4 +88,4 @@ No model calls and no credentials needed. The scaffolder's own tests also run a 
 
 ## Connecting to A2UIVerse
 
-[A2UIVerse](https://github.com/retz8/a2uiverse)'s launcher starts an agent through this same entrypoint, passing the port from the app's manifest. `paint_meta` is the part A2UIVerse's canvas reads: the paint titles and question marks ride beside the A2UI, and any other client ignores them.
+[A2UIVerse](https://github.com/retz8/a2uiverse)'s launcher starts an agent through this same entrypoint, passing the port from its roster. `paint_meta` is the part A2UIVerse's canvas reads: the paint titles and question marks ride beside the A2UI, and any other client ignores them.

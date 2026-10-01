@@ -74,4 +74,4 @@ The recorded MCP payloads become `app/fixtures/stub/`, and the painted streams b
 
 ## Connecting to A2UIVerse
 
-Put the app folder in A2UIVerse's agents dir, which by default is the `a2uiverse-apps` checkout beside the `a2uiverse` repo, and launch it from the [A2UIVerse](https://github.com/retz8/a2uiverse) repo with `pnpm dev:agents --only __APP_ID__`. The launcher finds the agent through the app's [`manifest.json`](../manifest.json) and starts it on the port listed there. Start agents before the platform, because the orchestrator reads each agent card once, at boot. `pnpm dev:all` does both, in that order.
+Add the app to A2UIVerse's launcher roster, in the [A2UIVerse](https://github.com/retz8/a2uiverse) repo, with its folder in the `a2uiverse-apps` checkout beside it and its port, __PORT__, and launch it from there with `pnpm dev:agents --only __APP_ID__`. The launcher starts the agent on that port, packs the catalog with Stellify, and installs the app into the running A2UIVerse from the agent's card. `pnpm dev:all` starts A2UIVerse and the agents together.

@@ -29,7 +29,10 @@ From this folder:
 pnpm build
 pnpm typecheck
 pnpm test
+pnpm check
 ```
+
+`check` packs the built package with Stellify in memory and runs the gate A2UIVerse runs when it installs the app; it writes nothing.
 
 Two tests keep the halves in step: **parity** checks that `catalog.json` declares exactly the registered components and functions, and **catalog** checks that `CATALOG` holds exactly them too.
 
@@ -51,10 +54,4 @@ Each component takes five steps: its `catalog.json` entry, its zod schema, its r
 
 ## Connecting to A2UIVerse
 
-[A2UIVerse](https://github.com/retz8/a2uiverse)'s client installs the catalog straight from its repo, with no registry:
-
-```json
-"__PACKAGE_NAME__": "github:<owner>/<repo>#path:__REPO_DIRECTORY__"
-```
-
-The client renders every surface carrying `CATALOG_ID` with `CATALOG`, inside `Provider`. Until A2UIVerse installs app bundles, the client also lists every catalog by hand, so add this one to its catalog map. A2UIVerse puts several apps' catalogs on one page, so its collision tests fail if a catalog's styles escape its wrapper.
+[A2UIVerse](https://github.com/retz8/a2uiverse) compiles no catalog in. Its pack tool, [Stellify](https://github.com/retz8/a2uiverse/tree/main/packages/stellify), this package's one dev dependency on the platform, packs the built package into a catalog artifact, and the app is installed with it. A2UIVerse's client loads the artifact at runtime and renders every surface in this catalog with `CATALOG`, inside `Provider`. A2UIVerse puts several apps' catalogs on one page, so its collision detector flags a catalog whose styles escape its wrapper.

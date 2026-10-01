@@ -1,7 +1,7 @@
 """The catalog id this store's surfaces are created against.
 
 Read from the checked-in catalog.json rather than repeated here, so the id has one
-author — the catalog package — exactly as it does for the client and the manifest.
+author — the catalog package — exactly as it does for the client.
 """
 
 from __future__ import annotations

@@ -45,7 +45,7 @@ uv run python -m app --mode deterministic
 
 ## Building a new app
 
-[`create-a2ui-agent`](create-a2ui-agent/) scaffolds a whole app: agent, catalog, manifest and README, running before you edit anything.
+[`create-a2ui-agent`](create-a2ui-agent/) scaffolds a whole app: agent, catalog and README, running before you edit anything.
 
 ```bash
 pnpm install
@@ -90,7 +90,7 @@ Node 22 or newer, with pnpm through Corepack, and [uv](https://docs.astral.sh/uv
 
 ```bash
 pnpm install                        # the catalogs and create-a2ui-agent, one workspace
-pnpm verify                         # build, typecheck, test, lint and format check over all of them
+pnpm verify                         # build, typecheck, test, Stellify's check, lint and format check over all of them
 cd linear/agent && uv run pytest    # an agent's own tests: no model calls, no credentials
 ```
 
@@ -102,7 +102,6 @@ cd linear/agent && uv run pytest    # an agent's own tests: no model calls, no c
   README.md             what the app covers: its MCP server, agent and catalog
   agent/                the A2A agent (Python), its own uv project
   <app>-catalog/        the A2UI catalog: schema, React implementation, Provider
-  manifest.json         the app's A2UIVerse manifest
 agent-kit/              a2ui-agent-kit, the Python kit every agent is built on
 create-a2ui-agent/      the scaffolder for a new app
 mocks/                  the two mock stores and their shared dataset

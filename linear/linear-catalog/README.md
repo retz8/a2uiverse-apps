@@ -62,16 +62,13 @@ The Provider sets its tokens and its font family on its own wrapper element, nev
 ```bash
 pnpm --filter linear-catalog build
 pnpm --filter linear-catalog test
+pnpm --filter linear-catalog check
 ```
+
+`check` packs the built package with Stellify in memory and runs the gate A2UIVerse runs when it installs the app; it writes nothing.
 
 A parity test keeps `catalog.json` and the components' props schemas in step, and a surface test renders every surface the Linear agent paints, its knowledge examples and its deterministic answers, through the real A2UI runtime with this catalog.
 
 ## Connecting to A2UIVerse
 
-[A2UIVerse](https://github.com/retz8/a2uiverse)'s client installs it straight from this repo, with no registry:
-
-```json
-"linear-catalog": "github:retz8/a2uiverse-apps#path:linear/linear-catalog"
-```
-
-The client renders every surface carrying `CATALOG_ID` with `CATALOG`, inside `Provider`. Until A2UIVerse installs app bundles, the client also lists the catalog by hand in its catalog map. A2UIVerse puts several apps' catalogs on one page, so its collision tests fail if a catalog's styles escape its wrapper.
+[A2UIVerse](https://github.com/retz8/a2uiverse) compiles no catalog in. Its pack tool, [Stellify](https://github.com/retz8/a2uiverse/tree/main/packages/stellify), this package's one dev dependency on the platform, packs the built package into a catalog artifact, and the app is installed with it. A2UIVerse's client loads the artifact at runtime and renders every surface in this catalog with `CATALOG`, inside `Provider`. A2UIVerse puts several apps' catalogs on one page, so its collision detector flags a catalog whose styles escape its wrapper.

@@ -51,7 +51,10 @@ The Provider scopes everything to its own wrapper: the token sheet, the componen
 ```bash
 pnpm --filter calendar-catalog build
 pnpm --filter calendar-catalog test
+pnpm --filter calendar-catalog check
 ```
+
+`check` packs the built package with Stellify in memory and runs the gate A2UIVerse runs when it installs the app; it writes nothing.
 
 The tests keep the two faces in step (every zod schema against its `catalog.json` entry), keep the sheets scoped to the wrapper, and render every surface the Calendar agent paints — its knowledge examples and its deterministic answers — through the real A2UI runtime.
 
@@ -70,10 +73,4 @@ The tests keep the two faces in step (every zod schema against its `catalog.json
 
 ## Connecting to A2UIVerse
 
-[A2UIVerse](https://github.com/retz8/a2uiverse)'s client installs it straight from this repo, with no registry:
-
-```json
-"calendar-catalog": "github:retz8/a2uiverse-apps#path:calendar/calendar-catalog"
-```
-
-The client renders every surface carrying `CATALOG_ID` with `CATALOG`, inside `Provider`. Until A2UIVerse installs app bundles, the client also lists the catalog by hand in its catalog map. A2UIVerse puts several apps' catalogs on one page, so its collision tests fail if a catalog's styles escape its wrapper.
+[A2UIVerse](https://github.com/retz8/a2uiverse) compiles no catalog in. Its pack tool, [Stellify](https://github.com/retz8/a2uiverse/tree/main/packages/stellify), this package's one dev dependency on the platform, packs the built package into a catalog artifact, and the app is installed with it. A2UIVerse's client loads the artifact at runtime and renders every surface in this catalog with `CATALOG`, inside `Provider`. A2UIVerse puts several apps' catalogs on one page, so its collision detector flags a catalog whose styles escape its wrapper.

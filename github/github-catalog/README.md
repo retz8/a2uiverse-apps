@@ -35,7 +35,10 @@ The package ships Primer itself at exact versions. The host supplies only what m
 pnpm --filter github-catalog build
 pnpm --filter github-catalog typecheck
 pnpm --filter github-catalog test
+pnpm --filter github-catalog check
 ```
+
+`check` packs the built package with Stellify in memory and runs the gate A2UIVerse runs when it installs the app; it writes nothing.
 
 Two tests keep the halves in step: **parity** checks that every zod schema matches its `catalog.json` entry, and **exact set** checks that `CATALOG` holds exactly the registered components and functions. Each component also has its own schema and render tests beside it.
 
@@ -57,10 +60,4 @@ Two repo skills in `.claude/skills/`: `design-catalog-component` settles the des
 
 ## Connecting to A2UIVerse
 
-[A2UIVerse](https://github.com/retz8/a2uiverse)'s client installs it straight from this repo, with no registry:
-
-```json
-"github-catalog": "github:retz8/a2uiverse-apps#path:github/github-catalog"
-```
-
-The client renders every surface carrying `CATALOG_ID` with `CATALOG`, inside `Provider`. Until A2UIVerse installs app bundles, the client also lists the catalog by hand in its catalog map. A2UIVerse puts several apps' catalogs on one page, so its collision tests fail if a catalog's styles escape its wrapper.
+[A2UIVerse](https://github.com/retz8/a2uiverse) compiles no catalog in. Its pack tool, [Stellify](https://github.com/retz8/a2uiverse/tree/main/packages/stellify), this package's one dev dependency on the platform, packs the built package into a catalog artifact, and the app is installed with it. A2UIVerse's client loads the artifact at runtime and renders every surface in this catalog with `CATALOG`, inside `Provider`. A2UIVerse puts several apps' catalogs on one page, so its collision detector flags a catalog whose styles escape its wrapper.
