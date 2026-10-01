@@ -59,29 +59,23 @@ Every agent is built on [`a2ui-agent-kit`](agent-kit/), which carries what the a
 
 Two invented camera stores, for testing A2UIVerse's merged view: [Shop A](mocks/shop-a/) (Aperture & Co, port `12001`) and [Shop B](mocks/shop-b/) (Northlight, port `12002`). Both read one dataset, [`mocks/dataset/products.json`](mocks/dataset/products.json): the same cameras, each store with its own prices, ratings and stock, so a merge across them is right by construction. They have no MCP server; every answer, canned or the model's, comes from that file.
 
-They're built like any app but sit one level down, in `mocks/`, so A2UIVerse leaves them out unless asked. From the `a2uiverse` repo:
+They're built like any app and sit one level down, in `mocks/`. A2UIVerse's launcher runs them as a tier of their own, in place of the apps. From the `a2uiverse` repo:
 
 ```bash
-pnpm dev:all --agents-dir ../a2uiverse-apps/mocks   # the two stores in place of the apps
+pnpm dev:all --tier mocks   # the two stores in place of the apps
 ```
 
 ## Connecting to A2UIVerse
 
-**The launcher.** A2UIVerse finds each app by its `manifest.json` (its id, agent URL and catalog) and starts the agent on the manifest's port. From the `a2uiverse` repo:
+**The launcher.** A2UIVerse's launcher keeps a roster of the apps here — each app's folder, its tier and its port — and starts each agent on its port. It builds the app's catalog package, packs it with Stellify, and installs the app into A2UIVerse from its agent's card. A new app joins the roster on the port it was scaffolded with. From the `a2uiverse` repo:
 
 ```bash
-pnpm dev:agents                                     # every app, deterministic
+pnpm dev:agents                                     # every app, deterministic, installed into the running A2UIVerse
 pnpm dev:agents --only gmail,linear --mode live     # two apps, live
-pnpm dev:all                                        # the apps, then A2UIVerse
+pnpm dev:all                                        # the apps and A2UIVerse together
 ```
 
-Start the apps first: A2UIVerse reads each agent card once, at startup. `pnpm dev:all` waits for every card before starting it. The manifest is a placeholder until A2UIVerse's bundle format lands.
-
-**The catalogs.** A2UIVerse's client installs each catalog straight from this repo, with no registry, and draws each app's UI with its catalog inside the catalog's own Provider:
-
-```json
-"linear-catalog": "github:retz8/a2uiverse-apps#path:linear/linear-catalog"
-```
+**The catalogs.** A2UIVerse compiles none of them in. Each is installed with its app, as the artifact Stellify packs from the catalog package, and A2UIVerse's client loads it at runtime and draws the app's UI with it inside the catalog's own Provider.
 
 **Paint titles and question marks.** The one thing an agent sends for A2UIVerse alone. With each surface it paints, the agent can give a short title, and a mark when the surface asks something, like "Send this reply?". The model writes them as a tag before the surface, and the kit sends them beside the A2UI as a `paintMeta` part, which any other client ignores. On A2UIVerse's canvas:
 
