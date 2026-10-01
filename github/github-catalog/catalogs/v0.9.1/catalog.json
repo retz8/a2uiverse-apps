@@ -1991,7 +1991,7 @@
         },
         "type": {
           "type": "string",
-          "enum": ["text", "password", "email", "number", "search", "tel", "url"],
+          "enum": ["text", "email", "number", "search", "tel", "url"],
           "default": "text",
           "description": "The kind of text input; controls masking, keyboard, and input semantics."
         },
@@ -2056,7 +2056,7 @@
     },
     "TextInput.Action": {
       "type": "object",
-      "description": "An icon action button rendered inside a text input at its trailing edge — triggers an action such as clearing the field or toggling password visibility.",
+      "description": "An icon action button rendered inside a text input at its trailing edge — triggers an action such as clearing the field.",
       "properties": {
         "component": {
           "const": "TextInput.Action"

@@ -13,7 +13,7 @@ describe('TextInputApi.schema', () => {
       disabled: true,
       required: true,
       validationStatus: 'error',
-      type: 'password',
+      type: 'email',
       loading: true,
       loaderPosition: 'leading',
       loaderText: 'Loading',
@@ -28,6 +28,10 @@ describe('TextInputApi.schema', () => {
       accessibility: {label: 'Search', description: 'Search repositories'},
     });
     expect(result.success).toBe(true);
+  });
+
+  it('has no password type: a credential input is barred from every catalog', () => {
+    expect(TextInputApi.schema.safeParse({value: 'hi', type: 'password'}).success).toBe(false);
   });
 
   it('requires value', () => {

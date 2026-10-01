@@ -48,7 +48,7 @@ export const TextInputApi = {
       validationStatus: z
         .union([z.enum(['error', 'success']), CommonSchemas.DataBinding])
         .optional(),
-      type: z.enum(['text', 'password', 'email', 'number', 'search', 'tel', 'url']).optional(),
+      type: z.enum(['text', 'email', 'number', 'search', 'tel', 'url']).optional(),
       loading: CommonSchemas.DynamicBoolean.optional(),
       loaderPosition: z.enum(['auto', 'leading', 'trailing']).optional(),
       loaderText: z.string().optional(),

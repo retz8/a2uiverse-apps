@@ -20,7 +20,7 @@ type TextInputViewProps = {
   disabled?: boolean;
   required?: boolean;
   validationStatus?: 'error' | 'success';
-  type?: 'text' | 'password' | 'email' | 'number' | 'search' | 'tel' | 'url';
+  type?: 'text' | 'email' | 'number' | 'search' | 'tel' | 'url';
   loading?: boolean;
   loaderPosition?: 'auto' | 'leading' | 'trailing';
   loaderText?: string;
