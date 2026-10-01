@@ -1,7 +1,7 @@
 packages:
   - "*/*-catalog"
-  # The mock tier sits one level deeper, which is what keeps it out of the
-  # launcher's default discovery (task-4.6 decision 5).
+  # The mock stores sit one level deeper, in mocks/; the launcher runs them
+  # as a tier of their own (--tier mocks).
   - "mocks/*/*-catalog"
   - "create-a2ui-agent"
 
