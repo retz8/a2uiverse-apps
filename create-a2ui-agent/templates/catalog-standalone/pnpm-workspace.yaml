@@ -1,0 +1,4 @@
+# A catalog outside any pnpm workspace is its own: esbuild, which Stellify bundles with,
+# runs its install script.
+allowBuilds:
+  esbuild: true

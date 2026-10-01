@@ -1,9 +1,9 @@
 /**
  * Snapshot tests of the generated tree: the file list per variant, and the content of the
- * four generated files. A template edit that changes what a scaffold contains shows up here
+ * three generated files. A template edit that changes what a scaffold contains shows up here
  * as a deliberate snapshot update, never as a silent change.
  */
-import {mkdtempSync, readFileSync, rmSync} from 'node:fs';
+import {existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {afterEach, describe, expect, it} from 'vitest';
@@ -27,9 +27,11 @@ const BASE: ScaffoldAnswers = {
 
 const dirs: string[] = [];
 
-function run(overrides: Partial<ScaffoldAnswers>) {
+function run(overrides: Partial<ScaffoldAnswers>, {inWorkspace = false} = {}) {
   const root = mkdtempSync(join(tmpdir(), 'create-a2ui-agent-'));
   dirs.push(root);
+  if (inWorkspace)
+    writeFileSync(join(root, 'pnpm-workspace.yaml'), 'packages:\n  - "*/*-catalog"\n');
   const answers = {...BASE, ...overrides};
   const targetDir = join(root, answers.id);
   const result = scaffold({
@@ -53,7 +55,6 @@ describe('basic kind, both opt-ins', () => {
       `${REPO_URL}/blob/main/acme-mail/acme-mail-catalog/catalogs/v0.9.1/catalog.json`,
     );
     expect(result.files).toMatchSnapshot('files');
-    expect(read('manifest.json')).toMatchSnapshot('manifest.json');
     expect(read('agent/pyproject.toml')).toMatchSnapshot('pyproject.toml');
     expect(read('agent/app/config.py')).toMatchSnapshot('config.py');
     expect(read('agent/app/mcp.py')).toMatchSnapshot('mcp.py');
@@ -84,7 +85,7 @@ describe('token substitution', () => {
       catalogId: id,
     });
     expect(read('acme-mail-catalog/src/catalog-id.ts')).toContain(`'${id}'`);
-    expect(JSON.parse(read('manifest.json')).catalog.id).toBe(id);
+    expect(read('agent/tests/test_catalog.py')).toContain(`"${id}"`);
   });
 
   it('renames the stored _gitignore to .gitignore', () => {
@@ -104,5 +105,32 @@ describe('token substitution', () => {
         kitRev: KIT_REV,
       }),
     ).toThrow(/not empty/);
+  });
+});
+
+describe('Stellify in the catalog', () => {
+  it('pins Stellify and runs its check', () => {
+    const {read} = run({});
+    const pkg = JSON.parse(read('acme-mail-catalog/package.json'));
+    expect(pkg.devDependencies['@a2uiverse/stellify']).toMatch(
+      /^github:retz8\/a2uiverse#[0-9a-f]{40}&path:packages\/stellify$/,
+    );
+    expect(pkg.scripts.check).toBe('stellify check');
+  });
+
+  it('makes a catalog outside any pnpm workspace its own, approving esbuild', () => {
+    const {result, read} = run({});
+    expect(result.files).toContain('acme-mail-catalog/pnpm-workspace.yaml');
+    expect(read('acme-mail-catalog/pnpm-workspace.yaml')).toMatch(
+      /allowBuilds:\n {2}esbuild: true/,
+    );
+  });
+
+  it('leaves a catalog inside a workspace to the workspace', () => {
+    const {result} = run({}, {inWorkspace: true});
+    expect(result.files).not.toContain('acme-mail-catalog/pnpm-workspace.yaml');
+    expect(existsSync(join(result.targetDir, 'acme-mail-catalog', 'pnpm-workspace.yaml'))).toBe(
+      false,
+    );
   });
 });

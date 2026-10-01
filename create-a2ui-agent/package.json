@@ -1,7 +1,7 @@
 {
   "name": "create-a2ui-agent",
   "version": "0.1.0",
-  "description": "Scaffold a new A2UI over A2A vendor app on a2ui-agent-kit: the agent, its catalog package, and the app manifest.",
+  "description": "Scaffold a new A2UI over A2A vendor app on a2ui-agent-kit: the agent and its catalog package.",
   "license": "MIT",
   "repository": {
     "type": "git",

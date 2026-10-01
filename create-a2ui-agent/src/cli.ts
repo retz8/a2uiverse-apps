@@ -171,7 +171,11 @@ const program = new Command('create-a2ui-agent')
   .option('--id <id>', 'kebab-case app id', parseId)
   .option('--display-name <name>', 'product name for the card and catalog title')
   .option('--description <text>', 'one-line description for the agent card')
-  .option('--port <port>', 'agent port (default: next free above sibling manifests)', parsePort)
+  .option(
+    '--port <port>',
+    "agent port (default: next free above the sibling agents' default_port)",
+    parsePort,
+  )
   .addOption(new Option('--catalog <kind>', 'catalog kind').choices(['basic', 'custom']))
   .option('--google-adc', "wire the kit's Google ADC credential block into app/mcp.py")
   .option('--no-google-adc', 'skip the Google ADC block')

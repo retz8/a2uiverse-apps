@@ -1,7 +1,8 @@
 /**
  * The CLI–kit drift gate (task-3.4 decision 13): scaffold each kind, then run the generated
  * app's own gates — the agent's pytest against the working-tree kit, and the catalog's
- * typecheck and tests — so a kit change that breaks the templates fails `pnpm verify`.
+ * typecheck, tests and Stellify's check — so a kit change that breaks the templates fails
+ * `pnpm verify`.
  *
  * The scaffolded agent pins the kit by git sha; here, and only here, that source is rewritten
  * to a path dependency on the sibling `agent-kit/`, because the gate has to run against what
@@ -79,7 +80,7 @@ function scaffoldKind(kind: CatalogKind): string {
 
 gate('a fresh scaffold passes its own gates against the working-tree kit', () => {
   it.each(['basic', 'custom'] as const)(
-    '%s: agent pytest, catalog typecheck and tests',
+    '%s: agent pytest, catalog typecheck, tests and check',
     kind => {
       const targetDir = scaffoldKind(kind);
       const agentDir = join(targetDir, 'agent');
@@ -87,9 +88,10 @@ gate('a fresh scaffold passes its own gates against the working-tree kit', () =>
       sh('uv', ['run', '--quiet', 'pytest', '-q'], agentDir);
 
       const catalogDir = join(targetDir, `probe-${kind}-catalog`);
-      sh('pnpm', ['install', '--ignore-workspace', '--silent'], catalogDir);
+      sh('pnpm', ['install', '--silent'], catalogDir);
       sh('pnpm', ['typecheck'], catalogDir);
       sh('pnpm', ['test', '--silent'], catalogDir);
+      sh('pnpm', ['check'], catalogDir);
     },
     TEN_MINUTES,
   );

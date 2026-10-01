@@ -9,10 +9,11 @@
     "build": "turbo run build",
     "typecheck": "turbo run typecheck",
     "test": "turbo run test",
+    "check": "turbo run check",
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "verify": "turbo run build typecheck test && pnpm lint && pnpm format:check"
+    "verify": "turbo run build typecheck test check && pnpm lint && pnpm format:check"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",

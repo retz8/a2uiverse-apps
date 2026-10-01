@@ -43,7 +43,6 @@ export async function walkthrough(
       '',
       '  <id>/agent/            the A2A agent (Python, uv), all three run modes',
       '  <id>/<id>-catalog/     the A2UI catalog: schema + React implementation + Provider',
-      '  <id>/manifest.json     the app manifest',
       '',
       'Every answer can also be a flag; run with --help to see them.',
     ].join('\n'),

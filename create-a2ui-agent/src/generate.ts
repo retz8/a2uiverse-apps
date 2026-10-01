@@ -1,7 +1,7 @@
 /**
- * The four files whose content varies by answers, generated in code (task-3.4 decision 4):
- * the agent config, the agent project file with the kit pin, the MCP wiring module, and the
- * manifest. Everything else is a template copy.
+ * The three files whose content varies by answers, generated in code (task-3.4 decision 4):
+ * the agent config, the agent project file with the kit pin, and the MCP wiring module.
+ * Everything else is a template copy.
  */
 import {catalogPackageName, pythonIdent, type ScaffoldAnswers} from './answers.js';
 import {KIT_PACKAGE, KIT_REPO_URL, KIT_SUBDIRECTORY} from './kit.js';
@@ -263,16 +263,4 @@ def build_live_toolset() -> PolicyMcpToolset:
         tool_filter=list(TOOL_FILTER) or None,
     )
 `;
-}
-
-export function manifestJson(a: ScaffoldAnswers, catalogId: string): string {
-  const manifest = {
-    $comment:
-      "Placeholder until the sdk manifest schema lands (Phase 11); mirrors the orchestrator's registry record.",
-    id: a.id,
-    displayName: a.displayName,
-    agent: {url: `http://localhost:${a.port}`, auth: 'none'},
-    catalog: {id: catalogId, package: catalogPackageName(a.id)},
-  };
-  return JSON.stringify(manifest, null, 2) + '\n';
 }

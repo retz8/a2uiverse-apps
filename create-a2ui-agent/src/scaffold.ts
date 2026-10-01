@@ -1,15 +1,16 @@
 /**
- * Writes one app folder from a complete answer set: agent half, catalog half, manifest.
+ * Writes one app folder from a complete answer set: agent half and catalog half.
  *
- * Layout mirrors the in-repo apps — `<dir>/agent/`, `<dir>/<id>-catalog/`,
- * `<dir>/manifest.json` — so a scaffold inside the apps repo is launchable by existing and one
- * outside it is the same shape a vendor already knows from the roster.
+ * Layout mirrors the in-repo apps — `<dir>/agent/`, `<dir>/<id>-catalog/` — so a scaffold
+ * inside the apps repo is launchable by existing and one outside it is the same shape a vendor
+ * already knows from the roster.
  */
 import {existsSync, mkdirSync, readdirSync, writeFileSync} from 'node:fs';
 import {join, relative} from 'node:path';
 
 import {catalogIdUrl, catalogPackageName, pythonIdent, type ScaffoldAnswers} from './answers.js';
-import {agentConfigPy, agentMcpPy, agentPyproject, manifestJson} from './generate.js';
+import {agentConfigPy, agentMcpPy, agentPyproject} from './generate.js';
+import {workspaceRoot} from './install.js';
 import {templatesDir} from './kit.js';
 import {copyTemplateTree, type Tokens} from './templates.js';
 
@@ -80,7 +81,6 @@ export function scaffold({
     'agent/pyproject.toml': agentPyproject(answers, kitRev),
     'agent/app/config.py': agentConfigPy(answers),
     'agent/app/mcp.py': agentMcpPy(answers),
-    'manifest.json': manifestJson(answers, catalogId),
   };
   for (const [path, content] of Object.entries(generated)) {
     const full = join(targetDir, path);
@@ -89,11 +89,15 @@ export function scaffold({
     files.add(path);
   }
 
-  // Catalog half: the whole package for the chosen kind.
+  // Catalog half: the whole package for the chosen kind; outside any pnpm workspace, the
+  // package is its own, approving the install script of Stellify's esbuild.
   record(
     catalogDir,
     copyTemplateTree(join(templates, 'catalog', answers.catalogKind), catalogDir, tokens),
   );
+  if (!workspaceRoot(targetDir)) {
+    record(catalogDir, copyTemplateTree(join(templates, 'catalog-standalone'), catalogDir, tokens));
+  }
 
   return {targetDir, catalogId, files: [...files].sort()};
 }

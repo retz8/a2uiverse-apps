@@ -9,7 +9,7 @@
 export type CatalogKind = 'basic' | 'custom';
 
 export interface ScaffoldAnswers {
-  /** kebab-case app id: the folder name, the catalog package prefix, the manifest id. */
+  /** kebab-case app id: the folder name and the catalog package prefix. */
   id: string;
   /** The product name as the card and the catalog title show it. */
   displayName: string;

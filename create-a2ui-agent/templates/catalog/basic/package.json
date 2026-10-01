@@ -35,7 +35,8 @@
     "build": "tsc -p tsconfig.json && node scripts/copy-theme.mjs",
     "prepare": "tsc -p tsconfig.json && node scripts/copy-theme.mjs",
     "typecheck": "tsc --noEmit",
-    "test": "vitest run"
+    "test": "vitest run",
+    "check": "stellify check"
   },
   "peerDependencies": {
     "@a2ui/react": "^0.10.1",
@@ -47,6 +48,7 @@
   "devDependencies": {
     "@a2ui/react": "^0.10.2",
     "@a2ui/web_core": "^0.10.1",
+    "@a2uiverse/stellify": "github:retz8/a2uiverse#e815b919b525afb496b9f7b7b105649a13b50c25&path:packages/stellify",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@types/react": "^19.2.17",
