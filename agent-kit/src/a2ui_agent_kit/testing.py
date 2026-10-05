@@ -12,7 +12,9 @@ from its app's.
 
 from __future__ import annotations
 
+import contextlib
 import secrets
+from types import SimpleNamespace
 from unittest.mock import AsyncMock, MagicMock
 
 from a2a.server.agent_execution import AgentExecutor, RequestContext
@@ -20,6 +22,7 @@ from a2a.server.events import EventQueue
 from a2a.types import DataPart, Message, Part, Role, TextPart
 from a2ui.a2a.parts import get_a2ui_datapart, is_a2ui_part
 
+from a2ui_agent_kit.sign_in import SignedInAccount, SignIn, bind_account, unbind_account
 from a2ui_agent_kit.versions import WIRE_VERSION
 
 
@@ -72,6 +75,25 @@ async def run_executor(executor: AgentExecutor, action: dict) -> list[dict]:
 
 async def run_executor_text(executor: AgentExecutor, text: str) -> list[dict]:
     return await _run(executor, _incoming_text_message(text))
+
+
+@contextlib.contextmanager
+def signed_in_as(sign_in: SignIn, account_id: str):
+    """Binds one of `sign_in`'s fake accounts, granted every scope, for the length of a
+    `with`: the app's answer code called directly reads it as a request's account."""
+    fake = next(a for a in sign_in.fake_accounts if a.id == account_id)
+    account = SignedInAccount(
+        sub=f"sub-{fake.id}",
+        account_id=fake.id,
+        claims=dict(fake.claims),
+        scopes=frozenset(sign_in.scopes),
+    )
+    context = SimpleNamespace(call_context=SimpleNamespace(state={"auth": account}))
+    bound = bind_account(context, sign_in)
+    try:
+        yield account
+    finally:
+        unbind_account(bound)
 
 
 # ---- signing in, over a real server ------------------------------------------------------

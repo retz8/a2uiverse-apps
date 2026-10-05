@@ -23,7 +23,7 @@ requires_corpus = pytest.mark.skipif(
     not (
         __import__("pathlib").Path(__file__).resolve().parents[1]
         / "app"
-        / "fixtures" / "stub"
+        / "fixtures" / "stub" / "you"
         / "search-threads.json"
     ).is_file(),
     reason="stub fixtures missing (see agent/README.md)",
@@ -87,3 +87,24 @@ def test_labels_include_the_system_set():
     # The MCP payload keys this `labelId`, not `id` — the stub mirrors the wire shape.
     names = {label.get("labelId") for label in list_labels()["labels"]}
     assert "INBOX" in names
+
+
+@requires_corpus
+def test_each_account_searches_its_own_mailbox():
+    import json
+    from pathlib import Path
+
+    from a2ui_agent_kit.testing import signed_in_as
+
+    from app.sign_in import SIGN_IN
+
+    stub = Path(__file__).resolve().parents[1] / "app" / "fixtures" / "stub"
+    found = {}
+    for account in ("you", "personal"):
+        own = json.loads((stub / account / "search-threads.json").read_text(encoding="utf-8"))
+        with signed_in_as(SIGN_IN, account):
+            found[account] = {t["id"] for t in search_threads()["threads"]}
+            some = next(iter(found[account]))
+            assert get_thread(some)["id"] == some
+        assert found[account] == {t["id"] for t in own["threads"]}
+    assert not found["you"] & found["personal"]

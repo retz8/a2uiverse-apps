@@ -11,8 +11,20 @@ from a2ui_agent_kit.responses import (
     stamp_surface,
     stub_fixture_loader,
 )
+from a2ui_agent_kit.sign_in import FakeAccount, SignIn
+from a2ui_agent_kit.testing import signed_in_as
 
 FIXTURES = Path(__file__).resolve().parent / "fixtures" / "deterministic"
+PER_ACCOUNT = Path(__file__).resolve().parent / "fixtures" / "per-account"
+
+SIGN_IN = SignIn(
+    scopes={"read": "See your things"},
+    first_sign_in_scopes=["read"],
+    fake_accounts=[
+        FakeAccount("ada", {"email": "ada@example.com"}),
+        FakeAccount("alan", {"email": "alan@example.com"}),
+    ],
+)
 
 
 def _pair():
@@ -98,3 +110,43 @@ def test_stub_loader_missing_fixture_fails_with_the_apps_hint(tmp_path):
     fixture = stub_fixture_loader(tmp_path, hint="see agent/README.md.")
     with pytest.raises(FileNotFoundError, match="README"):
         fixture("absent")
+
+
+# ---- fixtures per account (task-12.11 decision 4) ----------------------------------------
+
+
+def _greeting_text(messages: list[dict]) -> str:
+    return messages[0]["updateComponents"]["components"][0]["text"]
+
+
+def test_each_signed_in_account_gets_its_own_fixtures():
+    build_response, build_text_response = fixture_responder(
+        PER_ACCOUNT, {"greet": "greeting.json"}, text_fixture="greeting.json", surface_prefix="t"
+    )
+    with signed_in_as(SIGN_IN, "ada"):
+        assert _greeting_text(build_text_response("hi")) == "ada"
+    with signed_in_as(SIGN_IN, "alan"):
+        assert _greeting_text(build_text_response("hi")) == "alan"
+        assert _greeting_text(build_response({"name": "greet", "surfaceId": "s"})) == "alan"
+
+
+def test_an_app_with_one_flat_set_answers_every_account_from_it():
+    build_response, _ = _pair()
+    with signed_in_as(SIGN_IN, "ada"):
+        assert _greeting_text(build_response({"name": "greet", "surfaceId": "s"})) == "ok"
+
+
+def test_an_account_with_no_fixtures_of_its_own_finds_none_in_a_per_account_set():
+    _, build_text_response = fixture_responder(
+        PER_ACCOUNT, {}, text_fixture="greeting.json", surface_prefix="t"
+    )
+    with pytest.raises(FileNotFoundError, match="missing"):
+        build_text_response("hi")  # no account signed in: the flat set is empty
+
+
+def test_the_stub_loader_reads_the_signed_in_accounts_corpus():
+    fixture = stub_fixture_loader(PER_ACCOUNT, hint="see agent/README.md.")
+    with signed_in_as(SIGN_IN, "ada"):
+        assert fixture("list-things") == {"owner": "ada"}
+    with signed_in_as(SIGN_IN, "alan"):
+        assert fixture("list-things") == {"owner": "alan"}

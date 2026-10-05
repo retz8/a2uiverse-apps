@@ -1,0 +1,595 @@
+[
+  {
+    "version": "v0.9",
+    "createSurface": {
+      "surfaceId": "needs-attention",
+      "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/gmail/gmail-catalog/catalogs/v0.9.1/catalog.json",
+      "sendDataModel": true
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "needs-attention",
+      "value": {
+        "threads": [
+          {
+            "id": "1988d441e2356bf7",
+            "sender": "Ana Marchetti",
+            "subject": "Re: Dinner at ours tonight?"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "needs-attention",
+      "value": {
+        "threads": [
+          {
+            "id": "1988d441e2356bf7",
+            "sender": "Ana Marchetti",
+            "subject": "Re: Dinner at ours tonight?",
+            "snippet": "And if you're coming, could you bring something sweet? We have nothing for afterwards. Ice cream is perfect. Ana"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "needs-attention",
+      "value": {
+        "threads": [
+          {
+            "id": "1988d441e2356bf7",
+            "sender": "Ana Marchetti",
+            "subject": "Re: Dinner at ours tonight?",
+            "snippet": "And if you're coming, could you bring something sweet? We have nothing for afterwards. Ice cream is perfect. Ana",
+            "when": "2026-09-19 11:20 UTC"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "needs-attention",
+      "value": {
+        "threads": [
+          {
+            "id": "1988d441e2356bf7",
+            "sender": "Ana Marchetti",
+            "subject": "Re: Dinner at ours tonight?",
+            "snippet": "And if you're coming, could you bring something sweet? We have nothing for afterwards. Ice cream is perfect. Ana",
+            "when": "2026-09-19 11:20 UTC"
+          },
+          {
+            "id": "19a1b81c96fc2445",
+            "sender": "Gwen Hollis"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "needs-attention",
+      "value": {
+        "threads": [
+          {
+            "id": "1988d441e2356bf7",
+            "sender": "Ana Marchetti",
+            "subject": "Re: Dinner at ours tonight?",
+            "snippet": "And if you're coming, could you bring something sweet? We have nothing for afterwards. Ice cream is perfect. Ana",
+            "when": "2026-09-19 11:20 UTC"
+          },
+          {
+            "id": "19a1b81c96fc2445",
+            "sender": "Gwen Hollis",
+            "subject": "Boiler service on Monday morning"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "needs-attention",
+      "value": {
+        "threads": [
+          {
+            "id": "1988d441e2356bf7",
+            "sender": "Ana Marchetti",
+            "subject": "Re: Dinner at ours tonight?",
+            "snippet": "And if you're coming, could you bring something sweet? We have nothing for afterwards. Ice cream is perfect. Ana",
+            "when": "2026-09-19 11:20 UTC"
+          },
+          {
+            "id": "19a1b81c96fc2445",
+            "sender": "Gwen Hollis",
+            "subject": "Boiler service on Monday morning",
+            "snippet": "Hi, The engineer is booked to service the boiler on Monday 21 September between 8 and 10. Could you let me know by tomorrow whether someone will be in to let them through, or whether I should bring"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "needs-attention",
+      "value": {
+        "threads": [
+          {
+            "id": "1988d441e2356bf7",
+            "sender": "Ana Marchetti",
+            "subject": "Re: Dinner at ours tonight?",
+            "snippet": "And if you're coming, could you bring something sweet? We have nothing for afterwards. Ice cream is perfect. Ana",
+            "when": "2026-09-19 11:20 UTC"
+          },
+          {
+            "id": "19a1b81c96fc2445",
+            "sender": "Gwen Hollis",
+            "subject": "Boiler service on Monday morning",
+            "snippet": "Hi, The engineer is booked to service the boiler on Monday 21 September between 8 and 10. Could you let me know by tomorrow whether someone will be in to let them through, or whether I should bring",
+            "when": "2026-09-19 09:40 UTC"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "needs-attention",
+      "value": {
+        "threads": [
+          {
+            "id": "1988d441e2356bf7",
+            "sender": "Ana Marchetti",
+            "subject": "Re: Dinner at ours tonight?",
+            "snippet": "And if you're coming, could you bring something sweet? We have nothing for afterwards. Ice cream is perfect. Ana",
+            "when": "2026-09-19 11:20 UTC"
+          },
+          {
+            "id": "19a1b81c96fc2445",
+            "sender": "Gwen Hollis",
+            "subject": "Boiler service on Monday morning",
+            "snippet": "Hi, The engineer is booked to service the boiler on Monday 21 September between 8 and 10. Could you let me know by tomorrow whether someone will be in to let them through, or whether I should bring",
+            "when": "2026-09-19 09:40 UTC"
+          },
+          {
+            "id": "19c24ff4f3830b99",
+            "sender": "Mina Cho"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "needs-attention",
+      "value": {
+        "threads": [
+          {
+            "id": "1988d441e2356bf7",
+            "sender": "Ana Marchetti",
+            "subject": "Re: Dinner at ours tonight?",
+            "snippet": "And if you're coming, could you bring something sweet? We have nothing for afterwards. Ice cream is perfect. Ana",
+            "when": "2026-09-19 11:20 UTC"
+          },
+          {
+            "id": "19a1b81c96fc2445",
+            "sender": "Gwen Hollis",
+            "subject": "Boiler service on Monday morning",
+            "snippet": "Hi, The engineer is booked to service the boiler on Monday 21 September between 8 and 10. Could you let me know by tomorrow whether someone will be in to let them through, or whether I should bring",
+            "when": "2026-09-19 09:40 UTC"
+          },
+          {
+            "id": "19c24ff4f3830b99",
+            "sender": "Mina Cho",
+            "subject": "Splitting Sam's birthday present"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "needs-attention",
+      "value": {
+        "threads": [
+          {
+            "id": "1988d441e2356bf7",
+            "sender": "Ana Marchetti",
+            "subject": "Re: Dinner at ours tonight?",
+            "snippet": "And if you're coming, could you bring something sweet? We have nothing for afterwards. Ice cream is perfect. Ana",
+            "when": "2026-09-19 11:20 UTC"
+          },
+          {
+            "id": "19a1b81c96fc2445",
+            "sender": "Gwen Hollis",
+            "subject": "Boiler service on Monday morning",
+            "snippet": "Hi, The engineer is booked to service the boiler on Monday 21 September between 8 and 10. Could you let me know by tomorrow whether someone will be in to let them through, or whether I should bring",
+            "when": "2026-09-19 09:40 UTC"
+          },
+          {
+            "id": "19c24ff4f3830b99",
+            "sender": "Mina Cho",
+            "subject": "Splitting Sam's birthday present",
+            "snippet": "Hi both, I ordered the record player for Sam's birthday next Friday. It came to 129, so 43 each. Could you send me your share this weekend? I'll wrap it and bring the card for us to sign. Mina"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "needs-attention",
+      "value": {
+        "threads": [
+          {
+            "id": "1988d441e2356bf7",
+            "sender": "Ana Marchetti",
+            "subject": "Re: Dinner at ours tonight?",
+            "snippet": "And if you're coming, could you bring something sweet? We have nothing for afterwards. Ice cream is perfect. Ana",
+            "when": "2026-09-19 11:20 UTC"
+          },
+          {
+            "id": "19a1b81c96fc2445",
+            "sender": "Gwen Hollis",
+            "subject": "Boiler service on Monday morning",
+            "snippet": "Hi, The engineer is booked to service the boiler on Monday 21 September between 8 and 10. Could you let me know by tomorrow whether someone will be in to let them through, or whether I should bring",
+            "when": "2026-09-19 09:40 UTC"
+          },
+          {
+            "id": "19c24ff4f3830b99",
+            "sender": "Mina Cho",
+            "subject": "Splitting Sam's birthday present",
+            "snippet": "Hi both, I ordered the record player for Sam's birthday next Friday. It came to 129, so 43 each. Could you send me your share this weekend? I'll wrap it and bring the card for us to sign. Mina",
+            "when": "2026-09-19 08:30 UTC"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "needs-attention",
+      "value": {
+        "threads": [
+          {
+            "id": "1988d441e2356bf7",
+            "sender": "Ana Marchetti",
+            "subject": "Re: Dinner at ours tonight?",
+            "snippet": "And if you're coming, could you bring something sweet? We have nothing for afterwards. Ice cream is perfect. Ana",
+            "when": "2026-09-19 11:20 UTC"
+          },
+          {
+            "id": "19a1b81c96fc2445",
+            "sender": "Gwen Hollis",
+            "subject": "Boiler service on Monday morning",
+            "snippet": "Hi, The engineer is booked to service the boiler on Monday 21 September between 8 and 10. Could you let me know by tomorrow whether someone will be in to let them through, or whether I should bring",
+            "when": "2026-09-19 09:40 UTC"
+          },
+          {
+            "id": "19c24ff4f3830b99",
+            "sender": "Mina Cho",
+            "subject": "Splitting Sam's birthday present",
+            "snippet": "Hi both, I ordered the record player for Sam's birthday next Friday. It came to 129, so 43 each. Could you send me your share this weekend? I'll wrap it and bring the card for us to sign. Mina",
+            "when": "2026-09-19 08:30 UTC"
+          },
+          {
+            "id": "1997d405366ffc66",
+            "sender": "Northwind Parcel"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "needs-attention",
+      "value": {
+        "threads": [
+          {
+            "id": "1988d441e2356bf7",
+            "sender": "Ana Marchetti",
+            "subject": "Re: Dinner at ours tonight?",
+            "snippet": "And if you're coming, could you bring something sweet? We have nothing for afterwards. Ice cream is perfect. Ana",
+            "when": "2026-09-19 11:20 UTC"
+          },
+          {
+            "id": "19a1b81c96fc2445",
+            "sender": "Gwen Hollis",
+            "subject": "Boiler service on Monday morning",
+            "snippet": "Hi, The engineer is booked to service the boiler on Monday 21 September between 8 and 10. Could you let me know by tomorrow whether someone will be in to let them through, or whether I should bring",
+            "when": "2026-09-19 09:40 UTC"
+          },
+          {
+            "id": "19c24ff4f3830b99",
+            "sender": "Mina Cho",
+            "subject": "Splitting Sam's birthday present",
+            "snippet": "Hi both, I ordered the record player for Sam's birthday next Friday. It came to 129, so 43 each. Could you send me your share this weekend? I'll wrap it and bring the card for us to sign. Mina",
+            "when": "2026-09-19 08:30 UTC"
+          },
+          {
+            "id": "1997d405366ffc66",
+            "sender": "Northwind Parcel",
+            "subject": "We missed you: your parcel is waiting"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "needs-attention",
+      "value": {
+        "threads": [
+          {
+            "id": "1988d441e2356bf7",
+            "sender": "Ana Marchetti",
+            "subject": "Re: Dinner at ours tonight?",
+            "snippet": "And if you're coming, could you bring something sweet? We have nothing for afterwards. Ice cream is perfect. Ana",
+            "when": "2026-09-19 11:20 UTC"
+          },
+          {
+            "id": "19a1b81c96fc2445",
+            "sender": "Gwen Hollis",
+            "subject": "Boiler service on Monday morning",
+            "snippet": "Hi, The engineer is booked to service the boiler on Monday 21 September between 8 and 10. Could you let me know by tomorrow whether someone will be in to let them through, or whether I should bring",
+            "when": "2026-09-19 09:40 UTC"
+          },
+          {
+            "id": "19c24ff4f3830b99",
+            "sender": "Mina Cho",
+            "subject": "Splitting Sam's birthday present",
+            "snippet": "Hi both, I ordered the record player for Sam's birthday next Friday. It came to 129, so 43 each. Could you send me your share this weekend? I'll wrap it and bring the card for us to sign. Mina",
+            "when": "2026-09-19 08:30 UTC"
+          },
+          {
+            "id": "1997d405366ffc66",
+            "sender": "Northwind Parcel",
+            "subject": "We missed you: your parcel is waiting",
+            "snippet": "We tried to deliver your parcel today at 7:42 but nobody was home. You can choose a new delivery day or pick it up from the depot on Harbour Road. If we don't hear from you by Monday 21 September,"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "needs-attention",
+      "value": {
+        "threads": [
+          {
+            "id": "1988d441e2356bf7",
+            "sender": "Ana Marchetti",
+            "subject": "Re: Dinner at ours tonight?",
+            "snippet": "And if you're coming, could you bring something sweet? We have nothing for afterwards. Ice cream is perfect. Ana",
+            "when": "2026-09-19 11:20 UTC"
+          },
+          {
+            "id": "19a1b81c96fc2445",
+            "sender": "Gwen Hollis",
+            "subject": "Boiler service on Monday morning",
+            "snippet": "Hi, The engineer is booked to service the boiler on Monday 21 September between 8 and 10. Could you let me know by tomorrow whether someone will be in to let them through, or whether I should bring",
+            "when": "2026-09-19 09:40 UTC"
+          },
+          {
+            "id": "19c24ff4f3830b99",
+            "sender": "Mina Cho",
+            "subject": "Splitting Sam's birthday present",
+            "snippet": "Hi both, I ordered the record player for Sam's birthday next Friday. It came to 129, so 43 each. Could you send me your share this weekend? I'll wrap it and bring the card for us to sign. Mina",
+            "when": "2026-09-19 08:30 UTC"
+          },
+          {
+            "id": "1997d405366ffc66",
+            "sender": "Northwind Parcel",
+            "subject": "We missed you: your parcel is waiting",
+            "snippet": "We tried to deliver your parcel today at 7:42 but nobody was home. You can choose a new delivery day or pick it up from the depot on Harbour Road. If we don't hear from you by Monday 21 September,",
+            "when": "2026-09-19 07:55 UTC"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "needs-attention",
+      "path": "/",
+      "value": {
+        "threads": [
+          {
+            "id": "1988d441e2356bf7",
+            "sender": "Ana Marchetti",
+            "subject": "Re: Dinner at ours tonight?",
+            "snippet": "And if you're coming, could you bring something sweet? We have nothing for afterwards. Ice cream is perfect. Ana",
+            "when": "2026-09-19 11:20 UTC"
+          },
+          {
+            "id": "19a1b81c96fc2445",
+            "sender": "Gwen Hollis",
+            "subject": "Boiler service on Monday morning",
+            "snippet": "Hi, The engineer is booked to service the boiler on Monday 21 September between 8 and 10. Could you let me know by tomorrow whether someone will be in to let them through, or whether I should bring",
+            "when": "2026-09-19 09:40 UTC"
+          },
+          {
+            "id": "19c24ff4f3830b99",
+            "sender": "Mina Cho",
+            "subject": "Splitting Sam's birthday present",
+            "snippet": "Hi both, I ordered the record player for Sam's birthday next Friday. It came to 129, so 43 each. Could you send me your share this weekend? I'll wrap it and bring the card for us to sign. Mina",
+            "when": "2026-09-19 08:30 UTC"
+          },
+          {
+            "id": "1997d405366ffc66",
+            "sender": "Northwind Parcel",
+            "subject": "We missed you: your parcel is waiting",
+            "snippet": "We tried to deliver your parcel today at 7:42 but nobody was home. You can choose a new delivery day or pick it up from the depot on Harbour Road. If we don't hear from you by Monday 21 September,",
+            "when": "2026-09-19 07:55 UTC"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateComponents": {
+      "components": [
+        {
+          "id": "root",
+          "component": "Surface",
+          "child": "body",
+          "container": "low",
+          "shape": "large",
+          "padding": "small"
+        },
+        {
+          "id": "body",
+          "component": "Stack",
+          "children": [
+            "header",
+            "sheet"
+          ],
+          "gap": "xs"
+        },
+        {
+          "id": "header",
+          "component": "Stack",
+          "children": [
+            "heading",
+            "sub"
+          ],
+          "gap": "xs",
+          "padding": "sm"
+        },
+        {
+          "id": "sheet",
+          "component": "Surface",
+          "child": "thread-list",
+          "container": "lowest",
+          "shape": "large",
+          "padding": "none"
+        },
+        {
+          "id": "heading",
+          "component": "Text",
+          "text": "Needs attention",
+          "variant": "titleLarge"
+        },
+        {
+          "id": "sub",
+          "component": "Text",
+          "text": "4 unread threads in your inbox",
+          "variant": "bodySmall",
+          "color": "onSurfaceVariant"
+        },
+        {
+          "id": "thread-list",
+          "component": "List",
+          "children": {
+            "path": "/threads",
+            "componentId": "thread-row"
+          },
+          "dividers": true,
+          "layout": "inline"
+        },
+        {
+          "id": "thread-row",
+          "component": "ListItem",
+          "headline": "thread-sender",
+          "supporting": "thread-preview",
+          "meta": "thread-when",
+          "leading": [
+            "thread-avatar"
+          ],
+          "action": {
+            "event": {
+              "name": "open-thread",
+              "context": {
+                "threadId": {
+                  "path": "id"
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "thread-avatar",
+          "component": "Avatar",
+          "name": {
+            "path": "sender"
+          },
+          "size": "medium"
+        },
+        {
+          "id": "thread-sender",
+          "component": "Text",
+          "text": {
+            "path": "sender"
+          },
+          "weight": "bold",
+          "maxLines": 1
+        },
+        {
+          "id": "thread-when",
+          "component": "Text",
+          "text": {
+            "path": "when"
+          },
+          "variant": "labelMedium",
+          "color": "onSurfaceVariant"
+        },
+        {
+          "id": "thread-preview",
+          "component": "Stack",
+          "children": [
+            "thread-subject",
+            "thread-snippet"
+          ],
+          "gap": "none"
+        },
+        {
+          "id": "thread-subject",
+          "component": "Text",
+          "text": {
+            "path": "subject"
+          },
+          "weight": "medium",
+          "maxLines": 1
+        },
+        {
+          "id": "thread-snippet",
+          "component": "Text",
+          "text": {
+            "path": "snippet"
+          },
+          "color": "onSurfaceVariant",
+          "maxLines": 1
+        }
+      ]
+    }
+  },
+  {
+    "paintMeta": {
+      "surfaceId": "needs-attention",
+      "title": "Needs attention"
+    }
+  }
+]

@@ -80,7 +80,7 @@ PENDING_SIGN_IN_LIFETIME = 600
 ID_TOKEN_ALG = "ES256"
 DISPLAY_CLAIMS = ("email", "preferred_username", "name")
 
-# The non-interactive entry: names a fake account, deterministic mode only.
+# The non-interactive entry: names a fake account, deterministic and stub mode.
 FAKE_ACCOUNT_PARAM = "fake_account"
 
 AUTHORIZE_PATH = "/oauth/authorize"
@@ -690,8 +690,8 @@ class SignInServer:
 
         fake = data.get(FAKE_ACCOUNT_PARAM)
         if fake is not None:
-            if self.mode != "deterministic":
-                return refuse(f"'{FAKE_ACCOUNT_PARAM}' is for deterministic mode only.")
+            if self.mode == "live":
+                return refuse(f"'{FAKE_ACCOUNT_PARAM}' is for the fake accounts, not live mode.")
             account = self.upstream.account(fake)
             if account is None:
                 return refuse(f"'{FAKE_ACCOUNT_PARAM}' names no account.")

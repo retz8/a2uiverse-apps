@@ -1,0 +1,219 @@
+[
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "labels",
+      "value": {
+        "labels": [
+          {
+            "id": "Label_1",
+            "name": "Apartment",
+            "count": "2",
+            "query": "label:Apartment"
+          },
+          {
+            "id": "Label_2",
+            "name": "Friends"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "labels",
+      "value": {
+        "labels": [
+          {
+            "id": "Label_1",
+            "name": "Apartment",
+            "count": "2",
+            "query": "label:Apartment"
+          },
+          {
+            "id": "Label_2",
+            "name": "Friends",
+            "count": "3",
+            "query": "label:Friends"
+          },
+          {}
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "labels",
+      "value": {
+        "labels": [
+          {
+            "id": "Label_1",
+            "name": "Apartment",
+            "count": "2",
+            "query": "label:Apartment"
+          },
+          {
+            "id": "Label_2",
+            "name": "Friends",
+            "count": "3",
+            "query": "label:Friends"
+          },
+          {
+            "id": "Label_3",
+            "name": "Trips"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "labels",
+      "value": {
+        "labels": [
+          {
+            "id": "Label_1",
+            "name": "Apartment",
+            "count": "2",
+            "query": "label:Apartment"
+          },
+          {
+            "id": "Label_2",
+            "name": "Friends",
+            "count": "3",
+            "query": "label:Friends"
+          },
+          {
+            "id": "Label_3",
+            "name": "Trips",
+            "count": "1",
+            "query": "label:Trips"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "labels",
+      "path": "/",
+      "value": {
+        "labels": [
+          {
+            "id": "Label_1",
+            "name": "Apartment",
+            "count": "2",
+            "query": "label:Apartment"
+          },
+          {
+            "id": "Label_2",
+            "name": "Friends",
+            "count": "3",
+            "query": "label:Friends"
+          },
+          {
+            "id": "Label_3",
+            "name": "Trips",
+            "count": "1",
+            "query": "label:Trips"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateComponents": {
+      "components": [
+        {
+          "id": "root",
+          "component": "Surface",
+          "child": "body",
+          "container": "low",
+          "shape": "large",
+          "padding": "small"
+        },
+        {
+          "id": "body",
+          "component": "Stack",
+          "children": [
+            "header",
+            "sheet"
+          ],
+          "gap": "xs"
+        },
+        {
+          "id": "header",
+          "component": "Stack",
+          "children": [
+            "heading",
+            "sub"
+          ],
+          "gap": "xs",
+          "padding": "sm"
+        },
+        {
+          "id": "sheet",
+          "component": "Surface",
+          "child": "label-list",
+          "container": "lowest",
+          "shape": "large",
+          "padding": "none"
+        },
+        {
+          "id": "heading",
+          "component": "Text",
+          "text": "Labels",
+          "variant": "titleLarge"
+        },
+        {
+          "id": "sub",
+          "component": "Text",
+          "text": "3 labels in your mailbox",
+          "variant": "bodySmall",
+          "color": "onSurfaceVariant"
+        },
+        {
+          "id": "label-list",
+          "component": "Stack",
+          "children": {
+            "path": "/labels",
+            "componentId": "label-row"
+          },
+          "gap": "none"
+        },
+        {
+          "id": "label-row",
+          "component": "NavigationItem",
+          "label": {
+            "path": "name"
+          },
+          "icon": "label",
+          "count": {
+            "path": "count"
+          },
+          "action": {
+            "event": {
+              "name": "search",
+              "context": {
+                "query": {
+                  "path": "query"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "paintMeta": {
+      "surfaceId": "labels",
+      "title": "Labels"
+    }
+  }
+]

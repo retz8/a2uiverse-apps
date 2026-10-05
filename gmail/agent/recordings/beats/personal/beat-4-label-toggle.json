@@ -1,0 +1,811 @@
+{
+  "name": "beat-4-label-toggle",
+  "beat": 4,
+  "title": "Label toggle",
+  "prompt": "What labels do I have?",
+  "model": "gemini-3.7-flash",
+  "recordedAt": "2026-10-05T10:15:37+00:00",
+  "contextId": "2c51a2e8-ac9b-4635-a530-be50f076edc5",
+  "chainedFrom": null,
+  "turns": [
+    {
+      "taskId": "0fc5dcbc-c9f3-4ba8-9f7a-81d1886eb987",
+      "kind": "utterance",
+      "prompt": "What labels do I have?",
+      "action": null,
+      "batches": [
+        {
+          "offsetMs": 23757,
+          "messages": [
+            {
+              "paintMeta": {
+                "surfaceId": "labels",
+                "title": "Labels"
+              }
+            }
+          ],
+          "texts": [
+            "\n"
+          ]
+        },
+        {
+          "offsetMs": 23961,
+          "messages": [
+            {
+              "version": "v0.9",
+              "createSurface": {
+                "surfaceId": "labels",
+                "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/gmail/gmail-catalog/catalogs/v0.9.1/catalog.json",
+                "sendDataModel": true
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 24321,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "labels",
+                "value": {
+                  "labels": [
+                    {
+                      "id": "Label_1",
+                      "name": "Apartment",
+                      "count": "2",
+                      "query": "label:Apartment"
+                    },
+                    {
+                      "id": "Label_2",
+                      "name": "Friends"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 24483,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "labels",
+                "value": {
+                  "labels": [
+                    {
+                      "id": "Label_1",
+                      "name": "Apartment",
+                      "count": "2",
+                      "query": "label:Apartment"
+                    },
+                    {
+                      "id": "Label_2",
+                      "name": "Friends",
+                      "count": "3",
+                      "query": "label:Friends"
+                    },
+                    {}
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 24683,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "labels",
+                "value": {
+                  "labels": [
+                    {
+                      "id": "Label_1",
+                      "name": "Apartment",
+                      "count": "2",
+                      "query": "label:Apartment"
+                    },
+                    {
+                      "id": "Label_2",
+                      "name": "Friends",
+                      "count": "3",
+                      "query": "label:Friends"
+                    },
+                    {
+                      "id": "Label_3",
+                      "name": "Trips"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 24834,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "labels",
+                "value": {
+                  "labels": [
+                    {
+                      "id": "Label_1",
+                      "name": "Apartment",
+                      "count": "2",
+                      "query": "label:Apartment"
+                    },
+                    {
+                      "id": "Label_2",
+                      "name": "Friends",
+                      "count": "3",
+                      "query": "label:Friends"
+                    },
+                    {
+                      "id": "Label_3",
+                      "name": "Trips",
+                      "count": "1",
+                      "query": "label:Trips"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 24913,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "labels",
+                "path": "/",
+                "value": {
+                  "labels": [
+                    {
+                      "id": "Label_1",
+                      "name": "Apartment",
+                      "count": "2",
+                      "query": "label:Apartment"
+                    },
+                    {
+                      "id": "Label_2",
+                      "name": "Friends",
+                      "count": "3",
+                      "query": "label:Friends"
+                    },
+                    {
+                      "id": "Label_3",
+                      "name": "Trips",
+                      "count": "1",
+                      "query": "label:Trips"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 25204,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "loading_body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "loading_body",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "labels"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 25353,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "loading_header",
+                      "loading_sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "loading_header",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_sheet",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "labels"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 25597,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "loading_sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "loading_heading",
+                      "loading_sub"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "loading_sheet",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_heading",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_sub",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "labels"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 25747,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "loading_sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "loading_heading",
+                      "loading_sub"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "loading_sheet",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_heading",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_sub",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "labels"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 25880,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "loading_heading",
+                      "loading_sub"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "loading_label-list",
+                    "container": "lowest"
+                  },
+                  {
+                    "id": "loading_heading",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_sub",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_label-list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "labels"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 26045,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "loading_heading",
+                      "loading_sub"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "loading_label-list",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "loading_heading",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_sub",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_label-list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "labels"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 26303,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "heading",
+                      "loading_sub"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": "Labels",
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "loading_label-list",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "loading_sub",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_label-list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "labels"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 26507,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "heading",
+                      "sub"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": "Labels",
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "loading_label-list",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": "3 labels in your mailbox",
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "loading_label-list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "labels"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 26830,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "heading",
+                      "sub"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": "Labels",
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "label-list",
+                    "component": "Stack",
+                    "children": {
+                      "path": "/labels",
+                      "componentId": "loading_label-row"
+                    },
+                    "gap": "none"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "label-list",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": "3 labels in your mailbox",
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "loading_label-row",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "labels"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 27312,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "heading",
+                      "sub"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": "Labels",
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "label-list",
+                    "component": "Stack",
+                    "children": {
+                      "path": "/labels",
+                      "componentId": "label-row"
+                    },
+                    "gap": "none"
+                  },
+                  {
+                    "id": "label-row",
+                    "component": "NavigationItem",
+                    "label": {
+                      "path": "name"
+                    },
+                    "icon": "label",
+                    "count": {
+                      "path": "count"
+                    },
+                    "action": {
+                      "event": {
+                        "name": "search",
+                        "context": {
+                          "query": {
+                            "path": "query"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "label-list",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": "3 labels in your mailbox",
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  }
+                ],
+                "surfaceId": "labels"
+              }
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "outcome": "completed",
+      "durationMs": 27759
+    }
+  ]
+}

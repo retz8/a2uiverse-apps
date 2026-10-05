@@ -6,6 +6,10 @@ handlers are the app's: `fixture_responder` builds the standard
 map, `stub_fixture_loader` builds the cached loader an app's stub tools read
 their corpus through, and the low-level helpers are exported for an app that
 composes its own pair around them.
+
+An app whose fake accounts each have their own data keeps one subdirectory of each
+fixtures dir per fake-account id; the signed-in account's is read. An app with one set
+keeps it flat (task-12.11 decision 4).
 """
 
 from __future__ import annotations
@@ -18,11 +22,21 @@ from pathlib import Path
 from typing import Any
 
 from a2ui_agent_kit.config import BuildResponse, BuildTextResponse
+from a2ui_agent_kit.sign_in import fake_account_id
 from a2ui_agent_kit.versions import WIRE_VERSION
 
 # The keys whose object carries the surfaceId we stamp: the A2UI operations, and the paint's
 # shell metadata, which names the surface it titles (task-10.9 decision 8).
 _OPERATION_KEYS = ("updateComponents", "updateDataModel", "createSurface", "paintMeta")
+
+
+def account_fixtures_dir(fixtures_dir: Path) -> Path:
+    """The signed-in fake account's own fixtures, `<fixtures_dir>/<account id>/`, where the
+    app keeps a set per account; otherwise `fixtures_dir`."""
+    account_id = fake_account_id()
+    if account_id is not None and (fixtures_dir / account_id).is_dir():
+        return fixtures_dir / account_id
+    return fixtures_dir
 
 
 def load_fixture(fixtures_dir: Path, name: str) -> list[dict]:
@@ -44,11 +58,14 @@ def stub_fixture_loader(fixtures_dir: Path, *, hint: str) -> Callable[[str], Any
     """
 
     @functools.lru_cache(maxsize=16)
-    def fixture(name: str) -> Any:
-        path = fixtures_dir / f"{name}.json"
+    def read(directory: Path, name: str) -> Any:
+        path = directory / f"{name}.json"
         if not path.is_file():
             raise FileNotFoundError(f"stub fixture {path.name} is missing. {hint}")
         return json.loads(path.read_text(encoding="utf-8"))
+
+    def fixture(name: str) -> Any:
+        return read(account_fixtures_dir(fixtures_dir), name)
 
     return fixture
 
@@ -107,13 +124,13 @@ def fixture_responder(
         fixture = event_fixtures.get(name)
         if fixture is None:
             return fallback(name, surface_id)
-        messages = load_fixture(fixtures_dir, fixture)
+        messages = load_fixture(account_fixtures_dir(fixtures_dir), fixture)
         if any("createSurface" in m for m in messages):
             surface_id = f"{surface_prefix}-{next(surface_counter)}"
         return stamp_surface(messages, surface_id)
 
     def build_text_response(text: str) -> list[dict]:
-        messages = load_fixture(fixtures_dir, text_fixture)
+        messages = load_fixture(account_fixtures_dir(fixtures_dir), text_fixture)
         return stamp_surface(messages, f"{surface_prefix}-{next(surface_counter)}")
 
     return build_response, build_text_response

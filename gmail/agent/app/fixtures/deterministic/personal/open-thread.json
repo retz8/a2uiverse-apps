@@ -1,0 +1,312 @@
+[
+  {
+    "version": "v0.9",
+    "createSurface": {
+      "surfaceId": "thread-1988d441e2356bf7",
+      "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/gmail/gmail-catalog/catalogs/v0.9.1/catalog.json",
+      "sendDataModel": true
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "thread-1988d441e2356bf7",
+      "value": {
+        "subject": "Dinner at ours tonight?"
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "thread-1988d441e2356bf7",
+      "value": {
+        "count": "2 messages"
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "thread-1988d441e2356bf7",
+      "value": {
+        "messages": [
+          {
+            "id": "1988d441e2356bf7",
+            "sender": "Leo Marchetti",
+            "when": "2026-09-19 10:15 UTC"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "thread-1988d441e2356bf7",
+      "value": {
+        "messages": [
+          {
+            "id": "1988d441e2356bf7",
+            "sender": "Leo Marchetti",
+            "when": "2026-09-19 10:15 UTC",
+            "body": "Hey!\n\nWe're doing a small dinner tonight around 7:30, just the four of us plus you if you're free. Ana is making the lasagne again. Can you let us know by 3 so we know how much to make?\n\nLeo"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "thread-1988d441e2356bf7",
+      "value": {
+        "messages": [
+          {
+            "id": "1988d441e2356bf7",
+            "sender": "Leo Marchetti",
+            "when": "2026-09-19 10:15 UTC",
+            "body": "Hey!\n\nWe're doing a small dinner tonight around 7:30, just the four of us plus you if you're free. Ana is making the lasagne again. Can you let us know by 3 so we know how much to make?\n\nLeo"
+          },
+          {
+            "id": "19fbbe4193d92447"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "thread-1988d441e2356bf7",
+      "value": {
+        "messages": [
+          {
+            "id": "1988d441e2356bf7",
+            "sender": "Leo Marchetti",
+            "when": "2026-09-19 10:15 UTC",
+            "body": "Hey!\n\nWe're doing a small dinner tonight around 7:30, just the four of us plus you if you're free. Ana is making the lasagne again. Can you let us know by 3 so we know how much to make?\n\nLeo"
+          },
+          {
+            "id": "19fbbe4193d92447",
+            "sender": "Ana Marchetti"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "thread-1988d441e2356bf7",
+      "value": {
+        "messages": [
+          {
+            "id": "1988d441e2356bf7",
+            "sender": "Leo Marchetti",
+            "when": "2026-09-19 10:15 UTC",
+            "body": "Hey!\n\nWe're doing a small dinner tonight around 7:30, just the four of us plus you if you're free. Ana is making the lasagne again. Can you let us know by 3 so we know how much to make?\n\nLeo"
+          },
+          {
+            "id": "19fbbe4193d92447",
+            "sender": "Ana Marchetti",
+            "when": "2026-09-19 11:20 UTC"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "surfaceId": "thread-1988d441e2356bf7",
+      "path": "/",
+      "value": {
+        "subject": "Dinner at ours tonight?",
+        "count": "2 messages",
+        "messages": [
+          {
+            "id": "1988d441e2356bf7",
+            "sender": "Leo Marchetti",
+            "when": "2026-09-19 10:15 UTC",
+            "body": "Hey!\n\nWe're doing a small dinner tonight around 7:30, just the four of us plus you if you're free. Ana is making the lasagne again. Can you let us know by 3 so we know how much to make?\n\nLeo"
+          },
+          {
+            "id": "19fbbe4193d92447",
+            "sender": "Ana Marchetti",
+            "when": "2026-09-19 11:20 UTC",
+            "body": "And if you're coming, could you bring something sweet? We have nothing for afterwards. Ice cream is perfect.\n\nAna"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateComponents": {
+      "components": [
+        {
+          "id": "root",
+          "component": "Surface",
+          "child": "body",
+          "container": "low",
+          "shape": "large",
+          "padding": "small"
+        },
+        {
+          "id": "body",
+          "component": "Stack",
+          "children": [
+            "header",
+            "sheet"
+          ],
+          "gap": "xs"
+        },
+        {
+          "id": "header",
+          "component": "Stack",
+          "children": [
+            "subject",
+            "count"
+          ],
+          "gap": "xs",
+          "padding": "sm"
+        },
+        {
+          "id": "sheet",
+          "component": "Surface",
+          "child": "thread",
+          "container": "lowest",
+          "shape": "large",
+          "padding": "none"
+        },
+        {
+          "id": "subject",
+          "component": "Text",
+          "text": {
+            "path": "/subject"
+          },
+          "variant": "titleLarge"
+        },
+        {
+          "id": "count",
+          "component": "Text",
+          "text": {
+            "path": "/count"
+          },
+          "variant": "bodySmall",
+          "color": "onSurfaceVariant"
+        },
+        {
+          "id": "thread",
+          "component": "Stack",
+          "children": [
+            "messages",
+            "actions"
+          ],
+          "gap": "none"
+        },
+        {
+          "id": "messages",
+          "component": "List",
+          "children": {
+            "path": "/messages",
+            "componentId": "message"
+          },
+          "dividers": true
+        },
+        {
+          "id": "actions",
+          "component": "Stack",
+          "children": [
+            "reply",
+            "archive"
+          ],
+          "direction": "horizontal",
+          "gap": "sm",
+          "padding": "md"
+        },
+        {
+          "id": "message",
+          "component": "ListItem",
+          "headline": "message-sender",
+          "meta": "message-when",
+          "supporting": "message-body",
+          "leading": [
+            "message-avatar"
+          ]
+        },
+        {
+          "id": "message-avatar",
+          "component": "Avatar",
+          "name": {
+            "path": "sender"
+          }
+        },
+        {
+          "id": "message-sender",
+          "component": "Text",
+          "text": {
+            "path": "sender"
+          },
+          "variant": "titleSmall",
+          "weight": "bold"
+        },
+        {
+          "id": "message-when",
+          "component": "Text",
+          "text": {
+            "path": "when"
+          },
+          "variant": "bodySmall",
+          "color": "onSurfaceVariant"
+        },
+        {
+          "id": "message-body",
+          "component": "Text",
+          "text": {
+            "path": "body"
+          }
+        },
+        {
+          "id": "reply",
+          "component": "Button",
+          "label": "Draft a reply",
+          "variant": "outlined",
+          "icon": "reply",
+          "action": {
+            "event": {
+              "name": "draft-reply",
+              "context": {
+                "threadId": "1988d441e2356bf7"
+              }
+            }
+          }
+        },
+        {
+          "id": "archive",
+          "component": "Button",
+          "label": "Archive",
+          "variant": "outlined",
+          "icon": "archive",
+          "action": {
+            "event": {
+              "name": "label-toggle",
+              "context": {
+                "threadId": "1988d441e2356bf7",
+                "labelId": "INBOX",
+                "add": false
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "paintMeta": {
+      "surfaceId": "thread-1988d441e2356bf7",
+      "title": "Thread: Dinner at ours tonight?"
+    }
+  }
+]

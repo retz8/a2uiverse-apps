@@ -4,17 +4,15 @@ Task 8.1. The agent records what it streams (the kit recorder, armed by
 A2UI_RECORD_DIR); the kit's driver (`a2ui_agent_kit.beats`) supplies the mechanics —
 this shim carries only what is Gmail's: the beats, the agent URL, and the directories.
 
-The agent must already be running. The model is an agent-startup concern (ADK builds the
-LlmAgent once), so a beat that needs a different rung of the model ladder is driven in a
-separate invocation against a separately-started agent:
+The agent must already be running, in stub mode over the hand-written mail. Each fake
+account has its own mailbox, so a run signs in as one, named with `--account`, and its
+beats land in `recordings/beats/<account>/` (task-12.11). The model is an agent-startup
+concern (ADK builds the LlmAgent once), so a beat that needs a different rung of the model
+ladder is driven in a separate invocation against a separately-started agent:
 
-    # default rung
-    A2UI_RECORD_DIR=.recordings uv run python -m app --mode live --host localhost
-    uv run python scripts/record_beats.py --beats 1,4 --model gemini-3.5-flash
-
-    # stronger rung, for a retry (phase spec decision 18)
-    MODEL_NAME=gemini-3.1-pro-preview A2UI_RECORD_DIR=.recordings uv run python -m app --mode live ...
-    uv run python scripts/record_beats.py --beats 2,3 --model gemini-3.1-pro-preview
+    A2UI_RECORD_DIR=.recordings uv run python -m app --mode stub --host localhost
+    uv run python scripts/record_beats.py --account you --model gemini-3.7-flash
+    uv run python scripts/record_beats.py --account personal --model gemini-3.7-flash
 """
 
 from __future__ import annotations
@@ -48,4 +46,12 @@ BEATS: list[Turn] = [
 
 
 if __name__ == "__main__":
-    sys.exit(main(BEATS, AGENT_URL, record_dir=DEFAULT_RECORD_DIR, fixture_dir=FIXTURE_DIR))
+    sys.exit(
+        main(
+            BEATS,
+            AGENT_URL,
+            record_dir=DEFAULT_RECORD_DIR,
+            fixture_dir=FIXTURE_DIR,
+            per_account=True,
+        )
+    )

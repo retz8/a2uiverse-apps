@@ -385,6 +385,16 @@ async def test_the_non_interactive_entry_signs_in_without_the_chooser(tmp_path):
     assert result["status"]["message"]["parts"][0]["data"]["updateDataModel"]["value"]["who"] == "Alan Turing"
 
 
+async def test_stub_mode_honors_the_non_interactive_entry_too(tmp_path):
+    # Its accounts are as fake as deterministic mode's; a recording signs in through it
+    # (task-12.11 decision 7).
+    async with running(tmp_path, "stub") as agent:
+        client_id = await agent.register()
+        response, _, _ = await agent.authorize(client_id, fake_account="alan")
+    assert response.status_code == 302
+    assert "code" in parse_qs(urlsplit(response.headers["location"]).query)
+
+
 async def test_pkce_is_required_and_s256_only(tmp_path):
     async with running(tmp_path) as agent:
         client_id = await agent.register()

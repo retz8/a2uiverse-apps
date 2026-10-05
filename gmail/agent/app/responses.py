@@ -9,7 +9,8 @@ collapse in seconds and iterating on it in minutes against three live agents.
 
 The canned content is derived from beats recorded against the stub, whose mail is written by
 hand in the MCP payloads' captured shapes (task 10.11) — so it carries real payload shapes and
-no real mail. The playing machinery — fixture
+no real mail. Each made-up account has its own mailbox and its own canned answers, and the kit
+reads the signed-in account's (task-12.11). The playing machinery — fixture
 load, surfaceId stamping, the visible fallback, fresh text surfaces — is the kit's.
 """
 

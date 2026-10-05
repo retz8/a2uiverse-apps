@@ -1,0 +1,122 @@
+{
+  "labels": [
+    {
+      "labelId": "CHAT",
+      "labelListVisibility": "LABEL_HIDE",
+      "labelType": "SYSTEM",
+      "messageListVisibility": "HIDE",
+      "messagesTotal": 0,
+      "messagesUnread": 0,
+      "name": "CHAT",
+      "threadsTotal": 0,
+      "threadsUnread": 0
+    },
+    {
+      "labelId": "SENT",
+      "labelType": "SYSTEM",
+      "messagesTotal": 1,
+      "messagesUnread": 0,
+      "name": "SENT",
+      "threadsTotal": 1,
+      "threadsUnread": 0
+    },
+    {
+      "labelId": "INBOX",
+      "labelType": "SYSTEM",
+      "messagesTotal": 12,
+      "messagesUnread": 5,
+      "name": "INBOX",
+      "threadsTotal": 10,
+      "threadsUnread": 4
+    },
+    {
+      "labelId": "IMPORTANT",
+      "labelListVisibility": "LABEL_HIDE",
+      "labelType": "SYSTEM",
+      "messageListVisibility": "HIDE",
+      "messagesTotal": 3,
+      "messagesUnread": 3,
+      "name": "IMPORTANT",
+      "threadsTotal": 2,
+      "threadsUnread": 2
+    },
+    {
+      "labelId": "TRASH",
+      "labelListVisibility": "LABEL_HIDE",
+      "labelType": "SYSTEM",
+      "messageListVisibility": "HIDE",
+      "messagesTotal": 0,
+      "messagesUnread": 0,
+      "name": "TRASH",
+      "threadsTotal": 0,
+      "threadsUnread": 0
+    },
+    {
+      "labelId": "DRAFT",
+      "labelListVisibility": "LABEL_SHOW",
+      "labelType": "SYSTEM",
+      "messageListVisibility": "HIDE",
+      "messagesTotal": 0,
+      "messagesUnread": 0,
+      "name": "DRAFT",
+      "threadsTotal": 0,
+      "threadsUnread": 0
+    },
+    {
+      "labelId": "SPAM",
+      "labelListVisibility": "LABEL_HIDE",
+      "labelType": "SYSTEM",
+      "messageListVisibility": "HIDE",
+      "messagesTotal": 0,
+      "messagesUnread": 0,
+      "name": "SPAM",
+      "threadsTotal": 0,
+      "threadsUnread": 0
+    },
+    {
+      "labelId": "STARRED",
+      "labelType": "SYSTEM",
+      "messagesTotal": 0,
+      "messagesUnread": 0,
+      "name": "STARRED",
+      "threadsTotal": 0,
+      "threadsUnread": 0
+    },
+    {
+      "labelId": "UNREAD",
+      "labelType": "SYSTEM",
+      "messagesTotal": 5,
+      "messagesUnread": 5,
+      "name": "UNREAD",
+      "threadsTotal": 4,
+      "threadsUnread": 4
+    },
+    {
+      "labelId": "Label_1",
+      "labelType": "USER",
+      "name": "Apartment",
+      "messagesTotal": 2,
+      "messagesUnread": 1,
+      "threadsTotal": 2,
+      "threadsUnread": 1
+    },
+    {
+      "labelId": "Label_2",
+      "labelType": "USER",
+      "name": "Friends",
+      "messagesTotal": 5,
+      "messagesUnread": 3,
+      "threadsTotal": 3,
+      "threadsUnread": 2
+    },
+    {
+      "labelId": "Label_3",
+      "labelType": "USER",
+      "name": "Trips",
+      "messagesTotal": 1,
+      "messagesUnread": 0,
+      "threadsTotal": 1,
+      "threadsUnread": 0
+    }
+  ]
+}

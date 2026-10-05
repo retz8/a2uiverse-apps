@@ -102,13 +102,13 @@ uv run python scripts/derive_corpus.py --account <test account email>
 uv run pytest tests/test_corpus_is_publishable.py
 ```
 
-Sign the test account in through A2UIVerse first. Nothing is pseudonymized: the demo calendar holds nothing private.
+The script signs in at the start: it opens the agent's sign-in in your browser, where you sign in with Google, and catches the return on a `localhost` address, so run it on the machine whose browser you sign in with. Sign in as the test account. Nothing is pseudonymized: the demo calendar holds nothing private.
 
-To repaint the beats after a catalog change, record them against the stub instead: the model paints over the recorded data, nothing reaches Google Calendar, and only the deterministic corpus is derived again.
+To repaint the beats after a catalog change, record them against the stub instead: the model paints over the recorded data, nothing reaches Google Calendar, and only the deterministic corpus is derived again. `--account` signs the script in as the made-up account, with no browser.
 
 ```bash
 A2UI_RECORD_DIR=.recordings uv run python -m app --mode stub --host localhost
-uv run python scripts/record_beats.py --model <model>
+uv run python scripts/record_beats.py --model <model> --account you
 uv run python scripts/derive_corpus.py --beats-only
 uv run pytest tests/test_corpus_is_publishable.py
 ```

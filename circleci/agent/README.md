@@ -64,13 +64,13 @@ uv run python scripts/derive_corpus.py
 uv run pytest tests/test_corpus_is_publishable.py
 ```
 
-Sign in through A2UIVerse first. Recording needs a failed run in a project you follow, and its last step **really reruns** that workflow on CircleCI. Nothing is pseudonymized, since the data is a public repository's CI, and the last test fails the recordings if anything token-shaped got in.
+The script signs in at the start: it opens the agent's sign-in in your browser, where you sign in with CircleCI, and catches the return on a `localhost` address, so run it on the machine whose browser you sign in with. Recording needs a failed run in a project you follow, and its last step **really reruns** that workflow on CircleCI. Nothing is pseudonymized, since the data is a public repository's CI, and the last test fails the recordings if anything token-shaped got in.
 
-To repaint the beats after a catalog change, record them against the stub instead: the model paints over the recorded data, nothing reaches CircleCI, and only the deterministic corpus is derived again.
+To repaint the beats after a catalog change, record them against the stub instead: the model paints over the recorded data, nothing reaches CircleCI, and only the deterministic corpus is derived again. `--account` signs the script in as the made-up account, with no browser.
 
 ```bash
 A2UI_RECORD_DIR=<scratch dir> uv run python -m app --mode stub --port <free port> --host localhost
-uv run python scripts/record_beats.py --model <model> --record-dir <scratch dir> --url http://localhost:<free port>
+uv run python scripts/record_beats.py --model <model> --record-dir <scratch dir> --url http://localhost:<free port> --account retz8
 uv run python scripts/derive_corpus.py --beats-only
 ```
 

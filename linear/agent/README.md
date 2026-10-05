@@ -64,13 +64,13 @@ uv run python scripts/derive_corpus.py
 uv run pytest tests/test_corpus_is_publishable.py
 ```
 
-Sign in through A2UIVerse first. Recording's last step **really changes** an issue's status in the workspace.
+The script signs in at the start: it opens the agent's sign-in in your browser, where you sign in with Linear, and catches the return on a `localhost` address, so run it on the machine whose browser you sign in with. Recording's last step **really changes** an issue's status in the workspace.
 
-To repaint the beats after a catalog change, record them against the stub instead: the model paints over the recorded data, nothing reaches Linear, and only the deterministic corpus is derived again. The stub holds A2U-5 as the live run left it, already In Progress, so for the recording set its `status` in `app/fixtures/stub/get-issue.json` to `In Review`, as the live run first read it, and put the file back afterwards; otherwise beat 3 has nothing to propose.
+To repaint the beats after a catalog change, record them against the stub instead: the model paints over the recorded data, nothing reaches Linear, and only the deterministic corpus is derived again. `--account` signs the script in as the made-up account, with no browser. The stub holds A2U-5 as the live run left it, already In Progress, so for the recording set its `status` in `app/fixtures/stub/get-issue.json` to `In Review`, as the live run first read it, and put the file back afterwards; otherwise beat 3 has nothing to propose.
 
 ```bash
 A2UI_RECORD_DIR=<scratch dir> uv run python -m app --mode stub --host localhost
-uv run python scripts/record_beats.py --model <model> --record-dir <scratch dir>
+uv run python scripts/record_beats.py --model <model> --record-dir <scratch dir> --account me
 uv run python scripts/derive_corpus.py --beats-only
 ```
 

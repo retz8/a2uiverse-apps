@@ -11,10 +11,14 @@ from pathlib import Path
 
 import pytest
 
+import json
+
 from a2ui_agent_kit.catalog import catalog_context
+from a2ui_agent_kit.testing import signed_in_as
 
 from app.config import CONFIG
 from app.responses import build_response, build_text_response
+from app.sign_in import SIGN_IN
 
 validate_payload = catalog_context(CONFIG).validate_payload
 
@@ -29,6 +33,22 @@ requires_corpus = pytest.mark.skipif(
     not (Path(__file__).resolve().parents[1] / "app" / "fixtures" / "deterministic").is_dir(),
     reason="deterministic corpus not recorded yet (see agent/README.md)",
 )
+
+
+ACCOUNTS = [a.id for a in SIGN_IN.fake_accounts]
+STUB = Path(__file__).resolve().parents[1] / "app" / "fixtures" / "stub"
+
+
+@pytest.fixture(params=ACCOUNTS, autouse=True)
+def account(request):
+    # Every account's canned answers hold to the same contract (task-12.11 decision 6).
+    with signed_in_as(SIGN_IN, request.param):
+        yield request.param
+
+
+def _thread_ids(account: str) -> set[str]:
+    search = json.loads((STUB / account / "search-threads.json").read_text(encoding="utf-8"))
+    return {t["id"] for t in search["threads"]}
 
 
 def _action(name: str, surface_id: str = "s-1") -> dict:
@@ -103,3 +123,18 @@ class TestActionPath:
         # A silent no-op looks like a working round-trip that changed nothing.
         messages = build_response(_action("no-such-event"))
         assert "Unhandled event: no-such-event" in str(messages)
+
+
+@requires_corpus
+class TestEachAccountsOwnMail:
+    def test_the_digest_shows_the_signed_in_accounts_mail_only(self, account):
+        painted = str(build_text_response("What needs my attention today?"))
+        others = set().union(*(_thread_ids(a) for a in ACCOUNTS if a != account))
+        assert any(i in painted for i in _thread_ids(account))
+        assert not any(i in painted for i in others)
+
+    def test_a_press_is_answered_from_the_pressing_accounts_mail(self, account):
+        painted = str(build_response(_action("open-thread")))
+        others = set().union(*(_thread_ids(a) for a in ACCOUNTS if a != account))
+        assert any(i in painted for i in _thread_ids(account))
+        assert not any(i in painted for i in others)

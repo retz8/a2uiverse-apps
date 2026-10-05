@@ -1,0 +1,20 @@
+[
+  {
+    "version": "v0.9",
+    "updateComponents": {
+      "components": [
+        {
+          "id": "root",
+          "component": "Surface",
+          "child": "declined",
+          "container": "low"
+        },
+        {
+          "id": "declined",
+          "component": "Text",
+          "text": "Draft discarded"
+        }
+      ]
+    }
+  }
+]

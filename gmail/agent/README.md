@@ -28,7 +28,7 @@ uv run python -m app --mode deterministic
 | `stub`          | the model over canned mail               | `GOOGLE_API_KEY`                                                          |
 | `live`          | the model over your mailbox, through MCP | `GOOGLE_API_KEY`, `GOOGLE_OAUTH_CLIENT_ID`, `GOOGLE_OAUTH_CLIENT_SECRET` |
 
-`deterministic` answers any question with a recorded inbox digest, and replays the recorded actions: opening a thread, confirming or cancelling a draft, toggling a label. Opening a thread paints a new surface, as the live agent does.
+`deterministic` answers any question with the signed-in account's recorded inbox digest, and replays the recorded actions: opening a thread, confirming or cancelling a draft, toggling a label. Opening a thread paints a new surface, as the live agent does.
 
 Other flags: `--port`, `--host`, and `--base-url`, the address the agent card advertises. `--state-dir` moves the sign-in store from `.state/`.
 
@@ -42,7 +42,7 @@ The agent is its own sign-in: A2UIVerse signs in to it, and it signs in to Googl
 | `messages` | Read your email                   | the first time you open a message         |
 | `organize` | Write drafts and label your email | the first time you save a draft or label  |
 
-In `deterministic` and `stub` mode the sign-in offers one made-up account, `you@example.com`. In `deterministic` mode, opening a thread asks for `messages`, and confirming a draft or toggling a label asks for `organize`.
+In `deterministic` and `stub` mode the sign-in offers two made-up accounts, each with its own mail: `you@example.com`, a developer's work mail, and `you.personal@example.net`, the same person's personal mail. In `deterministic` mode, opening a thread asks for `messages`, and confirming a draft or toggling a label asks for `organize`.
 
 In `live` mode the sign-in sends you to Google. The agent keeps your Google token, refreshes it, and gives A2UIVerse a token of its own. It asks Google for `gmail.readonly` at first and `gmail.modify` for drafts and labels, with `openid`, `email` and `profile` to know who signed in.
 
@@ -80,12 +80,17 @@ No model calls, no Gmail calls, no credentials needed.
 
 ## Recording
 
-The stub's mail is written by hand, in the shapes Gmail's MCP server returns: a week of one developer's work mail, from the same people as the Calendar app's demo calendar, in `app/fixtures/stub/`. The deterministic corpus is derived from beats the model paints over it, so nothing reaches Gmail.
+The stub's mail is written by hand, in the shapes Gmail's MCP server returns, one mailbox per made-up account in `app/fixtures/stub/<account>/`:
+
+- `you`: a week of one developer's work mail, from the same people as the Calendar app's demo calendar.
+- `personal`: the same week of the same person's personal mail, from people nowhere else in the demo.
+
+The deterministic corpus is derived from beats the model paints over each mailbox, into `recordings/beats/<account>/` and `app/fixtures/deterministic/<account>/`, so nothing reaches Gmail. The beat driver signs in as the account you name:
 
 ```bash
 A2UI_RECORD_DIR=.recordings uv run python -m app --mode stub --host localhost
-uv run python scripts/record_beats.py --model <model>
-uv run python scripts/derive_corpus.py
+uv run python scripts/record_beats.py --account <account> --model <model>
+uv run python scripts/derive_corpus.py --account <account>
 uv run pytest tests/test_corpus_is_publishable.py
 ```
 

@@ -1,0 +1,304 @@
+{
+  "1988d441e2356bf7": {
+    "id": "1988d441e2356bf7",
+    "messages": [
+      {
+        "date": "2026-09-19T10:15:00Z",
+        "historyId": "3104476",
+        "id": "1988d441e2356bf7",
+        "internalDate": "1789812900000",
+        "labelIds": [
+          "UNREAD",
+          "IMPORTANT",
+          "Label_2",
+          "INBOX"
+        ],
+        "sender": "Leo Marchetti <leo.marchetti@example.net>",
+        "sizeEstimate": 4260,
+        "snippet": "Hey! We're doing a small dinner tonight around 7:30, just the four of us plus you if you're free. Ana is making the lasagne again. Can you let us know by 3 so we know how much to make? Leo",
+        "subject": "Dinner at ours tonight?",
+        "threadId": "1988d441e2356bf7",
+        "toRecipients": [
+          "you.personal@example.net"
+        ],
+        "plaintextBody": "Hey!\n\nWe're doing a small dinner tonight around 7:30, just the four of us plus you if you're free. Ana is making the lasagne again. Can you let us know by 3 so we know how much to make?\n\nLeo"
+      },
+      {
+        "date": "2026-09-19T11:20:00Z",
+        "historyId": "3104510",
+        "id": "19fbbe4193d92447",
+        "internalDate": "1789816800000",
+        "labelIds": [
+          "UNREAD",
+          "IMPORTANT",
+          "Label_2",
+          "INBOX"
+        ],
+        "sender": "Ana Marchetti <ana.marchetti@example.net>",
+        "sizeEstimate": 4316,
+        "snippet": "And if you're coming, could you bring something sweet? We have nothing for afterwards. Ice cream is perfect. Ana",
+        "subject": "Re: Dinner at ours tonight?",
+        "threadId": "1988d441e2356bf7",
+        "toRecipients": [
+          "you.personal@example.net",
+          "leo.marchetti@example.net"
+        ],
+        "plaintextBody": "And if you're coming, could you bring something sweet? We have nothing for afterwards. Ice cream is perfect.\n\nAna"
+      }
+    ]
+  },
+  "19a1b81c96fc2445": {
+    "id": "19a1b81c96fc2445",
+    "messages": [
+      {
+        "date": "2026-09-19T09:40:00Z",
+        "historyId": "3104441",
+        "id": "19a1b81c96fc2445",
+        "internalDate": "1789810800000",
+        "labelIds": [
+          "UNREAD",
+          "IMPORTANT",
+          "Label_1",
+          "INBOX"
+        ],
+        "sender": "Gwen Hollis <gwen.hollis@example.com>",
+        "sizeEstimate": 4192,
+        "snippet": "Hi, The engineer is booked to service the boiler on Monday 21 September between 8 and 10. Could you let me know by tomorrow whether someone will be in to let them through, or whether I should bring",
+        "subject": "Boiler service on Monday morning",
+        "threadId": "19a1b81c96fc2445",
+        "toRecipients": [
+          "you.personal@example.net"
+        ],
+        "plaintextBody": "Hi,\n\nThe engineer is booked to service the boiler on Monday 21 September between 8 and 10. Could you let me know by tomorrow whether someone will be in to let them through, or whether I should bring my spare key?\n\nThe water will be off for about an hour while they work.\n\nThanks,\nGwen"
+      }
+    ]
+  },
+  "19c24ff4f3830b99": {
+    "id": "19c24ff4f3830b99",
+    "messages": [
+      {
+        "date": "2026-09-19T08:30:00Z",
+        "historyId": "3104555",
+        "id": "19c24ff4f3830b99",
+        "internalDate": "1789806600000",
+        "labelIds": [
+          "UNREAD",
+          "Label_2",
+          "INBOX"
+        ],
+        "sender": "Mina Cho <mina.cho@example.net>",
+        "sizeEstimate": 4447,
+        "snippet": "Hi both, I ordered the record player for Sam's birthday next Friday. It came to 129, so 43 each. Could you send me your share this weekend? I'll wrap it and bring the card for us to sign. Mina",
+        "subject": "Splitting Sam's birthday present",
+        "threadId": "19c24ff4f3830b99",
+        "toRecipients": [
+          "you.personal@example.net",
+          "dana.okafor@example.net"
+        ],
+        "plaintextBody": "Hi both,\n\nI ordered the record player for Sam's birthday next Friday. It came to 129, so 43 each. Could you send me your share this weekend? I'll wrap it and bring the card for us to sign.\n\nMina"
+      }
+    ]
+  },
+  "1997d405366ffc66": {
+    "id": "1997d405366ffc66",
+    "messages": [
+      {
+        "date": "2026-09-19T07:55:00Z",
+        "historyId": "3104594",
+        "id": "1997d405366ffc66",
+        "internalDate": "1789804500000",
+        "labelIds": [
+          "UNREAD",
+          "INBOX"
+        ],
+        "sender": "Northwind Parcel <notifications@example.org>",
+        "sizeEstimate": 4154,
+        "snippet": "We tried to deliver your parcel today at 7:42 but nobody was home. You can choose a new delivery day or pick it up from the depot on Harbour Road. If we don't hear from you by Monday 21 September,",
+        "subject": "We missed you: your parcel is waiting",
+        "threadId": "1997d405366ffc66",
+        "toRecipients": [
+          "you.personal@example.net"
+        ],
+        "plaintextBody": "We tried to deliver your parcel today at 7:42 but nobody was home.\n\nYou can choose a new delivery day or pick it up from the depot on Harbour Road. If we don't hear from you by Monday 21 September, the parcel will go back to the sender.\n\nNorthwind Parcel"
+      }
+    ]
+  },
+  "19bad1265d2c0a9f": {
+    "id": "19bad1265d2c0a9f",
+    "messages": [
+      {
+        "date": "2026-09-18T19:05:00Z",
+        "historyId": "3104631",
+        "id": "19bad1265d2c0a9f",
+        "internalDate": "1789758300000",
+        "labelIds": [
+          "Label_1",
+          "INBOX"
+        ],
+        "sender": "Brightwater Energy <billing@example.org>",
+        "sizeEstimate": 4203,
+        "snippet": "Your bill for 17 August to 16 September is ready: 58.40, to be collected by direct debit on 1 October. Your usage was 9% lower than the same month last year. Brightwater Energy",
+        "subject": "Your September electricity bill",
+        "threadId": "19bad1265d2c0a9f",
+        "toRecipients": [
+          "you.personal@example.net"
+        ],
+        "plaintextBody": "Your bill for 17 August to 16 September is ready: 58.40, to be collected by direct debit on 1 October. Your usage was 9% lower than the same month last year.\n\nBrightwater Energy"
+      }
+    ]
+  },
+  "1989a5c44104cb6b": {
+    "id": "1989a5c44104cb6b",
+    "messages": [
+      {
+        "date": "2026-09-18T17:30:00Z",
+        "historyId": "3104669",
+        "id": "1989a5c44104cb6b",
+        "internalDate": "1789752600000",
+        "labelIds": [
+          "INBOX"
+        ],
+        "sender": "Riverside Runners <hello@example.org>",
+        "sizeEstimate": 4346,
+        "snippet": "Morning all, This Sunday's long run starts at 8:00 from the boathouse. We're doing the river loop out to the old mill and back, about 16 km, with a shorter 10 km turn at the footbridge. Coffee",
+        "subject": "Sunday long run: route and start time",
+        "threadId": "1989a5c44104cb6b",
+        "toRecipients": [
+          "you.personal@example.net"
+        ],
+        "plaintextBody": "Morning all,\n\nThis Sunday's long run starts at 8:00 from the boathouse. We're doing the river loop out to the old mill and back, about 16 km, with a shorter 10 km turn at the footbridge. Coffee afterwards as usual.\n\nSee you there,\nRiverside Runners"
+      }
+    ]
+  },
+  "193157ba12528db3": {
+    "id": "193157ba12528db3",
+    "messages": [
+      {
+        "date": "2026-09-17T21:10:00Z",
+        "historyId": "3104706",
+        "id": "193157ba12528db3",
+        "internalDate": "1789679400000",
+        "labelIds": [
+          "Label_2",
+          "INBOX"
+        ],
+        "sender": "Dana Okafor <dana.okafor@example.net>",
+        "sizeEstimate": 4353,
+        "snippet": "Hi, It's your turn to pick the October book. Any ideas? Last time people asked for something shorter, under 300 pages if possible. Dana",
+        "subject": "Book club pick for October",
+        "threadId": "193157ba12528db3",
+        "toRecipients": [
+          "you.personal@example.net"
+        ],
+        "plaintextBody": "Hi,\n\nIt's your turn to pick the October book. Any ideas? Last time people asked for something shorter, under 300 pages if possible.\n\nDana"
+      },
+      {
+        "date": "2026-09-17T21:48:00Z",
+        "historyId": "3104747",
+        "id": "191e9221113e9f23",
+        "internalDate": "1789681680000",
+        "labelIds": [
+          "SENT"
+        ],
+        "sender": "Jioh In <you.personal@example.net>",
+        "sizeEstimate": 4304,
+        "snippet": "How about a short novel this time? I'll send two options tomorrow and we can vote.",
+        "subject": "Re: Book club pick for October",
+        "threadId": "193157ba12528db3",
+        "toRecipients": [
+          "dana.okafor@example.net"
+        ],
+        "plaintextBody": "How about a short novel this time? I'll send two options tomorrow and we can vote."
+      },
+      {
+        "date": "2026-09-18T08:02:00Z",
+        "historyId": "3104788",
+        "id": "194693426c2cfb8c",
+        "internalDate": "1789718520000",
+        "labelIds": [
+          "Label_2",
+          "INBOX"
+        ],
+        "sender": "Dana Okafor <dana.okafor@example.net>",
+        "sizeEstimate": 4331,
+        "snippet": "Sounds good. Send them over whenever and I'll put up the poll.",
+        "subject": "Re: Book club pick for October",
+        "threadId": "193157ba12528db3",
+        "toRecipients": [
+          "you.personal@example.net"
+        ],
+        "plaintextBody": "Sounds good. Send them over whenever and I'll put up the poll."
+      }
+    ]
+  },
+  "194dab5fdfc54f5c": {
+    "id": "194dab5fdfc54f5c",
+    "messages": [
+      {
+        "date": "2026-09-17T12:20:00Z",
+        "historyId": "3104821",
+        "id": "194dab5fdfc54f5c",
+        "internalDate": "1789647600000",
+        "labelIds": [
+          "Label_3",
+          "INBOX"
+        ],
+        "sender": "Harbourline Rail <tickets@example.org>",
+        "sizeEstimate": 4337,
+        "snippet": "Your booking is confirmed. Outbound: Friday 25 September, departs 18:10, coach 6, seat 14A. Return: Sunday 27 September, departs 16:40, coach 3, seat 9C. Show the QR code in the app when you board.",
+        "subject": "Your trip to Busan is booked",
+        "threadId": "194dab5fdfc54f5c",
+        "toRecipients": [
+          "you.personal@example.net"
+        ],
+        "plaintextBody": "Your booking is confirmed.\n\nOutbound: Friday 25 September, departs 18:10, coach 6, seat 14A.\nReturn: Sunday 27 September, departs 16:40, coach 3, seat 9C.\n\nShow the QR code in the app when you board.\n\nHarbourline Rail"
+      }
+    ]
+  },
+  "19e9c65d4011ea79": {
+    "id": "19e9c65d4011ea79",
+    "messages": [
+      {
+        "date": "2026-09-16T15:45:00Z",
+        "historyId": "3104866",
+        "id": "19e9c65d4011ea79",
+        "internalDate": "1789573500000",
+        "labelIds": [
+          "INBOX"
+        ],
+        "sender": "Northbridge Library <library@example.org>",
+        "sizeEstimate": 4163,
+        "snippet": "The item you reserved is ready at the Northbridge branch. We'll keep it on the hold shelf until Wednesday 23 September. Northbridge Library",
+        "subject": "Your hold is ready for pickup",
+        "threadId": "19e9c65d4011ea79",
+        "toRecipients": [
+          "you.personal@example.net"
+        ],
+        "plaintextBody": "The item you reserved is ready at the Northbridge branch. We'll keep it on the hold shelf until Wednesday 23 September.\n\nNorthbridge Library"
+      }
+    ]
+  },
+  "1949190999eab072": {
+    "id": "1949190999eab072",
+    "messages": [
+      {
+        "date": "2026-09-15T10:00:00Z",
+        "historyId": "3104909",
+        "id": "1949190999eab072",
+        "internalDate": "1789466400000",
+        "labelIds": [
+          "INBOX"
+        ],
+        "sender": "Bright Smile Dental <appointments@example.org>",
+        "sizeEstimate": 4395,
+        "snippet": "This is a reminder of your check-up on Thursday 24 September at 9:00 with Dr. Hale. If you need to change it, please call us at least a day before. Bright Smile Dental",
+        "subject": "Reminder: check-up on Thursday 24 September",
+        "threadId": "1949190999eab072",
+        "toRecipients": [
+          "you.personal@example.net"
+        ],
+        "plaintextBody": "This is a reminder of your check-up on Thursday 24 September at 9:00 with Dr. Hale. If you need to change it, please call us at least a day before.\n\nBright Smile Dental"
+      }
+    ]
+  }
+}

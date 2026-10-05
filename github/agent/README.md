@@ -72,7 +72,7 @@ uv run python scripts/record_beats.py --model <model>
 uv run python scripts/derive_corpus.py
 ```
 
-Recording runs in `live` mode, so sign in through A2UIVerse first. Nothing is scrubbed: the recordings come from public repository data.
+Recording runs in `live` mode. The script signs in at the start: it opens the agent's sign-in in your browser, where you sign in with GitHub, and catches the return on a `localhost` address, so run it on the machine whose browser you sign in with. Nothing is scrubbed: the recordings come from public repository data.
 
 ## Narrowing what it can do
 

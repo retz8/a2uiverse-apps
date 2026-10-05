@@ -39,6 +39,20 @@ async def test_opening_a_message_asks_to_read_your_email(tmp_path):
     assert requested_access(draft) == [[{"signIn": ["organize"]}]]
 
 
+async def test_each_fake_account_signs_in_to_its_own_mail(tmp_path):
+    # Work mail and personal mail (task-12.11): the chooser offers both, and each is answered
+    # from its own.
+    async with serving(CONFIG, state_dir=tmp_path) as agent:
+        painted = {}
+        for account in ("you", "personal"):
+            token = await agent.sign_in(account, ["inbox"])
+            answer = await agent.send_text("What needs my attention?", token["access_token"])
+            assert task_state(answer) == "completed"
+            painted[account] = json.dumps(answer.json())
+    assert painted["you"] != painted["personal"]
+    assert "Mei Silva" in painted["you"] and "Mei Silva" not in painted["personal"]
+
+
 def test_google_is_asked_for_what_the_granted_scopes_need():
     assert UPSTREAM.vendor_scopes(["inbox"]) == ("https://www.googleapis.com/auth/gmail.readonly",)
     assert UPSTREAM.vendor_scopes(["inbox", "messages", "organize"]) == (

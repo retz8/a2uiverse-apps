@@ -1,0 +1,2299 @@
+{
+  "name": "beat-1-inbox-digest",
+  "beat": 1,
+  "title": "Inbox digest",
+  "prompt": "What emails need my attention today, especially those waiting on a reply or unread? Provide a brief description of the thread and the time of the latest message, along with an identifier.",
+  "model": "gemini-3.7-flash",
+  "recordedAt": "2026-10-05T10:15:09+00:00",
+  "contextId": "b7b89f36-cdfe-4745-885b-4c2b5bcb11dd",
+  "chainedFrom": null,
+  "turns": [
+    {
+      "taskId": "cb1c75e5-0c41-48fd-878b-0971dbb12c1a",
+      "kind": "utterance",
+      "prompt": "What emails need my attention today, especially those waiting on a reply or unread? Provide a brief description of the thread and the time of the latest message, along with an identifier.",
+      "action": null,
+      "batches": [
+        {
+          "offsetMs": 22584,
+          "messages": [
+            {
+              "paintMeta": {
+                "surfaceId": "needs-attention",
+                "title": "Needs attention"
+              }
+            }
+          ],
+          "texts": [
+            "\n"
+          ]
+        },
+        {
+          "offsetMs": 22709,
+          "messages": [
+            {
+              "version": "v0.9",
+              "createSurface": {
+                "surfaceId": "needs-attention",
+                "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/gmail/gmail-catalog/catalogs/v0.9.1/catalog.json",
+                "sendDataModel": true
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 23128,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1988d441e2356bf7",
+                      "sender": "Ana Marchetti",
+                      "subject": "Re: Dinner at ours tonight?"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 23282,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1988d441e2356bf7",
+                      "sender": "Ana Marchetti",
+                      "subject": "Re: Dinner at ours tonight?",
+                      "snippet": "And if you're coming, could you bring something sweet? We have nothing for afterwards. Ice cream is perfect. Ana"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 23392,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1988d441e2356bf7",
+                      "sender": "Ana Marchetti",
+                      "subject": "Re: Dinner at ours tonight?",
+                      "snippet": "And if you're coming, could you bring something sweet? We have nothing for afterwards. Ice cream is perfect. Ana",
+                      "when": "2026-09-19 11:20 UTC"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 23535,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1988d441e2356bf7",
+                      "sender": "Ana Marchetti",
+                      "subject": "Re: Dinner at ours tonight?",
+                      "snippet": "And if you're coming, could you bring something sweet? We have nothing for afterwards. Ice cream is perfect. Ana",
+                      "when": "2026-09-19 11:20 UTC"
+                    },
+                    {
+                      "id": "19a1b81c96fc2445",
+                      "sender": "Gwen Hollis"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 23703,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1988d441e2356bf7",
+                      "sender": "Ana Marchetti",
+                      "subject": "Re: Dinner at ours tonight?",
+                      "snippet": "And if you're coming, could you bring something sweet? We have nothing for afterwards. Ice cream is perfect. Ana",
+                      "when": "2026-09-19 11:20 UTC"
+                    },
+                    {
+                      "id": "19a1b81c96fc2445",
+                      "sender": "Gwen Hollis",
+                      "subject": "Boiler service on Monday morning"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 24006,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1988d441e2356bf7",
+                      "sender": "Ana Marchetti",
+                      "subject": "Re: Dinner at ours tonight?",
+                      "snippet": "And if you're coming, could you bring something sweet? We have nothing for afterwards. Ice cream is perfect. Ana",
+                      "when": "2026-09-19 11:20 UTC"
+                    },
+                    {
+                      "id": "19a1b81c96fc2445",
+                      "sender": "Gwen Hollis",
+                      "subject": "Boiler service on Monday morning",
+                      "snippet": "Hi, The engineer is booked to service the boiler on Monday 21 September between 8 and 10. Could you let me know by tomorrow whether someone will be in to let them through, or whether I should bring"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 24132,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1988d441e2356bf7",
+                      "sender": "Ana Marchetti",
+                      "subject": "Re: Dinner at ours tonight?",
+                      "snippet": "And if you're coming, could you bring something sweet? We have nothing for afterwards. Ice cream is perfect. Ana",
+                      "when": "2026-09-19 11:20 UTC"
+                    },
+                    {
+                      "id": "19a1b81c96fc2445",
+                      "sender": "Gwen Hollis",
+                      "subject": "Boiler service on Monday morning",
+                      "snippet": "Hi, The engineer is booked to service the boiler on Monday 21 September between 8 and 10. Could you let me know by tomorrow whether someone will be in to let them through, or whether I should bring",
+                      "when": "2026-09-19 09:40 UTC"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 24191,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1988d441e2356bf7",
+                      "sender": "Ana Marchetti",
+                      "subject": "Re: Dinner at ours tonight?",
+                      "snippet": "And if you're coming, could you bring something sweet? We have nothing for afterwards. Ice cream is perfect. Ana",
+                      "when": "2026-09-19 11:20 UTC"
+                    },
+                    {
+                      "id": "19a1b81c96fc2445",
+                      "sender": "Gwen Hollis",
+                      "subject": "Boiler service on Monday morning",
+                      "snippet": "Hi, The engineer is booked to service the boiler on Monday 21 September between 8 and 10. Could you let me know by tomorrow whether someone will be in to let them through, or whether I should bring",
+                      "when": "2026-09-19 09:40 UTC"
+                    },
+                    {
+                      "id": "19c24ff4f3830b99",
+                      "sender": "Mina Cho"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 24260,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1988d441e2356bf7",
+                      "sender": "Ana Marchetti",
+                      "subject": "Re: Dinner at ours tonight?",
+                      "snippet": "And if you're coming, could you bring something sweet? We have nothing for afterwards. Ice cream is perfect. Ana",
+                      "when": "2026-09-19 11:20 UTC"
+                    },
+                    {
+                      "id": "19a1b81c96fc2445",
+                      "sender": "Gwen Hollis",
+                      "subject": "Boiler service on Monday morning",
+                      "snippet": "Hi, The engineer is booked to service the boiler on Monday 21 September between 8 and 10. Could you let me know by tomorrow whether someone will be in to let them through, or whether I should bring",
+                      "when": "2026-09-19 09:40 UTC"
+                    },
+                    {
+                      "id": "19c24ff4f3830b99",
+                      "sender": "Mina Cho",
+                      "subject": "Splitting Sam's birthday present"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 24553,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1988d441e2356bf7",
+                      "sender": "Ana Marchetti",
+                      "subject": "Re: Dinner at ours tonight?",
+                      "snippet": "And if you're coming, could you bring something sweet? We have nothing for afterwards. Ice cream is perfect. Ana",
+                      "when": "2026-09-19 11:20 UTC"
+                    },
+                    {
+                      "id": "19a1b81c96fc2445",
+                      "sender": "Gwen Hollis",
+                      "subject": "Boiler service on Monday morning",
+                      "snippet": "Hi, The engineer is booked to service the boiler on Monday 21 September between 8 and 10. Could you let me know by tomorrow whether someone will be in to let them through, or whether I should bring",
+                      "when": "2026-09-19 09:40 UTC"
+                    },
+                    {
+                      "id": "19c24ff4f3830b99",
+                      "sender": "Mina Cho",
+                      "subject": "Splitting Sam's birthday present",
+                      "snippet": "Hi both, I ordered the record player for Sam's birthday next Friday. It came to 129, so 43 each. Could you send me your share this weekend? I'll wrap it and bring the card for us to sign. Mina"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 24636,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1988d441e2356bf7",
+                      "sender": "Ana Marchetti",
+                      "subject": "Re: Dinner at ours tonight?",
+                      "snippet": "And if you're coming, could you bring something sweet? We have nothing for afterwards. Ice cream is perfect. Ana",
+                      "when": "2026-09-19 11:20 UTC"
+                    },
+                    {
+                      "id": "19a1b81c96fc2445",
+                      "sender": "Gwen Hollis",
+                      "subject": "Boiler service on Monday morning",
+                      "snippet": "Hi, The engineer is booked to service the boiler on Monday 21 September between 8 and 10. Could you let me know by tomorrow whether someone will be in to let them through, or whether I should bring",
+                      "when": "2026-09-19 09:40 UTC"
+                    },
+                    {
+                      "id": "19c24ff4f3830b99",
+                      "sender": "Mina Cho",
+                      "subject": "Splitting Sam's birthday present",
+                      "snippet": "Hi both, I ordered the record player for Sam's birthday next Friday. It came to 129, so 43 each. Could you send me your share this weekend? I'll wrap it and bring the card for us to sign. Mina",
+                      "when": "2026-09-19 08:30 UTC"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 24766,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1988d441e2356bf7",
+                      "sender": "Ana Marchetti",
+                      "subject": "Re: Dinner at ours tonight?",
+                      "snippet": "And if you're coming, could you bring something sweet? We have nothing for afterwards. Ice cream is perfect. Ana",
+                      "when": "2026-09-19 11:20 UTC"
+                    },
+                    {
+                      "id": "19a1b81c96fc2445",
+                      "sender": "Gwen Hollis",
+                      "subject": "Boiler service on Monday morning",
+                      "snippet": "Hi, The engineer is booked to service the boiler on Monday 21 September between 8 and 10. Could you let me know by tomorrow whether someone will be in to let them through, or whether I should bring",
+                      "when": "2026-09-19 09:40 UTC"
+                    },
+                    {
+                      "id": "19c24ff4f3830b99",
+                      "sender": "Mina Cho",
+                      "subject": "Splitting Sam's birthday present",
+                      "snippet": "Hi both, I ordered the record player for Sam's birthday next Friday. It came to 129, so 43 each. Could you send me your share this weekend? I'll wrap it and bring the card for us to sign. Mina",
+                      "when": "2026-09-19 08:30 UTC"
+                    },
+                    {
+                      "id": "1997d405366ffc66",
+                      "sender": "Northwind Parcel"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 24943,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1988d441e2356bf7",
+                      "sender": "Ana Marchetti",
+                      "subject": "Re: Dinner at ours tonight?",
+                      "snippet": "And if you're coming, could you bring something sweet? We have nothing for afterwards. Ice cream is perfect. Ana",
+                      "when": "2026-09-19 11:20 UTC"
+                    },
+                    {
+                      "id": "19a1b81c96fc2445",
+                      "sender": "Gwen Hollis",
+                      "subject": "Boiler service on Monday morning",
+                      "snippet": "Hi, The engineer is booked to service the boiler on Monday 21 September between 8 and 10. Could you let me know by tomorrow whether someone will be in to let them through, or whether I should bring",
+                      "when": "2026-09-19 09:40 UTC"
+                    },
+                    {
+                      "id": "19c24ff4f3830b99",
+                      "sender": "Mina Cho",
+                      "subject": "Splitting Sam's birthday present",
+                      "snippet": "Hi both, I ordered the record player for Sam's birthday next Friday. It came to 129, so 43 each. Could you send me your share this weekend? I'll wrap it and bring the card for us to sign. Mina",
+                      "when": "2026-09-19 08:30 UTC"
+                    },
+                    {
+                      "id": "1997d405366ffc66",
+                      "sender": "Northwind Parcel",
+                      "subject": "We missed you: your parcel is waiting"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 25181,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1988d441e2356bf7",
+                      "sender": "Ana Marchetti",
+                      "subject": "Re: Dinner at ours tonight?",
+                      "snippet": "And if you're coming, could you bring something sweet? We have nothing for afterwards. Ice cream is perfect. Ana",
+                      "when": "2026-09-19 11:20 UTC"
+                    },
+                    {
+                      "id": "19a1b81c96fc2445",
+                      "sender": "Gwen Hollis",
+                      "subject": "Boiler service on Monday morning",
+                      "snippet": "Hi, The engineer is booked to service the boiler on Monday 21 September between 8 and 10. Could you let me know by tomorrow whether someone will be in to let them through, or whether I should bring",
+                      "when": "2026-09-19 09:40 UTC"
+                    },
+                    {
+                      "id": "19c24ff4f3830b99",
+                      "sender": "Mina Cho",
+                      "subject": "Splitting Sam's birthday present",
+                      "snippet": "Hi both, I ordered the record player for Sam's birthday next Friday. It came to 129, so 43 each. Could you send me your share this weekend? I'll wrap it and bring the card for us to sign. Mina",
+                      "when": "2026-09-19 08:30 UTC"
+                    },
+                    {
+                      "id": "1997d405366ffc66",
+                      "sender": "Northwind Parcel",
+                      "subject": "We missed you: your parcel is waiting",
+                      "snippet": "We tried to deliver your parcel today at 7:42 but nobody was home. You can choose a new delivery day or pick it up from the depot on Harbour Road. If we don't hear from you by Monday 21 September,"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 25248,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1988d441e2356bf7",
+                      "sender": "Ana Marchetti",
+                      "subject": "Re: Dinner at ours tonight?",
+                      "snippet": "And if you're coming, could you bring something sweet? We have nothing for afterwards. Ice cream is perfect. Ana",
+                      "when": "2026-09-19 11:20 UTC"
+                    },
+                    {
+                      "id": "19a1b81c96fc2445",
+                      "sender": "Gwen Hollis",
+                      "subject": "Boiler service on Monday morning",
+                      "snippet": "Hi, The engineer is booked to service the boiler on Monday 21 September between 8 and 10. Could you let me know by tomorrow whether someone will be in to let them through, or whether I should bring",
+                      "when": "2026-09-19 09:40 UTC"
+                    },
+                    {
+                      "id": "19c24ff4f3830b99",
+                      "sender": "Mina Cho",
+                      "subject": "Splitting Sam's birthday present",
+                      "snippet": "Hi both, I ordered the record player for Sam's birthday next Friday. It came to 129, so 43 each. Could you send me your share this weekend? I'll wrap it and bring the card for us to sign. Mina",
+                      "when": "2026-09-19 08:30 UTC"
+                    },
+                    {
+                      "id": "1997d405366ffc66",
+                      "sender": "Northwind Parcel",
+                      "subject": "We missed you: your parcel is waiting",
+                      "snippet": "We tried to deliver your parcel today at 7:42 but nobody was home. You can choose a new delivery day or pick it up from the depot on Harbour Road. If we don't hear from you by Monday 21 September,",
+                      "when": "2026-09-19 07:55 UTC"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 25323,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateDataModel": {
+                "surfaceId": "needs-attention",
+                "path": "/",
+                "value": {
+                  "threads": [
+                    {
+                      "id": "1988d441e2356bf7",
+                      "sender": "Ana Marchetti",
+                      "subject": "Re: Dinner at ours tonight?",
+                      "snippet": "And if you're coming, could you bring something sweet? We have nothing for afterwards. Ice cream is perfect. Ana",
+                      "when": "2026-09-19 11:20 UTC"
+                    },
+                    {
+                      "id": "19a1b81c96fc2445",
+                      "sender": "Gwen Hollis",
+                      "subject": "Boiler service on Monday morning",
+                      "snippet": "Hi, The engineer is booked to service the boiler on Monday 21 September between 8 and 10. Could you let me know by tomorrow whether someone will be in to let them through, or whether I should bring",
+                      "when": "2026-09-19 09:40 UTC"
+                    },
+                    {
+                      "id": "19c24ff4f3830b99",
+                      "sender": "Mina Cho",
+                      "subject": "Splitting Sam's birthday present",
+                      "snippet": "Hi both, I ordered the record player for Sam's birthday next Friday. It came to 129, so 43 each. Could you send me your share this weekend? I'll wrap it and bring the card for us to sign. Mina",
+                      "when": "2026-09-19 08:30 UTC"
+                    },
+                    {
+                      "id": "1997d405366ffc66",
+                      "sender": "Northwind Parcel",
+                      "subject": "We missed you: your parcel is waiting",
+                      "snippet": "We tried to deliver your parcel today at 7:42 but nobody was home. You can choose a new delivery day or pick it up from the depot on Harbour Road. If we don't hear from you by Monday 21 September,",
+                      "when": "2026-09-19 07:55 UTC"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 25532,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "loading_body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "loading_body",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 25764,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "loading_header",
+                      "loading_sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "loading_header",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_sheet",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 25942,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "loading_sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "loading_heading",
+                      "loading_sub"
+                    ]
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "loading_sheet",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_heading",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_sub",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 26011,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "loading_sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "loading_heading",
+                      "loading_sub"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "loading_sheet",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_heading",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_sub",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 26105,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "loading_heading",
+                      "loading_sub"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "loading_thread-list"
+                  },
+                  {
+                    "id": "loading_heading",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_sub",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_thread-list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 26305,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "loading_heading",
+                      "loading_sub"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "loading_thread-list",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "loading_heading",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_sub",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_thread-list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 26428,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "heading",
+                      "loading_sub"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": "Needs attention",
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "loading_thread-list",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "loading_sub",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_thread-list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 26564,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "heading",
+                      "sub"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": "Needs attention",
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "loading_thread-list",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": "4 unread threads in your"
+                  },
+                  {
+                    "id": "loading_thread-list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 26641,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "heading",
+                      "sub"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": "Needs attention",
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "loading_thread-list",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": "4 unread threads in your inbox",
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "loading_thread-list",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 26852,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "heading",
+                      "sub"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": "Needs attention",
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "thread-list",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": "4 unread threads in your inbox",
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "thread-list",
+                    "component": "List",
+                    "children": {
+                      "path": "/threads",
+                      "componentId": "loading_thread-row"
+                    },
+                    "dividers": true,
+                    "layout": "inline"
+                  },
+                  {
+                    "id": "loading_thread-row",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 27175,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "heading",
+                      "sub"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": "Needs attention",
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "thread-list",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": "4 unread threads in your inbox",
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "thread-list",
+                    "component": "List",
+                    "children": {
+                      "path": "/threads",
+                      "componentId": "thread-row"
+                    },
+                    "dividers": true,
+                    "layout": "inline"
+                  },
+                  {
+                    "id": "thread-row",
+                    "component": "ListItem",
+                    "headline": "thread-sender",
+                    "supporting": "thread-preview",
+                    "meta": "thread-when",
+                    "leading": [
+                      "thread-avatar"
+                    ],
+                    "action": {
+                      "event": {
+                        "name": "open-thread"
+                      }
+                    }
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 27250,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "heading",
+                      "sub"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": "Needs attention",
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "thread-list",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": "4 unread threads in your inbox",
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "thread-list",
+                    "component": "List",
+                    "children": {
+                      "path": "/threads",
+                      "componentId": "thread-row"
+                    },
+                    "dividers": true,
+                    "layout": "inline"
+                  },
+                  {
+                    "id": "thread-row",
+                    "component": "ListItem",
+                    "headline": "thread-sender",
+                    "supporting": "thread-preview",
+                    "meta": "thread-when",
+                    "leading": [
+                      "thread-avatar"
+                    ],
+                    "action": {
+                      "event": {
+                        "name": "open-thread",
+                        "context": {
+                          "threadId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 27504,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "heading",
+                      "sub"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": "Needs attention",
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "thread-list",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": "4 unread threads in your inbox",
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "thread-avatar",
+                    "component": "Avatar",
+                    "name": {
+                      "path": "sender"
+                    }
+                  },
+                  {
+                    "id": "thread-list",
+                    "component": "List",
+                    "children": {
+                      "path": "/threads",
+                      "componentId": "thread-row"
+                    },
+                    "dividers": true,
+                    "layout": "inline"
+                  },
+                  {
+                    "id": "thread-row",
+                    "component": "ListItem",
+                    "headline": "thread-sender",
+                    "supporting": "thread-preview",
+                    "meta": "thread-when",
+                    "leading": [
+                      "thread-avatar"
+                    ],
+                    "action": {
+                      "event": {
+                        "name": "open-thread",
+                        "context": {
+                          "threadId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 27589,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "heading",
+                      "sub"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": "Needs attention",
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "thread-list",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": "4 unread threads in your inbox",
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "thread-avatar",
+                    "component": "Avatar",
+                    "name": {
+                      "path": "sender"
+                    },
+                    "size": "medium"
+                  },
+                  {
+                    "id": "thread-list",
+                    "component": "List",
+                    "children": {
+                      "path": "/threads",
+                      "componentId": "thread-row"
+                    },
+                    "dividers": true,
+                    "layout": "inline"
+                  },
+                  {
+                    "id": "thread-row",
+                    "component": "ListItem",
+                    "headline": "thread-sender",
+                    "supporting": "thread-preview",
+                    "meta": "thread-when",
+                    "leading": [
+                      "thread-avatar"
+                    ],
+                    "action": {
+                      "event": {
+                        "name": "open-thread",
+                        "context": {
+                          "threadId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 27748,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "heading",
+                      "sub"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": "Needs attention",
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "thread-list",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": "4 unread threads in your inbox",
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "thread-avatar",
+                    "component": "Avatar",
+                    "name": {
+                      "path": "sender"
+                    },
+                    "size": "medium"
+                  },
+                  {
+                    "id": "thread-list",
+                    "component": "List",
+                    "children": {
+                      "path": "/threads",
+                      "componentId": "thread-row"
+                    },
+                    "dividers": true,
+                    "layout": "inline"
+                  },
+                  {
+                    "id": "thread-row",
+                    "component": "ListItem",
+                    "headline": "thread-sender",
+                    "supporting": "thread-preview",
+                    "meta": "thread-when",
+                    "leading": [
+                      "thread-avatar"
+                    ],
+                    "action": {
+                      "event": {
+                        "name": "open-thread",
+                        "context": {
+                          "threadId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "thread-sender",
+                    "component": "Text",
+                    "text": {
+                      "path": "sender"
+                    }
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 27908,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "heading",
+                      "sub"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": "Needs attention",
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "thread-list",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": "4 unread threads in your inbox",
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "thread-avatar",
+                    "component": "Avatar",
+                    "name": {
+                      "path": "sender"
+                    },
+                    "size": "medium"
+                  },
+                  {
+                    "id": "thread-list",
+                    "component": "List",
+                    "children": {
+                      "path": "/threads",
+                      "componentId": "thread-row"
+                    },
+                    "dividers": true,
+                    "layout": "inline"
+                  },
+                  {
+                    "id": "thread-row",
+                    "component": "ListItem",
+                    "headline": "thread-sender",
+                    "supporting": "thread-preview",
+                    "meta": "thread-when",
+                    "leading": [
+                      "thread-avatar"
+                    ],
+                    "action": {
+                      "event": {
+                        "name": "open-thread",
+                        "context": {
+                          "threadId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "thread-sender",
+                    "component": "Text",
+                    "text": {
+                      "path": "sender"
+                    },
+                    "weight": "bold",
+                    "maxLines": 1
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 28334,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "heading",
+                      "sub"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": "Needs attention",
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "thread-list",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": "4 unread threads in your inbox",
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "thread-avatar",
+                    "component": "Avatar",
+                    "name": {
+                      "path": "sender"
+                    },
+                    "size": "medium"
+                  },
+                  {
+                    "id": "thread-list",
+                    "component": "List",
+                    "children": {
+                      "path": "/threads",
+                      "componentId": "thread-row"
+                    },
+                    "dividers": true,
+                    "layout": "inline"
+                  },
+                  {
+                    "id": "thread-row",
+                    "component": "ListItem",
+                    "headline": "thread-sender",
+                    "supporting": "thread-preview",
+                    "meta": "thread-when",
+                    "leading": [
+                      "thread-avatar"
+                    ],
+                    "action": {
+                      "event": {
+                        "name": "open-thread",
+                        "context": {
+                          "threadId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "thread-sender",
+                    "component": "Text",
+                    "text": {
+                      "path": "sender"
+                    },
+                    "weight": "bold",
+                    "maxLines": 1
+                  },
+                  {
+                    "id": "thread-when",
+                    "component": "Text",
+                    "text": {
+                      "path": "when"
+                    },
+                    "variant": "labelMedium",
+                    "color": "onSurfaceVariant"
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 28573,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "heading",
+                      "sub"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": "Needs attention",
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "thread-list",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": "4 unread threads in your inbox",
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "thread-avatar",
+                    "component": "Avatar",
+                    "name": {
+                      "path": "sender"
+                    },
+                    "size": "medium"
+                  },
+                  {
+                    "id": "thread-list",
+                    "component": "List",
+                    "children": {
+                      "path": "/threads",
+                      "componentId": "thread-row"
+                    },
+                    "dividers": true,
+                    "layout": "inline"
+                  },
+                  {
+                    "id": "thread-preview",
+                    "component": "Stack",
+                    "children": [
+                      "loading_thread-subject",
+                      "loading_thread-snippet"
+                    ],
+                    "gap": "none"
+                  },
+                  {
+                    "id": "thread-row",
+                    "component": "ListItem",
+                    "headline": "thread-sender",
+                    "supporting": "thread-preview",
+                    "meta": "thread-when",
+                    "leading": [
+                      "thread-avatar"
+                    ],
+                    "action": {
+                      "event": {
+                        "name": "open-thread",
+                        "context": {
+                          "threadId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "thread-sender",
+                    "component": "Text",
+                    "text": {
+                      "path": "sender"
+                    },
+                    "weight": "bold",
+                    "maxLines": 1
+                  },
+                  {
+                    "id": "thread-when",
+                    "component": "Text",
+                    "text": {
+                      "path": "when"
+                    },
+                    "variant": "labelMedium",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "loading_thread-subject",
+                    "component": "Row",
+                    "children": []
+                  },
+                  {
+                    "id": "loading_thread-snippet",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 28815,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "heading",
+                      "sub"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": "Needs attention",
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "thread-list",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": "4 unread threads in your inbox",
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "thread-avatar",
+                    "component": "Avatar",
+                    "name": {
+                      "path": "sender"
+                    },
+                    "size": "medium"
+                  },
+                  {
+                    "id": "thread-list",
+                    "component": "List",
+                    "children": {
+                      "path": "/threads",
+                      "componentId": "thread-row"
+                    },
+                    "dividers": true,
+                    "layout": "inline"
+                  },
+                  {
+                    "id": "thread-preview",
+                    "component": "Stack",
+                    "children": [
+                      "thread-subject",
+                      "loading_thread-snippet"
+                    ],
+                    "gap": "none"
+                  },
+                  {
+                    "id": "thread-row",
+                    "component": "ListItem",
+                    "headline": "thread-sender",
+                    "supporting": "thread-preview",
+                    "meta": "thread-when",
+                    "leading": [
+                      "thread-avatar"
+                    ],
+                    "action": {
+                      "event": {
+                        "name": "open-thread",
+                        "context": {
+                          "threadId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "thread-sender",
+                    "component": "Text",
+                    "text": {
+                      "path": "sender"
+                    },
+                    "weight": "bold",
+                    "maxLines": 1
+                  },
+                  {
+                    "id": "thread-subject",
+                    "component": "Text",
+                    "text": {
+                      "path": "subject"
+                    },
+                    "weight": "medium",
+                    "maxLines": 1
+                  },
+                  {
+                    "id": "thread-when",
+                    "component": "Text",
+                    "text": {
+                      "path": "when"
+                    },
+                    "variant": "labelMedium",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "loading_thread-snippet",
+                    "component": "Row",
+                    "children": []
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        },
+        {
+          "offsetMs": 29057,
+          "messages": [
+            {
+              "version": "v0.9",
+              "updateComponents": {
+                "components": [
+                  {
+                    "id": "body",
+                    "component": "Stack",
+                    "children": [
+                      "header",
+                      "sheet"
+                    ],
+                    "gap": "xs"
+                  },
+                  {
+                    "id": "header",
+                    "component": "Stack",
+                    "children": [
+                      "heading",
+                      "sub"
+                    ],
+                    "gap": "xs",
+                    "padding": "sm"
+                  },
+                  {
+                    "id": "heading",
+                    "component": "Text",
+                    "text": "Needs attention",
+                    "variant": "titleLarge"
+                  },
+                  {
+                    "id": "root",
+                    "component": "Surface",
+                    "child": "body",
+                    "container": "low",
+                    "shape": "large",
+                    "padding": "small"
+                  },
+                  {
+                    "id": "sheet",
+                    "component": "Surface",
+                    "child": "thread-list",
+                    "container": "lowest",
+                    "shape": "large",
+                    "padding": "none"
+                  },
+                  {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": "4 unread threads in your inbox",
+                    "variant": "bodySmall",
+                    "color": "onSurfaceVariant"
+                  },
+                  {
+                    "id": "thread-avatar",
+                    "component": "Avatar",
+                    "name": {
+                      "path": "sender"
+                    },
+                    "size": "medium"
+                  },
+                  {
+                    "id": "thread-list",
+                    "component": "List",
+                    "children": {
+                      "path": "/threads",
+                      "componentId": "thread-row"
+                    },
+                    "dividers": true,
+                    "layout": "inline"
+                  },
+                  {
+                    "id": "thread-preview",
+                    "component": "Stack",
+                    "children": [
+                      "thread-subject",
+                      "thread-snippet"
+                    ],
+                    "gap": "none"
+                  },
+                  {
+                    "id": "thread-row",
+                    "component": "ListItem",
+                    "headline": "thread-sender",
+                    "supporting": "thread-preview",
+                    "meta": "thread-when",
+                    "leading": [
+                      "thread-avatar"
+                    ],
+                    "action": {
+                      "event": {
+                        "name": "open-thread",
+                        "context": {
+                          "threadId": {
+                            "path": "id"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "id": "thread-sender",
+                    "component": "Text",
+                    "text": {
+                      "path": "sender"
+                    },
+                    "weight": "bold",
+                    "maxLines": 1
+                  },
+                  {
+                    "id": "thread-snippet",
+                    "component": "Text",
+                    "text": {
+                      "path": "snippet"
+                    },
+                    "color": "onSurfaceVariant",
+                    "maxLines": 1
+                  },
+                  {
+                    "id": "thread-subject",
+                    "component": "Text",
+                    "text": {
+                      "path": "subject"
+                    },
+                    "weight": "medium",
+                    "maxLines": 1
+                  },
+                  {
+                    "id": "thread-when",
+                    "component": "Text",
+                    "text": {
+                      "path": "when"
+                    },
+                    "variant": "labelMedium",
+                    "color": "onSurfaceVariant"
+                  }
+                ],
+                "surfaceId": "needs-attention"
+              }
+            }
+          ],
+          "texts": []
+        }
+      ],
+      "outcome": "completed",
+      "durationMs": 29329
+    }
+  ]
+}

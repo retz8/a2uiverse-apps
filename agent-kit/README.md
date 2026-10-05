@@ -85,7 +85,11 @@ With it on:
 - An action or tool that needs a scope the token lacks ends the run in A2A's `auth-required` state, naming the missing scopes. A cut-off LLM run is kept out of the conversation history. After the user signs in with more access, the client sends the request again.
 - In live mode the `live_toolset_factory` is called with the account, once per account, so each account's MCP connection carries its own vendor token.
 
-Deterministic and stub mode sign in with the fake accounts on a chooser page. Adding `fake_account=<id>` to the sign-in address skips the chooser, for recordings and tests; this works in deterministic mode only. Live mode signs in through `upstream`, an `UpstreamSignIn` the app provides: it sends the browser to the vendor's sign-in and hands back the account and the vendor's token. It can also refresh the vendor's token before a request, and revoke it when the account's last sign-in ends.
+Deterministic and stub mode sign in with the fake accounts on a chooser page. Adding `fake_account=<id>` to the sign-in address skips the chooser, for recordings and tests; this works in deterministic and stub mode, never live. Live mode signs in through `upstream`, an `UpstreamSignIn` the app provides: it sends the browser to the vendor's sign-in and hands back the account and the vendor's token. It can also refresh the vendor's token before a request, and revoke it when the account's last sign-in ends.
+
+When fake accounts each have their own data, the app keeps a subdirectory per fake-account id in each fixtures directory — `fixtures/deterministic/<id>/` and `fixtures/stub/<id>/` — and `fixture_responder` and `stub_fixture_loader` read the signed-in account's. An app with one set keeps it flat. `testing.signed_in_as(sign_in, id)` binds a fake account for answer code called directly in a test.
+
+The beat driver signs in to an agent whose card asks sign-in, asking for every scope on the card. `--account <id>` signs in as that fake account through `fake_account=<id>`. Without it, the driver opens the agent's sign-in page in the browser and catches the return on a `localhost` address (RFC 8252): the vendor's sign-in in live mode, the chooser otherwise. An agent signing in with a key takes `--api-key`. An app recording each account's beats apart passes `per_account=True` to `beats.main`, and the beats land in `recordings/beats/<id>/`.
 
 ### Signing in with the vendor's OAuth
 

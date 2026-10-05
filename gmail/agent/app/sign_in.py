@@ -79,7 +79,11 @@ UPSTREAM = VendorOAuth(
 SIGN_IN = SignIn(
     scopes=SCOPES,
     first_sign_in_scopes=[INBOX],
-    fake_accounts=[FakeAccount("you", {"email": "you@example.com"})],
+    # Work mail and personal mail, each with its own data (task-12.11).
+    fake_accounts=[
+        FakeAccount("you", {"email": "you@example.com"}),
+        FakeAccount("personal", {"email": "you.personal@example.net"}),
+    ],
     action_scopes={
         "open-thread": [MESSAGES],
         "confirm-draft": [ORGANIZE],

@@ -9,7 +9,23 @@ in-fragment instrument takes.
 
 from __future__ import annotations
 
-from a2ui_agent_kit.beats import group_is_good, turn_is_good
+import asyncio
+import threading
+from types import SimpleNamespace
+
+import httpx
+
+from a2ui_agent_kit import beats
+from a2ui_agent_kit.beats import (
+    AGENT_CARD_PATH,
+    card_api_key_header,
+    card_scopes,
+    group_is_good,
+    sign_in,
+    sign_in_in_browser,
+    turn_is_good,
+)
+from tests.test_sign_in import _Form, running
 
 
 def turn(outcome: str = "completed", *, messages: list[dict] | None = None) -> dict:
@@ -46,3 +62,82 @@ def test_a_group_that_never_painted_is_not_recordable():
 def test_a_group_names_the_turn_that_failed():
     ok, why = group_is_good([turn(messages=[CREATE]), turn("apology", messages=[UPDATE])])
     assert not ok and "turn 2" in why
+
+
+# ---- signing in (task-12.11 decision 7) --------------------------------------------------
+
+
+def test_the_card_names_the_scopes_to_ask_or_no_sign_in():
+    card = {
+        "securitySchemes": {
+            "signIn": {
+                "type": "oauth2",
+                "flows": {"authorizationCode": {"scopes": {"read": "Read", "write": "Write"}}},
+            }
+        }
+    }
+    assert card_scopes(card) == ["read", "write"]
+    assert card_scopes({"name": "open"}) is None
+
+
+async def test_the_driver_signs_in_as_the_named_fake_account_with_every_scope(tmp_path):
+    async with running(tmp_path) as agent:
+        def signed_in() -> str:
+            with httpx.Client(base_url=agent.base) as client:
+                return sign_in(client, "alan", card_scopes(client.get(AGENT_CARD_PATH).json()))
+
+        token = await asyncio.to_thread(signed_in)
+        answered = await agent.send("close_issue", token)
+    # close_issue needs issues.write, beyond the first sign-in: granted up front, no escalation.
+    assert answered.json()["result"]["status"]["state"] == "completed"
+
+
+async def test_without_an_account_the_driver_signs_in_in_the_browser(tmp_path):
+    # The person's browser, played by a thread: the agent's own sign-in page, an account
+    # chosen, and the return caught on the driver's loopback address (RFC 8252).
+    opened: list[str] = []
+
+    def browser(url: str) -> None:
+        def person():
+            with httpx.Client() as http:
+                page = http.get(url)
+                form = _Form.read(page.text)
+                chosen = http.post(form.action, data={"pending": form.pending, "account": "ada"})
+                landed = http.get(chosen.headers["location"])
+                opened.append(landed.text)
+
+        opened.append(url)
+        threading.Thread(target=person, daemon=True).start()
+
+    async with running(tmp_path) as agent:
+        def signed_in() -> str:
+            with httpx.Client(base_url=agent.base) as client:
+                scopes = card_scopes(client.get(AGENT_CARD_PATH).json())
+                return sign_in_in_browser(client, scopes, open_browser=browser, timeout=10)
+
+        token = await asyncio.to_thread(signed_in)
+        answered = await agent.send("close_issue", token)
+    assert answered.json()["result"]["status"]["state"] == "completed"
+    assert opened[0].startswith(f"{agent.base}/oauth/authorize")
+    assert "close this window" in opened[1]
+
+
+def test_an_api_key_card_names_the_header_its_key_rides():
+    card = {"securitySchemes": {"apiKey": {"type": "apiKey", "in": "header", "name": "X-Shop-Key"}}}
+    assert card_api_key_header(card) == "X-Shop-Key"
+    assert card_scopes(card) is None
+    assert card_api_key_header({"name": "open"}) is None
+
+
+def test_an_api_key_agent_is_not_driven_without_its_key(monkeypatch, tmp_path):
+    card = {"securitySchemes": {"apiKey": {"type": "apiKey", "in": "header", "name": "X-Shop-Key"}}}
+
+    class Client:
+        def __init__(self, **_):
+            pass
+
+        def get(self, path):
+            return SimpleNamespace(json=lambda: card)
+
+    monkeypatch.setattr(beats.httpx, "Client", Client)
+    assert beats.drive([], "m", tmp_path, "http://agent", tmp_path) == 2

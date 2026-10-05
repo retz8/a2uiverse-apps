@@ -210,6 +210,15 @@ def current_account() -> SignedInAccount | None:
     return run.account if run else None
 
 
+def fake_account_id() -> str | None:
+    """The request's account's id when it is one of the app's fake accounts; else None."""
+    run = _run.get()
+    if run is None or not isinstance(run.sign_in, SignIn):
+        return None
+    account_id = run.account.account_id
+    return account_id if any(a.id == account_id for a in run.sign_in.fake_accounts) else None
+
+
 def vendor_access_token() -> str:
     """The request's account's vendor access token, for a live toolset's MCP header."""
     account = current_account()
