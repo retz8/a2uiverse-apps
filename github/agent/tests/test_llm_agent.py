@@ -12,7 +12,7 @@ from a2ui_agent_kit.config import DEFAULT_MODEL
 from a2ui_agent_kit.modes import build_llm_agent, build_tools, model_name
 
 from app.config import CONFIG
-from app.mcp import PAT_ENV_VAR, MissingGitHubPatError
+from a2ui_agent_kit.sign_in import SignedInAccount
 from app.tools import STUB_TOOLS
 
 
@@ -31,19 +31,14 @@ def test_stub_mode_gives_the_read_only_pair():
     assert {t.__name__ for t in tools} == {"list_pull_requests", "get_pull_request"}
 
 
-def test_live_mode_gives_the_mcp_toolset(monkeypatch):
-    monkeypatch.setenv(PAT_ENV_VAR, "ghp_example")
-    tools = build_tools(CONFIG, "live")
+def test_live_mode_gives_the_signed_in_accounts_mcp_toolset():
+    account = SignedInAccount(
+        "sub-1", "1", {}, frozenset({"github.read"}), vendor_token={"access_token": "gho_1"}
+    )
+    tools = build_tools(CONFIG, "live", account)
     assert len(tools) == 1
     assert isinstance(tools[0], McpToolset)
-
-
-def test_live_mode_without_a_pat_fails_fast(monkeypatch):
-    # Never degrade to canned data: a convincing surface built from stub fixtures with
-    # no signal that it is not live is worse than a failure.
-    monkeypatch.delenv(PAT_ENV_VAR, raising=False)
-    with pytest.raises(MissingGitHubPatError):
-        build_tools(CONFIG, "live")
+    assert tools[0]._connection_params.headers["Authorization"] == "Bearer gho_1"
 
 
 def test_unknown_mode_is_rejected():

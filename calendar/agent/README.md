@@ -4,7 +4,7 @@ An A2A agent for Google Calendar. It answers schedule questions by painting A2UI
 
 ## What it can do
 
-In `live` mode it works through Google's Calendar MCP server, on one calendar only (see below).
+In `live` mode it works through Google's Calendar MCP server, on the signed-in person's primary calendar.
 
 - **Reads** events.
 - **Creates** an event, shown to you as a proposal first and created only when you confirm.
@@ -16,22 +16,20 @@ It's allowed 4 of the server's tools: `list_events`, `get_event`, `create_event`
 
 ## Demo calendar
 
-**The agent reads one calendar only: the one `CALENDAR_ID` names**, and it refuses to start without it. Out of the box that's a demo calendar seeded from [`scripts/seed_events.json`](scripts/seed_events.json), never your main one. Because the content is authored, nothing needs scrubbing before it's recorded.
+**Each signed-in account works on its own primary calendar.** Recordings and live demos use a dedicated test Google account whose primary calendar is a demo calendar seeded from [`scripts/seed_events.json`](scripts/seed_events.json). Because the content is authored, nothing needs scrubbing before it's recorded.
 
-Create any secondary calendar in the Google account, put its id in `.env` as `CALENDAR_ID`, then seed it:
+To seed it, sign the test account in to the agent in `live` mode through A2UIVerse, and allow it to add events (ask it to add one). Then:
 
 ```bash
-uv run python -m scripts.seed_calendar
+uv run python -m scripts.seed_calendar --account <test account email>
 ```
 
-Seeding wipes the calendar and recreates every event relative to today. Re-seed before recording and before any live demo: recording creates events and answers invitations, and dates go stale.
+The script uses the test account's Google token from the agent's sign-in store. Seeding wipes that account's primary calendar and recreates every event relative to today. Re-seed before recording and before any live demo: recording creates events and answers invitations, and dates go stale.
 
-**Using your own calendar.** Set `CALENDAR_ID` to its id: your Google account's email address for your main calendar, or the Calendar ID under a calendar's Settings → Integrate calendar. Then:
+- **Never seed your own account.** It deletes every event on its primary calendar.
+- **Don't record your own calendar.** Recordings are committed to this repo, and nothing in them is scrubbed.
 
-- **Never run the seed script.** It deletes every event on the calendar `CALENDAR_ID` names.
-- **Don't record.** Recordings are committed to this repo, and nothing in them is scrubbed.
-
-Attendees are still never notified: an event the agent creates, or an invitation it answers, reaches no one's inbox.
+Attendees are never notified: an event the agent creates, or an invitation it answers, reaches no one's inbox.
 
 ## Run
 
@@ -41,54 +39,48 @@ cp .env.example .env
 uv run python -m app --mode deterministic
 ```
 
-| Mode            | What runs                                 | Needs                                                                 |
-| --------------- | ----------------------------------------- | --------------------------------------------------------------------- |
-| `deterministic` | canned answers, no model                  | nothing                                                               |
-| `stub`          | the model over canned events              | `GOOGLE_API_KEY`                                                      |
-| `live`          | the model over the demo calendar, via MCP | `GOOGLE_API_KEY`, `GOOGLE_CLOUD_PROJECT`, `CALENDAR_ID`, Google login |
+| Mode            | What runs                                 | Needs                                                                     |
+| --------------- | ----------------------------------------- | ------------------------------------------------------------------------- |
+| `deterministic` | canned answers, no model                  | nothing                                                                   |
+| `stub`          | the model over canned events              | `GOOGLE_API_KEY`                                                          |
+| `live`          | the model over your calendar, via MCP     | `GOOGLE_API_KEY`, `GOOGLE_OAUTH_CLIENT_ID`, `GOOGLE_OAUTH_CLIENT_SECRET` |
 
 `deterministic` answers any question with a recorded agenda, and replays the recorded actions: opening an event, confirming or cancelling a new one, answering an invitation. Opening an event paints a new surface, as the live agent does.
 
-Other flags: `--port`, `--host`, and `--base-url`, the address the agent card advertises.
+Other flags: `--port`, `--host`, and `--base-url`, the address the agent card advertises. `--state-dir` moves the sign-in store from `.state/`.
 
-## Google login (live mode)
+## Signing in
 
-One-time, outside the agent. The agent never holds a secret.
+The agent is its own sign-in: A2UIVerse signs in to it, and it signs in to Google. Its card asks for two scopes, in the words A2UIVerse shows when it asks you:
 
-1. **Create a Google Cloud project**, and put its id in `.env` as `GOOGLE_CLOUD_PROJECT`.
+| Scope            | Shown as                                           | Asked                                               |
+| ---------------- | -------------------------------------------------- | --------------------------------------------------- |
+| `calendar.read`  | See your calendar                                  | at the first sign-in                                |
+| `calendar.write` | Add events and answer invitations on your calendar | the first time you add an event or answer an invite |
 
-2. **Join the [Google Workspace Developer Preview Program](https://developers.google.com/workspace/preview)** with that project. The Calendar MCP server is in preview; approval takes a couple of days.
+In `deterministic` and `stub` mode the sign-in offers one made-up account, `you@example.com`. In `deterministic` mode, confirming an event or answering an invitation asks for `calendar.write`.
 
-3. **Enable the APIs:**
+In `live` mode the sign-in sends you to Google. The agent keeps your Google token, refreshes it, and gives A2UIVerse a token of its own. It asks Google for `calendar.events.readonly` at first and `calendar.events` to write, with `openid`, `email` and `profile` to know who signed in.
+
+### Setting up live sign-in
+
+Gmail's README sets up the Google Cloud project and its OAuth client, shared by both apps (["Setting up live sign-in"](../../gmail/agent/README.md#setting-up-live-sign-in)). For Calendar, in the same project:
+
+1. **Enable the APIs:**
 
    ```bash
    gcloud services enable calendar-json.googleapis.com calendarmcp.googleapis.com \
      --project=<your-project-id>
    ```
 
-4. **Set up the consent screen** (Google Auth Platform). Add your account as a test user if the audience is External, and under Data Access add `calendar.readonly` and `calendar.events`.
+2. **On the consent screen**, under Data Access, add `calendar.events.readonly` and `calendar.events`.
 
-5. **Create an OAuth client** of type Desktop app, and save its JSON as `~/.config/a2uiverse/oauth-client.json`.
+3. **On the OAuth client**, make sure `http://localhost:11003/sign-in/finish` is an Authorized redirect URI (or the tunnel address the agent runs at with `--base-url`, followed by `/sign-in/finish`).
 
-6. **Log in** with Application Default Credentials:
+4. **Put the client's ID and secret** in `.env` as `GOOGLE_OAUTH_CLIENT_ID` and `GOOGLE_OAUTH_CLIENT_SECRET`.
 
-   ```bash
-   gcloud auth application-default login \
-     --client-id-file=$HOME/.config/a2uiverse/oauth-client.json \
-     --scopes=https://www.googleapis.com/auth/gmail.readonly,\
-   https://www.googleapis.com/auth/gmail.compose,\
-   https://www.googleapis.com/auth/gmail.modify,\
-   https://www.googleapis.com/auth/calendar.readonly,\
-   https://www.googleapis.com/auth/calendar.events,\
-   https://www.googleapis.com/auth/cloud-platform
-   ```
-
-If Gmail is already set up, only steps 3 and 4 are new; then log in again.
-
-> [!WARNING]
-> Gmail and Calendar share one Google login, and `--scopes` replaces what was granted before. Always log in with **both** apps' scopes, as above. Otherwise the other app loses access and fails at startup with an error that points elsewhere.
-
-With no usable login, `live` refuses to start rather than quietly falling back to canned events.
+> [!NOTE]
+> While the client is in Testing, Google ends each sign-in after 7 days, and A2UIVerse asks you to sign in again.
 
 ## Test
 
@@ -103,14 +95,14 @@ No model calls, no Calendar calls, no credentials needed.
 The canned data behind `deterministic` and `stub` comes from recorded live runs, not hand-written.
 
 ```bash
-uv run python -m scripts.seed_calendar
+uv run python -m scripts.seed_calendar --account <test account email>
 A2UI_RECORD_DIR=.recordings uv run python -m app --mode live --host localhost
 uv run python scripts/record_beats.py --model <model>
-uv run python scripts/derive_corpus.py
+uv run python scripts/derive_corpus.py --account <test account email>
 uv run pytest tests/test_corpus_is_publishable.py
 ```
 
-Nothing is pseudonymized: the demo calendar holds nothing private.
+Sign the test account in through A2UIVerse first. Nothing is pseudonymized: the demo calendar holds nothing private.
 
 To repaint the beats after a catalog change, record them against the stub instead: the model paints over the recorded data, nothing reaches Google Calendar, and only the deterministic corpus is derived again.
 
@@ -123,7 +115,7 @@ uv run pytest tests/test_corpus_is_publishable.py
 
 ## Allowing more tools
 
-The allowed tools are `CALENDAR_TOOLS` in `app/mcp.py`; the rest of the server's tools are in `WITHHELD_TOOLS` beside it. The Google login's `calendar.events` scope already covers changing and deleting events, so that list is what limits the agent.
+The allowed tools are `CALENDAR_TOOLS` in `app/mcp.py`; the rest of the server's tools are in `WITHHELD_TOOLS` beside it. The sign-in's `calendar.events` scope already covers changing and deleting events, so that list is what limits the agent.
 
 To allow a tool, change these together:
 
@@ -133,7 +125,7 @@ To allow a tool, change these together:
 4. Add it to the stub, `STUB_TOOLS` in `app/tools.py`, over data from a recorded run (`scripts/derive_corpus.py` writes it).
 5. Describe what it returns in `app/knowledge/calendar-domain.md`. For a write, add a proposal to the prompt, so it runs only when you confirm.
 
-Every call still stays on the calendar `CALENDAR_ID` names and notifies no one; `app/tool_shaping.py` enforces both.
+Every call still notifies no one, and a call naming no calendar goes to the primary one; `app/tool_shaping.py` does both. A write also needs its tool in `tool_scopes` in `app/sign_in.py`.
 
 ## Connecting to A2UIVerse
 

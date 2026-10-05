@@ -14,6 +14,10 @@ metadata document — is fetched before it.
 
 from __future__ import annotations
 
+import asyncio
+import dataclasses
+import functools
+import hmac
 import logging
 import secrets
 import time
@@ -24,8 +28,10 @@ from urllib.parse import urlencode, urlsplit
 
 import httpx
 from a2a.types import (
+    APIKeySecurityScheme,
     AuthorizationCodeOAuthFlow,
     OAuth2SecurityScheme,
+    In,
     OAuthFlows,
     SecurityScheme,
 )
@@ -53,11 +59,15 @@ from starlette.responses import JSONResponse, Response
 from starlette.routing import Route
 
 from a2ui_agent_kit.sign_in import (
+    API_KEY_SCHEME_KEY,
     OPENID_SCOPE,
     SCHEME_KEY,
+    ApiKeySignIn,
     PendingSignIn,
+    SignedInAccount,
     SignIn,
     UpstreamAccount,
+    VendorSignInEnded,
 )
 from a2ui_agent_kit.sign_in_fake import FakeAccountChooser, message_page
 from a2ui_agent_kit.sign_in_store import AccountKind, EndedSignIn, SignInStore
@@ -110,6 +120,14 @@ def card_security(sign_in: SignIn, base_url: str):
         {SCHEME_KEY: SecurityScheme(root=scheme)},
         [{SCHEME_KEY: list(sign_in.first_sign_in_scopes)}],
     )
+
+
+def api_key_card_security(sign_in: ApiKeySignIn):
+    """The card's `apiKey` scheme in a header, and the `security` requiring it."""
+    scheme = APIKeySecurityScheme(
+        in_=In.header, name=sign_in.header, description=sign_in.description
+    )
+    return {API_KEY_SCHEME_KEY: SecurityScheme(root=scheme)}, [{API_KEY_SCHEME_KEY: []}]
 
 
 # ---- Authlib's models --------------------------------------------------------------
@@ -493,6 +511,7 @@ class SignInServer:
     _pending: dict[str, _Pending] = field(default_factory=dict)
     _metadata_clients: dict[str, _Client] = field(default_factory=dict)
     _ended: list[EndedSignIn] = field(default_factory=list)
+    _refreshing: dict[str, asyncio.Lock] = field(default_factory=dict)
 
     def __post_init__(self) -> None:
         self.issuer = self.base_url.rstrip("/")
@@ -505,6 +524,8 @@ class SignInServer:
         else:
             self.upstream = FakeAccountChooser(self.config.fake_accounts, self.app_name)
         self.kind: AccountKind = "vendor" if self.mode == "live" else "fake"
+        if (attach := getattr(self.upstream, "attach", None)) is not None:
+            attach(self.store)
         server = _Server(self)
         server.register_token_generator(
             "default",
@@ -579,6 +600,37 @@ class SignInServer:
         if (ended := self.store.end_grant(grant_id)) is not None:
             self._ended.append(ended)
 
+    async def end_account(self, sub: str) -> None:
+        """Ends every sign-in of the account and revokes its vendor token (task-12.10
+        decision 7): the client's next request is refused, its refresh fails, and it asks
+        the person to sign in again."""
+        if (ended := self.store.end_account(sub)) is not None:
+            self._ended.append(ended)
+        await self._revoke_ended()
+
+    async def fresh(self, account: SignedInAccount) -> SignedInAccount | None:
+        """The account with a vendor token good for the request: refreshed first where
+        the upstream says it is due, one refresh per account at a time. None when it
+        could not be refreshed — the account's sign-ins are then ended."""
+        refresh = getattr(self.upstream, "fresh", None)
+        if self.kind != "vendor" or refresh is None or account.vendor_token is None:
+            return account
+        lock = self._refreshing.setdefault(account.sub, asyncio.Lock())
+        async with lock:
+            held = (self.store.account(account.sub) or {}).get("vendor_token")
+            if held is None:
+                return None
+            try:
+                renewed = await refresh(held)
+            except VendorSignInEnded:
+                logger.info("vendor token could not be refreshed; the account's sign-ins end")
+                await self.end_account(account.sub)
+                return None
+            if renewed is not None:
+                self.store.set_vendor_token(account.sub, renewed)
+                held = renewed
+        return dataclasses.replace(account, vendor_token=dict(held))
+
     async def _revoke_ended(self) -> None:
         """Revokes at the vendor every vendor token whose account's last sign-in ended."""
         ended, self._ended = self._ended, []
@@ -619,7 +671,7 @@ class SignInServer:
         redirect_uri = grant.validate_authorization_redirect_uri(oreq, grant.request.client)
         data = oreq.payload.data
         args = [(k, v) for k, vs in oreq.payload.datalist.items() for v in vs]
-        scopes = tuple(s for s in grant.request.scope.split() if s != OPENID_SCOPE)
+        asked = {s for s in grant.request.scope.split() if s != OPENID_SCOPE}
 
         def refuse(description: str, error=InvalidRequestError) -> Response:
             return self._error(oreq, error(description, redirect_uri=redirect_uri))
@@ -631,6 +683,10 @@ class SignInServer:
             if account is None or account["kind"] != self.kind:
                 return refuse("login_hint names no account here.")
             bound = account["account_id"]
+            # What the account already granted rides along: the sign-in grants the union.
+            granted = self.store.granted_scopes(hint, grant.request.client.get_client_id())
+            asked |= granted - {OPENID_SCOPE}
+        scopes = tuple(sorted(asked))
 
         fake = data.get(FAKE_ACCOUNT_PARAM)
         if fake is not None:
@@ -654,7 +710,14 @@ class SignInServer:
             finish_url=f"{self.issuer}{FINISH_PATH}",
         )
         self._pending[pending.id] = _Pending(pending, args, now + PENDING_SIGN_IN_LIFETIME)
-        return await self.upstream.start(request, pending)
+        try:
+            return await self.upstream.start(request, pending)
+        except Exception:
+            logger.warning("upstream sign-in did not start", exc_info=True)
+            self._pending.pop(pending.id, None)
+            return message_page(
+                "Sign-in isn't available right now", "Close this window and try again later."
+            )
 
     async def finish(self, request: Request) -> Response:
         try:
@@ -773,8 +836,44 @@ class SignInGate:
             if scheme.lower() != "bearer" or not token.strip():
                 return await _unauthorized(None)(scope, receive, send)
             account = self._sign_in.store.signed_in(token.strip(), self._sign_in.kind)
+            if account is not None:
+                account = await self._sign_in.fresh(account)
             if account is None:
                 return await _unauthorized("invalid_token")(scope, receive, send)
+            scope["user"] = _Principal(account.sub)
+            scope["auth"] = dataclasses.replace(
+                account, end_sign_ins=functools.partial(self._sign_in.end_account, account.sub)
+            )
+        await self.app(scope, receive, send)
+
+
+class ApiKeyGate:
+    """An A2A request must carry one of the app's keys in its header; the account the key
+    signs in rides the ASGI scope's `auth`. The card stays open."""
+
+    def __init__(self, app, sign_in: ApiKeySignIn, rpc_path: str = "/"):
+        self.app = app
+        self._sign_in = sign_in
+        self._rpc_path = rpc_path
+
+    def _account(self, key: str) -> SignedInAccount | None:
+        for valid, account in self._sign_in.keys.items():
+            if hmac.compare_digest(valid.encode(), key.encode()):
+                return SignedInAccount(
+                    sub=account.id,
+                    account_id=account.id,
+                    claims=dict(account.claims),
+                    scopes=frozenset(),
+                )
+        return None
+
+    async def __call__(self, scope, receive, send):
+        if scope["type"] == "http" and scope["method"] == "POST" and scope["path"] == self._rpc_path:
+            key = Headers(scope=scope).get(self._sign_in.header, "").strip()
+            account = self._account(key) if key else None
+            if account is None:
+                response = JSONResponse({"error": "unauthorized"}, status_code=401)
+                return await response(scope, receive, send)
             scope["user"] = _Principal(account.sub)
             scope["auth"] = account
         await self.app(scope, receive, send)

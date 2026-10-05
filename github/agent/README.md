@@ -4,13 +4,14 @@ An A2A agent for GitHub. It answers GitHub questions by painting A2UI surfaces w
 
 ## What it can do
 
-In `live` mode it works through GitHub's remote MCP server, acting as the user who owns the token. It gets every tool the server offers, so it reads repositories, issues, pull requests and notifications, and it can comment, review, merge and edit files.
+In `live` mode it works through GitHub's remote MCP server, acting as the person signed in. It gets every tool the server offers, so it reads repositories, issues, pull requests and notifications, and it can comment, review, merge and edit files.
 
+- Signing in lets it read. The first time you ask it to write, it asks for that access too.
 - Writes that carry content, like a comment, a review or an edit, are shown to you as a proposal first and run only when you confirm.
 - Quick toggles that are easy to undo run straight away.
 
 > [!IMPORTANT]
-> The agent can do anything your token can, on every repository the token reaches, and it does it under your name. Scope `GITHUB_MCP_PAT` to what you want the agent to be able to do.
+> Once you allow writing, the agent can write on every repository your GitHub account reaches, under your name.
 
 ## Run
 
@@ -20,15 +21,38 @@ cp .env.example .env
 uv run python -m app --mode deterministic
 ```
 
-| Mode            | What runs                                 | Needs                              |
-| --------------- | ----------------------------------------- | ---------------------------------- |
-| `deterministic` | canned answers, no model                  | nothing                            |
-| `stub`          | the model over canned GitHub data         | `GOOGLE_API_KEY`                   |
-| `live`          | the model over the real GitHub MCP server | `GOOGLE_API_KEY`, `GITHUB_MCP_PAT` |
+| Mode            | What runs                                 | Needs                                                           |
+| --------------- | ----------------------------------------- | --------------------------------------------------------------- |
+| `deterministic` | canned answers, no model                  | nothing                                                         |
+| `stub`          | the model over canned GitHub data         | `GOOGLE_API_KEY`                                                |
+| `live`          | the model over the real GitHub MCP server | `GOOGLE_API_KEY`, `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET` |
 
 `deterministic` answers any question with a recorded notifications digest, and answers the Primer components' demo actions with canned responses.
 
-Other flags: `--port`, `--host`, and `--base-url`, the address the agent card advertises.
+Other flags: `--port`, `--host`, and `--base-url`, the address the agent card advertises. `--state-dir` moves the sign-in store from `.state/`.
+
+## Signing in
+
+The agent is its own sign-in: A2UIVerse signs in to it, and it signs in to GitHub. Its card asks for two scopes, in the words A2UIVerse shows when it asks you:
+
+| Scope          | Shown as                                                       | Asked                         |
+| -------------- | -------------------------------------------------------------- | ----------------------------- |
+| `github.read`  | See your repositories, pull requests, issues and notifications | at the first sign-in          |
+| `github.write` | Comment, review, merge, and open issues and pull requests as you | the first time you ask to write |
+
+In `deterministic` and `stub` mode the sign-in offers one made-up account, `retz8`. In `deterministic` mode, submitting or approving a review asks for `github.write`.
+
+In `live` mode the sign-in sends you to GitHub. The agent keeps your GitHub token and gives A2UIVerse a token of its own. GitHub tool calls that GitHub doesn't mark read-only need `github.write`.
+
+### Setting up live sign-in
+
+One-time. The agent signs in to GitHub through an OAuth App you register:
+
+1. On GitHub: Settings → Developer settings → OAuth Apps → New OAuth App.
+2. **Authorization callback URL:** the agent's finish address, `http://localhost:11001/sign-in/finish`. Behind a tunnel, use the address the agent runs at with `--base-url`, followed by `/sign-in/finish`.
+3. Generate a client secret, and put the client ID and the secret in `.env` as `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET`.
+
+The agent asks GitHub for `repo`, `read:org` and `user:email`. GitHub's OAuth App tokens don't expire. Revoking the app at GitHub ends the sign-in: the next request fails, and A2UIVerse asks you to sign in again. Uninstalling the app in A2UIVerse revokes the agent's grant at GitHub.
 
 ## Test
 
@@ -48,27 +72,14 @@ uv run python scripts/record_beats.py --model <model>
 uv run python scripts/derive_corpus.py
 ```
 
-Nothing is scrubbed: the recordings come from public repository data.
+Recording runs in `live` mode, so sign in through A2UIVerse first. Nothing is scrubbed: the recordings come from public repository data.
 
 ## Narrowing what it can do
 
-The agent already has every tool, so there's nothing to allow; your token is the limit. To give it less:
+The agent already has every tool, so there's nothing to allow; what your GitHub account reaches is the limit. To give it less:
 
-- **Scope the token.** A fine-grained token limited to some repositories and permissions limits the agent the same way.
 - **Ask for fewer toolsets.** `GITHUB_MCP_TOOLSETS` in `app/mcp.py` is sent as the server's `X-MCP-Toolsets` header. Set it to a list such as `repos,issues,pull_requests` instead of `all`, and update the pin in `tests/test_llm_mcp.py`.
 - **Read tools only.** The server also takes an `X-MCP-Readonly: true` header; add it in `mcp_headers()` in `app/mcp.py`.
-
-## Troubleshooting
-
-**A dead token doesn't look like an auth error.** With an expired or revoked `GITHUB_MCP_PAT`, the agent starts with no tools and the turn ends in an apology on screen (`MALFORMED_FUNCTION_CALL` in the log). Check the token first:
-
-```bash
-curl -s -o /dev/null -w "%{http_code}\n" \
-  -H "Authorization: Bearer $(grep '^GITHUB_MCP_PAT=' .env | cut -d= -f2-)" \
-  https://api.github.com/user
-```
-
-`200` means the token is fine; `401` means it's expired or revoked. Extending an expired classic token generates a new value, so copy it into `.env` again.
 
 ## Connecting to A2UIVerse
 

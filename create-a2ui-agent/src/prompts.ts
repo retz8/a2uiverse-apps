@@ -112,23 +112,6 @@ export async function walkthrough(
       }),
     ));
 
-  if (given.googleAdc === undefined) {
-    p.note(
-      [
-        "Only for an MCP server that is Google's (Gmail, Calendar, ...). Saying yes wires the",
-        "kit's Application Default Credentials helper into app/mcp.py: the developer mints ADC",
-        'once with gcloud, the agent reads and refreshes it, and never holds a secret. Any other',
-        'vendor answers no and supplies its own credential in .env.',
-      ].join('\n'),
-      'Google ADC',
-    );
-  }
-  const googleAdc =
-    given.googleAdc ??
-    (await ask(
-      p.confirm({message: 'Does this vendor authenticate with Google ADC?', initialValue: false}),
-    ));
-
   if (given.ecosystemReady === undefined) {
     p.note(
       [
@@ -160,7 +143,7 @@ export async function walkthrough(
       }),
     ));
 
-  return {id, displayName, description, port, catalogKind, googleAdc, ecosystemReady, repoUrl};
+  return {id, displayName, description, port, catalogKind, ecosystemReady, repoUrl};
 }
 
 export async function askInstall(): Promise<boolean> {

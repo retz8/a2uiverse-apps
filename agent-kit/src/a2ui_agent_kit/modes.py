@@ -12,6 +12,7 @@ import logging
 import os
 
 from a2ui_agent_kit.config import DEFAULT_MODEL, AgentAppConfig
+from a2ui_agent_kit.sign_in import SignIn
 
 logger = logging.getLogger(__name__)
 
@@ -43,7 +44,7 @@ def build_tools(config: AgentAppConfig, mode: str, account=None) -> list:
         # the account, and its vendor token, once per account.
         produced = (
             config.live_toolset_factory(account)
-            if config.sign_in is not None
+            if isinstance(config.sign_in, SignIn)
             else config.live_toolset_factory()
         )
         # A vendor's live backend is one MCP toolset; an app with no vendor behind it —
@@ -113,7 +114,7 @@ def resolve_executor(config: AgentAppConfig, mode: str):
         from a2ui_agent_kit.executor_llm import LlmAgentExecutor
         from a2ui_agent_kit.responder import AdkLlmResponder, PerAccountResponder
 
-        if mode == "live" and config.sign_in is not None:
+        if mode == "live" and isinstance(config.sign_in, SignIn):
             responder = PerAccountResponder(
                 lambda account: AdkLlmResponder(
                     build_llm_agent(config, mode, account=account),

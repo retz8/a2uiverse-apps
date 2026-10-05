@@ -4,7 +4,8 @@ It holds what the agent's tokens stand for: the ID-token signing key, the client
 registered by dynamic registration, each account under the `sub` the agent minted for
 it — its display claims and, in live mode, the vendor's token — and each sign-in (a
 grant: an account, a client, the scopes granted) with its access and refresh tokens,
-stored by hash. Written whole and atomically on every change; a sign-in in flight and
+stored by hash; and what the upstream sign-in keeps, such as the agent's own
+registration at its vendor. Written whole and atomically on every change; a sign-in in flight and
 its authorization code live in memory only.
 
 An account records whether it came from the fake sign-in or the vendor's, so a token
@@ -54,7 +55,9 @@ class SignInStore:
 
     def _load(self) -> dict:
         if self._path.exists():
-            return json.loads(self._path.read_text(encoding="utf-8"))
+            data = json.loads(self._path.read_text(encoding="utf-8"))
+            data.setdefault("upstream", {})
+            return data
         data = {
             "version": 1,
             "signing_key": ECKey.generate_key("P-256", private=True).as_dict(private=True),
@@ -63,6 +66,7 @@ class SignInStore:
             "grants": {},
             "access_tokens": {},
             "refresh_tokens": {},
+            "upstream": {},
         }
         data["signing_key"]["kid"] = secrets.token_urlsafe(8)
         self._data = data
@@ -105,6 +109,19 @@ class SignInStore:
     def registered_client(self, client_id: str) -> dict | None:
         return self._data["clients"].get(client_id)
 
+    # ---- what the upstream keeps --------------------------------------------------
+
+    def upstream_data(self, key: str) -> dict | None:
+        found = self._data["upstream"].get(key)
+        return dict(found) if found is not None else None
+
+    def save_upstream_data(self, key: str, value: Mapping[str, Any] | None) -> None:
+        if value is None:
+            self._data["upstream"].pop(key, None)
+        else:
+            self._data["upstream"][key] = dict(value)
+        self._save()
+
     # ---- accounts ----------------------------------------------------------------
 
     def upsert_account(
@@ -137,6 +154,11 @@ class SignInStore:
 
     def account(self, sub: str) -> dict | None:
         return self._data["accounts"].get(sub)
+
+    def set_vendor_token(self, sub: str, vendor_token: Mapping[str, Any]) -> None:
+        if (account := self._data["accounts"].get(sub)) is not None:
+            account["vendor_token"] = dict(vendor_token)
+            self._save()
 
     # ---- sign-ins (grants) ---------------------------------------------------------
 
@@ -186,6 +208,20 @@ class SignInStore:
                 ended = EndedSignIn(sub, account.get("vendor_token"))
                 account["vendor_token"] = None
         self._save()
+        return ended
+
+    def end_account(self, sub: str) -> EndedSignIn | None:
+        """Ends every sign-in of the account; its vendor token goes, returned for the
+        upstream to revoke."""
+        ended = None
+        for grant_id, g in list(self._data["grants"].items()):
+            if g["sub"] == sub:
+                ended = self.end_grant(grant_id) or ended
+        account = self._data["accounts"].get(sub)
+        if ended is None and account is not None and account.get("vendor_token") is not None:
+            ended = EndedSignIn(sub, account["vendor_token"])
+            account["vendor_token"] = None
+            self._save()
         return ended
 
     # ---- tokens ----------------------------------------------------------------------

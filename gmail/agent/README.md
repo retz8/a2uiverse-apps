@@ -22,21 +22,35 @@ cp .env.example .env
 uv run python -m app --mode deterministic
 ```
 
-| Mode            | What runs                                | Needs                                                  |
-| --------------- | ---------------------------------------- | ------------------------------------------------------ |
-| `deterministic` | canned answers, no model                 | nothing                                                |
-| `stub`          | the model over canned mail               | `GOOGLE_API_KEY`                                       |
-| `live`          | the model over your mailbox, through MCP | `GOOGLE_API_KEY`, `GOOGLE_CLOUD_PROJECT`, Google login |
+| Mode            | What runs                                | Needs                                                                     |
+| --------------- | ---------------------------------------- | ------------------------------------------------------------------------- |
+| `deterministic` | canned answers, no model                 | nothing                                                                   |
+| `stub`          | the model over canned mail               | `GOOGLE_API_KEY`                                                          |
+| `live`          | the model over your mailbox, through MCP | `GOOGLE_API_KEY`, `GOOGLE_OAUTH_CLIENT_ID`, `GOOGLE_OAUTH_CLIENT_SECRET` |
 
 `deterministic` answers any question with a recorded inbox digest, and replays the recorded actions: opening a thread, confirming or cancelling a draft, toggling a label. Opening a thread paints a new surface, as the live agent does.
 
-Other flags: `--port`, `--host`, and `--base-url`, the address the agent card advertises.
+Other flags: `--port`, `--host`, and `--base-url`, the address the agent card advertises. `--state-dir` moves the sign-in store from `.state/`.
 
-## Google login (live mode)
+## Signing in
 
-One-time, outside the agent. The agent never holds a secret.
+The agent is its own sign-in: A2UIVerse signs in to it, and it signs in to Google. Its card asks for three scopes, in the words A2UIVerse shows when it asks you:
 
-1. **Create a Google Cloud project**, and put its id in `.env` as `GOOGLE_CLOUD_PROJECT`.
+| Scope      | Shown as                          | Asked                                     |
+| ---------- | --------------------------------- | ----------------------------------------- |
+| `inbox`    | See your inbox                    | at the first sign-in                      |
+| `messages` | Read your email                   | the first time you open a message         |
+| `organize` | Write drafts and label your email | the first time you save a draft or label  |
+
+In `deterministic` and `stub` mode the sign-in offers one made-up account, `you@example.com`. In `deterministic` mode, opening a thread asks for `messages`, and confirming a draft or toggling a label asks for `organize`.
+
+In `live` mode the sign-in sends you to Google. The agent keeps your Google token, refreshes it, and gives A2UIVerse a token of its own. It asks Google for `gmail.readonly` at first and `gmail.modify` for drafts and labels, with `openid`, `email` and `profile` to know who signed in.
+
+### Setting up live sign-in
+
+One-time, in a Google Cloud project. Gmail and Google Calendar share the project and its OAuth client.
+
+1. **Create a Google Cloud project.**
 
 2. **Join the [Google Workspace Developer Preview Program](https://developers.google.com/workspace/preview)** with that project. The Gmail MCP server is in preview; approval takes a couple of days.
 
@@ -47,29 +61,14 @@ One-time, outside the agent. The agent never holds a secret.
      --project=<your-project-id>
    ```
 
-4. **Set up the consent screen** (Google Auth Platform). Add your account as a test user if the audience is External, and under Data Access add `gmail.readonly`, `gmail.compose` and `gmail.modify`.
+4. **Set up the consent screen** (Google Auth Platform). Leave it in **Testing** and add each account that will sign in as a test user. Under Data Access add `gmail.readonly` and `gmail.modify`.
 
-5. **Create an OAuth client** of type Desktop app, and save its JSON as `~/.config/a2uiverse/oauth-client.json`.
+5. **Create an OAuth client** of type **Web application**. Under Authorized redirect URIs add the agent's finish address, `http://localhost:11002/sign-in/finish`, and Calendar's, `http://localhost:11003/sign-in/finish`. Behind a tunnel, add the address each agent runs at with `--base-url`, followed by `/sign-in/finish`.
 
-6. **Log in** with Application Default Credentials:
+6. **Put the client's ID and secret** in `.env` as `GOOGLE_OAUTH_CLIENT_ID` and `GOOGLE_OAUTH_CLIENT_SECRET`, and the same two in Calendar's `.env`.
 
-   ```bash
-   gcloud auth application-default login \
-     --client-id-file=$HOME/.config/a2uiverse/oauth-client.json \
-     --scopes=https://www.googleapis.com/auth/gmail.readonly,\
-   https://www.googleapis.com/auth/gmail.compose,\
-   https://www.googleapis.com/auth/gmail.modify,\
-   https://www.googleapis.com/auth/calendar.readonly,\
-   https://www.googleapis.com/auth/calendar.events,\
-   https://www.googleapis.com/auth/cloud-platform
-   ```
-
-If Calendar is already set up, only steps 3 and 4 are new; then log in again.
-
-> [!WARNING]
-> Gmail and Calendar share one Google login, and `--scopes` replaces what was granted before. Always log in with **both** apps' scopes, as above. Otherwise the other app loses access and fails at startup with an error that points elsewhere.
-
-With no usable login, `live` refuses to start rather than quietly falling back to canned mail.
+> [!NOTE]
+> While the client is in Testing, Google ends each sign-in after 7 days, and A2UIVerse asks you to sign in again. Publishing it needs Google's app verification and, because `gmail.readonly` and `gmail.modify` are restricted scopes, a security assessment.
 
 ## Test
 
@@ -94,7 +93,7 @@ uv run pytest tests/test_corpus_is_publishable.py
 
 ## Allowing more tools
 
-The allowed tools are `GMAIL_TOOLS` in `app/mcp.py`; the ones held back are named in the comment under it. The Google login's `gmail.modify` scope already covers trash and spam, so that list is what limits the agent.
+The allowed tools are `GMAIL_TOOLS` in `app/mcp.py`; the ones held back are named in the comment under it. The sign-in's `gmail.modify` scope already covers trash and spam, so that list is what limits the agent.
 
 To allow a tool, change these together:
 
@@ -104,7 +103,7 @@ To allow a tool, change these together:
 4. Add it to the stub, `STUB_TOOLS` in `app/tools.py`, over hand-written data in the shape a live run returns.
 5. Describe what it returns in `app/knowledge/gmail-domain.md`. For a write, add a proposal to the prompt, so it runs only when you confirm.
 
-A tool that needs a scope the login doesn't have also needs it in `GMAIL_SCOPES` in `app/mcp.py` and in the login command above.
+A tool that needs more than the sign-in asks Google for also needs a scope in `app/sign_in.py`: its words in `SCOPES`, its Google scopes in `GOOGLE_SCOPES`, and the tool in `tool_scopes`.
 
 ## Connecting to A2UIVerse
 

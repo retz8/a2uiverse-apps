@@ -11,6 +11,7 @@ from a2ui_agent_kit.paint_meta import require_carries_action
 from app import prose
 from app.card import APP_DESCRIPTION, APP_NAME, SKILLS
 from app.responses import build_response, build_text_response
+from app.sign_in import SIGN_IN
 from app.tool_shaping import record_shape, shape_tool_response
 from app.tools import STUB_TOOLS
 
@@ -18,12 +19,12 @@ _AGENT_DIR = Path(__file__).resolve().parents[1]  # calendar/agent/
 _APP_PKG = Path(__file__).resolve().parent  # calendar/agent/app/
 
 
-def _live_toolset():
-    # Deferred: app.mcp pulls google.adk + google.auth, which deterministic and stub
-    # runs must never pay for.
+def _live_toolset(account):
+    # Deferred: app.mcp pulls google.adk, which deterministic and stub runs must never
+    # pay for.
     from app.mcp import build_calendar_toolset
 
-    return build_calendar_toolset()
+    return build_calendar_toolset(account)
 
 
 def _after_tool(tool_name: str, tool_response: Any) -> Any:
@@ -64,4 +65,5 @@ CONFIG = AgentAppConfig(
     stub_tools=STUB_TOOLS,
     live_toolset_factory=_live_toolset,
     after_tool=_after_tool,
+    sign_in=SIGN_IN,
 )

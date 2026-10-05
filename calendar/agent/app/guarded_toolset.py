@@ -1,15 +1,15 @@
-"""The kit's policy toolset with Calendar's guard: pin what leaves, capture what returns.
+"""The kit's policy toolset with Calendar's guard: shape what leaves, capture what returns.
 
-**Outbound: two pins, in every run mode.**
+**Outbound: two rewrites, in every run mode.**
 
 `suppress_notifications` forces `notificationLevel` to `NONE` on every call before it leaves
 (task-2.7 decision 2). Calendar's writes reach third parties, and the server treats an absent
 notificationLevel as `ALL` — so omitting the argument is the loud choice, not the safe one.
 
-`pin_calendar` forces `calendarId` to the seeded demo calendar. The API's default is the
-user's `primary`, and nothing else in the stack stops the model naming it.
+`default_to_primary` points a call that names no calendar at the signed-in person's primary
+calendar (task-12.10 decision 8).
 
-Both pins are filtered through the tool's own declared parameters (the kit base's
+Both are filtered through the tool's own declared parameters (the kit base's
 `accepted_args`): the server rejects an undeclared argument with a 400, so a pin applied
 blind would break every tool that does not take it — which, for `notificationLevel`, is
 every read.
@@ -35,15 +35,15 @@ from typing import Any
 
 from a2ui_agent_kit.toolset import PolicyMcpTool, PolicyMcpToolset
 
-from app.tool_shaping import capture_tool_result, pin_calendar, suppress_notifications
+from app.tool_shaping import capture_tool_result, default_to_primary, suppress_notifications
 
 
 class GuardedMcpTool(PolicyMcpTool):
-    """An McpTool confined to the demo calendar and unable to notify anyone."""
+    """An McpTool on the person's primary calendar and unable to notify anyone."""
 
     def shape_args(self, args: dict[str, Any]) -> dict[str, Any]:
         accepts = self.accepted_args()
-        return pin_calendar(suppress_notifications(args, accepts), accepts)
+        return default_to_primary(suppress_notifications(args, accepts), accepts)
 
     def shape_result(self, result: Any) -> Any:
         return capture_tool_result(result, self.name)

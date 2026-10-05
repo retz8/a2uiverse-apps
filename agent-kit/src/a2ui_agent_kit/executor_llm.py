@@ -29,8 +29,10 @@ from a2ui_agent_kit.recorder import RECORD_DIR_ENV, create_recorder
 from a2ui_agent_kit.responder import LlmResponder, ModelTurnError
 from a2ui_agent_kit.sign_in import (
     AuthRequired,
+    VendorSignInEnded,
     auth_required_message,
     bind_account,
+    current_account,
     unbind_account,
 )
 from a2ui_agent_kit.versions import WIRE_VERSION
@@ -259,6 +261,7 @@ class LlmAgentExecutor(AgentExecutor):
     ):
         self._responder = responder
         self._sign_in = config.sign_in
+        self._app_name = config.name
         self._max_attempts = max_attempts
         self._catalog = catalog_context(config)
         self._question_policy = config.question_policy
@@ -368,6 +371,21 @@ class LlmAgentExecutor(AgentExecutor):
                 final=True,
             )
             self._recorder.end_turn("auth-required", task_id=task.id)
+        except VendorSignInEnded as err:
+            # The vendor no longer takes the account's token: the run fails, and the
+            # account's sign-ins end so the client's next request asks the person to sign
+            # in again (task-12.10 decision 7).
+            logger.info("task %s: %s; the account's sign-ins end", task.id, err)
+            account = current_account()
+            if account is not None and account.end_sign_ins is not None:
+                await account.end_sign_ins()
+            text = f"Your {self._app_name} sign-in has ended. Sign in again to continue."
+            await updater.update_status(
+                TaskState.failed,
+                new_agent_parts_message([Part(root=TextPart(text=text))], task.context_id, task.id),
+                final=True,
+            )
+            self._recorder.end_turn("failed", task_id=task.id)
         except asyncio.CancelledError:
             # tasks/cancel: once `cancel` has answered `canceled`, the SDK cancels this
             # run. The CancelledError lands on whatever the attempt was awaiting — the
@@ -468,8 +486,8 @@ class LlmAgentExecutor(AgentExecutor):
                 else:
                     model_unavailable = True
                 continue
-            except AuthRequired:
-                raise  # not a failure of the attempt: the run ends asking for access
+            except (AuthRequired, VendorSignInEnded):
+                raise  # not a failure of the attempt: the run ends here
             except Exception as err:  # model/infra failure (quota, 5xx, network)
                 # Must not abort the SSE stream raw — the client would see a bare
                 # network error. Retry with the prompt unchanged; a transient

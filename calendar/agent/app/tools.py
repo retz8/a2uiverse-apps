@@ -41,7 +41,7 @@ def list_events(
     """Lists events on the calendar within a time range.
 
     Args:
-        calendarId: The calendar to read. Pinned to the demo calendar in every run mode.
+        calendarId: The calendar to read. The person's primary calendar when omitted.
         startTime: RFC 3339 lower bound, inclusive. Empty means the fixture's own range.
         endTime: RFC 3339 upper bound, exclusive. Empty means the fixture's own range.
         pageSize: Maximum events to return. Defaults to 25.
@@ -62,7 +62,7 @@ def get_event(eventId: str, calendarId: str = "") -> dict:  # noqa: N803 - MCP a
 
     Args:
         eventId: The event's id.
-        calendarId: The calendar to read. Pinned to the demo calendar in every run mode.
+        calendarId: The calendar to read. The person's primary calendar when omitted.
 
     Returns:
         The event and its attendees. Returns an object with an "error" key if unknown.
@@ -91,7 +91,7 @@ def create_event(
         summary: The event's title.
         startTime: RFC 3339 start, or a date for an all-day event.
         endTime: RFC 3339 end, or a date for an all-day event.
-        calendarId: The calendar to write to. Pinned to the demo calendar.
+        calendarId: The calendar to write to. The person's primary calendar when omitted.
         attendeeEmails: Attendee addresses. They are NOT notified.
         location: Where the event is.
         description: The event's notes.
@@ -115,7 +115,7 @@ def respond_to_event(
     Args:
         eventId: The event to respond to.
         responseStatus: One of "accepted", "declined", "tentative".
-        calendarId: The calendar the event is on. Pinned to the demo calendar.
+        calendarId: The calendar the event is on. The person's primary calendar when omitted.
         responseComment: An optional note sent with the response.
 
     Returns:

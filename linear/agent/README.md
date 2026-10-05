@@ -20,22 +20,30 @@ cp .env.example .env
 uv run python -m app --mode deterministic
 ```
 
-| Mode            | What runs                          | Needs                                |
-| --------------- | ---------------------------------- | ------------------------------------ |
-| `deterministic` | canned answers, no model           | nothing                              |
-| `stub`          | the model over canned issues       | `GOOGLE_API_KEY`                     |
-| `live`          | the model over Linear's hosted MCP | `GOOGLE_API_KEY`, `LINEAR_MCP_TOKEN` |
+| Mode            | What runs                          | Needs            |
+| --------------- | ---------------------------------- | ---------------- |
+| `deterministic` | canned answers, no model           | nothing          |
+| `stub`          | the model over canned issues       | `GOOGLE_API_KEY` |
+| `live`          | the model over Linear's hosted MCP | `GOOGLE_API_KEY` |
 
 `deterministic` answers any question with the recorded list of your issues, and replays the recorded actions: opening an issue, proposing a status change and confirming or declining it. Opening an issue paints a new surface, as the live agent does.
 
-Other flags: `--port`, `--host`, and `--base-url`, the address the agent card advertises.
+Other flags: `--port`, `--host`, and `--base-url`, the address the agent card advertises. `--state-dir` moves the sign-in store from `.state/`.
 
-## Linear credentials (live mode)
+## Signing in
 
-1. **A personal API key.** In Linear: Settings → Account → Security & Access. Create a key with **Read** and **Write**, and copy it (it's shown once) into `.env` as `LINEAR_MCP_TOKEN`. Limiting the key to some teams limits what the agent sees.
-2. **The GitHub integration**, for linked pull requests: Settings → Features → Integrations → GitHub, installed on the repositories the issues link to.
+The agent is its own sign-in: A2UIVerse signs in to it, and it signs in to Linear. Its card asks for two scopes, in the words A2UIVerse shows when it asks you:
 
-The key acts as its user: **the agent can do whatever that user can**, within the key's permissions. With no key, `live` refuses to start rather than quietly falling back to canned data.
+| Scope          | Shown as                                  | Asked                            |
+| -------------- | ----------------------------------------- | -------------------------------- |
+| `issues.read`  | See your issues                           | at the first sign-in             |
+| `issues.write` | Create, change and comment on your issues | the first time you ask to write  |
+
+In `deterministic` and `stub` mode the sign-in offers one made-up account, `me@example.com`. In `deterministic` mode, confirming a change asks for `issues.write`.
+
+In `live` mode the sign-in sends you to Linear, asking for `read` at first and `write` to write. The agent keeps your Linear token, refreshes it, and gives A2UIVerse a token of its own. There is nothing to set up at Linear: on the first sign-in the agent registers itself with Linear's sign-in server and keeps the registration in `.state/`.
+
+For linked pull requests, install Linear's GitHub integration (Settings → Features → Integrations → GitHub) on the repositories the issues link to.
 
 ## Test
 
@@ -56,7 +64,7 @@ uv run python scripts/derive_corpus.py
 uv run pytest tests/test_corpus_is_publishable.py
 ```
 
-Recording's last step **really changes** an issue's status in the workspace.
+Sign in through A2UIVerse first. Recording's last step **really changes** an issue's status in the workspace.
 
 To repaint the beats after a catalog change, record them against the stub instead: the model paints over the recorded data, nothing reaches Linear, and only the deterministic corpus is derived again. The stub holds A2U-5 as the live run left it, already In Progress, so for the recording set its `status` in `app/fixtures/stub/get-issue.json` to `In Review`, as the live run first read it, and put the file back afterwards; otherwise beat 3 has nothing to propose.
 
@@ -66,11 +74,11 @@ uv run python scripts/record_beats.py --model <model> --record-dir <scratch dir>
 uv run python scripts/derive_corpus.py --beats-only
 ```
 
-Values stay real except your email: while recording, the agent replaces the key owner's address with `me@example.com` before the model reads anything. Set a full name on the Linear account first. Without one, Linear shows the email as your name, and every assignee and author records as the placeholder. The last test fails the recordings on anything token-shaped or any other email address.
+Values stay real except your email: while recording, the agent replaces the signed-in account's address with `me@example.com` before the model reads anything. Set a full name on the Linear account first. Without one, Linear shows the email as your name, and every assignee and author records as the placeholder. The last test fails the recordings on anything token-shaped or any other email address.
 
 ## Allowing more tools
 
-The allowed tools are `LINEAR_TOOLS` in `app/mcp.py`. The key's Read and Write permissions already cover much more, so that list is what limits the agent.
+The allowed tools are `LINEAR_TOOLS` in `app/mcp.py`. The sign-in's `read` and `write` scopes already cover much more, so that list is what limits the agent.
 
 To allow a tool, change these together:
 
@@ -78,7 +86,7 @@ To allow a tool, change these together:
 2. Add it to `LINEAR_TOOLS` in `app/mcp.py`, and take it out of the withheld comment.
 3. Update the pin in `tests/test_llm_mcp.py`.
 4. Add it to the stub, `STUB_TOOLS` in `app/tools.py`, over data from a recorded run (`scripts/derive_corpus.py` writes it).
-5. Describe what it returns in `app/knowledge/linear-domain.md`. For a write, add a proposal to the prompt, so it runs only when you confirm.
+5. Describe what it returns in `app/knowledge/linear-domain.md`. For a write, add a proposal to the prompt, so it runs only when you confirm, and the tool to `tool_scopes` in `app/sign_in.py`.
 
 ## Connecting to A2UIVerse
 

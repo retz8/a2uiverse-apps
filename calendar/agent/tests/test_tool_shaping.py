@@ -16,8 +16,8 @@ from app.tool_shaping import (
     PROJECTION_NOTE,
     annotate,
     capture_tool_result,
+    default_to_primary,
     mask_injected_addresses,
-    pin_calendar,
     recording,
     shape_tool_response,
     suppress_notifications,
@@ -119,55 +119,35 @@ class TestPinsRespectTheToolSchema:
         out = suppress_notifications({"summary": "s"}, self.WRITE_ARGS)
         assert out["notificationLevel"] == "NONE"
 
-    def test_calendar_pin_is_skipped_on_a_tool_without_the_parameter(self, monkeypatch):
-        monkeypatch.setenv("CALENDAR_ID", "demo@group.calendar.google.com")
-        assert "calendarId" not in pin_calendar({"query": "review"}, {"query", "pageSize"})
+    def test_the_primary_default_is_skipped_on_a_tool_without_the_parameter(self):
+        assert "calendarId" not in default_to_primary({"query": "review"}, {"query", "pageSize"})
 
-    def test_calendar_pin_is_applied_on_a_tool_with_it(self, monkeypatch):
-        monkeypatch.setenv("CALENDAR_ID", "demo@group.calendar.google.com")
-        out = pin_calendar({"calendarId": "primary"}, self.READ_ARGS)
-        assert out["calendarId"] == "demo@group.calendar.google.com"
+    def test_the_primary_default_is_applied_on_a_tool_with_it(self):
+        out = default_to_primary({"pageSize": 3}, self.READ_ARGS)
+        assert out["calendarId"] == "primary"
 
     def test_an_empty_schema_pins_nothing(self):
         # A tool whose schema could not be read must not have arguments invented for it.
         assert suppress_notifications({"a": 1}, set()) == {"a": 1}
-        assert pin_calendar({"a": 1}, set()) == {"a": 1}
+        assert default_to_primary({"a": 1}, set()) == {"a": 1}
 
 
-class TestCalendarPinning:
-    """The agent must not be able to read `primary`, whatever the model asks for.
+class TestThePrimaryCalendar:
+    """Each signed-in account reads and writes its own primary calendar (task-12.10
+    decision 8): a call naming no calendar is pointed at it."""
 
-    `calendarId` is a per-call argument and the API's default is the user's own calendar.
-    Decision 4's whole guarantee — that a recording bound for a public repo contains only
-    authored events — rests on this, so it is overwritten rather than defaulted.
-    """
+    def test_a_call_naming_no_calendar_reads_the_primary_one(self):
+        assert default_to_primary({"eventId": "ev-1"})["calendarId"] == "primary"
 
-    def test_overwrites_primary(self, monkeypatch):
-        monkeypatch.setenv("CALENDAR_ID", "demo@group.calendar.google.com")
-        assert pin_calendar({"calendarId": "primary"})["calendarId"] == (
-            "demo@group.calendar.google.com"
+    def test_a_calendar_the_call_names_is_kept(self):
+        assert default_to_primary({"calendarId": "team@example.com"})["calendarId"] == (
+            "team@example.com"
         )
 
-    def test_adds_the_argument_when_the_caller_omitted_it(self, monkeypatch):
-        monkeypatch.setenv("CALENDAR_ID", "demo@group.calendar.google.com")
-        assert pin_calendar({"eventId": "ev-1"})["calendarId"] == "demo@group.calendar.google.com"
-
-    def test_overwrites_any_other_calendar(self, monkeypatch):
-        monkeypatch.setenv("CALENDAR_ID", "demo@group.calendar.google.com")
-        pinned = pin_calendar({"calendarId": "someone.else@example.com"})
-        assert pinned["calendarId"] == "demo@group.calendar.google.com"
-
-    def test_does_not_mutate_the_caller_s_dict(self, monkeypatch):
-        monkeypatch.setenv("CALENDAR_ID", "demo@group.calendar.google.com")
-        args = {"calendarId": "primary"}
-        pin_calendar(args)
-        assert args["calendarId"] == "primary"
-
-    def test_never_invents_primary_when_the_id_is_unset(self, monkeypatch):
-        # Startup already refuses without an id; this must not paper over that by filling in
-        # a default, which would be the exact failure the guard exists to prevent.
-        monkeypatch.delenv("CALENDAR_ID", raising=False)
-        assert "calendarId" not in pin_calendar({"eventId": "ev-1"})
+    def test_does_not_mutate_the_caller_s_dict(self):
+        args = {"eventId": "ev-1"}
+        default_to_primary(args)
+        assert "calendarId" not in args
 
 
 class TestProjectionNote:
@@ -259,9 +239,20 @@ class TestInjectedAddressMasking:
         payload = {"attendees": [{"email": "priya.nakamura@example.com"}]}
         assert mask_injected_addresses(payload) == payload
 
-    def test_the_demo_calendar_reads_as_the_viewer(self, monkeypatch):
-        monkeypatch.setenv("CALENDAR_ID", "demo@group.calendar.google.com")
-        out = mask_injected_addresses({"organizer": {"email": "demo@group.calendar.google.com"}})
+    def test_the_signed_in_account_reads_as_the_viewer(self):
+        from types import SimpleNamespace
+
+        from a2ui_agent_kit.sign_in import SignedInAccount, bind_account, unbind_account
+
+        from app.sign_in import SIGN_IN
+
+        account = SignedInAccount("sub-1", "g-1", {"email": "Test.Calendar@gmail.com"}, frozenset())
+        context = SimpleNamespace(call_context=SimpleNamespace(state={"auth": account}))
+        token = bind_account(context, SIGN_IN)
+        try:
+            out = mask_injected_addresses({"organizer": {"email": "test.calendar@gmail.com"}})
+        finally:
+            unbind_account(token)
         assert out["organizer"]["email"] == "you@example.com"
 
     def test_replacement_is_stable_across_runs(self):

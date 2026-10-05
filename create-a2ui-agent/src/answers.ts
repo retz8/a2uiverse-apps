@@ -18,8 +18,6 @@ export interface ScaffoldAnswers {
   /** The agent's port, one per app regardless of run mode. */
   port: number;
   catalogKind: CatalogKind;
-  /** Wire the kit's opt-in Google ADC credential block into the MCP module. */
-  googleAdc: boolean;
   /** Emit the kit's paintMeta shell convention (paint titles, question markers). */
   ecosystemReady: boolean;
   /** The repository the app lives in; the catalog id URL points into it. */

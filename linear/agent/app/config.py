@@ -15,17 +15,18 @@ from a2ui_agent_kit.paint_meta import require_carries_action
 from app import prose
 from app.card import APP_DESCRIPTION, APP_NAME, SKILLS
 from app.responses import build_response, build_text_response
+from app.sign_in import SIGN_IN
 from app.tools import STUB_TOOLS
 
 _AGENT_DIR = Path(__file__).resolve().parents[1]  # linear/agent/
 _APP_PKG = Path(__file__).resolve().parent  # linear/agent/app/
 
 
-def _live_toolset():
+def _live_toolset(account):
     # Deferred: app.mcp pulls google.adk, which deterministic and stub runs never pay for.
     from app.mcp import build_live_toolset
 
-    return build_live_toolset()
+    return build_live_toolset(account)
 
 
 CONFIG = AgentAppConfig(
@@ -53,4 +54,5 @@ CONFIG = AgentAppConfig(
     question_policy=require_carries_action,
     stub_tools=STUB_TOOLS,
     live_toolset_factory=_live_toolset,
+    sign_in=SIGN_IN,
 )

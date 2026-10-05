@@ -16,7 +16,7 @@ from typing import Any, Literal
 
 from a2a.types import AgentSkill
 
-from a2ui_agent_kit.sign_in import SignIn
+from a2ui_agent_kit.sign_in import ApiKeySignIn, SignIn
 
 # Overridable per app via `AgentAppConfig.model`, and at runtime via MODEL_NAME. Not
 # the lite tier — it could not reliably emit a well-formed surface at this payload size.
@@ -74,6 +74,7 @@ class AgentAppConfig:
     after_tool: AfterTool | None = None
     model: str | None = None  # None -> kit DEFAULT_MODEL (MODEL_NAME env still wins)
 
-    # Sign-in: present, the kit serves the app's sign-in and the card declares it. In
-    # live mode the toolset factory is then called per signed-in account.
-    sign_in: SignIn | None = None
+    # Sign-in: present, the kit serves the app's sign-in and the card declares it. With
+    # a `SignIn`, live mode calls the toolset factory per signed-in account; an
+    # `ApiKeySignIn` only gates requests on a key.
+    sign_in: SignIn | ApiKeySignIn | None = None

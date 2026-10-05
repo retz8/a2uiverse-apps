@@ -16,58 +16,81 @@ source. Re-seeding restores a known state in one command.
 This talks to the Calendar REST API directly rather than through MCP: it is developer setup,
 not agent behaviour, and it deliberately uses the delete verb the agent itself is forbidden.
 
+**The test account's own primary calendar** (task-12.10 decisions 8 and 11). The agent reads
+each signed-in account's primary calendar, so the demo calendar is the primary calendar of a
+dedicated test Google account, signed in to the agent in live mode with access to add events.
+This script uses that account's Google token from the agent's sign-in store, named by its
+email, and wipes that account's calendar — never name your own.
+
 Run it before recording beats and before any live demo:
 
-    uv run python -m scripts.seed_calendar
+    uv run python -m scripts.seed_calendar --account <test account email>
 """
 
 from __future__ import annotations
 
 import argparse
+import asyncio
 import json
 import sys
 from datetime import date, datetime, timedelta
 from pathlib import Path
 
-import google.auth
-import google.auth.exceptions
-import google.auth.transport.requests
 import httpx
+from a2ui_agent_kit.sign_in import VendorSignInEnded
+from a2ui_agent_kit.sign_in_store import SignInStore
 from dotenv import load_dotenv
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+_AGENT_DIR = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(_AGENT_DIR))
 
-from app.mcp import (  # noqa: E402
-    CALENDAR_SCOPES,
-    MissingGoogleCredentialError,
-    demo_calendar_id,
-    quota_project,
-)
+from app.sign_in import GOOGLE_SCOPES, UPSTREAM, WRITE  # noqa: E402
 
 API_ROOT = "https://www.googleapis.com/calendar/v3"
 SEED_PATH = Path(__file__).resolve().parent / "seed_events.json"
+CALENDAR_ID = "primary"
 
 
-def _token() -> str:
+class SeedAccountError(RuntimeError):
+    """The named test account cannot seed: not signed in, or without access to add events."""
+
+
+def _token(state_dir: Path, email: str) -> str:
+    """The test account's Google token from the agent's sign-in store, refreshed if due."""
+    store = SignInStore(state_dir)
+    data = json.loads(store.path.read_text(encoding="utf-8"))
+    found = [
+        (sub, a)
+        for sub, a in data["accounts"].items()
+        if a["kind"] == "vendor" and (a["claims"].get("email") or "").lower() == email.lower()
+    ]
+    if not found or found[0][1].get("vendor_token") is None:
+        raise SeedAccountError(
+            f"{email} is not signed in to the Calendar agent in live mode. Sign in through "
+            "A2UIVerse first — see agent/README.md, 'Demo calendar'."
+        )
+    sub, account = found[0]
+    token = account["vendor_token"]
+    granted = set((token.get("scope") or "").split())
+    if not set(GOOGLE_SCOPES[WRITE]) <= granted:
+        raise SeedAccountError(
+            f"{email} has not let the agent add events. Ask the agent to add one event and "
+            "allow it, then seed again."
+        )
     try:
-        credentials, _ = google.auth.default(scopes=list(CALENDAR_SCOPES))
-    except google.auth.exceptions.DefaultCredentialsError as exc:
-        raise MissingGoogleCredentialError(
-            "No Application Default Credentials. See agent/README.md, "
-            "'Setting up the Calendar credential'."
-        ) from exc
-    credentials.refresh(google.auth.transport.requests.Request())
-    return credentials.token
+        renewed = asyncio.run(UPSTREAM.fresh(token))
+    except VendorSignInEnded as exc:
+        raise SeedAccountError(f"{email}'s sign-in has ended; sign in again.") from exc
+    if renewed is not None:
+        store.set_vendor_token(sub, renewed)
+        token = renewed
+    return token["access_token"]
 
 
-def _client(token: str, project: str) -> httpx.Client:
+def _client(token: str) -> httpx.Client:
     return httpx.Client(
         base_url=API_ROOT,
-        headers={
-            "Authorization": f"Bearer {token}",
-            "X-Goog-User-Project": project,
-            "Content-Type": "application/json",
-        },
+        headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json"},
         timeout=30.0,
     )
 
@@ -117,10 +140,10 @@ def _body(event: dict, today: date, time_zone: str, self_email: str | None) -> d
     # response, and that is a distinct row shape the agenda has to be able to show. Giving it
     # a lone self-attendee would turn every personal block into a meeting with one guest.
     #
-    # `self_email` is the demo CALENDAR's address, not the developer's. That is deliberate
-    # and it is what makes the beats work: Google sets `self: true` on the attendee matching
-    # the calendar being queried, so the agent reads this row as "my own response" exactly as
-    # it would on a real user's calendar — and no personal address enters the corpus.
+    # `self_email` is the test account's address, its primary calendar's id. That is what
+    # makes the beats work: Google sets `self: true` on the attendee matching the calendar
+    # being queried, so the agent reads this row as "my own response" exactly as it would on
+    # a real user's calendar — and no personal address enters the corpus.
     # Verified on the first live run: needsAction does stick this way, which is what
     # `rsvp-toggle` needs (task-2.7 spec, open item 2 — resolved).
     if self_email and event.get("selfResponse") and attendees:
@@ -139,17 +162,17 @@ def _body(event: dict, today: date, time_zone: str, self_email: str | None) -> d
     return body
 
 
-def _calendar_meta(client: httpx.Client, calendar_id: str) -> tuple[str, str | None]:
-    response = client.get(f"/calendars/{calendar_id}")
+def _time_zone(client: httpx.Client, calendar_id: str) -> str:
+    """The calendar's time zone, which an event list carries — readable with the events
+    scopes alone."""
+    response = client.get(f"/calendars/{calendar_id}/events", params={"maxResults": 1})
     response.raise_for_status()
-    payload = response.json()
-    return payload.get("timeZone", "UTC"), payload.get("id")
+    return response.json().get("timeZone", "UTC")
 
 
-def seed(dry_run: bool = False) -> int:
-    load_dotenv(Path(__file__).resolve().parent.parent / ".env")
-    calendar_id = demo_calendar_id()
-    project = quota_project()
+def seed(email: str, state_dir: Path, dry_run: bool = False) -> int:
+    load_dotenv(_AGENT_DIR / ".env")
+    calendar_id = CALENDAR_ID
     corpus = json.loads(SEED_PATH.read_text(encoding="utf-8"))
     events = corpus["events"]
     today = date.today()
@@ -157,13 +180,13 @@ def seed(dry_run: bool = False) -> int:
     if dry_run:
         for event in events:
             print(f"  {event['key']:<16} day{int(event.get('dayOffset', 0)):+d}  {event['summary']}")
-        print(f"\n{len(events)} events would be written to {calendar_id} (nothing sent).")
+        print(f"\n{len(events)} events would be written to {email}'s calendar (nothing sent).")
         return 0
 
-    with _client(_token(), project) as client:
-        time_zone, self_email = _calendar_meta(client, calendar_id)
+    with _client(_token(state_dir, email)) as client:
+        time_zone, self_email = _time_zone(client, calendar_id), email
         removed = _wipe(client, calendar_id)
-        print(f"wiped {removed} event(s) from {calendar_id}")
+        print(f"wiped {removed} event(s) from {email}'s calendar")
         for event in events:
             body = _body(event, today, time_zone, self_email)
             response = client.post(
@@ -173,12 +196,23 @@ def seed(dry_run: bool = False) -> int:
             )
             response.raise_for_status()
             print(f"  + {event['key']}")
-    print(f"\nseeded {len(events)} event(s) into {calendar_id} ({time_zone}), dated from {today}")
+    print(f"\nseeded {len(events)} event(s) into {email}'s calendar ({time_zone}), dated from {today}")
     return 0
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--account",
+        required=True,
+        help="The test Google account's email. Its primary calendar is wiped and seeded.",
+    )
+    parser.add_argument(
+        "--state-dir",
+        type=Path,
+        default=_AGENT_DIR / ".state",
+        help="The Calendar agent's sign-in store, if it runs with --state-dir.",
+    )
     parser.add_argument(
         "--dry-run",
         action="store_true",
@@ -186,8 +220,8 @@ def main() -> int:
     )
     args = parser.parse_args()
     try:
-        return seed(dry_run=args.dry_run)
-    except MissingGoogleCredentialError as exc:
+        return seed(args.account, args.state_dir, dry_run=args.dry_run)
+    except SeedAccountError as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 1
 

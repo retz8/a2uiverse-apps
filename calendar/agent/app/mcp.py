@@ -20,53 +20,33 @@ than implying more than it does: it stops the invitations, it does not stop the 
 existing. An event created this way is one its attendees do not know about, and the painted
 proposal is required to say so (see `knowledge/calendar-domain.md`).
 
-The credential block is the kit's opt-in Google ADC helper (`a2ui_agent_kit.google_adc`):
-minted once by a developer outside the agent, read and refreshed by the library, never a
-client secret or a consent flow.
-
-The agent reads a **seeded demo calendar**, not the developer's own (task-2.7 decision 4):
-`CALENDAR_ID_ENV` names it, and `scripts/seed_calendar.py` populates it. That is why there is
-no pseudonymizer here -- see `tool_shaping.py`.
+The credential is the signed-in account's Google token, held by the agent's sign-in
+(task-12.10, `app/sign_in.py`): one toolset per account, its token read again on every call,
+so a refreshed token is used at once. Each account reads and writes its own primary calendar
+(decision 8); development uses a dedicated test account whose primary calendar
+`scripts/seed_calendar.py` populates -- which is why there is no pseudonymizer here, see
+`tool_shaping.py`.
 """
 
 from __future__ import annotations
 
-import os
-
 from google.adk.tools.mcp_tool import StreamableHTTPConnectionParams
 
-from a2ui_agent_kit import google_adc
-from a2ui_agent_kit.google_adc import MissingGoogleCredentialError, mcp_headers
+from a2ui_agent_kit.sign_in import SignedInAccount
+from a2ui_agent_kit.toolset import account_bearer
 
 from app.guarded_toolset import GuardedMcpToolset
-from app.tool_shaping import CALENDAR_ID_ENV
 
 __all__ = [
-    "CALENDAR_ID_ENV",
     "CALENDAR_MCP_URL",
-    "CALENDAR_SCOPES",
     "CALENDAR_TOOLS",
     "WITHHELD_TOOLS",
-    "MissingDemoCalendarError",
-    "MissingGoogleCredentialError",
-    "access_token",
     "build_calendar_toolset",
     "calendar_connection_params",
-    "demo_calendar_id",
     "mcp_headers",
-    "quota_project",
 ]
 
 CALENDAR_MCP_URL = "https://calendarmcp.googleapis.com/mcp/v1"
-
-# The scopes the credential must carry. `calendar.events` is what both write tiers need; no
-# narrower scope grants the attendee response, because that happens on an event the user does
-# not own.
-CALENDAR_SCOPES = (
-    "https://www.googleapis.com/auth/calendar.readonly",
-    "https://www.googleapis.com/auth/calendar.events",
-    "https://www.googleapis.com/auth/cloud-platform",
-)
 
 # Pinned explicitly rather than inherited from the server's full set: the tool surface is a
 # statement about what the agent is, so it stays reviewable and diffable. Everything absent
@@ -74,10 +54,8 @@ CALENDAR_SCOPES = (
 #
 # Read off the live server on the first run. It exposes nine tools; four are admitted.
 #
-# EVERY ADMITTED TOOL TAKES `calendarId`, and that is load-bearing rather than incidental:
-# it is what lets `tool_shaping.pin_calendar` confine the whole surface to the seeded demo
-# calendar. A tool without that argument cannot be confined, and would read the developer's
-# `primary` — which is the one thing task-2.7 decision 4 exists to prevent.
+# Every admitted tool takes `calendarId`; a call that names none is pointed at the person's
+# primary calendar (`tool_shaping.default_to_primary`).
 CALENDAR_TOOLS = (
     # reads
     "list_events",
@@ -94,7 +72,7 @@ CALENDAR_TOOLS = (
 #                                  deleting cancels the event in other people's calendars.
 #                                  Rescheduling is out of scope for 2.7 (decision 1).
 #   search_events               -- takes NO calendarId, so it searches every calendar the
-#                                  credential can see, `primary` included. Not confinable.
+#                                  credential can see, beyond the primary one.
 #   list_calendars              -- likewise takes no calendarId, and returns the user's other
 #                                  calendars by name. No beat needs it.
 #   suggest_time                -- proposes times the model never read. The prompt's hardest
@@ -109,39 +87,11 @@ WITHHELD_TOOLS = (
 )
 
 
-class MissingDemoCalendarError(RuntimeError):
-    """Raised when the MCP backend is selected with no demo calendar to read."""
+def mcp_headers(access_token: str) -> dict[str, str]:
+    return {"Authorization": f"Bearer {access_token}"}
 
 
-def quota_project() -> str:
-    """The project billed for the call, sent as X-Goog-User-Project."""
-    return google_adc.quota_project("Calendar")
-
-
-def access_token() -> str:
-    """Mints a fresh access token from ADC, failing fast rather than degrading to canned data."""
-    return google_adc.access_token(CALENDAR_SCOPES, "Calendar")
-
-
-def demo_calendar_id() -> str:
-    """The seeded demo calendar the agent reads (task-2.7 decision 4).
-
-    Fails fast rather than silently falling back to `primary`: `primary` is the developer's
-    own calendar, and a run that quietly read it would put real personal events into a
-    recording bound for a public repo. The whole point of the seeded calendar is that there
-    is nothing private to leak, and that guarantee is worthless if the id is optional.
-    """
-    calendar_id = os.environ.get(CALENDAR_ID_ENV)
-    if not calendar_id:
-        raise MissingDemoCalendarError(
-            f"{CALENDAR_ID_ENV} is not set. The live agent reads a seeded demo calendar, "
-            "never `primary` -- see scripts/seed_calendar.py and agent/README.md. "
-            "To run against canned fixture data instead, run with --mode stub."
-        )
-    return calendar_id
-
-
-def calendar_connection_params() -> StreamableHTTPConnectionParams:
+def calendar_connection_params(account: SignedInAccount) -> StreamableHTTPConnectionParams:
     """Builds the connection parameters passed straight through to McpToolset.
 
     Pulled out of build_calendar_toolset so the endpoint and the headers -- this branch's
@@ -150,21 +100,19 @@ def calendar_connection_params() -> StreamableHTTPConnectionParams:
     """
     return StreamableHTTPConnectionParams(
         url=CALENDAR_MCP_URL,
-        headers=mcp_headers(access_token(), quota_project()),
+        headers=mcp_headers(account.vendor_token["access_token"]),
     )
 
 
-def build_calendar_toolset() -> GuardedMcpToolset:
-    """Constructs the Calendar MCP toolset with the destructive tools filtered out.
+def build_calendar_toolset(account: SignedInAccount) -> GuardedMcpToolset:
+    """Constructs the Calendar MCP toolset for one signed-in account, with the destructive
+    tools filtered out.
 
     Construction is offline: the toolset stores its connection parameters and builds a
     session manager, connecting only when its tools are first listed.
-
-    Reading the demo calendar id here rather than at call time means a missing id fails at
-    startup, next to the missing-credential failure, instead of mid-turn.
     """
-    demo_calendar_id()
     return GuardedMcpToolset(
-        connection_params=calendar_connection_params(),
+        connection_params=calendar_connection_params(account),
         tool_filter=list(CALENDAR_TOOLS),
+        header_provider=account_bearer,
     )

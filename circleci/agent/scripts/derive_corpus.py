@@ -15,18 +15,15 @@ token- or secret-shaped.
 from __future__ import annotations
 
 import json
-import os
 import sys
 from pathlib import Path
 
-from dotenv import load_dotenv
 
 from a2ui_agent_kit.corpus import settled_messages
 
 AGENT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(AGENT))
 
-from app.projects import configured_projects  # noqa: E402
 
 CAPTURED = AGENT / ".recordings" / "payloads"
 BEATS = AGENT / "recordings" / "beats"
@@ -79,10 +76,9 @@ def keyed(docs: list[dict], items: str, ref: str) -> dict[str, dict]:
 
 
 def derive_stub() -> None:
-    load_dotenv(AGENT / ".env")
-    if os.environ.get("CIRCLECI_PROJECTS"):
-        projects = configured_projects()
-        write(STUB / "projects.json", {"projects": projects}, f"{len(projects)} projects")
+    projects = next(reversed(captured("list_projects")), None)
+    if projects:
+        write(STUB / "projects.json", projects, f"{len(projects['projects'])} projects")
 
     runs = max(captured("list_runs"), key=lambda d: len(d.get("runs") or []), default=None)
     if runs:

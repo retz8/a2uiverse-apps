@@ -1,12 +1,16 @@
 """Remote GitHub MCP toolset: the full server surface, all toolsets (task 3.7).
 
 The agent is another GitHub client acting as the user: its capability is whatever
-the MCP server and the token allow (task-3.7 decision 1). There is no endpoint
-restriction, no toolset pin, no tool filter, and no code-side confinement — the
-PAT is the user's authority, and writes the agent performs land under the user's
-name, on any repository the token reaches. The brake on writes is the interaction
-grammar, not the inventory: content-bearing writes are proposed and confirmed,
-with the target visible on the proposal (see `knowledge/github-domain.md`).
+the MCP server and the signed-in account allow (task-3.7 decision 1). There is no
+endpoint restriction, no toolset pin, no tool filter, and no code-side confinement —
+writes the agent performs land under the person's name, on any repository their
+sign-in reaches. The brakes on writes are the sign-in's write scope, asked for on the
+first write (`app/sign_in.py`), and the interaction grammar: content-bearing writes are
+proposed and confirmed, with the target visible on the proposal (see
+`knowledge/github-domain.md`).
+
+The credential is the signed-in account's GitHub token, held by the agent's sign-in
+(task-12.10): one toolset per account, its token read again on every call.
 
 The toolset header is sent as an explicit `all` rather than omitted: without the
 header the server serves only its *default* subset (44 tools at last count, which
@@ -16,11 +20,10 @@ loses the notification tools among others), where `all` serves the whole surface
 
 from __future__ import annotations
 
-import os
-
 from google.adk.tools.mcp_tool import StreamableHTTPConnectionParams
 
-from a2ui_agent_kit.toolset import PolicyMcpToolset
+from a2ui_agent_kit.sign_in import SignedInAccount
+from a2ui_agent_kit.toolset import PolicyMcpToolset, account_bearer
 
 # The unrestricted official remote server.
 GITHUB_MCP_URL = "https://api.githubcopilot.com/mcp/"
@@ -29,40 +32,15 @@ GITHUB_MCP_URL = "https://api.githubcopilot.com/mcp/"
 # everything. `all` is the server's own vocabulary for the full surface.
 GITHUB_MCP_TOOLSETS = "all"
 
-# Deliberately not GITHUB_TOKEN: GitHub Actions injects that name and the gh CLI
-# reads it implicitly, so a stray value could silently shadow this one.
-PAT_ENV_VAR = "GITHUB_MCP_PAT"
 
-
-class MissingGitHubPatError(RuntimeError):
-    """Raised when the MCP backend is selected with no PAT configured."""
-
-
-def github_pat() -> str:
-    """Reads the PAT, failing fast rather than degrading to canned data.
-
-    A silent fallback would render a convincing surface from stub fixtures with
-    no signal that it is not live, so the stub is only ever a deliberate choice.
-    """
-    pat = os.environ.get(PAT_ENV_VAR)
-    if not pat:
-        raise MissingGitHubPatError(
-            f"{PAT_ENV_VAR} is not set. The live agent needs a GitHub PAT — the "
-            "agent acts as that token's user, and can do exactly what the token "
-            "allows; set it in agent/.env. To run against canned fixture data "
-            "instead, run with --mode stub."
-        )
-    return pat
-
-
-def mcp_headers(pat: str) -> dict[str, str]:
+def mcp_headers(access_token: str) -> dict[str, str]:
     return {
-        "Authorization": f"Bearer {pat}",
+        "Authorization": f"Bearer {access_token}",
         "X-MCP-Toolsets": GITHUB_MCP_TOOLSETS,
     }
 
 
-def github_connection_params() -> StreamableHTTPConnectionParams:
+def github_connection_params(account: SignedInAccount) -> StreamableHTTPConnectionParams:
     """Builds the connection parameters passed straight through to McpToolset.
 
     Pulled out of build_github_toolset so the unrestricted endpoint and the
@@ -72,12 +50,12 @@ def github_connection_params() -> StreamableHTTPConnectionParams:
     """
     return StreamableHTTPConnectionParams(
         url=GITHUB_MCP_URL,
-        headers=mcp_headers(github_pat()),
+        headers=mcp_headers(account.vendor_token["access_token"]),
     )
 
 
-def build_github_toolset() -> PolicyMcpToolset:
-    """Constructs the full-surface GitHub MCP toolset.
+def build_github_toolset(account: SignedInAccount) -> PolicyMcpToolset:
+    """Constructs the full-surface GitHub MCP toolset for one signed-in account.
 
     Construction is offline: McpToolset stores its connection parameters and
     builds a session manager, connecting only when its tools are first listed.
@@ -87,4 +65,7 @@ def build_github_toolset() -> PolicyMcpToolset:
     absent (task-3.7 decision 1) — but the interception point is standard agent
     anatomy, ready for any policy a later task lands.
     """
-    return PolicyMcpToolset(connection_params=github_connection_params())
+    return PolicyMcpToolset(
+        connection_params=github_connection_params(account),
+        header_provider=account_bearer,
+    )

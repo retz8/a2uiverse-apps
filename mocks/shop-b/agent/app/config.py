@@ -15,6 +15,7 @@ from a2ui_agent_kit.paint_meta import require_carries_action
 from app import prose
 from app.card import APP_DESCRIPTION, APP_NAME, SKILLS
 from app.responses import build_response, build_text_response
+from app.sign_in import SIGN_IN
 from app.tools import LIVE_TOOLS, STUB_TOOLS
 
 _AGENT_DIR = Path(__file__).resolve().parents[1]  # shop-b/agent/
@@ -54,4 +55,5 @@ CONFIG = AgentAppConfig(
     question_policy=require_carries_action,
     stub_tools=STUB_TOOLS,
     live_toolset_factory=_live_tools,
+    sign_in=SIGN_IN,
 )

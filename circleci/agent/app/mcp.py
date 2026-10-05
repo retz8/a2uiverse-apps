@@ -1,4 +1,4 @@
-"""Live CircleCI MCP toolset: the hosted server, a pinned inventory, a personal API token.
+"""Live CircleCI MCP toolset: the hosted server, a pinned inventory, the signed-in account.
 
 The server exposes twenty-four tools under one endpoint: the pipeline chain (runs →
 workflows → jobs → a job's logs), job diagnostics beyond logs, deploys, orbs, config
@@ -7,9 +7,10 @@ inventory is pinned client-side by `tool_filter` — see `CIRCLECI_TOOLS`. The p
 statement about what the agent is: it stays reviewable and diffable, and a tool the domain
 doc never describes is a tool the model is never handed.
 
-The credential is a CircleCI personal API token from `agent/.env`, sent as a bearer token.
-It carries no scopes — the agent can do whatever the token's user can — so the brake on the
-two writes is the interaction grammar (proposed, then confirmed), not the credential.
+The credential is the signed-in account's CircleCI token, held by the agent's sign-in
+(task-12.10, `app/sign_in.py`): one toolset per account, its token read again on every call.
+CircleCI's token carries no scopes; the agent's sign-in asks for the two writes the first time
+the person makes one, and the interaction grammar (proposed, then confirmed) still brakes each.
 
 In record mode (`A2UI_RECORD_DIR` set) every tool result is captured as it returns, for the
 stub corpus. Nothing is pseudonymized: the data is a public repository's CI.
@@ -17,32 +18,25 @@ stub corpus. Nothing is pseudonymized: the data is a public repository's CI.
 
 from __future__ import annotations
 
-import os
 from typing import Any
 
 from google.adk.tools.mcp_tool import StreamableHTTPConnectionParams
 
 from a2ui_agent_kit.corpus import capture_payload, corpus_payload, recording
-from a2ui_agent_kit.toolset import PolicyMcpTool, PolicyMcpToolset
+from a2ui_agent_kit.sign_in import SignedInAccount
+from a2ui_agent_kit.toolset import PolicyMcpTool, PolicyMcpToolset, account_bearer
 
-from app.projects import configured_projects, list_projects
+from app.projects import list_projects
 
 __all__ = [
     "CIRCLECI_MCP_URL",
     "CIRCLECI_TOOLS",
-    "TOKEN_ENV",
-    "MissingCircleciTokenError",
     "build_live_toolset",
     "circleci_connection_params",
-    "circleci_token",
     "mcp_headers",
 ]
 
 CIRCLECI_MCP_URL = "https://mcp.circleci.com/v1/mcp"
-
-# Deliberately not CIRCLE_TOKEN: the CircleCI CLI reads that name implicitly, so a stray
-# value could silently shadow this one.
-TOKEN_ENV = "CIRCLECI_MCP_TOKEN"
 
 # The pipeline chain and its two writes, by the server's own names (pinned from a live
 # tools/list). Everything absent is absent deliberately.
@@ -66,35 +60,15 @@ CIRCLECI_TOOLS = (
 # get_me. Expanding the list is described in agent/README.md.
 
 
-class MissingCircleciTokenError(RuntimeError):
-    """Raised when the live backend is selected with no token configured."""
+def mcp_headers(access_token: str) -> dict[str, str]:
+    return {"Authorization": f"Bearer {access_token}"}
 
 
-def circleci_token() -> str:
-    """Reads the token, failing fast rather than degrading to canned data.
-
-    A silent fallback would render a convincing surface from stub fixtures with no signal
-    that it is not live, so the stub is only ever a deliberate choice.
-    """
-    token = os.environ.get(TOKEN_ENV)
-    if not token:
-        raise MissingCircleciTokenError(
-            f"{TOKEN_ENV} is not set. The live agent sends a CircleCI personal API token as "
-            "a bearer token on every MCP call and acts as that token's user; set it in "
-            "agent/.env. To run against canned fixture data instead, run with --mode stub."
-        )
-    return token
-
-
-def mcp_headers(token: str) -> dict[str, str]:
-    return {"Authorization": f"Bearer {token}"}
-
-
-def circleci_connection_params() -> StreamableHTTPConnectionParams:
+def circleci_connection_params(account: SignedInAccount) -> StreamableHTTPConnectionParams:
     """The endpoint and credential header, built where they are applied so tests can
     assert them directly."""
     return StreamableHTTPConnectionParams(
-        url=CIRCLECI_MCP_URL, headers=mcp_headers(circleci_token())
+        url=CIRCLECI_MCP_URL, headers=mcp_headers(account.vendor_token["access_token"])
     )
 
 
@@ -111,15 +85,15 @@ class RecordingMcpToolset(PolicyMcpToolset):
     tool_class = RecordingMcpTool
 
 
-def build_live_toolset() -> list[Any]:
-    """The live backend: the pinned MCP toolset beside the configured-projects tool.
+def build_live_toolset(account: SignedInAccount) -> list[Any]:
+    """The live backend for one signed-in account: the pinned MCP toolset beside the tool
+    listing the account's projects.
 
-    Construction is offline — the toolset connects only when its tools are first listed —
-    but both settings are read here, so a missing token or project list fails at startup.
+    Construction is offline — the toolset connects only when its tools are first listed.
     """
-    configured_projects()
     toolset = RecordingMcpToolset(
-        connection_params=circleci_connection_params(),
+        connection_params=circleci_connection_params(account),
         tool_filter=list(CIRCLECI_TOOLS),
+        header_provider=account_bearer,
     )
     return [toolset, list_projects]

@@ -1,4 +1,4 @@
-"""Live Linear MCP toolset: the hosted server, a pinned inventory, a personal API key.
+"""Live Linear MCP toolset: the hosted server, a pinned inventory, the signed-in account.
 
 The server exposes sixty-six tools under one endpoint: issues and their comments, projects,
 milestones, cycles, documents, initiatives, releases, Linear's own pull-request review, and
@@ -8,50 +8,41 @@ by `tool_filter`; see `LINEAR_TOOLS`. The pin is a statement about what the agen
 stays reviewable and diffable, and a tool the domain doc never describes is a tool the model
 is never handed.
 
-The credential is a Linear personal API key from `agent/.env`, sent as a bearer token. The
-key carries the Read and Write permissions; the agent can do whatever the key's user can
-within them, so the brake on the writes is the interaction grammar (proposed, then
-confirmed), not the credential.
+The credential is the signed-in account's Linear token, held by the agent's sign-in
+(task-12.10, `app/sign_in.py`): one toolset per account, its token read again on every call.
+The first sign-in reads; the writes are asked for the first time the person makes one, and the
+interaction grammar (proposed, then confirmed) still brakes each.
 
 In record mode (`A2UI_RECORD_DIR` set) every tool result is captured as it returns, for the
-stub corpus. Values stay real with one exception (task-7.3 decision 11): the key's own email
-address, asked of the server once when the recorder arms, is replaced with a placeholder in every
-result before the model reads it — at the source, as Gmail pseudonymizes (task-2.6 decision 8),
-so the captured payloads and the painted streams are both clean. The username, and the branch
-names built on it, are left alone: they are what another vendor's branch matches.
+stub corpus. Values stay real with one exception (task-7.3 decision 11): the signed-in
+account's own email address is replaced with a placeholder in every result before the model
+reads it — at the source, as Gmail pseudonymizes (task-2.6 decision 8), so the captured
+payloads and the painted streams are both clean. The username, and the branch names built on
+it, are left alone: they are what another vendor's branch matches.
 """
 
 from __future__ import annotations
 
-import json
-import os
 import re
-from typing import Any, ClassVar
+from typing import Any
 
-import httpx
 from google.adk.tools.mcp_tool import StreamableHTTPConnectionParams
 
 from a2ui_agent_kit.corpus import capture_payload, corpus_payload, recording
-from a2ui_agent_kit.toolset import PolicyMcpTool, PolicyMcpToolset
+from a2ui_agent_kit.sign_in import SignedInAccount, current_account
+from a2ui_agent_kit.toolset import PolicyMcpTool, PolicyMcpToolset, account_bearer
 
 __all__ = [
     "LINEAR_MCP_URL",
     "LINEAR_TOOLS",
     "PLACEHOLDER_EMAIL",
-    "TOKEN_ENV",
-    "AccountEmailUnavailableError",
-    "MissingLinearTokenError",
-    "account_email",
     "build_live_toolset",
     "linear_connection_params",
-    "linear_token",
     "mcp_headers",
     "replace_email",
 ]
 
 LINEAR_MCP_URL = "https://mcp.linear.app/mcp"
-
-TOKEN_ENV = "LINEAR_MCP_TOKEN"
 
 # What the key's own email address becomes in a recorded run.
 PLACEHOLDER_EMAIL = "me@example.com"
@@ -81,108 +72,16 @@ LINEAR_TOOLS = (
 # Linear's documentation. Expanding the list is described in agent/README.md.
 
 
-class MissingLinearTokenError(RuntimeError):
-    """Raised when the live backend is selected with no key configured."""
+def mcp_headers(access_token: str) -> dict[str, str]:
+    return {"Authorization": f"Bearer {access_token}"}
 
 
-def linear_token() -> str:
-    """Reads the key, failing fast rather than degrading to canned data.
-
-    A silent fallback would render a convincing surface from stub fixtures with no signal
-    that it is not live, so the stub is only ever a deliberate choice.
-    """
-    token = os.environ.get(TOKEN_ENV)
-    if not token:
-        raise MissingLinearTokenError(
-            f"{TOKEN_ENV} is not set. The live agent sends a Linear personal API key as a "
-            "bearer token on every MCP call and acts as that key's user; set it in "
-            "agent/.env. To run against canned fixture data instead, run with --mode stub."
-        )
-    return token
-
-
-def mcp_headers(token: str) -> dict[str, str]:
-    return {"Authorization": f"Bearer {token}"}
-
-
-def linear_connection_params() -> StreamableHTTPConnectionParams:
+def linear_connection_params(account: SignedInAccount) -> StreamableHTTPConnectionParams:
     """The endpoint and credential header, built where they are applied so tests can
     assert them directly."""
-    return StreamableHTTPConnectionParams(url=LINEAR_MCP_URL, headers=mcp_headers(linear_token()))
-
-
-class AccountEmailUnavailableError(RuntimeError):
-    """Raised when record mode cannot learn the address it must replace."""
-
-
-def _jsonrpc_message(response: httpx.Response) -> dict[str, Any]:
-    """The JSON-RPC message of a streamable-HTTP response, sent as JSON or as one SSE event."""
-    text = response.text
-    for line in text.splitlines():
-        if line.startswith("data: "):
-            return json.loads(line[len("data: ") :])
-    return json.loads(text)
-
-
-def account_email(token: str) -> str:
-    """The key's own email address, asked of the hosted server as `get_user("me")`.
-
-    Called once, when the recorder arms: it is the one value a recording replaces, so a
-    recording that cannot learn it does not start.
-    """
-    headers = {
-        **mcp_headers(token),
-        "Content-Type": "application/json",
-        "Accept": "application/json, text/event-stream",
-        "MCP-Protocol-Version": "2025-06-18",
-    }
-    try:
-        with httpx.Client(timeout=30) as client:
-            init = client.post(
-                LINEAR_MCP_URL,
-                headers=headers,
-                json={
-                    "jsonrpc": "2.0",
-                    "id": 1,
-                    "method": "initialize",
-                    "params": {
-                        "protocolVersion": "2025-06-18",
-                        "capabilities": {},
-                        "clientInfo": {"name": "a2uiverse-linear-recorder", "version": "0"},
-                    },
-                },
-            )
-            init.raise_for_status()
-            if session := init.headers.get("mcp-session-id"):
-                headers["Mcp-Session-Id"] = session
-            client.post(
-                LINEAR_MCP_URL,
-                headers=headers,
-                json={"jsonrpc": "2.0", "method": "notifications/initialized"},
-            )
-            response = client.post(
-                LINEAR_MCP_URL,
-                headers=headers,
-                json={
-                    "jsonrpc": "2.0",
-                    "id": 2,
-                    "method": "tools/call",
-                    "params": {"name": "get_user", "arguments": {"query": "me"}},
-                },
-            )
-            response.raise_for_status()
-        user = corpus_payload(_jsonrpc_message(response).get("result") or {})
-    except (httpx.HTTPError, ValueError) as exc:
-        raise AccountEmailUnavailableError(
-            f"record mode could not read the key's own email address from Linear: {exc}"
-        ) from exc
-    email = user.get("email") if isinstance(user, dict) else None
-    if not isinstance(email, str) or "@" not in email:
-        raise AccountEmailUnavailableError(
-            "record mode could not read the key's own email address from Linear: get_user(\"me\") "
-            "returned no email."
-        )
-    return email
+    return StreamableHTTPConnectionParams(
+        url=LINEAR_MCP_URL, headers=mcp_headers(account.vendor_token["access_token"])
+    )
 
 
 def replace_email(value: Any, email: str) -> Any:
@@ -202,16 +101,20 @@ def replace_email(value: Any, email: str) -> Any:
     return walk(value)
 
 
+def _own_email() -> str | None:
+    """The signed-in account's own email address: what a recording replaces."""
+    account = current_account()
+    return account.claims.get("email") if account else None
+
+
 class RecordingMcpTool(PolicyMcpTool):
-    """In record mode, replaces the key's own email address in each result, then captures it.
+    """In record mode, replaces the signed-in account's own email address in each result,
+    then captures it.
 
     The replaced result is what the model reads, so nothing downstream holds the address. A
     comment list names no issue, so its capture carries the `issueId` it was read for — the key
     the stub serves it back under.
     """
-
-    # The address to replace; set by `build_live_toolset` when the recorder arms.
-    scrubbed_email: ClassVar[str | None] = None
 
     _issue: str | None = None
 
@@ -222,8 +125,8 @@ class RecordingMcpTool(PolicyMcpTool):
     def shape_result(self, result: Any) -> Any:
         if not (recording() and isinstance(result, dict)):
             return result
-        if self.scrubbed_email:
-            result = replace_email(result, self.scrubbed_email)
+        if email := _own_email():
+            result = replace_email(result, email)
         payload = corpus_payload(result)
         if self._issue and isinstance(payload, dict):
             payload = {"issueId": self._issue, **payload}
@@ -235,17 +138,13 @@ class RecordingMcpToolset(PolicyMcpToolset):
     tool_class = RecordingMcpTool
 
 
-def build_live_toolset() -> RecordingMcpToolset:
-    """The live backend: the pinned MCP toolset.
+def build_live_toolset(account: SignedInAccount) -> RecordingMcpToolset:
+    """The live backend for one signed-in account: the pinned MCP toolset.
 
-    Construction is offline — the toolset connects only when its tools are first listed —
-    but the key is read here, so a missing one fails at startup. In record mode the key's own
-    email address is asked of the server here, so a recording that could not replace it never
-    starts.
+    Construction is offline — the toolset connects only when its tools are first listed.
     """
-    if recording():
-        RecordingMcpTool.scrubbed_email = account_email(linear_token())
     return RecordingMcpToolset(
-        connection_params=linear_connection_params(),
+        connection_params=linear_connection_params(account),
         tool_filter=list(LINEAR_TOOLS),
+        header_provider=account_bearer,
     )

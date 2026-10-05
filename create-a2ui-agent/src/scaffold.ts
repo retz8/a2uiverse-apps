@@ -68,15 +68,12 @@ export function scaffold({
   // The app's own README, at the root beside the two halves.
   record(targetDir, copyTemplateTree(join(templates, 'app'), targetDir, tokens));
 
-  // Agent half: the common tree, refined by the kind overlay and the ADC overlay.
+  // Agent half: the common tree, refined by the kind overlay.
   record(agentDir, copyTemplateTree(join(templates, 'agent'), agentDir, tokens));
   record(
     agentDir,
     copyTemplateTree(join(templates, 'agent-kind', answers.catalogKind), agentDir, tokens),
   );
-  if (answers.googleAdc) {
-    record(agentDir, copyTemplateTree(join(templates, 'agent-google-adc'), agentDir, tokens));
-  }
   const generated: Record<string, string> = {
     'agent/pyproject.toml': agentPyproject(answers, kitRev),
     'agent/app/config.py': agentConfigPy(answers),

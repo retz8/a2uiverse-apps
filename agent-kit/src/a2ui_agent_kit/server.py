@@ -20,10 +20,13 @@ from starlette.middleware.cors import CORSMiddleware
 from a2ui_agent_kit.catalog import catalog_context
 from a2ui_agent_kit.config import AgentAppConfig
 from a2ui_agent_kit.modes import resolve_executor
+from a2ui_agent_kit.sign_in import ApiKeySignIn
 from a2ui_agent_kit.sign_in_server import (
     ACCESS_TOKEN_LIFETIME,
+    ApiKeyGate,
     SignInGate,
     SignInServer,
+    api_key_card_security,
     card_security,
 )
 from a2ui_agent_kit.sign_in_store import SignInStore
@@ -42,9 +45,12 @@ def build_agent_card(config: AgentAppConfig, base_url: str) -> AgentCard:
         supported_catalog_ids=catalog_context(config).supported_catalog_ids(),
     )
     capabilities = AgentCapabilities(streaming=True, extensions=[extension])
-    security_schemes, security = (
-        card_security(config.sign_in, base_url) if config.sign_in else (None, None)
-    )
+    if isinstance(config.sign_in, ApiKeySignIn):
+        security_schemes, security = api_key_card_security(config.sign_in)
+    elif config.sign_in is not None:
+        security_schemes, security = card_security(config.sign_in, base_url)
+    else:
+        security_schemes, security = None, None
     return AgentCard(
         name=config.name,
         description=config.description,
@@ -86,7 +92,9 @@ def build_app(
         agent_card=build_agent_card(config, base_url), http_handler=handler
     )
     app = server.build()
-    if config.sign_in is not None:
+    if isinstance(config.sign_in, ApiKeySignIn):
+        app.add_middleware(ApiKeyGate, sign_in=config.sign_in)
+    elif config.sign_in is not None:
         sign_in = SignInServer(
             config=config.sign_in,
             app_name=config.name,

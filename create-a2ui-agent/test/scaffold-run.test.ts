@@ -54,7 +54,6 @@ function scaffoldKind(kind: CatalogKind): string {
     description: `A scaffold probe on the ${kind} catalog.`,
     port: 11999,
     catalogKind: kind,
-    googleAdc: kind === 'basic',
     ecosystemReady: true,
     repoUrl: 'https://github.com/example/apps',
   };

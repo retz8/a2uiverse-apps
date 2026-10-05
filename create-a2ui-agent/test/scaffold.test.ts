@@ -20,7 +20,6 @@ const BASE: ScaffoldAnswers = {
   description: "Reads and files the user's Acme mailbox.",
   port: 11004,
   catalogKind: 'basic',
-  googleAdc: false,
   ecosystemReady: false,
   repoUrl: REPO_URL,
 };
@@ -48,9 +47,9 @@ afterEach(() => {
   for (const dir of dirs.splice(0)) rmSync(dir, {recursive: true, force: true});
 });
 
-describe('basic kind, both opt-ins', () => {
+describe('basic kind, the ecosystem opt-in', () => {
   it('writes the expected tree and generated files', () => {
-    const {result, read} = run({googleAdc: true, ecosystemReady: true});
+    const {result, read} = run({ecosystemReady: true});
     expect(result.catalogId).toBe(
       `${REPO_URL}/blob/main/acme-mail/acme-mail-catalog/catalogs/v0.9.1/catalog.json`,
     );
@@ -58,7 +57,7 @@ describe('basic kind, both opt-ins', () => {
     expect(read('agent/pyproject.toml')).toMatchSnapshot('pyproject.toml');
     expect(read('agent/app/config.py')).toMatchSnapshot('config.py');
     expect(read('agent/app/mcp.py')).toMatchSnapshot('mcp.py');
-    expect(read('agent/.env.example')).toContain('GOOGLE_CLOUD_PROJECT');
+    expect(read('agent/.env.example')).toContain('VENDOR_TOKEN');
   });
 });
 
@@ -69,7 +68,6 @@ describe('custom kind, no opt-ins', () => {
     expect(read('agent/app/config.py')).toMatchSnapshot('config.py');
     expect(read('agent/app/mcp.py')).toMatchSnapshot('mcp.py');
     expect(read('agent/.env.example')).toContain('VENDOR_TOKEN');
-    expect(read('agent/.env.example')).not.toContain('GOOGLE_CLOUD_PROJECT');
   });
 });
 

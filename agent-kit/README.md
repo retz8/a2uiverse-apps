@@ -85,7 +85,48 @@ With it on:
 - An action or tool that needs a scope the token lacks ends the run in A2A's `auth-required` state, naming the missing scopes. A cut-off LLM run is kept out of the conversation history. After the user signs in with more access, the client sends the request again.
 - In live mode the `live_toolset_factory` is called with the account, once per account, so each account's MCP connection carries its own vendor token.
 
-Deterministic and stub mode sign in with the fake accounts on a chooser page. Adding `fake_account=<id>` to the sign-in address skips the chooser, for recordings and tests; this works in deterministic mode only. Live mode signs in through `upstream`, an `UpstreamSignIn` the app provides: it sends the browser to the vendor's sign-in and hands back the account and the vendor's token. It can also revoke the vendor's token when the account's last sign-in ends.
+Deterministic and stub mode sign in with the fake accounts on a chooser page. Adding `fake_account=<id>` to the sign-in address skips the chooser, for recordings and tests; this works in deterministic mode only. Live mode signs in through `upstream`, an `UpstreamSignIn` the app provides: it sends the browser to the vendor's sign-in and hands back the account and the vendor's token. It can also refresh the vendor's token before a request, and revoke it when the account's last sign-in ends.
+
+### Signing in with the vendor's OAuth
+
+For a vendor that signs in with OAuth, `VendorOAuth` is the upstream, configured per vendor:
+
+```python
+from a2ui_agent_kit.sign_in_vendor import ClientFromEnv, VendorOAuth
+
+VENDOR_SIGN_IN = VendorOAuth(
+    vendor="Acme",
+    scopes={"issues.read": ["read"], "issues.write": ["write"]},  # your scope -> the vendor's
+    identity_scopes=["openid", "email"],      # asked on every sign-in, for `identify`
+    identify=identify,                         # async (token, http) -> (account id, claims)
+    metadata_url="https://acme.example/.well-known/oauth-authorization-server",
+)
+```
+
+- **The vendor client.** With `client=ClientFromEnv("ACME_CLIENT_ID", "ACME_CLIENT_SECRET")` it signs in with a client you registered at the vendor, read from `.env`. Without it, the agent registers itself by dynamic registration on the first sign-in and keeps the registration in its store.
+- **The return address** registered at the vendor is the agent's finish address, `<base URL>/sign-in/finish`.
+- **Scopes.** The vendor is asked for what the sign-in's scopes need, plus what the account already granted on a request for more access. A vendor granting less than asked doesn't sign in.
+- **Who signed in.** `identify` gets the vendor's token response and returns the vendor's stable id for the account and its display claims. `id_token_claims` reads an ID token straight from the vendor's token endpoint.
+- **The vendor's token** is refreshed before a request when it's within five minutes of expiring. When it can't be refreshed, or the vendor answers 401, the run fails and the account's sign-ins end, so A2UIVerse asks the person to sign in again.
+- **Revocation** is RFC 7009 at the vendor's revocation endpoint, or `revoke=` for a vendor that revokes its own way.
+
+A live toolset passes `header_provider=account_bearer` (from `a2ui_agent_kit.toolset`), so each MCP call carries the account's current token.
+
+### Signing in with a key
+
+An app that signs in with an API key instead puts an `ApiKeySignIn` on its config:
+
+```python
+from a2ui_agent_kit.sign_in import ApiKeySignIn, FakeAccount
+
+SIGN_IN = ApiKeySignIn(
+    header="X-Acme-Key",
+    description="Your Acme key. You'll find it on your Acme account page.",
+    keys={"demo-key": FakeAccount("demo", {"name": "Demo user"})},
+)
+```
+
+The card declares one `apiKey` scheme in that header, with the description in your customer's words. A request without one of the keys is answered 401, and `current_account()` is the key's account. There are no sign-in routes and no request for more access.
 
 The store holds the issued tokens (by hash), the registered clients, the accounts and the signing key. It is an owner-only file in `<app>/.state/`, which git ignores.
 
@@ -99,11 +140,11 @@ The store holds the issued tokens (by hash), the registered clients, the account
 | `catalog`, `prompt`, `knowledge`      | Loads the app's catalog, validates surfaces against it, and assembles the system prompt             |
 | `toolset`, `tool_shaping`             | A hook on every MCP call, to change its arguments on the way out or its result on the way back      |
 | `recorder`, `corpus`, `beats`         | Recording: what the agent painted and what the MCP server returned, and scripted conversations      |
-| `google_adc`                          | Optional: sign in to a Google MCP server with Application Default Credentials                       |
 | `paint_meta`                          | Optional: a short title per painted surface, and a mark on a surface that asks something            |
 | `sign_in`, `sign_in_server`           | Optional: the app's sign-in, the OAuth authorization server it serves and the 401 on A2A requests   |
 | `sign_in_store`, `sign_in_fake`       | The owner-only store behind sign-in, and the chooser over the fake accounts                         |
-| `testing`                             | Runs an executor in-process, for an app's own tests                                                 |
+| `sign_in_vendor`                      | Optional: live sign-in with a vendor's OAuth, as the upstream sign-in                               |
+| `testing`                             | Runs an executor in-process, or the agent on a port signed in as a vault would, for an app's tests  |
 
 ## Depending on it
 

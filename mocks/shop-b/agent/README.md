@@ -31,6 +31,18 @@ uv run python -m app --mode deterministic
 
 Other flags: `--port`, `--host`, and `--base-url`, the address the agent card advertises.
 
+## Signing in
+
+Shop B signs in with a key, in every mode. Its card declares an `apiKey` scheme in the `X-Northlight-Key` header, described as "Your Northlight key. You'll find it on your Northlight account page." A2UIVerse shows that description on its sign-in page, where you enter the key. A request without a valid key is answered 401.
+
+The demo key is:
+
+```
+northlight-demo-key-4f7c2a
+```
+
+It signs in a made-up account, "Demo shopper". [Shop A](../../shop-a/) has no sign-in.
+
 ## Surfaces
 
 Two surfaces, whose ids and data paths are fixed:

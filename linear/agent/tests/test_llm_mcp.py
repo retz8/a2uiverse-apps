@@ -1,10 +1,11 @@
 """Offline assertions on the hosted Linear MCP wiring (task-7.3 decisions 1, 6 and 11).
 
-No test here touches the network: McpToolset connects lazily, so construction is offline.
+McpToolset connects lazily, so construction is offline; the one test that connects talks to
+a local server standing in for Linear's.
 
 The tool filter is what keeps the server's other tools — projects, cycles, documents,
 initiatives, releases, Linear's pull-request review, the delete and label writes — out of the
-model's inventory; the key authorizes all of them. So the admitted set is pinned here: changing
+model's inventory; the sign-in authorizes all of them. So the admitted set is pinned here: changing
 it has to be a deliberate edit to a test, not a quiet edit to a tuple.
 """
 
@@ -15,21 +16,28 @@ import json
 import httpx
 import pytest
 
+from a2ui_agent_kit.sign_in import SignedInAccount, VendorSignInEnded, bind_account, unbind_account
+from a2ui_agent_kit.testing import serve_unauthorized
+from a2ui_agent_kit.toolset import account_bearer
+
 from app import mcp
 from app.mcp import (
     LINEAR_MCP_URL,
     LINEAR_TOOLS,
     PLACEHOLDER_EMAIL,
-    TOKEN_ENV,
-    AccountEmailUnavailableError,
-    MissingLinearTokenError,
     RecordingMcpTool,
-    _jsonrpc_message,
     build_live_toolset,
     linear_connection_params,
-    linear_token,
     mcp_headers,
     replace_email,
+)
+from app.sign_in import SIGN_IN, _jsonrpc_message
+
+ADDRESS = "someone@example.org"
+
+ACCOUNT = SignedInAccount(
+    "sub-1", "lin-1", {"email": ADDRESS}, frozenset({"issues.read"}),
+    vendor_token={"access_token": "lin_oauth_x"},
 )
 
 # What the server exposes (live tools/list, 2026-09-18) that this agent does not hold.
@@ -116,35 +124,38 @@ def test_nothing_withheld_is_admitted():
     assert WITHHELD.isdisjoint(LINEAR_TOOLS)
 
 
-def test_the_key_is_sent_as_a_bearer_token():
+def test_the_accounts_token_is_sent_as_a_bearer_token():
     assert mcp_headers("t0k") == {"Authorization": "Bearer t0k"}
-
-
-def test_missing_key_fails_fast_naming_the_alternative(monkeypatch):
-    monkeypatch.delenv(TOKEN_ENV, raising=False)
-    with pytest.raises(MissingLinearTokenError) as excinfo:
-        linear_token()
-    assert TOKEN_ENV in str(excinfo.value)
-    assert "--mode stub" in str(excinfo.value)
-
-
-def test_connection_params_carry_the_endpoint_and_the_header(monkeypatch):
-    monkeypatch.setenv(TOKEN_ENV, "t0k")
-    params = linear_connection_params()
+    params = linear_connection_params(ACCOUNT)
     assert params.url == LINEAR_MCP_URL
-    assert params.headers == {"Authorization": "Bearer t0k"}
+    assert params.headers == {"Authorization": "Bearer lin_oauth_x"}
+    assert build_live_toolset(ACCOUNT).header_provider is account_bearer
 
 
-# The key's own email address in a recording (task-7.3 decision 11).
+async def test_linear_refusing_the_token_ends_the_accounts_sign_in(monkeypatch):
+    async with serve_unauthorized() as url:
+        monkeypatch.setattr(mcp, "LINEAR_MCP_URL", url)
+        with pytest.raises(VendorSignInEnded):
+            await build_live_toolset(ACCOUNT).get_tools()
 
-ADDRESS = "someone@example.org"
+
+# The signed-in account's own email address in a recording (task-7.3 decision 11, task-12.10
+# decision 10).
 
 
 @pytest.fixture
-def armed(monkeypatch, tmp_path):
+def signed_in():
+    from types import SimpleNamespace
+
+    context = SimpleNamespace(call_context=SimpleNamespace(state={"auth": ACCOUNT}))
+    token = bind_account(context, SIGN_IN)
+    yield ACCOUNT
+    unbind_account(token)
+
+
+@pytest.fixture
+def armed(monkeypatch, tmp_path, signed_in):
     monkeypatch.setenv("A2UI_RECORD_DIR", str(tmp_path))
-    monkeypatch.setenv(TOKEN_ENV, "t0k")
-    monkeypatch.setattr(RecordingMcpTool, "scrubbed_email", None)
     return tmp_path
 
 
@@ -173,32 +184,15 @@ def test_the_swap_reaches_both_copies_of_a_result_in_any_case():
 
 
 def test_record_mode_swaps_before_the_model_reads_and_captures_the_swapped_payload(armed):
-    RecordingMcpTool.scrubbed_email = ADDRESS
     returned = _tool("get_user").shape_result(_result())
     assert ADDRESS not in json.dumps(returned).lower()
     captured = (armed / "payloads" / "get_user.jsonl").read_text(encoding="utf-8")
     assert ADDRESS not in captured.lower() and PLACEHOLDER_EMAIL in captured
 
 
-def test_outside_record_mode_a_result_is_untouched(monkeypatch):
+def test_outside_record_mode_a_result_is_untouched(monkeypatch, signed_in):
     monkeypatch.delenv("A2UI_RECORD_DIR", raising=False)
-    monkeypatch.setattr(RecordingMcpTool, "scrubbed_email", ADDRESS)
     assert _tool("get_user").shape_result(_result()) == _result()
-
-
-def test_a_recording_that_cannot_learn_the_address_does_not_start(armed, monkeypatch):
-    def unavailable(token: str) -> str:
-        raise AccountEmailUnavailableError("no email")
-
-    monkeypatch.setattr(mcp, "account_email", unavailable)
-    with pytest.raises(AccountEmailUnavailableError):
-        build_live_toolset()
-
-
-def test_arming_the_recorder_arms_the_swap(armed, monkeypatch):
-    monkeypatch.setattr(mcp, "account_email", lambda token: ADDRESS)
-    build_live_toolset()
-    assert RecordingMcpTool.scrubbed_email == ADDRESS
 
 
 def test_a_streamed_answer_is_read_from_its_event():

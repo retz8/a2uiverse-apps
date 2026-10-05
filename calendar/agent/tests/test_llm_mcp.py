@@ -1,28 +1,29 @@
 """Offline assertions on the remote Calendar MCP wiring (task 2.7).
 
-No test here touches the network: McpToolset connects lazily, so construction is offline.
+McpToolset connects lazily, so construction is offline; the one test that connects talks to
+a local server standing in for Calendar's.
 
 The inventory was read off the live server (task-2.7 spec, open item 1 — resolved): it
 exposes nine tools, of which four are admitted. The provisional guesses that preceded that
 run were wrong in two ways worth remembering, because both tests below exist for them: there
 was no `query_freebusy`, and `search_events`/`list_calendars` take no `calendarId` at all —
-so admitting either would have read the developer's `primary` straight into a public corpus.
+so they reach every calendar the account can see.
 """
 
 from __future__ import annotations
 
 import pytest
+from a2ui_agent_kit.sign_in import SignedInAccount, VendorSignInEnded
+from a2ui_agent_kit.testing import serve_unauthorized
+from a2ui_agent_kit.toolset import account_bearer
 
-from app.mcp import (
-    CALENDAR_ID_ENV,
-    CALENDAR_MCP_URL,
-    CALENDAR_SCOPES,
-    CALENDAR_TOOLS,
-    WITHHELD_TOOLS,
-    MissingDemoCalendarError,
-    MissingGoogleCredentialError,
-    demo_calendar_id,
-    quota_project,
+import app.mcp
+from app.mcp import CALENDAR_MCP_URL, CALENDAR_TOOLS, WITHHELD_TOOLS, build_calendar_toolset
+from app.sign_in import GOOGLE_SCOPES
+
+ACCOUNT = SignedInAccount(
+    "sub-1", "g-1", {"email": "you@example.com"}, frozenset({"calendar.read"}),
+    vendor_token={"access_token": "ya29.x"},
 )
 
 # The server's nine tools, as read off it live. Named in full so that a tool APPEARING or
@@ -55,10 +56,9 @@ def test_the_admitted_and_withheld_sets_account_for_the_whole_server():
     assert set(CALENDAR_TOOLS) | set(WITHHELD_TOOLS) == SERVER_TOOLS
 
 
-def test_every_admitted_tool_can_be_confined_to_one_calendar():
-    # The invariant that makes pin_calendar total rather than best-effort: each admitted tool
-    # takes a calendarId. search_events and list_calendars do NOT, which is why they are
-    # withheld — they would read the user's primary calendar and no guard could stop them.
+def test_every_admitted_tool_works_on_one_calendar():
+    # Each admitted tool takes a calendarId, pointed at the primary calendar when the call
+    # names none. search_events and list_calendars do NOT, and stay withheld.
     assert set(CALENDAR_TOOLS).isdisjoint({"search_events", "list_calendars"})
 
 
@@ -94,36 +94,26 @@ def test_the_admitted_set_is_exactly_what_the_beats_need():
     }
 
 
-def test_scopes_cover_both_write_tiers():
-    # calendar.events is what BOTH tiers need. There is no narrower scope for either: it
+def test_writing_asks_google_for_calendar_events():
+    # calendar.events is what BOTH write tiers need. There is no narrower scope for either: it
     # grants deletion too, and calendar.events.owned cannot cover the response tool at all,
     # because a response is made on an event the user does not own. That is why the filter is
     # a single layer and the notification guard is the second one.
-    assert "https://www.googleapis.com/auth/calendar.events" in CALENDAR_SCOPES
-    assert "https://www.googleapis.com/auth/calendar.readonly" in CALENDAR_SCOPES
+    assert GOOGLE_SCOPES["calendar.write"] == ["https://www.googleapis.com/auth/calendar.events"]
+    assert GOOGLE_SCOPES["calendar.read"] == [
+        "https://www.googleapis.com/auth/calendar.events.readonly"
+    ]
 
 
-def test_no_owned_only_scope_is_relied_on():
-    # Documented as a live assertion rather than a comment: reaching for the narrower scope
-    # looks like a tightening and would silently break the toggling tier.
-    assert "https://www.googleapis.com/auth/calendar.events.owned" not in CALENDAR_SCOPES
+def test_the_toolset_is_the_accounts_with_no_quota_project_header():
+    toolset = build_calendar_toolset(ACCOUNT)
+    assert toolset._connection_params.url == CALENDAR_MCP_URL
+    assert toolset._connection_params.headers == {"Authorization": "Bearer ya29.x"}
+    assert toolset.header_provider is account_bearer
 
 
-def test_missing_project_fails_fast_with_the_calendar_binding(monkeypatch):
-    # The credential block itself is the kit's (a2ui_agent_kit.google_adc, tested there);
-    # this pins the vendor binding — the error speaks as Calendar and names the alternative.
-    monkeypatch.delenv("GOOGLE_CLOUD_PROJECT", raising=False)
-    with pytest.raises(MissingGoogleCredentialError) as excinfo:
-        quota_project()
-    assert "Calendar" in str(excinfo.value)
-    assert "--mode stub" in str(excinfo.value)
-
-
-def test_missing_demo_calendar_fails_fast_rather_than_reading_primary(monkeypatch):
-    # The whole privacy story is that the agent reads an authored calendar (decision 4). A
-    # fallback to `primary` would put the developer's real appointments into a recording
-    # bound for a public repo, so the id is required rather than defaulted.
-    monkeypatch.delenv(CALENDAR_ID_ENV, raising=False)
-    with pytest.raises(MissingDemoCalendarError) as excinfo:
-        demo_calendar_id()
-    assert "primary" in str(excinfo.value)
+async def test_calendar_refusing_the_token_ends_the_accounts_sign_in(monkeypatch):
+    async with serve_unauthorized() as url:
+        monkeypatch.setattr(app.mcp, "CALENDAR_MCP_URL", url)
+        with pytest.raises(VendorSignInEnded):
+            await build_calendar_toolset(ACCOUNT).get_tools()

@@ -12,7 +12,7 @@ from a2ui_agent_kit.config import DEFAULT_MODEL
 from a2ui_agent_kit.modes import build_llm_agent, build_tools, model_name
 
 from app.config import CONFIG
-from app.mcp import MissingGoogleCredentialError
+from a2ui_agent_kit.sign_in import SignedInAccount
 from app.tools import STUB_TOOLS
 
 
@@ -38,20 +38,14 @@ def test_stub_mode_gives_the_stub_toolset():
     }
 
 
-def test_live_mode_gives_the_mcp_toolset(monkeypatch):
-    monkeypatch.setenv("GOOGLE_CLOUD_PROJECT", "a-project")
-    monkeypatch.setattr("app.mcp.access_token", lambda: "token-value")
-    tools = build_tools(CONFIG, "live")
+def test_live_mode_gives_the_signed_in_accounts_mcp_toolset():
+    account = SignedInAccount(
+        "sub-1", "g-1", {}, frozenset({"inbox"}), vendor_token={"access_token": "ya29.x"}
+    )
+    tools = build_tools(CONFIG, "live", account)
     assert len(tools) == 1
     assert isinstance(tools[0], McpToolset)
-
-
-def test_live_mode_without_a_credential_fails_fast(monkeypatch):
-    # Never degrade to canned data: a convincing surface built from stub fixtures with
-    # no signal that it is not live is worse than a failure.
-    monkeypatch.delenv("GOOGLE_CLOUD_PROJECT", raising=False)
-    with pytest.raises(MissingGoogleCredentialError):
-        build_tools(CONFIG, "live")
+    assert tools[0]._connection_params.headers == {"Authorization": "Bearer ya29.x"}
 
 
 def test_unknown_mode_is_rejected():

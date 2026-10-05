@@ -12,6 +12,7 @@ import os
 import re
 from pathlib import Path
 
+from a2ui_agent_kit.testing import stored_secrets
 from dotenv import dotenv_values
 
 AGENT = Path(__file__).resolve().parents[1]
@@ -35,13 +36,14 @@ SECRET_SHAPES = re.compile(
 )
 
 # The live values themselves, when this machine has them: a leak of an unknown shape is
-# still a leak of the configured secret.
+# still a leak of the configured secret — the model's key, and the vendor tokens the agent's
+# sign-in holds.
 _ENV = {**dotenv_values(AGENT / ".env"), **os.environ}
 LIVE_SECRETS = [
     value
-    for key in ("CIRCLECI_MCP_TOKEN", "GOOGLE_API_KEY")
+    for key in ("GOOGLE_API_KEY",)
     if (value := _ENV.get(key)) and len(value) >= 16 and "your-" not in value
-]
+] + stored_secrets(AGENT / ".state")
 
 
 def _tracked_files() -> list[Path]:

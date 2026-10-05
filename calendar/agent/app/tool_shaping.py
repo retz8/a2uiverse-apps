@@ -1,4 +1,4 @@
-"""Calendar's shaping policy: notification suppression, calendar pinning, address masking.
+"""Calendar's shaping policy: notification suppression, the primary calendar, address masking.
 
 The mechanics — the annotation walker, the shape dump, the corpus append — are the
 kit's (`a2ui_agent_kit.tool_shaping`, `a2ui_agent_kit.corpus`); this module carries what is
@@ -18,38 +18,36 @@ is not a field the object lacks. This layer never decides what a surface shows -
 Calendar facts of its own and removes nothing. It states what the payload does and does not
 cover.
 
-**There is no pseudonymizer here, and that is deliberate (task-2.7 decision 4).** Gmail needed
-one because an account has exactly one mailbox: reading Gmail live means reading real mail, so
-every payload had to be scrubbed before it could reach a public repo. Calendar is not shaped
-like that -- `calendarId` is a first-class parameter and one account holds many calendars, so
-the agent reads a seeded demo calendar whose contents are authored (`scripts/seed_calendar.py`).
-The corpus is clean by construction rather than by a substitution pass whose completeness
-nobody can prove; the one exception Google injects is handled by `mask_injected_addresses`.
+**There is no pseudonymizer here, and that is deliberate (task-2.7 decision 4).** Each signed-in
+account reads and writes its own primary calendar (task-12.10 decision 8); recordings are made
+on a dedicated test account whose primary calendar is the seeded demo calendar
+(`scripts/seed_calendar.py`), so its contents are authored. The corpus is clean by
+construction rather than by a substitution pass whose completeness nobody can prove; the one
+exception Google injects is handled by `mask_injected_addresses`.
 """
 
 from __future__ import annotations
 
 import hashlib
 import logging
-import os
 import re
 from pathlib import Path
 from typing import Any
 
 from a2ui_agent_kit import tool_shaping as kit_shaping
 from a2ui_agent_kit.corpus import capture_payload, corpus_payload, recording
+from a2ui_agent_kit.sign_in import current_account
 from a2ui_agent_kit.tool_shaping import ANNOTATION_KEY as _ANNOTATION_KEY
 from a2ui_agent_kit.tool_shaping import PROJECTION_NOTE
 
 __all__ = [
-    "CALENDAR_ID_ENV",
     "EVENT_COUNT_NOTE",
     "PROJECTION_NOTE",
     "annotate",
     "capture_payload",
     "capture_tool_result",
+    "default_to_primary",
     "mask_injected_addresses",
-    "pin_calendar",
     "record_shape",
     "recording",
     "shape_tool_response",
@@ -85,12 +83,9 @@ EVENT_COUNT_NOTE = (
 _NOTIFICATION_ARG = "notificationLevel"
 _SILENT = "NONE"
 
-# The calendar the agent is confined to. Read from the environment rather than passed in, so
-# that a code path which forgets to thread it through still cannot escape the demo calendar.
-CALENDAR_ID_ENV = "CALENDAR_ID"
-
 # Every admitted tool that takes one; a tool without it is unaffected.
 _CALENDAR_ARG = "calendarId"
+_PRIMARY = "primary"
 
 
 def suppress_notifications(args: dict[str, Any], accepts: set[str] | None = None) -> dict[str, Any]:
@@ -123,19 +118,11 @@ def suppress_notifications(args: dict[str, Any], accepts: set[str] | None = None
     return guarded
 
 
-def pin_calendar(args: dict[str, Any], accepts: set[str] | None = None) -> dict[str, Any]:
-    """Forces every call onto the seeded demo calendar.
+def default_to_primary(args: dict[str, Any], accepts: set[str] | None = None) -> dict[str, Any]:
+    """Points a call that names no calendar at the signed-in person's primary calendar.
 
-    `calendarId` is a per-call argument on this server, and the API's default is the
-    authenticated user's `primary`. Nothing in the prompt or the tool inventory prevents the
-    model from reading `primary` — it would simply be a plausible-looking argument — and that
-    is the developer's real calendar, which task-2.7 decision 4 exists to keep out of a
-    recording bound for a public repo.
-
-    So the confinement is enforced here rather than asked for: the value is overwritten, not
-    defaulted. Every admitted tool declares `calendarId`, which is not a coincidence — a tool
-    that does not cannot be confined, and the two the server offers that do not
-    (`search_events`, `list_calendars`) are withheld for exactly that reason.
+    Each account reads and writes its own primary calendar (task-12.10 decision 8). A calendar
+    the call does name is left as it is.
 
     `accepts` is honoured for the same 400 that governs suppression above.
 
@@ -145,16 +132,10 @@ def pin_calendar(args: dict[str, Any], accepts: set[str] | None = None) -> dict[
         return args
     if accepts is not None and _CALENDAR_ARG not in accepts:
         return dict(args)
-    calendar_id = os.environ.get(CALENDAR_ID_ENV)
-    if not calendar_id:
-        return dict(args)
-    guarded = dict(args)
-    if guarded.get(_CALENDAR_ARG, calendar_id) != calendar_id:
-        logger.info(
-            "calendar pinned: %s %s -> %s", _CALENDAR_ARG, guarded[_CALENDAR_ARG], calendar_id
-        )
-    guarded[_CALENDAR_ARG] = calendar_id
-    return guarded
+    shaped = dict(args)
+    if not shaped.get(_CALENDAR_ARG):
+        shaped[_CALENDAR_ARG] = _PRIMARY
+    return shaped
 
 
 # ---------------------------------------------------------------------------
@@ -169,14 +150,20 @@ _ALLOWED_DOMAINS = ("example.com", "example.org", "example.net", "invalid")
 _ADDRESS = re.compile(r"[\w.+-]+@[\w.-]+\.[a-z]{2,}", re.IGNORECASE)
 
 
-def _stand_in(address: str) -> str:
+def _own_address() -> str:
+    """The signed-in account's own address: its primary calendar's id."""
+    account = current_account()
+    return ((account.claims.get("email") if account else None) or "").lower()
+
+
+def _stand_in(address: str, own: str) -> str:
     """A stable replacement, so a re-recorded beat reproduces the same value."""
-    if address.lower() == (os.environ.get(CALENDAR_ID_ENV) or "").lower():
+    if own and address.lower() == own:
         return "you@example.com"
     return f"person-{hashlib.sha256(address.lower().encode()).hexdigest()[:8]}@example.com"
 
 
-def mask_injected_addresses(value: Any) -> Any:
+def mask_injected_addresses(value: Any, own: str | None = None) -> Any:
     """Replaces addresses the seed did not author. Record mode only; see capture_tool_result.
 
     Task-2.7 decision 4 removed Gmail's pseudonymizer on the grounds that a seeded calendar
@@ -191,16 +178,20 @@ def mask_injected_addresses(value: Any) -> Any:
 
     It masks by RULE, not by known value. Enumerating what to replace is how both this task
     and 2.6 leaked; enumerating what may survive is the fix.
+
+    `own` is the viewer's own address, which reads as "you"; the signed-in account's by
+    default.
     """
+    own = (own if own is not None else _own_address()).lower()
     if isinstance(value, dict):
-        return {k: mask_injected_addresses(v) for k, v in value.items()}
+        return {k: mask_injected_addresses(v, own) for k, v in value.items()}
     if isinstance(value, list):
-        return [mask_injected_addresses(v) for v in value]
+        return [mask_injected_addresses(v, own) for v in value]
     if isinstance(value, str):
         return _ADDRESS.sub(
             lambda m: m.group(0)
             if m.group(0).lower().endswith(_ALLOWED_DOMAINS)
-            else _stand_in(m.group(0)),
+            else _stand_in(m.group(0), own),
             value,
         )
     return value

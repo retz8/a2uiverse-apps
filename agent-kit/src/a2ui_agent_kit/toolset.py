@@ -18,14 +18,56 @@ ADK builds its tools internally, so they are re-wrapped after the toolset has
 listed them. Re-wrapping rather than re-implementing keeps auth, filtering,
 retries and session management exactly as ADK does them — the only difference is
 the hooks at the seam.
+
+A vendor answering 401 — on listing the tools or on a call — raises
+`VendorSignInEnded` out of the run, whatever ADK would otherwise make of the error:
+the vendor no longer takes the account's token (task-12.10 decision 7).
 """
 
 from __future__ import annotations
 
+import contextvars
 from typing import Any, ClassVar
 
+import httpx
 from google.adk.tools.mcp_tool import McpToolset
 from google.adk.tools.mcp_tool.mcp_tool import McpTool
+
+from a2ui_agent_kit.sign_in import VendorSignInEnded, current_account
+
+# A call's record of a 401 its transport met, which ADK's error handling would otherwise
+# hand the model as an ordinary tool error.
+_unauthorized: contextvars.ContextVar[list[BaseException] | None] = contextvars.ContextVar(
+    "a2ui_agent_kit_vendor_unauthorized", default=None
+)
+
+
+def account_bearer(_context: Any = None) -> dict[str, str]:
+    """A toolset `header_provider`: the request's account's vendor token as the bearer,
+    read per call so a refreshed token is used at once. Empty outside a signed-in run,
+    leaving the toolset's own headers."""
+    account = current_account()
+    token = (account.vendor_token or {}).get("access_token") if account else None
+    return {"Authorization": f"Bearer {token}"} if token else {}
+
+
+def is_unauthorized(error: BaseException) -> bool:
+    """Whether a 401 from the vendor lies anywhere in the error's chain or group."""
+    seen: set[int] = set()
+    stack = [error]
+    while stack:
+        current = stack.pop()
+        if current is None or id(current) in seen:
+            continue
+        seen.add(id(current))
+        if isinstance(current, httpx.HTTPStatusError) and current.response.status_code == 401:
+            return True
+        if isinstance(current, VendorSignInEnded):
+            return True
+        if isinstance(current, BaseExceptionGroup):
+            stack.extend(current.exceptions)
+        stack.extend([current.__cause__, current.__context__])
+    return False
 
 
 class PolicyMcpTool(McpTool):
@@ -50,11 +92,27 @@ class PolicyMcpTool(McpTool):
         """Inbound hook: the result dict the model is about to read."""
         return result
 
+    async def run_async(self, **kwargs: Any) -> Any:
+        record: list[BaseException] = []
+        token = _unauthorized.set(record)
+        try:
+            result = await super().run_async(**kwargs)
+        finally:
+            _unauthorized.reset(token)
+        if record:
+            raise VendorSignInEnded(f"the vendor refused the token on {self.name}") from record[0]
+        return result
+
     async def _run_async_impl(self, **kwargs: Any) -> Any:
         args = kwargs.get("args")
         if isinstance(args, dict):
             kwargs = {**kwargs, "args": self.shape_args(args)}
-        result = await super()._run_async_impl(**kwargs)
+        try:
+            result = await super()._run_async_impl(**kwargs)
+        except Exception as error:
+            if is_unauthorized(error) and (record := _unauthorized.get()) is not None:
+                record.append(error)
+            raise
         return self.shape_result(result)
 
 
@@ -64,9 +122,13 @@ class PolicyMcpToolset(McpToolset):
     tool_class: ClassVar[type[PolicyMcpTool]] = PolicyMcpTool
 
     async def get_tools(self, readonly_context: Any = None) -> list[Any]:
-        return [
-            rewrap(tool, self.tool_class) for tool in await super().get_tools(readonly_context)
-        ]
+        try:
+            tools = await super().get_tools(readonly_context)
+        except Exception as error:
+            if is_unauthorized(error):
+                raise VendorSignInEnded("the vendor refused the token") from error
+            raise
+        return [rewrap(tool, self.tool_class) for tool in tools]
 
 
 def rewrap(tool: Any, tool_class: type[PolicyMcpTool]) -> Any:

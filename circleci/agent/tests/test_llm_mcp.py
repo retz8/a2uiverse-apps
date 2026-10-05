@@ -1,9 +1,10 @@
 """Offline assertions on the hosted CircleCI MCP wiring (task-7.2 decisions 1 and 6).
 
-No test here touches the network: McpToolset connects lazily, so construction is offline.
+McpToolset connects lazily, so construction is offline; the one test that connects talks to
+a local server standing in for CircleCI's.
 
 The tool filter is what keeps the server's other tools — the deploy subsystem with its
-rollback, orbs, config validation, usage export — out of the model's inventory; the token
+rollback, orbs, config validation, usage export — out of the model's inventory; the sign-in
 authorizes all of them. So the admitted set is pinned here: changing it has to be a
 deliberate edit to a test, not a quiet edit to a tuple.
 """
@@ -11,15 +12,21 @@ deliberate edit to a test, not a quiet edit to a tuple.
 from __future__ import annotations
 
 import pytest
+from a2ui_agent_kit.sign_in import SignedInAccount, VendorSignInEnded
+from a2ui_agent_kit.testing import serve_unauthorized
+from a2ui_agent_kit.toolset import account_bearer
 
+from app import mcp
 from app.mcp import (
     CIRCLECI_MCP_URL,
     CIRCLECI_TOOLS,
-    TOKEN_ENV,
-    MissingCircleciTokenError,
+    build_live_toolset,
     circleci_connection_params,
-    circleci_token,
     mcp_headers,
+)
+
+ACCOUNT = SignedInAccount(
+    "sub-1", "c-1", {}, frozenset({"pipelines.read"}), vendor_token={"access_token": "t0k"}
 )
 
 # What the server exposes (live tools/list, 2026-09-18) that this agent does not hold.
@@ -64,25 +71,18 @@ def test_nothing_withheld_is_admitted():
     assert WITHHELD.isdisjoint(CIRCLECI_TOOLS)
 
 
-def test_the_token_is_not_the_name_the_cli_reads():
-    # The CircleCI CLI reads CIRCLE_TOKEN implicitly; a stray value must not shadow ours.
-    assert TOKEN_ENV == "CIRCLECI_MCP_TOKEN"
-
-
-def test_the_token_is_sent_as_a_bearer_token():
+def test_the_accounts_token_is_sent_as_a_bearer_token():
     assert mcp_headers("t0k") == {"Authorization": "Bearer t0k"}
-
-
-def test_missing_token_fails_fast_naming_the_alternative(monkeypatch):
-    monkeypatch.delenv(TOKEN_ENV, raising=False)
-    with pytest.raises(MissingCircleciTokenError) as excinfo:
-        circleci_token()
-    assert TOKEN_ENV in str(excinfo.value)
-    assert "--mode stub" in str(excinfo.value)
-
-
-def test_connection_params_carry_the_endpoint_and_the_header(monkeypatch):
-    monkeypatch.setenv(TOKEN_ENV, "t0k")
-    params = circleci_connection_params()
+    params = circleci_connection_params(ACCOUNT)
     assert params.url == CIRCLECI_MCP_URL
     assert params.headers == {"Authorization": "Bearer t0k"}
+    toolset, _ = build_live_toolset(ACCOUNT)
+    assert toolset.header_provider is account_bearer
+
+
+async def test_circleci_refusing_the_token_ends_the_accounts_sign_in(monkeypatch):
+    async with serve_unauthorized() as url:
+        monkeypatch.setattr(mcp, "CIRCLECI_MCP_URL", url)
+        toolset, _ = build_live_toolset(ACCOUNT)
+        with pytest.raises(VendorSignInEnded):
+            await toolset.get_tools()

@@ -7,7 +7,9 @@ from a2ui_agent_kit.config import DEFAULT_MODEL
 from a2ui_agent_kit.modes import build_llm_agent, build_tools, model_name
 
 from app.config import CONFIG
-from app.mcp import TOKEN_ENV, MissingLinearTokenError, RecordingMcpToolset
+from a2ui_agent_kit.sign_in import SignedInAccount
+
+from app.mcp import RecordingMcpToolset
 from app.tools import STUB_TOOLS
 
 
@@ -26,16 +28,13 @@ def test_stub_mode_gives_the_stub_toolset():
     assert [t.__name__ for t in tools] == [t.__name__ for t in STUB_TOOLS]
 
 
-def test_live_mode_refuses_without_a_key(monkeypatch):
-    monkeypatch.delenv(TOKEN_ENV, raising=False)
-    with pytest.raises(MissingLinearTokenError):
-        build_tools(CONFIG, "live")
-
-
-def test_live_mode_gives_the_pinned_toolset(monkeypatch):
-    monkeypatch.setenv(TOKEN_ENV, "t0k")
-    (toolset,) = build_tools(CONFIG, "live")
+def test_live_mode_gives_the_signed_in_accounts_pinned_toolset():
+    account = SignedInAccount(
+        "sub-1", "lin-1", {}, frozenset({"issues.read"}), vendor_token={"access_token": "t0k"}
+    )
+    (toolset,) = build_tools(CONFIG, "live", account)
     assert isinstance(toolset, RecordingMcpToolset)
+    assert toolset._connection_params.headers == {"Authorization": "Bearer t0k"}
 
 
 def test_unknown_mode_is_rejected():

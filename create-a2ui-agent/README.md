@@ -22,18 +22,17 @@ pnpm exec create-a2ui-agent path/to/app --id acme-mail --catalog basic --yes
 
 Every input is a flag, and anything missing is asked for. `--yes`, or a non-interactive terminal, takes the defaults and fails on any input that has none.
 
-| Flag                               | Input                                                            | Default                              |
-| ---------------------------------- | ---------------------------------------------------------------- | ------------------------------------ |
-| `--id <id>`                        | kebab-case app id: folder and catalog package prefix             | none                                 |
-| `--display-name <name>`            | the product name                                                 | the id, title-cased                  |
-| `--description <text>`             | one line for the agent card                                      | from the display name                |
-| `--port <n>`                       | the agent's port                                                 | next above the sibling agents' ports |
-| `--catalog basic\|custom`          | the basic A2UI catalog under a theme, or a custom catalog        | `basic`                              |
-| `--google-adc` / `--no-google-adc` | sign in to the MCP server with a Google login instead of a token | off                                  |
-| `--ecosystem` / `--no-ecosystem`   | send the paint titles A2UIVerse's canvas uses (see below)        | off                                  |
-| `--repo-url <url>`                 | the repository the app lives in                                  | the target folder's git origin       |
-| `--kit-rev <sha>`                  | the kit commit to pin                                            | this checkout's newest pushed commit |
-| `--install` / `--no-install`       | run `uv sync` and `pnpm install` after writing                   | asked; off with `--yes`              |
+| Flag                             | Input                                                     | Default                              |
+| -------------------------------- | --------------------------------------------------------- | ------------------------------------ |
+| `--id <id>`                      | kebab-case app id: folder and catalog package prefix      | none                                 |
+| `--display-name <name>`          | the product name                                          | the id, title-cased                  |
+| `--description <text>`           | one line for the agent card                               | from the display name                |
+| `--port <n>`                     | the agent's port                                          | next above the sibling agents' ports |
+| `--catalog basic\|custom`        | the basic A2UI catalog under a theme, or a custom catalog | `basic`                              |
+| `--ecosystem` / `--no-ecosystem` | send the paint titles A2UIVerse's canvas uses (see below) | off                                  |
+| `--repo-url <url>`               | the repository the app lives in                           | the target folder's git origin       |
+| `--kit-rev <sha>`                | the kit commit to pin                                     | this checkout's newest pushed commit |
+| `--install` / `--no-install`     | run `uv sync` and `pnpm install` after writing            | asked; off with `--yes`              |
 
 The agent depends on the kit as a git dependency pinned to one commit, so an app scaffolded at a given commit matches the kit at that commit. The CLI warns when the checkout has uncommitted or unpushed changes. The catalog depends on [Stellify](https://github.com/retz8/a2uiverse/tree/main/packages/stellify), A2UIVerse's pack tool, at the commit every catalog in this repo pins; outside any pnpm workspace, the catalog is a workspace of its own, approving the install script of Stellify's esbuild.
 
@@ -67,7 +66,6 @@ Snapshot tests pin the generated file list and the three generated files. The sc
 | `templates/app/`                | The app's own README                                                       |
 | `templates/agent/`              | The agent, common to both catalog kinds                                    |
 | `templates/agent-kind/`         | What differs per catalog kind: fixtures, examples, brand guidance, answers |
-| `templates/agent-google-adc/`   | The `.env.example` for a Google login                                      |
 | `templates/catalog/`            | The two catalog packages: `basic` and `custom`                             |
 | `templates/catalog-standalone/` | The `pnpm-workspace.yaml` of a catalog outside any pnpm workspace          |
 

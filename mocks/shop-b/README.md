@@ -16,7 +16,7 @@ uv sync
 uv run python -m app --mode deterministic   # answers built from the dataset, no key needed
 ```
 
-The agent runs on port **12002**. The model modes need only a Gemini key. See the [agent README](agent/README.md).
+The agent runs on port **12002**. The model modes need only a Gemini key. Requests need Shop B's key; the demo key is in the [agent README](agent/README.md#signing-in).
 
 ## Connecting to A2UIVerse
 

@@ -7,8 +7,9 @@ from a2ui_agent_kit.config import DEFAULT_MODEL
 from a2ui_agent_kit.modes import build_llm_agent, build_tools, model_name
 
 from app.config import CONFIG
-from app.mcp import TOKEN_ENV, MissingCircleciTokenError, RecordingMcpToolset
-from app.projects import PROJECTS_ENV, ProjectsNotConfiguredError
+from a2ui_agent_kit.sign_in import SignedInAccount
+
+from app.mcp import RecordingMcpToolset
 from app.tools import STUB_TOOLS
 
 
@@ -27,25 +28,13 @@ def test_stub_mode_gives_the_stub_toolset():
     assert [t.__name__ for t in tools] == [t.__name__ for t in STUB_TOOLS]
 
 
-def test_live_mode_refuses_without_a_token(monkeypatch):
-    monkeypatch.delenv(TOKEN_ENV, raising=False)
-    monkeypatch.setenv(PROJECTS_ENV, "a2uiverse=5475943e")
-    with pytest.raises(MissingCircleciTokenError):
-        build_tools(CONFIG, "live")
-
-
-def test_live_mode_refuses_without_a_project(monkeypatch):
-    monkeypatch.setenv(TOKEN_ENV, "t0k")
-    monkeypatch.delenv(PROJECTS_ENV, raising=False)
-    with pytest.raises(ProjectsNotConfiguredError):
-        build_tools(CONFIG, "live")
-
-
-def test_live_mode_gives_the_pinned_toolset_and_the_projects_tool(monkeypatch):
-    monkeypatch.setenv(TOKEN_ENV, "t0k")
-    monkeypatch.setenv(PROJECTS_ENV, "a2uiverse=5475943e")
-    toolset, projects = build_tools(CONFIG, "live")
+def test_live_mode_gives_the_accounts_pinned_toolset_and_the_projects_tool():
+    account = SignedInAccount(
+        "sub-1", "c-1", {}, frozenset({"pipelines.read"}), vendor_token={"access_token": "t0k"}
+    )
+    toolset, projects = build_tools(CONFIG, "live", account)
     assert isinstance(toolset, RecordingMcpToolset)
+    assert toolset._connection_params.headers == {"Authorization": "Bearer t0k"}
     assert projects.__name__ == "list_projects"
 
 

@@ -7,34 +7,29 @@ Trashing, spam marking, and sensitive-label application are excluded.
 
 That exclusion is a SINGLE layer, and this says so rather than implying depth. Gmail
 offers no scope granting the labelling tools without also authorizing trash and spam --
-`gmail.modify` is the coarsest of the three the credential carries -- so the credential
-permits what this filter withholds. Admitting the destructive tools is a decision for a
-real authority surface (M8), not a scope grant.
+`gmail.modify` is what the sign-in's "Write drafts and label your email" asks Google for
+-- so the credential permits what this filter withholds.
 
-The credential block is the kit's opt-in Google ADC helper (`a2ui_agent_kit.google_adc`):
-minted once by a developer outside the agent, read and refreshed by the library, never a
-client secret or a consent flow.
+The credential is the signed-in account's Google token, held by the agent's sign-in
+(task-12.10, `app/sign_in.py`): one toolset per account, its token read again on every
+call, so a refreshed token is used at once.
 """
 
 from __future__ import annotations
 
 from google.adk.tools.mcp_tool import StreamableHTTPConnectionParams
 
-from a2ui_agent_kit import google_adc
-from a2ui_agent_kit.google_adc import MissingGoogleCredentialError, mcp_headers
+from a2ui_agent_kit.sign_in import SignedInAccount
+from a2ui_agent_kit.toolset import account_bearer
 
 from app.recording_toolset import RecordingMcpToolset
 
 __all__ = [
     "GMAIL_MCP_URL",
-    "GMAIL_SCOPES",
     "GMAIL_TOOLS",
-    "MissingGoogleCredentialError",
-    "access_token",
     "build_gmail_toolset",
     "gmail_connection_params",
     "mcp_headers",
-    "quota_project",
 ]
 
 GMAIL_MCP_URL = "https://gmailmcp.googleapis.com/mcp/v1"
@@ -74,17 +69,11 @@ GMAIL_TOOLS = (
 # apply_sensitive_message_label, apply_sensitive_thread_label, update_message_labels.
 
 
-def quota_project() -> str:
-    """The project billed for the call, sent as X-Goog-User-Project."""
-    return google_adc.quota_project("Gmail")
+def mcp_headers(access_token: str) -> dict[str, str]:
+    return {"Authorization": f"Bearer {access_token}"}
 
 
-def access_token() -> str:
-    """Mints a fresh access token from ADC, failing fast rather than degrading to canned data."""
-    return google_adc.access_token(GMAIL_SCOPES, "Gmail")
-
-
-def gmail_connection_params() -> StreamableHTTPConnectionParams:
+def gmail_connection_params(account: SignedInAccount) -> StreamableHTTPConnectionParams:
     """Builds the connection parameters passed straight through to McpToolset.
 
     Pulled out of build_gmail_toolset so the endpoint and the headers -- this branch's
@@ -93,12 +82,13 @@ def gmail_connection_params() -> StreamableHTTPConnectionParams:
     """
     return StreamableHTTPConnectionParams(
         url=GMAIL_MCP_URL,
-        headers=mcp_headers(access_token(), quota_project()),
+        headers=mcp_headers(account.vendor_token["access_token"]),
     )
 
 
-def build_gmail_toolset() -> RecordingMcpToolset:
-    """Constructs the Gmail MCP toolset with the destructive tools filtered out.
+def build_gmail_toolset(account: SignedInAccount) -> RecordingMcpToolset:
+    """Constructs the Gmail MCP toolset for one signed-in account, with the destructive
+    tools filtered out.
 
     Construction is offline: the toolset stores its connection parameters and builds a
     session manager, connecting only when its tools are first listed.
@@ -107,6 +97,7 @@ def build_gmail_toolset() -> RecordingMcpToolset:
     inside the tool, before it can be returned. See app/recording_toolset.py.
     """
     return RecordingMcpToolset(
-        connection_params=gmail_connection_params(),
+        connection_params=gmail_connection_params(account),
         tool_filter=list(GMAIL_TOOLS),
+        header_provider=account_bearer,
     )

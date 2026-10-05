@@ -35,7 +35,6 @@ interface Flags {
   description?: string;
   port?: number;
   catalog?: CatalogKind;
-  googleAdc?: boolean;
   ecosystem?: boolean;
   repoUrl?: string;
   kitRev?: string;
@@ -75,7 +74,6 @@ function fillDefaults(
       description: given.description ?? defaultDescription(displayName),
       port: given.port ?? defaults.port,
       catalogKind: given.catalogKind ?? 'basic',
-      googleAdc: given.googleAdc ?? false,
       ecosystemReady: given.ecosystemReady ?? false,
       repoUrl,
     },
@@ -89,7 +87,6 @@ async function main(dirArg: string | undefined, flags: Flags): Promise<void> {
     description: flags.description,
     port: flags.port,
     catalogKind: flags.catalog,
-    googleAdc: flags.googleAdc,
     ecosystemReady: flags.ecosystem,
     repoUrl: flags.repoUrl ? normalizeRepoUrl(flags.repoUrl) : undefined,
   };
@@ -177,8 +174,6 @@ const program = new Command('create-a2ui-agent')
     parsePort,
   )
   .addOption(new Option('--catalog <kind>', 'catalog kind').choices(['basic', 'custom']))
-  .option('--google-adc', "wire the kit's Google ADC credential block into app/mcp.py")
-  .option('--no-google-adc', 'skip the Google ADC block')
   .option('--ecosystem', 'emit the paintMeta shell convention for the A2UIVerse canvas')
   .option('--no-ecosystem', 'skip the paintMeta convention')
   .option('--repo-url <url>', 'repository the app lives in (default: git origin of the target)')

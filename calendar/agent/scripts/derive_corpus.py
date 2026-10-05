@@ -4,15 +4,15 @@ Task-2.6 decision 11: one live run, three consumers. The captured MCP payloads b
 stub backend's fixtures; the recorded painted streams become the deterministic agent's
 fixtures. Neither is hand-authored — that is what keeps the canned data real-shaped.
 
-Nothing is pseudonymized on the way through, because nothing needs to be: the run reads a
-seeded demo calendar whose contents are authored (task-2.7 decision 4). The payload SHAPES
+Nothing is pseudonymized on the way through, because nothing needs to be: the run reads the
+test account's seeded primary calendar, whose contents are authored (task-2.7 decision 4). The payload SHAPES
 are the API's own, which is the half of phase decision 1 that teaches the model what fields
 exist; the values are the seed's.
 
-    uv run python scripts/seed_calendar.py
+    uv run python -m scripts.seed_calendar --account <test account email>
     A2UI_RECORD_DIR=.recordings uv run python -m app --mode live --host localhost
     uv run python scripts/record_beats.py --beats 1,2,3,4 --model <model>
-    uv run python scripts/derive_corpus.py
+    uv run python scripts/derive_corpus.py --account <test account email>
 
 Everything this writes is tracked and therefore published, so `tests/test_corpus_is_publishable.py`
 runs over the result. Do not commit a corpus that fails it.
@@ -21,7 +21,6 @@ runs over the result. Do not commit a corpus that fails it.
 from __future__ import annotations
 
 import json
-import os
 import sys
 from pathlib import Path
 
@@ -32,27 +31,18 @@ sys.path.insert(0, str(AGENT))
 
 
 def _self_email() -> str:
-    """The demo calendar's own address, which Google flags `self` on every seeded event.
+    """The test account's own address — its primary calendar's id, which Google flags `self`
+    on every seeded event — named with `--account`.
 
     It is not personal data, but it is an identifier, and it is the only string in a capture
-    that the authored seed did not put there. `.env` already holds it, so it is read from
-    there rather than asking for a second copy in a second variable.
+    that the authored seed did not put there.
     """
-    if os.environ.get("CALENDAR_ID"):
-        return os.environ["CALENDAR_ID"]
-    env = AGENT / ".env"
-    if env.is_file():
-        for line in env.read_text(encoding="utf-8").splitlines():
-            if line.startswith("CALENDAR_ID="):
-                return line.split("=", 1)[1].strip()
+    if "--account" in sys.argv:
+        return sys.argv[sys.argv.index("--account") + 1]
     return ""
 
 
 SELF_EMAIL = _self_email()
-# The masking walk is app.tool_shaping's (one definition); its "this address is the viewer"
-# case reads CALENDAR_ID from the environment, so the .env-derived value is exported to it.
-if SELF_EMAIL:
-    os.environ.setdefault("CALENDAR_ID", SELF_EMAIL)
 
 from app.tool_shaping import mask_injected_addresses  # noqa: E402
 
@@ -101,7 +91,7 @@ def strip_links(value: object) -> object:
 
 
 def clean(value: object) -> object:
-    return strip_links(mask_injected_addresses(value))
+    return strip_links(mask_injected_addresses(value, SELF_EMAIL))
 
 
 def derive_stub() -> None:

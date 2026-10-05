@@ -7,11 +7,15 @@ real implementation wired by the server; it is exercised by the task's manual li
 
 from __future__ import annotations
 
-import json
 import logging
 from typing import AsyncIterator, Callable, Optional, Protocol, runtime_checkable
 
-from a2ui_agent_kit.sign_in import AuthRequired, SignedInAccount, current_account
+from a2ui_agent_kit.sign_in import (
+    AuthRequired,
+    SignedInAccount,
+    VendorSignInEnded,
+    current_account,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -188,7 +192,7 @@ class AdkLlmResponder:
             async for chunk in text_stream:
                 yield chunk
             logger.info("run_async end: session=%s", session_id)
-        except AuthRequired:
+        except (AuthRequired, VendorSignInEnded):
             cut_off = True
             raise
         finally:
@@ -228,19 +232,18 @@ class AdkLlmResponder:
 
 class PerAccountResponder:
     """One responder per signed-in account, built on first use, so a live toolset is
-    built over the account's own vendor credential; rebuilt when that changes."""
+    built for the account and each account's conversations stay its own. The toolset
+    reads the account's vendor token per call (`vendor_access_token`), so a refreshed
+    token reaches it without a rebuild and the conversations survive the refresh."""
 
     def __init__(self, build: Callable[[SignedInAccount], LlmResponder]):
         self._build = build
-        self._responders: dict[str, tuple[str, LlmResponder]] = {}
+        self._responders: dict[str, LlmResponder] = {}
 
     def _for(self, account: SignedInAccount) -> LlmResponder:
-        credential = json.dumps(account.vendor_token, sort_keys=True, default=str)
-        held = self._responders.get(account.sub)
-        if held is None or held[0] != credential:
-            held = (credential, self._build(account))
-            self._responders[account.sub] = held
-        return held[1]
+        if account.sub not in self._responders:
+            self._responders[account.sub] = self._build(account)
+        return self._responders[account.sub]
 
     async def stream(
         self,

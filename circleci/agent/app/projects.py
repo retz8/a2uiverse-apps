@@ -1,65 +1,76 @@
-"""The CircleCI projects this user has, as configured in `agent/.env`.
+"""The CircleCI projects the signed-in person follows, asked of CircleCI's API with their
+own token (task-12.10 decision 9).
 
 CircleCI's hosted MCP server has no tool that lists projects, and `list_runs` — the entry
 point of every pipeline question — needs one named. A project created through CircleCI's
 GitHub App is found only by its id (its `gh/<org>/<repo>` slug does not resolve), so the
-model cannot derive it from a repository name either. The list is therefore configuration:
-`CIRCLECI_PROJECTS` names each project by repository and id, and `list_projects` hands it to
-the model as data, the way CircleCI's own UI shows a user the projects they follow.
+model cannot derive it from a repository name either. `list_projects` therefore asks
+CircleCI's API for the projects the account follows and hands them to the model as data,
+the way CircleCI's own UI shows a person the projects they follow.
 
-    CIRCLECI_PROJECTS=a2uiverse=5475943e-db5e-4b4a-937b-4d64f8f05d3c,other-repo=<id>
+A followed project's id is read from its address where CircleCI's GitHub App gave it one
+(`//circleci.com/<organization id>/<project id>`), otherwise asked of the v2 API by its
+slug.
 """
 
 from __future__ import annotations
 
-import os
+from typing import Any
+from urllib.parse import urlsplit
 
-PROJECTS_ENV = "CIRCLECI_PROJECTS"
+import httpx
+from a2ui_agent_kit.corpus import capture_payload, recording
+from a2ui_agent_kit.sign_in import VendorSignInEnded, vendor_access_token
+
+API = "https://circleci.com/api"
+
+_VCS_SLUG = {"github": "gh", "bitbucket": "bb"}
 
 
-class ProjectsNotConfiguredError(RuntimeError):
-    """Raised by `--mode live` when no project is configured."""
+def api_headers(access_token: str) -> dict[str, str]:
+    return {"Authorization": f"Bearer {access_token}", "Accept": "application/json"}
 
 
-def parse_projects(raw: str) -> list[dict[str, str]]:
-    """Parses `name=id` pairs, comma-separated. Malformed entries are an error, not skipped."""
+def _checked(response: httpx.Response) -> Any:
+    if response.status_code == 401:
+        raise VendorSignInEnded("CircleCI refused the token")
+    response.raise_for_status()
+    return response.json()
+
+
+async def _project_id(project: dict[str, Any], http: httpx.AsyncClient) -> str | None:
+    address = urlsplit(project.get("vcs_url") or "")
+    parts = [p for p in address.path.split("/") if p]
+    if address.netloc == "circleci.com" and len(parts) == 2:
+        return parts[1]
+    vcs = _VCS_SLUG.get(project.get("vcs_type") or "")
+    if not vcs or not project.get("username") or not project.get("reponame"):
+        return None
+    slug = f"{vcs}/{project['username']}/{project['reponame']}"
+    found = _checked(await http.get(f"{API}/v2/project/{slug}"))
+    return found.get("id")
+
+
+async def followed_projects(access_token: str, http: httpx.AsyncClient) -> list[dict[str, str]]:
+    """Each project the account follows, by its repository name and its project id."""
+    http.headers.update(api_headers(access_token))
     projects = []
-    for entry in (part.strip() for part in raw.split(",")):
-        if not entry:
-            continue
-        name, sep, project_id = entry.partition("=")
-        if not sep or not name.strip() or not project_id.strip():
-            raise ProjectsNotConfiguredError(
-                f"{PROJECTS_ENV} entry {entry!r} is not `name=id`. Each project is its "
-                "repository name and its CircleCI project id, e.g. "
-                "`a2uiverse=5475943e-db5e-4b4a-937b-4d64f8f05d3c`."
-            )
-        projects.append({"name": name.strip(), "id": project_id.strip()})
+    for project in _checked(await http.get(f"{API}/v1.1/projects")):
+        project_id = await _project_id(project, http)
+        if project_id:
+            projects.append({"name": project.get("reponame") or project_id, "id": project_id})
     return projects
 
 
-def configured_projects() -> list[dict[str, str]]:
-    """The configured projects, failing fast when there are none.
-
-    An agent with no project could only answer every pipeline question with an error, so
-    the live mode refuses to start rather than paint that.
-    """
-    projects = parse_projects(os.environ.get(PROJECTS_ENV, ""))
-    if not projects:
-        raise ProjectsNotConfiguredError(
-            f"{PROJECTS_ENV} is not set. The live agent needs the CircleCI projects it "
-            "covers, each as `name=id` in agent/.env — the id is the project's UUID, shown "
-            "in its CircleCI project settings. To run against canned fixture data instead, "
-            "run with --mode stub."
-        )
-    return projects
-
-
-def list_projects() -> dict:
+async def list_projects() -> dict:
     """Lists the CircleCI projects this user has, each with its repository name and id.
 
     Returns:
         An object with a `projects` list of {name, id}. A project's `id` is what
         `list_runs` takes as `project`.
     """
-    return {"projects": configured_projects()}
+    async with httpx.AsyncClient(timeout=20) as http:
+        result = {"projects": await followed_projects(vendor_access_token(), http)}
+    if recording():
+        capture_payload("list_projects", result)
+    return result

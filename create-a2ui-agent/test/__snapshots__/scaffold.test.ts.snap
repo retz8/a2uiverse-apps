@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`basic kind, both opt-ins > writes the expected tree and generated files > config.py 1`] = `
+exports[`basic kind, the ecosystem opt-in > writes the expected tree and generated files > config.py 1`] = `
 """"The Acme Mail app's kit config — the whole per-vendor surface, stated once.
 
 Everything the kit needs from this app is on this one object: identity, port, paths,
@@ -60,7 +60,7 @@ CONFIG = AgentAppConfig(
 "
 `;
 
-exports[`basic kind, both opt-ins > writes the expected tree and generated files > files 1`] = `
+exports[`basic kind, the ecosystem opt-in > writes the expected tree and generated files > files 1`] = `
 [
   "README.md",
   "acme-mail-catalog/.gitignore",
@@ -115,40 +115,27 @@ exports[`basic kind, both opt-ins > writes the expected tree and generated files
 ]
 `;
 
-exports[`basic kind, both opt-ins > writes the expected tree and generated files > mcp.py 1`] = `
-""""Live Acme Mail MCP toolset, with the kit's opt-in Google ADC credential block.
+exports[`basic kind, the ecosystem opt-in > writes the expected tree and generated files > mcp.py 1`] = `
+""""Live Acme Mail MCP toolset.
 
-The credential is Application Default Credentials (\`a2ui_agent_kit.google_adc\`): minted
-once by a developer outside the agent (\`gcloud auth application-default login\`), read and
-refreshed by the library, never a client secret or a consent flow. Every failure fails
-fast rather than degrading to canned data — the stub is only ever \`--mode stub\`.
-
-TODO: set MCP_URL and SCOPES for Acme Mail's MCP server, then delete the not-wired guard.
+TODO: point MCP_URL at Acme Mail's MCP server, supply its credential in \`headers\`, then
+delete the not-wired guard. The credential comes from \`.env\` (see \`.env.example\`); the
+agent never runs a consent flow of its own. Every failure fails fast rather than degrading
+to canned data — the stub is only ever \`--mode stub\`.
 """
 
 from __future__ import annotations
 
+import os
+
 from google.adk.tools.mcp_tool import StreamableHTTPConnectionParams
 
-from a2ui_agent_kit import google_adc
-from a2ui_agent_kit.google_adc import MissingGoogleCredentialError, mcp_headers
 from a2ui_agent_kit.toolset import PolicyMcpToolset
 
-__all__ = [
-    "MCP_URL",
-    "SCOPES",
-    "LiveToolsetNotWiredError",
-    "MissingGoogleCredentialError",
-    "access_token",
-    "build_live_toolset",
-    "quota_project",
-]
+__all__ = ["MCP_URL", "LiveToolsetNotWiredError", "build_live_toolset", "headers"]
 
 # TODO: the Acme Mail MCP server's streamable-HTTP endpoint.
 MCP_URL = ""
-
-# TODO: the OAuth scopes the credential must carry for that server.
-SCOPES: tuple[str, ...] = ()
 
 # Optional: pin the tool inventory client-side (\`tool_filter\`) once you know which of the
 # server's tools this agent should hold. Empty means every tool the server exposes.
@@ -156,38 +143,37 @@ TOOL_FILTER: tuple[str, ...] = ()
 
 
 class LiveToolsetNotWiredError(RuntimeError):
-    """Raised by \`--mode live\` until MCP_URL and SCOPES are set."""
+    """Raised by \`--mode live\` until MCP_URL is set."""
 
 
-def quota_project() -> str:
-    """The project billed for the call, sent as X-Goog-User-Project."""
-    return google_adc.quota_project("Acme Mail")
-
-
-def access_token() -> str:
-    """Mints a fresh access token from ADC, failing fast rather than degrading to canned data."""
-    return google_adc.access_token(SCOPES, "Acme Mail")
+def headers() -> dict[str, str]:
+    """The request headers carrying the credential. TODO: match Acme Mail's auth scheme."""
+    token = os.environ.get("VENDOR_TOKEN")
+    if not token:
+        raise LiveToolsetNotWiredError(
+            "VENDOR_TOKEN is not set. The live agent sends it as a bearer token on every "
+            "Acme Mail MCP call; set it in agent/.env. To run against canned fixture data "
+            "instead, run with --mode stub."
+        )
+    return {"Authorization": f"Bearer {token}"}
 
 
 def build_live_toolset() -> PolicyMcpToolset:
     """Constructs the live MCP toolset. Construction is offline: the toolset stores its
     connection parameters and connects only when its tools are first listed."""
-    if not MCP_URL or not SCOPES:
+    if not MCP_URL:
         raise LiveToolsetNotWiredError(
-            "--mode live is not wired yet: set MCP_URL and SCOPES in app/mcp.py to "
-            "Acme Mail's MCP server. Until then, run with --mode stub or --mode deterministic."
+            "--mode live is not wired yet: set MCP_URL in app/mcp.py to Acme Mail's MCP "
+            "server. Until then, run with --mode stub or --mode deterministic."
         )
     return PolicyMcpToolset(
-        connection_params=StreamableHTTPConnectionParams(
-            url=MCP_URL,
-            headers=mcp_headers(access_token(), quota_project()),
-        ),
+        connection_params=StreamableHTTPConnectionParams(url=MCP_URL, headers=headers()),
         tool_filter=list(TOOL_FILTER) or None,
     )
 "
 `;
 
-exports[`basic kind, both opt-ins > writes the expected tree and generated files > pyproject.toml 1`] = `
+exports[`basic kind, the ecosystem opt-in > writes the expected tree and generated files > pyproject.toml 1`] = `
 "[project]
 name = "a2ui-acme-mail-agent"
 version = "0.1.0"
