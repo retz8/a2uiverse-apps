@@ -27,6 +27,12 @@ from a2ui_agent_kit.config import AgentAppConfig
 from a2ui_agent_kit.paint_meta import PaintTitleTagFilter, create_paint_meta_part
 from a2ui_agent_kit.recorder import RECORD_DIR_ENV, create_recorder
 from a2ui_agent_kit.responder import LlmResponder, ModelTurnError
+from a2ui_agent_kit.sign_in import (
+    AuthRequired,
+    auth_required_message,
+    bind_account,
+    unbind_account,
+)
 from a2ui_agent_kit.versions import WIRE_VERSION
 
 logger = logging.getLogger(__name__)
@@ -252,6 +258,7 @@ class LlmAgentExecutor(AgentExecutor):
         recorder=None,
     ):
         self._responder = responder
+        self._sign_in = config.sign_in
         self._max_attempts = max_attempts
         self._catalog = catalog_context(config)
         self._question_policy = config.question_policy
@@ -300,6 +307,15 @@ class LlmAgentExecutor(AgentExecutor):
             logger.debug("could not write %s", self._failed_stream_dump, exc_info=True)
 
     async def execute(self, context: RequestContext, event_queue: EventQueue) -> None:
+        # The request's signed-in account, for the scope check and the per-account
+        # toolset, for this run only.
+        bound = bind_account(context, self._sign_in)
+        try:
+            await self._execute(context, event_queue)
+        finally:
+            unbind_account(bound)
+
+    async def _execute(self, context: RequestContext, event_queue: EventQueue) -> None:
         prompt = _resolve_prompt(context)
         action = _extract_action(context)
         # An action message carries no text; that is what distinguishes the two drivers
@@ -341,6 +357,17 @@ class LlmAgentExecutor(AgentExecutor):
         )
         try:
             await self._attempts(prompt, task, updater)
+        except AuthRequired as err:
+            # A tool needed a scope the token lacks: the run ends here, asking for it, and
+            # nothing follows. The hub sends the press again once it is granted, as a
+            # fresh request (task-12.9 decision 6).
+            logger.info("task %s needs more access: %s", task.id, ", ".join(err.missing))
+            await updater.update_status(
+                TaskState.auth_required,
+                auth_required_message(err, task.context_id, task.id),
+                final=True,
+            )
+            self._recorder.end_turn("auth-required", task_id=task.id)
         except asyncio.CancelledError:
             # tasks/cancel: once `cancel` has answered `canceled`, the SDK cancels this
             # run. The CancelledError lands on whatever the attempt was awaiting — the
@@ -441,6 +468,8 @@ class LlmAgentExecutor(AgentExecutor):
                 else:
                     model_unavailable = True
                 continue
+            except AuthRequired:
+                raise  # not a failure of the attempt: the run ends asking for access
             except Exception as err:  # model/infra failure (quota, 5xx, network)
                 # Must not abort the SSE stream raw — the client would see a bare
                 # network error. Retry with the prompt unchanged; a transient

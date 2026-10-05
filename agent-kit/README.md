@@ -45,7 +45,49 @@ uv run python -m app --mode stub            # the model over canned data
 uv run python -m app --mode live            # the model over the real MCP server
 ```
 
-Flags: `--mode`, `--port`, `--host`, and `--base-url`, the address the agent card advertises. `MODEL_NAME` picks the model; it defaults to `gemini-3.7-flash`.
+Flags: `--mode`, `--port`, `--host`, and `--base-url`, the address the agent card advertises. With sign-in on, `--state-dir` moves the sign-in store and `--access-token-lifetime` shortens the tokens the agent issues, for exercising refresh in development. `MODEL_NAME` picks the model; it defaults to `gemini-3.7-flash`.
+
+## Turning on sign-in
+
+An app that needs its user signed in puts a `SignIn` on its config. The agent becomes its own sign-in front door: an OAuth authorization server that the client signs in against, with its card declaring it. The client never sees the vendor's token. The agent keeps the vendor's token and hands the client a token of its own.
+
+```python
+from a2ui_agent_kit.sign_in import FakeAccount, SignIn
+
+SIGN_IN = SignIn(
+    # Every scope the app has, in words its user reads when asked to sign in.
+    scopes={
+        "issues.read": "See your issues",
+        "issues.write": "Comment on and close your issues",
+    },
+    first_sign_in_scopes=["issues.read"],          # what the first sign-in asks for
+    action_scopes={"close_issue": ["issues.write"]},  # deterministic mode: action -> scopes
+    tool_scopes={"update_issue": ["issues.write"]},   # stub and live mode: tool -> scopes
+    fake_accounts=[FakeAccount("ada", {"email": "ada@example.com", "name": "Ada"})],
+    upstream=VENDOR_SIGN_IN,                       # live mode: the vendor's sign-in
+)
+
+CONFIG = AgentAppConfig(..., sign_in=SIGN_IN)
+```
+
+With it on:
+
+- The card declares one `oauth2` scheme, `signIn`, with the authorization-code flow, the `scopes` map and its metadata address. Its `security` is the first sign-in's scopes.
+- The agent serves its authorization server next to A2A:
+  - metadata at `/.well-known/oauth-authorization-server`;
+  - sign-in at `/oauth/authorize`, with S256 PKCE required;
+  - the token endpoint, with refresh tokens that rotate on every use;
+  - registration, by a client ID metadata document or dynamic registration;
+  - revocation;
+  - an OpenID Connect ID token signed ES256, carrying a stable `sub` and the account's `email`, `preferred_username` and `name`.
+- An A2A request without a live token the agent issued is answered 401.
+- Inside a request, `current_account()` is the signed-in account. In deterministic mode the app's answer code reads it to answer from that account's data.
+- An action or tool that needs a scope the token lacks ends the run in A2A's `auth-required` state, naming the missing scopes. A cut-off LLM run is kept out of the conversation history. After the user signs in with more access, the client sends the request again.
+- In live mode the `live_toolset_factory` is called with the account, once per account, so each account's MCP connection carries its own vendor token.
+
+Deterministic and stub mode sign in with the fake accounts on a chooser page. Adding `fake_account=<id>` to the sign-in address skips the chooser, for recordings and tests; this works in deterministic mode only. Live mode signs in through `upstream`, an `UpstreamSignIn` the app provides: it sends the browser to the vendor's sign-in and hands back the account and the vendor's token. It can also revoke the vendor's token when the account's last sign-in ends.
+
+The store holds the issued tokens (by hash), the registered clients, the accounts and the signing key. It is an owner-only file in `<app>/.state/`, which git ignores.
 
 ## What's in it
 
@@ -59,6 +101,8 @@ Flags: `--mode`, `--port`, `--host`, and `--base-url`, the address the agent car
 | `recorder`, `corpus`, `beats`         | Recording: what the agent painted and what the MCP server returned, and scripted conversations      |
 | `google_adc`                          | Optional: sign in to a Google MCP server with Application Default Credentials                       |
 | `paint_meta`                          | Optional: a short title per painted surface, and a mark on a surface that asks something            |
+| `sign_in`, `sign_in_server`           | Optional: the app's sign-in, the OAuth authorization server it serves and the 401 on A2A requests   |
+| `sign_in_store`, `sign_in_fake`       | The owner-only store behind sign-in, and the chooser over the fake accounts                         |
 | `testing`                             | Runs an executor in-process, for an app's own tests                                                 |
 
 ## Depending on it

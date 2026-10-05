@@ -30,6 +30,9 @@ CLAUDE.local.md
 # Per-machine Claude Code settings
 .claude/settings.local.json
 
+# An agent's sign-in store: its tokens, accounts and signing key (owner-only)
+.state/
+
 # Agent debug dumps (rewritten per turn)
 *.dump.json
 *.dump.txt

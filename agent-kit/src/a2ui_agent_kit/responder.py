@@ -7,8 +7,11 @@ real implementation wired by the server; it is exercised by the task's manual li
 
 from __future__ import annotations
 
+import json
 import logging
-from typing import AsyncIterator, Optional, Protocol, runtime_checkable
+from typing import AsyncIterator, Callable, Optional, Protocol, runtime_checkable
+
+from a2ui_agent_kit.sign_in import AuthRequired, SignedInAccount, current_account
 
 logger = logging.getLogger(__name__)
 
@@ -161,6 +164,10 @@ class AdkLlmResponder:
         from google.genai import types as genai_types
 
         session_id = await self._resolve_session(context_id)
+        session = await self._session_service.get_session(
+            app_name=self._app_name, user_id=self._user_id, session_id=session_id
+        )
+        mark = len(session.events) if session is not None else 0
         text = correction if correction is not None else prompt
         message = genai_types.Content(
             role="user", parts=[genai_types.Part(text=text)]
@@ -176,10 +183,14 @@ class AdkLlmResponder:
             run_config=RunConfig(streaming_mode=StreamingMode.SSE),
         )
         text_stream = _stream_agent_text(events)
+        cut_off = False
         try:
             async for chunk in text_stream:
                 yield chunk
             logger.info("run_async end: session=%s", session_id)
+        except AuthRequired:
+            cut_off = True
+            raise
         finally:
             # `async for` never closes its iterator: when the executor aborts this
             # generator mid-stream, the inner generators would be left suspended for
@@ -188,3 +199,61 @@ class AdkLlmResponder:
             # stream was consumed to the end.
             await text_stream.aclose()
             await events.aclose()
+            if cut_off:
+                await self._forget_since(context_id, session_id, mark)
+
+    async def _forget_since(
+        self, context_id: Optional[str], session_id: str, mark: int
+    ) -> None:
+        """Keeps a run cut off by `auth-required` out of the conversation: the context
+        moves to a copy of its session as it stood before the run (task-12.9 decision
+        6), so the hub's fresh request after sign-in does not meet half an attempt."""
+        if context_id is None:
+            return
+        session = await self._session_service.get_session(
+            app_name=self._app_name, user_id=self._user_id, session_id=session_id
+        )
+        if session is None:
+            return
+        kept = await self._session_service.create_session(
+            app_name=self._app_name, user_id=self._user_id
+        )
+        for event in session.events[:mark]:
+            await self._session_service.append_event(kept, event)
+        self._sessions[context_id] = kept.id
+        await self._session_service.delete_session(
+            app_name=self._app_name, user_id=self._user_id, session_id=session_id
+        )
+
+
+class PerAccountResponder:
+    """One responder per signed-in account, built on first use, so a live toolset is
+    built over the account's own vendor credential; rebuilt when that changes."""
+
+    def __init__(self, build: Callable[[SignedInAccount], LlmResponder]):
+        self._build = build
+        self._responders: dict[str, tuple[str, LlmResponder]] = {}
+
+    def _for(self, account: SignedInAccount) -> LlmResponder:
+        credential = json.dumps(account.vendor_token, sort_keys=True, default=str)
+        held = self._responders.get(account.sub)
+        if held is None or held[0] != credential:
+            held = (credential, self._build(account))
+            self._responders[account.sub] = held
+        return held[1]
+
+    async def stream(
+        self,
+        prompt: str,
+        correction: Optional[str] = None,
+        context_id: Optional[str] = None,
+    ) -> AsyncIterator[str]:
+        account = current_account()
+        if account is None:
+            raise RuntimeError("a live run with sign-in has no signed-in account")
+        inner = self._for(account).stream(prompt, correction, context_id=context_id)
+        try:
+            async for chunk in inner:
+                yield chunk
+        finally:
+            await inner.aclose()

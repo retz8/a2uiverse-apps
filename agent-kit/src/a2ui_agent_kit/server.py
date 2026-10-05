@@ -8,6 +8,8 @@ extension in every mode.
 
 from __future__ import annotations
 
+from pathlib import Path
+
 from a2a.server.apps import A2AStarletteApplication
 from a2a.server.request_handlers import DefaultRequestHandler
 from a2a.types import AgentCapabilities, AgentCard
@@ -18,6 +20,13 @@ from starlette.middleware.cors import CORSMiddleware
 from a2ui_agent_kit.catalog import catalog_context
 from a2ui_agent_kit.config import AgentAppConfig
 from a2ui_agent_kit.modes import resolve_executor
+from a2ui_agent_kit.sign_in_server import (
+    ACCESS_TOKEN_LIFETIME,
+    SignInGate,
+    SignInServer,
+    card_security,
+)
+from a2ui_agent_kit.sign_in_store import SignInStore
 from a2ui_agent_kit.task_store import TerminalGuardedTaskStore
 
 CORS_ORIGIN_REGEX = r"^(http://localhost:\d+|https://[a-z0-9-]+\.[a-z]+\.devtunnels\.ms)$"
@@ -33,6 +42,9 @@ def build_agent_card(config: AgentAppConfig, base_url: str) -> AgentCard:
         supported_catalog_ids=catalog_context(config).supported_catalog_ids(),
     )
     capabilities = AgentCapabilities(streaming=True, extensions=[extension])
+    security_schemes, security = (
+        card_security(config.sign_in, base_url) if config.sign_in else (None, None)
+    )
     return AgentCard(
         name=config.name,
         description=config.description,
@@ -42,11 +54,24 @@ def build_agent_card(config: AgentAppConfig, base_url: str) -> AgentCard:
         default_output_modes=["text", "text/plain"],
         capabilities=capabilities,
         skills=list(config.skills),
+        security_schemes=security_schemes,
+        security=security,
     )
 
 
+def default_state_dir(config: AgentAppConfig) -> Path:
+    """Where the sign-in store lives unless --state-dir moves it (gitignored)."""
+    return config.app_dir / ".state"
+
+
 def build_app(
-    config: AgentAppConfig, mode: str, host: str, port: int, base_url: str | None = None
+    config: AgentAppConfig,
+    mode: str,
+    host: str,
+    port: int,
+    base_url: str | None = None,
+    state_dir: Path | None = None,
+    access_token_lifetime: int = ACCESS_TOKEN_LIFETIME,
 ):
     # The agent card advertises `base_url` as its service endpoint; the A2A client
     # POSTs message/send there. Defaults to the bind address, but must be set to a
@@ -61,6 +86,17 @@ def build_app(
         agent_card=build_agent_card(config, base_url), http_handler=handler
     )
     app = server.build()
+    if config.sign_in is not None:
+        sign_in = SignInServer(
+            config=config.sign_in,
+            app_name=config.name,
+            mode=mode,
+            base_url=base_url,
+            store=SignInStore(state_dir or default_state_dir(config)),
+            access_token_lifetime=access_token_lifetime,
+        )
+        app.router.routes.extend(sign_in.routes())
+        app.add_middleware(SignInGate, sign_in=sign_in)
     app.add_middleware(
         CORSMiddleware,
         allow_origin_regex=CORS_ORIGIN_REGEX,

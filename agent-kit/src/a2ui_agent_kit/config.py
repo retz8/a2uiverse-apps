@@ -3,8 +3,8 @@
 One frozen dataclass, instantiated once per app (in its `app/config.py`) and handed
 to the kit CLI explicitly. It carries the app's data (identity, port, paths, prompt
 prose) and its callables (deterministic response pair, stub tools, live toolset
-factory, question policy, after-tool hook). The kit never discovers a config — it is
-handed one.
+factory, question policy, after-tool hook, sign-in). The kit never discovers a config —
+it is handed one.
 """
 
 from __future__ import annotations
@@ -15,6 +15,8 @@ from pathlib import Path
 from typing import Any, Literal
 
 from a2a.types import AgentSkill
+
+from a2ui_agent_kit.sign_in import SignIn
 
 # Overridable per app via `AgentAppConfig.model`, and at runtime via MODEL_NAME. Not
 # the lite tier — it could not reliably emit a well-formed surface at this payload size.
@@ -71,3 +73,7 @@ class AgentAppConfig:
     live_toolset_factory: Callable[[], Any] | None = None
     after_tool: AfterTool | None = None
     model: str | None = None  # None -> kit DEFAULT_MODEL (MODEL_NAME env still wins)
+
+    # Sign-in: present, the kit serves the app's sign-in and the card declares it. In
+    # live mode the toolset factory is then called per signed-in account.
+    sign_in: SignIn | None = None

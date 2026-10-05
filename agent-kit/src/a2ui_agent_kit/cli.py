@@ -7,11 +7,13 @@ timestamped logging config, and the long keep-alive apply in every mode.
 from __future__ import annotations
 
 import logging
+from pathlib import Path
 
 import click
 
 from a2ui_agent_kit.config import AgentAppConfig
 from a2ui_agent_kit.modes import MODES
+from a2ui_agent_kit.sign_in_server import ACCESS_TOKEN_LIFETIME
 
 
 def build_command(config: AgentAppConfig) -> click.Command:
@@ -35,7 +37,28 @@ def build_command(config: AgentAppConfig) -> click.Command:
             "server through a tunnel/proxy so message/send targets the public URL."
         ),
     )
-    def main(mode: str, host: str, port: int, base_url: str | None) -> None:
+    @click.option(
+        "--state-dir",
+        type=click.Path(file_okay=False, path_type=Path),
+        default=None,
+        help="Where the sign-in store lives. Defaults to <app>/.state.",
+    )
+    @click.option(
+        "--access-token-lifetime",
+        type=click.IntRange(min=1),
+        default=ACCESS_TOKEN_LIFETIME,
+        show_default=True,
+        help="Seconds an issued access token lives. Development only: shorten it to "
+        "exercise refresh.",
+    )
+    def main(
+        mode: str,
+        host: str,
+        port: int,
+        base_url: str | None,
+        state_dir: Path | None,
+        access_token_lifetime: int,
+    ) -> None:
         import uvicorn
         from dotenv import load_dotenv
 
@@ -57,7 +80,15 @@ def build_command(config: AgentAppConfig) -> click.Command:
         # hangs the next POST until the browser gives up. Hold connections across
         # realistic turn gaps instead.
         uvicorn.run(
-            build_app(config, mode, host, port, base_url),
+            build_app(
+                config,
+                mode,
+                host,
+                port,
+                base_url,
+                state_dir=state_dir,
+                access_token_lifetime=access_token_lifetime,
+            ),
             host=host,
             port=port,
             log_config=None,

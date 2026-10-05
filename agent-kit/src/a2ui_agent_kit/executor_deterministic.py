@@ -17,6 +17,14 @@ from a2ui.a2a.parts import create_a2ui_part
 
 from a2ui_agent_kit.config import BuildResponse, BuildTextResponse
 from a2ui_agent_kit.paint_meta import create_paint_meta_part
+from a2ui_agent_kit.sign_in import (
+    AuthRequired,
+    SignIn,
+    auth_required_message,
+    bind_account,
+    require_action_scopes,
+    unbind_account,
+)
 from a2ui_agent_kit.versions import WIRE_VERSION
 
 
@@ -47,17 +55,38 @@ def _extract_text(context: RequestContext) -> str | None:
 class DeterministicAgentExecutor(AgentExecutor):
     """Returns a canned, catalog-conformant A2UI response on every action or text prompt."""
 
-    def __init__(self, build_response: BuildResponse, build_text_response: BuildTextResponse):
+    def __init__(
+        self,
+        build_response: BuildResponse,
+        build_text_response: BuildTextResponse,
+        sign_in: SignIn | None = None,
+    ):
         self._build_response = build_response
         self._build_text_response = build_text_response
+        self._sign_in = sign_in
 
     async def execute(self, context: RequestContext, event_queue: EventQueue) -> None:
+        # The request's signed-in account, readable by the app's answer code through
+        # `current_account()` for this run.
+        bound = bind_account(context, self._sign_in)
+        try:
+            await self._execute(context, event_queue)
+        finally:
+            unbind_account(bound)
+
+    async def _execute(self, context: RequestContext, event_queue: EventQueue) -> None:
         action = _extract_action(context)
-        if action is None and (text := _extract_text(context)) is not None:
-            messages = self._build_text_response(text)
-        else:
-            # No parseable A2UI action or text -> unknown-event fallback.
-            messages = self._build_response(action or {"name": "", "surfaceId": ""})
+        try:
+            if action is None and (text := _extract_text(context)) is not None:
+                messages = self._build_text_response(text)
+            else:
+                # An action needing a scope the token lacks ends the run asking for it.
+                require_action_scopes((action or {}).get("name"))
+                # No parseable A2UI action or text -> unknown-event fallback.
+                messages = self._build_response(action or {"name": "", "surfaceId": ""})
+        except AuthRequired as err:
+            await self._auth_required(context, event_queue, err)
+            return
         parts: list[Part] = [
             *(create_paint_meta_part(msg["paintMeta"]) for msg in messages if "paintMeta" in msg),
             *(
@@ -76,6 +105,19 @@ class DeterministicAgentExecutor(AgentExecutor):
         await updater.update_status(
             TaskState.completed,
             new_agent_parts_message(parts, task.context_id, task.id),
+            final=True,
+        )
+
+    async def _auth_required(
+        self, context: RequestContext, event_queue: EventQueue, err: AuthRequired
+    ) -> None:
+        task = context.current_task
+        if not task:
+            task = new_task(context.message)
+            await event_queue.enqueue_event(task)
+        await TaskUpdater(event_queue, task.id, task.context_id).update_status(
+            TaskState.auth_required,
+            auth_required_message(err, task.context_id, task.id),
             final=True,
         )
 

@@ -22,7 +22,7 @@ def model_name(config: AgentAppConfig) -> str:
     return os.environ.get("MODEL_NAME", config.model or DEFAULT_MODEL)
 
 
-def build_tools(config: AgentAppConfig, mode: str) -> list:
+def build_tools(config: AgentAppConfig, mode: str, account=None) -> list:
     """Resolves the tool backend for an LLM mode, naming the choice in the log.
 
     The log line is what makes a live default safe: which backend answered is
@@ -39,7 +39,13 @@ def build_tools(config: AgentAppConfig, mode: str) -> list:
             raise ValueError(
                 "--mode live needs a live_toolset_factory on the app config."
             )
-        produced = config.live_toolset_factory()
+        # With sign-in, the live toolset is the signed-in account's: the factory gets
+        # the account, and its vendor token, once per account.
+        produced = (
+            config.live_toolset_factory(account)
+            if config.sign_in is not None
+            else config.live_toolset_factory()
+        )
         # A vendor's live backend is one MCP toolset; an app with no vendor behind it —
         # a mock (task-4.6 decision 16) — has plain callables instead, the way stub
         # tools already do. "Live means MCP" was an assumption inherited from three
@@ -68,11 +74,14 @@ def _make_after_tool(config: AgentAppConfig):
     return _after_tool
 
 
-def build_llm_agent(config: AgentAppConfig, mode: str, model: str | None = None):
+def build_llm_agent(
+    config: AgentAppConfig, mode: str, model: str | None = None, account=None
+):
     """Constructs the ADK LlmAgent with the assembled system prompt and tools."""
     from google.adk.agents import LlmAgent
 
     from a2ui_agent_kit.prompt import build_system_prompt
+    from a2ui_agent_kit.sign_in import before_tool_check
 
     prompt = build_system_prompt(config)
     # Debug aid: dump the assembled system prompt so it can be inspected verbatim.
@@ -85,7 +94,9 @@ def build_llm_agent(config: AgentAppConfig, mode: str, model: str | None = None)
         # against session state, and the schema/example JSON braces in the prompt
         # (e.g. `{path}`) would be read as state variables and raise KeyError.
         instruction=lambda _ctx: prompt,
-        tools=build_tools(config, mode),
+        tools=build_tools(config, mode, account),
+        # A tool needing a scope the token lacks ends the run before it runs.
+        before_tool_callback=before_tool_check if config.sign_in is not None else None,
         after_tool_callback=_make_after_tool(config) if config.after_tool else None,
     )
 
@@ -95,14 +106,24 @@ def resolve_executor(config: AgentAppConfig, mode: str):
     if mode == "deterministic":
         from a2ui_agent_kit.executor_deterministic import DeterministicAgentExecutor
 
-        return DeterministicAgentExecutor(config.build_response, config.build_text_response)
+        return DeterministicAgentExecutor(
+            config.build_response, config.build_text_response, config.sign_in
+        )
     if mode in ("stub", "live"):
         from a2ui_agent_kit.executor_llm import LlmAgentExecutor
-        from a2ui_agent_kit.responder import AdkLlmResponder
+        from a2ui_agent_kit.responder import AdkLlmResponder, PerAccountResponder
 
-        responder = AdkLlmResponder(
-            build_llm_agent(config, mode), app_name=config.responder_app_name
-        )
+        if mode == "live" and config.sign_in is not None:
+            responder = PerAccountResponder(
+                lambda account: AdkLlmResponder(
+                    build_llm_agent(config, mode, account=account),
+                    app_name=config.responder_app_name,
+                )
+            )
+        else:
+            responder = AdkLlmResponder(
+                build_llm_agent(config, mode), app_name=config.responder_app_name
+            )
         return LlmAgentExecutor(responder, config)
     raise ValueError(
         f"mode {mode!r} is not a known mode; expected 'deterministic', 'stub' or 'live'."
