@@ -27,3 +27,8 @@ def test_beats_module_imports():
     from a2ui_agent_kit import beats
 
     assert beats.Turn(1, "s", "t", "p").beat == 1
+
+
+def test_help_names_the_public_address_for_the_sign_in_pages(basic_config):
+    result = CliRunner().invoke(build_command(basic_config), ["--help"])
+    assert "--public-url" in result.output

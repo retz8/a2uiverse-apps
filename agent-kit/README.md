@@ -45,7 +45,7 @@ uv run python -m app --mode stub            # the model over canned data
 uv run python -m app --mode live            # the model over the real MCP server
 ```
 
-Flags: `--mode`, `--port`, `--host`, and `--base-url`, the address the agent card advertises. With sign-in on, `--state-dir` moves the sign-in store and `--access-token-lifetime` shortens the tokens the agent issues, for exercising refresh in development. `MODEL_NAME` picks the model; it defaults to `gemini-3.7-flash`.
+Flags: `--mode`, `--port`, `--host`, and `--base-url`, the address the agent card advertises. With sign-in on, `--public-url` is the address the browser reaches the sign-in pages at — the sign-in page, the account chooser's form and the finish address — while the card's endpoint, the sign-in metadata and the token endpoint stay on `--base-url`, which it defaults to; `--state-dir` moves the sign-in store and `--access-token-lifetime` shortens the tokens the agent issues, for exercising refresh in development. `MODEL_NAME` picks the model; it defaults to `gemini-3.7-flash`.
 
 ## Turning on sign-in
 
@@ -108,7 +108,7 @@ VENDOR_SIGN_IN = VendorOAuth(
 ```
 
 - **The vendor client.** With `client=ClientFromEnv("ACME_CLIENT_ID", "ACME_CLIENT_SECRET")` it signs in with a client you registered at the vendor, read from `.env`. Without it, the agent registers itself by dynamic registration on the first sign-in and keeps the registration in its store.
-- **The return address** registered at the vendor is the agent's finish address, `<base URL>/sign-in/finish`.
+- **The return address** registered at the vendor is the agent's finish address, `<public URL>/sign-in/finish` — `--public-url`, otherwise `--base-url`. Register one for each address the agent runs at.
 - **Scopes.** The vendor is asked for what the sign-in's scopes need, plus what the account already granted on a request for more access. A vendor granting less than asked doesn't sign in.
 - **Who signed in.** `identify` gets the vendor's token response and returns the vendor's stable id for the account and its display claims. `id_token_claims` reads an ID token straight from the vendor's token endpoint.
 - **The vendor's token** is refreshed before a request when it's within five minutes of expiring. When it can't be refreshed, or the vendor answers 401, the run fails and the account's sign-ins end, so A2UIVerse asks the person to sign in again.

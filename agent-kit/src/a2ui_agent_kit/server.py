@@ -35,7 +35,9 @@ from a2ui_agent_kit.task_store import TerminalGuardedTaskStore
 CORS_ORIGIN_REGEX = r"^(http://localhost:\d+|https://[a-z0-9-]+\.[a-z]+\.devtunnels\.ms)$"
 
 
-def build_agent_card(config: AgentAppConfig, base_url: str) -> AgentCard:
+def build_agent_card(
+    config: AgentAppConfig, base_url: str, public_url: str | None = None
+) -> AgentCard:
     # The v0.9.1 extension spec fixes the URI at .../a2ui/v0.9.1 — "the only URI
     # accepted for this extension" — distinct from the v0.9 wire version marker
     # carried inside A2UI messages.
@@ -48,7 +50,7 @@ def build_agent_card(config: AgentAppConfig, base_url: str) -> AgentCard:
     if isinstance(config.sign_in, ApiKeySignIn):
         security_schemes, security = api_key_card_security(config.sign_in)
     elif config.sign_in is not None:
-        security_schemes, security = card_security(config.sign_in, base_url)
+        security_schemes, security = card_security(config.sign_in, base_url, public_url)
     else:
         security_schemes, security = None, None
     return AgentCard(
@@ -78,6 +80,7 @@ def build_app(
     base_url: str | None = None,
     state_dir: Path | None = None,
     access_token_lifetime: int = ACCESS_TOKEN_LIFETIME,
+    public_url: str | None = None,
 ):
     # The agent card advertises `base_url` as its service endpoint; the A2A client
     # POSTs message/send there. Defaults to the bind address, but must be set to a
@@ -89,7 +92,7 @@ def build_app(
         task_store=TerminalGuardedTaskStore(),
     )
     server = A2AStarletteApplication(
-        agent_card=build_agent_card(config, base_url), http_handler=handler
+        agent_card=build_agent_card(config, base_url, public_url), http_handler=handler
     )
     app = server.build()
     if isinstance(config.sign_in, ApiKeySignIn):
@@ -102,6 +105,7 @@ def build_app(
             base_url=base_url,
             store=SignInStore(state_dir or default_state_dir(config)),
             access_token_lifetime=access_token_lifetime,
+            public_url=public_url,
         )
         app.router.routes.extend(sign_in.routes())
         app.add_middleware(SignInGate, sign_in=sign_in)

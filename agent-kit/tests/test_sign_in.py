@@ -116,10 +116,11 @@ async def _serving(app, port: int):
 class Agent:
     """A running test agent and a vault's view of it."""
 
-    def __init__(self, base: str, http: httpx.AsyncClient, state_dir):
+    def __init__(self, base: str, http: httpx.AsyncClient, state_dir, public: str | None = None):
         self.base = base
         self.http = http
         self.state_dir = state_dir
+        self.public = public or base
 
     async def metadata(self) -> dict:
         return (await self.http.get("/.well-known/oauth-authorization-server")).json()
@@ -236,9 +237,11 @@ class _Form(HTMLParser):
 
 
 @contextlib.asynccontextmanager
-async def running(tmp_path, mode="deterministic", config=None, state_dir=None, **build):
+async def running(tmp_path, mode="deterministic", config=None, state_dir=None, public=False, **build):
     port = _free_port()
     base = f"http://127.0.0.1:{port}"
+    if public:  # the browser's address for the sign-in pages: another name for the same server
+        build["public_url"] = f"http://localhost:{port}"
     config = config or _config(tmp_path)
     state_dir = state_dir or tmp_path / "state"
     resolve = server.resolve_executor
@@ -257,7 +260,7 @@ async def running(tmp_path, mode="deterministic", config=None, state_dir=None, *
         server.resolve_executor = resolve
     async with _serving(app, port):
         async with httpx.AsyncClient(base_url=base, timeout=10) as http:
-            yield Agent(base, http, state_dir)
+            yield Agent(base, http, state_dir, build.get("public_url"))
 
 
 def _result(response: httpx.Response) -> dict:
@@ -293,6 +296,40 @@ async def test_the_metadata_advertises_openid_both_registrations_and_s256(tmp_pa
     assert meta["registration_endpoint"] == f"{agent.base}/oauth/register"
     assert meta["client_id_metadata_document_supported"] is True
     assert meta["id_token_signing_alg_values_supported"] == ["ES256"]
+
+
+async def test_the_pages_the_browser_opens_follow_the_public_address(tmp_path):
+    # Only what the browser opens goes on the tunnel (task-12.12 decision 1).
+    async with running(tmp_path, public=True) as agent:
+        card = (await agent.http.get("/.well-known/agent-card.json")).json()
+        meta = await agent.metadata()
+    assert agent.public != agent.base
+    assert card["url"] == agent.base
+    scheme = card["securitySchemes"]["signIn"]
+    flow = scheme["flows"]["authorizationCode"]
+    assert flow["authorizationUrl"] == f"{agent.public}/oauth/authorize"
+    assert flow["tokenUrl"] == flow["refreshUrl"] == f"{agent.base}/oauth/token"
+    assert scheme["oauth2MetadataUrl"] == f"{agent.base}/.well-known/oauth-authorization-server"
+    assert meta["issuer"] == agent.base
+    assert meta["authorization_endpoint"] == f"{agent.public}/oauth/authorize"
+    for endpoint in ("token_endpoint", "registration_endpoint", "revocation_endpoint", "jwks_uri"):
+        assert meta[endpoint].startswith(f"{agent.base}/"), endpoint
+
+
+async def test_a_sign_in_on_the_public_address_finishes_there(tmp_path):
+    async with running(tmp_path, public=True) as agent:
+        client_id = await agent.register()
+        verifier = generate_token(48)
+        async with agent.client(client_id) as vault:
+            url, state = vault.create_authorization_url(
+                (await agent.metadata())["authorization_endpoint"], code_verifier=verifier
+            )
+        page = await agent.http.get(url)
+        form = _Form.read(page.text)
+        assert form.action == f"{agent.public}/sign-in/finish"
+        token = await agent.exchange(client_id, await agent.choose(page, "ada"), verifier, state)
+        result = _result(await agent.send("list_issues", token["access_token"]))
+    assert result["status"]["state"] == "completed"
 
 
 async def test_an_app_without_sign_in_is_unchanged(tmp_path):
@@ -689,6 +726,17 @@ async def test_live_mode_signs_in_through_the_upstream_and_refuses_the_fake_entr
     claims = jwt.decode(token["id_token"], keys).claims
     assert claims["email"] == "v-1@vendor.test"
     assert seen == [{"vendor": "tok-v-1"}]  # the request's account carries its vendor token
+
+
+async def test_the_vendor_returns_to_the_public_finish_address(tmp_path):
+    config = _config(tmp_path, _sign_in(upstream=_Upstream()))
+    async with running(tmp_path, "live", config=config, public=True) as agent:
+        client_id = await agent.register()
+        response, verifier, state = await agent.authorize(client_id)
+        location = response.headers["location"]
+        assert location.startswith(f"{agent.public}/sign-in/finish?")
+        token = await agent.exchange(client_id, await agent.http.get(location), verifier, state)
+    assert token["access_token"]
 
 
 async def _live_sign_in(agent: Agent, client_id: str, **params) -> httpx.Response:

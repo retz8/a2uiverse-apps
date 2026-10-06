@@ -10,8 +10,13 @@ working with this repo.
 
 ## Rules
 
-- **Vendor agents are reached by the orchestrator on `localhost`** and are not
-  tunnelled. The browser never talks to an agent directly.
+- **Vendor agents are reached by the orchestrator on `localhost`.** The browser
+  talks to an agent only through its sign-in pages, which the sign-in window
+  opens: run the agent with its **public URL (`--public-url`) set to its
+  tunnel URL** — the sign-in page, the account chooser's form and the finish
+  address a vendor returns to. The platform's launcher sets it from
+  `A2UIVERSE_PUBLIC_URL`. CircleCI's live sign-in runs without it, at the Mac:
+  CircleCI takes only a loopback return address.
 - When an agent *is* tunnelled (direct-vs-hub comparison only), run it with its
   public **base URL set to its tunnel URL** so the agent card advertises an
   endpoint the caller can reach. With a `localhost` default the card fetch

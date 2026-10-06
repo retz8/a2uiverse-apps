@@ -32,9 +32,19 @@ def build_command(config: AgentAppConfig) -> click.Command:
         "--base-url",
         default=None,
         help=(
-            "Public URL to advertise in the agent card (e.g. a devtunnel URL). "
-            "Defaults to http://<host>:<port>. Set this when the client reaches the "
-            "server through a tunnel/proxy so message/send targets the public URL."
+            "URL to advertise in the agent card: its message/send endpoint, and with "
+            "sign-in the issuer, metadata and token endpoint. Defaults to "
+            "http://<host>:<port>. Set this when the caller reaches the server through a "
+            "tunnel/proxy so message/send targets a reachable URL."
+        ),
+    )
+    @click.option(
+        "--public-url",
+        default=None,
+        help=(
+            "URL the browser reaches the sign-in pages at (e.g. a devtunnel URL): the "
+            "sign-in page, the account chooser's form and the finish address a vendor "
+            "returns to. Defaults to --base-url."
         ),
     )
     @click.option(
@@ -56,6 +66,7 @@ def build_command(config: AgentAppConfig) -> click.Command:
         host: str,
         port: int,
         base_url: str | None,
+        public_url: str | None,
         state_dir: Path | None,
         access_token_lifetime: int,
     ) -> None:
@@ -88,6 +99,7 @@ def build_command(config: AgentAppConfig) -> click.Command:
                 base_url,
                 state_dir=state_dir,
                 access_token_lifetime=access_token_lifetime,
+                public_url=public_url,
             ),
             host=host,
             port=port,

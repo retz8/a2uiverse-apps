@@ -102,13 +102,16 @@ def _join_scope(scopes) -> str:
 # ---- the card ----------------------------------------------------------------------
 
 
-def card_security(sign_in: SignIn, base_url: str):
-    """The card's `securitySchemes` and `security` (task-12.9 decision 13)."""
+def card_security(sign_in: SignIn, base_url: str, public_url: str | None = None):
+    """The card's `securitySchemes` and `security` (task-12.9 decision 13). The sign-in page
+    is on the public address the browser reaches; the rest stays on the agent's own
+    (task-12.12 decision 1)."""
     issuer = base_url.rstrip("/")
+    public = (public_url or base_url).rstrip("/")
     scheme = OAuth2SecurityScheme(
         flows=OAuthFlows(
             authorization_code=AuthorizationCodeOAuthFlow(
-                authorization_url=f"{issuer}{AUTHORIZE_PATH}",
+                authorization_url=f"{public}{AUTHORIZE_PATH}",
                 token_url=f"{issuer}{TOKEN_PATH}",
                 refresh_url=f"{issuer}{TOKEN_PATH}",
                 scopes=dict(sign_in.scopes),
@@ -507,6 +510,10 @@ class SignInServer:
     base_url: str
     store: SignInStore
     access_token_lifetime: int = ACCESS_TOKEN_LIFETIME
+    # Where the browser reaches the pages it opens — the sign-in page, the chooser's form,
+    # the finish address a vendor returns to; the issuer and every other endpoint stay on
+    # `base_url` (task-12.12 decision 1).
+    public_url: str | None = None
     codes: dict[str, _Code] = field(default_factory=dict)
     _pending: dict[str, _Pending] = field(default_factory=dict)
     _metadata_clients: dict[str, _Client] = field(default_factory=dict)
@@ -515,6 +522,7 @@ class SignInServer:
 
     def __post_init__(self) -> None:
         self.issuer = self.base_url.rstrip("/")
+        self.public = (self.public_url or self.base_url).rstrip("/")
         if self.mode == "live":
             if self.config.upstream is None:
                 raise ValueError(
@@ -707,7 +715,7 @@ class SignInServer:
             id=secrets.token_urlsafe(24),
             scopes=scopes,
             account_id=bound,
-            finish_url=f"{self.issuer}{FINISH_PATH}",
+            finish_url=f"{self.public}{FINISH_PATH}",
         )
         self._pending[pending.id] = _Pending(pending, args, now + PENDING_SIGN_IN_LIFETIME)
         try:
@@ -768,7 +776,7 @@ class SignInServer:
         issuer = self.issuer
         return {
             "issuer": issuer,
-            "authorization_endpoint": f"{issuer}{AUTHORIZE_PATH}",
+            "authorization_endpoint": f"{self.public}{AUTHORIZE_PATH}",
             "token_endpoint": f"{issuer}{TOKEN_PATH}",
             "registration_endpoint": f"{issuer}{REGISTER_PATH}",
             "revocation_endpoint": f"{issuer}{REVOKE_PATH}",

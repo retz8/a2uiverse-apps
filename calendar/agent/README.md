@@ -47,7 +47,7 @@ uv run python -m app --mode deterministic
 
 `deterministic` answers any question with a recorded agenda, and replays the recorded actions: opening an event, confirming or cancelling a new one, answering an invitation. Opening an event paints a new surface, as the live agent does.
 
-Other flags: `--port`, `--host`, and `--base-url`, the address the agent card advertises. `--state-dir` moves the sign-in store from `.state/`.
+Other flags: `--port`, `--host`, `--base-url`, the address the agent card advertises, and `--public-url`, the address the browser reaches its sign-in pages at — a tunnel address, when the browser is on another machine. `--state-dir` moves the sign-in store from `.state/`.
 
 ## Signing in
 
@@ -75,7 +75,7 @@ Gmail's README sets up the Google Cloud project and its OAuth client, shared by 
 
 2. **On the consent screen**, under Data Access, add `calendar.events.readonly` and `calendar.events`.
 
-3. **On the OAuth client**, make sure `http://localhost:11003/sign-in/finish` is an Authorized redirect URI (or the tunnel address the agent runs at with `--base-url`, followed by `/sign-in/finish`).
+3. **On the OAuth client**, make sure `http://localhost:11003/sign-in/finish` is an Authorized redirect URI, and behind a tunnel the address the agent runs at with `--public-url`, followed by `/sign-in/finish`, beside it.
 
 4. **Put the client's ID and secret** in `.env` as `GOOGLE_OAUTH_CLIENT_ID` and `GOOGLE_OAUTH_CLIENT_SECRET`.
 

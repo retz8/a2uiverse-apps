@@ -29,7 +29,7 @@ uv run python -m app --mode deterministic
 
 `deterministic` answers any question with a recorded notifications digest, and answers the Primer components' demo actions with canned responses.
 
-Other flags: `--port`, `--host`, and `--base-url`, the address the agent card advertises. `--state-dir` moves the sign-in store from `.state/`.
+Other flags: `--port`, `--host`, `--base-url`, the address the agent card advertises, and `--public-url`, the address the browser reaches its sign-in pages at — a tunnel address, when the browser is on another machine. `--state-dir` moves the sign-in store from `.state/`.
 
 ## Signing in
 
@@ -49,7 +49,7 @@ In `live` mode the sign-in sends you to GitHub. The agent keeps your GitHub toke
 One-time. The agent signs in to GitHub through an OAuth App you register:
 
 1. On GitHub: Settings → Developer settings → OAuth Apps → New OAuth App.
-2. **Authorization callback URL:** the agent's finish address, `http://localhost:11001/sign-in/finish`. Behind a tunnel, use the address the agent runs at with `--base-url`, followed by `/sign-in/finish`.
+2. **Authorization callback URL:** the agent's finish address, `http://localhost:11001/sign-in/finish`. Behind a tunnel, add the address the agent runs at with `--public-url`, followed by `/sign-in/finish`, as a second callback URL.
 3. Generate a client secret, and put the client ID and the secret in `.env` as `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET`.
 
 The agent asks GitHub for `repo`, `read:org` and `user:email`. GitHub's OAuth App tokens don't expire. Revoking the app at GitHub ends the sign-in: the next request fails, and A2UIVerse asks you to sign in again. Uninstalling the app in A2UIVerse revokes the agent's grant at GitHub.

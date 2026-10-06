@@ -30,7 +30,7 @@ uv run python -m app --mode deterministic
 
 `deterministic` answers any question with the signed-in account's recorded inbox digest, and replays the recorded actions: opening a thread, confirming or cancelling a draft, toggling a label. Opening a thread paints a new surface, as the live agent does.
 
-Other flags: `--port`, `--host`, and `--base-url`, the address the agent card advertises. `--state-dir` moves the sign-in store from `.state/`.
+Other flags: `--port`, `--host`, `--base-url`, the address the agent card advertises, and `--public-url`, the address the browser reaches its sign-in pages at — a tunnel address, when the browser is on another machine. `--state-dir` moves the sign-in store from `.state/`.
 
 ## Signing in
 
@@ -63,7 +63,7 @@ One-time, in a Google Cloud project. Gmail and Google Calendar share the project
 
 4. **Set up the consent screen** (Google Auth Platform). Leave it in **Testing** and add each account that will sign in as a test user. Under Data Access add `gmail.readonly` and `gmail.modify`.
 
-5. **Create an OAuth client** of type **Web application**. Under Authorized redirect URIs add the agent's finish address, `http://localhost:11002/sign-in/finish`, and Calendar's, `http://localhost:11003/sign-in/finish`. Behind a tunnel, add the address each agent runs at with `--base-url`, followed by `/sign-in/finish`.
+5. **Create an OAuth client** of type **Web application**. Under Authorized redirect URIs add the agent's finish address, `http://localhost:11002/sign-in/finish`, and Calendar's, `http://localhost:11003/sign-in/finish`. Behind a tunnel, add the address each agent runs at with `--public-url`, followed by `/sign-in/finish`, beside them.
 
 6. **Put the client's ID and secret** in `.env` as `GOOGLE_OAUTH_CLIENT_ID` and `GOOGLE_OAUTH_CLIENT_SECRET`, and the same two in Calendar's `.env`.
 

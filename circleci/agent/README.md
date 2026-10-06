@@ -28,7 +28,7 @@ uv run python -m app --mode deterministic
 
 `deterministic` answers any question with the recorded recent runs, and replays the recorded actions: opening a run, opening a job, proposing a rerun and confirming or declining it. Opening a run or a job paints a new surface, as the live agent does.
 
-Other flags: `--port`, `--host`, and `--base-url`, the address the agent card advertises. `--state-dir` moves the sign-in store from `.state/`.
+Other flags: `--port`, `--host`, `--base-url`, the address the agent card advertises, and `--public-url`, the address the browser reaches its sign-in pages at — a tunnel address, when the browser is on another machine. `--state-dir` moves the sign-in store from `.state/`.
 
 ## Signing in
 
@@ -41,7 +41,7 @@ The agent is its own sign-in: A2UIVerse signs in to it, and it signs in to Circl
 
 In `deterministic` and `stub` mode the sign-in offers one made-up account, `retz8`. In `deterministic` mode, confirming a rerun asks for `pipelines.write`.
 
-In `live` mode the sign-in sends you to CircleCI. The agent keeps your CircleCI token and gives A2UIVerse a token of its own; CircleCI's sign-in carries no scopes, so the two above are the agent's own. There is nothing to set up at CircleCI: on the first sign-in the agent registers itself with CircleCI's sign-in server and keeps the registration in `.state/`. CircleCI gives no way to refresh its token, so when it ends, A2UIVerse asks you to sign in again.
+In `live` mode the sign-in sends you to CircleCI. The agent keeps your CircleCI token and gives A2UIVerse a token of its own; CircleCI's sign-in carries no scopes, so the two above are the agent's own. There is nothing to set up at CircleCI: on the first sign-in the agent registers itself with CircleCI's sign-in server and keeps the registration in `.state/`. CircleCI gives no way to refresh its token, so when it ends, A2UIVerse asks you to sign in again. CircleCI's sign-in server takes only a loopback return address, so in `live` mode run the agent without `--public-url` and sign in from a browser on the same machine.
 
 The projects are the ones you follow on CircleCI, asked of CircleCI's API with your token. To have the agent cover a project, follow it on CircleCI.
 
