@@ -560,9 +560,13 @@ async def test_escalation_binds_the_account_and_grants_the_union(tmp_path):
         assert (await agent.send("list_issues", first["access_token"])).status_code == 401
 
         mismatch, _, _ = await agent.authorize(client_id, login_hint=sub, fake_account="alan")
+        # A hint naming no account here — the agent lost it — binds nothing: the person
+        # chooses (a2uiverse task-12.13 decision 24).
         unknown, _, _ = await agent.authorize(client_id, login_hint="nobody", fake_account="ada")
+        chooser, _, _ = await agent.authorize(client_id, login_hint="nobody")
     assert parse_qs(urlsplit(mismatch.headers["location"]).query)["error"] == ["access_denied"]
-    assert parse_qs(urlsplit(unknown.headers["location"]).query)["error"] == ["invalid_request"]
+    assert "code" in parse_qs(urlsplit(unknown.headers["location"]).query)
+    assert chooser.status_code == 200 and "Choose an account" in chooser.text
 
 
 def _bound(sign_in: SignIn, scopes):

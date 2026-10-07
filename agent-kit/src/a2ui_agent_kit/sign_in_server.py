@@ -684,12 +684,13 @@ class SignInServer:
         def refuse(description: str, error=InvalidRequestError) -> Response:
             return self._error(oreq, error(description, redirect_uri=redirect_uri))
 
-        # login_hint binds the sign-in to that account (task-12.9 decision 10).
+        # login_hint binds the sign-in to that account (task-12.9 decision 10). A hint
+        # naming no account here — this agent lost it — binds nothing: the person
+        # chooses, and the vault re-binds its account (a2uiverse task-12.13 decision 24).
         bound = None
-        if hint := data.get("login_hint"):
-            account = self.store.account(hint)
-            if account is None or account["kind"] != self.kind:
-                return refuse("login_hint names no account here.")
+        hint = data.get("login_hint")
+        account = self.store.account(hint) if hint else None
+        if account is not None and account["kind"] == self.kind:
             bound = account["account_id"]
             # What the account already granted rides along: the sign-in grants the union.
             granted = self.store.granted_scopes(hint, grant.request.client.get_client_id())
