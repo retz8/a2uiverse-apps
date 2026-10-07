@@ -64,6 +64,8 @@ def build_agent_card(
         skills=list(config.skills),
         security_schemes=security_schemes,
         security=security,
+        provider=config.provider,
+        documentation_url=config.documentation_url,
     )
 
 

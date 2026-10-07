@@ -21,6 +21,26 @@ def test_card_carries_the_config_identity_and_v091_extension(any_config):
     assert uris == [V091_URI]  # one card, v0.9.1, every mode
 
 
+def test_card_names_its_provider_and_help_page_when_the_config_does(tmp_path):
+    # The platform's ways out of a refused paint and its key page's help link read these
+    # (a2uiverse task-12.13 decision 23); an app that names neither carries neither.
+    from a2a.types import AgentProvider
+
+    from .conftest import make_config
+
+    named = make_config(
+        "basic",
+        tmp_path,
+        provider=AgentProvider(organization="Example", url="https://example.com"),
+        documentation_url="https://example.com/help",
+    )
+    card = build_agent_card(named, "http://localhost:19999")
+    assert card.provider == AgentProvider(organization="Example", url="https://example.com")
+    assert card.documentation_url == "https://example.com/help"
+    bare = build_agent_card(make_config("basic", tmp_path), "http://localhost:19999")
+    assert bare.provider is None and bare.documentation_url is None
+
+
 def test_card_advertises_the_apps_catalog(any_config):
     from a2ui_agent_kit.catalog import catalog_context
 

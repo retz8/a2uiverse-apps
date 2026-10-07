@@ -9,6 +9,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
+from a2a.types import AgentProvider
 from a2ui_agent_kit.config import AgentAppConfig
 from a2ui_agent_kit.paint_meta import require_carries_action
 
@@ -33,6 +34,8 @@ CONFIG = AgentAppConfig(
     name=APP_NAME,
     description=APP_DESCRIPTION,
     skills=SKILLS,
+    provider=AgentProvider(organization="Linear", url="https://linear.app"),
+    documentation_url="https://github.com/retz8/a2uiverse-apps/blob/main/linear/agent/README.md",
     default_port=11005,
     responder_app_name="a2ui_linear_live",
     adk_agent_name="a2ui_linear_live_agent",

@@ -14,7 +14,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Literal
 
-from a2a.types import AgentSkill
+from a2a.types import AgentProvider, AgentSkill
 
 from a2ui_agent_kit.sign_in import ApiKeySignIn, SignIn
 
@@ -73,6 +73,11 @@ class AgentAppConfig:
     live_toolset_factory: Callable[[], Any] | None = None
     after_tool: AfterTool | None = None
     model: str | None = None  # None -> kit DEFAULT_MODEL (MODEL_NAME env still wins)
+
+    # Where a person finishes on the app's own side: the card's `provider` — the vendor whose
+    # service the agent fronts, its site — and `documentationUrl`, the app's help page.
+    provider: AgentProvider | None = None
+    documentation_url: str | None = None
 
     # Sign-in: present, the kit serves the app's sign-in and the card declares it. With
     # a `SignIn`, live mode calls the toolset factory per signed-in account; an

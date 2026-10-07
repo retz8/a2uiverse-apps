@@ -5,6 +5,7 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any
 
+from a2a.types import AgentProvider
 from a2ui_agent_kit.config import AgentAppConfig
 from a2ui_agent_kit.paint_meta import require_carries_action
 
@@ -39,6 +40,8 @@ CONFIG = AgentAppConfig(
     name=APP_NAME,
     description=APP_DESCRIPTION,
     skills=SKILLS,
+    provider=AgentProvider(organization="Google", url="https://calendar.google.com"),
+    documentation_url="https://github.com/retz8/a2uiverse-apps/blob/main/calendar/agent/README.md",
     default_port=11003,
     responder_app_name="a2ui_calendar_live",
     adk_agent_name="a2ui_calendar_live_agent",
