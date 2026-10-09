@@ -5,6 +5,7 @@ from a2ui_agent_kit.prompt import (
     _EXAMPLES_HEADER,
     FAILURE_WORDING,
     PROPOSALS,
+    TIMES,
     build_system_prompt,
 )
 
@@ -42,7 +43,8 @@ def test_a_failure_said_in_words_is_worded_for_the_person_ahead_of_the_vendor_bl
     # a2uiverse task-12.13 decision 36: "403 Forbidden error" reached the canvas.
     prompt = build_system_prompt(any_config)
     assert prompt.count(FAILURE_WORDING) == 1
-    assert FAILURE_WORDING + "\n\n" + PROPOSALS + "\n\n" + any_config.workflow_descriptions[0] in prompt
+    assert FAILURE_WORDING + "\n\n" + PROPOSALS in prompt
+    assert prompt.index(FAILURE_WORDING) < prompt.index(any_config.workflow_descriptions[0])
     for term in ("status code", "token", "scope"):
         assert term in FAILURE_WORDING
 
@@ -54,3 +56,13 @@ def test_a_proposal_is_no_question_and_a_dismissed_one_repaints_settled(any_conf
     assert prompt.count(PROPOSALS) == 1
     for words in ('kind="question"', "Discard", "buttons"):
         assert words in PROPOSALS
+
+
+def test_a_time_is_the_persons_where_a_tool_gives_it_and_never_converted(any_config):
+    # a2uiverse task-12.13 decision 53: the cards showed time in UTC, in the calendar's own zone
+    # and as raw timestamps; a model converting a time itself is the error a reader never checks.
+    prompt = build_system_prompt(any_config)
+    assert prompt.count(TIMES) == 1
+    assert PROPOSALS + "\n\n" + TIMES + "\n\n" + any_config.workflow_descriptions[0] in prompt
+    for words in ("the person's", "Never convert", "raw timestamp", "None"):
+        assert words in TIMES

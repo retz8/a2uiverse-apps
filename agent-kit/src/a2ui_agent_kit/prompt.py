@@ -43,14 +43,27 @@ PROPOSALS = (
     "person to the draft."
 )
 
+# Every app's: a time is shown in the person's zone where a tool gives it so, never converted by
+# the model, and written for a person to read (a2uiverse task-12.13 decision 53).
+TIMES = (
+    "A time you show is read by the person as theirs. Where a tool lets you ask for times in a "
+    "time zone, ask it for the person's, which the request states; otherwise show the time as "
+    "the tool gave it, with its zone named. Never convert a time from one zone to another "
+    "yourself. Write a time the way a person reads it, never as a raw timestamp such as "
+    "2026-10-09T21:00:00-04:00, and keep its date and year where the request asks for the full "
+    "date and time. Say today or tomorrow only of a time in the person's own zone, by the date "
+    "the request states. Never show a code value such as None, null or true: leave out what has "
+    "no value."
+)
+
 
 def build_system_prompt(
     config: AgentAppConfig, schema_manager: A2uiSchemaManager | None = None
 ) -> str:
     """Assembles the full system instruction via the SDK's generate_system_prompt.
 
-    Authored content is the config's role prose plus the kit's failure wording and
-    proposals rule, the config's workflow blocks and the domain doc (joined into the
+    Authored content is the config's role prose plus the kit's failure wording,
+    proposals rule and time rule, the config's workflow blocks and the domain doc (joined into the
     workflow slot, which is the only one that takes free authored prose); the brand doc
     feeds ui_description, and the full catalog schema and the examples are injected by
     the SDK (with the examples framing spliced under
@@ -63,6 +76,7 @@ def build_system_prompt(
             [
                 FAILURE_WORDING,
                 PROPOSALS,
+                TIMES,
                 *config.workflow_descriptions,
                 load_domain_knowledge(config),
             ]
