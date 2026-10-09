@@ -171,8 +171,10 @@ SCOPE_DESCRIPTION = (
     "conferencing details needs that event fetched. Drilling into one event is expected to "
     "take a second call, and that is fine. "
     "When the request is relative — 'today', 'tomorrow', 'next week' — resolve it against the "
-    "times the tool results actually carry, not against a date you assume. If nothing you "
-    "fetched establishes what 'now' is, say so on the surface rather than picking a day."
+    "person's local time the request states ('The person's local time is …'), and when it "
+    "states none, against the times the tool results actually carry — never against a date you "
+    "assume. If neither establishes what 'now' is, say so on the surface rather than picking a "
+    "day."
 )
 
 
