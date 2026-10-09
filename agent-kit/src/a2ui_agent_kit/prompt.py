@@ -46,14 +46,14 @@ PROPOSALS = (
 # Every app's: a time is shown in the person's zone where a tool gives it so, never converted by
 # the model, and written for a person to read (a2uiverse task-12.13 decision 53).
 TIMES = (
-    "A time you show is read by the person as theirs. Where a tool lets you ask for times in a "
-    "time zone, ask it for the person's, which the request states; otherwise show the time as "
-    "the tool gave it, with its zone named. Never convert a time from one zone to another "
-    "yourself. Write a time the way a person reads it, never as a raw timestamp such as "
-    "2026-10-09T21:00:00-04:00, and keep its date and year where the request asks for the full "
-    "date and time. Say today or tomorrow only of a time in the person's own zone, by the date "
-    "the request states. Never show a code value such as None, null or true: leave out what has "
-    "no value."
+    "A time you show is read by the person as theirs. Pass the person's time zone, which the "
+    "request states, on every call to a tool that takes one, a wider second search included, so "
+    "its times come back as theirs; where a tool takes none, show the time as the tool gave it, "
+    "with its zone named. Never convert a time from one zone to another yourself. Write a time "
+    "the way a person reads it, never as a raw timestamp such as 2026-10-09T21:00:00-04:00, and "
+    "keep its date and year where the request asks for the full date and time. Today and tomorrow "
+    "are the person's, by the date the request states: say them only of a time in their zone. "
+    "Never show a code value such as None, null or true: leave out what has no value."
 )
 
 

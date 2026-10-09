@@ -64,5 +64,5 @@ def test_a_time_is_the_persons_where_a_tool_gives_it_and_never_converted(any_con
     prompt = build_system_prompt(any_config)
     assert prompt.count(TIMES) == 1
     assert PROPOSALS + "\n\n" + TIMES + "\n\n" + any_config.workflow_descriptions[0] in prompt
-    for words in ("the person's", "Never convert", "raw timestamp", "None"):
+    for words in ("the person's", "every call", "Never convert", "raw timestamp", "None"):
         assert words in TIMES
