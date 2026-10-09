@@ -45,6 +45,7 @@ The catalog id is the URL of the generated `catalog.json` on `main` in the app's
 - `deterministic` paints a greeting card, `stub` holds one placeholder tool, and `live` stops with a "not wired yet" message until `app/mcp.py` names the MCP server.
 - `uv run pytest` in `agent/`, and `pnpm typecheck`, `pnpm test` and `pnpm check` in the catalog, pass.
 - Everything only you can write is a `TODO`. `agent/README.md` lists where they are.
+- No sign-in: the MCP server's credential is the agent's own, in `.env`. An app whose user signs in puts a `SignIn` on its config, as the kit's [Turning on sign-in](../agent-kit/README.md#turning-on-sign-in) shows. The config also takes `provider` and `documentation_url` for the card, the vendor the app fronts and its help page, which the scaffold leaves unset.
 
 ## Tests
 

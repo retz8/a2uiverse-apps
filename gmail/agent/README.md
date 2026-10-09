@@ -114,4 +114,6 @@ A tool that needs more than the sign-in asks Google for also needs a scope in `a
 
 Launch it from the [A2UIVerse](https://github.com/retz8/a2uiverse) repo with `pnpm dev:agents --only gmail` (add `--mode live` for your mailbox). The launcher starts the agent on the port its roster gives the app, the `default_port` in [`app/config.py`](app/config.py), packs the catalog with Stellify, and installs the app into the running A2UIVerse from the agent's card. `pnpm dev:all` starts A2UIVerse and the agents together.
 
+When the browser is on another machine, set `A2UIVERSE_PUBLIC_URL` to a pattern with a `{port}` slot, such as `https://<tunnel-id>-{port}.asse.devtunnels.ms`: the launcher fills in the agent's port and passes the result as `--public-url`. `--agent-state <dir>` has it keep the sign-in store in `<dir>/gmail` instead of `.state/`.
+
 When the platform records its canvas replays with this agent live, start the agent with `A2UI_RECORD_DIR` set, so real mail never reaches those recordings.

@@ -33,7 +33,7 @@ Other flags: `--port`, `--host`, and `--base-url`, the address the agent card ad
 
 ## Signing in
 
-Shop B signs in with a key, in every mode. Its card declares an `apiKey` scheme in the `X-Northlight-Key` header, described as "Your Northlight key. You'll find it on your Northlight account page." A2UIVerse shows that description on its sign-in page, where you enter the key. A request without a valid key is answered 401.
+Shop B signs in with a key, in every mode. Its card declares an `apiKey` scheme in the `X-Northlight-Key` header, described as "Your Northlight key. You'll find it on your Northlight account page." A2UIVerse's tile for Shop B says Connect, and opens A2UIVerse's own page to paste the key, which shows that description and a link to the card's `documentationUrl`, this README. A request without a valid key is answered 401.
 
 The demo key is:
 

@@ -14,7 +14,7 @@ uv sync
 uv run python -m app --mode deterministic   # canned answers, no key needed
 ```
 
-The agent runs on port **11002**. Live mode needs a Gemini key and a Google login shared with Calendar. See the [agent README](agent/README.md).
+The agent runs on port **11002**. Every mode has you sign in: `deterministic` and `stub` offer two made-up accounts, each with its own mail, and `live` sends you to Google, through an OAuth client in a Google Cloud project you set up once, shared with Calendar. Live mode also needs a Gemini key. See the [agent README](agent/README.md).
 
 ## Connecting to A2UIVerse
 

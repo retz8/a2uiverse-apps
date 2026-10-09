@@ -24,7 +24,7 @@ To seed it, sign the test account in to the agent in `live` mode through A2UIVer
 uv run python -m scripts.seed_calendar --account <test account email>
 ```
 
-The script uses the test account's Google token from the agent's sign-in store. Seeding wipes that account's primary calendar and recreates every event relative to today. Re-seed before recording and before any live demo: recording creates events and answers invitations, and dates go stale.
+The script uses the test account's Google token from the agent's sign-in store, `.state/`, or the folder `--state-dir <dir>` names when the agent ran with one — `<dir>/calendar` under the launcher's `--agent-state <dir>`. `--dry-run` prints the events without touching the calendar. Seeding wipes that account's primary calendar and recreates every event relative to today. Re-seed before recording and before any live demo: recording creates events and answers invitations, and dates go stale.
 
 - **Never seed your own account.** It deletes every event on its primary calendar.
 - **Don't record your own calendar.** Recordings are committed to this repo, and nothing in them is scrubbed.
@@ -130,3 +130,5 @@ Every call still notifies no one, and a call naming no calendar goes to the prim
 ## Connecting to A2UIVerse
 
 Launch it from the [A2UIVerse](https://github.com/retz8/a2uiverse) repo with `pnpm dev:agents --only calendar` (add `--mode live` for the real calendar). The launcher starts the agent on the port its roster gives the app, the `default_port` in [`app/config.py`](app/config.py), packs the catalog with Stellify, and installs the app into the running A2UIVerse from the agent's card. `pnpm dev:all` starts A2UIVerse and the agents together.
+
+When the browser is on another machine, set `A2UIVERSE_PUBLIC_URL` to a pattern with a `{port}` slot, such as `https://<tunnel-id>-{port}.asse.devtunnels.ms`: the launcher fills in the agent's port and passes the result as `--public-url`. `--agent-state <dir>` has it keep the sign-in store in `<dir>/calendar` instead of `.state/`.

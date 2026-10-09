@@ -89,3 +89,5 @@ To allow a tool, change these together:
 ## Connecting to A2UIVerse
 
 Launch it from the [A2UIVerse](https://github.com/retz8/a2uiverse) repo with `pnpm dev:agents --only circleci` (add `--mode live` for real data). The launcher starts the agent on the port its roster gives the app, the `default_port` in [`app/config.py`](app/config.py), packs the catalog with Stellify, and installs the app into the running A2UIVerse from the agent's card. `pnpm dev:all` starts A2UIVerse and the agents together.
+
+In `live` mode, launch it with `A2UIVERSE_PUBLIC_URL` unset: CircleCI's sign-in server takes only a loopback return address, so the agent's sign-in pages stay on `localhost`, for a browser on the same machine. In `deterministic` and `stub` mode, `A2UIVERSE_PUBLIC_URL`, a pattern with a `{port}` slot such as `https://<tunnel-id>-{port}.asse.devtunnels.ms`, gives the agent its `--public-url` for a browser on another machine. `--agent-state <dir>` has the launcher keep the sign-in store in `<dir>/circleci` instead of `.state/`.

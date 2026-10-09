@@ -31,11 +31,13 @@ CONFIG = AgentAppConfig(
     build_text_response=build_text_response,  # deterministic mode: a question to canned A2UI
     stub_tools=STUB_TOOLS,                    # stub mode: tools over canned data
     live_toolset_factory=live_toolset,        # live mode: the MCP server
+    provider=AgentProvider(organization="Linear", url="https://linear.app"),  # the vendor it fronts
+    documentation_url=HELP_PAGE,              # the app's help page
     ...
 )
 ```
 
-[`src/a2ui_agent_kit/config.py`](src/a2ui_agent_kit/config.py) lists every field. [`create-a2ui-agent`](../create-a2ui-agent/) scaffolds a whole app with this already filled in.
+`provider` and `documentation_url` go on the agent card: where a person finishes on the app's own side, such as A2UIVerse's "Continue on" link and the help link on its key page. [`src/a2ui_agent_kit/config.py`](src/a2ui_agent_kit/config.py) lists every field. [`create-a2ui-agent`](../create-a2ui-agent/) scaffolds a whole app with this already filled in, `provider` and `documentation_url` aside.
 
 Then every app runs the same way:
 
@@ -80,6 +82,7 @@ With it on:
   - registration, by a client ID metadata document or dynamic registration;
   - revocation;
   - an OpenID Connect ID token signed ES256, carrying a stable `sub` and the account's `email`, `preferred_username` and `name`.
+- A `login_hint` naming an account the agent holds binds the sign-in to that account, which is asked again for what it already granted beside the new scopes; one naming no account here binds nothing, and the person chooses.
 - An A2A request without a live token the agent issued is answered 401.
 - Inside a request, `current_account()` is the signed-in account. In deterministic mode the app's answer code reads it to answer from that account's data.
 - An action or tool that needs a scope the token lacks ends the run in A2A's `auth-required` state, naming the missing scopes. A cut-off LLM run is kept out of the conversation history. After the user signs in with more access, the client sends the request again.
@@ -136,19 +139,21 @@ The store holds the issued tokens (by hash), the registered clients, the account
 
 ## What's in it
 
-| Module                                | What it does                                                                                        |
-| ------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| `cli`, `server`, `modes`              | The entrypoint, the A2A server with one agent card for every mode, and the executor per mode        |
-| `executor_llm`                        | Streams the model's A2UI as it's written, validates it against the catalog at the end, and retries  |
-| `executor_deterministic`, `responses` | Deterministic mode: canned A2UI per action or question, from the app's fixtures, titled as recorded |
-| `catalog`, `prompt`, `knowledge`      | Loads the app's catalog, validates surfaces against it, and assembles the system prompt             |
-| `toolset`, `tool_shaping`             | A hook on every MCP call, to change its arguments on the way out or its result on the way back      |
-| `recorder`, `corpus`, `beats`         | Recording: what the agent painted and what the MCP server returned, and scripted conversations      |
-| `paint_meta`                          | Optional: a short title per painted surface, and a mark on a surface that asks something            |
-| `sign_in`, `sign_in_server`           | Optional: the app's sign-in, the OAuth authorization server it serves and the 401 on A2A requests   |
-| `sign_in_store`, `sign_in_fake`       | The owner-only store behind sign-in, and the chooser over the fake accounts                         |
-| `sign_in_vendor`                      | Optional: live sign-in with a vendor's OAuth, as the upstream sign-in                               |
-| `testing`                             | Runs an executor in-process, or the agent on a port signed in as a vault would, for an app's tests  |
+| Module                                | What it does                                                                                                                        |
+| ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `cli`, `server`, `modes`              | The entrypoint, the A2A server with one agent card for every mode, and the executor per mode                                        |
+| `executor_llm`                        | Streams the model's A2UI as it's written, validates it against the catalog at the end, sends what the stream held back, and retries |
+| `executor_deterministic`, `responses` | Deterministic mode: canned A2UI per action or question, from the app's fixtures, titled as recorded                                 |
+| `catalog`, `prompt`, `knowledge`      | Loads the app's catalog, validates surfaces against it, and assembles the system prompt                                             |
+| `toolset`, `tool_shaping`             | A hook on every MCP call, to change its arguments on the way out or its result on the way back                                      |
+| `recorder`, `corpus`, `beats`         | Recording: what the agent painted and what the MCP server returned, and scripted conversations                                      |
+| `paint_meta`                          | Optional: a short title per painted surface, and a mark on a surface that asks something                                            |
+| `sign_in`, `sign_in_server`           | Optional: the app's sign-in, the OAuth authorization server it serves and the 401 on A2A requests                                   |
+| `sign_in_store`, `sign_in_fake`       | The owner-only store behind sign-in, and the chooser over the fake accounts                                                         |
+| `sign_in_vendor`                      | Optional: live sign-in with a vendor's OAuth, as the upstream sign-in                                                               |
+| `testing`                             | Runs an executor in-process, or the agent on a port signed in as a vault would, for an app's tests                                  |
+
+The system prompt puts three rules every app shares ahead of the app's own workflow: a failure reported in prose is worded for a person who may not work in tech, with no status code, tool name, URL or sign-in term; a write drafted for the person to confirm is a proposal, never declared a question, and one dismissed outright is repainted settled; and the person's time zone is passed to every tool that takes one, a time from a tool that takes none is shown with its zone named, and no time is converted by the model.
 
 ## Depending on it
 
@@ -177,4 +182,4 @@ No model calls and no credentials needed. The scaffolder's own tests also run a 
 
 ## Connecting to A2UIVerse
 
-[A2UIVerse](https://github.com/retz8/a2uiverse)'s launcher starts an agent through this same entrypoint, passing the port from its roster. `paint_meta` is the part A2UIVerse's canvas reads: the paint titles and question marks ride beside the A2UI, and any other client ignores them.
+[A2UIVerse](https://github.com/retz8/a2uiverse)'s launcher starts an agent through this same entrypoint, passing `--host localhost` and the port from its roster, `--public-url` when `A2UIVERSE_PUBLIC_URL` is set, and `--state-dir` under its `--agent-state`. `paint_meta` is the part A2UIVerse's canvas reads: the paint titles and question marks ride beside the A2UI, and any other client ignores them.

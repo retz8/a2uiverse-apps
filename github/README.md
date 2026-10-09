@@ -14,7 +14,7 @@ uv sync
 uv run python -m app --mode deterministic   # canned answers, no key needed
 ```
 
-The agent runs on port **11001**. Live mode needs a Gemini key and a GitHub token, and acts as that token's user. See the [agent README](agent/README.md).
+The agent runs on port **11001**. Every mode has you sign in: `deterministic` and `stub` offer a made-up account, and `live` sends you to GitHub, through an OAuth App you register once, and acts as you. Live mode also needs a Gemini key. See the [agent README](agent/README.md).
 
 ## Connecting to A2UIVerse
 

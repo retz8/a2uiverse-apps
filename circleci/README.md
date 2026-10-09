@@ -14,7 +14,7 @@ uv sync
 uv run python -m app --mode deterministic   # canned answers, no key needed
 ```
 
-The agent runs on port **11004**. Live mode needs a Gemini key, a CircleCI token and the projects to read. See the [agent README](agent/README.md).
+The agent runs on port **11004**. Every mode has you sign in: `deterministic` and `stub` offer a made-up account, and `live` sends you to CircleCI, with nothing to set up there, and reads the projects you follow. Live mode also needs a Gemini key. See the [agent README](agent/README.md).
 
 ## Connecting to A2UIVerse
 

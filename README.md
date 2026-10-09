@@ -28,20 +28,32 @@ Every app is backed by its vendor's official MCP server. GitHub's catalog is bui
 
 Every agent runs in three modes, on the same port:
 
-| Mode            | What answers                            | Needs                                    |
-| --------------- | --------------------------------------- | ---------------------------------------- |
-| `deterministic` | canned answers, no model                | nothing                                  |
-| `stub`          | the model, over canned data             | a Gemini key                             |
-| `live`          | the model, over the vendor's MCP server | a Gemini key and the vendor's credential |
+| Mode            | What answers                            | Needs                                                                      |
+| --------------- | --------------------------------------- | -------------------------------------------------------------------------- |
+| `deterministic` | canned answers, no model                | nothing                                                                    |
+| `stub`          | the model, over canned data             | a Gemini key                                                               |
+| `live`          | the model, over the vendor's MCP server | a Gemini key; for GitHub, Gmail and Calendar, an OAuth client you register |
 
 The canned data is recorded from live runs, not written by hand.
 
 ```bash
 cd linear/agent
 uv sync
-cp .env.example .env                        # the keys the model modes need
+cp .env.example .env                        # the Gemini key the model modes need
 uv run python -m app --mode deterministic
 ```
+
+Other flags: `--port`, `--host`, `--base-url`, the address the agent card advertises, `--public-url`, the address the browser reaches the sign-in pages at, and `--state-dir`, where the sign-in store lives in place of the agent's `.state/`.
+
+## Signing in
+
+Each vendor agent is its own sign-in: an OAuth authorization server that A2UIVerse signs in to, declared on its card. A request without a token the agent issued is answered 401, and an action that needs more access than the account granted ends in A2A's `auth-required`, naming the missing scopes. The agent holds the vendor's token, and A2UIVerse only the agent's.
+
+- **In `deterministic` and `stub` mode**, the sign-in page offers made-up accounts. Gmail has two, each with its own mail; the other apps have one.
+- **In `live` mode**, the sign-in sends you to the vendor. GitHub needs an OAuth App you register, and Gmail and Calendar an OAuth client in a Google Cloud project, the two sharing it; Linear and CircleCI register themselves with the vendor on the first sign-in. Each agent's README has the steps.
+- **When the browser is on another machine**, run the agent with `--public-url` set to the address the browser reaches it at, such as a tunnel's: its sign-in page, the account chooser's form and the address the vendor returns to. Where you registered a client at the vendor, register that return address beside the `localhost` one. CircleCI's sign-in takes only a loopback return address, so CircleCI runs without `--public-url`.
+
+The mock stores differ: Shop B signs in with a key pasted on A2UIVerse's own page, and Shop A has no sign-in.
 
 ## Building a new app
 
@@ -53,7 +65,7 @@ pnpm --filter create-a2ui-agent build
 pnpm exec create-a2ui-agent                 # asks for anything a flag didn't give
 ```
 
-Every agent is built on [`a2ui-agent-kit`](agent-kit/), which carries what the apps share: the A2A server, the three modes, loading the catalog and checking the agent's UI against it, the prompt, and recording. An app keeps only what is its own: its agent card, prompt, tools, canned data, and what the model should know about the product.
+Every agent is built on [`a2ui-agent-kit`](agent-kit/), which carries what the apps share: the A2A server, the three modes, sign-in, loading the catalog and checking the agent's UI against it, the prompt, and recording. An app keeps only what is its own: its agent card, prompt, tools, canned data, and what the model should know about the product.
 
 ## Mock stores
 
@@ -75,14 +87,18 @@ pnpm dev:agents --only gmail,linear --mode live     # two apps, live
 pnpm dev:all                                        # the apps and A2UIVerse together
 ```
 
+`A2UIVERSE_PUBLIC_URL`, a pattern with a `{port}` slot such as `https://<tunnel-id>-{port}.asse.devtunnels.ms`, gives each agent its `--public-url`, the agent's port filling the slot. `--agent-state <dir>` gives each agent `--state-dir <dir>/<app id>`, keeping every sign-in store out of the checkout.
+
+**Sign-in.** A2UIVerse signs in to an agent by the scheme on its card, as any OAuth client would: it registers itself, opens the agent's sign-in page in a window of its own, and keeps the token the agent issues. It draws the sign-in itself; no app paints a password, code or card field. The card's `provider` and `documentationUrl` are where A2UIVerse sends a person to finish on the app's own side.
+
 **The catalogs.** A2UIVerse compiles none of them in. Each is installed with its app, as the artifact Stellify packs from the catalog package, and A2UIVerse's client loads it at runtime and draws the app's UI with it inside the catalog's own Provider.
 
 **Paint titles and question marks.** The one thing an agent sends for A2UIVerse alone. With each surface it paints, the agent can give a short title, and a mark when the surface asks something, like "Send this reply?". The model writes them as a tag before the surface, and the kit sends them beside the A2UI as a `paintMeta` part, which any other client ignores. On A2UIVerse's canvas:
 
 - **The title** names the app's back and forward arrows, so each says which screen it returns to.
-- **The question mark** raises the app's slot and dims the rest of the screen until it's answered.
+- **The question mark** says on the progress line that the app needs your answer, until you press inside it. The surface stays in its slot like any other.
 
-Without them the app still works: the arrows read "Back", and a question shows as an ordinary surface. Every app here sends both; `create-a2ui-agent --ecosystem` sets up a new app to.
+Without them the app still works: the arrows read "Back", and a question goes unannounced. Every app here sends both; `create-a2ui-agent --ecosystem` sets up a new app to.
 
 ## Working in this repo
 

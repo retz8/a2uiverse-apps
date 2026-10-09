@@ -23,7 +23,7 @@ The agent runs on port **12001**. The model modes need only a Gemini key. See th
 Shop A and Shop B are a matched pair for testing [A2UIVerse](https://github.com/retz8/a2uiverse)'s merged view: two stores over the same cameras, so a merge across them is right by construction. They're left out of A2UIVerse's apps by default; to run the pair in place of the vendor apps, from the `a2uiverse` repo:
 
 ```bash
-pnpm dev:all --agents-dir ../a2uiverse-apps/mocks
+pnpm dev:all --tier mocks
 ```
 
 A2UIVerse installs the app from its agent's card, with its catalog packed by Stellify. How the agent and the catalog connect is in their own READMEs: the [agent](agent/README.md#connecting-to-a2uiverse) and the [catalog](shop-a-catalog/README.md#connecting-to-a2uiverse).
