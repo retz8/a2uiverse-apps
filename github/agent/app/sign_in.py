@@ -29,8 +29,12 @@ SCOPES = {
 }
 
 # The vendor scopes each scope needs. `repo` reads and writes; `read:org` lets the agent
-# see the organisations' repositories the person works in.
-GITHUB_SCOPES = {READ: ["repo", "read:org"], WRITE: ["repo", "read:org"]}
+# see the organisations' repositories the person works in; `notifications`, which GitHub's
+# MCP server asks of its notification tools though its REST API takes `repo` for them.
+GITHUB_SCOPES = {
+    READ: ["repo", "read:org", "notifications"],
+    WRITE: ["repo", "read:org", "notifications"],
+}
 # For the person's email on the sign-in, when they keep it private.
 IDENTITY_SCOPES = ["user:email"]
 

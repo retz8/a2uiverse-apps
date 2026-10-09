@@ -52,7 +52,7 @@ One-time. The agent signs in to GitHub through an OAuth App you register:
 2. **Authorization callback URL:** the agent's finish address, `http://localhost:11001/sign-in/finish`. Behind a tunnel, add the address the agent runs at with `--public-url`, followed by `/sign-in/finish`, as a second callback URL.
 3. Generate a client secret, and put the client ID and the secret in `.env` as `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET`.
 
-The agent asks GitHub for `repo`, `read:org` and `user:email`. GitHub's OAuth App tokens don't expire. Revoking the app at GitHub ends the sign-in: the next request fails, and A2UIVerse asks you to sign in again. Uninstalling the app in A2UIVerse revokes the agent's grant at GitHub.
+The agent asks GitHub for `repo`, `read:org`, `notifications` and `user:email`; GitHub's MCP server asks `notifications` of its notification tools. GitHub's OAuth App tokens don't expire. Revoking the app at GitHub ends the sign-in: the next request fails, and A2UIVerse asks you to sign in again. Uninstalling the app in A2UIVerse revokes the agent's grant at GitHub.
 
 ## Test
 

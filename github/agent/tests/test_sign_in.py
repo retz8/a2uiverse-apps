@@ -35,10 +35,11 @@ async def test_a_signed_in_account_is_answered_and_a_write_asks_for_more_access(
     assert task_state(allowed) == "completed"
 
 
-def test_live_mode_signs_in_with_the_publishers_oauth_app_asking_for_repo():
+def test_live_mode_signs_in_with_the_publishers_oauth_app_asking_for_repo_and_notifications():
+    # GitHub's MCP server asks `notifications` of its notification tools, beside `repo`.
     assert isinstance(SIGN_IN.upstream, VendorOAuth)
-    assert UPSTREAM.vendor_scopes(["github.read"]) == ("repo", "read:org")
-    assert UPSTREAM.vendor_scopes(["github.read", "github.write"]) == ("repo", "read:org")
+    assert UPSTREAM.vendor_scopes(["github.read"]) == ("repo", "read:org", "notifications")
+    assert UPSTREAM.vendor_scopes(["github.read", "github.write"]) == ("repo", "read:org", "notifications")
 
 
 def _github(handler):
