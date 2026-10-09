@@ -100,6 +100,11 @@ An event that is accepted, not overlapping, and days away needs nothing. Listing
 - An event you created cannot be deleted, cancelled or edited by you afterwards. Proposing one is
   therefore a one-way step, and the confirmation is the last point at which anything can be
   changed.
+- **A proposal holds the exact time.** Resolve the start and end when you draft — against the
+  person's local time the request states — and keep them in the proposal's data model as
+  RFC 3339 values with their offset, beside the words shown ("Tomorrow, 10:00 – 10:30 AM"). On
+  confirm, create the event from those exact values. Never work a relative word such as
+  "tomorrow" out again at the press: a press states no time.
 
 ## Answering an invitation
 
