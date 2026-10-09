@@ -1159,3 +1159,49 @@ async def test_a_cancel_mid_stream_closes_the_model_stream_and_starts_no_further
     assert [t for batch in turn["batches"] for t in batch["texts"]] == [
         "Looking up your pull requests. "
     ]
+
+
+@pytest.mark.asyncio
+async def test_a_turn_updating_a_surface_painted_before_sends_its_update():
+    # a2uiverse task-12.13 decision 45: the stream parser holds components back until it
+    # has seen the surface created in this turn, so an update to a surface an earlier turn
+    # painted — a proposal repainted settled after Discard — was validated and never sent.
+    update = json.dumps(
+        [
+            {
+                "version": "v0.9",
+                "updateComponents": {
+                    "surfaceId": "proposal",
+                    "components": [
+                        {"id": "root", "component": "Card", "child": "said"},
+                        {"id": "said", "component": "Text", "text": "Discarded"},
+                    ],
+                },
+            },
+            {
+                "version": "v0.9",
+                "updateDataModel": {"surfaceId": "proposal", "path": "/state", "value": "done"},
+            },
+        ]
+    )
+    responder = _FakeResponder(["<a2ui-json>" + update + "</a2ui-json>"])
+    queue = _FakeQueue()
+    await _executor(responder).execute(_Ctx("discard it"), queue)
+
+    sent = [d for d in _data_parts(queue) if "updateComponents" in d]
+    assert len(sent) == 1
+    assert sent[0]["updateComponents"]["surfaceId"] == "proposal"
+    assert {c["id"] for c in sent[0]["updateComponents"]["components"]} == {"root", "said"}
+    assert len([d for d in _data_parts(queue) if "updateDataModel" in d]) == 1
+    assert queue.events[-1].status.state.value == "completed"
+
+
+@pytest.mark.asyncio
+async def test_a_turn_deleting_a_surface_painted_before_sends_the_delete():
+    delete = json.dumps([{"version": "v0.9", "deleteSurface": {"surfaceId": "old"}}])
+    responder = _FakeResponder(["<a2ui-json>" + delete + "</a2ui-json>"])
+    queue = _FakeQueue()
+    await _executor(responder).execute(_Ctx("close it"), queue)
+    assert [d for d in _data_parts(queue) if "deleteSurface" in d] == [
+        {"version": "v0.9", "deleteSurface": {"surfaceId": "old"}}
+    ]

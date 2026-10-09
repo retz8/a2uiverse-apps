@@ -225,6 +225,30 @@ def _resolve_prompt(context: RequestContext) -> str:
     return prompt
 
 
+_A2UI_MESSAGE_KINDS = ("createSurface", "updateComponents", "updateDataModel", "deleteSurface")
+
+
+def _message_key(message: object) -> tuple[str, str] | None:
+    """The (surface id, message kind) an A2UI message carries, or None for anything else."""
+    if not isinstance(message, dict):
+        return None
+    for kind in _A2UI_MESSAGE_KINDS:
+        block = message.get(kind)
+        if isinstance(block, dict) and isinstance(block.get("surfaceId"), str):
+            return block["surfaceId"], kind
+    return None
+
+
+def _unstreamed(payload: list[dict], streamed: set[tuple[str, str]]) -> list[dict]:
+    """The payload's messages whose surface and kind the stream never sent, in order.
+
+    The stream parser holds a surface's components back until it has seen the surface
+    created in the same parse, and a delete likewise: a turn that updates or deletes a
+    surface an earlier turn painted streams none of it (a2uiverse task-12.13 decision 45).
+    """
+    return [m for m in payload if (key := _message_key(m)) is not None and key not in streamed]
+
+
 def _collect_payload(accumulated: str) -> list[dict]:
     """Extracts the full A2UI message list from the accumulated model text.
 
@@ -422,6 +446,8 @@ class LlmAgentExecutor(AgentExecutor):
         correction: str | None = None
         model_unavailable = False
         created_surfaces: set[str] = set()
+        # What the stream has sent, by (surface id, message kind), across the attempts.
+        streamed: set[tuple[str, str]] = set()
         # Request-level paint metas (surfaceId -> meta), fed by the per-attempt tag
         # filter: a retry's re-declared tag overwrites, so the marker validation always
         # judges the latest declaration.
@@ -467,6 +493,10 @@ class LlmAgentExecutor(AgentExecutor):
                         break
                     for response_part in response_parts:
                         created_surfaces |= self._surface_ids(response_part)
+                        data = response_part.a2ui_json or []
+                        for msg in data if isinstance(data, list) else [data]:
+                            if (key := _message_key(msg)) is not None:
+                                streamed.add(key)
                         parts = self._parts_for(response_part, tag_filter, paint_metas)
                         if parts:
                             self._recorder.record_batch(parts)
@@ -577,6 +607,15 @@ class LlmAgentExecutor(AgentExecutor):
                 continue
 
             self._dump_surface(payload)
+            # What the stream held back — an update or a delete to a surface painted in an
+            # earlier turn — goes now, whole, as validated.
+            if unsent := _unstreamed(payload, streamed):
+                unsent_parts = [create_a2ui_part(m, version=WIRE_VERSION) for m in unsent]
+                self._recorder.record_batch(unsent_parts)
+                await updater.update_status(
+                    TaskState.working,
+                    new_agent_parts_message(unsent_parts, task.context_id, task.id),
+                )
             logger.info("attempt %d: surface valid, task %s completed", attempt, task.id)
             self._recorder.end_turn("completed")
             await updater.update_status(TaskState.completed, final=True)
