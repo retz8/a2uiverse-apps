@@ -20,15 +20,25 @@ from a2ui_agent_kit.knowledge import load_brand_guidance, load_domain_knowledge
 # spliced in right after the header, names what the examples are instead.
 _EXAMPLES_HEADER = "### Examples:\n"
 
+# Every app's: a failure the model reports in prose is drawn on the canvas for a person
+# who may not work in tech (a2uiverse task-12.13 decision 36).
+FAILURE_WORDING = (
+    "A failure you report in prose is read on the screen by the person using the app, who "
+    "may not work in tech. Say what didn't work, and what they can do about it when there is "
+    "something, in their words. Never write an HTTP status code or error name, an exception, "
+    "a tool or API name, a URL, or a term from sign-in or the protocol such as token, scope, "
+    "permission grant or endpoint."
+)
+
 
 def build_system_prompt(
     config: AgentAppConfig, schema_manager: A2uiSchemaManager | None = None
 ) -> str:
     """Assembles the full system instruction via the SDK's generate_system_prompt.
 
-    Authored content is the config's role prose plus its workflow blocks and the
-    domain doc (joined into the workflow slot, which is the only one that takes free
-    authored prose); the brand doc feeds ui_description, and the full catalog schema
+    Authored content is the config's role prose plus the kit's failure wording, the
+    config's workflow blocks and the domain doc (joined into the workflow slot, which is
+    the only one that takes free authored prose); the brand doc feeds ui_description, and the full catalog schema
     and the examples are injected by the SDK (with the examples framing spliced under
     the SDK's header — it offers no slot for it).
     """
@@ -36,7 +46,7 @@ def build_system_prompt(
     prompt = sm.generate_system_prompt(
         role_description=config.role_description,
         workflow_description="\n\n".join(
-            [*config.workflow_descriptions, load_domain_knowledge(config)]
+            [FAILURE_WORDING, *config.workflow_descriptions, load_domain_knowledge(config)]
         ),
         ui_description=load_brand_guidance(config),
         include_schema=True,

@@ -1,7 +1,7 @@
 """Prompt-assembly mechanics: slot mapping, join order, and the examples splice."""
 
 from a2ui_agent_kit.knowledge import load_brand_guidance, load_domain_knowledge
-from a2ui_agent_kit.prompt import _EXAMPLES_HEADER, build_system_prompt
+from a2ui_agent_kit.prompt import _EXAMPLES_HEADER, FAILURE_WORDING, build_system_prompt
 
 
 def test_prompt_carries_role_workflow_domain_and_brand(any_config):
@@ -31,3 +31,12 @@ def test_prompt_includes_the_catalog_schema_and_examples(any_config):
     prompt = build_system_prompt(any_config)
     assert "Column" in prompt  # schema included
     assert "---BEGIN" in prompt  # examples rendered
+
+
+def test_a_failure_said_in_words_is_worded_for_the_person_ahead_of_the_vendor_blocks(any_config):
+    # a2uiverse task-12.13 decision 36: "403 Forbidden error" reached the canvas.
+    prompt = build_system_prompt(any_config)
+    assert prompt.count(FAILURE_WORDING) == 1
+    assert FAILURE_WORDING + "\n\n" + any_config.workflow_descriptions[0] in prompt
+    for term in ("status code", "token", "scope"):
+        assert term in FAILURE_WORDING
