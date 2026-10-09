@@ -30,23 +30,42 @@ FAILURE_WORDING = (
     "permission grant or endpoint."
 )
 
+# Every app's: a write it drafts for the person to confirm is plain UI, never a question, and a
+# proposal dismissed is repainted settled (a2uiverse task-12.13 decision 40).
+PROPOSALS = (
+    "A write you draft for the person to confirm — an event, a reply, an issue, a rerun — is a "
+    'proposal, not a question: never declare it kind="question". Declare a question only when '
+    "you cannot go on without the person's choice, such as which of two things they mean. When "
+    "the person dismisses a proposal outright — Discard, Not now — repaint the same surface "
+    "settled: its buttons gone, and one plain line saying what did not happen, such as "
+    "'Discarded — not added to your calendar'. A dismissed proposal is never left with live "
+    "buttons. Backing out of a confirm step to edit the draft is not dismissing it: return the "
+    "person to the draft."
+)
+
 
 def build_system_prompt(
     config: AgentAppConfig, schema_manager: A2uiSchemaManager | None = None
 ) -> str:
     """Assembles the full system instruction via the SDK's generate_system_prompt.
 
-    Authored content is the config's role prose plus the kit's failure wording, the
-    config's workflow blocks and the domain doc (joined into the workflow slot, which is
-    the only one that takes free authored prose); the brand doc feeds ui_description, and the full catalog schema
-    and the examples are injected by the SDK (with the examples framing spliced under
+    Authored content is the config's role prose plus the kit's failure wording and
+    proposals rule, the config's workflow blocks and the domain doc (joined into the
+    workflow slot, which is the only one that takes free authored prose); the brand doc
+    feeds ui_description, and the full catalog schema and the examples are injected by
+    the SDK (with the examples framing spliced under
     the SDK's header — it offers no slot for it).
     """
     sm = schema_manager or catalog_context(config).live_schema_manager()
     prompt = sm.generate_system_prompt(
         role_description=config.role_description,
         workflow_description="\n\n".join(
-            [FAILURE_WORDING, *config.workflow_descriptions, load_domain_knowledge(config)]
+            [
+                FAILURE_WORDING,
+                PROPOSALS,
+                *config.workflow_descriptions,
+                load_domain_knowledge(config),
+            ]
         ),
         ui_description=load_brand_guidance(config),
         include_schema=True,

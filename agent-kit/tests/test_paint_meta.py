@@ -202,9 +202,9 @@ def test_marker_without_dialog_root_rejected():
         _dialog_policy(_rooted_payload("s1", "PageLayout"), metas)
 
 
-def test_dialog_root_without_marker_rejected():
-    with pytest.raises(ValueError, match='kind="question"'):
-        _dialog_policy(_rooted_payload("q1", "ConfirmationDialog"), {})
+def test_dialog_root_without_marker_passes():
+    # A proposal drawn as a dialog is not a question (a2uiverse task-12.13 decision 43).
+    _dialog_policy(_rooted_payload("q1", "ConfirmationDialog"), {})
 
 
 def test_titled_non_question_surface_passes():

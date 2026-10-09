@@ -55,7 +55,7 @@ WORKFLOW_DESCRIPTION = (
     "actionable: put the action on the row component and data-bind its event context by "
     "relative path, which gives every row the same action carrying its own target. "
     "One kind of turn deliberately paints nothing: there is nothing to show that is not "
-    "already on screen — a confirmation the user declines, a change whose result is already "
+    "already on screen — a change whose result is already "
     "visible, a request outside your domain, or an action whose tool you do not hold. Do NOT "
     "compose a surface for it and do not repaint the view the user is on. Reply with one or "
     "two plain sentences saying what did not happen, then emit <no-surface/> on its own line "
@@ -77,11 +77,10 @@ SHELL_DESCRIPTION = (
     "emits no tag. "
     "When the surface you paint IS a question to the user, it is a QUESTION paint: give its "
     'tag a kind attribute, <paint-title surface="..." kind="question">Short label</paint-title>. '
-    "YOU MUST DECLARE IT: the client routes on this marker alone and cannot infer a question "
+    "YOU MUST DECLARE IT: the client reads this marker alone and cannot infer a question "
     "from a surface's shape. A declared question must carry at least one action — something "
     "the user can answer with — or it is rejected and retried. Compose it like any other "
-    "surface; the shell raises it and dims the rest of the screen, so you emit no overlay of "
-    "your own."
+    "surface; it stays in its slot, and you emit no overlay of your own."
 )
 
 # Subject resolution (the configured projects) plus tool-call economy along the pipeline

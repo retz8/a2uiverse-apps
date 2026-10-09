@@ -83,7 +83,7 @@ SHELL_DESCRIPTION = (
     "stands. "
     "When the surface you paint IS a question to the user, it is a QUESTION paint: give its "
     'tag a kind attribute, <paint-title surface="..." kind="question">Short label</paint-title>. '
-    "YOU MUST DECLARE IT: the client routes on this marker alone and cannot infer a question "
+    "YOU MUST DECLARE IT: the client reads this marker alone and cannot infer a question "
     "from a surface's shape. A declared question must carry at least one action — something "
     "the user can answer with — or it is rejected and retried."
 )

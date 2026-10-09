@@ -53,7 +53,7 @@ ROLE_DESCRIPTION = (
     "State follows the same line: never depict GitHub state a write would have produced before "
     "that write's tool has returned. A review or comment you drafted exists only in your "
     "surface; once a write fires, the state you paint comes from the tool's result or a fresh "
-    "read, never from your draft alone. When the user declines or backs out of a confirmation, "
+    "read, never from your draft alone. When the user backs out of a confirmation to edit, "
     "return them to the compose surface with their draft intact; a view that shows the action "
     "as already done is a false statement about the world. "
     "An affordance fails in both directions: one that claims what you cannot do is a lie, and one "
@@ -109,8 +109,8 @@ WORKFLOW_DESCRIPTION = (
 # The canvas shell's paint-title contract (task 8.5): the tag the executor converts
 # into the paintMeta shell DataPart. Titles are best-effort on the wire (the client
 # has a cause-derived fallback), but the prompt states them as the norm; the
-# question marker is validated (marker <-> ConfirmationDialog root imply each other,
-# enforced by validate_question_markers through the correction/retry loop).
+# question marker is validated (a declared question has a ConfirmationDialog root, enforced by
+# the question policy through the correction/retry loop).
 SHELL_DESCRIPTION = (
     "Every surface you paint gets a short human title, emitted as a tag in your prose: "
     "immediately before each <a2ui-json> block that contains a createSurface, write "
@@ -123,12 +123,11 @@ SHELL_DESCRIPTION = (
     "(no createSurface) emits no tag — the existing title stands; if the content shifts "
     "enough to deserve a new name, that is your cue to repaint the surface instead. "
     "When the surface you paint IS a question to the user — asking which repository is "
-    "meant, or whether to proceed — it is a QUESTION paint: give its tag a kind attribute, "
+    "meant — it is a QUESTION paint: give its tag a kind attribute, "
     '<paint-title surface="..." kind="question">Short label of the question</paint-title>, '
-    "and compose the surface as a ConfirmationDialog root carrying the question. The two "
-    'go together and are validated together: a surface declared kind="question" must have '
-    "a ConfirmationDialog root, and a ConfirmationDialog-rooted surface must be declared "
-    'kind="question". '
+    "and compose the surface as a ConfirmationDialog root carrying the question. A surface "
+    'declared kind="question" must have a ConfirmationDialog root; a ConfirmationDialog that '
+    "confirms a write you proposed is not a question and is not declared one. "
     "When the user confirms a proposed action, PERFORM it: call the write tool, then paint "
     "what happened from the tool's result (and any fresh read it warrants) — never from your "
     "draft alone. One kind of turn still deliberately paints nothing: the user asks for an "

@@ -1,7 +1,12 @@
 """Prompt-assembly mechanics: slot mapping, join order, and the examples splice."""
 
 from a2ui_agent_kit.knowledge import load_brand_guidance, load_domain_knowledge
-from a2ui_agent_kit.prompt import _EXAMPLES_HEADER, FAILURE_WORDING, build_system_prompt
+from a2ui_agent_kit.prompt import (
+    _EXAMPLES_HEADER,
+    FAILURE_WORDING,
+    PROPOSALS,
+    build_system_prompt,
+)
 
 
 def test_prompt_carries_role_workflow_domain_and_brand(any_config):
@@ -37,6 +42,15 @@ def test_a_failure_said_in_words_is_worded_for_the_person_ahead_of_the_vendor_bl
     # a2uiverse task-12.13 decision 36: "403 Forbidden error" reached the canvas.
     prompt = build_system_prompt(any_config)
     assert prompt.count(FAILURE_WORDING) == 1
-    assert FAILURE_WORDING + "\n\n" + any_config.workflow_descriptions[0] in prompt
+    assert FAILURE_WORDING + "\n\n" + PROPOSALS + "\n\n" + any_config.workflow_descriptions[0] in prompt
     for term in ("status code", "token", "scope"):
         assert term in FAILURE_WORDING
+
+
+def test_a_proposal_is_no_question_and_a_dismissed_one_repaints_settled(any_config):
+    # a2uiverse task-12.13 decision 40: a draft the person asked for was marked a question,
+    # and Discard left it on screen with live buttons.
+    prompt = build_system_prompt(any_config)
+    assert prompt.count(PROPOSALS) == 1
+    for words in ('kind="question"', "Discard", "buttons"):
+        assert words in PROPOSALS

@@ -14,8 +14,8 @@ question marker is the client's whole contract -- it routes on the marker alone,
 structural fallback having been removed -- so a question MUST be declared. What a
 declared question is checked AGAINST is app policy, not a canvas invariant: the config
 selects a question policy, and the kit ships the two known ones — `require_carries_action`
-(a declared question must be answerable) and `require_root_component(name)` (marker and
-a purpose-built dialog root imply each other).
+(a declared question must be answerable) and `require_root_component(name)` (a declared
+question has a purpose-built dialog root).
 
 The same tag channel carries one more shell marker: <no-surface/>, the model's
 declared prose-only turn. Emitting it says "this turn deliberately paints nothing"
@@ -184,13 +184,13 @@ def _carries_action(component: dict) -> bool:
 
 
 def require_root_component(name: str):
-    """Marker <-> dialog consistency (task-8.5 decision 6), per created surface.
+    """Marker -> dialog (task-8.5 decision 6), per created surface.
 
     Returns a policy for catalogs with a rare, purpose-built question component: a
-    surface declared kind="question" must have a `name` root, and a `name`-rooted
-    surface must be declared a question. Bidirectional by design — the consistency is
-    the app's question idiom, not a canvas invariant (the client routes on the marker
-    alone). Raises ValueError naming the fix.
+    surface declared kind="question" must have a `name` root. A `name`-rooted surface
+    need not be a question — a proposal drawn as a dialog is not one (a2uiverse task-12.13
+    decision 43). The app's question idiom, not a canvas invariant. Raises ValueError
+    naming the fix.
     """
 
     def policy(payload: list[dict], metas: dict[str, dict]) -> None:
@@ -219,13 +219,6 @@ def require_root_component(name: str):
                     f"'{name}'. A question surface must have a "
                     f"{name} root; either compose the question as a "
                     f"{name} or drop the kind attribute."
-                )
-            if is_dialog and not declared:
-                raise ValueError(
-                    f"surface '{surface_id}' has a '{name}' root but is "
-                    'not declared kind="question". A question surface must be declared: '
-                    f'emit <paint-title surface="{surface_id}" kind="question">…'
-                    "</paint-title> before its <a2ui-json> block."
                 )
 
     return policy
