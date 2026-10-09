@@ -28,13 +28,16 @@ const surfaces: [string, Message[]][] = [
         Message[],
       ],
   ),
-  ...readdirSync(DETERMINISTIC).map(
-    file =>
-      [`deterministic ${file}`, read(join(DETERMINISTIC, file)) as Message[]] as [
-        string,
-        Message[],
-      ],
-  ),
+  // One set per fake account, each in its own folder (task-12.11).
+  ...readdirSync(DETERMINISTIC, {recursive: true, encoding: 'utf8'})
+    .filter(file => file.endsWith('.json'))
+    .map(
+      file =>
+        [`deterministic ${file}`, read(join(DETERMINISTIC, file)) as Message[]] as [
+          string,
+          Message[],
+        ],
+    ),
 ];
 
 /**
