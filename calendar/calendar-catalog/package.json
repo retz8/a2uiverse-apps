@@ -50,7 +50,7 @@
   "devDependencies": {
     "@a2ui/react": "^0.10.2",
     "@a2ui/web_core": "^0.10.1",
-    "@a2uiverse/stellify": "github:retz8/a2uiverse#18a1b9e73427a589a0e7bf1662c2ae38128bdbb8&path:packages/stellify",
+    "@a2uiverse/stellify": "github:retz8/a2uiverse#b061a177528aa7854fdbbb7c084e7ac2ea7292ee&path:packages/stellify",
     "@material/material-color-utilities": "0.4.0",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
