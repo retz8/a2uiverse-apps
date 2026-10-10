@@ -39,6 +39,7 @@ def _after_tool(tool_name: str, tool_response: Any) -> Any:
 CONFIG = AgentAppConfig(
     name=APP_NAME,
     description=APP_DESCRIPTION,
+    version="0.1.0",
     skills=SKILLS,
     provider=AgentProvider(organization="GitHub", url="https://github.com"),
     documentation_url="https://github.com/retz8/a2uiverse-apps/blob/main/github/agent/README.md",

@@ -82,6 +82,9 @@ DISPLAY_CLAIMS = ("email", "preferred_username", "name")
 
 # The non-interactive entry: names a fake account, deterministic and stub mode.
 FAKE_ACCOUNT_PARAM = "fake_account"
+# What a live agent answers the entry with; the preview credential command reads it
+# (a2uiverse task-13.7 decision 3).
+FAKE_ACCOUNT_LIVE_REFUSAL = f"'{FAKE_ACCOUNT_PARAM}' is for the fake accounts, not live mode."
 
 AUTHORIZE_PATH = "/oauth/authorize"
 TOKEN_PATH = "/oauth/token"
@@ -700,7 +703,7 @@ class SignInServer:
         fake = data.get(FAKE_ACCOUNT_PARAM)
         if fake is not None:
             if self.mode == "live":
-                return refuse(f"'{FAKE_ACCOUNT_PARAM}' is for the fake accounts, not live mode.")
+                return refuse(FAKE_ACCOUNT_LIVE_REFUSAL)
             account = self.upstream.account(fake)
             if account is None:
                 return refuse(f"'{FAKE_ACCOUNT_PARAM}' names no account.")

@@ -33,6 +33,7 @@ def _live_toolset(account):
 CONFIG = AgentAppConfig(
     name=APP_NAME,
     description=APP_DESCRIPTION,
+    version="0.1.0",
     skills=SKILLS,
     provider=AgentProvider(organization="Linear", url="https://linear.app"),
     documentation_url="https://github.com/retz8/a2uiverse-apps/blob/main/linear/agent/README.md",

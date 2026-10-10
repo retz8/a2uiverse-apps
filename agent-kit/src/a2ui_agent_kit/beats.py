@@ -71,6 +71,15 @@ def log(message: str) -> None:
     print(f"[record-beats] {message}", flush=True)
 
 
+class SignInFailed(SystemExit):
+    """A sign-in that ended anywhere but a code at the return: `location` is where the agent
+    sent the browser, an OAuth error carrying the agent's words when it refused."""
+
+    def __init__(self, location: str):
+        super().__init__(f"signing in failed: {location or 'no answer'}")
+        self.location = location
+
+
 def card_scopes(card: dict) -> list[str] | None:
     """Every scope the card's `oauth2` scheme declares; None when the card asks no OAuth sign-in."""
     for scheme in (card.get("securitySchemes") or {}).values():
@@ -115,7 +124,7 @@ def _sign_in(
         )
         location = browse(url)
         if not location.startswith(redirect) or "code=" not in location:
-            raise SystemExit(f"signing in failed: {location or 'no answer'}")
+            raise SignInFailed(location)
         token = oauth.fetch_token(
             metadata["token_endpoint"],
             authorization_response=location,

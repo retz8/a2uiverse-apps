@@ -34,6 +34,7 @@ def make_config(kind: str, tmp_path: Path, **overrides) -> AgentAppConfig:
     defaults = dict(
         name="Test Agent",
         description="A vendor-neutral test agent.",
+        version="0.1.0",
         skills=[
             AgentSkill(
                 id="test-skill",

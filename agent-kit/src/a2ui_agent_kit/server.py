@@ -57,7 +57,7 @@ def build_agent_card(
         name=config.name,
         description=config.description,
         url=base_url,
-        version="0.1.0",
+        version=config.version,
         default_input_modes=["text", "text/plain"],
         default_output_modes=["text", "text/plain"],
         capabilities=capabilities,

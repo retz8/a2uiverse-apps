@@ -45,6 +45,9 @@ class AgentAppConfig:
     # Identity / wiring
     name: str  # AgentCard name
     description: str
+    # The card's `version`, the app's version: a publish that changes the card carries one
+    # this app has never published (a2uiverse task-13.7 decision 5).
+    version: str
     skills: Sequence[AgentSkill]
     default_port: int  # manual-run fallback; launched runs pass --port explicitly
     responder_app_name: str  # ADK Runner app_name, e.g. "a2ui_gmail_live"

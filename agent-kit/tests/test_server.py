@@ -16,6 +16,7 @@ def test_card_carries_the_config_identity_and_v091_extension(any_config):
     card = build_agent_card(any_config, "http://localhost:19999")
     assert card.name == any_config.name
     assert card.description == any_config.description
+    assert card.version == any_config.version
     assert [s.id for s in card.skills] == [s.id for s in any_config.skills]
     uris = [e.uri for e in card.capabilities.extensions]
     assert uris == [V091_URI]  # one card, v0.9.1, every mode
@@ -39,6 +40,14 @@ def test_card_names_its_provider_and_help_page_when_the_config_does(tmp_path):
     assert card.documentation_url == "https://example.com/help"
     bare = build_agent_card(make_config("basic", tmp_path), "http://localhost:19999")
     assert bare.provider is None and bare.documentation_url is None
+
+
+def test_card_version_is_the_configs(tmp_path):
+    # The app's version moves through its config (a2uiverse task-13.7 decision 5).
+    from .conftest import make_config
+
+    card = build_agent_card(make_config("basic", tmp_path, version="2.3.0"), "http://localhost:19999")
+    assert card.version == "2.3.0"
 
 
 def test_card_advertises_the_apps_catalog(any_config):

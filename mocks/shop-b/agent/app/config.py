@@ -33,6 +33,7 @@ def _live_tools():
 CONFIG = AgentAppConfig(
     name=APP_NAME,
     description=APP_DESCRIPTION,
+    version="0.1.0",
     skills=SKILLS,
     provider=AgentProvider(organization="Northlight", url="https://northlight.example"),
     documentation_url="https://github.com/retz8/a2uiverse-apps/blob/main/mocks/shop-b/agent/README.md",

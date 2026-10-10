@@ -13,6 +13,7 @@ def _minimal_config(tmp_path: Path) -> AgentAppConfig:
     return AgentAppConfig(
         name="Test Agent",
         description="A test agent.",
+        version="0.1.0",
         skills=[AgentSkill(id="s1", name="skill", description="d", tags=["t"])],
         default_port=19999,
         responder_app_name="a2ui_test_live",

@@ -113,6 +113,7 @@ ${policyDef}
 CONFIG = AgentAppConfig(
     name=APP_NAME,
     description=APP_DESCRIPTION,
+    version="0.1.0",
     skills=SKILLS,
     default_port=${a.port},
     responder_app_name="a2ui_${ident}_live",

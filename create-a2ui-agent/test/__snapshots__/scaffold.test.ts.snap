@@ -34,6 +34,7 @@ def _live_toolset():
 CONFIG = AgentAppConfig(
     name=APP_NAME,
     description=APP_DESCRIPTION,
+    version="0.1.0",
     skills=SKILLS,
     default_port=11004,
     responder_app_name="a2ui_acme_mail_live",
@@ -259,6 +260,7 @@ def _no_question_policy(payload: list[dict], metas: dict[str, dict]) -> None:
 CONFIG = AgentAppConfig(
     name=APP_NAME,
     description=APP_DESCRIPTION,
+    version="0.1.0",
     skills=SKILLS,
     default_port=11004,
     responder_app_name="a2ui_acme_mail_live",
