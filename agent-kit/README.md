@@ -21,6 +21,7 @@ run(CONFIG)
 # app/config.py, abridged
 CONFIG = AgentAppConfig(
     name=APP_NAME,
+    version="0.1.0",                         # the agent card's version
     skills=SKILLS,                            # the agent card's skills
     default_port=11005,
     catalog_path=CATALOG_JSON,                # the app's A2UI catalog
@@ -37,7 +38,7 @@ CONFIG = AgentAppConfig(
 )
 ```
 
-`provider` and `documentation_url` go on the agent card: where a person finishes on the app's own side, such as A2UIVerse's "Continue on" link and the help link on its key page. [`src/a2ui_agent_kit/config.py`](src/a2ui_agent_kit/config.py) lists every field. [`create-a2ui-agent`](../create-a2ui-agent/) scaffolds a whole app with this already filled in, `provider` and `documentation_url` aside.
+`version` is the agent card's version, the app's: when the card changes, it moves to one the app has never published, or the marketplace refuses the publish. `provider` and `documentation_url` go on the agent card: where a person finishes on the app's own side, such as A2UIVerse's "Continue on" link and the help link on its key page. [`src/a2ui_agent_kit/config.py`](src/a2ui_agent_kit/config.py) lists every field. [`create-a2ui-agent`](../create-a2ui-agent/) scaffolds a whole app with this already filled in, `provider` and `documentation_url` aside.
 
 Then every app runs the same way:
 
@@ -152,6 +153,7 @@ The store holds the issued tokens (by hash), the registered clients, the account
 | `sign_in_store`, `sign_in_fake`       | The owner-only store behind sign-in, and the chooser over the fake accounts                                                         |
 | `sign_in_vendor`                      | Optional: live sign-in with a vendor's OAuth, as the upstream sign-in                                                               |
 | `testing`                             | Runs an executor in-process, or the agent on a port signed in as a vault would, for an app's tests                                  |
+| `preview_credential`                  | A token from your running agent for Stellify's `preview`, signed in as one of its fake accounts                                     |
 
 The system prompt puts three rules every app shares ahead of the app's own workflow: a failure reported in prose is worded for a person who may not work in tech, with no status code, tool name, URL or sign-in term; a write drafted for the person to confirm is a proposal, never declared a question, and one dismissed outright is repainted settled; and the person's time zone is passed to every tool that takes one, a time from a tool that takes none is shown with its zone named, and no time is converted by the model.
 
@@ -179,6 +181,22 @@ uv run pytest
 ```
 
 No model calls and no credentials needed. The scaffolder's own tests also run a freshly scaffolded app against this checkout of the kit, so a change here that breaks new apps fails there.
+
+## Previewing for the marketplace
+
+The marketplace can't sign in to an app, so for an app whose card asks sign-in, Stellify's `preview` asks your running agent its first screen on your machine, with a token you give it in `STELLIFY_CREDENTIAL`. `preview_credential` gets that token from the agent: it signs in as one of the agent's fake accounts, for what the card asks at a first sign-in, and prints the token alone, every other line going to stderr.
+
+```bash
+cd linear/agent
+uv run python -m app --mode deterministic   # in one terminal
+export STELLIFY_CREDENTIAL=$(uv run python -m a2ui_agent_kit.preview_credential --url http://localhost:11005 --account me)
+```
+
+`--url` is the agent's address or its card's; `--account` is one of the fake accounts the agent's README lists. The fake accounts sign in only in `deterministic` and `stub` mode. An agent running `live` is previewed from a `deterministic` or `stub` run of the same checkout: the card is the same in every mode, so the preview is at the version the live card carries. It prints nothing on stdout and exits 1 when:
+
+- **the agent runs `live`**, saying to preview from a `deterministic` or `stub` run;
+- **the app signs in with a key**, saying to set `STELLIFY_CREDENTIAL` to the key;
+- **the app asks no sign-in**, saying to preview it without a credential.
 
 ## Connecting to A2UIVerse
 

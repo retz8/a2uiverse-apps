@@ -100,6 +100,34 @@ pnpm dev:all                                        # the apps and A2UIVerse tog
 
 Without them the app still works: the arrows read "Back", and a question goes unannounced. Every app here sends both; `create-a2ui-agent --ecosystem` sets up a new app to.
 
+## Publishing an app
+
+An app reaches A2UIVerse's marketplace from its own checkout with [Stellify](https://github.com/retz8/a2uiverse/tree/main/packages/stellify), the catalog package's dev dependency: claim a publisher name once, then for each app pack its catalog, take its preview when its card asks sign-in, and publish. Stellify's README has every verb.
+
+```bash
+cd linear/linear-catalog
+pnpm exec stellify claim <name> --marketplace http://localhost:10002   # once; the token stays in your home directory
+pnpm build && pnpm exec stellify pack                                  # writes dist/artifact/
+# the agent running in deterministic mode, in another terminal
+export STELLIFY_CREDENTIAL=$(cd ../agent && uv run python -m a2ui_agent_kit.preview_credential --url http://localhost:11005 --account me)
+pnpm exec stellify preview linear http://localhost:11005/.well-known/agent-card.json dist/artifact
+pnpm exec stellify publish linear http://localhost:11005/.well-known/agent-card.json dist/artifact --preview preview.json
+```
+
+| App id     | Port    | Catalog folder                | Preview credential                                                       |
+| ---------- | ------- | ----------------------------- | ------------------------------------------------------------------------ |
+| `github`   | `11001` | `github/github-catalog`       | `preview_credential --account retz8`                                     |
+| `gmail`    | `11002` | `gmail/gmail-catalog`         | `preview_credential --account you`, or `personal`                        |
+| `calendar` | `11003` | `calendar/calendar-catalog`   | `preview_credential --account you`                                       |
+| `circleci` | `11004` | `circleci/circleci-catalog`   | `preview_credential --account retz8`                                     |
+| `linear`   | `11005` | `linear/linear-catalog`       | `preview_credential --account me`                                        |
+| `shop-a`   | `12001` | `mocks/shop-a/shop-a-catalog` | none: no sign-in, so the marketplace takes its preview itself at publish |
+| `shop-b`   | `12002` | `mocks/shop-b/shop-b-catalog` | its demo key, `northlight-demo-key-4f7c2a`                               |
+
+The preview is the app's first screen on its Store listing, so it is taken in `deterministic` or `stub` mode, over canned data: the fake accounts sign in nowhere else. An agent running `live` is previewed from a `deterministic` run of the same checkout and published with the live agent's card URL; the card is the same in every mode, so the preview is at its version. When the card changes, move `version` in the agent's `app/config.py` to one the app has never published.
+
+A2UIVerse's launcher does all of this for the roster with `pnpm dev:all --publish`, `--mode live` included.
+
 ## Working in this repo
 
 Node 22 or newer, with pnpm through Corepack, and [uv](https://docs.astral.sh/uv/) for the agents.
