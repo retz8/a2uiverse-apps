@@ -65,6 +65,7 @@ This project targets a single protocol version at a time.
 - **No disposition popups — always plain chat.** Never use the `AskUserQuestion` tool to present dispositions, decisions, or choices. Lay out the options, tradeoffs, and a recommendation as plain chat text so the user keeps full flexibility to respond however they want.
 - **Local only.** Every app runs as a local process in its own terminal. Nothing in this project is deployed.
 - **Credential-collecting components are not in any catalog.** No password, card, or OTP input. Auth is declared on the AgentCard (`securitySchemes`) and painted by the platform, never by an app.
+- **READMEs are a DX product.** A README is a doc for a human — concise but understandable and easy to read, not a complex dev doc. Its shape: what the package is, in one line; a quick start that works in a minute; the commands or the API, one line each; the details below in short sections or collapsed; the _why_ pointed at the platform's design records (`../a2uiverse/docs/design/`), never restated.
 
 Catalog-authoring and renderer-design conventions live in the `a2ui-sdk-design` skill (read per the top instruction before that work).
 
