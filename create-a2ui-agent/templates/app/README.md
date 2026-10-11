@@ -18,4 +18,4 @@ The agent runs on port **__PORT__**. Live mode needs a Gemini key and the creden
 
 ## Connecting to A2UIVerse
 
-[A2UIVerse](https://github.com/retz8/a2uiverse) installs the app from its agent's card, with its catalog packed by Stellify. How the agent and the catalog connect is in their own READMEs: the [agent](agent/README.md#connecting-to-a2uiverse) and the [catalog](__PACKAGE_NAME__/README.md#connecting-to-a2uiverse).
+[A2UIVerse](https://github.com/retz8/a2uiverse) installs the app from its agent's card, with its catalog packed by Stellify, or from its marketplace by id once the app is published there. How the agent and the catalog connect is in their own READMEs: the [agent](agent/README.md#connecting-to-a2uiverse) and the [catalog](__PACKAGE_NAME__/README.md#connecting-to-a2uiverse).

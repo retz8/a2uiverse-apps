@@ -77,6 +77,6 @@ One conversation: the catalogue, a camera opened, back to the list, then sorted 
 
 ## Connecting to A2UIVerse
 
-Launch the pair from the [A2UIVerse](https://github.com/retz8/a2uiverse) repo with `pnpm dev:all --tier mocks`, the mock tier in place of the vendor apps. The launcher starts each store on the port its roster gives it, the `default_port` in [`app/config.py`](app/config.py), packs its catalog with Stellify, and installs it from the agent's card.
+Launch the pair from the [A2UIVerse](https://github.com/retz8/a2uiverse) repo with `pnpm dev:all --tier mocks`, the mock tier in place of the vendor apps. The launcher starts each store on the port its roster gives it, the `default_port` in [`app/config.py`](app/config.py), packs its catalog with Stellify, and installs it from the agent's card — or, under `--publish`, publishes it to A2UIVerse's marketplace and installs it from there by id.
 
 A2UIVerse's merged view points into `/items` on `list`, by camera id, so keep the surface ids and data paths as they are. Opening a camera takes this store's values out of the merged view until you go back; sorting reorders the list without changing what the merged view shows.
