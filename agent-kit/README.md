@@ -1,10 +1,26 @@
 # a2ui-agent-kit
 
-A Python kit for building A2A agents that answer with UI they generate in A2UI. It carries everything the apps in this repo share: the A2A server, the three run modes, catalog loading and validation, prompt assembly and recording. Each app keeps only what is its own: its card, prompt prose, tools, fixtures and knowledge docs.
+A Python kit for building A2A agents that answer with UI they generate in A2UI. It carries everything the apps in this repo share — the A2A server, the three run modes, sign-in, catalog loading and validation, prompt assembly and recording — so an app keeps only what is its own: its card, prompt prose, tools, fixtures and knowledge docs. An agent built on it speaks A2UI and A2A and nothing else. Unofficial: not part of the A2UI project.
 
-An agent built on it speaks A2UI and A2A and nothing else. Unofficial: not part of the A2UI project.
+## Install
 
-## Using it
+Apps in this repo take it as an editable path dependency, so they always run on the kit as it is:
+
+```toml
+[tool.uv.sources]
+a2ui-agent-kit = { path = "../../agent-kit", editable = true }
+```
+
+An app anywhere else pins it to a commit:
+
+```toml
+[tool.uv.sources]
+a2ui-agent-kit = { git = "https://github.com/retz8/a2uiverse-apps", subdirectory = "agent-kit", rev = "<sha>" }
+```
+
+[`create-a2ui-agent`](../create-a2ui-agent/) scaffolds a whole app with the config below already filled in, `provider` and `documentation_url` aside.
+
+## Quick start
 
 An app hands the kit one `AgentAppConfig` and calls `run`:
 
@@ -38,8 +54,6 @@ CONFIG = AgentAppConfig(
 )
 ```
 
-`version` is the agent card's version, the app's: when the card changes, it moves to one the app has never published, or the marketplace refuses the publish. `provider` and `documentation_url` go on the agent card: where a person finishes on the app's own side, such as A2UIVerse's "Continue on" link and the help link on its key page. [`src/a2ui_agent_kit/config.py`](src/a2ui_agent_kit/config.py) lists every field. [`create-a2ui-agent`](../create-a2ui-agent/) scaffolds a whole app with this already filled in, `provider` and `documentation_url` aside.
-
 Then every app runs the same way:
 
 ```bash
@@ -48,11 +62,21 @@ uv run python -m app --mode stub            # the model over canned data
 uv run python -m app --mode live            # the model over the real MCP server
 ```
 
-Flags: `--mode`, `--port`, `--host`, and `--base-url`, the address the agent card advertises. With sign-in on, `--public-url` is the address the browser reaches the sign-in pages at — the sign-in page, the account chooser's form and the finish address — while the card's endpoint, the sign-in metadata and the token endpoint stay on `--base-url`, which it defaults to; `--state-dir` moves the sign-in store and `--access-token-lifetime` shortens the tokens the agent issues, for exercising refresh in development. `MODEL_NAME` picks the model; it defaults to `gemini-3.7-flash`.
+| Flag or variable          | What it does                                                                                                                                                          |
+| ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--mode`                  | `deterministic`, `stub` or `live`                                                                                                                                     |
+| `--port`, `--host`        | Where the agent listens                                                                                                                                               |
+| `--base-url`              | The address the agent card advertises; the card's endpoint, the sign-in metadata and the token endpoint stay here                                                     |
+| `--public-url`            | With sign-in on, the address the browser reaches the sign-in pages at — the sign-in page, the account chooser's form and the finish address; defaults to `--base-url` |
+| `--state-dir`             | Moves the sign-in store, an owner-only file in `<app>/.state/` by default, which git ignores                                                                          |
+| `--access-token-lifetime` | Shortens the tokens the agent issues, for exercising refresh in development                                                                                           |
+| `MODEL_NAME`              | The model; `gemini-3.7-flash` by default                                                                                                                              |
 
-## Turning on sign-in
+`version` is the agent card's version, the app's: when the card changes, it moves to one the app has never published, or the marketplace refuses the publish. `provider` and `documentation_url` go on the card too — where a person finishes on the app's own side, such as A2UIVerse's "Continue on" link and the help link on its key page. [`src/a2ui_agent_kit/config.py`](src/a2ui_agent_kit/config.py) lists every field.
 
-An app that needs its user signed in puts a `SignIn` on its config. The agent becomes its own sign-in front door: an OAuth authorization server that the client signs in against, with its card declaring it. The client never sees the vendor's token. The agent keeps the vendor's token and hands the client a token of its own.
+## Sign-in
+
+An app that needs its user signed in puts a `SignIn` on its config. The agent becomes its own sign-in front door — an OAuth authorization server the client signs in against, declared on its card. The agent keeps the vendor's token and hands the client a token of its own; the client never sees the vendor's.
 
 ```python
 from a2ui_agent_kit.sign_in import FakeAccount, SignIn
@@ -75,29 +99,17 @@ CONFIG = AgentAppConfig(..., sign_in=SIGN_IN)
 
 With it on:
 
-- The card declares one `oauth2` scheme, `signIn`, with the authorization-code flow, the `scopes` map and its metadata address. Its `security` is the first sign-in's scopes.
-- The agent serves its authorization server next to A2A:
-  - metadata at `/.well-known/oauth-authorization-server`;
-  - sign-in at `/oauth/authorize`, with S256 PKCE required;
-  - the token endpoint, with refresh tokens that rotate on every use;
-  - registration, by a client ID metadata document or dynamic registration;
-  - revocation;
-  - an OpenID Connect ID token signed ES256, carrying a stable `sub` and the account's `email`, `preferred_username` and `name`.
-- A `login_hint` naming an account the agent holds binds the sign-in to that account, which is asked again for what it already granted beside the new scopes; one naming no account here binds nothing, and the person chooses.
-- An A2A request without a live token the agent issued is answered 401.
-- Inside a request, `current_account()` is the signed-in account. In deterministic mode the app's answer code reads it to answer from that account's data.
-- An action or tool that needs a scope the token lacks ends the run in A2A's `auth-required` state, naming the missing scopes. A cut-off LLM run is kept out of the conversation history. After the user signs in with more access, the client sends the request again.
-- In live mode the `live_toolset_factory` is called with the account, once per account, so each account's MCP connection carries its own vendor token.
+- **The card** declares one `oauth2` scheme, `signIn`, with the authorization-code flow, the `scopes` map and its metadata address; its `security` is the first sign-in's scopes.
+- **The agent serves its authorization server** next to A2A: metadata at `/.well-known/oauth-authorization-server`; sign-in at `/oauth/authorize`, S256 PKCE required; the token endpoint, with refresh tokens that rotate on every use; registration, by a client ID metadata document or dynamic registration; revocation; and an OpenID Connect ID token signed ES256, carrying a stable `sub` and the account's `email`, `preferred_username` and `name`. A `login_hint` naming an account the agent holds binds the sign-in to that account, asked again for what it already granted beside the new scopes.
+- **Requests.** An A2A request without a live token the agent issued is answered 401. Inside a request, `current_account()` is the signed-in account; in deterministic mode the app's answer code reads it to answer from that account's data. An action or tool that needs a scope the token lacks ends the run in A2A's `auth-required`, naming the missing scopes — a cut-off LLM run kept out of the conversation history — and the client sends the request again once the user has signed in with more access. In live mode `live_toolset_factory` is called with the account, once per account, so each account's MCP connection carries its own vendor token.
+- **Fake accounts.** Deterministic and stub mode sign in with the fake accounts on a chooser page; `fake_account=<id>` on the sign-in address skips the chooser, for recordings and tests, never in live mode. When fake accounts each have their own data, the app keeps a subdirectory per id in each fixtures directory — `fixtures/deterministic/<id>/`, `fixtures/stub/<id>/` — and `fixture_responder` and `stub_fixture_loader` read the signed-in account's; an app with one set keeps it flat. `testing.signed_in_as(sign_in, id)` binds a fake account for answer code called directly in a test.
+- **The beat driver** signs in to an agent whose card asks sign-in, for every scope on the card: `--account <id>` as that fake account; without it, the agent's sign-in page opens in the browser and the return is caught on a `localhost` address (RFC 8252) — the vendor's sign-in in live mode, the chooser otherwise. An agent signing in with a key takes `--api-key`. `per_account=True` on `beats.main` records each account's beats apart, in `recordings/beats/<id>/`.
 
-Deterministic and stub mode sign in with the fake accounts on a chooser page. Adding `fake_account=<id>` to the sign-in address skips the chooser, for recordings and tests; this works in deterministic and stub mode, never live. Live mode signs in through `upstream`, an `UpstreamSignIn` the app provides: it sends the browser to the vendor's sign-in and hands back the account and the vendor's token. It can also refresh the vendor's token before a request, and revoke it when the account's last sign-in ends.
+The store behind sign-in holds the issued tokens (by hash), the registered clients, the accounts and the signing key, in the owner-only file `--state-dir` places.
 
-When fake accounts each have their own data, the app keeps a subdirectory per fake-account id in each fixtures directory — `fixtures/deterministic/<id>/` and `fixtures/stub/<id>/` — and `fixture_responder` and `stub_fixture_loader` read the signed-in account's. An app with one set keeps it flat. `testing.signed_in_as(sign_in, id)` binds a fake account for answer code called directly in a test.
+### With the vendor's OAuth
 
-The beat driver signs in to an agent whose card asks sign-in, asking for every scope on the card. `--account <id>` signs in as that fake account through `fake_account=<id>`. Without it, the driver opens the agent's sign-in page in the browser and catches the return on a `localhost` address (RFC 8252): the vendor's sign-in in live mode, the chooser otherwise. An agent signing in with a key takes `--api-key`. An app recording each account's beats apart passes `per_account=True` to `beats.main`, and the beats land in `recordings/beats/<id>/`.
-
-### Signing in with the vendor's OAuth
-
-For a vendor that signs in with OAuth, `VendorOAuth` is the upstream, configured per vendor:
+Live mode signs in through `upstream`, an `UpstreamSignIn` that sends the browser to the vendor's sign-in and hands back the account and the vendor's token, refreshes it before a request, and revokes it when the account's last sign-in ends. For a vendor that signs in with OAuth, `VendorOAuth` is the upstream:
 
 ```python
 from a2ui_agent_kit.sign_in_vendor import ClientFromEnv, VendorOAuth
@@ -111,18 +123,16 @@ VENDOR_SIGN_IN = VendorOAuth(
 )
 ```
 
-- **The vendor client.** With `client=ClientFromEnv("ACME_CLIENT_ID", "ACME_CLIENT_SECRET")` it signs in with a client you registered at the vendor, read from `.env`. Without it, the agent registers itself by dynamic registration on the first sign-in and keeps the registration in its store.
+- **The vendor client.** `client=ClientFromEnv("ACME_CLIENT_ID", "ACME_CLIENT_SECRET")` signs in with a client you registered at the vendor, read from `.env`; without it, the agent registers itself by dynamic registration on the first sign-in and keeps the registration in its store.
 - **The return address** registered at the vendor is the agent's finish address, `<public URL>/sign-in/finish` — `--public-url`, otherwise `--base-url`. Register one for each address the agent runs at.
-- **Scopes.** The vendor is asked for what the sign-in's scopes need, plus what the account already granted on a request for more access. A vendor granting less than asked doesn't sign in.
-- **Who signed in.** `identify` gets the vendor's token response and returns the vendor's stable id for the account and its display claims. `id_token_claims` reads an ID token straight from the vendor's token endpoint.
-- **The vendor's token** is refreshed before a request when it's within five minutes of expiring. When it can't be refreshed, or the vendor answers 401, the run fails and the account's sign-ins end, so A2UIVerse asks the person to sign in again.
-- **Revocation** is RFC 7009 at the vendor's revocation endpoint, or `revoke=` for a vendor that revokes its own way.
+- **Scopes.** The vendor is asked for what the sign-in's scopes need, plus what the account already granted on a request for more access; a vendor granting less than asked doesn't sign in.
+- **Who signed in.** `identify` gets the vendor's token response and returns the vendor's stable id for the account and its display claims; `id_token_claims` reads an ID token straight from the token endpoint.
+- **The vendor's token** is refreshed before a request when it's within five minutes of expiring. When it can't be, or the vendor answers 401, the run fails and the account's sign-ins end, so A2UIVerse asks the person to sign in again. Revocation is RFC 7009 at the vendor's revocation endpoint, or `revoke=` for a vendor that revokes its own way.
+- **Live toolsets** pass `header_provider=account_bearer` (from `a2ui_agent_kit.toolset`), so each MCP call carries the account's current token.
 
-A live toolset passes `header_provider=account_bearer` (from `a2ui_agent_kit.toolset`), so each MCP call carries the account's current token.
+### With a key
 
-### Signing in with a key
-
-An app that signs in with an API key instead puts an `ApiKeySignIn` on its config:
+An app that signs in with an API key puts an `ApiKeySignIn` on its config instead:
 
 ```python
 from a2ui_agent_kit.sign_in import ApiKeySignIn, FakeAccount
@@ -136,7 +146,17 @@ SIGN_IN = ApiKeySignIn(
 
 The card declares one `apiKey` scheme in that header, with the description in your customer's words. A request without one of the keys is answered 401, and `current_account()` is the key's account. There are no sign-in routes and no request for more access.
 
-The store holds the issued tokens (by hash), the registered clients, the accounts and the signing key. It is an owner-only file in `<app>/.state/`, which git ignores.
+## Previewing for the marketplace
+
+The marketplace can't sign in to an app, so for an app whose card asks sign-in, Stellify's `preview` asks your running agent its first screen on your machine, with a token you give it in `STELLIFY_CREDENTIAL`. `preview_credential` gets that token: it signs in as one of the agent's fake accounts, for what the card asks at a first sign-in, and prints the token alone, every other line going to stderr.
+
+```bash
+cd linear/agent
+uv run python -m app --mode deterministic   # in one terminal
+export STELLIFY_CREDENTIAL=$(uv run python -m a2ui_agent_kit.preview_credential --url http://localhost:11005 --account me)
+```
+
+`--url` is the agent's address or its card's; `--account` one of the fake accounts the agent's README lists. The fake accounts sign in only in `deterministic` and `stub` mode: an agent running `live` is previewed from a `deterministic` or `stub` run of the same checkout, whose card is the same, so the preview is at the version the live card carries. It prints nothing on stdout and exits 1 when the agent runs `live` (preview from a `deterministic` or `stub` run), when the app signs in with a key (set `STELLIFY_CREDENTIAL` to the key), or when the app asks no sign-in (preview it without a credential).
 
 ## What's in it
 
@@ -157,23 +177,9 @@ The store holds the issued tokens (by hash), the registered clients, the account
 
 The system prompt puts three rules every app shares ahead of the app's own workflow: a failure reported in prose is worded for a person who may not work in tech, with no status code, tool name, URL or sign-in term; a write drafted for the person to confirm is a proposal, never declared a question, and one dismissed outright is repainted settled; and the person's time zone is passed to every tool that takes one, a time from a tool that takes none is shown with its zone named, and no time is converted by the model.
 
-## Depending on it
+`paint_meta` is the part A2UIVerse's canvas reads: the paint titles and question marks ride beside the A2UI, and any other client ignores them. A2UIVerse's launcher starts an agent through this same entrypoint, passing `--host localhost` and the port from its roster, `--public-url` when `A2UIVERSE_PUBLIC_URL` is set, and `--state-dir` under its `--agent-state`.
 
-Apps in this repo take it as an editable path dependency, so they always run on the kit as it is:
-
-```toml
-[tool.uv.sources]
-a2ui-agent-kit = { path = "../../agent-kit", editable = true }
-```
-
-An app anywhere else pins it to a commit:
-
-```toml
-[tool.uv.sources]
-a2ui-agent-kit = { git = "https://github.com/retz8/a2uiverse-apps", subdirectory = "agent-kit", rev = "<sha>" }
-```
-
-## Test
+## Developing the kit
 
 ```bash
 uv sync
@@ -182,22 +188,7 @@ uv run pytest
 
 No model calls and no credentials needed. The scaffolder's own tests also run a freshly scaffolded app against this checkout of the kit, so a change here that breaks new apps fails there.
 
-## Previewing for the marketplace
+## Further reading
 
-The marketplace can't sign in to an app, so for an app whose card asks sign-in, Stellify's `preview` asks your running agent its first screen on your machine, with a token you give it in `STELLIFY_CREDENTIAL`. `preview_credential` gets that token from the agent: it signs in as one of the agent's fake accounts, for what the card asks at a first sign-in, and prints the token alone, every other line going to stderr.
-
-```bash
-cd linear/agent
-uv run python -m app --mode deterministic   # in one terminal
-export STELLIFY_CREDENTIAL=$(uv run python -m a2ui_agent_kit.preview_credential --url http://localhost:11005 --account me)
-```
-
-`--url` is the agent's address or its card's; `--account` is one of the fake accounts the agent's README lists. The fake accounts sign in only in `deterministic` and `stub` mode. An agent running `live` is previewed from a `deterministic` or `stub` run of the same checkout: the card is the same in every mode, so the preview is at the version the live card carries. It prints nothing on stdout and exits 1 when:
-
-- **the agent runs `live`**, saying to preview from a `deterministic` or `stub` run;
-- **the app signs in with a key**, saying to set `STELLIFY_CREDENTIAL` to the key;
-- **the app asks no sign-in**, saying to preview it without a credential.
-
-## Connecting to A2UIVerse
-
-[A2UIVerse](https://github.com/retz8/a2uiverse)'s launcher starts an agent through this same entrypoint, passing `--host localhost` and the port from its roster, `--public-url` when `A2UIVERSE_PUBLIC_URL` is set, and `--state-dir` under its `--agent-state`. `paint_meta` is the part A2UIVerse's canvas reads: the paint titles and question marks ride beside the A2UI, and any other client ignores them.
+- [`docs/design/agent-kit.md`](https://github.com/retz8/a2uiverse/blob/main/docs/design/agent-kit.md) in the platform repo — the kit end to end.
+- [`docs/design/authority.md`](https://github.com/retz8/a2uiverse/blob/main/docs/design/authority.md) — how A2UIVerse signs in to an agent built on it.
