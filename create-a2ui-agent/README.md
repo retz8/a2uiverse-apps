@@ -45,7 +45,7 @@ The catalog id is the URL of the generated `catalog.json` on `main` in the app's
 - `deterministic` paints a greeting card, `stub` holds one placeholder tool, and `live` stops with a "not wired yet" message until `app/mcp.py` names the MCP server.
 - `uv run pytest` in `agent/`, and `pnpm typecheck`, `pnpm test` and `pnpm check` in the catalog, pass.
 - Everything only you can write is a `TODO`. `agent/README.md` lists where they are.
-- No sign-in: the MCP server's credential is the agent's own, in `.env`. An app whose user signs in puts a `SignIn` on its config, as the kit's [Turning on sign-in](../agent-kit/README.md#sign-in) shows. The config sets the card's `version` to `0.1.0`; move it when the card changes, to one the app has never published. It also takes `provider` and `documentation_url` for the card, the vendor the app fronts and its help page, which the scaffold leaves unset.
+- No sign-in: the MCP server's credential is the agent's own, in `.env`. An app whose user signs in puts a `SignIn` on its config, as the kit's [Sign-in](../agent-kit/README.md#sign-in) section shows. The config sets the card's `version` to `0.1.0`; move it when the card changes, to one the app has never published. It also takes `provider` and `documentation_url` for the card, the vendor the app fronts and its help page, which the scaffold leaves unset.
 
 ## Tests
 
@@ -74,4 +74,4 @@ Templates are copied as they are, with `__TOKEN__` placeholders such as `__DISPL
 
 ## Connecting to A2UIVerse
 
-[A2UIVerse](https://github.com/retz8/a2uiverse)'s launcher starts the agent on the port its roster gives the app, the agent's `default_port`, and installs the app from the agent's card. Under `--publish` it publishes the app to A2UIVerse's marketplace and installs it from there by id. `--ecosystem` has the agent give each surface it paints a short title, and mark a surface that asks something, the way A2UIVerse's canvas expects. The generated READMEs' own "Connecting to A2UIVerse" sections cover the rest.
+[A2UIVerse](https://github.com/retz8/a2uiverse)'s launcher starts the agent on the port its roster gives the app, the agent's `default_port`, and installs the app from the agent's card. Under `--publish` it publishes the app to A2UIVerse's marketplace and installs it from there by id. By hand, the app is published from its catalog folder with Stellify, or from A2UIVerse's own Publish page with the folder Stellify packs. `--ecosystem` has the agent give each surface it paints a short title, and mark a surface that asks something, the way A2UIVerse's canvas expects. The generated READMEs' own "Connecting to A2UIVerse" sections cover the rest.

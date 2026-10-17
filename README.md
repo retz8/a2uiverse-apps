@@ -49,7 +49,7 @@ Each vendor agent is its own sign-in: an OAuth authorization server A2UIVerse si
 
 - **In `deterministic` and `stub` mode**, the sign-in page offers made-up accounts — Gmail has two, each with its own mail; the other apps one.
 - **In `live` mode**, the sign-in sends you to the vendor. GitHub needs an OAuth App you register, Gmail and Calendar an OAuth client in a Google Cloud project, the two sharing it; Linear and CircleCI register themselves with the vendor on the first sign-in. Each agent's README has the steps.
-- **When the browser is on another machine**, run the agent with `--public-url` set to the address the browser reaches it at, such as a tunnel's — its sign-in page, the account chooser's form and the address the vendor returns to — and register that return address at the vendor beside the `localhost` one. CircleCI's sign-in takes only a loopback return address, so CircleCI runs without `--public-url`.
+- **When the browser is on another machine**, run the agent with `--public-url` set to the address the browser reaches it at, such as a tunnel's — its sign-in page, the account chooser's form and the address the vendor returns to — and register that return address at the vendor beside the `localhost` one. CircleCI's sign-in takes only a loopback return address, so CircleCI runs `live` without `--public-url`.
 
 The mock stores differ: Shop B signs in with a key pasted on A2UIVerse's own page, and Shop A has no sign-in.
 
@@ -90,6 +90,8 @@ pnpm exec stellify publish linear http://localhost:11005/.well-known/agent-card.
 | `shop-b`   | `12002` | `mocks/shop-b/shop-b-catalog` | its demo key, `northlight-demo-key-4f7c2a`                               |
 
 The preview is the app's first screen on its Store listing, so it is taken in `deterministic` or `stub` mode, over canned data: the fake accounts sign in nowhere else. An agent running `live` is previewed from a `deterministic` run of the same checkout and published with the live agent's card URL; the card is the same in every mode, so the preview is at its version. When the card changes, move `version` in the agent's `app/config.py` to one the app has never published, or the marketplace refuses the publish. Stellify's README has every verb; A2UIVerse's launcher does all of this for the roster with `pnpm dev:all --publish`, `--mode live` included.
+
+A publisher who runs A2UIVerse can publish from its Publish page instead, opened from the Apps button beside Trail: claim a name there, its token shown once, or sign in with the name and the token in Stellify's publisher file; then give it the app id, the card URL, the `dist/artifact` folder `pack` wrote and, when the card asks sign-in, the `preview.json` `preview` captured. Unpublishing is there too; `pack` and `preview` stay on the terminal.
 
 ## How an app meets A2UIVerse
 
