@@ -8,7 +8,7 @@ repository's CI, and `tests/test_corpus_is_publishable.py` guards the result aga
 token- or secret-shaped.
 
     A2UI_RECORD_DIR=.recordings uv run python -m app --mode live --host localhost
-    uv run python scripts/record_beats.py --model gemini-3.7-flash
+    uv run python scripts/record_beats.py --model gemini-3.8-flash
     uv run python scripts/derive_corpus.py
 """
 

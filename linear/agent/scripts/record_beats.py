@@ -7,7 +7,7 @@ Linear's: the beats, the agent URL, and the directories.
 The agent must already be running, armed:
 
     A2UI_RECORD_DIR=.recordings uv run python -m app --mode live --host localhost
-    uv run python scripts/record_beats.py --model gemini-3.7-flash
+    uv run python scripts/record_beats.py --model gemini-3.8-flash
 
 Beat 2 opens A2U-5, the issue whose pull request Linear linked by its branch name, and beat 3
 really moves it to In Progress in the workspace — it is the change the beat records.

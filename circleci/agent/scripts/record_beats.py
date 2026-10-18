@@ -7,7 +7,7 @@ CircleCI's: the beats, the agent URL, and the directories.
 The agent must already be running, armed:
 
     A2UI_RECORD_DIR=.recordings uv run python -m app --mode live --host localhost
-    uv run python scripts/record_beats.py --model gemini-3.7-flash
+    uv run python scripts/record_beats.py --model gemini-3.8-flash
 
 Beat 3 needs a failed run in the configured project, and beat 4 really reruns that run's
 workflow on CircleCI — it is the rerun the beat records.

@@ -48,4 +48,4 @@ def test_llm_mode_fields_default_off(tmp_path):
 
 
 def test_default_model_is_the_kit_constant():
-    assert DEFAULT_MODEL == "gemini-3.7-flash"
+    assert DEFAULT_MODEL == "gemini-3.8-flash"

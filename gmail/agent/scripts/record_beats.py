@@ -11,8 +11,8 @@ concern (ADK builds the LlmAgent once), so a beat that needs a different rung of
 ladder is driven in a separate invocation against a separately-started agent:
 
     A2UI_RECORD_DIR=.recordings uv run python -m app --mode stub --host localhost
-    uv run python scripts/record_beats.py --account you --model gemini-3.7-flash
-    uv run python scripts/record_beats.py --account personal --model gemini-3.7-flash
+    uv run python scripts/record_beats.py --account you --model gemini-3.8-flash
+    uv run python scripts/record_beats.py --account personal --model gemini-3.8-flash
 """
 
 from __future__ import annotations

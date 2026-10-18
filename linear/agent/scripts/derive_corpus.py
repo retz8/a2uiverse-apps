@@ -8,7 +8,7 @@ replaced before the model read it (task-7.3 decision 11); `tests/test_corpus_is_
 guards the result against anything token- or secret-shaped and against any other address.
 
     A2UI_RECORD_DIR=.recordings uv run python -m app --mode live --host localhost
-    uv run python scripts/record_beats.py --model gemini-3.7-flash
+    uv run python scripts/record_beats.py --model gemini-3.8-flash
     uv run python scripts/derive_corpus.py
 """
 

@@ -20,7 +20,7 @@ from a2ui_agent_kit.sign_in import ApiKeySignIn, SignIn
 
 # Overridable per app via `AgentAppConfig.model`, and at runtime via MODEL_NAME. Not
 # the lite tier — it could not reliably emit a well-formed surface at this payload size.
-DEFAULT_MODEL = "gemini-3.7-flash"
+DEFAULT_MODEL = "gemini-3.8-flash"
 
 CatalogKind = Literal["custom", "basic"]
 
