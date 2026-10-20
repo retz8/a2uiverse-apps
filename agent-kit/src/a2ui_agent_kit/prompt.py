@@ -10,7 +10,7 @@ from __future__ import annotations
 from a2ui.schema.manager import A2uiSchemaManager
 
 from a2ui_agent_kit.catalog import catalog_context
-from a2ui_agent_kit.config import AgentAppConfig
+from a2ui_agent_kit.config import AgentAppConfig, CatalogLine
 from a2ui_agent_kit.knowledge import load_brand_guidance, load_domain_knowledge
 
 # The SDK renders the examples under a bare "### Examples:" header at the end of the
@@ -58,7 +58,9 @@ TIMES = (
 
 
 def build_system_prompt(
-    config: AgentAppConfig, schema_manager: A2uiSchemaManager | None = None
+    config: AgentAppConfig,
+    schema_manager: A2uiSchemaManager | None = None,
+    line: CatalogLine | None = None,
 ) -> str:
     """Assembles the full system instruction via the SDK's generate_system_prompt.
 
@@ -68,8 +70,11 @@ def build_system_prompt(
     feeds ui_description, and the full catalog schema and the examples are injected by
     the SDK (with the examples framing spliced under
     the SDK's header — it offers no slot for it).
+
+    `line` is an old catalog line the prompt is for — its catalog, examples and brand doc in
+    place of the current line's; the rest is the config's (a2uiverse task-15.7).
     """
-    sm = schema_manager or catalog_context(config).live_schema_manager()
+    sm = schema_manager or catalog_context(line or config).live_schema_manager()
     prompt = sm.generate_system_prompt(
         role_description=config.role_description,
         workflow_description="\n\n".join(
@@ -81,7 +86,7 @@ def build_system_prompt(
                 load_domain_knowledge(config),
             ]
         ),
-        ui_description=load_brand_guidance(config),
+        ui_description=load_brand_guidance(line or config),
         include_schema=True,
         include_examples=True,
     )

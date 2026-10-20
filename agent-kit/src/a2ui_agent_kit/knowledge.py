@@ -8,12 +8,13 @@ given screen should contain. Both paths come from the app's config.
 
 from __future__ import annotations
 
-from a2ui_agent_kit.config import AgentAppConfig
+from a2ui_agent_kit.config import AgentAppConfig, CatalogLine
 
 
-def load_brand_guidance(config: AgentAppConfig) -> str:
-    """Returns the brand-guidance prose injected at prompt assembly (build time)."""
-    return config.brand_guidance_path.read_text(encoding="utf-8").strip()
+def load_brand_guidance(line: AgentAppConfig | CatalogLine) -> str:
+    """Returns the brand-guidance prose injected at prompt assembly (build time): the
+    current line's, off the config, or an old line's."""
+    return line.brand_guidance_path.read_text(encoding="utf-8").strip()
 
 
 def load_domain_knowledge(config: AgentAppConfig) -> str:

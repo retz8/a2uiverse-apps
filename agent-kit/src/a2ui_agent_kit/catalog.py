@@ -26,7 +26,7 @@ from a2ui.schema.constants import VERSION_0_9
 from a2ui.schema.manager import A2uiSchemaManager
 from a2ui.schema.validator import analyze_topology, extract_component_ref_fields
 
-from a2ui_agent_kit.config import AgentAppConfig
+from a2ui_agent_kit.config import AgentAppConfig, CatalogLine
 
 _MISSING = object()
 
@@ -227,17 +227,18 @@ def _check_bindings_resolve(components: list[dict], data_model: dict) -> None:
 
 
 class CatalogContext:
-    """Per-app catalog access: locate, load, and validate against the app's catalog."""
+    """Per-line catalog access: locate, load, and validate against one of the app's catalog
+    lines — its current one, read off its config, or its old one."""
 
-    def __init__(self, config: AgentAppConfig):
-        self._config = config
+    def __init__(self, line: AgentAppConfig | CatalogLine):
+        self._line = line
         self._default_manager: A2uiSchemaManager | None = None
         self._live_manager: A2uiSchemaManager | None = None
         self._prop_schemas: dict[str, dict[str, dict]] | None = None
         self._ref_fields: dict | None = None
 
     def catalog_json_path(self) -> Path:
-        path = self._config.catalog_path
+        path = self._line.catalog_path
         assert path.is_file(), f"catalog.json not found at {path}"
         return path
 
@@ -266,7 +267,7 @@ class CatalogContext:
     def live_schema_manager(self) -> A2uiSchemaManager:
         if self._live_manager is None:
             self._live_manager = self.build_schema_manager(
-                examples_path=str(self._config.examples_dir)
+                examples_path=str(self._line.examples_dir)
             )
         return self._live_manager
 
@@ -284,7 +285,7 @@ class CatalogContext:
         """Per-component property schemas of the live catalog: name -> {prop: schema}."""
         if self._prop_schemas is None:
             components = self.live_catalog().catalog_schema.get("components", {})
-            if self._config.catalog_kind == "basic":
+            if self._line.catalog_kind == "basic":
                 self._prop_schemas = {
                     name: _flatten_props(schema)
                     for name, schema in components.items()
@@ -310,7 +311,7 @@ class CatalogContext:
         """
         messages = [m for m in payload if not (isinstance(m, dict) and "paintMeta" in m)]
         probe = (
-            _strip_framework_ids(messages) if self._config.catalog_kind == "custom" else messages
+            _strip_framework_ids(messages) if self._line.catalog_kind == "custom" else messages
         )
         self.get_catalog().validator.validate(probe, strict_integrity=False)
 
@@ -374,7 +375,7 @@ class CatalogContext:
         # Pass 1: component-schema conformance.
         probe = (
             _strip_framework_ids(messages)
-            if self._config.catalog_kind == "custom"
+            if self._line.catalog_kind == "custom"
             else messages
         )
         catalog.validator.validate(probe, strict_integrity=False)
@@ -411,6 +412,7 @@ def _components_of(messages: list[dict]) -> list[dict]:
 
 
 @functools.lru_cache(maxsize=None)
-def catalog_context(config: AgentAppConfig) -> CatalogContext:
-    """The shared per-config context, so callers see one set of caches per app."""
-    return CatalogContext(config)
+def catalog_context(line: AgentAppConfig | CatalogLine) -> CatalogContext:
+    """The shared per-line context — a config's current line, or an old line — so callers
+    see one set of caches per line."""
+    return CatalogContext(line)

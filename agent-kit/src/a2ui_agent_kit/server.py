@@ -17,7 +17,7 @@ from a2ui.a2a.extension import get_a2ui_agent_extension
 from a2ui.schema.constants import VERSION_0_9_1
 from starlette.middleware.cors import CORSMiddleware
 
-from a2ui_agent_kit.catalog import catalog_context
+from a2ui_agent_kit.catalog_lines import catalog_lines
 from a2ui_agent_kit.config import AgentAppConfig
 from a2ui_agent_kit.modes import resolve_executor
 from a2ui_agent_kit.sign_in import ApiKeySignIn
@@ -40,11 +40,12 @@ def build_agent_card(
 ) -> AgentCard:
     # The v0.9.1 extension spec fixes the URI at .../a2ui/v0.9.1 — "the only URI
     # accepted for this extension" — distinct from the v0.9 wire version marker
-    # carried inside A2UI messages.
+    # carried inside A2UI messages. The card names the current catalog id and, beside it, an
+    # old one the app still paints in (a2uiverse task-15.7).
     extension = get_a2ui_agent_extension(
         VERSION_0_9_1,
         accepts_inline_catalogs=False,
-        supported_catalog_ids=catalog_context(config).supported_catalog_ids(),
+        supported_catalog_ids=catalog_lines(config).ids(),
     )
     capabilities = AgentCapabilities(streaming=True, extensions=[extension])
     if isinstance(config.sign_in, ApiKeySignIn):

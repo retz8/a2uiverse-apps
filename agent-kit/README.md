@@ -50,6 +50,7 @@ CONFIG = AgentAppConfig(
     live_toolset_factory=live_toolset,        # live mode: the MCP server
     provider=AgentProvider(organization="Linear", url="https://linear.app"),  # the vendor it fronts
     documentation_url=HELP_PAGE,              # the app's help page
+    old_catalog_line=None,                    # an old catalog id kept beside this one (below)
     ...
 )
 ```
@@ -146,6 +147,38 @@ SIGN_IN = ApiKeySignIn(
 
 The card declares one `apiKey` scheme in that header, with the description in your customer's words. A request without one of the keys is answered 401, and `current_account()` is the key's account. There are no sign-in routes and no request for more access.
 
+## Shipping a breaking catalog change
+
+A catalog id is the catalog's version: a change that removes a component or changes a type needs a new id. Keep the old line beside the new one, and the change ships as a suggested update — installs still on the old id keep getting answers in it until they update.
+
+```python
+from a2ui_agent_kit.config import CatalogLine
+
+OLD_LINE = CatalogLine(
+    catalog_path=OLD_CATALOG_JSON,               # a copy of the old catalog.json, as published
+    catalog_kind="basic",
+    examples_dir=OLD_EXAMPLES,
+    brand_guidance_path=OLD_BRAND_DOC,
+    question_policy=require_carries_action,
+    build_response=old_build_response,           # deterministic mode, in the old catalog
+    build_text_response=old_build_text_response,
+)
+
+CONFIG = AgentAppConfig(..., catalog_path=NEW_CATALOG_JSON, old_catalog_line=OLD_LINE)
+```
+
+1. Move everything that names the old catalog's components into `OLD_LINE`, as it was: its catalog, examples, brand doc, question policy and deterministic answers.
+2. Point the config's own catalog fields at the new catalog. Prose, tools and sign-in stay shared.
+3. Pack and publish the new catalog as usual; the marketplace already holds the old one.
+4. To retire the old id, delete `old_catalog_line` and publish.
+
+With an old line:
+
+- The card names both ids, newest first. The kit won't start if both are the same id.
+- A turn is painted in the newest id the client renders, or the newest when the client sends no capabilities.
+- An action is answered in the id of the surface it came from. If the client no longer renders that id, the answer is a new surface in the newest one; in deterministic mode, the line's answers stand as written.
+- A client that renders neither id gets no UI, only "<App name> has changed and can't show this here."
+
 ## Previewing for the marketplace
 
 The marketplace can't sign in to an app, so for an app whose card asks sign-in, Stellify's `preview` asks your running agent its first screen on your machine, with a token you give it in `STELLIFY_CREDENTIAL`. `preview_credential` gets that token: it signs in as one of the agent's fake accounts, for what the card asks at a first sign-in, and prints the token alone, every other line going to stderr.
@@ -166,6 +199,7 @@ export STELLIFY_CREDENTIAL=$(uv run python -m a2ui_agent_kit.preview_credential 
 | `executor_llm`                        | Streams the model's A2UI as it's written, validates it against the catalog at the end, sends what the stream held back, and retries |
 | `executor_deterministic`, `responses` | Deterministic mode: canned A2UI per action or question, from the app's fixtures, titled as recorded                                 |
 | `catalog`, `prompt`, `knowledge`      | Loads the app's catalog, validates surfaces against it, and assembles the system prompt                                             |
+| `catalog_lines`                       | Optional: an old catalog id beside the current one, and the id each turn is painted in                                              |
 | `toolset`, `tool_shaping`             | A hook on every MCP call, to change its arguments on the way out or its result on the way back                                      |
 | `recorder`, `corpus`, `beats`         | Recording: what the agent painted and what the MCP server returned, and scripted conversations                                      |
 | `paint_meta`                          | Optional: a short title per painted surface, and a mark on a surface that asks something                                            |

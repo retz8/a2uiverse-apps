@@ -1,7 +1,8 @@
 """Live AgentExecutor: stream parsed A2UI to the client, validate at end, retry on failure.
 
 Catalog validation, the question policy, and the debug-dump anchor all come from the
-app's config; the streaming/retry machinery is vendor-free.
+app's config — the catalog and the policy from the catalog line the turn is painted in
+(a2uiverse task-15.7); the streaming/retry machinery is vendor-free.
 """
 
 from __future__ import annotations
@@ -22,7 +23,15 @@ from a2ui.parser.parser import parse_response
 from a2ui.parser.streaming_v09 import A2uiStreamParserV09
 from a2ui.schema.constants import VERSION_0_9
 
-from a2ui_agent_kit.catalog import catalog_context
+from a2ui_agent_kit.catalog_lines import (
+    SurfaceCatalogs,
+    Turn,
+    advertised_catalog_ids,
+    bind_turn_line,
+    catalog_lines,
+    paint_in,
+    unbind_turn_line,
+)
 from a2ui_agent_kit.config import AgentAppConfig
 from a2ui_agent_kit.paint_meta import PaintTitleTagFilter, create_paint_meta_part
 from a2ui_agent_kit.recorder import RECORD_DIR_ENV, create_recorder
@@ -122,6 +131,12 @@ MALFORMED_CALL_CORRECTION = (
     "Your previous turn ended in a malformed function call and produced no output. "
     "Call exactly one tool per turn, passing arguments as plain JSON values; once "
     "the tool results are in, compose the A2UI surface."
+)
+# Told to the model when the action's surface is in a catalog id the turn cannot paint in:
+# the turn falls to the newest advertised line, as a fresh surface (a2uiverse task-15.7).
+FRESH_SURFACE = (
+    "The surface this action came from can no longer be changed: answer with a new surface, "
+    "created under a surface id of its own, and leave that surface as it is."
 )
 
 
@@ -249,6 +264,18 @@ def _unstreamed(payload: list[dict], streamed: set[tuple[str, str]]) -> list[dic
     return [m for m in payload if (key := _message_key(m)) is not None and key not in streamed]
 
 
+def _require_fresh_surface(payload: list[dict], surface_id: str) -> None:
+    """Raises unless the turn paints a surface of its own and leaves `surface_id` alone."""
+    touched = any((key := _message_key(m)) is not None and key[0] == surface_id for m in payload)
+    created = any(isinstance(m, dict) and "createSurface" in m for m in payload)
+    if touched or not created:
+        raise ValueError(
+            f"the surface the action came from ({surface_id!r}) can no longer be changed: "
+            "answer with a new surface, created under a surface id of its own, and leave "
+            f"{surface_id!r} as it is"
+        )
+
+
 def _collect_payload(accumulated: str) -> list[dict]:
     """Extracts the full A2UI message list from the accumulated model text.
 
@@ -287,8 +314,8 @@ class LlmAgentExecutor(AgentExecutor):
         self._sign_in = config.sign_in
         self._app_name = config.name
         self._max_attempts = max_attempts
-        self._catalog = catalog_context(config)
-        self._question_policy = config.question_policy
+        self._lines = catalog_lines(config)
+        self._surfaces = SurfaceCatalogs()
         # Off unless A2UI_RECORD_DIR is set; see recorder.py. Injectable so tests arm
         # it without touching the environment.
         self._recorder = recorder or create_recorder(os.environ.get(RECORD_DIR_ENV))
@@ -371,6 +398,26 @@ class LlmAgentExecutor(AgentExecutor):
             )
             return
 
+        # The line the turn is painted in: an action on a surface the kit created is written
+        # in that surface's id, while a line holds it and the client renders it.
+        pressed = action.get("surfaceId") if kind == "surface-action" else None
+        turn = self._lines.choose(
+            advertised_catalog_ids(context.message),
+            self._surfaces.catalog_of(task.context_id, pressed),
+        )
+        if turn is None:
+            # A client rendering neither of the app's ids gets no UI, and no model call.
+            await updater.update_status(
+                TaskState.completed,
+                new_agent_parts_message(
+                    [Part(root=TextPart(text=self._lines.not_shown_text))], task.context_id, task.id
+                ),
+                final=True,
+            )
+            return
+        if turn.fresh_surface:
+            prompt += "\n\n" + FRESH_SURFACE
+
         logger.info(
             "execute start: task=%s context=%s prompt=%r", task.id, task.context_id, prompt
         )
@@ -382,8 +429,10 @@ class LlmAgentExecutor(AgentExecutor):
             prompt=prompt,
             action=action,
         )
+        bound = bind_turn_line(turn.line)
         try:
-            await self._attempts(prompt, task, updater)
+            fresh_from = pressed if turn.fresh_surface else None
+            await self._attempts(prompt, task, updater, turn, fresh_from)
         except AuthRequired as err:
             # A tool needed a scope the token lacks: the run ends here, asking for it, and
             # nothing follows. The hub sends the press again once it is granted, as a
@@ -420,9 +469,21 @@ class LlmAgentExecutor(AgentExecutor):
             logger.info("task %s canceled", task.id)
             self._recorder.end_turn("canceled", task_id=task.id)
             raise
+        finally:
+            unbind_turn_line(bound)
 
-    async def _attempts(self, prompt: str, task: Task, updater: TaskUpdater) -> None:
-        """One turn's model attempts, until a surface lands or the attempts run out."""
+    async def _attempts(
+        self,
+        prompt: str,
+        task: Task,
+        updater: TaskUpdater,
+        turn: Turn,
+        fresh_from: str | None = None,
+    ) -> None:
+        """One turn's model attempts, until a surface lands or the attempts run out.
+
+        `fresh_from` is the surface an action came from, when the turn must leave it be.
+        """
         # One parser persisted across attempts. Its dedup caches make a retry patch the
         # surface attempt 1 created — createSurface and unchanged components are
         # suppressed, only changed/new components stream as updateComponents — instead of
@@ -441,7 +502,7 @@ class LlmAgentExecutor(AgentExecutor):
         # cannot traverse the catalog's custom component-reference props (e.g.
         # PageLayout's header/content/pane) and silently drops every component behind
         # them. Hand it the map without the catalog itself.
-        parser._ref_fields_map = self._catalog.live_ref_fields()
+        parser._ref_fields_map = turn.context.live_ref_fields()
 
         correction: str | None = None
         model_unavailable = False
@@ -497,7 +558,9 @@ class LlmAgentExecutor(AgentExecutor):
                         for msg in data if isinstance(data, list) else [data]:
                             if (key := _message_key(msg)) is not None:
                                 streamed.add(key)
-                        parts = self._parts_for(response_part, tag_filter, paint_metas)
+                        parts = self._parts_for(
+                            response_part, tag_filter, paint_metas, turn.catalog_id
+                        )
                         if parts:
                             self._recorder.record_batch(parts)
                             await updater.update_status(
@@ -553,7 +616,7 @@ class LlmAgentExecutor(AgentExecutor):
                     new_agent_parts_message(held_parts, task.context_id, task.id),
                 )
 
-            payload = _collect_payload(accumulated)
+            payload = paint_in(_collect_payload(accumulated), turn.catalog_id)
             if not payload and stream_error is None and tag_filter.no_surface:
                 # A declared prose-only turn (<no-surface/>): the explanation has
                 # already streamed as prose, and nothing is painted — the client
@@ -574,6 +637,8 @@ class LlmAgentExecutor(AgentExecutor):
                     raise stream_error
                 if not payload:
                     raise ValueError("no A2UI surface found in the model response")
+                if fresh_from is not None:
+                    _require_fresh_surface(payload, fresh_from)
                 # Not every valid turn paints a new surface: an update to a live one
                 # — a detail view opened in place, a bound list reordered — carries no
                 # createSurface, and validate_surface requires one by definition. Judging
@@ -581,10 +646,10 @@ class LlmAgentExecutor(AgentExecutor):
                 # surface to pass validation, which tears down everything bound to it on
                 # the client (task-4.6).
                 if any(isinstance(m, dict) and "createSurface" in m for m in payload):
-                    self._catalog.validate_surface(payload)
+                    turn.context.validate_surface(payload)
                 else:
-                    self._catalog.validate_update(payload)
-                self._question_policy(payload, paint_metas)
+                    turn.context.validate_update(payload)
+                turn.line.question_policy(payload, paint_metas)
             except (ValueError, TypeError) as err:
                 logger.warning(
                     "attempt %d produced an invalid surface: %s", attempt, err
@@ -607,6 +672,7 @@ class LlmAgentExecutor(AgentExecutor):
                 continue
 
             self._dump_surface(payload)
+            self._surfaces.record(task.context_id, payload)
             # What the stream held back — an update or a delete to a surface painted in an
             # earlier turn — goes now, whole, as validated.
             if unsent := _unstreamed(payload, streamed):
@@ -670,6 +736,7 @@ class LlmAgentExecutor(AgentExecutor):
         response_part,
         tag_filter: PaintTitleTagFilter | None = None,
         paint_metas: dict[str, dict] | None = None,
+        catalog_id: str | None = None,
     ) -> list[Part]:
         parts: list[Part] = []
         if response_part.text:
@@ -687,7 +754,12 @@ class LlmAgentExecutor(AgentExecutor):
                 parts.append(Part(root=TextPart(text=text)))
         if response_part.a2ui_json:
             data = response_part.a2ui_json
-            for msg in data if isinstance(data, list) else [data]:
+            messages = data if isinstance(data, list) else [data]
+            # Every surface the turn creates is in the turn's catalog id, whatever id the
+            # model copied out of an earlier turn in another line.
+            if catalog_id is not None:
+                messages = paint_in(messages, catalog_id)
+            for msg in messages:
                 parts.append(create_a2ui_part(msg, version=WIRE_VERSION))
         return parts
 

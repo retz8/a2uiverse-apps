@@ -36,6 +36,26 @@ QuestionPolicy = Callable[[list[dict], dict[str, dict]], None]
 AfterTool = Callable[[str, Any], Any]
 
 
+@dataclass(frozen=True, eq=False)
+class CatalogLine:
+    """An old catalog id an app keeps painting in beside its current one.
+
+    A breaking catalog change is a new catalog id. An app that keeps its old line beside the
+    new one ships the change as a suggested update: an install still on the old id keeps
+    getting answers in it (a2uiverse task-15.7). Everything that names the catalog's
+    components is the line's own; the rest of the config is shared. A publish whose card no
+    longer names the id retires the line: delete it.
+    """
+
+    catalog_path: Path
+    catalog_kind: CatalogKind
+    examples_dir: Path
+    brand_guidance_path: Path
+    question_policy: QuestionPolicy
+    build_response: BuildResponse
+    build_text_response: BuildTextResponse
+
+
 # eq=False keeps identity semantics: a config instance IS the app, and identity
 # hashing lets the kit cache per-config state (catalog context) directly on it.
 @dataclass(frozen=True, eq=False)
@@ -54,7 +74,7 @@ class AgentAppConfig:
     adk_agent_name: str  # ADK LlmAgent name, e.g. "a2ui_gmail_live_agent"
     app_dir: Path  # agent project root: anchors .env and the debug dumps
 
-    # Catalog
+    # Catalog — the current line; an old one beside it is `old_catalog_line`
     catalog_path: Path  # explicit path to the checked-in catalog.json
     catalog_kind: CatalogKind
     examples_dir: Path  # curated example surfaces fed to the schema manager
@@ -86,3 +106,6 @@ class AgentAppConfig:
     # a `SignIn`, live mode calls the toolset factory per signed-in account; an
     # `ApiKeySignIn` only gates requests on a key.
     sign_in: SignIn | ApiKeySignIn | None = None
+
+    # The old catalog id painted in beside the current one, while the hub advertises it.
+    old_catalog_line: CatalogLine | None = None

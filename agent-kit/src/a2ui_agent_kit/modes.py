@@ -81,20 +81,27 @@ def build_llm_agent(
     """Constructs the ADK LlmAgent with the assembled system prompt and tools."""
     from google.adk.agents import LlmAgent
 
+    from a2ui_agent_kit.catalog_lines import turn_line
     from a2ui_agent_kit.prompt import build_system_prompt
     from a2ui_agent_kit.sign_in import before_tool_check
 
     prompt = build_system_prompt(config)
+    # An old catalog line's turns run on its own prompt, in the same conversation
+    # (a2uiverse task-15.7).
+    old = config.old_catalog_line
+    old_prompt = build_system_prompt(config, line=old) if old is not None else None
     # Debug aid: dump the assembled system prompt so it can be inspected verbatim.
     dump_path = config.app_dir / "system_prompt.dump.txt"
     dump_path.write_text(prompt, encoding="utf-8")
+    if old_prompt is not None:
+        (config.app_dir / "system_prompt.old.dump.txt").write_text(old_prompt, encoding="utf-8")
     return LlmAgent(
         name=config.adk_agent_name,
         model=model or model_name(config),
         # A provider callable, not a plain string: ADK templates string instructions
         # against session state, and the schema/example JSON braces in the prompt
         # (e.g. `{path}`) would be read as state variables and raise KeyError.
-        instruction=lambda _ctx: prompt,
+        instruction=lambda _ctx: old_prompt if old is not None and turn_line() is old else prompt,
         tools=build_tools(config, mode, account),
         # A tool needing a scope the token lacks ends the run before it runs.
         before_tool_callback=before_tool_check if config.sign_in is not None else None,
@@ -107,8 +114,13 @@ def resolve_executor(config: AgentAppConfig, mode: str):
     if mode == "deterministic":
         from a2ui_agent_kit.executor_deterministic import DeterministicAgentExecutor
 
+        from a2ui_agent_kit.catalog_lines import catalog_lines
+
         return DeterministicAgentExecutor(
-            config.build_response, config.build_text_response, config.sign_in
+            config.build_response,
+            config.build_text_response,
+            config.sign_in,
+            lines=catalog_lines(config),
         )
     if mode in ("stub", "live"):
         from a2ui_agent_kit.executor_llm import LlmAgentExecutor

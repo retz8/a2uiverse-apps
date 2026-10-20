@@ -109,8 +109,8 @@ def test_build_schema_manager_registers_examples_path(ctx):
 
 
 def test_examples_dir_exists_with_curated_examples(ctx):
-    assert ctx._config.examples_dir.is_dir()
-    assert sorted(p.name for p in ctx._config.examples_dir.glob("*.json"))
+    assert ctx._line.examples_dir.is_dir()
+    assert sorted(p.name for p in ctx._line.examples_dir.glob("*.json"))
 
 
 def test_live_schema_manager_loads_examples(ctx):
@@ -121,7 +121,7 @@ def test_live_schema_manager_loads_examples(ctx):
 
 
 def test_curated_examples_validate_as_complete_surfaces(ctx):
-    for path in sorted(ctx._config.examples_dir.glob("*.json")):
+    for path in sorted(ctx._line.examples_dir.glob("*.json")):
         messages = json.loads(path.read_text(encoding="utf-8"))["messages"]
         ctx.validate_surface(messages)  # every example is a valid complete surface
 
