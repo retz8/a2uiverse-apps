@@ -44,6 +44,12 @@ Calendar's visual language.
   one line as Calendar's schedule does; in a narrow one it stacks.
 - **Label an agenda's sections** with a `Stack` with `padding: "sm"` holding a `titleSmall` `Text`
   in `primary`, and a `Divider` between sections.
+- **An agenda row's data is the whole event**: its `id`, the `when` the row shows, its `start` and
+  `end` as full date-times (`2026-09-19T11:00:00Z`), its `summary` and its `note`. The row shows the
+  time short; the data keeps the day.
+- **An event is listed once in an answer**, under its most pressing section; its other reasons go in
+  its note — "Invitation unanswered • Overlaps Budget sync".
+- **Never show an event's id.** It is the row's action target, not something the reader reads.
 - **An event's details are a `List` of `ListItem` rows, each led by its glyph**: `location_on` for
   the place, `notes` for the description, `group` for the guests, `schedule` for the time,
   `videocam` for a call, `notifications` for a reminder.

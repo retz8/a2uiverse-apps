@@ -15,8 +15,10 @@
         "waiting": [
           {
             "id": "7nuujj9h9ru89blofii3m5otlo",
-            "when": "11:00",
-            "summary": "Design review \u2014 agenda surface"
+            "when": "11:00 – 12:00",
+            "start": "2026-09-19T11:00:00Z",
+            "end": "2026-09-19T12:00:00Z",
+            "summary": "Design review — agenda surface"
           }
         ]
       }
@@ -30,9 +32,11 @@
         "waiting": [
           {
             "id": "7nuujj9h9ru89blofii3m5otlo",
-            "when": "11:00",
-            "summary": "Design review \u2014 agenda surface",
-            "note": "ID: 7nuujj9h9ru89blofii3m5otlo \u2022 Unanswered invitation \u2022 Walk through the three fragment layouts."
+            "when": "11:00 – 12:00",
+            "start": "2026-09-19T11:00:00Z",
+            "end": "2026-09-19T12:00:00Z",
+            "summary": "Design review — agenda surface",
+            "note": "Unanswered invitation • Overlaps Budget sync • Walk through the three fragment layouts."
           }
         ]
       }
@@ -44,85 +48,11 @@
       "surfaceId": "needs-attention",
       "value": {
         "clashes": [
-          {
-            "id": "7nuujj9h9ru89blofii3m5otlo",
-            "when": "11:00 \u2013 12:00",
-            "summary": "Design review \u2014 agenda surface"
-          }
-        ]
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "needs-attention",
-      "value": {
-        "clashes": [
-          {
-            "id": "7nuujj9h9ru89blofii3m5otlo",
-            "when": "11:00 \u2013 12:00",
-            "summary": "Design review \u2014 agenda surface",
-            "note": "ID: 7nuujj9h9ru89blofii3m5otlo \u2022 Overlaps Budget sync \u2022 Walk through the three fragment layouts."
-          }
-        ]
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "needs-attention",
-      "value": {
-        "clashes": [
-          {
-            "id": "7nuujj9h9ru89blofii3m5otlo",
-            "when": "11:00 \u2013 12:00",
-            "summary": "Design review \u2014 agenda surface",
-            "note": "ID: 7nuujj9h9ru89blofii3m5otlo \u2022 Overlaps Budget sync \u2022 Walk through the three fragment layouts."
-          },
-          {
-            "id": "ev1fmp1rmvhhb260fbebvd7o9o"
-          }
-        ]
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "needs-attention",
-      "value": {
-        "clashes": [
-          {
-            "id": "7nuujj9h9ru89blofii3m5otlo",
-            "when": "11:00 \u2013 12:00",
-            "summary": "Design review \u2014 agenda surface",
-            "note": "ID: 7nuujj9h9ru89blofii3m5otlo \u2022 Overlaps Budget sync \u2022 Walk through the three fragment layouts."
-          },
           {
             "id": "ev1fmp1rmvhhb260fbebvd7o9o",
-            "when": "11:30 \u2013 12:15"
-          }
-        ]
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "needs-attention",
-      "value": {
-        "clashes": [
-          {
-            "id": "7nuujj9h9ru89blofii3m5otlo",
-            "when": "11:00 \u2013 12:00",
-            "summary": "Design review \u2014 agenda surface",
-            "note": "ID: 7nuujj9h9ru89blofii3m5otlo \u2022 Overlaps Budget sync \u2022 Walk through the three fragment layouts."
-          },
-          {
-            "id": "ev1fmp1rmvhhb260fbebvd7o9o",
-            "when": "11:30 \u2013 12:15",
+            "when": "11:30 – 12:15",
+            "start": "2026-09-19T11:30:00Z",
+            "end": "2026-09-19T12:15:00Z",
             "summary": "Budget sync"
           }
         ]
@@ -136,16 +66,12 @@
       "value": {
         "clashes": [
           {
-            "id": "7nuujj9h9ru89blofii3m5otlo",
-            "when": "11:00 \u2013 12:00",
-            "summary": "Design review \u2014 agenda surface",
-            "note": "ID: 7nuujj9h9ru89blofii3m5otlo \u2022 Overlaps Budget sync \u2022 Walk through the three fragment layouts."
-          },
-          {
             "id": "ev1fmp1rmvhhb260fbebvd7o9o",
-            "when": "11:30 \u2013 12:15",
+            "when": "11:30 – 12:15",
+            "start": "2026-09-19T11:30:00Z",
+            "end": "2026-09-19T12:15:00Z",
             "summary": "Budget sync",
-            "note": "ID: ev1fmp1rmvhhb260fbebvd7o9o \u2022 Overlaps Design review \u2022 Two line items still do not reconcile against the estimate."
+            "note": "Overlaps Design review • Two line items still do not reconcile against the estimate."
           }
         ]
       }
@@ -160,23 +86,21 @@
         "waiting": [
           {
             "id": "7nuujj9h9ru89blofii3m5otlo",
-            "when": "11:00",
-            "summary": "Design review \u2014 agenda surface",
-            "note": "ID: 7nuujj9h9ru89blofii3m5otlo \u2022 Unanswered invitation \u2022 Walk through the three fragment layouts."
+            "when": "11:00 – 12:00",
+            "start": "2026-09-19T11:00:00Z",
+            "end": "2026-09-19T12:00:00Z",
+            "summary": "Design review — agenda surface",
+            "note": "Unanswered invitation • Overlaps Budget sync • Walk through the three fragment layouts."
           }
         ],
         "clashes": [
           {
-            "id": "7nuujj9h9ru89blofii3m5otlo",
-            "when": "11:00 \u2013 12:00",
-            "summary": "Design review \u2014 agenda surface",
-            "note": "ID: 7nuujj9h9ru89blofii3m5otlo \u2022 Overlaps Budget sync \u2022 Walk through the three fragment layouts."
-          },
-          {
             "id": "ev1fmp1rmvhhb260fbebvd7o9o",
-            "when": "11:30 \u2013 12:15",
+            "when": "11:30 – 12:15",
+            "start": "2026-09-19T11:30:00Z",
+            "end": "2026-09-19T12:15:00Z",
             "summary": "Budget sync",
-            "note": "ID: ev1fmp1rmvhhb260fbebvd7o9o \u2022 Overlaps Design review \u2022 Two line items still do not reconcile against the estimate."
+            "note": "Overlaps Design review • Two line items still do not reconcile against the estimate."
           }
         ]
       }

@@ -19,27 +19,27 @@
           "waiting": [
             {
               "id": "ev-2",
-              "when": "11:00",
+              "when": "11:00 – 12:00",
+              "start": "2026-09-19T11:00:00Z",
+              "end": "2026-09-19T12:00:00Z",
               "summary": "Design review — agenda surface",
-              "note": "Invitation unanswered"
+              "note": "Invitation unanswered • Overlaps Budget sync"
             },
             {
               "id": "ev-6",
               "when": "Tomorrow 10:00",
+              "start": "2026-09-20T10:00:00Z",
+              "end": "2026-09-20T11:00:00Z",
               "summary": "Quarter planning",
               "note": "Invitation unanswered"
             }
           ],
           "clashes": [
             {
-              "id": "ev-2",
-              "when": "11:00 – 12:00",
-              "summary": "Design review — agenda surface",
-              "note": "Overlaps Budget sync"
-            },
-            {
               "id": "ev-3",
               "when": "11:30 – 12:15",
+              "start": "2026-09-19T11:30:00Z",
+              "end": "2026-09-19T12:15:00Z",
               "summary": "Budget sync",
               "note": "Overlaps Design review"
             }
