@@ -11,8 +11,8 @@ from a2a.types import AgentSkill
 APP_NAME = "Gmail"
 
 APP_DESCRIPTION = (
-    "Reads and acts on the user's Gmail mailbox: finds the threads that need them, "
-    "opens a conversation, drafts a reply for them to finish, and files mail with labels."
+    "Reads and acts on your Gmail: finds the threads that need you, opens a conversation, drafts a"
+    " reply for you to finish, and files mail with labels."
 )
 
 # The first skill carries the cross-cutting "what needs my attention" examples: every
@@ -23,8 +23,8 @@ SKILLS = [
         id="inbox_triage",
         name="Inbox triage",
         description=(
-            "Finds the mail that needs the user: threads where someone is waiting on a "
-            "reply, what arrived recently, what is still unread."
+            "Finds the mail that needs you: threads where someone is waiting on your reply, what "
+            "arrived recently, what's still unread."
         ),
         tags=["a2ui", "gmail", "email", "inbox", "triage"],
         examples=[
@@ -40,8 +40,8 @@ SKILLS = [
         id="thread_reading",
         name="Reading a conversation",
         description=(
-            "Opens one email thread and shows the conversation: who wrote what, in "
-            "order, with the latest message — the one that needs answering — in full."
+            "Opens one email thread and shows the conversation: who wrote what, in order, with the"
+            " latest message — the one that needs answering — in full."
         ),
         tags=["a2ui", "gmail", "email", "thread"],
         examples=[
@@ -55,8 +55,8 @@ SKILLS = [
         id="reply_drafting",
         name="Drafting a reply",
         description=(
-            "Composes a reply to a thread and saves it as a draft for the user to "
-            "review and finish themselves."
+            "Writes a reply to a thread and saves it as a draft for you to review and finish "
+            "yourself."
         ),
         tags=["a2ui", "gmail", "email", "draft", "compose"],
         examples=[
@@ -70,8 +70,8 @@ SKILLS = [
         id="labelling",
         name="Filing and labelling",
         description=(
-            "Files mail: adds and removes labels, archives a thread out of the inbox, "
-            "and shows what labels exist."
+            "Files mail: adds and removes labels, archives a thread out of the inbox, and shows "
+            "what labels exist."
         ),
         tags=["a2ui", "gmail", "email", "labels", "archive"],
         examples=[

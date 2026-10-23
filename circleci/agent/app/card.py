@@ -10,9 +10,9 @@ from a2a.types import AgentSkill
 APP_NAME = "CircleCI"
 
 APP_DESCRIPTION = (
-    "Shows the user's CircleCI pipelines: recent runs by branch and commit with their "
-    "outcome, each run's workflows and jobs, and why a job failed from its logs. Reruns or "
-    "cancels a workflow once the user confirms."
+    "Shows your CircleCI pipelines: recent runs by branch and commit with their outcome, each "
+    "run's workflows and jobs, and why a job failed from its logs. Reruns or cancels a workflow "
+    "once you confirm."
 )
 
 # The first skill carries the cross-cutting "what needs attention" examples: a failing
@@ -23,8 +23,8 @@ SKILLS = [
         id="pipeline_status",
         name="Pipeline status",
         description=(
-            "Shows recent pipeline runs across the user's projects: which branch and commit "
-            "each ran on, whether it passed, failed or is still running, and its workflows."
+            "Shows recent pipeline runs across your projects: which branch and commit each ran on,"
+            " whether it passed, failed or is still running, and its workflows."
         ),
         tags=["a2ui", "circleci", "ci", "pipelines", "builds"],
         examples=[
@@ -40,8 +40,8 @@ SKILLS = [
         id="run_detail",
         name="A run's workflows and jobs",
         description=(
-            "Opens one pipeline run and shows its workflows and each workflow's jobs, with "
-            "their status and how long they took."
+            "Opens one pipeline run and shows its workflows and each workflow's jobs, with their "
+            "status and how long they took."
         ),
         tags=["a2ui", "circleci", "ci", "workflow", "jobs"],
         examples=[
@@ -55,8 +55,8 @@ SKILLS = [
         id="failure_diagnosis",
         name="Why a job failed",
         description=(
-            "Finds the step that failed in a job and shows what it printed: the failing "
-            "command, its exit code, and the end of its log."
+            "Finds the step that failed in a job and shows what it printed: the failing command, "
+            "its exit code, and the end of its log."
         ),
         tags=["a2ui", "circleci", "ci", "logs", "failure"],
         examples=[
@@ -70,8 +70,8 @@ SKILLS = [
         id="rerun_cancel",
         name="Rerunning and canceling",
         description=(
-            "Reruns a workflow — every job, or only the failed ones — or cancels one that is "
-            "still running, after the user confirms."
+            "Reruns a workflow — every job, or only the failed ones — or cancels one that's still "
+            "running, once you confirm."
         ),
         tags=["a2ui", "circleci", "ci", "rerun", "cancel"],
         examples=[

@@ -10,10 +10,9 @@ from a2a.types import AgentSkill
 APP_NAME = "Linear"
 
 APP_DESCRIPTION = (
-    "Shows the user's Linear issues: what is assigned to them or in a team's queue, by status "
-    "and priority; an issue's description, comments and linked pull requests. Creates an "
-    "issue, updates its status, priority, assignee or labels, or comments on it once the user "
-    "confirms."
+    "Shows your Linear issues: what's assigned to you or in your team's queue, by status and "
+    "priority; an issue's description, comments and linked pull requests. Creates an issue, "
+    "updates its status, priority, assignee or labels, or comments on it once you confirm."
 )
 
 # The first skill carries the cross-cutting "what needs attention" examples: an urgent issue
@@ -24,8 +23,8 @@ SKILLS = [
         id="my_issues",
         name="Issues",
         description=(
-            "Lists the user's Linear issues or a team's, with each issue's identifier, title, "
-            "status and priority — what is in progress, what is up next, what is urgent."
+            "Lists your Linear issues or your team's, with each issue's identifier, title, status "
+            "and priority — what's in progress, what's up next, what's urgent."
         ),
         tags=["a2ui", "linear", "issues", "tickets", "tasks"],
         examples=[
@@ -56,7 +55,7 @@ SKILLS = [
         id="issue_updates",
         name="Updating an issue",
         description=(
-            "Changes an issue's status, priority, assignee or labels, after the user confirms."
+            "Changes an issue's status, priority, assignee or labels, once you confirm."
         ),
         tags=["a2ui", "linear", "status", "priority", "assign"],
         examples=[
@@ -70,7 +69,7 @@ SKILLS = [
         id="create_and_comment",
         name="Filing an issue and commenting",
         description=(
-            "Files a new issue in a team, or adds a comment to an issue, after the user confirms."
+            "Files a new issue in a team, or adds a comment to an issue, once you confirm."
         ),
         tags=["a2ui", "linear", "create", "comment"],
         examples=[

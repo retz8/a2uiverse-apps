@@ -8,10 +8,9 @@ from a2a.types import AgentSkill
 APP_NAME = "GitHub"
 
 APP_DESCRIPTION = (
-    "Reads and acts on the user's GitHub: finds the pull requests that need them, opens "
-    "one to its discussion and reviews, and posts, reviews, merges, and manages things "
-    "for them — content-bearing actions drafted as a proposal and fired on their "
-    "confirmation."
+    "Reads and acts on your GitHub: finds the pull requests that need you, opens one to its "
+    "discussion and reviews, and posts, reviews, merges and manages things for you — anything "
+    "written for you is drafted first and sent once you confirm."
 )
 
 # The first skill carries the cross-cutting "what needs my attention" examples: every
@@ -22,8 +21,8 @@ SKILLS = [
         id="pr_triage",
         name="Pull request triage",
         description=(
-            "Finds the pull requests that need the user: the ones waiting on their "
-            "review, what changed recently, and what is still open."
+            "Finds the pull requests that need you: the ones waiting on your review, what changed "
+            "recently, and what's still open."
         ),
         tags=["a2ui", "github", "pull-requests", "review", "triage"],
         examples=[
@@ -39,8 +38,8 @@ SKILLS = [
         id="pr_reading",
         name="Reading a pull request",
         description=(
-            "Opens one pull request and shows the conversation around it: the "
-            "description, the discussion, its reviews, and where it stands."
+            "Opens one pull request and shows the conversation around it: the description, the "
+            "discussion, its reviews, and where it stands."
         ),
         tags=["a2ui", "github", "pull-requests", "detail"],
         examples=[
@@ -54,8 +53,8 @@ SKILLS = [
         id="review_compose",
         name="Composing a review",
         description=(
-            "Helps write review feedback on a pull request: drafts the review with the "
-            "user, then submits it on their confirmation."
+            "Helps write review feedback on a pull request: drafts the review with you, then "
+            "submits it once you confirm."
         ),
         tags=["a2ui", "github", "pull-requests", "review", "compose"],
         examples=[
@@ -69,11 +68,10 @@ SKILLS = [
         id="acting",
         name="Acting on GitHub",
         description=(
-            "Performs GitHub actions as the user: comments on issues and pull requests, "
-            "opens issues and pull requests, merges, edits files, and manages "
-            "notifications. Content-bearing actions are drafted as a proposal showing "
-            "where they will land and fire on the user's confirmation; quick toggles "
-            "fire directly."
+            "Acts on GitHub for you: comments on issues and pull requests, opens issues and pull "
+            "requests, merges, edits files, and manages notifications. Anything written for you is"
+            " drafted first, showing where it will land, and sent once you confirm; quick toggles "
+            "happen right away."
         ),
         tags=["a2ui", "github", "write", "comment", "issue", "merge", "notifications"],
         examples=[

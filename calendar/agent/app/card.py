@@ -11,9 +11,9 @@ from a2a.types import AgentSkill
 APP_NAME = "Google Calendar"
 
 APP_DESCRIPTION = (
-    "Reads and acts on the user's Google Calendar: shows what is coming up and what is "
-    "still unanswered, opens a single event with its attendees, proposes a new event for "
-    "the user to confirm, and answers invitations on their behalf."
+    "Reads and acts on your Google Calendar: shows what's coming up and what's still unanswered, "
+    "opens an event with its attendees, proposes a new event for you to confirm, and answers "
+    "invitations for you."
 )
 
 # The first skill carries the cross-cutting "what needs my attention" examples: every
@@ -24,8 +24,8 @@ SKILLS = [
         id="agenda_triage",
         name="What is coming up",
         description=(
-            "Finds what the user's calendar needs from them: what is on today and next, "
-            "invitations still waiting on an answer, and where the day is double-booked."
+            "Finds what your calendar needs from you: what's on today and next, invitations still "
+            "waiting on your answer, and where your day is double-booked."
         ),
         tags=["a2ui", "calendar", "schedule", "agenda", "triage"],
         examples=[
@@ -43,8 +43,8 @@ SKILLS = [
         id="event_detail",
         name="Looking at one event",
         description=(
-            "Opens a single event and shows what it is: when and where, who is invited, "
-            "who has accepted, and the notes that came with it."
+            "Opens one event and shows what it is: when and where, who's invited, who has "
+            "accepted, and the notes that came with it."
         ),
         tags=["a2ui", "calendar", "event", "attendees"],
         examples=[
@@ -59,8 +59,7 @@ SKILLS = [
         id="event_creation",
         name="Putting something on the calendar",
         description=(
-            "Proposes a new event — time, title, attendees — and creates it once the user "
-            "confirms the proposal."
+            "Proposes a new event — time, title, attendees — and creates it once you confirm."
         ),
         tags=["a2ui", "calendar", "event", "scheduling", "create"],
         examples=[
@@ -74,8 +73,7 @@ SKILLS = [
         id="invitation_response",
         name="Answering an invitation",
         description=(
-            "Answers an invitation on the user's behalf: accept, decline, or mark it "
-            "tentative."
+            "Answers an invitation for you: accept, decline, or mark it tentative."
         ),
         tags=["a2ui", "calendar", "rsvp", "invitation"],
         examples=[
