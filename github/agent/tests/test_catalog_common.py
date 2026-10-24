@@ -17,10 +17,3 @@ def test_catalog_id_and_supported_ids_agree():
     cid = _ctx.get_catalog().catalog_id
     assert cid.endswith("github-catalog/catalogs/v0.9.1/catalog.json")
     assert _ctx.supported_catalog_ids() == [cid]
-
-
-def test_build_schema_manager_registers_examples_path():
-    sm = _ctx.build_schema_manager(examples_path=str(_ctx.catalog_json_path().parent))
-    # examples path is stored per catalog id; a non-empty render proves wiring.
-    catalog = sm.get_selected_catalog()
-    assert catalog.catalog_id == _ctx.get_catalog().catalog_id

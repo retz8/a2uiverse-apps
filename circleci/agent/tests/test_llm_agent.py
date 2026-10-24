@@ -1,7 +1,7 @@
 """The mode -> tools mapping and the LlmAgent construction, on this app's config."""
 
 import pytest
-from a2ui.schema.constants import A2UI_SCHEMA_BLOCK_START
+from a2ui.constants import A2UI_SCHEMA_BLOCK_START
 
 from a2ui_agent_kit.config import DEFAULT_MODEL
 from a2ui_agent_kit.modes import build_llm_agent, build_tools, model_name

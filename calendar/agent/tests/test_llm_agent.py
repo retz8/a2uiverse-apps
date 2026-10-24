@@ -5,7 +5,7 @@ the tool backend is the CLI's --mode flag, resolved by a2ui_agent_kit.modes.
 """
 
 import pytest
-from a2ui.schema.constants import A2UI_SCHEMA_BLOCK_START
+from a2ui.constants import A2UI_SCHEMA_BLOCK_START
 from google.adk.tools.mcp_tool import McpToolset
 
 from a2ui_agent_kit.config import DEFAULT_MODEL

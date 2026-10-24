@@ -77,7 +77,7 @@ class AgentAppConfig:
     # Catalog — the current line; an old one beside it is `old_catalog_line`
     catalog_path: Path  # explicit path to the checked-in catalog.json
     catalog_kind: CatalogKind
-    examples_dir: Path  # curated example surfaces fed to the schema manager
+    examples_dir: Path  # curated example surfaces, fed to the prompt by the SDK's load_examples
 
     # Prompt
     role_description: str
