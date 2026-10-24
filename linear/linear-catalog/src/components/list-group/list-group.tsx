@@ -1,6 +1,7 @@
 import type {ReactNode} from 'react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
 import {renderChildList} from '../../shared/child-list.js';
+import {ListView} from '../list/list.js';
 import {ListGroupApi} from './list-group.schema.js';
 
 type ListGroupViewProps = {
@@ -12,14 +13,14 @@ type ListGroupViewProps = {
 
 export function ListGroupView({label, count, leading, children}: ListGroupViewProps) {
   return (
-    <li className="lc-list-group" aria-label={label}>
+    <div className="lc-list-group" role="group" aria-label={label}>
       <div className="lc-list-group-head">
         {leading ? <span className="lc-list-group-leading">{leading}</span> : null}
         <span className="lc-list-group-label">{label}</span>
         {count ? <span className="lc-list-group-count">{count}</span> : null}
       </div>
-      <ul className="lc-list">{children}</ul>
-    </li>
+      <ListView>{children}</ListView>
+    </div>
   );
 }
 

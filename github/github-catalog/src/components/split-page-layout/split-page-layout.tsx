@@ -9,7 +9,7 @@ import {SplitPageLayoutApi} from './split-page-layout.schema.js';
  * Root as `PageLayout` directly, rather than `SplitPageLayout`, so slot matching can use markers:
  * `SplitPageLayout.Root` overrides the slotsConfig to the `SplitPageLayout.*` subcomponents, which
  * carry NO `__SLOT__` marker (native usage matches them by `child.type ===` reference). The a2ui
- * `DeferredChild` wrapper breaks reference equality, and `isSlot` returns false for a markerless
+ * host element breaks reference equality, and `isSlot` returns false for a markerless
  * slot — so on `SplitPageLayout` every region flattens into `rest`. `PageLayout`'s default
  * slotsConfig instead keys on the marked `PageLayout.Header`/`.Footer`/`.Sidebar`, so a marker-
  * copying bridge places each region correctly. Same approach as the `PageLayout` catalog component.

@@ -25,7 +25,7 @@ export function ListItemView({
 }: ListItemViewProps) {
   const interactive = onPress !== undefined;
   return (
-    <li className="gc-list-item" data-selected={selected ? '' : undefined}>
+    <div className="gc-list-item" data-selected={selected ? '' : undefined}>
       <div
         className="gc-list-row"
         data-interactive={interactive ? '' : undefined}
@@ -42,7 +42,7 @@ export function ListItemView({
         {meta ? <span className="gc-list-meta">{meta}</span> : null}
         {trailing ? <span className="gc-list-trailing">{trailing}</span> : null}
       </div>
-    </li>
+    </div>
   );
 }
 

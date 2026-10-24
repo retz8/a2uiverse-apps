@@ -3,6 +3,7 @@ import {ActionMenu as PrimerActionMenu} from '@primer/react';
 import {createComponentImplementation} from '@a2ui/react/v0_9';
 import type {ComponentContext} from '@a2ui/web_core/v0_9';
 import {ActionMenuApi} from './actionmenu.schema.js';
+import {childComponentId} from '../../shared/child-list.js';
 
 /** `buildChild` from the a2ui react binder: resolves a component id (with optional data-scope basePath) to a node. */
 type BuildChild = (id: string, basePath?: string) => ReactNode;
@@ -28,9 +29,9 @@ const TRIGGER_SLOTS: Record<string, SlotComponent> = {
  * builds its `renderAnchor` by cloning the bridge element with the anchor props it injects
  * (ref/onClick/onKeyDown/aria-*). Unlike a plain pass-through bridge, this one spreads those props
  * onto a host `<span>` and takes the injected ref — so the built trigger becomes the interactive,
- * positioned anchor (the `AnchoredOverlay` `renderAnchor` span precedent, 6.55). The binder renders
- * every child through an opaque `DeferredChild`, so the real `ActionMenu.Button`/`Anchor` element is
- * buried and never matched directly; the marked bridge is what Primer sees.
+ * positioned anchor (the `AnchoredOverlay` `renderAnchor` span precedent, 6.55). The renderer
+ * renders every child through a host element of its own, so the real `ActionMenu.Button`/`Anchor`
+ * element is buried and never matched directly; the marked bridge is what Primer sees.
  *
  * Cached per slot component so the element type stays stable across renders (a fresh type each
  * render would remount).
@@ -58,10 +59,12 @@ function triggerBridgeFor(slot: SlotComponent): ComponentType<{children?: ReactN
 }
 
 /**
- * Renders the root's resolved `ChildList`. A trigger child (`ActionMenu.Button`/`ActionMenu.Anchor`)
- * is wrapped in a slot-marked span bridge so Primer's `ActionMenu` recognizes it as the anchor; the
- * overlay (and any other child) renders exactly as `renderChildList` would and reads Primer's
- * `MenuContext` through the tree. A child's type is read from the surface model.
+ * Renders the root's resolved `ChildList`. A trigger child
+ * (`ActionMenu.Button`/`ActionMenu.Anchor`) is wrapped in a slot-marked span bridge so Primer's
+ * `ActionMenu` recognizes it as the anchor; the overlay (and any other child) renders exactly as
+ * `renderChildList` would and reads Primer's `MenuContext` through the tree. A child's type is read
+ * from the surface model, by the component id the `children` its model holds names at the same
+ * position.
  */
 export function renderActionMenuChildren(
   children: unknown,
@@ -69,11 +72,12 @@ export function renderActionMenuChildren(
   context: ComponentContext,
 ): ReactNode {
   if (!Array.isArray(children)) return null;
+  const list = context.componentModel.properties.children;
   return (children as ResolvedChildRef[]).map((child, index) => {
     const id = typeof child === 'string' ? child : child.id;
     const basePath = typeof child === 'string' ? undefined : child.basePath;
     const key = `${id}-${basePath ?? index}`;
-    const model = context.surfaceComponents.get(id);
+    const model = context.surfaceComponents.get(childComponentId(list, index) ?? '');
     const slot = model ? TRIGGER_SLOTS[model.type] : undefined;
     if (slot) {
       const Bridge = triggerBridgeFor(slot);

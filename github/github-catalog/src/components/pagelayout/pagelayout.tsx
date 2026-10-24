@@ -7,13 +7,14 @@ type Spacing = 'none' | 'condensed' | 'normal';
 type SizeWidth = 'full' | 'medium' | 'large' | 'xlarge';
 
 /**
- * Marker-copying slot bridges for the three identity-slotted regions. Primer's PageLayout auto-slots
- * `header` / `footer` / `sidebar` by scanning its children for a `__SLOT__` marker (`useSlots`); the
- * a2ui `DeferredChild` wrapper around each built region hides that marker, so the scanner cannot see
- * it. Each bridge is a transparent wrapper (`asSlot(wrapper, PageLayout.<Region>)`) that carries the
- * region's marker while rendering the built region node untouched, so the scanner places it in the
- * right region. `content` and `pane` need no bridge — they fall through `useSlots` to `rest` and
- * render in document order (Pane self-positions start/end via CSS + PageLayoutContext).
+ * Marker-copying slot bridges for the three identity-slotted regions. Primer's PageLayout
+ * auto-slots `header` / `footer` / `sidebar` by scanning its children for a `__SLOT__` marker
+ * (`useSlots`); the renderer's host element around each built region hides that marker, so the
+ * scanner cannot see it. Each bridge is a transparent wrapper (`asSlot(wrapper,
+ * PageLayout.<Region>)`) that carries the region's marker while rendering the built region node
+ * untouched, so the scanner places it in the right region. `content` and `pane` need no bridge —
+ * they fall through `useSlots` to `rest` and render in document order (Pane self-positions
+ * start/end via CSS + PageLayoutContext).
  */
 const HeaderSlot = asSlot(function PageLayoutHeaderSlot({children}: {children?: ReactNode}) {
   return <>{children}</>;

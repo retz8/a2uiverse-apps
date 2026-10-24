@@ -14,12 +14,12 @@ type ResolvedChildRef = string | {id: string; basePath?: string};
 type Responsive<T> = T | {narrow?: T; regular?: T; wide?: T};
 
 /**
- * Bridge between Primer's child-injection and the binder's opaque child. Primer's `AvatarStack`
+ * Bridge between Primer's child-injection and the renderer's host element. Primer's `AvatarStack`
  * clones its overlap class (`AvatarItem`) and the `square` flag (from stack `shape`) onto each
- * *direct* child via `cloneElement`; the binder's `DeferredChild` (what `buildChild` returns) drops
+ * *direct* child via `cloneElement`; the renderer's host element (what `buildChild` renders) drops
  * any injected React prop, so it never reaches the real avatar. `AvatarStackItem` is a real element
  * Primer can inject into, and it re-broadcasts the injection through React context — which flows
- * through the opaque wrapper — so the `Avatar` behind it applies the class/flag onto its `<img>`.
+ * through the host element — so the `Avatar` behind it applies the class/flag onto its `<img>`.
  * It renders no DOM of its own, so the avatar stays a direct flex child of the stack body and the
  * `:nth-child(n+2)` overlap rule (and the `--avatar-stack-size` sizing the class carries) apply.
  */
@@ -41,8 +41,8 @@ function AvatarStackItem({
 /**
  * Renders a resolved A2UI `ChildList` as AvatarStack items. Each built child is wrapped in an
  * `AvatarStackItem` bridge (see its note) rather than the shared `renderChildList` Fragment, so
- * Primer's injected overlap/size/square styling reaches the real avatar behind the binder's
- * opaque child.
+ * Primer's injected overlap/size/square styling reaches the real avatar behind the renderer's host
+ * element.
  */
 function renderAvatarItems(children: unknown, buildChild: BuildChild): ReactNode {
   if (!Array.isArray(children)) return null;

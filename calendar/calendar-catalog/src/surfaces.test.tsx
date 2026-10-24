@@ -38,10 +38,12 @@ const surfaces: [string, Message[]][] = [
 ];
 
 /**
- * The messages on one surface id, as the kit stamps them. An action's answer updates a surface the
- * client already holds, so one is created for it first.
+ * The A2UI messages on one surface id, as the kit stamps them; the shell's `paintMeta` beside them
+ * is not one. An action's answer updates a surface the client already holds, so one is created for
+ * it first.
  */
-function stamp(messages: Message[], surfaceId: string): A2uiMessage[] {
+function stamp(answer: Message[], surfaceId: string): A2uiMessage[] {
+  const messages = answer.filter(message => 'version' in message);
   const created = messages.some(message => 'createSurface' in message);
   const opening = created ? [] : [{version: 'v0.9', createSurface: {catalogId: CATALOG.id}}];
   return [...opening, ...messages].map(message => {

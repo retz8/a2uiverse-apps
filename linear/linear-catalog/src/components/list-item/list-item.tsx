@@ -20,9 +20,9 @@ export function ListItemView({leading, trailing, onAction, children}: ListItemVi
   );
   if (!onAction) {
     return (
-      <li className="lc-list-item">
+      <div className="lc-list-item">
         <div className="lc-row">{row}</div>
-      </li>
+      </div>
     );
   }
   const onKeyDown = (event: KeyboardEvent) => {
@@ -32,7 +32,7 @@ export function ListItemView({leading, trailing, onAction, children}: ListItemVi
     }
   };
   return (
-    <li className="lc-list-item">
+    <div className="lc-list-item">
       <div
         className="lc-row"
         data-interactive=""
@@ -43,7 +43,7 @@ export function ListItemView({leading, trailing, onAction, children}: ListItemVi
       >
         {row}
       </div>
-    </li>
+    </div>
   );
 }
 

@@ -62,7 +62,7 @@ describe('theme.css', () => {
 
   it('wraps a horizontal Stack inside a horizontal Stack, so its peers never slide under the next', () => {
     const nested = rules().find(r =>
-      /\.circleci-stack\[data-direction='horizontal'\]\s*>\s*\.circleci-stack\[data-direction='horizontal'\]$/.test(
+      /\.circleci-stack\[data-direction='horizontal'\]\s*>\s*\*\s*>\s*\.circleci-stack\[data-direction='horizontal'\]$/.test(
         r.selector,
       ),
     );
@@ -73,15 +73,17 @@ describe('theme.css', () => {
     const panel = rules().find(r => r.selector === '.circleci-catalog .circleci-panel');
     expect(panel?.body).toMatch(/container:\s*circleci-panel\s*\/\s*inline-size/);
     const floor = rules().find(r =>
-      /\.circleci-stack\[data-direction='horizontal'\]\s*>\s*\.circleci-field$/.test(r.selector),
+      /\.circleci-stack\[data-direction='horizontal'\]\s*>\s*\*\s*>\s*\.circleci-field$/.test(
+        r.selector,
+      ),
     );
     expect(floor?.body).toMatch(/min-width:\s*min-content/);
     const narrow = css.match(
       /@container circleci-panel \(max-width: 26rem\) \{([\s\S]*?)\n\}/,
     )?.[1];
-    expect(narrow).toMatch(/:has\(> \.circleci-field\)\s*\{\s*flex-direction:\s*column/);
+    expect(narrow).toMatch(/:has\(> \* > \.circleci-field\)\s*\{\s*flex-direction:\s*column/);
     expect(narrow).toMatch(
-      /:has\(> \.circleci-field\)\s*> \.circleci-divider\[data-orientation='vertical'\]\s*\{\s*display:\s*none/,
+      /:has\(> \* > \.circleci-field\)\s*> \*\s*> \.circleci-divider\[data-orientation='vertical'\]\s*\{\s*display:\s*none/,
     );
   });
 

@@ -18,13 +18,15 @@ let tokensLoaded: Promise<unknown> | null = null;
  * attributes ThemeProvider sets, plus the generated scope-element sheet (motion + border/focus
  * tokens). Without the color tokens Icon fills compute to black, without the motion tokens
  * Spinner's animation shorthand is dropped, and the border/focus tokens are what the functional
- * sheets read.
+ * sheets read. Beside them, Primer's rules restated for children that are components of their own
+ * (`primer-children.css`).
  */
 function loadPrimerTokens() {
   tokensLoaded ??= Promise.all([
     import('@primer/primitives/dist/css/functional/themes/light.css'),
     import('@primer/primitives/dist/css/functional/themes/dark.css'),
     import('./primer-scoped.css'),
+    import('./primer-children.css'),
   ]);
   return tokensLoaded;
 }

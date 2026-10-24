@@ -1,0 +1,306 @@
+/*
+ * Primer's rules that relate a parent to its children, or siblings to each other, restated for
+ * children that are components of their own. The renderer hosts every component in an element of
+ * its own, with no class and `display: contents`, so the element Primer styles sits one level down,
+ * the only child where it is: a rule reaching it through `>` misses it, a sibling or `nth-child`
+ * condition never holds, and a `first-child` or `last-child` one always does. Each rule here reads
+ * its condition off the host element and puts Primer's own declarations on the element inside;
+ * where Primer's original now holds for every child, the rule after it gives the others back what
+ * they had. Every class is Primer 38.36.0's, scoped to the Provider's wrapper.
+ */
+
+/* ActionList: the space after a leading visual, and after a description followed by more. */
+.github-catalog-scope .prc-ActionList-ActionListContent-KBb8- > :not([class]):not(:last-child) > *,
+.github-catalog-scope
+  .prc-ActionList-ActionListSubContent-gKsFp
+  > :not([class]):not(:last-child)
+  > * {
+  margin-right: var(--control-medium-gap, 0.5rem);
+}
+
+/* ActionList: the space between items, where the list asks for it. */
+.github-catalog-scope
+  .prc-ActionList-ActionList-rPFF2[data-item-gap]
+  :has(> .prc-ActionList-ActionListItem-So4vC)
+  + :has(> .prc-ActionList-ActionListItem-So4vC)
+  > .prc-ActionList-ActionListItem-So4vC {
+  margin-block-start: var(--base-size-2, 0.125rem);
+}
+
+/* ActionList dividers: the line above every item but the first and one right after a divider,
+   hidden while the item or the one above it is hovered, focused or active. */
+.github-catalog-scope
+  .prc-ActionList-ActionList-rPFF2[data-dividers='true']
+  :not(:first-child)
+  > .prc-ActionList-ActionListItem-So4vC
+  :is(.prc-ActionList-ActionListSubContent-gKsFp, [data-description-variant='inline'])::before {
+  visibility: visible;
+}
+.github-catalog-scope
+  .prc-ActionList-ActionList-rPFF2[data-dividers='true']
+  :has(> .prc-ActionList-Divider-taVfb)
+  + *
+  > .prc-ActionList-ActionListItem-So4vC
+  :is(.prc-ActionList-ActionListSubContent-gKsFp, [data-description-variant='inline'])::before,
+.github-catalog-scope
+  .prc-ActionList-ActionList-rPFF2[data-dividers='true']
+  :has(
+    > .prc-ActionList-ActionListItem-So4vC:not([data-is-disabled], [data-has-subitem='true']):is(
+        :hover,
+        :focus-visible,
+        [data-active]
+      )
+  )
+  + *
+  > .prc-ActionList-ActionListItem-So4vC
+  :is(.prc-ActionList-ActionListSubContent-gKsFp, [data-description-variant='inline'])::before,
+.github-catalog-scope
+  .prc-ActionList-ActionList-rPFF2[data-dividers='true']
+  .prc-ActionList-ActionListItem-So4vC:not([data-is-disabled], [data-has-subitem='true']):is(
+    :hover,
+    :focus-visible,
+    [data-active]
+  )
+  :is(.prc-ActionList-ActionListSubContent-gKsFp, [data-description-variant='inline'])::before {
+  visibility: hidden;
+}
+
+/* ActionList.Divider: hidden only as its list's first child, or after an item hidden from view. */
+.github-catalog-scope
+  .prc-ActionList-ActionList-rPFF2
+  :not(:first-child)
+  > .prc-ActionList-Divider-taVfb {
+  display: block;
+}
+.github-catalog-scope
+  .prc-ActionList-ActionList-rPFF2
+  :has(> .prc-ActionList-ActionListItem-So4vC[aria-hidden])
+  + *
+  > .prc-ActionList-Divider-taVfb {
+  display: none;
+}
+
+/* ActionList.Group: the space above every group but the first. */
+.github-catalog-scope
+  .prc-ActionList-ActionList-rPFF2
+  > :not(:first-child)
+  > .prc-ActionList-Group-lMIPQ {
+  margin-block-start: var(--base-size-8, 0.5rem);
+}
+
+/* FormControl: the space between its label, its input and its caption. */
+.github-catalog-scope .prc-FormControl-ControlVerticalLayout-8YotI > * + :not([class]) > * {
+  margin-top: var(--base-size-4, 0.25rem);
+}
+
+/* CheckboxGroup and RadioGroup: the space between their choices. */
+.github-catalog-scope .prc-CheckboxOrRadioGroup-Body-S3dlj > * + :not([class]) > * {
+  margin-top: var(--base-size-8, 0.5rem);
+}
+
+/* Timeline: what Primer gives only its first and last items, given back to the others. */
+.github-catalog-scope
+  .prc-Timeline-Timeline-awSoC:is([data-clip-sidebar='start'], [data-clip-sidebar='both'])
+  > :not(:first-child)
+  > .prc-Timeline-TimelineItem-QwDVH {
+  padding-top: var(--base-size-16, 1rem);
+}
+.github-catalog-scope
+  .prc-Timeline-Timeline-awSoC:is([data-clip-sidebar='start'], [data-clip-sidebar='both'])
+  > :not(:first-child)
+  > .prc-Timeline-TimelineItem-QwDVH[data-condensed] {
+  padding-top: var(--base-size-4, 0.25rem);
+}
+.github-catalog-scope
+  .prc-Timeline-Timeline-awSoC:is([data-clip-sidebar='start'], [data-clip-sidebar='both'])
+  > :not(:first-child)
+  > .prc-Timeline-TimelineItem-QwDVH[data-condensed]::before {
+  top: 0;
+}
+.github-catalog-scope
+  .prc-Timeline-Timeline-awSoC:is([data-clip-sidebar='start'], [data-clip-sidebar='both'])
+  > :not(:first-child)
+  > .prc-Timeline-TimelineItem-QwDVH
+  .prc-Timeline-TimelineItemAvatar-4zO8f {
+  top: calc(var(--base-size-16, 1rem) + var(--base-size-16, 1rem));
+}
+.github-catalog-scope
+  .prc-Timeline-Timeline-awSoC:is([data-clip-sidebar='start'], [data-clip-sidebar='both'])
+  > :not(:first-child)
+  > .prc-Timeline-TimelineItem-QwDVH[data-condensed]
+  .prc-Timeline-TimelineItemAvatar-4zO8f {
+  top: calc(var(--base-size-4, 0.25rem) + var(--base-size-8, 0.5rem) + var(--base-size-8, 0.5rem));
+}
+.github-catalog-scope
+  .prc-Timeline-Timeline-awSoC:is([data-clip-sidebar='end'], [data-clip-sidebar='both'])
+  > :not(:last-child)
+  > .prc-Timeline-TimelineItem-QwDVH {
+  padding-bottom: var(--base-size-16, 1rem);
+}
+.github-catalog-scope
+  .prc-Timeline-Timeline-awSoC:is([data-clip-sidebar='end'], [data-clip-sidebar='both'])
+  > :not(:last-child)
+  > .prc-Timeline-TimelineItem-QwDVH[data-condensed]::before {
+  height: auto;
+}
+.github-catalog-scope
+  .prc-Timeline-Timeline-awSoC
+  > :not(:last-child)
+  > .prc-Timeline-TimelineItem-QwDVH[data-condensed] {
+  padding-bottom: 0;
+}
+.github-catalog-scope
+  .prc-Timeline-Timeline-awSoC
+  > :has(+ * > [data-condensed])
+  > .prc-Timeline-TimelineBreak-X8eti {
+  margin-bottom: calc(var(--base-size-12, 0.75rem) * -1);
+}
+
+/* SegmentedControl: the divider between segments, and the edges only its first and last take. */
+.github-catalog-scope
+  .prc-SegmentedControl-SegmentedControl-lqIXp
+  > :not(:last-child)
+  > .prc-SegmentedControl-Item-tSCQh {
+  margin-right: 1px;
+}
+.github-catalog-scope
+  .prc-SegmentedControl-SegmentedControl-lqIXp
+  > :not(:first-child)
+  > .prc-SegmentedControl-Item-tSCQh {
+  margin-left: 0;
+}
+.github-catalog-scope
+  .prc-SegmentedControl-SegmentedControl-lqIXp
+  > :not(:last-child)
+  > .prc-SegmentedControl-Item-tSCQh::after {
+  background-color: var(--borderColor-default, #d1d9e0);
+  bottom: var(--base-size-8, 0.5rem);
+  content: '';
+  position: absolute;
+  right: calc(var(--base-size-2, 0.125rem) * -1);
+  top: var(--base-size-8, 0.5rem);
+  width: 1px;
+}
+.github-catalog-scope
+  .prc-SegmentedControl-SegmentedControl-lqIXp
+  > :not(:last-child):has(+ * > [data-selected])
+  > .prc-SegmentedControl-Item-tSCQh::after,
+.github-catalog-scope
+  .prc-SegmentedControl-SegmentedControl-lqIXp
+  > :not(:last-child)
+  > .prc-SegmentedControl-Item-tSCQh[data-selected]::after {
+  background-color: transparent;
+}
+
+/* AvatarStack: each avatar after the first overlapping the one before it, fading in a cascade,
+   stacked in order when square, the sixth on hidden; spread apart while hovered or focused. */
+.github-catalog-scope
+  .prc-AvatarStack-AvatarStackBody-JFK4u
+  > :nth-child(n + 2)
+  > .prc-AvatarStack-AvatarItem-70eW3 {
+  margin-inline-start: calc(var(--overlap-size) * -1);
+  mask-composite: exclude;
+  mask-position:
+    calc(
+        (var(--avatar-stack-size) - var(--overlap-size)) * var(--mask-start) -
+          var(--avatar-border-width)
+      )
+      center,
+    0 0;
+  mask-repeat: no-repeat, no-repeat;
+  mask-size:
+    var(--mask-size) var(--mask-size),
+    auto;
+  padding: 0.1px;
+}
+.github-catalog-scope
+  .prc-AvatarStack-AvatarStack-vkIK2:where([data-shape='circle'])
+  .prc-AvatarStack-AvatarStackBody-JFK4u
+  > :nth-child(n + 2)
+  > .prc-AvatarStack-AvatarItem-70eW3 {
+  mask-image: radial-gradient(at 50% 50%, #000 70%, transparent 71%), linear-gradient(#000 0 0);
+}
+.github-catalog-scope
+  .prc-AvatarStack-AvatarStack-vkIK2:where([data-shape='square'])
+  .prc-AvatarStack-AvatarStackBody-JFK4u
+  > :nth-child(n + 2)
+  > .prc-AvatarStack-AvatarItem-70eW3 {
+  mask-image: linear-gradient(at 50% 50%, #000 70%, transparent 71%), linear-gradient(#000 0 0);
+}
+.github-catalog-scope
+  .prc-AvatarStack-AvatarStack-vkIK2:where([data-variant='cascade'])
+  .prc-AvatarStack-AvatarStackBody-JFK4u
+  > :nth-child(n + 3)
+  > .prc-AvatarStack-AvatarItem-70eW3 {
+  --overlap-size: var(--overlap-size-avatar-three-plus);
+  opacity: calc(100% - var(--opacity-step) * 2);
+}
+.github-catalog-scope
+  .prc-AvatarStack-AvatarStack-vkIK2:where([data-variant='cascade'])
+  .prc-AvatarStack-AvatarStackBody-JFK4u
+  > :nth-child(n + 4)
+  > .prc-AvatarStack-AvatarItem-70eW3 {
+  opacity: calc(100% - var(--opacity-step) * 3);
+}
+.github-catalog-scope
+  .prc-AvatarStack-AvatarStack-vkIK2:where([data-variant='cascade'])
+  .prc-AvatarStack-AvatarStackBody-JFK4u
+  > :nth-child(n + 5)
+  > .prc-AvatarStack-AvatarItem-70eW3 {
+  opacity: calc(100% - var(--opacity-step) * 4);
+}
+.github-catalog-scope
+  .prc-AvatarStack-AvatarStack-vkIK2:where([data-shape='square'])
+  .prc-AvatarStack-AvatarStackBody-JFK4u
+  > :nth-child(2)
+  > .prc-AvatarStack-AvatarItem-70eW3 {
+  z-index: 4;
+}
+.github-catalog-scope
+  .prc-AvatarStack-AvatarStack-vkIK2:where([data-shape='square'])
+  .prc-AvatarStack-AvatarStackBody-JFK4u
+  > :nth-child(3)
+  > .prc-AvatarStack-AvatarItem-70eW3 {
+  z-index: 3;
+}
+.github-catalog-scope
+  .prc-AvatarStack-AvatarStack-vkIK2:where([data-shape='square'])
+  .prc-AvatarStack-AvatarStackBody-JFK4u
+  > :nth-child(4)
+  > .prc-AvatarStack-AvatarItem-70eW3 {
+  z-index: 2;
+}
+.github-catalog-scope
+  .prc-AvatarStack-AvatarStack-vkIK2:where([data-shape='square'])
+  .prc-AvatarStack-AvatarStackBody-JFK4u
+  > :nth-child(5)
+  > .prc-AvatarStack-AvatarItem-70eW3 {
+  z-index: 1;
+}
+.github-catalog-scope
+  .prc-AvatarStack-AvatarStackBody-JFK4u
+  > :nth-child(n + 6)
+  > .prc-AvatarStack-AvatarItem-70eW3 {
+  opacity: 0;
+  position: absolute;
+  visibility: hidden;
+}
+.github-catalog-scope
+  .prc-AvatarStack-AvatarStackBody-JFK4u:not([data-disable-expand]):is(:hover, :focus-within)
+  > *
+  > .prc-AvatarStack-AvatarItem-70eW3 {
+  --mask-size: 100%;
+  margin-inline-start: var(--base-size-4, 0.25rem);
+  mask-position:
+    calc(var(--avatar-stack-size) * var(--mask-start)) center,
+    0 0;
+  opacity: 1;
+  position: relative;
+  visibility: visible;
+}
+.github-catalog-scope
+  .prc-AvatarStack-AvatarStackBody-JFK4u:not([data-disable-expand]):is(:hover, :focus-within)
+  > :first-child
+  > .prc-AvatarStack-AvatarItem-70eW3 {
+  margin-inline-start: 0;
+}

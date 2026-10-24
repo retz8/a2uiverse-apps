@@ -129,6 +129,7 @@
    first line, the branch moving below them. */
 .circleci-catalog
   .circleci-stack[data-direction='horizontal']
+  > *
   > .circleci-stack[data-direction='horizontal'] {
   flex-wrap: wrap;
 }
@@ -424,12 +425,13 @@
   background: var(--circleci-fill-quiet);
 }
 
-/* The jobs tree: a rule down the left edge, a tick into each row, stopping at the last. */
-.circleci-catalog .circleci-list[data-connector='tree'] > .circleci-list-item {
+/* The jobs tree: a rule down the left edge, a tick into each row, stopping at the last. Each row
+   sits in the element its component renders in. */
+.circleci-catalog .circleci-list[data-connector='tree'] > * > .circleci-list-item {
   margin-left: 0.5rem;
   padding-left: 1.25rem;
 }
-.circleci-catalog .circleci-list[data-connector='tree'] > .circleci-list-item::before {
+.circleci-catalog .circleci-list[data-connector='tree'] > * > .circleci-list-item::before {
   content: '';
   position: absolute;
   left: 0;
@@ -437,10 +439,13 @@
   bottom: 0;
   border-left: 1px solid var(--circleci-border);
 }
-.circleci-catalog .circleci-list[data-connector='tree'] > .circleci-list-item:last-child::before {
+.circleci-catalog
+  .circleci-list[data-connector='tree']
+  > :last-child
+  > .circleci-list-item::before {
   bottom: 50%;
 }
-.circleci-catalog .circleci-list[data-connector='tree'] > .circleci-list-item::after {
+.circleci-catalog .circleci-list[data-connector='tree'] > * > .circleci-list-item::after {
   content: '';
   position: absolute;
   left: 0;
@@ -461,21 +466,22 @@
   color: var(--circleci-text-muted);
 }
 /* A row of Fields keeps each field's words whole: the longest value wraps at its breaks. */
-.circleci-catalog .circleci-stack[data-direction='horizontal'] > .circleci-field {
+.circleci-catalog .circleci-stack[data-direction='horizontal'] > * > .circleci-field {
   min-width: min-content;
 }
 /* A narrow panel stacks a row of Fields, one field per line, its vertical dividers gone: under
    26rem a run's facts with a long branch no longer fit on one line. */
 @container circleci-panel (max-width: 26rem) {
-  .circleci-catalog .circleci-stack[data-direction='horizontal']:has(> .circleci-field) {
+  .circleci-catalog .circleci-stack[data-direction='horizontal']:has(> * > .circleci-field) {
     flex-direction: column;
     align-items: stretch;
   }
-  .circleci-catalog .circleci-stack[data-direction='horizontal'] > .circleci-field {
+  .circleci-catalog .circleci-stack[data-direction='horizontal'] > * > .circleci-field {
     min-width: 0;
   }
   .circleci-catalog
-    .circleci-stack[data-direction='horizontal']:has(> .circleci-field)
+    .circleci-stack[data-direction='horizontal']:has(> * > .circleci-field)
+    > *
     > .circleci-divider[data-orientation='vertical'] {
     display: none;
   }

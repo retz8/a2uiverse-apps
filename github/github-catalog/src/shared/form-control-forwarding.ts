@@ -6,12 +6,12 @@ import {useFormControlForwardedProps} from '@primer/react';
  * input it renders.
  *
  * Why this is needed: Primer's `FormControl` normally injects these onto the input it detects by
- * element type (`cloneElement`), but the a2ui binder renders every child through an opaque
- * `DeferredChild`, so that type detection never matches and the input receives nothing. Primer's
- * public `useFormControlForwardedProps` hook instead reads the same values from `FormControlContext`
- * — which flows through the wrapper untouched — giving the input its `id` (↔ label `htmlFor`),
- * `disabled`/`required` cascade, and `aria-describedby` (caption + validation message ids). Outside a
- * `FormControl` the hook is a no-op.
+ * element type (`cloneElement`), but the renderer renders every child through a host element of its
+ * own, so that type detection never matches and the input receives nothing. Primer's public
+ * `useFormControlForwardedProps` hook instead reads the same values from `FormControlContext` —
+ * which flows through the wrapper untouched — giving the input its `id` (↔ label `htmlFor`),
+ * `disabled`/`required` cascade, and `aria-describedby` (caption + validation message ids). Outside
+ * a `FormControl` the hook is a no-op.
  *
  * The input's own `disabled`/`required` are forwarded ONLY when explicitly set, so a binder-supplied
  * `undefined` does not clobber the value cascading from the FormControl root (the hook lets the

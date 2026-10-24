@@ -14,12 +14,12 @@ const schema = JSON.parse(readFileSync('catalogs/v0.9.1/catalog.json', 'utf8')) 
 
 /**
  * This assertion is also the upstream-drift detector: the runtime catalog is built from the
- * pinned `@a2ui/react`'s basic catalog, while the schema is a checked-in copy of upstream's.
+ * pinned `@a2ui/web_core`'s basic catalog, while the schema is a checked-in copy of upstream's.
  * A mismatch almost always means the pin moved and `catalogs/v0.9.1/catalog.json` needs
  * refreshing from upstream's `specification/v0_9/catalogs/basic/catalog.json`.
  */
 const DRIFT_HINT =
-  'component sets differ: the pinned @a2ui/react basic catalog and the checked-in ' +
+  'component sets differ: the pinned @a2ui/web_core basic catalog and the checked-in ' +
   'catalog.json disagree. Refresh catalog.json from upstream and re-apply the identity ' +
   'fields ($id, catalogId, title, description).';
 

@@ -6,13 +6,13 @@ import {renderSlottedChildList, type SlotMap} from '../../shared/slotted-child-l
 
 /**
  * Slot routing for the root's `children`. Primer's `RadioGroup` scans direct children for its
- * `Label`/`Caption`/`Validation` slots by `__SLOT__` marker (`useSlots`), but the binder renders
- * every child through an opaque `DeferredChild` wrapper that buries the marker — so each slot leaf is
+ * `Label`/`Caption`/`Validation` slots by `__SLOT__` marker (`useSlots`), but the renderer renders
+ * every child through a host element of its own that buries the marker — so each slot leaf is
  * wrapped in a marker-carrying `bridge` (the `Dialog`/`FormControl` slot-scan precedent). The
- * `FormControl`-wrapped radio options are not in this map, so they fall through to become the group's
- * inputs. `forward` copies the element-level props Primer reads off the matched slot element:
- * `Label.visuallyHidden` (drives the hidden legend) and `Validation.variant` (drives the validation
- * status).
+ * `FormControl`-wrapped radio options are not in this map, so they fall through to become the
+ * group's inputs. `forward` copies the element-level props Primer reads off the matched slot
+ * element: `Label.visuallyHidden` (drives the hidden legend) and `Validation.variant` (drives the
+ * validation status).
  */
 const RADIO_GROUP_SLOTS: SlotMap = {
   RadioGroupLabel: {mode: 'bridge', slot: PrimerRadioGroup.Label, forward: ['visuallyHidden']},

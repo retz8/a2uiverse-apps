@@ -10,7 +10,7 @@ import {createContext} from 'react';
  * it writes the clicked index back to `selectedIndex`'s bound path (the optimistic two-way write)
  * and then fires the container's optional change `action`.
  *
- * The a2ui renderer resolves each child independently (a `DeferredChild` wrapper), so the parent
+ * The a2ui renderer resolves each child independently (a host element of its own), so the parent
  * cannot reach through to Primer's own child-cloning to inject `selected`/`onClick`; this context
  * is the channel that carries them across that boundary.
  */

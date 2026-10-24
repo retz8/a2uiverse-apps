@@ -10,7 +10,7 @@ import {spacing, sizeWidth} from '../../shared/page-layout.js';
  * - The five regions — `header` / `content` / `pane` / `sidebar` / `footer` — are each a named
  *   synthetic `ComponentId` slot (the Details `summary`-slot idiom). Primer auto-slots its regions
  *   by scanning children for `useSlots` markers; A2UI's `buildChild` returns an opaque
- *   `DeferredChild` that hides those markers, so a generic child list cannot be slotted. Naming each
+ *   host element that hides those markers, so a generic child list cannot be slotted. Naming each
  *   region as its own `ComponentId` lets the render know each region's identity and bridge the
  *   identity-slotted ones (`header`/`footer`/`sidebar`) back onto Primer's scanner with `asSlot`.
  *   All five are optional — a layout may supply any subset; the single-`ComponentId`-per-slot shape

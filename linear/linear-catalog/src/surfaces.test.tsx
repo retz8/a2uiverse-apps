@@ -39,10 +39,13 @@ const surfaces: [string, Message[]][] = [
 
 /** The messages on one surface id, as the kit stamps them. */
 function stamp(messages: Message[], surfaceId: string): A2uiMessage[] {
-  return messages.map(message => {
-    const [key] = Object.keys(message).filter(k => k !== 'version');
-    return {...message, [key]: {...message[key], surfaceId}} as unknown as A2uiMessage;
-  });
+  // The shell's `paintMeta` beside the A2UI messages is not one of them.
+  return messages
+    .filter(message => 'version' in message)
+    .map(message => {
+      const [key] = Object.keys(message).filter(k => k !== 'version');
+      return {...message, [key]: {...message[key], surfaceId}} as unknown as A2uiMessage;
+    });
 }
 
 let errors: ReturnType<typeof vi.spyOn>;

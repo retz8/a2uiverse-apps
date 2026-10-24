@@ -25,7 +25,7 @@ export function ListItemView({
 }: ListItemViewProps) {
   const interactive = onPress !== undefined;
   return (
-    <li className="gm-list-item" data-selected={selected ? '' : undefined}>
+    <div className="gm-list-item" data-selected={selected ? '' : undefined}>
       <div
         className="gm-list-row"
         data-interactive={interactive ? '' : undefined}
@@ -42,7 +42,7 @@ export function ListItemView({
         {meta ? <span className="gm-list-meta">{meta}</span> : null}
         {trailing ? <span className="gm-list-trailing">{trailing}</span> : null}
       </div>
-    </li>
+    </div>
   );
 }
 

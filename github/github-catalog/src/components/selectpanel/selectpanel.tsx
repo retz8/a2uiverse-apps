@@ -4,6 +4,8 @@ import {createComponentImplementation} from '@a2ui/react/v0_9';
 import type {ComponentContext} from '@a2ui/web_core/v0_9';
 import {SelectPanelApi} from './selectpanel.schema.js';
 import {iconComponent} from '../../shared/icon-component.js';
+import {childComponentId} from '../../shared/child-list.js';
+import {SelectPanelItemVisualContext} from '../../shared/selectpanel-item-visual-context.js';
 
 /** `buildChild` from the a2ui react binder: resolves a component id (with optional scope) to a node. */
 type BuildChild = (id: string, basePath?: string) => ReactNode;
@@ -234,9 +236,20 @@ export function SelectPanelView({
   );
 }
 
-/** Resolves a `ComponentId` visual to a Primer `ElementType` (a built node wrapped as a component). */
-function resolveVisual(id: unknown, buildChild: BuildChild): ElementType | undefined {
-  return typeof id === 'string' ? iconComponent(buildChild(id)) : undefined;
+/**
+ * One of an item's visuals as a Primer `ElementType`: the item itself, built and asked to draw that
+ * visual — the visual is the item's child, which only the item can build.
+ */
+function itemVisual(
+  visual: 'leadingVisual' | 'trailingVisual',
+  item: {id: string; basePath?: string},
+  buildChild: BuildChild,
+): ElementType {
+  return iconComponent(
+    <SelectPanelItemVisualContext.Provider value={visual}>
+      {buildChild(item.id, item.basePath)}
+    </SelectPanelItemVisualContext.Provider>,
+  );
 }
 
 /**
@@ -251,9 +264,11 @@ function resolveItems(
   buildChild: BuildChild,
 ): ItemDescriptor[] {
   if (!Array.isArray(children)) return [];
-  return (children as ResolvedChildRef[]).flatMap(child => {
-    const childId = typeof child === 'string' ? child : child.id;
-    const basePath = typeof child === 'string' ? undefined : child.basePath;
+  const list = context.componentModel.properties.children;
+  return (children as ResolvedChildRef[]).flatMap((child, index) => {
+    const item = typeof child === 'string' ? {id: child} : child;
+    const basePath = item.basePath;
+    const childId = childComponentId(list, index) ?? '';
     const model = context.surfaceComponents.get(childId);
     if (!model) return [];
     const props = model.properties ?? {};
@@ -275,8 +290,12 @@ function resolveItems(
       text: resolve<string>(props.text) ?? '',
       description: resolve<string>(props.description),
       descriptionVariant: props.descriptionVariant as 'inline' | 'block' | undefined,
-      leadingVisual: resolveVisual(props.leadingVisual, buildChild),
-      trailingVisual: resolveVisual(props.trailingVisual, buildChild),
+      leadingVisual: props.leadingVisual
+        ? itemVisual('leadingVisual', item, buildChild)
+        : undefined,
+      trailingVisual: props.trailingVisual
+        ? itemVisual('trailingVisual', item, buildChild)
+        : undefined,
       variant: props.variant as 'default' | 'danger' | undefined,
       selected: resolve<boolean>(selectedRaw) ?? false,
       disabled: resolve<boolean>(props.disabled),

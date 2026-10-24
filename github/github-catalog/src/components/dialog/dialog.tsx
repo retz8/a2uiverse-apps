@@ -8,7 +8,7 @@ import {renderSlottedChildList, type SlotMap} from '../../shared/slotted-child-l
 /**
  * Slot routing for the root's `children`. Primer's `Dialog` scans direct children for its
  * `Dialog.Header`/`Dialog.Body`/`Dialog.Footer` slots by `__SLOT__` marker (`useSlots`), but the
- * binder renders every child through an opaque `DeferredChild` wrapper that buries the marker — so
+ * renderer renders every child through a host element of its own that buries the marker — so
  * each slot leaf is wrapped in a marker-carrying `bridge` (the `ActionList.Item` precedent). Every
  * other child (e.g. the body `Text`) falls through to become the dialog's default body content.
  */

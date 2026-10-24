@@ -1,6 +1,7 @@
 import {Fragment, type ComponentType, type ReactNode} from 'react';
 import type {ComponentContext} from '@a2ui/web_core/v0_9';
-import {renderChildList} from './child-list.js';
+import {childComponentId} from './child-list.js';
+import {SlotDrawnContext} from './slot-drawn.js';
 
 /** `buildChild` from the a2ui react binder: resolves a component id (with optional data-scope basePath) to a node. */
 type BuildChild = (id: string, basePath?: string) => ReactNode;
@@ -12,24 +13,24 @@ type ResolvedChildRef = string | {id: string; basePath?: string};
 type SlotComponent = {__SLOT__?: symbol};
 
 /**
- * How to route one child type into its Primer slot. Primer detects slots by inspecting each **direct**
- * child's element type / `__SLOT__` marker (`useSlots`) — but the binder renders every child through an
- * opaque `DeferredChild` wrapper, so the real slot element is buried and never matched. These modes
- * present a directly-matchable element to the parent while preserving the leaf's own binder rendering:
+ * How to route one child type into its Primer slot. Primer detects slots by inspecting each
+ * **direct** child's element type / `__SLOT__` marker (`useSlots`) — but the renderer renders every
+ * child through an element of its own, so the real slot element is buried and never matched. These
+ * modes present a directly-matchable element to the parent while preserving the leaf's own
+ * rendering:
  *
  * - `bridge` — for slots Primer matches by `__SLOT__` marker (`LeadingVisual`, `TrailingVisual`,
  *   `Description`, `TrailingAction`). The child renders as today via `buildChild`, wrapped in a
  *   pass-through whose type carries the same marker, so `useSlots` routes it. `forward` copies the
  *   element-level props Primer reads off the matched element (`Description.variant`,
  *   `TrailingAction.loading`) up from the raw model onto the wrapper.
- * - `wrapChildren` — for slots Primer matches by **reference identity only** (`NavList.SubNav` carries
- *   no marker). A marker bridge can't satisfy it, so the real Primer component is rendered directly,
- *   wrapping the leaf's own children (built via `buildChild`).
+ * - `wrapChildren` — for slots Primer matches by **reference identity only** (`NavList.SubNav`
+ *   carries no marker). A marker bridge can't satisfy it, so the real Primer component is rendered
+ *   directly, around the leaf, which draws its own children bare inside it (`SlotDrawnContext`): a
+ *   parent builds only its own children.
  * - `wrapChild` — like `wrapChildren`, for reference-matched slots (`TreeView.LeadingVisual` /
- *   `TrailingVisual` carry no marker), but the leaf holds a single icon under a `ComponentId` prop
- *   (`child`) plus element-level props Primer reads off the matched element (`label`). The real Primer
- *   component is rendered directly with `forward`ed props copied from the raw model and its one built
- *   child inside.
+ *   `TrailingVisual` carry no marker) whose element-level props Primer reads off the matched
+ *   element (`label`): those are `forward`ed from the raw model onto the real Primer component.
  */
 export type SlotSpec =
   | {mode: 'bridge'; slot: SlotComponent; forward?: readonly string[]}
@@ -37,8 +38,6 @@ export type SlotSpec =
   | {
       mode: 'wrapChild';
       component: ComponentType<{children?: ReactNode; [prop: string]: unknown}>;
-      /** Model property holding the single child `ComponentId` to build (default `'child'`). */
-      childProp?: string;
       /** Element-level props Primer reads off the matched element (e.g. `label`), copied from the model. */
       forward?: readonly string[];
     };
@@ -66,10 +65,12 @@ function bridgeFor(slot: SlotComponent): ComponentType<{children?: ReactNode}> {
 }
 
 /**
- * Renders a resolved A2UI `ChildList` for a slot-bearing Primer parent (`NavList.Item`, `NavList.Group`,
- * …). Children whose component type appears in `slotMap` are routed into the matching Primer slot (see
- * `SlotSpec`); every other child renders exactly as `renderChildList` would, becoming the parent's main
- * content. A child's type is read from the surface model via `context.surfaceComponents`.
+ * Renders a resolved A2UI `ChildList` for a slot-bearing Primer parent (`NavList.Item`,
+ * `NavList.Group`, …). Children whose component type appears in `slotMap` are routed into the
+ * matching Primer slot (see `SlotSpec`); every other child renders exactly as `renderChildList`
+ * would, becoming the parent's main content. `children` is the component's `children`, resolved; a
+ * child's type is read from the surface model, by the component id the `children` its model holds
+ * names at the same position.
  */
 export function renderSlottedChildList(
   children: unknown,
@@ -78,31 +79,26 @@ export function renderSlottedChildList(
   slotMap: SlotMap,
 ): ReactNode {
   if (!Array.isArray(children)) return null;
+  const list = context.componentModel.properties.children;
   return (children as ResolvedChildRef[]).map((child, index) => {
     const id = typeof child === 'string' ? child : child.id;
     const basePath = typeof child === 'string' ? undefined : child.basePath;
     const key = `${id}-${basePath ?? index}`;
-    const model = context.surfaceComponents.get(id);
+    const model = context.surfaceComponents.get(childComponentId(list, index) ?? '');
     const spec = model ? slotMap[model.type] : undefined;
 
     if (!spec) {
       return <Fragment key={key}>{buildChild(id, basePath)}</Fragment>;
     }
 
-    if (spec.mode === 'wrapChildren') {
+    if (spec.mode === 'wrapChildren' || spec.mode === 'wrapChild') {
       const Slot = spec.component;
-      return <Slot key={key}>{renderChildList(model?.properties?.children, buildChild)}</Slot>;
-    }
-
-    if (spec.mode === 'wrapChild') {
-      const Slot = spec.component;
-      const childRef = model?.properties?.[spec.childProp ?? 'child'] as
-        ResolvedChildRef | undefined;
-      const childId = typeof childRef === 'string' ? childRef : childRef?.id;
-      const childBase = typeof childRef === 'string' ? undefined : childRef?.basePath;
+      const forward = spec.mode === 'wrapChild' ? spec.forward : undefined;
       return (
-        <Slot key={key} {...forwardedProps(spec.forward, model)}>
-          {childId ? buildChild(childId, childBase) : null}
+        <Slot key={key} {...forwardedProps(forward, model)}>
+          <SlotDrawnContext.Provider value={true}>
+            {buildChild(id, basePath)}
+          </SlotDrawnContext.Provider>
         </Slot>
       );
     }

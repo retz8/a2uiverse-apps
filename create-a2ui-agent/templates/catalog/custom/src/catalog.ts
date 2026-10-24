@@ -1,6 +1,6 @@
 import {Catalog} from '@a2ui/web_core/v0_9';
-import type {ReactComponentImplementation} from '@a2ui/react/v0_9';
-import {CATALOG_ID} from './catalog-id.js';
+import type {ReactCatalogComponent} from '@a2ui/react/v0_9';
+import {CATALOG_ID, CATALOG_PROTOCOL_VERSION} from './catalog-id.js';
 import {TextComponent} from './components/text/index.js';
 
 /**
@@ -8,4 +8,9 @@ import {TextComponent} from './components/text/index.js';
  * `Text` shows the shape; each component the catalog grows is imported here and registered
  * in `catalog.registry.ts`.
  */
-export const CATALOG = new Catalog<ReactComponentImplementation>(CATALOG_ID, [TextComponent], []);
+export const CATALOG = new Catalog<ReactCatalogComponent>(
+  CATALOG_ID,
+  CATALOG_PROTOCOL_VERSION,
+  [TextComponent],
+  [],
+);

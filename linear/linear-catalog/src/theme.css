@@ -348,8 +348,9 @@
   container: lc-list / inline-size;
 }
 
-.linear-catalog .lc-list-item + .lc-list-item,
-.linear-catalog .lc-list-group + .lc-list-group {
+/* Each entry is the list's own <li>, the element its child renders in inside it. */
+.linear-catalog .lc-list > li:has(> * > .lc-list-item) + li:has(> * > .lc-list-item),
+.linear-catalog .lc-list > li:has(> * > .lc-list-group) + li:has(> * > .lc-list-group) {
   border-top: 1px solid var(--lc-border, lch(88.52% 1.57 272));
 }
 
@@ -390,7 +391,8 @@
   overflow: hidden;
 }
 
-.linear-catalog .lc-list-item-content > .lc-text,
+/* A child component's own element sits inside the element it renders in. */
+.linear-catalog .lc-list-item-content > * > .lc-text,
 .linear-catalog .lc-list-item-trailing .lc-text {
   display: block;
   overflow: hidden;
@@ -406,7 +408,7 @@
   gap: 8px;
 }
 
-.linear-catalog .lc-list-item-trailing > * {
+.linear-catalog .lc-list-item-trailing > * > * {
   max-width: 220px;
 }
 
@@ -447,12 +449,12 @@
     max-width: none;
   }
 
-  .linear-catalog .lc-list-item-trailing > * {
+  .linear-catalog .lc-list-item-trailing > * > * {
     max-width: 100%;
     min-width: 0;
   }
 
-  .linear-catalog .lc-list-item-trailing > :last-child:not(:first-child) {
+  .linear-catalog .lc-list-item-trailing > :last-child:not(:first-child) > * {
     grid-column: 1 / -1;
   }
 }

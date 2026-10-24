@@ -49,7 +49,7 @@ export function SegmentedControlView({
  * Selection is centralized on `selectedIndex` (defaulting to 0 when unset, as Primer does). Each
  * child is built via `buildChild` and wrapped in a `SegmentSlotContext.Provider` carrying that
  * segment's `selected` flag and its `onSelect` handler — the channel the segment leaves read to
- * inject `selected`/`onClick` into Primer (the a2ui `DeferredChild` wrapper blocks Primer's own
+ * inject `selected`/`onClick` into Primer (the renderer's host element blocks Primer's own
  * child-cloning from reaching the real segment). `onSelect` performs the intrinsic optimistic
  * two-way write (`setSelectedIndex`, the binder's auto-generated setter — a no-op for a literal
  * `selectedIndex`) BEFORE firing the optional `action`, so an event's `context.selectedIndex`

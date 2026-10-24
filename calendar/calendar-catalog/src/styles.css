@@ -202,7 +202,8 @@
   justify-content: space-between;
 }
 
-.calendar-catalog .gc-stack[data-direction='horizontal'] > * {
+/* Each child's own element sits inside the element its component renders in. */
+.calendar-catalog .gc-stack[data-direction='horizontal'] > * > * {
   min-width: 0;
 }
 
@@ -754,8 +755,12 @@
   container-type: inline-size;
 }
 
-.calendar-catalog .gc-list[data-dividers] > * + * .gc-list-row,
-.calendar-catalog .gc-list[data-dividers] > .gc-list-item + .gc-list-item > .gc-list-row {
+.calendar-catalog .gc-list > li {
+  display: block;
+  min-width: 0;
+}
+
+.calendar-catalog .gc-list[data-dividers] > li + li .gc-list-row {
   box-shadow: inset 0 1px 0 var(--gc-color-outline-variant);
 }
 

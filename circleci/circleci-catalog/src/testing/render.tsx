@@ -3,7 +3,7 @@
  * Provider, so a test exercises the binder, the schemas and the templates, not a view alone.
  */
 import {render, type RenderResult} from '@testing-library/react';
-import {A2uiSurface, type ReactComponentImplementation} from '@a2ui/react/v0_9';
+import {A2uiSurface, type ReactCatalogComponent} from '@a2ui/react/v0_9';
 import {MessageProcessor, type A2uiClientAction} from '@a2ui/web_core/v0_9';
 import {CATALOG} from '../catalog.js';
 import {CATALOG_ID} from '../catalog-id.js';
@@ -17,7 +17,7 @@ export function renderTree(
   components: TreeComponent[],
   options: {data?: Record<string, unknown>; onAction?: (action: A2uiClientAction) => void} = {},
 ): RenderResult {
-  const processor = new MessageProcessor<ReactComponentImplementation>([CATALOG], options.onAction);
+  const processor = new MessageProcessor<ReactCatalogComponent>([CATALOG], options.onAction);
   processor.processMessages([
     {version: 'v0.9', createSurface: {surfaceId: SURFACE_ID, catalogId: CATALOG_ID}},
     ...(options.data

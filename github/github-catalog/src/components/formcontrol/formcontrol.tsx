@@ -7,7 +7,7 @@ import {renderSlottedChildList, type SlotMap} from '../../shared/slotted-child-l
 /**
  * Slot routing for the root's `children`. Primer's `FormControl` scans direct children for its
  * `Label`/`Caption`/`Validation`/`LeadingVisual` slots by `__SLOT__` marker (`useSlots`), but the
- * binder renders every child through an opaque `DeferredChild` wrapper that buries the marker — so
+ * renderer renders every child through a host element of its own that buries the marker — so
  * each slot leaf is wrapped in a marker-carrying `bridge` (the `Dialog` slot-scan precedent). The
  * wrapped input (`TextInput` / `Checkbox`) is not in this map, so it falls through to become the
  * form control's input. `forward` copies the element-level props Primer reads off the matched slot

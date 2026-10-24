@@ -202,7 +202,8 @@
   justify-content: space-between;
 }
 
-.gmail-catalog .gm-stack[data-direction='horizontal'] > * {
+/* Each child's own element sits inside the element its component renders in. */
+.gmail-catalog .gm-stack[data-direction='horizontal'] > * > * {
   min-width: 0;
 }
 
@@ -684,8 +685,12 @@
   container-type: inline-size;
 }
 
-.gmail-catalog .gm-list[data-dividers] > * + * .gm-list-row,
-.gmail-catalog .gm-list[data-dividers] > .gm-list-item + .gm-list-item > .gm-list-row {
+.gmail-catalog .gm-list > li {
+  display: block;
+  min-width: 0;
+}
+
+.gmail-catalog .gm-list[data-dividers] > li + li .gm-list-row {
   box-shadow: inset 0 1px 0 var(--gm-color-outline-variant);
 }
 

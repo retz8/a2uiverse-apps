@@ -24,3 +24,15 @@ export function renderChildList(children: unknown, buildChild: BuildChild): Reac
     ),
   );
 }
+
+/**
+ * The component id a resolved `ChildList` entry stands for. The renderer hands a component its
+ * children as their nodes' own ids, which name no component on the surface, so a parent that
+ * routes a child by its type reads the id from the list its model holds: a static list's entry at
+ * the same position, or a template's component id for every instance.
+ */
+export function childComponentId(list: unknown, index: number): string | undefined {
+  if (Array.isArray(list)) return typeof list[index] === 'string' ? list[index] : undefined;
+  const template = list as {componentId?: unknown} | undefined;
+  return typeof template?.componentId === 'string' ? template.componentId : undefined;
+}

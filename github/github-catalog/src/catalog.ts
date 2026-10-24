@@ -1,6 +1,6 @@
 import {Catalog} from '@a2ui/web_core/v0_9';
-import type {ReactComponentImplementation} from '@a2ui/react/v0_9';
-import {CATALOG_ID} from './catalog-id.js';
+import type {ReactCatalogComponent} from '@a2ui/react/v0_9';
+import {CATALOG_ID, CATALOG_PROTOCOL_VERSION} from './catalog-id.js';
 import {TextComponent} from './components/text/index.js';
 import {ButtonComponent} from './components/button/index.js';
 import {IconButtonComponent} from './components/iconbutton/index.js';
@@ -168,8 +168,9 @@ import {or} from './functions/or.js';
 import {not} from './functions/not.js';
 
 /** From-scratch catalog over CommonSchemas: id, component implementations, functions. */
-export const CATALOG = new Catalog<ReactComponentImplementation>(
+export const CATALOG = new Catalog<ReactCatalogComponent>(
   CATALOG_ID,
+  CATALOG_PROTOCOL_VERSION,
   [
     TextComponent,
     ButtonComponent,

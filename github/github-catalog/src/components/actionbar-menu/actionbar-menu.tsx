@@ -4,6 +4,7 @@ import {createComponentImplementation} from '@a2ui/react/v0_9';
 import type {ComponentContext} from '@a2ui/web_core/v0_9';
 import {ActionBarMenuApi} from './actionbar-menu.schema.js';
 import {iconComponent} from '../../shared/icon-component.js';
+import {IconView} from '../icon/icon.js';
 
 /** `buildChild` from the a2ui react binder: resolves a component id to a node. */
 type BuildChild = (id: string, basePath?: string) => ReactNode;
@@ -33,15 +34,45 @@ type PrimerActionBarMenuProps = ComponentProps<typeof PrimerActionBar.Menu>;
 type PrimerMenuItem = PrimerActionBarMenuProps['items'][number];
 type PrimerOverflowIcon = PrimerActionBarMenuProps['overflowIcon'];
 
-/** Resolves a `trailingVisual` string: an id that names a real component in the surface is an icon
- * (built + wrapped); anything else is literal trailing text (Primer renders it in a span). */
+/**
+ * An icon reference as a component. One the renderer resolves arrives as its node's own id, which
+ * names no component, and is built. One it does not — a union with text or `'none'`, an entry
+ * inside a submenu — arrives as written, naming its `Icon`: a parent builds only its own children,
+ * so that icon is drawn from its model.
+ */
+function iconOf(
+  value: string,
+  buildChild: BuildChild,
+  context: ComponentContext,
+): ElementType | undefined {
+  const written = context.surfaceComponents.get(value);
+  if (!written) return iconComponent(buildChild(value));
+  if (written.type !== 'Icon') return undefined;
+  const props = written.properties as Omit<ComponentProps<typeof IconView>, 'accessibility'> & {
+    accessibility?: {label?: unknown};
+  };
+  const label = context.dataContext.resolveDynamicValue<string>(
+    props.accessibility?.label as never,
+  );
+  return iconComponent(
+    <IconView
+      name={props.name}
+      size={props.size}
+      fill={props.fill}
+      accessibility={label ? {label} : undefined}
+    />,
+  );
+}
+
+/** Resolves a `trailingVisual` string: an id that names a real component in the surface is an icon;
+ * anything else is literal trailing text (Primer renders it in a span). */
 function resolveTrailingVisual(
   value: string | undefined,
   buildChild: BuildChild,
   context: ComponentContext,
 ): ElementType | string | undefined {
   if (value === undefined) return undefined;
-  return context.surfaceComponents.get(value) ? iconComponent(buildChild(value)) : value;
+  return context.surfaceComponents.get(value) ? iconOf(value, buildChild, context) : value;
 }
 
 /** Transcribes one resolved A2UI menu entry into Primer's `items` entry, recursing into submenus. */
@@ -57,7 +88,7 @@ function toPrimerItem(
     onClick: item.action,
     disabled: item.disabled,
     variant: item.variant,
-    leadingVisual: item.leadingVisual ? iconComponent(buildChild(item.leadingVisual)) : undefined,
+    leadingVisual: item.leadingVisual ? iconOf(item.leadingVisual, buildChild, context) : undefined,
     trailingVisual: resolveTrailingVisual(item.trailingVisual, buildChild, context),
     items: item.items?.map(sub => toPrimerItem(sub, buildChild, context)),
   };
@@ -108,7 +139,7 @@ export const ActionBarMenuComponent = createComponentImplementation(
         ? undefined
         : overflowIconRaw === 'none'
           ? 'none'
-          : (iconComponent(buildChild(overflowIconRaw)) as PrimerOverflowIcon);
+          : (iconOf(overflowIconRaw, buildChild, context) as PrimerOverflowIcon);
 
     return (
       <ActionBarMenuView

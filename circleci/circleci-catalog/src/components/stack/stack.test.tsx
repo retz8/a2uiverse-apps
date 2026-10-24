@@ -9,8 +9,9 @@ test('lays out its children in order, vertical and small-gapped by default', () 
     {id: 'a', component: 'Text', text: 'first'},
     {id: 'b', component: 'Text', text: 'second'},
   ]);
-  const stack = screen.getByText('first').parentElement!;
-  expect(stack).toHaveClass('circleci-stack');
+  // Each child renders in an element of its own inside the stack.
+  const stack = screen.getByText('first').closest('.circleci-stack')!;
+  expect(stack).not.toBeNull();
   expect(stack).toHaveAttribute('data-direction', 'vertical');
   expect(stack).toHaveAttribute('data-gap', 'small');
   expect(stack).toHaveTextContent('firstsecond');

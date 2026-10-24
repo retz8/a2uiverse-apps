@@ -3,10 +3,12 @@
  * own wrapper — never `:root`, no global stylesheet — so composition with other catalogs
  * stays collision-free. This is the bundle's one Provider and one CSS setup.
  *
- * The palette is the scaffold's neutral one with one deliberate change: the accent. The two
- * mock stores sit side by side under a merged view, and a reader has to be able to see that
- * two distinct sources produced it rather than one panel being reformatted (task-4.6
- * decision 6). Everything not set here falls through to the basic catalog's defaults.
+ * The palette is the scaffold's neutral one with one deliberate change: the accent, on the
+ * primary colour and on the secondary ones a default button draws in — its text the accent, its
+ * hover a tint of it. The two mock stores sit side by side under a merged view, and a reader has
+ * to be able to see that two distinct sources produced it rather than one panel being
+ * reformatted (task-4.6 decision 6). Everything not set here falls through to the basic
+ * catalog's defaults.
  */
 import {useEffect, useState, type CSSProperties, type ReactNode} from 'react';
 
@@ -29,14 +31,6 @@ function useSystemAppearance(): 'light' | 'dark' {
 
 /** The system stack: a mock ships no font, and its type is not what is being looked at. */
 const FONT_STACK = "-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif";
-
-let themeLoaded: Promise<unknown> | null = null;
-
-/** The product sheet, scoped to the wrapper class; loaded on first mount, nothing global. */
-function loadTheme() {
-  themeLoaded ??= import('./theme.css');
-  return themeLoaded;
-}
 
 /** Shape, type and spacing — appearance-independent. */
 const STRUCTURE = {
@@ -68,13 +62,12 @@ const LIGHT = {
   '--a2ui-color-on-surface': '#1c1e21',
   '--a2ui-color-primary': '#0f766e',
   '--a2ui-color-on-primary': '#ffffff',
-  '--a2ui-color-secondary': '#e4eaff',
-  '--a2ui-color-on-secondary': '#12245e',
+  '--a2ui-color-secondary': '#e6f4f2',
+  '--a2ui-color-on-secondary': '#0f766e',
   '--a2ui-color-border': '#d0d4da',
   '--a2ui-color-input': '#ffffff',
   '--a2ui-color-on-input': '#1c1e21',
   '--a2ui-card-box-shadow': '0 1px 2px 0 rgba(0, 0, 0, 0.2)',
-  '--a2ui-row-hover': '#eef1f6',
   '--a2ui-text-caption-color': '#5f6673',
 } as const;
 
@@ -86,13 +79,12 @@ const DARK_TOKENS = {
   '--a2ui-color-on-surface': '#e6e8eb',
   '--a2ui-color-primary': '#4fd1c5',
   '--a2ui-color-on-primary': '#0d1d5a',
-  '--a2ui-color-secondary': '#2a3c7a',
-  '--a2ui-color-on-secondary': '#e4eaff',
+  '--a2ui-color-secondary': '#274346',
+  '--a2ui-color-on-secondary': '#4fd1c5',
   '--a2ui-color-border': '#3a3f47',
   '--a2ui-color-input': '#1d2026',
   '--a2ui-color-on-input': '#e6e8eb',
   '--a2ui-card-box-shadow': '0 1px 2px 0 rgba(0, 0, 0, 0.6)',
-  '--a2ui-row-hover': '#262a31',
   '--a2ui-text-caption-color': '#a4aab3',
 } as const;
 
@@ -112,9 +104,6 @@ export const TOKENS_DARK = {...STRUCTURE, ...DARK_TOKENS} as const satisfies Rec
  */
 export function Provider({children}: {children: ReactNode}) {
   const tokens = useSystemAppearance() === 'dark' ? TOKENS_DARK : TOKENS;
-  useEffect(() => {
-    void loadTheme();
-  }, []);
   return (
     <div
       className="shop-b-catalog"

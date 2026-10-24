@@ -6,7 +6,8 @@
  * TODO: the token values below are a neutral starting palette. Replace them with the
  * product's colour, shape, type and spacing (the `design-catalog-component` skill's token
  * table is the place to design them); everything not set here falls through to the basic
- * catalog's own defaults.
+ * catalog's own defaults. The accent sits on the primary colour and on the secondary ones a
+ * default button draws in — its text the accent, its hover a tint of it.
  */
 import {useEffect, useState, type CSSProperties, type ReactNode} from 'react';
 
@@ -29,14 +30,6 @@ function useSystemAppearance(): 'light' | 'dark' {
 
 /** TODO: the product's type stack. The bundle loads no font. */
 const FONT_STACK = "-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif";
-
-let themeLoaded: Promise<unknown> | null = null;
-
-/** The product sheet, scoped to the wrapper class; loaded on first mount, nothing global. */
-function loadTheme() {
-  themeLoaded ??= import('./theme.css');
-  return themeLoaded;
-}
 
 /** Shape, type and spacing — appearance-independent. */
 const STRUCTURE = {
@@ -69,12 +62,11 @@ const LIGHT = {
   '--a2ui-color-primary': '#2f5bea',
   '--a2ui-color-on-primary': '#ffffff',
   '--a2ui-color-secondary': '#e4eaff',
-  '--a2ui-color-on-secondary': '#12245e',
+  '--a2ui-color-on-secondary': '#2f5bea',
   '--a2ui-color-border': '#d0d4da',
   '--a2ui-color-input': '#ffffff',
   '--a2ui-color-on-input': '#1c1e21',
   '--a2ui-card-box-shadow': '0 1px 2px 0 rgba(0, 0, 0, 0.2)',
-  '--a2ui-row-hover': '#eef1f6',
   '--a2ui-text-caption-color': '#5f6673',
 } as const;
 
@@ -87,12 +79,11 @@ const DARK_TOKENS = {
   '--a2ui-color-primary': '#9db3ff',
   '--a2ui-color-on-primary': '#0d1d5a',
   '--a2ui-color-secondary': '#2a3c7a',
-  '--a2ui-color-on-secondary': '#e4eaff',
+  '--a2ui-color-on-secondary': '#9db3ff',
   '--a2ui-color-border': '#3a3f47',
   '--a2ui-color-input': '#1d2026',
   '--a2ui-color-on-input': '#e6e8eb',
   '--a2ui-card-box-shadow': '0 1px 2px 0 rgba(0, 0, 0, 0.6)',
-  '--a2ui-row-hover': '#262a31',
   '--a2ui-text-caption-color': '#a4aab3',
 } as const;
 
@@ -112,9 +103,6 @@ export const TOKENS_DARK = {...STRUCTURE, ...DARK_TOKENS} as const satisfies Rec
  */
 export function Provider({children}: {children: ReactNode}) {
   const tokens = useSystemAppearance() === 'dark' ? TOKENS_DARK : TOKENS;
-  useEffect(() => {
-    void loadTheme();
-  }, []);
   return (
     <div
       className="__PACKAGE_NAME__"

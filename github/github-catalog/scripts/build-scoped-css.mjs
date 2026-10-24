@@ -5,7 +5,7 @@
  * host installing the published package resolves); both are gitignored —
  * `prepare` regenerates them on install.
  */
-import {readFileSync, writeFileSync, mkdirSync} from 'node:fs';
+import {copyFileSync, readFileSync, writeFileSync, mkdirSync} from 'node:fs';
 import {createRequire} from 'node:module';
 import {dirname, resolve} from 'node:path';
 import {fileURLToPath} from 'node:url';
@@ -31,3 +31,10 @@ for (const out of ['src/primer-scoped.css', 'dist/primer-scoped.css']) {
   mkdirSync(dirname(path), {recursive: true});
   writeFileSync(path, scoped);
 }
+
+// `tsc` does not copy stylesheets: the committed sheet of Primer's rules restated for children that
+// are components of their own goes beside the built JS too.
+copyFileSync(
+  resolve(packageRoot, 'src/primer-children.css'),
+  resolve(packageRoot, 'dist/primer-children.css'),
+);

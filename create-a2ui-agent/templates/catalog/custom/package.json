@@ -39,16 +39,16 @@
     "check": "stellify check"
   },
   "peerDependencies": {
-    "@a2ui/react": "^0.10.1",
-    "@a2ui/web_core": "^0.10.1",
+    "@a2ui/react": "0.14.0",
+    "@a2ui/web_core": "0.14.0",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "zod": "^3.25.76"
   },
   "devDependencies": {
-    "@a2ui/react": "^0.10.2",
-    "@a2ui/web_core": "^0.10.1",
-    "@a2uiverse/stellify": "github:retz8/a2uiverse#d62bc102ee8f0f99684b118bb5e491f24b8683db&path:packages/stellify",
+    "@a2ui/react": "0.14.0",
+    "@a2ui/web_core": "0.14.0",
+    "@a2uiverse/stellify": "github:retz8/a2uiverse#91bbe21dd1ee40db673468de875218d6bc80e782&path:packages/stellify",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@types/react": "^19.2.17",

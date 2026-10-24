@@ -1,6 +1,6 @@
-import {Catalog} from '@a2ui/web_core/v0_9';
-import {basicCatalog, type ReactComponentImplementation} from '@a2ui/react/v0_9';
-import {CATALOG_ID} from './catalog-id.js';
+import {BASIC_FUNCTIONS, Catalog} from '@a2ui/web_core/v0_9';
+import type {ReactCatalogComponent} from '@a2ui/react/v0_9';
+import {CATALOG_ID, CATALOG_PROTOCOL_VERSION} from './catalog-id.js';
 import {Avatar, AvatarApi} from './components/avatar/index.js';
 import {Button, ButtonApi} from './components/button/index.js';
 import {Card, CardApi} from './components/card/index.js';
@@ -40,10 +40,11 @@ export const COMPONENT_APIS = {
 
 /**
  * Gmail's runtime catalog: its own Material 3 components, and the basic catalog's functions as
- * `@a2ui/react` implements them.
+ * `@a2ui/web_core` implements them.
  */
-export const CATALOG = new Catalog<ReactComponentImplementation>(
+export const CATALOG = new Catalog<ReactCatalogComponent>(
   CATALOG_ID,
+  CATALOG_PROTOCOL_VERSION,
   [
     Surface,
     Card,
@@ -62,5 +63,5 @@ export const CATALOG = new Catalog<ReactComponentImplementation>(
     TextField,
     Checkbox,
   ],
-  [...basicCatalog.functions.values()],
+  BASIC_FUNCTIONS,
 );
