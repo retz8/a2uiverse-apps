@@ -92,7 +92,7 @@ No model calls, no Calendar calls, no credentials needed.
 
 ## Recording
 
-The canned data behind `deterministic` and `stub` comes from recorded live runs, not hand-written.
+The canned data behind `deterministic` and `stub` comes from recorded live runs, not hand-written — except the agenda answer, `app/fixtures/deterministic/agenda-digest.json`, kept by hand since A2UIVerse's task 15.11 (each event listed once under its most pressing section, its full start and end, no event id, on 2026-09-19) until beat 1 is recorded again. `derive_corpus.py` derives that file from beat 1 and would put the earlier answer back: restore it from git after a derive.
 
 ```bash
 uv run python -m scripts.seed_calendar --account <test account email>

@@ -24,6 +24,7 @@ Shop A and Shop B are a matched pair for testing [A2UIVerse](https://github.com/
 
 ```bash
 pnpm dev:all --tier mocks
+pnpm dev:all --tier mocks --publish --leave-uninstalled shop-b   # Shop B in the Store, not installed: asking about both shops offers it
 ```
 
 A2UIVerse installs the app from its agent's card, with its catalog packed by Stellify, or from its marketplace by id once the app is published there. How the agent and the catalog connect is in their own READMEs: the [agent](agent/README.md#connecting-to-a2uiverse) and the [catalog](shop-a-catalog/README.md#connecting-to-a2uiverse).

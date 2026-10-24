@@ -169,14 +169,14 @@ CONFIG = AgentAppConfig(..., catalog_path=NEW_CATALOG_JSON, old_catalog_line=OLD
 
 1. Move everything that names the old catalog's components into `OLD_LINE`, as it was: its catalog, examples, brand doc, question policy and deterministic answers.
 2. Point the config's own catalog fields at the new catalog. Prose, tools and sign-in stay shared.
-3. Pack and publish the new catalog as usual; the marketplace already holds the old one.
+3. Move `version` in `app/config.py`: the card changes, and the marketplace refuses a changed card at a version it has already published. Pack and publish the new catalog as usual; the marketplace already holds the old one.
 4. To retire the old id, delete `old_catalog_line` and publish.
 
 With an old line:
 
 - The card names both ids, newest first. The kit won't start if both are the same id.
 - A turn is painted in the newest id the client renders, or the newest when the client sends no capabilities.
-- An action is answered in the id of the surface it came from. If the client no longer renders that id, the answer is a new surface in the newest one; in deterministic mode, the line's answers stand as written.
+- An action is answered in the id of the surface it came from. If the client no longer renders that id, the answer is a new surface in the newest one; in deterministic mode, the line's answers stand as written. The kit knows a surface's id only from the `createSurface` it sent since it last started: an action on an older surface takes the newest line.
 - A client that renders neither id gets no UI, only "<App name> has changed and can't show this here."
 
 ## Previewing for the marketplace

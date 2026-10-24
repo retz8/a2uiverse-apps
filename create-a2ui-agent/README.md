@@ -60,6 +60,11 @@ Snapshot tests pin the generated file list and the three generated files. The sc
 | Path                            | What it is                                                                 |
 | ------------------------------- | -------------------------------------------------------------------------- |
 | `src/cli.ts`                    | Flags, defaults, the walkthrough, the install step                         |
+| `src/answers.ts`                | The eight inputs and the values derived from them                          |
+| `src/kit.ts`                    | Where the kit lives, and the commit a scaffolded agent pins it to          |
+| `src/install.ts`                | The install step: `uv sync` for the agent, `pnpm install` for the catalog  |
+| `src/templates.ts`              | The template trees, copied with their `__TOKEN__` placeholders filled      |
+| `src/git.ts`                    | The git queries the scaffold asks                                          |
 | `src/prompts.ts`                | The guided walkthrough (`@clack/prompts`)                                  |
 | `src/scaffold.ts`               | Copies the templates and writes the generated files                        |
 | `src/ports.ts`                  | The port suggestion, from the sibling agents' `default_port`               |

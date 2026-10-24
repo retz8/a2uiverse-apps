@@ -2,7 +2,7 @@
 
 An A2UI catalog for GitHub, built on [Primer](https://primer.style/), GitHub's real design system. It targets A2UI **v0.9.1** on top of [`@a2ui/react`](https://www.npmjs.com/package/@a2ui/react).
 
-It is the one fully custom catalog in this repo. The other apps theme the basic A2UI catalog; this one maps every component onto Primer.
+It is a custom catalog, as Gmail's, Calendar's, CircleCI's and Linear's are; only the two mock stores theme the basic A2UI catalog. This one maps every component onto Primer.
 
 ## What's in it
 
