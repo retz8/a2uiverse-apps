@@ -1,23 +1,24 @@
 """System-prompt assembly for the live modes: authored prose + SDK-generated bulk.
 
 The prose itself — role, workflow blocks, examples framing — is vendor data on the
-config; this module owns only the assembly: the slot mapping, the join order, and the
-examples-framing splice.
+config; the SDK generates the base rules, the schema block and the examples; this module
+owns only the assembly: the sections, their order, and the examples framing.
 """
 
 from __future__ import annotations
 
-from a2ui.schema.manager import A2uiSchemaManager
+from a2ui.inference_formats.direct_json import DirectJsonPromptGenerator
+from a2ui.utils import load_examples
 
 from a2ui_agent_kit.catalog import catalog_context
 from a2ui_agent_kit.config import AgentAppConfig, CatalogLine
 from a2ui_agent_kit.knowledge import load_brand_guidance, load_domain_knowledge
 
-# The SDK renders the examples under a bare "### Examples:" header at the end of the
-# prompt, where each example — a request-shaped `intent` plus a complete surface with
-# plausible data — reads as a ready-made answer to a matching user prompt and gets
-# parroted verbatim, canned data and all, with no tool call. The config's framing,
-# spliced in right after the header, names what the examples are instead.
+# The examples sit under a bare "### Examples:" header at the end of the prompt, where each
+# example — a request-shaped `intent` plus a complete surface with plausible data — reads as
+# a ready-made answer to a matching user prompt and gets parroted verbatim, canned data and
+# all, with no tool call. The config's framing, right after the header, names what the
+# examples are instead.
 _EXAMPLES_HEADER = "### Examples:\n"
 
 # Every app's: a failure the model reports in prose is drawn on the canvas for a person
@@ -57,39 +58,37 @@ TIMES = (
 )
 
 
-def build_system_prompt(
-    config: AgentAppConfig,
-    schema_manager: A2uiSchemaManager | None = None,
-    line: CatalogLine | None = None,
-) -> str:
-    """Assembles the full system instruction via the SDK's generate_system_prompt.
+def build_system_prompt(config: AgentAppConfig, line: CatalogLine | None = None) -> str:
+    """Assembles the full system instruction: the authored prose around the SDK's bulk.
 
-    Authored content is the config's role prose plus the kit's failure wording,
-    proposals rule and time rule, the config's workflow blocks and the domain doc (joined into the
-    workflow slot, which is the only one that takes free authored prose); the brand doc
-    feeds ui_description, and the full catalog schema and the examples are injected by
-    the SDK (with the examples framing spliced under
-    the SDK's header — it offers no slot for it).
+    Authored content is the config's role prose; the workflow section, the SDK's base rules
+    followed by the kit's failure wording, proposals rule and time rule, the config's
+    workflow blocks and the domain doc; the brand doc as the UI description; and the
+    examples framing under the examples header. The SDK generates the base rules, the
+    catalog's schema block and the examples.
 
     `line` is an old catalog line the prompt is for — its catalog, examples and brand doc in
     place of the current line's; the rest is the config's (a2uiverse task-15.7).
     """
-    sm = schema_manager or catalog_context(line or config).live_schema_manager()
-    prompt = sm.generate_system_prompt(
-        role_description=config.role_description,
-        workflow_description="\n\n".join(
-            [
-                FAILURE_WORDING,
-                PROPOSALS,
-                TIMES,
-                *config.workflow_descriptions,
-                load_domain_knowledge(config),
-            ]
-        ),
-        ui_description=load_brand_guidance(line or config),
-        include_schema=True,
-        include_examples=True,
+    source = line or config
+    catalogs = [catalog_context(source).get_catalog()]
+    generator = DirectJsonPromptGenerator(catalogs)
+    workflow = "\n\n".join(
+        [
+            FAILURE_WORDING,
+            PROPOSALS,
+            TIMES,
+            *config.workflow_descriptions,
+            load_domain_knowledge(config),
+        ]
     )
-    return prompt.replace(
-        _EXAMPLES_HEADER, _EXAMPLES_HEADER + config.examples_framing + "\n\n", 1
-    )
+    parts = [
+        config.role_description,
+        f"## Workflow Description:\n{generator.generate_base_rules()}\n{workflow}",
+    ]
+    if ui_description := load_brand_guidance(source):
+        parts.append(f"## UI Description:\n{ui_description}")
+    parts.append(generator.generate_catalog_instructions())
+    if examples := load_examples(catalogs, str(source.examples_dir)):
+        parts.append(_EXAMPLES_HEADER + config.examples_framing + "\n\n" + examples)
+    return "\n\n".join(parts)

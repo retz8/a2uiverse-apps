@@ -9,8 +9,6 @@ import json
 import pytest
 from a2a.types import DataPart, Message, Part, Role, TextPart
 
-from a2ui.schema.constants import VERSION_0_9
-
 from pathlib import Path
 import tempfile
 
@@ -19,7 +17,6 @@ from a2ui_agent_kit.executor_llm import (
     APOLOGY_TEXT,
     MAX_ATTEMPTS,
     UNAVAILABLE_TEXT,
-    LenientA2uiStreamParser,
     LlmAgentExecutor,
 )
 from a2ui_agent_kit.recorder import (
@@ -37,6 +34,7 @@ from .conftest import make_config
 _APP_DIR = Path(tempfile.mkdtemp(prefix="a2uiverse-kit-executor-"))
 CONFIG = make_config("basic", _APP_DIR)
 EXAMPLES_DIR = CONFIG.examples_dir
+CATALOG_ID = catalog_context(CONFIG).get_catalog().catalog_id
 
 
 def _executor(responder, **kwargs) -> LlmAgentExecutor:
@@ -69,7 +67,7 @@ def _valid_surface_text_with_id(surface_id: str) -> str:
 # the catalog): it streams createSurface(s1) + updateComponents before validate rejects.
 _BAD_SURFACE_S1 = (
     'oops<a2ui-json>[{"version":"v0.9","createSurface":{"surfaceId":"s1",'
-    '"catalogId":"x"}},{"version":"v0.9","updateComponents":{"surfaceId":"s1",'
+    '"catalogId":"' + CATALOG_ID + '"}},{"version":"v0.9","updateComponents":{"surfaceId":"s1",'
     '"components":[{"id":"root","component":"Nope"}]}}]</a2ui-json>'
 )
 
@@ -90,10 +88,9 @@ class _FakeResponder:
         self.context_ids.append(context_id)
         text = self._scripts[min(self.calls, len(self._scripts) - 1)]
         self.calls += 1
-        # yield in two chunks to exercise incremental parsing
-        mid = len(text) // 2
-        for chunk in (text[:mid], text[mid:]):
-            yield chunk
+        # yield in small chunks, as a model streams tokens, to exercise incremental parsing
+        for start in range(0, len(text), 24):
+            yield text[start : start + 24]
 
 
 class _Ctx:
@@ -180,7 +177,7 @@ async def test_valid_first_attempt_streams_and_completes():
 async def test_invalid_then_valid_retries_with_correction():
     bad = (
         'oops<a2ui-json>[{"version":"v0.9","createSurface":{"surfaceId":"s1",'
-        '"catalogId":"x"},"updateComponents":{"surfaceId":"s1","components":'
+        '"catalogId":"' + CATALOG_ID + '"},"updateComponents":{"surfaceId":"s1","components":'
         '[{"id":"root","component":"Nope"}]}}]</a2ui-json>'
     )
     responder = _FakeResponder([bad, _valid_surface_text()])
@@ -259,7 +256,7 @@ async def test_streaming_traverses_custom_component_reference_props():
         [
             {
                 "version": "v0.9",
-                "createSurface": {"surfaceId": "s", "catalogId": "c"},
+                "createSurface": {"surfaceId": "s", "catalogId": CATALOG_ID},
             },
             {
                 "version": "v0.9",
@@ -296,7 +293,7 @@ async def test_exhausted_infra_failure_tears_down_partial_surface():
     queue = _FakeQueue()
 
     async def failing_stream(prompt, correction=None, context_id=None):
-        yield '<a2ui-json>[{"version": "v0.9", "createSurface": {"surfaceId": "zomb", "catalogId": "c"}}'
+        yield '<a2ui-json>[{"version": "v0.9", "createSurface": {"surfaceId": "zomb", "catalogId": "' + CATALOG_ID + '"}}'
         raise RuntimeError("503 UNAVAILABLE")
 
     responder.stream = failing_stream
@@ -453,7 +450,7 @@ async def test_streamed_parts_preserve_relative_template_bindings():
         [
             {
                 "version": "v0.9",
-                "createSurface": {"surfaceId": "s", "catalogId": "c"},
+                "createSurface": {"surfaceId": "s", "catalogId": CATALOG_ID},
             },
             {
                 "version": "v0.9",
@@ -523,7 +520,7 @@ async def test_chunk_split_inside_a_prefixed_child_id_does_not_fail_the_attempt(
     # validate_surface's topology pass. (Live regression: 'body', then 'row-0'.)
     surface = json.dumps(
         [
-            {"version": "v0.9", "createSurface": {"surfaceId": "s", "catalogId": "c"}},
+            {"version": "v0.9", "createSurface": {"surfaceId": "s", "catalogId": CATALOG_ID}},
             {
                 "version": "v0.9",
                 "updateComponents": {
@@ -738,44 +735,11 @@ async def test_empty_message_apologizes_without_calling_the_model():
 # so the id reaches a dict subscript and raises TypeError mid-stream — a different
 # exception class from the ValueError the malformed-block path is built around.
 _DICT_ID_SURFACE = (
-    '<a2ui-json>[{"version":"v0.9","createSurface":{"surfaceId":"s1","catalogId":"x"}},'
+    '<a2ui-json>[{"version":"v0.9","createSurface":{"surfaceId":"s1","catalogId":"' + CATALOG_ID + '"}},'
     '{"version":"v0.9","updateComponents":{"surfaceId":"s1","root":"root",'
     '"components":[{"id":{"componentId":"root"},"component":"Text","text":"hi"}]}}]'
     "</a2ui-json>"
 )
-
-
-def _lenient_parser() -> LenientA2uiStreamParser:
-    """A parser wired exactly as the executor wires it."""
-    parser = LenientA2uiStreamParser(catalog=None)
-    parser._version = VERSION_0_9
-    parser._ref_fields_map = catalog_context(CONFIG).live_ref_fields()
-    return parser
-
-
-def test_parser_never_caches_a_component_whose_id_is_not_a_string():
-    parser = _lenient_parser()
-
-    # Dropping the malformed root leaves the surface rootless, which the SDK reports
-    # as ValueError. That class is the point: ValueError is a correctable malformed
-    # block, whereas the unguarded TypeError bypassed the correction loop entirely.
-    with pytest.raises(ValueError):
-        parser.process_chunk(_DICT_ID_SURFACE)
-
-    assert all(isinstance(key, str) for key in parser._seen_components)
-
-
-def test_parser_keeps_streaming_when_only_a_leaf_id_is_malformed():
-    parser = _lenient_parser()
-
-    parser.process_chunk(
-        '<a2ui-json>[{"version":"v0.9","createSurface":{"surfaceId":"s1",'
-        '"catalogId":"x"}},{"version":"v0.9","updateComponents":{"surfaceId":"s1",'
-        '"root":"root","components":[{"id":"root","component":"Text","text":"hi"},'
-        '{"id":{"componentId":"leaf"},"component":"Text","text":"bad"}]}}]</a2ui-json>'
-    )
-
-    assert set(parser._seen_components) == {"root"}
 
 
 @pytest.mark.asyncio
@@ -839,21 +803,6 @@ async def test_unexpected_stream_failure_dumps_the_accumulated_model_text(
 
     assert dump.exists()
     assert "partial " in dump.read_text(encoding="utf-8")
-
-
-def test_non_string_id_guard_survives_the_between_attempt_reset():
-    # The executor resets parser JSON state between attempts while deliberately
-    # keeping the component cache (it drives in-place patching). If a future SDK
-    # version rebuilt that cache, the guard would vanish silently and the crash
-    # would return on the retry path only.
-    parser = _lenient_parser()
-    parser.process_chunk('<a2ui-json>[{"version":"v0.9","createSurface":'
-                         '{"surfaceId":"s1","catalogId":"x"}}]</a2ui-json>')
-
-    parser._reset_json_state()
-    parser._seen_components[{"componentId": "x"}] = {"id": "x"}
-
-    assert all(isinstance(key, str) for key in parser._seen_components)
 
 
 @pytest.mark.asyncio
@@ -1020,7 +969,7 @@ async def test_unanswerable_question_marker_feeds_correction_retry():
     actionless = (
         '<paint-title surface="s1" kind="question">Save this reply?</paint-title>\n'
         "Here is your surface:\n<a2ui-json>\n"
-        + json.dumps([{"version": "v0.9", "createSurface": {"surfaceId": "s1", "catalogId": "c"}}, {"version": "v0.9", "updateComponents": {"surfaceId": "s1", "components": [{"id": "root", "component": "Card", "child": "q"}, {"id": "q", "component": "Text", "text": "Save this reply?"}]}}])
+        + json.dumps([{"version": "v0.9", "createSurface": {"surfaceId": "s1", "catalogId": CATALOG_ID}}, {"version": "v0.9", "updateComponents": {"surfaceId": "s1", "components": [{"id": "root", "component": "Card", "child": "q"}, {"id": "q", "component": "Text", "text": "Save this reply?"}]}}])
         + "\n</a2ui-json>"
     )
     responder = _FakeResponder([actionless, _titled_surface_text("s1")])
@@ -1157,7 +1106,7 @@ async def test_a_cancel_mid_stream_closes_the_model_stream_and_starts_no_further
     (turn,) = _recorded_session(tmp_path)["turns"]
     assert turn["outcome"] == "canceled"
     assert [t for batch in turn["batches"] for t in batch["texts"]] == [
-        "Looking up your pull requests. "
+        "Looking up your pull requests."
     ]
 
 
@@ -1205,3 +1154,60 @@ async def test_a_turn_deleting_a_surface_painted_before_sends_the_delete():
     assert [d for d in _data_parts(queue) if "deleteSurface" in d] == [
         {"version": "v0.9", "deleteSurface": {"surfaceId": "old"}}
     ]
+
+
+def _streamed_components(queue: _FakeQueue, surface_id: str) -> list[dict]:
+    """Every component the stream sent for `surface_id`, in order, repeats included."""
+    return [
+        component
+        for d in _data_parts(queue)
+        if (d.get("updateComponents") or {}).get("surfaceId") == surface_id
+        for component in d["updateComponents"]["components"]
+    ]
+
+
+@pytest.mark.asyncio
+async def test_inside_one_attempt_only_new_or_changed_components_go_out():
+    # a2uiverse task-16.2 decision 3: the parser emits a growing updateComponents whole on
+    # every chunk; the stream sends each component once per value it takes.
+    responder = _FakeResponder([_valid_surface_text_with_id("s1")])
+    queue = _FakeQueue()
+    await _executor(responder).execute(_Ctx("show me open PRs"), queue)
+
+    sent = _streamed_components(queue, "s1")
+    encoded = [json.dumps(c, sort_keys=True) for c in sent]
+    assert len(encoded) == len(set(encoded))  # no component sent twice unchanged
+    first = sorted(EXAMPLES_DIR.glob("*.json"))[0]
+    messages = json.loads(first.read_text(encoding="utf-8"))["messages"]
+    expected = {
+        c["id"] for m in messages for c in (m.get("updateComponents") or {}).get("components", [])
+    }
+    assert {c["id"] for c in sent} == expected  # and every component reached the client
+
+
+@pytest.mark.asyncio
+async def test_a_retry_sends_no_component_the_client_already_holds():
+    # Attempt 1 streams root and its text, then fails on a component the catalog lacks; the
+    # retry writes root and the text again, unchanged, beside the corrected tree. Neither goes
+    # out a second time: the client holds them.
+    def surface(*extra):
+        return (
+            '<a2ui-json>[{"version":"v0.9","createSurface":{"surfaceId":"s1","catalogId":"'
+            + CATALOG_ID
+            + '"}},{"version":"v0.9","updateComponents":{"surfaceId":"s1","components":['
+            + '{"id":"root","component":"Column","children":["t"]},'
+            + '{"id":"t","component":"Text","text":"hello"}'
+            + "".join("," + c for c in extra)
+            + "]}}]</a2ui-json>"
+        )
+
+    responder = _FakeResponder([surface('{"id":"bad","component":"Nope"}'), surface()])
+    queue = _FakeQueue()
+    await _executor(responder).execute(_Ctx("show me open PRs"), queue)
+
+    assert responder.calls == 2
+    ids = [c["id"] for c in _streamed_components(queue, "s1")]
+    assert ids.count("root") == 1
+    assert ids.count("t") == 1
+    assert "bad" not in ids
+    assert queue.events[-1].status.state.value == "completed"

@@ -14,7 +14,7 @@ import contextvars
 import functools
 from typing import NamedTuple
 
-from a2ui.schema.constants import A2UI_CLIENT_CAPABILITIES_KEY, SUPPORTED_CATALOG_IDS_KEY
+from a2ui.constants import A2UI_CLIENT_CAPABILITIES_KEY
 
 from a2ui_agent_kit.catalog import CatalogContext, catalog_context
 from a2ui_agent_kit.config import AgentAppConfig, CatalogLine
@@ -23,6 +23,8 @@ from a2ui_agent_kit.config import AgentAppConfig, CatalogLine
 # schemas have it, others under `v0.9.1` — or writes them flat, as upstream's guide shows
 # (a2uiverse SPEC §14).
 _CAPABILITIES_VERSION_KEYS = ("v0.9", "v0.9.1")
+# The capabilities' field naming the ids a client renders; the SDK holds no constant for it.
+SUPPORTED_CATALOG_IDS_KEY = "supportedCatalogIds"
 
 
 class Turn(NamedTuple):

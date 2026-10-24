@@ -14,7 +14,6 @@ from a2a.server.apps import A2AStarletteApplication
 from a2a.server.request_handlers import DefaultRequestHandler
 from a2a.types import AgentCapabilities, AgentCard
 from a2ui.a2a.extension import get_a2ui_agent_extension
-from a2ui.schema.constants import VERSION_0_9_1
 from starlette.middleware.cors import CORSMiddleware
 
 from a2ui_agent_kit.catalog_lines import catalog_lines
@@ -31,6 +30,7 @@ from a2ui_agent_kit.sign_in_server import (
 )
 from a2ui_agent_kit.sign_in_store import SignInStore
 from a2ui_agent_kit.task_store import TerminalGuardedTaskStore
+from a2ui_agent_kit.versions import EXTENSION_VERSION
 
 CORS_ORIGIN_REGEX = r"^(http://localhost:\d+|https://[a-z0-9-]+\.[a-z]+\.devtunnels\.ms)$"
 
@@ -43,7 +43,7 @@ def build_agent_card(
     # carried inside A2UI messages. The card names the current catalog id and, beside it, an
     # old one the app still paints in (a2uiverse task-15.7).
     extension = get_a2ui_agent_extension(
-        VERSION_0_9_1,
+        EXTENSION_VERSION,
         accepts_inline_catalogs=False,
         supported_catalog_ids=catalog_lines(config).ids(),
     )

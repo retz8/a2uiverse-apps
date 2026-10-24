@@ -1,51 +1,31 @@
 """Catalog access for a kit-run agent: locate/load plus validation on the app's terms.
 
-One `CatalogContext` per config carries what the agents' `catalog_common/`,
-`deterministic_agent/catalog.py`, and `llm_agent/catalog.py` carried per app. The two
-behavioral branches follow `config.catalog_kind`:
+One `CatalogContext` per catalog line. Conformance and topology are the SDK's
+`validate_payload`, which judges a payload the way a renderer holding the catalog would;
+the kit's own passes sit around it. Reading a component's declared properties follows
+`config.catalog_kind`:
 
-- `custom` (a hand-written catalog, e.g. Primer): component schemas do not model the
-  framework-owned `id` envelope, so conformance runs on an id-stripped copy, and
-  declared properties sit at each schema's top level.
-- `basic` (the themed basic catalog): every component `$ref`s ComponentCommon, where
-  `id` is REQUIRED — stripping it would fail every component — and properties are
-  composed through `allOf` branches, which must be flattened to be read.
-
-Topology always runs on the id-retained tree (it keys on `id`).
+- `custom` (a hand-written catalog, e.g. Primer): declared properties sit at each
+  schema's top level.
+- `basic` (the themed basic catalog): properties are composed through `allOf` branches,
+  which must be flattened to be read.
 """
 
 from __future__ import annotations
 
-import copy
 import functools
 from pathlib import Path
 from typing import Iterator
 
-from a2ui.schema.catalog import A2uiCatalog, CatalogConfig
-from a2ui.schema.constants import VERSION_0_9
-from a2ui.schema.manager import A2uiSchemaManager
-from a2ui.schema.validator import analyze_topology, extract_component_ref_fields
+from a2ui.core import CatalogApi
+from a2ui.processor import CatalogConfig
+from a2ui.utils import validate_payload
 
+from a2ui_agent_kit import upstream_patches  # noqa: F401 — applied at import
 from a2ui_agent_kit.config import AgentAppConfig, CatalogLine
+from a2ui_agent_kit.versions import CATALOG_VERSION
 
 _MISSING = object()
-
-
-def _strip_framework_ids(messages: list[dict]) -> list[dict]:
-    """Returns a deep copy with the framework-owned `id` envelope stripped.
-
-    A custom catalog's component schemas do not model `id` (it is the framework's
-    component envelope), so component-schema conformance must run on id-stripped
-    components. Topology, in contrast, keys on `id` and runs on the id-retained tree.
-    """
-    probe = copy.deepcopy(messages)
-    for message in probe:
-        update = message.get("updateComponents") if isinstance(message, dict) else None
-        if isinstance(update, dict):
-            for component in update.get("components", []):
-                if isinstance(component, dict):
-                    component.pop("id", None)
-    return probe
 
 
 def _flatten_props(schema: dict) -> dict[str, dict]:
@@ -232,59 +212,29 @@ class CatalogContext:
 
     def __init__(self, line: AgentAppConfig | CatalogLine):
         self._line = line
-        self._default_manager: A2uiSchemaManager | None = None
-        self._live_manager: A2uiSchemaManager | None = None
+        self._catalog: CatalogApi | None = None
         self._prop_schemas: dict[str, dict[str, dict]] | None = None
-        self._ref_fields: dict | None = None
 
     def catalog_json_path(self) -> Path:
         path = self._line.catalog_path
         assert path.is_file(), f"catalog.json not found at {path}"
         return path
 
-    def build_schema_manager(self, examples_path: str | None = None) -> A2uiSchemaManager:
-        """Constructs a schema manager over the app's checked-in catalog.
-
-        examples_path (a directory or glob) is registered as the catalog's examples
-        source; the live modes pass the config's examples dir, the deterministic
-        mode passes nothing.
-        """
-        return A2uiSchemaManager(
-            version=VERSION_0_9,
-            catalogs=[
-                CatalogConfig.from_path("adapter", str(self.catalog_json_path()), examples_path)
-            ],
-        )
-
-    def get_catalog(self) -> A2uiCatalog:
-        if self._default_manager is None:
-            self._default_manager = self.build_schema_manager()
-        return self._default_manager.get_selected_catalog()
+    def get_catalog(self) -> CatalogApi:
+        """The app's checked-in catalog, loaded once."""
+        if self._catalog is None:
+            self._catalog = CatalogConfig.from_path(
+                str(self.catalog_json_path()), protocol_version=CATALOG_VERSION
+            ).catalog
+        return self._catalog
 
     def supported_catalog_ids(self) -> list[str]:
         return [self.get_catalog().catalog_id]
 
-    def live_schema_manager(self) -> A2uiSchemaManager:
-        if self._live_manager is None:
-            self._live_manager = self.build_schema_manager(
-                examples_path=str(self._line.examples_dir)
-            )
-        return self._live_manager
-
-    def live_catalog(self) -> A2uiCatalog:
-        return self.live_schema_manager().get_selected_catalog()
-
-    def live_ref_fields(self) -> dict:
-        """Component-reference field map of the live catalog (e.g. a layout's
-        header/content/pane), for topology traversal without the full catalog."""
-        if self._ref_fields is None:
-            self._ref_fields = extract_component_ref_fields(self.live_catalog())
-        return self._ref_fields
-
     def _component_prop_schemas(self) -> dict[str, dict[str, dict]]:
-        """Per-component property schemas of the live catalog: name -> {prop: schema}."""
+        """Per-component property schemas of the catalog, as written: name -> {prop: schema}."""
         if self._prop_schemas is None:
-            components = self.live_catalog().catalog_schema.get("components", {})
+            components = self.get_catalog().to_json().get("components", {})
             if self._line.catalog_kind == "basic":
                 self._prop_schemas = {
                     name: _flatten_props(schema)
@@ -300,20 +250,15 @@ class CatalogContext:
         return self._prop_schemas
 
     def validate_payload(self, payload: list[dict]) -> None:
-        """Raises if the payload's components do not conform to the app's catalog.
+        """Raises if the payload does not conform to the app's catalog.
 
-        For a `custom` catalog the framework-owned `id` envelope is stripped before
-        validation; for `basic` it is retained (ComponentCommon requires it).
-        strict_integrity=False skips root/orphan topology checks, since a canned
-        action response is a partial update against a surface the client already
-        holds. A canned `paintMeta` is not A2UI and not the catalog's to judge: it is
+        A canned action response is a partial update against a surface the client already
+        holds, so a surface the payload does not create is judged without its root or
+        reachability. A canned `paintMeta` is not A2UI and not the catalog's to judge: it is
         left out.
         """
         messages = [m for m in payload if not (isinstance(m, dict) and "paintMeta" in m)]
-        probe = (
-            _strip_framework_ids(messages) if self._line.catalog_kind == "custom" else messages
-        )
-        self.get_catalog().validator.validate(probe, strict_integrity=False)
+        validate_payload([self.get_catalog()], messages)
 
     def validate_update(self, payload: list[dict]) -> None:
         """Validates a turn that changes a surface the client already holds.
@@ -342,45 +287,31 @@ class CatalogContext:
         """Validates a *complete* A2UI surface against the app's catalog, on the live
         agent's own terms.
 
-        Four passes, because the catalog does not model the framework-owned `id` field:
-
         0. Binding-on-literal-prop pre-pass: a `{path}` binding on a non-Dynamic prop
            (StateLabel.status, Icon.fill/name, ...) is rejected with a targeted message
-           naming the fix — before pass 1's generic type error can bury it.
-        1. Component conformance — non-strict, id-stripped for a `custom` catalog:
-           every component matches its catalog schema (no undeclared properties,
-           known component types, correct types).
-        2. Completeness/topology — on the id-retained tree: the payload declares a
-           createSurface, contains a component with id='root', and every component is
-           reachable from the root (no dangling references, no orphans).
+           naming the fix — before the conformance pass's generic type error can bury it.
+        1. Completeness: the payload declares a createSurface and carries components, one
+           of them with id='root'.
+        2. Conformance and topology, the SDK's: every component matches its catalog
+           schema (no undeclared properties, known component types, correct types), and
+           every component is reachable from the root (no dangling references, no
+           orphans, no cycles).
         3. Binding resolvability: every binding on the final tree resolves against the
            final data model, with template subtrees resolved per list item — path
            semantics (relative item paths vs absolute root paths) are invisible to the
-           schema conformance of pass 1, so they are checked here. (Bindings on
-           literal-typed props like Icon.name are already rejected by pass 1's type
-           check.)
+           schema conformance of pass 2, so they are checked here.
 
-        This is stronger than the deterministic mode's non-strict partial-update probe,
-        which deliberately skips the root/orphan checks (its root lives in a client fixture).
+        This is stronger than the deterministic mode's partial-update probe, which judges
+        a surface it does not create without its root (its root lives in a client fixture).
         Raises ValueError on any conformance, completeness, topology, or binding failure.
         """
         messages = payload if isinstance(payload, list) else [payload]
-        catalog = self.live_catalog()
-
         components = _components_of(messages)
 
         # Pass 0: bindings on non-Dynamic props, with the actionable message.
         _check_no_bindings_on_literal_props(components, self._component_prop_schemas())
 
-        # Pass 1: component-schema conformance.
-        probe = (
-            _strip_framework_ids(messages)
-            if self._line.catalog_kind == "custom"
-            else messages
-        )
-        catalog.validator.validate(probe, strict_integrity=False)
-
-        # Pass 2: completeness + topology on the id-retained tree.
+        # Pass 1: completeness, in the kit's words.
         has_create = any(
             isinstance(m, dict) and "createSurface" in m for m in messages
         )
@@ -394,8 +325,8 @@ class CatalogContext:
         if "root" not in ids:
             raise ValueError("incomplete surface: no component with id='root'")
 
-        ref_map = extract_component_ref_fields(catalog)
-        analyze_topology("root", components, ref_map, raise_on_orphans=True)
+        # Pass 2: conformance and topology.
+        validate_payload([self.get_catalog()], messages)
 
         # Pass 3: binding resolvability on the final state.
         _check_bindings_resolve(components, _build_data_model(messages))

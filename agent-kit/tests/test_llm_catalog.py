@@ -9,6 +9,7 @@ are both exercised.
 import json
 
 import pytest
+from a2ui.utils import load_examples
 
 from a2ui_agent_kit.catalog import CatalogContext, catalog_context
 
@@ -102,10 +103,8 @@ def test_catalog_id_and_supported_ids_agree(ctx):
     assert ctx.supported_catalog_ids() == [cid]
 
 
-def test_build_schema_manager_registers_examples_path(ctx):
-    sm = ctx.build_schema_manager(examples_path=str(ctx.catalog_json_path().parent))
-    catalog = sm.get_selected_catalog()
-    assert catalog.catalog_id == ctx.get_catalog().catalog_id
+def test_the_catalog_is_loaded_once(ctx):
+    assert ctx.get_catalog() is ctx.get_catalog()
 
 
 def test_examples_dir_exists_with_curated_examples(ctx):
@@ -113,10 +112,8 @@ def test_examples_dir_exists_with_curated_examples(ctx):
     assert sorted(p.name for p in ctx._line.examples_dir.glob("*.json"))
 
 
-def test_live_schema_manager_loads_examples(ctx):
-    sm = ctx.live_schema_manager()
-    catalog = sm.get_selected_catalog()
-    examples = sm.load_examples(catalog)
+def test_the_examples_render_from_the_lines_examples_dir(ctx):
+    examples = load_examples([ctx.get_catalog()], str(ctx._line.examples_dir))
     assert "---BEGIN" in examples  # examples path resolved and rendered
 
 

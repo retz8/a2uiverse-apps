@@ -183,7 +183,7 @@ readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
     "a2ui-agent-kit",
-    "a2ui-agent-sdk>=0.2.4,<0.3.0",
+    "a2ui-agent-sdk==0.9.0",
     "a2a-sdk[http-server]>=0.3.0,<0.4.0",
     "google-adk>=2.5.0,<3.0.0",
     "python-dotenv>=1.0.0",

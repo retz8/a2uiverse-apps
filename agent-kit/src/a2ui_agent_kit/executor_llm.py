@@ -19,9 +19,12 @@ from a2a.server.tasks import TaskUpdater
 from a2a.types import DataPart, Part, Task, TaskState, TextPart
 from a2a.utils import new_agent_parts_message, new_task
 from a2ui.a2a.parts import create_a2ui_part
-from a2ui.parser.parser import parse_response
-from a2ui.parser.streaming_v09 import A2uiStreamParserV09
-from a2ui.schema.constants import VERSION_0_9
+from a2ui.constants import A2UI_CLIENT_DATA_MODEL_KEY, DEFAULT_PROGRESSIVE_KEYS
+from a2ui.core import A2uiParseError
+from a2ui.inference_formats import to_message_dicts
+from a2ui.inference_formats.direct_json import DirectJsonParser
+from a2ui.inference_formats.direct_json.json_reader import read_json
+from a2ui.parser import A2uiPart, RawA2uiPart
 
 from a2ui_agent_kit.catalog_lines import (
     SurfaceCatalogs,
@@ -49,74 +52,9 @@ from a2ui_agent_kit.versions import WIRE_VERSION
 logger = logging.getLogger(__name__)
 
 
-class _StrKeyedComponents(dict):
-    """Component cache that drops any component whose id is not a string.
-
-    The SDK indexes seen components by `comp["id"]` with no type guard (two sites:
-    A2uiStreamParserV09._handle_complete_object and the base parser's
-    _handle_partial_component). A model that emits an object for `id` therefore
-    reaches a dict subscript and raises TypeError — `cannot use 'dict' as a dict
-    key` — aborting the attempt mid-stream. Guarding the cache itself covers both
-    sites at once, rather than re-implementing two large SDK methods.
-
-    Dropping the component is safe: it simply does not stream incrementally. A
-    genuinely malformed surface is still rejected at end-of-stream by
-    validate_surface, which is where the id's type gets a real verdict.
-    """
-
-    def __setitem__(self, key, value) -> None:
-        if not isinstance(key, str):
-            logger.debug("skipped a component whose id is not a string: %r", key)
-            return
-        super().__setitem__(key, value)
-
-
-class LenientA2uiStreamParser(A2uiStreamParserV09):
-    """A2uiStreamParserV09 whose incremental yield tolerates transient cycles.
-
-    The SDK's incremental yield re-raises Self-reference/Circular topology errors on
-    the assumption that more data cannot resolve them — false under partial-JSON
-    healing: a chunk boundary that splits a child id right after a parent-id prefix
-    (e.g. "row-0-lv" cut at "row-0") heals into a momentary self-loop that the next
-    chunk resolves. Skip that yield instead of failing the attempt; genuine cycles
-    are still rejected at end-of-stream by validate_surface's topology pass.
-
-    It also guards the component cache against non-string ids (see
-    _StrKeyedComponents) and tolerates the TypeError a non-string *reference* id
-    provokes inside topology analysis — get_component_references yields
-    `componentId` values without checking they are strings, so a malformed
-    reference reaches a set/dict operation the same way an id does.
-    """
-
-    def __init__(self, *args, **kwargs) -> None:
-        super().__init__(*args, **kwargs)
-        self._seen_components = _StrKeyedComponents(self._seen_components)
-
-    def yield_reachable(self, messages, check_root=False, raise_on_orphans=False):
-        try:
-            super().yield_reachable(
-                messages, check_root=check_root, raise_on_orphans=raise_on_orphans
-            )
-        except TypeError as err:
-            # A non-string reference id inside the topology walk. Same disposition as
-            # a transient cycle: skip the incremental yield, let validate_surface rule
-            # on the finished payload.
-            if check_root or raise_on_orphans:
-                raise
-            logger.debug("incremental yield skipped a non-string reference: %s", err)
-            return
-        except ValueError as err:
-            if check_root or raise_on_orphans:
-                raise
-            message = str(err)
-            if "Self-reference" in message or "Circular" in message:
-                logger.debug("incremental yield skipped a transient cycle: %s", message)
-                return
-            raise
-
 # A2A message-metadata key under which the client reports the current data model of
-# its sendDataModel-flagged surfaces (the spec's A2A binding; no upstream constant).
-CLIENT_DATA_MODEL_KEY = "a2uiClientDataModel"
+# its sendDataModel-flagged surfaces (the spec's A2A binding).
+CLIENT_DATA_MODEL_KEY = A2UI_CLIENT_DATA_MODEL_KEY
 MAX_ATTEMPTS = 2  # one initial + one retry; tunable (spec decision 6)
 APOLOGY_TEXT = (
     "Sorry — I couldn't compose a valid interface for that request. Please try rephrasing."
@@ -254,16 +192,6 @@ def _message_key(message: object) -> tuple[str, str] | None:
     return None
 
 
-def _unstreamed(payload: list[dict], streamed: set[tuple[str, str]]) -> list[dict]:
-    """The payload's messages whose surface and kind the stream never sent, in order.
-
-    The stream parser holds a surface's components back until it has seen the surface
-    created in the same parse, and a delete likewise: a turn that updates or deletes a
-    surface an earlier turn painted streams none of it (a2uiverse task-12.13 decision 45).
-    """
-    return [m for m in payload if (key := _message_key(m)) is not None and key not in streamed]
-
-
 def _require_fresh_surface(payload: list[dict], surface_id: str) -> None:
     """Raises unless the turn paints a surface of its own and leaves `surface_id` alone."""
     touched = any((key := _message_key(m)) is not None and key[0] == surface_id for m in payload)
@@ -276,22 +204,111 @@ def _require_fresh_surface(payload: list[dict], surface_id: str) -> None:
         )
 
 
-def _collect_payload(accumulated: str) -> list[dict]:
-    """Extracts the full A2UI message list from the accumulated model text.
+def _collect_payload(parser: DirectJsonParser, accumulated: str) -> list[dict]:
+    """Extracts the full A2UI message list from the accumulated model text, as written.
 
-    Returns an empty list when the response carries no A2UI block (parse_response
-    raises in that case); the executor treats an empty payload as a failed attempt.
+    Read with the parser's own JSON reader and left unjudged: the kit's checks rule on it.
+    Returns an empty list when the response carries no A2UI block, or one that never closed
+    or is not JSON; the executor treats an empty payload as a failed attempt.
     """
-    try:
-        parts = parse_response(accumulated)
-    except ValueError:
-        return []
     payload: list[dict] = []
-    for part in parts:
-        if part.a2ui_json:
-            data = part.a2ui_json
-            payload.extend(data if isinstance(data, list) else [data])
+    for raw in parser.unwrap(accumulated):
+        if not isinstance(raw.part, RawA2uiPart):
+            continue
+        if not raw.is_final:
+            return []
+        try:
+            data = read_json(raw.part.a2ui_raw)
+        except ValueError:
+            return []
+        payload.extend(data if isinstance(data, list) else [data])
     return payload
+
+
+class _StreamFilter:
+    """What one turn's stream sends of its parses, across the turn's attempts (a2uiverse
+    task-16.2 decision 3).
+
+    The parser emits a message whole each time it grows and knows nothing of an earlier
+    attempt; the client keeps everything the turn sent. So a surface the turn created stays
+    created and a retry's createSurface for it is dropped; a component goes out only when it
+    is new or changed since it was last sent, so a growing updateComponents streams what it
+    added and a retry patches the surface in place rather than wiping and redrawing it; a
+    data model value goes again only when it changed. A message for a surface the turn has
+    not created — an update or a delete to an earlier turn's surface — is held back: the turn
+    sends it whole once the response validates (a2uiverse task-12.13 decision 45).
+
+    The stream may stop short of what the turn validates — the parser judges the model's
+    text as written, the kit the payload painted in the turn's catalog id — so a valid turn
+    ends with `flush`, which sends whatever of the validated payload the client still lacks.
+    """
+
+    def __init__(self) -> None:
+        # Surfaces the turn created, by id.
+        self.created: set[str] = set()
+        # What the stream has sent, by (surface id, message kind).
+        self.streamed: set[tuple[str, str]] = set()
+        self._components: dict[str, dict[str, str]] = {}
+        self._data: dict[tuple[str, str], str] = {}
+
+    def admit(self, message: dict) -> dict | None:
+        """The part of `message` the client does not hold yet, or None when it holds it all."""
+        key = _message_key(message)
+        if key is None:
+            return None
+        surface_id, kind = key
+        if kind == "createSurface":
+            if surface_id in self.created:
+                return None
+            self.created.add(surface_id)
+        elif surface_id not in self.created:
+            return None
+        elif kind == "updateComponents":
+            update = message["updateComponents"]
+            sent = self._components.setdefault(surface_id, {})
+            fresh = []
+            for component in update.get("components") or []:
+                component_id = component.get("id") if isinstance(component, dict) else None
+                encoded = json.dumps(component, sort_keys=True)
+                if isinstance(component_id, str):
+                    if sent.get(component_id) == encoded:
+                        continue
+                    sent[component_id] = encoded
+                fresh.append(component)
+            if not fresh:
+                return None
+            message = {**message, "updateComponents": {**update, "components": fresh}}
+        elif kind == "updateDataModel":
+            update = message["updateDataModel"]
+            slot = (surface_id, update.get("path") or "/")
+            encoded = json.dumps(update, sort_keys=True)
+            if self._data.get(slot) == encoded:
+                return None
+            self._data[slot] = encoded
+        elif kind == "deleteSurface":
+            # The surface is gone from the client: a create after it is a new surface.
+            self.created.discard(surface_id)
+            self._components.pop(surface_id, None)
+            self._data = {slot: v for slot, v in self._data.items() if slot[0] != surface_id}
+        self.streamed.add(key)
+        return message
+
+    def flush(self, payload: list[dict]) -> list[dict]:
+        """What the client still lacks of a validated payload, in order: what the turn's own
+        surfaces gained since the stream last sent, and every message the stream held back,
+        whole."""
+        unsent: list[dict] = []
+        for message in payload:
+            key = _message_key(message)
+            if key is None:
+                continue
+            surface_id, kind = key
+            if kind == "createSurface" or surface_id in self.created:
+                if (admitted := self.admit(message)) is not None:
+                    unsent.append(admitted)
+            elif key not in self.streamed:
+                unsent.append(message)
+        return unsent
 
 
 class LlmAgentExecutor(AgentExecutor):
@@ -484,42 +501,26 @@ class LlmAgentExecutor(AgentExecutor):
 
         `fresh_from` is the surface an action came from, when the turn must leave it be.
         """
-        # One parser persisted across attempts. Its dedup caches make a retry patch the
-        # surface attempt 1 created — createSurface and unchanged components are
-        # suppressed, only changed/new components stream as updateComponents — instead of
-        # a deleteSurface + full re-stream, which reads as a wipe-and-redraw under token
-        # streaming. (Supersedes spec decision 6's teardown-and-restream.)
-        # Catalog-less v0.9 parser: incremental structural heal + yield only; validation
-        # is at-end (validate_surface), so the parser must not reject the id-bearing wire
-        # format the catalog does not model.
-        parser = LenientA2uiStreamParser(catalog=None)
-        # Catalog-less construction leaves the parser's version unset, which arms its
-        # v0.8 compatibility shim: every relative binding path in streamed parts gets
-        # rewritten absolute ('title' -> '/title'), silently breaking template item
-        # bindings on the client. Pin the version to disarm it.
-        parser._version = VERSION_0_9
-        # It also leaves the ref-field map empty, so the parser's reachability yield
-        # cannot traverse the catalog's custom component-reference props (e.g.
-        # PageLayout's header/content/pane) and silently drops every component behind
-        # them. Hand it the map without the catalog itself.
-        parser._ref_fields_map = turn.context.live_ref_fields()
+        # What the client holds of the turn, across its attempts: the parser of each attempt
+        # starts afresh, and the filter sends only what is new to the client, so a retry
+        # patches the surface attempt 1 created in place (a2uiverse task-16.2 decision 3).
+        stream_filter = _StreamFilter()
+        # Every line's catalog, the turn's first: a surface the model writes in another line's
+        # id streams all the same, the kit painting it in the turn's own (`paint_in`).
+        catalogs = [turn.context.get_catalog()] + [
+            self._lines.context(line).get_catalog()
+            for line in self._lines.lines()
+            if line is not turn.line
+        ]
 
         correction: str | None = None
         model_unavailable = False
-        created_surfaces: set[str] = set()
-        # What the stream has sent, by (surface id, message kind), across the attempts.
-        streamed: set[tuple[str, str]] = set()
         # Request-level paint metas (surfaceId -> meta), fed by the per-attempt tag
         # filter: a retry's re-declared tag overwrites, so the marker validation always
         # judges the latest declaration.
         paint_metas: dict[str, dict] = {}
         for attempt in range(1, self._max_attempts + 1):
-            # Flush the partial-parse tail a prior failed attempt left in the parser (a
-            # mid-block ValueError aborts before the parser's own reset), keeping the
-            # dedup caches that drive in-place patching. A no-op on the first attempt.
-            parser._reset_json_state()
-            parser._found_delimiter = False
-            parser._buffer = ""
+            parser = DirectJsonParser(catalogs, progressive_keys=DEFAULT_PROGRESSIVE_KEYS)
             # Fresh per attempt: a partial tag a failed attempt left buffered must not
             # bleed into the next attempt's prose.
             tag_filter = PaintTitleTagFilter()
@@ -536,30 +537,26 @@ class LlmAgentExecutor(AgentExecutor):
                         logger.info("attempt %d: first model token received", attempt)
                         first_token = False
                     accumulated += token
-                    # A malformed A2UI block raises here mid-stream; that is the same
-                    # failure class as an invalid surface, so it feeds the same
-                    # correction/retry loop instead of escaping as a server error.
+                    # The parser judges a block as it closes. One that is not JSON raises
+                    # here: that is the same failure class as an invalid surface, so it
+                    # feeds the same correction/retry loop instead of escaping as a server
+                    # error. One a renderer would refuse is the kit's to judge, at the end
+                    # of the attempt and in its own words; the rest of the response streams
+                    # through a fresh parser.
                     try:
-                        response_parts = parser.process_chunk(token)
-                    except (ValueError, TypeError) as err:
-                        # TypeError joins ValueError here because a malformed value
-                        # where the SDK expects a string (an object component id, an
-                        # object componentId reference) surfaces as TypeError, not
-                        # ValueError. It is the same failure class — a bad block the
-                        # model can be told to correct — so it must feed the same
-                        # correction/retry loop instead of falling through to the
-                        # generic handler, which would retry with an unchanged prompt
-                        # and then blame the provider for an outage that never happened.
+                        response_parts = parser.parse_chunk(token)
+                    except A2uiParseError as err:
                         stream_error = err
                         break
+                    except (ValueError, TypeError) as err:
+                        logger.debug("attempt %d: the parser refused a block: %s", attempt, err)
+                        parser = DirectJsonParser(
+                            catalogs, progressive_keys=DEFAULT_PROGRESSIVE_KEYS
+                        )
+                        continue
                     for response_part in response_parts:
-                        created_surfaces |= self._surface_ids(response_part)
-                        data = response_part.a2ui_json or []
-                        for msg in data if isinstance(data, list) else [data]:
-                            if (key := _message_key(msg)) is not None:
-                                streamed.add(key)
                         parts = self._parts_for(
-                            response_part, tag_filter, paint_metas, turn.catalog_id
+                            response_part, stream_filter, tag_filter, paint_metas, turn.catalog_id
                         )
                         if parts:
                             self._recorder.record_batch(parts)
@@ -616,7 +613,7 @@ class LlmAgentExecutor(AgentExecutor):
                     new_agent_parts_message(held_parts, task.context_id, task.id),
                 )
 
-            payload = paint_in(_collect_payload(accumulated), turn.catalog_id)
+            payload = paint_in(_collect_payload(parser, accumulated), turn.catalog_id)
             if not payload and stream_error is None and tag_filter.no_surface:
                 # A declared prose-only turn (<no-surface/>): the explanation has
                 # already streamed as prose, and nothing is painted — the client
@@ -633,6 +630,8 @@ class LlmAgentExecutor(AgentExecutor):
                 await updater.update_status(TaskState.completed, final=True)
                 return
             try:
+                # A block that is not JSON leaves nothing for the kit's checks to read: the
+                # parser's verdict is the correction.
                 if stream_error is not None:
                     raise stream_error
                 if not payload:
@@ -673,9 +672,10 @@ class LlmAgentExecutor(AgentExecutor):
 
             self._dump_surface(payload)
             self._surfaces.record(task.context_id, payload)
-            # What the stream held back — an update or a delete to a surface painted in an
-            # earlier turn — goes now, whole, as validated.
-            if unsent := _unstreamed(payload, streamed):
+            # What the client still lacks of the validated payload goes now: an update or a
+            # delete to a surface painted in an earlier turn, whole, and what the stream did
+            # not reach of the turn's own surfaces.
+            if unsent := stream_filter.flush(payload):
                 unsent_parts = [create_a2ui_part(m, version=WIRE_VERSION) for m in unsent]
                 self._recorder.record_batch(unsent_parts)
                 await updater.update_status(
@@ -689,7 +689,7 @@ class LlmAgentExecutor(AgentExecutor):
 
         # Attempts exhausted -> clean up the half-baked surface (so the client is not
         # left with broken partial UI), then apologize, matched to the last failure kind.
-        await self._teardown(updater, task, created_surfaces)
+        await self._teardown(updater, task, stream_filter.created)
         apology = UNAVAILABLE_TEXT if model_unavailable else APOLOGY_TEXT
         apology_parts = [Part(root=TextPart(text=apology))]
         self._recorder.record_batch(apology_parts)
@@ -699,19 +699,6 @@ class LlmAgentExecutor(AgentExecutor):
             new_agent_parts_message(apology_parts, task.context_id, task.id),
             final=True,
         )
-
-    @staticmethod
-    def _surface_ids(response_part) -> set[str]:
-        """Surface ids created by this part's createSurface messages."""
-        data = response_part.a2ui_json
-        if not data:
-            return set()
-        ids = set()
-        for msg in data if isinstance(data, list) else [data]:
-            surface_id = (msg.get("createSurface") or {}).get("surfaceId")
-            if surface_id:
-                ids.add(surface_id)
-        return ids
 
     async def _teardown(self, updater: TaskUpdater, task, surface_ids: set[str]) -> None:
         """Deletes surfaces a failed attempt created, so the client is not left with
@@ -734,11 +721,25 @@ class LlmAgentExecutor(AgentExecutor):
     @staticmethod
     def _parts_for(
         response_part,
+        stream_filter: _StreamFilter,
         tag_filter: PaintTitleTagFilter | None = None,
         paint_metas: dict[str, dict] | None = None,
         catalog_id: str | None = None,
     ) -> list[Part]:
         parts: list[Part] = []
+        if isinstance(response_part, A2uiPart):
+            messages = [
+                admitted
+                for message in to_message_dicts(response_part.a2ui)
+                if (admitted := stream_filter.admit(message)) is not None
+            ]
+            # Every surface the turn creates is in the turn's catalog id, whatever id the
+            # model copied out of an earlier turn in another line.
+            if catalog_id is not None:
+                messages = paint_in(messages, catalog_id)
+            for msg in messages:
+                parts.append(create_a2ui_part(msg, version=WIRE_VERSION))
+            return parts
         if response_part.text:
             text = response_part.text
             if tag_filter is not None:
@@ -752,15 +753,6 @@ class LlmAgentExecutor(AgentExecutor):
                     parts.append(create_paint_meta_part(meta))
             if text:
                 parts.append(Part(root=TextPart(text=text)))
-        if response_part.a2ui_json:
-            data = response_part.a2ui_json
-            messages = data if isinstance(data, list) else [data]
-            # Every surface the turn creates is in the turn's catalog id, whatever id the
-            # model copied out of an earlier turn in another line.
-            if catalog_id is not None:
-                messages = paint_in(messages, catalog_id)
-            for msg in messages:
-                parts.append(create_a2ui_part(msg, version=WIRE_VERSION))
         return parts
 
     async def cancel(
