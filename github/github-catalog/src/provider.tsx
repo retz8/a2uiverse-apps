@@ -1,6 +1,6 @@
 /**
- * The catalog's Provider: Primer's theme + base styles around a surface mount, with Primer's
- * token stylesheets loaded on first mount. The bundle owns this setup — a host wraps each of
+ * The catalog's Provider: Primer's theme + base styles around a surface mount, in the OS
+ * appearance, with Primer's token stylesheets loaded on first mount. The bundle owns this setup — a host wraps each of
  * this catalog's fragments in it and nothing Primer reaches the page until one renders.
  *
  * Everything the bundle brings stays inside the fragment boundary: token sheets that would
@@ -8,8 +8,25 @@
  * (`scripts/build-scoped-css.mjs`), and Primer's portal root is anchored inside that element so
  * overlays mount themed, inside the boundary, instead of at `document.body`.
  */
-import {useEffect, type ReactNode} from 'react';
+import {useEffect, useState, type ReactNode} from 'react';
 import {BaseStyles, ThemeProvider, registerPortalRoot} from '@primer/react';
+
+const DARK = '(prefers-color-scheme: dark)';
+
+/** Follow the OS appearance, from the same media query a host canvas reads. */
+function useSystemAppearance(): 'light' | 'dark' {
+  const [appearance, setAppearance] = useState<'light' | 'dark'>(() =>
+    typeof window !== 'undefined' && window.matchMedia?.(DARK).matches ? 'dark' : 'light',
+  );
+  useEffect(() => {
+    const query = window.matchMedia?.(DARK);
+    if (!query) return;
+    const onChange = () => setAppearance(query.matches ? 'dark' : 'light');
+    query.addEventListener('change', onChange);
+    return () => query.removeEventListener('change', onChange);
+  }, []);
+  return appearance;
+}
 
 let tokensLoaded: Promise<unknown> | null = null;
 
@@ -44,12 +61,13 @@ const anchorPortalRoot = (el: HTMLDivElement | null) => {
 };
 
 export function Provider({children}: {children: ReactNode}) {
+  const appearance = useSystemAppearance();
   useEffect(() => {
     void loadPrimerTokens();
   }, []);
   return (
     <div className="github-catalog-scope" data-portal-root>
-      <ThemeProvider>
+      <ThemeProvider colorMode={appearance}>
         <BaseStyles>
           <div ref={anchorPortalRoot} />
           {children}
