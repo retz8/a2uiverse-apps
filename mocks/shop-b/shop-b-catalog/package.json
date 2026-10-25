@@ -1,6 +1,6 @@
 {
   "name": "shop-b-catalog",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "The Shop B app catalog: the A2UI basic catalog under a product theme, as schema + implementation + Provider. The host supplies React, the A2UI runtime, and zod.",
   "license": "MIT",
   "repository": {
@@ -32,8 +32,8 @@
     "catalogs"
   ],
   "scripts": {
-    "build": "tsc -p tsconfig.json",
-    "prepare": "tsc -p tsconfig.json",
+    "build": "tsc -p tsconfig.json && node scripts/copy-theme.mjs",
+    "prepare": "tsc -p tsconfig.json && node scripts/copy-theme.mjs",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "check": "stellify check"

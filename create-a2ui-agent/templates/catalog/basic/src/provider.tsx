@@ -31,6 +31,14 @@ function useSystemAppearance(): 'light' | 'dark' {
 /** TODO: the product's type stack. The bundle loads no font. */
 const FONT_STACK = "-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif";
 
+let themeLoaded: Promise<unknown> | null = null;
+
+/** The product sheet, scoped to the wrapper class; loaded on first mount, nothing global. */
+function loadTheme() {
+  themeLoaded ??= import('./theme.css');
+  return themeLoaded;
+}
+
 /** Shape, type and spacing — appearance-independent. */
 const STRUCTURE = {
   '--a2ui-border-radius': '8px',
@@ -105,6 +113,9 @@ export const TOKENS_DARK = {...STRUCTURE, ...DARK_TOKENS} as const satisfies Rec
  * custom properties still cascade to the subtree.
  */
 export function Provider({children}: {children: ReactNode}) {
+  useEffect(() => {
+    void loadTheme();
+  }, []);
   const tokens = useSystemAppearance() === 'dark' ? TOKENS_DARK : TOKENS;
   return (
     <div

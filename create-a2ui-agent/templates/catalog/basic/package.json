@@ -32,8 +32,8 @@
     "catalogs"
   ],
   "scripts": {
-    "build": "tsc -p tsconfig.json",
-    "prepare": "tsc -p tsconfig.json",
+    "build": "tsc -p tsconfig.json && node scripts/copy-theme.mjs",
+    "prepare": "tsc -p tsconfig.json && node scripts/copy-theme.mjs",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "check": "stellify check"

@@ -1,0 +1,19 @@
+/*
+ * Shop B product styling for what no token reaches, scoped to the Provider's wrapper class;
+ * every other part of the look is a token on the wrapper (`provider.tsx`).
+ */
+
+/* A caption reads at its row's size and upright: the basic catalog sizes it from the shared
+   extra-small token and sets it in <em>, and no token of its own reaches either. */
+.shop-b-catalog .a2ui-text.a2ui-text-caption {
+  font-size: inherit;
+}
+
+.shop-b-catalog .a2ui-text-caption em {
+  font-style: normal;
+}
+
+/* A heading keeps the browser's own space above and below it. */
+.shop-b-catalog .a2ui-text h3 {
+  margin-block: 1em;
+}
