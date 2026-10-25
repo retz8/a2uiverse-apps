@@ -18,6 +18,8 @@ An app anywhere else pins it to a commit:
 a2ui-agent-kit = { git = "https://github.com/retz8/a2uiverse-apps", subdirectory = "agent-kit", rev = "<sha>" }
 ```
 
+Either way it brings A2UI's Python packages at exact pins: `a2ui-agent-sdk` 0.9.0, `a2ui-core` 0.4.0 and `a2ui-a2a` 0.1.0.
+
 [`create-a2ui-agent`](../create-a2ui-agent/) scaffolds a whole app with the config below already filled in, `provider` and `documentation_url` aside.
 
 ## Quick start
@@ -208,6 +210,7 @@ export STELLIFY_CREDENTIAL=$(uv run python -m a2ui_agent_kit.preview_credential 
 | `sign_in_vendor`                      | Optional: live sign-in with a vendor's OAuth, as the upstream sign-in                                                               |
 | `testing`                             | Runs an executor in-process, or the agent on a port signed in as a vault would, for an app's tests                                  |
 | `preview_credential`                  | A token from your running agent for Stellify's `preview`, signed in as one of its fake accounts                                     |
+| `upstream_patches`                    | Local fixes over the pinned A2UI releases, applied at import, each until a release carries it                                       |
 
 The system prompt puts three rules every app shares ahead of the app's own workflow: a failure reported in prose is worded for a person who may not work in tech, with no status code, tool name, URL or sign-in term; a write drafted for the person to confirm is a proposal, never declared a question, and one dismissed outright is repainted settled; and the person's time zone is passed to every tool that takes one, a time from a tool that takes none is shown with its zone named, and no time is converted by the model.
 

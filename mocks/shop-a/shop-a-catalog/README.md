@@ -2,7 +2,7 @@
 
 An A2UI catalog for Aperture & Co, an invented camera store: the basic A2UI catalog, unchanged, in a neutral theme with a warm-brown accent.
 
-The catalog adds no components of its own. `CATALOG` reuses the basic catalog's components and functions from `@a2ui/react` as they are, and the look comes entirely from the `Provider`.
+The catalog adds no components of its own. `CATALOG` reuses the components and functions of `@a2ui/web_core`'s basic catalog as they are, and the look comes entirely from the `Provider`.
 
 ## Using it
 
@@ -16,7 +16,7 @@ import {CATALOG, CATALOG_ID, Provider} from 'shop-a-catalog';
 
 ## Theme
 
-The Provider sets its design tokens and a small stylesheet on its own wrapper element, never on the page, so the theme stays inside the wrapper. The palette is neutral except for the accent, warm brown here and teal in [`shop-b-catalog`](../../shop-b/shop-b-catalog/), so the two stores can be told apart side by side. Everything else keeps the basic catalog's defaults.
+The Provider sets its design tokens and a small stylesheet on its own wrapper element, never on the page, so the theme stays inside the wrapper. The palette is neutral except for the accent, warm brown here and teal in [`shop-b-catalog`](../../shop-b/shop-b-catalog/), so the two stores can be told apart side by side. The accent sits on the primary colour and on the secondary ones a default button draws in: its text the accent, its hover a tint of it. The stylesheet holds only what no token reaches: a caption at its row's size and upright, and an `h3` with the browser's own space above and below it. Everything else keeps the basic catalog's defaults.
 
 Light or dark follows the OS.
 
@@ -27,7 +27,7 @@ Light or dark follows the OS.
 | `catalogs/v0.9.1/catalog.json` | the upstream basic catalog, with only its ids, title and description changed |
 | `src/catalog.ts`               | the runtime catalog: the basic components and functions                      |
 | `src/provider.tsx`             | the tokens, light and dark                                                   |
-| `src/theme.css`                | the stylesheet, scoped to the Provider's wrapper: the accent on row hover    |
+| `src/theme.css`                | the stylesheet, scoped to the Provider's wrapper: what no token reaches      |
 
 ## Build and test
 
@@ -39,7 +39,7 @@ pnpm --filter shop-a-catalog check
 
 `check` packs the built package with Stellify in memory and runs the gate A2UIVerse runs when it installs the app; it writes nothing.
 
-**Keeping up with upstream.** `catalog.json` is a copy of upstream's basic catalog. A test compares it with the basic catalog of the pinned `@a2ui/react`, so bumping that version past an upstream change turns the build red. To fix it, copy the file again from upstream and restore the four changed fields (`$id`, `catalogId`, `title`, `description`).
+**Keeping up with upstream.** `catalog.json` is a copy of upstream's basic catalog. A test compares it with the basic catalog of the pinned `@a2ui/web_core`, so bumping that version past an upstream change turns the build red. To fix it, copy the file again from upstream and restore the four changed fields (`$id`, `catalogId`, `title`, `description`).
 
 ## Connecting to A2UIVerse
 

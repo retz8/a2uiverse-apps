@@ -25,7 +25,7 @@ import {CATALOG, CATALOG_ID, Provider} from 'github-catalog';
 - **`CATALOG_ID`**: the catalog's id. A surface created with it renders with this catalog.
 - **`Provider`**: Primer's theme and styles. Wrap each surface rendered with this catalog in it; nothing else needs setting up.
 
-The Provider keeps Primer inside its own wrapper. Its tokens are scoped to that wrapper rather than the page, and Primer's overlays open inside it, so they stay themed and never land on top of anything else on the page.
+The Provider keeps Primer inside its own wrapper. Its tokens are scoped to that wrapper rather than the page, and Primer's overlays open inside it, so they stay themed and never land on top of anything else on the page. Light or dark follows the OS. A page layout follows the width of the fragment it is drawn in, not the window's: below Primer's breakpoint, 48rem, it takes Primer's narrow layout, its regions stacked.
 
 The package ships Primer itself at exact versions. The host supplies only what must be shared: React, `@a2ui/react` / `@a2ui/web_core`, and zod.
 
@@ -40,7 +40,7 @@ pnpm --filter github-catalog check
 
 `check` packs the built package with Stellify in memory and runs the gate A2UIVerse runs when it installs the app; it writes nothing.
 
-Two tests keep the halves in step: **parity** checks that every zod schema matches its `catalog.json` entry, and **exact set** checks that `CATALOG` holds exactly the registered components and functions. Each component also has its own schema and render tests beside it.
+Two tests keep the halves in step: **parity** checks that every zod schema matches its `catalog.json` entry, and **exact set** checks that `CATALOG` holds exactly the registered components and functions. Each component also has its own schema and render tests beside it. A sheet test checks that every Primer class `primer-children.css` and `primer-narrow.css` name is one Primer's own stylesheets declare, and that the narrow page layout sits at Primer's breakpoint.
 
 ## Layout
 
@@ -52,6 +52,8 @@ src/
   components/<name>/           <name>.schema.ts (zod) and <name>.tsx (Primer render), with tests
   functions/                   one file per client-side function, with tests
   shared/                      helpers shared across components
+  primer-children.css          Primer's rules between a parent and its children, restated for children that are components of their own
+  primer-narrow.css            Primer's narrow page layout, keyed to the fragment's width
 ```
 
 ## Adding a component

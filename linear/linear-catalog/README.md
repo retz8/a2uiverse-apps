@@ -24,7 +24,7 @@ An A2UI catalog for Linear: Linear's own set of components in its design languag
 | `StatusIcon`                    | a workflow state's glyph, drawn from its type                                                |
 | `PriorityIcon`                  | a priority's glyph: rising bars, urgent's mark, none's dashes                                |
 
-It also carries the basic catalog's functions, as `@a2ui/react` implements them.
+It also carries the basic catalog's functions, as `@a2ui/web_core` implements them.
 
 **The look.** The palette is generated in LCH from three inputs, a base colour, an accent colour and a contrast, the way Linear describes building its own themes. The bases are the two colours Linear's brand page publishes, Mercury White `#F4F5F8` and Nordic Gray `#222326`; the accent, a desaturated blue, and the status and priority hues are this catalog's own. `src/palette.ts` generates both appearances. Every glyph is drawn here, and no Linear icon or logo is used.
 

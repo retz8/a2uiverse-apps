@@ -2,7 +2,7 @@
 
 An A2UI catalog for __DISPLAY_NAME__: the basic A2UI catalog, unchanged, in __DISPLAY_NAME__'s look.
 
-The catalog adds no components of its own. `CATALOG` reuses the basic catalog's components and functions from `@a2ui/react` as they are, and the look comes entirely from the `Provider`.
+The catalog adds no components of its own. `CATALOG` reuses the components and functions of `@a2ui/web_core`'s basic catalog as they are, and the look comes entirely from the `Provider`.
 
 ## Using it
 
@@ -18,7 +18,7 @@ import {CATALOG, CATALOG_ID, Provider} from '__PACKAGE_NAME__';
 
 The Provider sets its design tokens and a small stylesheet on its own wrapper element, never on the page, so the theme stays inside the wrapper. Light or dark follows the OS.
 
-TODO: the scaffold starts from a neutral palette. Put __DISPLAY_NAME__'s own tokens in `src/provider.tsx`, and the rules a token can't reach, like row colours or button shapes, in `src/theme.css`.
+TODO: the scaffold starts from a neutral palette. Put __DISPLAY_NAME__'s own tokens in `src/provider.tsx`, the accent on the primary colour and on the secondary ones a default button draws in. Add a rule to `src/theme.css` only where no token reaches; it holds a caption at its row's size and upright, and an `h3` with the browser's own space above and below it.
 
 When the basic components can't show something __DISPLAY_NAME__ needs, such as a status coloured per row, add a component of your own beside them.
 
@@ -29,7 +29,7 @@ When the basic components can't show something __DISPLAY_NAME__ needs, such as a
 | `catalogs/v0.9.1/catalog.json` | the upstream basic catalog, with only its ids, title and description changed |
 | `src/catalog.ts`               | the runtime catalog: the basic components and functions                      |
 | `src/provider.tsx`             | the tokens, light and dark                                                   |
-| `src/theme.css`                | the stylesheet, scoped to the Provider's wrapper                             |
+| `src/theme.css`                | the stylesheet, scoped to the Provider's wrapper: what no token reaches      |
 
 ## Build and test
 
@@ -43,7 +43,7 @@ pnpm check
 
 `check` packs the built package with Stellify in memory and runs the gate A2UIVerse runs when it installs the app; it writes nothing.
 
-**Keeping up with upstream.** `catalog.json` is a copy of upstream's basic catalog. A test compares it with the basic catalog of the pinned `@a2ui/react`, so bumping that version past an upstream change turns the build red. To fix it, copy the file again from upstream and restore the four changed fields (`$id`, `catalogId`, `title`, `description`).
+**Keeping up with upstream.** `catalog.json` is a copy of upstream's basic catalog. A test compares it with the basic catalog of the pinned `@a2ui/web_core`, so bumping that version past an upstream change turns the build red. To fix it, copy the file again from upstream and restore the four changed fields (`$id`, `catalogId`, `title`, `description`).
 
 ## Connecting to A2UIVerse
 
