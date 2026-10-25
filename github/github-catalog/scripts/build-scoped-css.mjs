@@ -32,9 +32,8 @@ for (const out of ['src/primer-scoped.css', 'dist/primer-scoped.css']) {
   writeFileSync(path, scoped);
 }
 
-// `tsc` does not copy stylesheets: the committed sheet of Primer's rules restated for children that
-// are components of their own goes beside the built JS too.
-copyFileSync(
-  resolve(packageRoot, 'src/primer-children.css'),
-  resolve(packageRoot, 'dist/primer-children.css'),
-);
+// `tsc` does not copy stylesheets: the committed sheets — Primer's rules restated for children that
+// are components of their own, and Primer's narrow PageLayout keyed to the fragment's width — go
+// beside the built JS too.
+for (const sheet of ['primer-children.css', 'primer-narrow.css'])
+  copyFileSync(resolve(packageRoot, 'src', sheet), resolve(packageRoot, 'dist', sheet));

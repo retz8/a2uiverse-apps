@@ -1,0 +1,113 @@
+/*
+ * Primer's narrow PageLayout, keyed to the fragment's own width. Primer lays a PageLayout out by
+ * the window's width, so a fragment narrower than Primer's breakpoint in a wide window keeps its
+ * pane beside the content and squeezes both. The scope element is a size container, and below
+ * Primer's breakpoint, 48rem, Primer's narrow rules hold as they would on a narrow window: the
+ * regions stacked, the pane at full width before or after the content, the dividers and what is
+ * hidden as their narrow variants say. Every class is Primer 38.36.0's.
+ */
+
+.github-catalog-scope {
+  container: github-catalog / inline-size;
+}
+
+@container github-catalog (max-width: calc(48rem - 0.02px)) {
+  .github-catalog-scope .prc-PageLayout-PageLayoutContent-BneH9 {
+    flex-direction: column;
+  }
+
+  .github-catalog-scope .prc-PageLayout-PaneWrapper-pHPop {
+    margin-left: 0;
+    margin-right: 0;
+    max-height: none;
+    position: static;
+    width: 100%;
+  }
+  .github-catalog-scope .prc-PageLayout-PaneWrapper-pHPop:where([data-position-narrow='end']) {
+    flex-direction: column;
+    margin-top: var(--spacing-row) !important;
+    order: var(--region-order-pane-end);
+  }
+  .github-catalog-scope .prc-PageLayout-PaneWrapper-pHPop:where([data-position-narrow='start']) {
+    flex-direction: column-reverse;
+    margin-bottom: var(--spacing-row) !important;
+    order: var(--region-order-pane-start);
+  }
+  .github-catalog-scope .prc-PageLayout-PaneWrapper-pHPop:where([data-position='end']) {
+    flex-direction: column;
+    margin-top: var(--spacing-row) !important;
+    order: var(--region-order-pane-end);
+  }
+  .github-catalog-scope .prc-PageLayout-PaneWrapper-pHPop:where([data-position='start']) {
+    flex-direction: column-reverse;
+    margin-bottom: var(--spacing-row) !important;
+    order: var(--region-order-pane-start);
+  }
+  .github-catalog-scope .prc-PageLayout-Pane-AyzHK {
+    width: 100%;
+  }
+
+  .github-catalog-scope .prc-PageLayout-HorizontalDivider-JLVqp:where([data-variant-narrow='none']),
+  .github-catalog-scope .prc-PageLayout-VerticalDivider-9QRmK:where([data-variant-narrow='none']) {
+    display: none;
+  }
+  .github-catalog-scope
+    .prc-PageLayout-HorizontalDivider-JLVqp:where([data-variant-narrow='line']) {
+    background-color: var(--borderColor-default, #d1d9e0);
+    box-shadow: none;
+    display: block;
+    height: 1px;
+  }
+  .github-catalog-scope
+    .prc-PageLayout-HorizontalDivider-JLVqp:where([data-variant-narrow='filled']) {
+    background-color: var(--bgColor-inset, #f6f8fa);
+    box-shadow:
+      inset 0 -1px 0 0 var(--borderColor-default, #d1d9e0),
+      inset 0 1px 0 0 var(--borderColor-default, #d1d9e0);
+    display: block;
+    height: var(--base-size-8, 0.5rem);
+  }
+  .github-catalog-scope .prc-PageLayout-VerticalDivider-9QRmK:where([data-variant-narrow='line']) {
+    background-color: var(--borderColor-default, #d1d9e0);
+    box-shadow: none;
+    display: block;
+    width: 1px;
+  }
+  .github-catalog-scope
+    .prc-PageLayout-VerticalDivider-9QRmK:where([data-variant-narrow='filled']) {
+    background-color: var(--bgColor-inset, #f6f8fa);
+    box-shadow:
+      inset -1px 0 0 0 var(--borderColor-default, #d1d9e0),
+      inset 1px 0 0 0 var(--borderColor-default, #d1d9e0);
+    display: block;
+    width: var(--base-size-8, 0.5rem);
+  }
+  .github-catalog-scope
+    .prc-PageLayout-PaneVerticalDivider-le57g:where([data-position-narrow='start']) {
+    margin-left: var(--spacing);
+    margin-right: 0;
+  }
+  .github-catalog-scope
+    .prc-PageLayout-PaneVerticalDivider-le57g:where([data-position-narrow='end']) {
+    margin-left: 0;
+    margin-right: var(--spacing);
+  }
+  .github-catalog-scope
+    .prc-PageLayout-PaneHorizontalDivider-9tbnE:where([data-position-narrow='start']) {
+    margin-bottom: 0;
+    margin-top: var(--spacing);
+  }
+  .github-catalog-scope
+    .prc-PageLayout-PaneHorizontalDivider-9tbnE:where([data-position-narrow='end']) {
+    margin-bottom: var(--spacing);
+    margin-top: 0;
+  }
+
+  .github-catalog-scope .prc-PageLayout-Header-0of-R:where([data-hidden-narrow='true']),
+  .github-catalog-scope .prc-PageLayout-ContentWrapper-gR9eG:where([data-is-hidden-narrow='true']),
+  .github-catalog-scope .prc-PageLayout-PaneWrapper-pHPop:where([data-is-hidden-narrow='true']),
+  .github-catalog-scope .prc-PageLayout-FooterWrapper-9cB8y:where([data-hidden-narrow='true']),
+  .github-catalog-scope .prc-PageLayout-SidebarWrapper-kLG4B:where([data-is-hidden-narrow='true']) {
+    display: none;
+  }
+}
