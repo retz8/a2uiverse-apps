@@ -1,6 +1,6 @@
 {
   "name": "shop-b-catalog",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "The Shop B app catalog: the A2UI basic catalog under a product theme, as schema + implementation + Provider. The host supplies React, the A2UI runtime, and zod.",
   "license": "MIT",
   "repository": {

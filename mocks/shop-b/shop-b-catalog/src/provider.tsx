@@ -39,7 +39,8 @@ const STRUCTURE = {
   '--a2ui-font-size-xs': '0.6875rem',
   '--a2ui-font-size-s': '0.75rem',
   '--a2ui-font-size-m': '0.875rem',
-  '--a2ui-font-size-l': '1rem',
+  // An `h3` at the size it has always drawn: the browser's own heading, 1.17 times the body.
+  '--a2ui-font-size-l': '1.17rem',
   '--a2ui-font-size-xl': '1.375rem',
   '--a2ui-font-size-2xl': '1.75rem',
   '--a2ui-line-height-body': '1.5',
@@ -48,6 +49,8 @@ const STRUCTURE = {
   '--a2ui-spacing-s': '0.5rem',
   '--a2ui-spacing-m': '0.75rem',
   '--a2ui-spacing-l': '1.25rem',
+  // A list flush with what is above it, as it has always drawn.
+  '--a2ui-list-padding': '0',
   '--a2ui-button-border-radius': '8px',
   '--a2ui-card-border-radius': '12px',
   '--a2ui-textfield-border-radius': '6px',
