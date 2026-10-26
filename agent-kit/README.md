@@ -73,7 +73,8 @@ uv run python -m app --mode live            # the model over the real MCP server
 | `--public-url`            | With sign-in on, the address the browser reaches the sign-in pages at — the sign-in page, the account chooser's form and the finish address; defaults to `--base-url` |
 | `--state-dir`             | Moves the sign-in store, an owner-only file in `<app>/.state/` by default, which git ignores                                                                          |
 | `--access-token-lifetime` | Shortens the tokens the agent issues, for exercising refresh in development                                                                                           |
-| `MODEL_NAME`              | The model; `gemini-3.8-flash` by default                                                                                                                              |
+| `MODEL_NAME`              | The model; `gemini-3.8-flash` by default. A Gemini name as ADK takes it, with `GOOGLE_API_KEY`; a Claude model as `anthropic/<model>`, with `ANTHROPIC_API_KEY`         |
+| `MODEL_EFFORT`            | The thinking tier: `low` spends no thinking, `default` leaves the model's own; `default` by default                                                                    |
 
 `version` is the agent card's version, the app's: when the card changes, it moves to one the app has never published, or the marketplace refuses the publish. `provider` and `documentation_url` go on the card too — where a person finishes on the app's own side, such as A2UIVerse's "Continue on" link and the help link on its key page. [`src/a2ui_agent_kit/config.py`](src/a2ui_agent_kit/config.py) lists every field.
 

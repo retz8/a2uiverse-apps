@@ -11,16 +11,57 @@ from __future__ import annotations
 import logging
 import os
 
-from a2ui_agent_kit.config import DEFAULT_MODEL, AgentAppConfig
+from a2ui_agent_kit.config import DEFAULT_EFFORT, DEFAULT_MODEL, EFFORTS, AgentAppConfig
 from a2ui_agent_kit.sign_in import SignIn
 
 logger = logging.getLogger(__name__)
 
 MODES = ("deterministic", "stub", "live")
 
+ANTHROPIC_PREFIX = "anthropic/"
+
 
 def model_name(config: AgentAppConfig) -> str:
     return os.environ.get("MODEL_NAME", config.model or DEFAULT_MODEL)
+
+
+def model_effort(config: AgentAppConfig) -> str:
+    """The thinking tier, resolved as the model name is: env, then config, then default."""
+    effort = os.environ.get("MODEL_EFFORT", config.effort or DEFAULT_EFFORT)
+    if effort not in EFFORTS:
+        raise ValueError(
+            f"MODEL_EFFORT {effort!r} is not a tier; expected one of {', '.join(EFFORTS)}."
+        )
+    return effort
+
+
+def build_model(name: str):
+    """The model ADK's LlmAgent takes: a Claude name as the direct-API class, any other as is.
+
+    ADK's own registry sends a bare `claude-…` to its Vertex class and `anthropic/…` to
+    LiteLLM; neither reaches the Anthropic API with an ANTHROPIC_API_KEY, so the kit builds
+    that class itself for the prefixed name. Every other name goes to ADK untouched.
+    """
+    if name.startswith(ANTHROPIC_PREFIX):
+        from google.adk.models.anthropic_llm import AnthropicLlm
+
+        return AnthropicLlm(model=name.removeprefix(ANTHROPIC_PREFIX))
+    return name
+
+
+def generate_content_config(effort: str):
+    """The generation config for a tier: `low` a thinking budget of zero, `default` none.
+
+    ADK hands the config through to Gemini as it is, and its Anthropic class reads the
+    same budget as thinking disabled.
+    """
+    if effort == "low":
+        from google.genai import types as genai_types
+
+        return genai_types.GenerateContentConfig(
+            thinking_config=genai_types.ThinkingConfig(thinking_budget=0)
+        )
+    return None
 
 
 def build_tools(config: AgentAppConfig, mode: str, account=None) -> list:
@@ -97,7 +138,8 @@ def build_llm_agent(
         (config.app_dir / "system_prompt.old.dump.txt").write_text(old_prompt, encoding="utf-8")
     return LlmAgent(
         name=config.adk_agent_name,
-        model=model or model_name(config),
+        model=build_model(model or model_name(config)),
+        generate_content_config=generate_content_config(model_effort(config)),
         # A provider callable, not a plain string: ADK templates string instructions
         # against session state, and the schema/example JSON braces in the prompt
         # (e.g. `{path}`) would be read as state variables and raise KeyError.

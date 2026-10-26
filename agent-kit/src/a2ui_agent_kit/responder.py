@@ -98,6 +98,10 @@ async def _stream_agent_text(events: AsyncIterator) -> AsyncIterator[str]:
         content = getattr(event, "content", None)
         if content and getattr(content, "parts", None):
             for part in content.parts:
+                # A model that streams its reasoning marks those parts `thought`; none of
+                # it is the answer.
+                if getattr(part, "thought", False):
+                    continue
                 chunk = getattr(part, "text", None)
                 if chunk:
                     saw_text = True

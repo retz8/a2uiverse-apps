@@ -52,6 +52,18 @@ async def test_single_non_partial_event_is_emitted():
     assert chunks == ["Hello"]
 
 
+@pytest.mark.asyncio
+async def test_thinking_parts_never_reach_the_text():
+    # A model that streams its reasoning marks those parts `thought`; none of it is the
+    # answer (a2uiverse task-17.1 decision 5).
+    thinking = SimpleNamespace(
+        content=SimpleNamespace(parts=[SimpleNamespace(text="let me think", thought=True)]),
+        partial=True,
+    )
+    chunks = await _collect([thinking, _event("Hello", partial=True)])
+    assert chunks == ["Hello"]
+
+
 def _tool_event(calls=(), responses=()):
     """An ADK-Event stand-in for a tool-call turn: no text, function call/response parts."""
     return SimpleNamespace(
