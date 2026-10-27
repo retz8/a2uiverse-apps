@@ -188,17 +188,32 @@ def test_any_other_name_reaches_adk_as_the_string_it_was():
     assert build_model("some-other/model") == "some-other/model"
 
 
-def test_low_effort_spends_no_thinking_budget():
-    config = generate_content_config("low")
+def test_low_effort_on_gemini_is_the_low_thinking_level():
+    """Gemini 3 takes a thinking level, and a zero budget is not honoured on it: measured on
+    gemini-3.8-flash in a2uiverse task-17.3, a budget of zero left the model thinking for
+    47k tokens where the low level left none (amending task-17.1 decision 3)."""
+    from google.genai import types as genai_types
+
+    config = generate_content_config("low", "gemini-3.8-flash")
+    assert config.thinking_config.thinking_level == genai_types.ThinkingLevel.LOW
+    assert config.thinking_config.thinking_budget is None
+
+
+def test_low_effort_on_claude_disables_thinking_through_the_budget():
+    """ADK's Anthropic class reads the budget alone and maps zero to thinking disabled."""
+    config = generate_content_config("low", "anthropic/claude-x")
     assert config.thinking_config.thinking_budget == 0
+    assert config.thinking_config.thinking_level is None
 
 
 def test_default_effort_configures_nothing():
-    assert generate_content_config("default") is None
+    assert generate_content_config("default", "gemini-3.8-flash") is None
+    assert generate_content_config("default", "anthropic/claude-x") is None
 
 
 def test_build_llm_agent_wires_the_model_and_the_tier(basic_config, monkeypatch):
     from google.adk.models.anthropic_llm import AnthropicLlm
+    from google.genai import types as genai_types
 
     from a2ui_agent_kit.modes import build_llm_agent
 
@@ -207,9 +222,12 @@ def test_build_llm_agent_wires_the_model_and_the_tier(basic_config, monkeypatch)
     assert isinstance(agent.model, AnthropicLlm)
     assert agent.model.model == "claude-x"
     assert agent.generate_content_config.thinking_config.thinking_budget == 0
-    monkeypatch.setenv("MODEL_EFFORT", "default")
     agent = build_llm_agent(basic_config, "stub", model="gemini-x")
     assert agent.model == "gemini-x"
+    assert agent.generate_content_config.thinking_config.thinking_level == genai_types.ThinkingLevel.LOW
+    assert agent.generate_content_config.thinking_config.thinking_budget is None
+    monkeypatch.setenv("MODEL_EFFORT", "default")
+    agent = build_llm_agent(basic_config, "stub", model="gemini-x")
     # ADK normalizes a missing config to an empty one; nothing about thinking is set.
     assert agent.generate_content_config.thinking_config is None
 

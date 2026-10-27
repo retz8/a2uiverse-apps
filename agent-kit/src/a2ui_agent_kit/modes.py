@@ -50,19 +50,26 @@ def build_model(name: str):
     return name
 
 
-def generate_content_config(effort: str):
-    """The generation config for a tier: `low` a thinking budget of zero, `default` none.
+def generate_content_config(effort: str, model: str):
+    """The generation config for a tier on `model`: `low` the least thinking the provider
+    offers, `default` none.
 
-    ADK hands the config through to Gemini as it is, and its Anthropic class reads the
-    same budget as thinking disabled.
+    ADK hands the config through as it is. Gemini 3 takes a thinking level, and a budget
+    of zero is not honoured on it: measured on gemini-3.8-flash (a2uiverse task-17.3), a
+    zero budget left the model thinking for 47k tokens where the low level left none — so
+    `low` is the low level there (amending task-17.1 decision 3). ADK's Anthropic class
+    reads the budget alone and maps zero to thinking disabled, so a Claude name keeps the
+    zero budget; Google refuses a request carrying both knobs.
     """
-    if effort == "low":
-        from google.genai import types as genai_types
+    if effort != "low":
+        return None
+    from google.genai import types as genai_types
 
-        return genai_types.GenerateContentConfig(
-            thinking_config=genai_types.ThinkingConfig(thinking_budget=0)
-        )
-    return None
+    if model.startswith(ANTHROPIC_PREFIX):
+        thinking = genai_types.ThinkingConfig(thinking_budget=0)
+    else:
+        thinking = genai_types.ThinkingConfig(thinking_level=genai_types.ThinkingLevel.LOW)
+    return genai_types.GenerateContentConfig(thinking_config=thinking)
 
 
 def build_tools(config: AgentAppConfig, mode: str, account=None) -> list:
@@ -137,10 +144,11 @@ def build_llm_agent(
     dump_path.write_text(prompt, encoding="utf-8")
     if old_prompt is not None:
         (config.app_dir / "system_prompt.old.dump.txt").write_text(old_prompt, encoding="utf-8")
+    name = model or model_name(config)
     return LlmAgent(
         name=config.adk_agent_name,
-        model=build_model(model or model_name(config)),
-        generate_content_config=generate_content_config(model_effort(config)),
+        model=build_model(name),
+        generate_content_config=generate_content_config(model_effort(config), name),
         # A provider callable, not a plain string: ADK templates string instructions
         # against session state, and the schema/example JSON braces in the prompt
         # (e.g. `{path}`) would be read as state variables and raise KeyError.
