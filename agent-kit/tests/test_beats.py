@@ -141,3 +141,95 @@ def test_an_api_key_agent_is_not_driven_without_its_key(monkeypatch, tmp_path):
 
     monkeypatch.setattr(beats.httpx, "Client", Client)
     assert beats.drive([], "m", tmp_path, "http://agent", tmp_path) == 2
+
+
+# ---- the measurement in the fixture (a2uiverse task-17.3) -----------------------------------
+
+
+def _measured_turn(model="gemini-3.8-flash", effort="low", requests=None) -> dict:
+    return {
+        "taskId": "t",
+        "kind": "utterance",
+        "prompt": "p",
+        "action": None,
+        "model": model,
+        "effort": effort,
+        "batches": [{"offsetMs": 1900, "messages": [CREATE], "texts": []}],
+        "outcome": "completed",
+        "durationMs": 9900,
+        "requests": requests
+        if requests is not None
+        else [
+            {
+                "attempt": 1, "index": 1, "startMs": 0, "firstTokenMs": 1200, "endMs": 1300,
+                "timeToFirstTokenMs": 1200, "generationMs": 100, "ended": "toolCall",
+                "tools": ["list_issues"], "usage": {"promptTokens": 7000, "outputTokens": 40},
+            },
+            {
+                "attempt": 1, "index": 2, "startMs": 2000, "firstTokenMs": 3800, "endMs": 9800,
+                "timeToFirstTokenMs": 1800, "generationMs": 6000, "ended": "text",
+                "usage": {"promptTokens": 7200, "outputTokens": 650, "thoughtsTokens": 0},
+            },
+        ],
+    }
+
+
+def test_the_fixture_keeps_the_agents_word_on_the_model_and_the_effort(tmp_path):
+    """The agent stamped the turn; the driver's --model is the operator's claim (decision 5)."""
+    import json
+
+    spec = beats.Turn(1, "my-issues", "My issues", "p")
+    turn = _measured_turn(model="anthropic/claude-haiku-5-5", effort="low")
+    path = beats.write_fixture(tmp_path, spec, {"contextId": "c"}, turn, "gemini-3.8-flash", None)
+    fixture = json.loads(path.read_text(encoding="utf-8"))
+    assert fixture["model"] == "anthropic/claude-haiku-5-5"
+    assert fixture["effort"] == "low"
+    assert fixture["turns"][0]["requests"] == turn["requests"]
+
+
+def test_a_turn_without_a_stamp_takes_the_drivers_model(tmp_path):
+    """The beats recorded before the stamp existed are written as they always were."""
+    import json
+
+    spec = beats.Turn(1, "my-issues", "My issues", "p")
+    turn = {"taskId": "t", "batches": [{"messages": [CREATE]}], "outcome": "completed"}
+    path = beats.write_fixture(tmp_path, spec, {"contextId": "c"}, turn, "gemini-3.8-flash", None)
+    fixture = json.loads(path.read_text(encoding="utf-8"))
+    assert fixture["model"] == "gemini-3.8-flash"
+    assert "effort" not in fixture
+
+
+def test_the_driver_says_when_the_agent_ran_another_model_than_it_was_told():
+    disagreement = beats.model_disagreement([_measured_turn(model="gemini-3.8-flash")], "gemini-x")
+    assert disagreement is not None
+    assert "gemini-x" in disagreement and "gemini-3.8-flash" in disagreement
+    assert beats.model_disagreement([_measured_turn(model="gemini-x")], "gemini-x") is None
+    assert beats.model_disagreement([{"outcome": "completed"}], "gemini-x") is None
+
+
+def test_the_per_beat_line_carries_the_turns_totals():
+    """The requests made, the painting request's first token and generation, the tokens in
+    all (decision 7)."""
+    line = beats.request_totals(_measured_turn())
+    assert "2 requests" in line
+    assert "first token 1.8 s" in line
+    assert "generation 6.0 s" in line
+    assert "14200 prompt" in line and "690 output" in line
+
+
+def test_the_per_beat_line_is_nothing_for_a_turn_without_requests():
+    assert beats.request_totals({"outcome": "completed", "batches": []}) is None
+
+
+def test_the_painting_request_is_the_last_that_ended_in_text():
+    """A retry's generation is the one that painted; a turn that only called tools has none
+    and is read by its last request."""
+    requests = [
+        {"attempt": 1, "index": 1, "timeToFirstTokenMs": 500, "generationMs": 4000, "ended": "text"},
+        {"attempt": 2, "index": 1, "timeToFirstTokenMs": 900, "generationMs": 3000, "ended": "text"},
+    ]
+    line = beats.request_totals(_measured_turn(requests=requests))
+    assert "first token 0.9 s" in line and "generation 3.0 s" in line
+    only_tools = [{"attempt": 1, "index": 1, "timeToFirstTokenMs": 700, "ended": "toolCall"}]
+    line = beats.request_totals(_measured_turn(requests=only_tools))
+    assert "first token 0.7 s" in line

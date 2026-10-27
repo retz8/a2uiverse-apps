@@ -204,7 +204,7 @@ export STELLIFY_CREDENTIAL=$(uv run python -m a2ui_agent_kit.preview_credential 
 | `catalog`, `prompt`, `knowledge`      | Loads the app's catalog, validates surfaces against it, and assembles the system prompt                                             |
 | `catalog_lines`                       | Optional: an old catalog id beside the current one, and the id each turn is painted in                                              |
 | `toolset`, `tool_shaping`             | A hook on every MCP call, to change its arguments on the way out or its result on the way back                                      |
-| `recorder`, `corpus`, `beats`         | Recording: what the agent painted and what the MCP server returned, and scripted conversations                                      |
+| `recorder`, `corpus`, `beats`         | Recording: what the agent painted, what each model request cost in time and tokens, what the MCP server returned, and scripted conversations |
 | `paint_meta`                          | Optional: a short title per painted surface, and a mark on a surface that asks something                                            |
 | `sign_in`, `sign_in_server`           | Optional: the app's sign-in, the OAuth authorization server it serves and the 401 on A2A requests                                   |
 | `sign_in_store`, `sign_in_fake`       | The owner-only store behind sign-in, and the chooser over the fake accounts                                                         |

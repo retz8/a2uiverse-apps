@@ -265,9 +265,47 @@ def group_is_good(turns: list[dict]) -> tuple[bool, str]:
     return True, "ok"
 
 
+def model_disagreement(turns: list[dict], claimed: str) -> str | None:
+    """What to say when the agent stamped its turns with another model than `--model` claims
+    (a2uiverse task-17.3 decision 5); None when they agree or the turns carry no stamp."""
+    stamped = sorted({t["model"] for t in turns if t.get("model") and t["model"] != claimed})
+    if not stamped:
+        return None
+    return (
+        f"the agent ran {', '.join(stamped)}, not {claimed} as --model says; "
+        "the fixture keeps the agent's word"
+    )
+
+
+def request_totals(turn: dict) -> str | None:
+    """The turn's measurement in one line (task-17.3 decision 7): the requests made, the
+    painting request's time to first token and generation time, the tokens in all. The
+    painting request is the last that ended in text — a retry's generation over the first
+    attempt's — or the last request when none did. None for a turn without requests."""
+    requests = turn.get("requests") or []
+    if not requests:
+        return None
+    painting = next((r for r in reversed(requests) if r.get("ended") == "text"), requests[-1])
+    parts = [f"{len(requests)} request{'s' if len(requests) != 1 else ''}"]
+    paint = []
+    if "timeToFirstTokenMs" in painting:
+        paint.append(f"first token {painting['timeToFirstTokenMs'] / 1000:.1f} s")
+    if "generationMs" in painting:
+        paint.append(f"generation {painting['generationMs'] / 1000:.1f} s")
+    if paint:
+        parts.append("paint: " + ", ".join(paint))
+    if any("usage" in r for r in requests):
+        prompt = sum(r.get("usage", {}).get("promptTokens", 0) for r in requests)
+        output = sum(r.get("usage", {}).get("outputTokens", 0) for r in requests)
+        parts.append(f"{prompt} prompt / {output} output tokens in all")
+    return " · ".join(parts)
+
+
 def write_fixture(
     fixture_dir: Path, spec: Turn, session: dict, turn: dict, model: str, chained_from: str | None
 ) -> Path:
+    """`model` is the driver's `--model`; a turn the agent stamped with its own model and
+    effort names them instead, the agent's word over the operator's (task-17.3 decision 5)."""
     fixture_dir.mkdir(parents=True, exist_ok=True)
     name = f"beat-{spec.beat}-{spec.slug}"
     fixture = {
@@ -275,12 +313,18 @@ def write_fixture(
         "beat": spec.beat,
         "title": spec.title,
         "prompt": spec.prompt,
-        "model": model,
-        "recordedAt": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-        "contextId": session.get("contextId"),
-        "chainedFrom": chained_from,
-        "turns": [turn],
+        "model": turn.get("model") or model,
     }
+    if turn.get("effort"):
+        fixture["effort"] = turn["effort"]
+    fixture.update(
+        {
+            "recordedAt": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+            "contextId": session.get("contextId"),
+            "chainedFrom": chained_from,
+            "turns": [turn],
+        }
+    )
     path = fixture_dir / f"{name}.json"
     path.write_text(json.dumps(fixture, indent=2) + "\n", encoding="utf-8")
     return path
@@ -335,6 +379,8 @@ def drive(
             session = read_session(record_dir, context_id) if context_id else None
             if failure is None and session is not None:
                 recorded = session["turns"][-len(group) :]
+                if (disagreement := model_disagreement(recorded, model)) is not None:
+                    log(f"  !! {disagreement}")
                 group_ok, group_why = group_is_good(recorded)
                 if group_ok:
                     chained_from = None
@@ -344,6 +390,8 @@ def drive(
                         )
                         chained_from = f"beat-{spec_in_group.beat}-{spec_in_group.slug}"
                         log(f"  ok  {path}")
+                        if (totals := request_totals(turn)) is not None:
+                            log(f"      {totals}")
                         results.append((spec_in_group, True, "ok"))
                     break
                 failure = f"beat {'+'.join(str(t.beat) for t in group)}: {group_why}"
@@ -359,6 +407,8 @@ def drive(
                         )
                         chained_from = f"beat-{spec_in_group.beat}-{spec_in_group.slug}"
                         log(f"  FLAGGED (best available) {path}")
+                        if (totals := request_totals(turn)) is not None:
+                            log(f"      {totals}")
                         results.append((spec_in_group, False, failure or "unknown"))
                 else:
                     for spec_in_group in group:

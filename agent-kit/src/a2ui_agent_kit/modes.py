@@ -12,6 +12,7 @@ import logging
 import os
 
 from a2ui_agent_kit.config import DEFAULT_EFFORT, DEFAULT_MODEL, EFFORTS, AgentAppConfig
+from a2ui_agent_kit.measurement import after_model, before_model
 from a2ui_agent_kit.sign_in import SignIn
 
 logger = logging.getLogger(__name__)
@@ -145,6 +146,11 @@ def build_llm_agent(
         # (e.g. `{path}`) would be read as state variables and raise KeyError.
         instruction=lambda _ctx: old_prompt if old is not None and turn_line() is old else prompt,
         tools=build_tools(config, mode, account),
+        # Every request the turn makes is measured here, the one place all of them pass:
+        # the start as it leaves, the first token, the end and the usage as the responses
+        # arrive (a2uiverse task-17.3 decision 6).
+        before_model_callback=before_model,
+        after_model_callback=after_model,
         # A tool needing a scope the token lacks ends the run before it runs.
         before_tool_callback=before_tool_check if config.sign_in is not None else None,
         after_tool_callback=_make_after_tool(config) if config.after_tool else None,

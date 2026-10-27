@@ -212,3 +212,14 @@ def test_build_llm_agent_wires_the_model_and_the_tier(basic_config, monkeypatch)
     assert agent.model == "gemini-x"
     # ADK normalizes a missing config to an empty one; nothing about thinking is set.
     assert agent.generate_content_config.thinking_config is None
+
+
+def test_build_llm_agent_wires_the_measurement_callbacks(basic_config):
+    """The model layer is the seam: ADK's before- and after-model callbacks measure every
+    request (a2uiverse task-17.3 decision 6)."""
+    from a2ui_agent_kit.measurement import after_model, before_model
+    from a2ui_agent_kit.modes import build_llm_agent
+
+    agent = build_llm_agent(basic_config, "stub", model="gemini-x")
+    assert before_model in agent.canonical_before_model_callbacks
+    assert after_model in agent.canonical_after_model_callbacks

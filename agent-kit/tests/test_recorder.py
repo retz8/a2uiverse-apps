@@ -214,3 +214,72 @@ def test_the_null_recorder_accepts_a_cancel(tmp_path):
     rec.start_turn(context_id="ctx", task_id="t", kind="utterance", prompt="p")
     rec.end_turn("canceled", task_id="t")
     assert list(tmp_path.iterdir()) == []
+
+
+# ---- the turn's measurement (a2uiverse task-17.3) -------------------------------------------
+
+
+def test_the_turn_carries_the_model_and_the_effort_the_agent_ran_under(tmp_path):
+    """The agent stamps its conditions; a typed flag on the driver can lie (decision 5)."""
+    rec = create_recorder(str(tmp_path))
+    rec.start_turn(
+        context_id="ctx", task_id="t", kind="utterance", prompt="p",
+        model="anthropic/claude-haiku-5-5", effort="low",
+    )
+    rec.record_batch([_a2ui_part("s1")])
+    rec.end_turn("completed")
+
+    (turn,) = json.loads(next(tmp_path.glob("*.json")).read_text(encoding="utf-8"))["turns"]
+    assert turn["model"] == "anthropic/claude-haiku-5-5"
+    assert turn["effort"] == "low"
+
+
+def test_the_turn_carries_the_requests_handed_to_it_at_the_end(tmp_path):
+    """One record per model request, beside the batches (decision 4)."""
+    rec = create_recorder(str(tmp_path))
+    rec.start_turn(context_id="ctx", task_id="t", kind="utterance", prompt="p")
+    rec.record_batch([_a2ui_part("s1")])
+    requests = [{"attempt": 1, "index": 1, "startMs": 0, "endMs": 900, "ended": "text"}]
+    rec.end_turn("completed", requests=requests)
+
+    (turn,) = json.loads(next(tmp_path.glob("*.json")).read_text(encoding="utf-8"))["turns"]
+    assert turn["requests"] == requests
+    assert turn["batches"], "the batches are still there beside the requests"
+
+
+
+
+def test_a_turn_handed_no_requests_has_no_requests_key(tmp_path):
+    rec = create_recorder(str(tmp_path))
+    rec.start_turn(context_id="ctx", task_id="t", kind="utterance", prompt="p")
+    rec.record_batch([_a2ui_part("s1")])
+    rec.end_turn("completed")
+    (turn,) = json.loads(next(tmp_path.glob("*.json")).read_text(encoding="utf-8"))["turns"]
+    assert "requests" not in turn
+    assert "model" not in turn and "effort" not in turn
+
+
+def test_the_turns_clock_can_be_the_one_the_measurement_uses(tmp_path):
+    """The requests' offsets and the batches' share one origin: the start the executor took."""
+    import time
+
+    rec = create_recorder(str(tmp_path))
+    rec.start_turn(
+        context_id="ctx", task_id="t", kind="utterance", prompt="p",
+        started=time.monotonic() - 5.0,
+    )
+    rec.record_batch([_a2ui_part("s1")])
+    rec.end_turn("completed")
+    (turn,) = json.loads(next(tmp_path.glob("*.json")).read_text(encoding="utf-8"))["turns"]
+    assert turn["batches"][0]["offsetMs"] >= 5000
+    assert turn["durationMs"] >= 5000
+
+
+def test_the_null_recorder_accepts_the_measurement_too(tmp_path):
+    rec = create_recorder(None)
+    rec.start_turn(
+        context_id="ctx", task_id="t", kind="utterance", prompt="p",
+        model="m", effort="low", started=0.0,
+    )
+    rec.end_turn("completed", requests=[{"attempt": 1, "index": 1}])
+    assert list(tmp_path.iterdir()) == []
