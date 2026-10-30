@@ -338,7 +338,10 @@ def drive(
     fixture_dir: Path,
     account: str | None = None,
     api_key: str | None = None,
+    attempts: int = MAX_ATTEMPTS_PER_BEAT,
 ) -> int:
+    """`attempts`: how many times a beat that fails is sent; at one, a failure is recorded
+    as it fell, flagged, for a trial run that counts it (a2uiverse task-17.8 decision 3)."""
     results: list[tuple[Turn, bool, str]] = []
     client = httpx.Client(base_url=url)
     card = client.get(AGENT_CARD_PATH).json()
@@ -361,9 +364,9 @@ def drive(
             group.append(specs[index])
         index += 1
 
-        for attempt in range(1, MAX_ATTEMPTS_PER_BEAT + 1):
+        for attempt in range(1, attempts + 1):
             label = "+".join(str(t.beat) for t in group)
-            log(f"beat {label}: attempt {attempt}/{MAX_ATTEMPTS_PER_BEAT}")
+            log(f"beat {label}: attempt {attempt}/{attempts}")
             context_id: str | None = None
             failure: str | None = None
             started = time.monotonic()
@@ -397,7 +400,7 @@ def drive(
                 failure = f"beat {'+'.join(str(t.beat) for t in group)}: {group_why}"
                 log(f"  !! {failure}")
 
-            if attempt == MAX_ATTEMPTS_PER_BEAT:
+            if attempt == attempts:
                 # Record best-available and flag, rather than stalling the run.
                 if session is not None:
                     chained_from = None
@@ -442,6 +445,17 @@ def main(
     )
     parser.add_argument("--model", required=True, help="model the agent was started with (recorded)")
     parser.add_argument("--record-dir", default=str(record_dir))
+    parser.add_argument(
+        "--fixture-dir",
+        default=str(fixture_dir),
+        help="where the beats are written; elsewhere for a trial run, the recordings untouched",
+    )
+    parser.add_argument(
+        "--attempts",
+        type=int,
+        default=MAX_ATTEMPTS_PER_BEAT,
+        help="times a failing beat is sent; 1 records a failure as it fell",
+    )
     parser.add_argument("--url", default=agent_url, help="agent base URL")
     parser.add_argument(
         "--account",
@@ -450,6 +464,7 @@ def main(
     )
     parser.add_argument("--api-key", help="the key, for an agent signing in with one")
     args = parser.parse_args(argv)
+    fixture_dir = Path(args.fixture_dir)
     if per_account:
         fixture_dir = fixture_dir / args.account
 
@@ -462,5 +477,12 @@ def main(
 
     log(f"agent {args.url} · model {args.model} · beats {[s.beat for s in specs]}")
     return drive(
-        specs, args.model, Path(args.record_dir), args.url, fixture_dir, args.account, args.api_key
+        specs,
+        args.model,
+        Path(args.record_dir),
+        args.url,
+        fixture_dir,
+        args.account,
+        args.api_key,
+        attempts=args.attempts,
     )

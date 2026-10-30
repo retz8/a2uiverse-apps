@@ -233,3 +233,70 @@ def test_the_painting_request_is_the_last_that_ended_in_text():
     only_tools = [{"attempt": 1, "index": 1, "timeToFirstTokenMs": 700, "ended": "toolCall"}]
     line = beats.request_totals(_measured_turn(requests=only_tools))
     assert "first token 0.7 s" in line
+
+
+# ---- a trial run (a2uiverse task-17.8) -------------------------------------------------------
+
+
+def _open_agent(monkeypatch, sent: list[str]) -> None:
+    """An agent that asks no sign-in, every turn sent counted."""
+
+    class Client:
+        def __init__(self, **_):
+            self.headers = {}
+
+        def get(self, path):
+            return SimpleNamespace(json=lambda: {"name": "open"})
+
+    def send_turn(client, text, context_id):
+        sent.append(text)
+        return "c", 1
+
+    monkeypatch.setattr(beats.httpx, "Client", Client)
+    monkeypatch.setattr(beats, "send_turn", send_turn)
+
+
+def test_one_attempt_sends_a_failing_beat_once_and_flags_it(monkeypatch, tmp_path):
+    """Counted as it falls (decision 3): no second try, the failure kept in the copy."""
+    import json
+
+    sent: list[str] = []
+    _open_agent(monkeypatch, sent)
+    session = {"contextId": "c", "turns": [turn("failed")]}
+    monkeypatch.setattr(beats, "read_session", lambda record_dir, context_id: session)
+    spec = beats.Turn(8, "notifications", "Notifications", "p")
+    assert beats.drive([spec], "m", tmp_path, "http://agent", tmp_path, attempts=1) == 1
+    assert sent == ["p"]
+    fixture = json.loads((tmp_path / "beat-8-notifications.json").read_text(encoding="utf-8"))
+    assert fixture["turns"][0]["outcome"] == "failed"
+
+
+def test_a_failing_beat_is_tried_three_times_by_default(monkeypatch, tmp_path):
+    sent: list[str] = []
+    _open_agent(monkeypatch, sent)
+    session = {"contextId": "c", "turns": [turn("failed")]}
+    monkeypatch.setattr(beats, "read_session", lambda record_dir, context_id: session)
+    spec = beats.Turn(8, "notifications", "Notifications", "p")
+    assert beats.drive([spec], "m", tmp_path, "http://agent", tmp_path) == 1
+    assert sent == ["p"] * beats.MAX_ATTEMPTS_PER_BEAT
+
+
+def test_a_trial_run_writes_its_copies_where_it_is_told(monkeypatch, tmp_path):
+    """The committed recordings stay as they are (decision 4)."""
+    driven: dict = {}
+
+    def drive(*args, **kwargs):
+        driven.update(args=args, kwargs=kwargs)
+        return 0
+
+    monkeypatch.setattr(beats, "drive", drive)
+    committed, elsewhere = tmp_path / "recordings" / "beats", tmp_path / "trial"
+    spec = beats.Turn(8, "notifications", "Notifications", "p")
+    argv = ["--model", "m", "--fixture-dir", str(elsewhere), "--attempts", "1"]
+    beats.main([spec], "http://agent", record_dir=tmp_path, fixture_dir=committed, argv=argv)
+    assert driven["args"][4] == elsewhere
+    assert driven["kwargs"]["attempts"] == 1
+    argv = ["--model", "m"]
+    beats.main([spec], "http://agent", record_dir=tmp_path, fixture_dir=committed, argv=argv)
+    assert driven["args"][4] == committed
+    assert driven["kwargs"]["attempts"] == beats.MAX_ATTEMPTS_PER_BEAT
