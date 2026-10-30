@@ -10,6 +10,7 @@ import {COMPONENT_APIS} from './components';
 
 type JsonComponent = {
   description: string;
+  allOf: {$ref: string}[];
   properties: Record<string, {const?: string; enum?: string[]; description?: string}>;
   required: string[];
 };
@@ -75,6 +76,12 @@ describe.each(Object.entries(COMPONENT_APIS))('component %s: zod ↔ catalog.jso
       if (!(inner instanceof z.ZodEnum)) continue;
       expect(json.properties[key].enum, `${name}.${key}`).toEqual([...inner.options]);
     }
+  });
+
+  it("takes the protocol's common props, its id among them", () => {
+    expect(json.allOf).toEqual([
+      {$ref: 'https://a2ui.org/specification/v0_9/common_types.json#/$defs/ComponentCommon'},
+    ]);
   });
 
   it('names itself in its component const', () => {

@@ -8,6 +8,9 @@
     "Stack": {
       "type": "object",
       "description": "Lays its children out in a column or a row. The layout container: use it for every group of components, inside a Panel and between rows.",
+      "allOf": [
+        {"$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/ComponentCommon"}
+      ],
       "properties": {
         "component": {
           "const": "Stack"
@@ -51,6 +54,9 @@
     "Panel": {
       "type": "object",
       "description": "A bordered surface grouping one view or one section: the summary of a run, a pipeline with its jobs, a failed step with its log. Holds one child, usually a Stack.",
+      "allOf": [
+        {"$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/ComponentCommon"}
+      ],
       "properties": {
         "component": {
           "const": "Panel"
@@ -78,6 +84,9 @@
     "Heading": {
       "type": "object",
       "description": "A title: 'large' for the view's subject, 'medium' for a section, 'small' for a subsection.",
+      "allOf": [
+        {"$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/ComponentCommon"}
+      ],
       "properties": {
         "component": {
           "const": "Heading"
@@ -99,6 +108,9 @@
     "Text": {
       "type": "object",
       "description": "A run of text.",
+      "allOf": [
+        {"$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/ComponentCommon"}
+      ],
       "properties": {
         "component": {
           "const": "Text"
@@ -142,6 +154,9 @@
     "Link": {
       "type": "object",
       "description": "Text in the link color that performs an action when pressed: a branch, a commit, a workflow or job name that opens it.",
+      "allOf": [
+        {"$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/ComponentCommon"}
+      ],
       "properties": {
         "component": {
           "const": "Link"
@@ -167,6 +182,9 @@
     "Button": {
       "type": "object",
       "description": "A rounded button that performs an action. 'primary' is the one solid call to action of a view, 'secondary' a grey button, 'ghost' a text-only way out.",
+      "allOf": [
+        {"$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/ComponentCommon"}
+      ],
       "properties": {
         "component": {
           "const": "Button"
@@ -202,6 +220,9 @@
     "StatusBadge": {
       "type": "object",
       "description": "A pipeline's, workflow's or job's status as a rounded pill: a glyph and the word, colored by the word. Use the word the product shows — Success, Failed, Running, On Hold, Queued, Canceled, Not Run, Error, Blocked — or the status value as the data spells it.",
+      "allOf": [
+        {"$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/ComponentCommon"}
+      ],
       "properties": {
         "component": {
           "const": "StatusBadge"
@@ -217,6 +238,9 @@
     "StatusIcon": {
       "type": "object",
       "description": "A status as a round glyph without its word, for the rows of a list — each job in a workflow, each step in a job. The word is its accessible name.",
+      "allOf": [
+        {"$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/ComponentCommon"}
+      ],
       "properties": {
         "component": {
           "const": "StatusIcon"
@@ -238,6 +262,9 @@
     "List": {
       "type": "object",
       "description": "A list of rows, each a ListItem. 'tree' joins the rows with a connector from the list's left edge, as a pipeline's jobs are drawn under it.",
+      "allOf": [
+        {"$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/ComponentCommon"}
+      ],
       "properties": {
         "component": {
           "const": "List"
@@ -259,6 +286,9 @@
     "ListItem": {
       "type": "object",
       "description": "A row of a List. With an action, the whole row is one pressable target that opens what the row shows. Holds one child, usually a horizontal Stack.",
+      "allOf": [
+        {"$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/ComponentCommon"}
+      ],
       "properties": {
         "component": {
           "const": "ListItem"
@@ -278,6 +308,9 @@
     "Field": {
       "type": "object",
       "description": "A labelled fact: a small muted label over its value — Duration, Branch, Commit, Author.",
+      "allOf": [
+        {"$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/ComponentCommon"}
+      ],
       "properties": {
         "component": {
           "const": "Field"
@@ -297,6 +330,9 @@
     "Divider": {
       "type": "object",
       "description": "A thin rule separating sections; 'vertical' separates the fields of a row.",
+      "allOf": [
+        {"$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/ComponentCommon"}
+      ],
       "properties": {
         "component": {
           "const": "Divider"
@@ -314,6 +350,9 @@
     "LogBlock": {
       "type": "object",
       "description": "Output as printed, on a dark panel with line numbers. Its children are LogLine components, one per line, in order.",
+      "allOf": [
+        {"$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/ComponentCommon"}
+      ],
       "properties": {
         "component": {
           "const": "LogBlock"
@@ -329,6 +368,9 @@
     "LogLine": {
       "type": "object",
       "description": "One line of output inside a LogBlock, exactly as printed.",
+      "allOf": [
+        {"$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/ComponentCommon"}
+      ],
       "properties": {
         "component": {
           "const": "LogLine"

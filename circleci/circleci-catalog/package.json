@@ -1,6 +1,6 @@
 {
   "name": "circleci-catalog",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "The CircleCI app catalog: CircleCI's own component vocabulary as schema + implementation + Provider, with its stylesheet and typeface. The host supplies React, the A2UI runtime, and zod.",
   "license": "MIT",
   "repository": {
