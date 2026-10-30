@@ -65,15 +65,15 @@ uv run python -m app --mode stub            # the model over canned data
 uv run python -m app --mode live            # the model over the real MCP server
 ```
 
-| Flag or variable          | What it does                                                                                                                                                          |
-| ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--mode`                  | `deterministic`, `stub` or `live`                                                                                                                                     |
-| `--port`, `--host`        | Where the agent listens                                                                                                                                               |
-| `--base-url`              | The address the agent card advertises; the card's endpoint, the sign-in metadata and the token endpoint stay here                                                     |
-| `--public-url`            | With sign-in on, the address the browser reaches the sign-in pages at — the sign-in page, the account chooser's form and the finish address; defaults to `--base-url` |
-| `--state-dir`             | Moves the sign-in store, an owner-only file in `<app>/.state/` by default, which git ignores                                                                          |
-| `--access-token-lifetime` | Shortens the tokens the agent issues, for exercising refresh in development                                                                                           |
-| `MODEL_NAME`              | The model; `gemini-3.8-flash` by default. A Gemini name as ADK takes it, with `GOOGLE_API_KEY`; a Claude model as `anthropic/<model>`, with `ANTHROPIC_API_KEY`         |
+| Flag or variable          | What it does                                                                                                                                                               |
+| ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--mode`                  | `deterministic`, `stub` or `live`                                                                                                                                          |
+| `--port`, `--host`        | Where the agent listens                                                                                                                                                    |
+| `--base-url`              | The address the agent card advertises; the card's endpoint, the sign-in metadata and the token endpoint stay here                                                          |
+| `--public-url`            | With sign-in on, the address the browser reaches the sign-in pages at — the sign-in page, the account chooser's form and the finish address; defaults to `--base-url`      |
+| `--state-dir`             | Moves the sign-in store, an owner-only file in `<app>/.state/` by default, which git ignores                                                                               |
+| `--access-token-lifetime` | Shortens the tokens the agent issues, for exercising refresh in development                                                                                                |
+| `MODEL_NAME`              | The model; `gemini-3.8-flash` by default. A Gemini name as ADK takes it, with `GOOGLE_API_KEY`; a Claude model as `anthropic/<model>`, with `ANTHROPIC_API_KEY`            |
 | `MODEL_EFFORT`            | The thinking tier: `low` the least thinking the provider offers (Gemini's `low` level, Claude's thinking disabled), `default` leaves the model's own; `default` by default |
 
 `version` is the agent card's version, the app's: when the card changes, it moves to one the app has never published, or the marketplace refuses the publish. `provider` and `documentation_url` go on the card too — where a person finishes on the app's own side, such as A2UIVerse's "Continue on" link and the help link on its key page. [`src/a2ui_agent_kit/config.py`](src/a2ui_agent_kit/config.py) lists every field.
@@ -196,22 +196,22 @@ export STELLIFY_CREDENTIAL=$(uv run python -m a2ui_agent_kit.preview_credential 
 
 ## What's in it
 
-| Module                                | What it does                                                                                                                        |
-| ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| `cli`, `server`, `modes`              | The entrypoint, the A2A server with one agent card for every mode, and the executor per mode                                        |
-| `executor_llm`                        | Streams the model's A2UI as it's written, validates it against the catalog at the end, sends what the stream held back, and retries |
-| `executor_deterministic`, `responses` | Deterministic mode: canned A2UI per action or question, from the app's fixtures, titled as recorded                                 |
-| `catalog`, `prompt`, `knowledge`      | Loads the app's catalog, validates surfaces against it, and assembles the system prompt                                             |
-| `catalog_lines`                       | Optional: an old catalog id beside the current one, and the id each turn is painted in                                              |
-| `toolset`, `tool_shaping`             | A hook on every MCP call, to change its arguments on the way out or its result on the way back                                      |
+| Module                                | What it does                                                                                                                                 |
+| ------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `cli`, `server`, `modes`              | The entrypoint, the A2A server with one agent card for every mode, and the executor per mode                                                 |
+| `executor_llm`                        | Streams the model's A2UI as it's written, validates it against the catalog at the end, sends what the stream held back, and retries          |
+| `executor_deterministic`, `responses` | Deterministic mode: canned A2UI per action or question, from the app's fixtures, titled as recorded                                          |
+| `catalog`, `prompt`, `knowledge`      | Loads the app's catalog, validates surfaces against it, and assembles the system prompt                                                      |
+| `catalog_lines`                       | Optional: an old catalog id beside the current one, and the id each turn is painted in                                                       |
+| `toolset`, `tool_shaping`             | A hook on every MCP call, to change its arguments on the way out or its result on the way back                                               |
 | `recorder`, `corpus`, `beats`         | Recording: what the agent painted, what each model request cost in time and tokens, what the MCP server returned, and scripted conversations |
-| `paint_meta`                          | Optional: a short title per painted surface, and a mark on a surface that asks something                                            |
-| `sign_in`, `sign_in_server`           | Optional: the app's sign-in, the OAuth authorization server it serves and the 401 on A2A requests                                   |
-| `sign_in_store`, `sign_in_fake`       | The owner-only store behind sign-in, and the chooser over the fake accounts                                                         |
-| `sign_in_vendor`                      | Optional: live sign-in with a vendor's OAuth, as the upstream sign-in                                                               |
-| `testing`                             | Runs an executor in-process, or the agent on a port signed in as a vault would, for an app's tests                                  |
-| `preview_credential`                  | A token from your running agent for Stellify's `preview`, signed in as one of its fake accounts                                     |
-| `upstream_patches`                    | Local fixes over the pinned A2UI releases, applied at import, each until a release carries it                                       |
+| `paint_meta`                          | Optional: a short title per painted surface, and a mark on a surface that asks something                                                     |
+| `sign_in`, `sign_in_server`           | Optional: the app's sign-in, the OAuth authorization server it serves and the 401 on A2A requests                                            |
+| `sign_in_store`, `sign_in_fake`       | The owner-only store behind sign-in, and the chooser over the fake accounts                                                                  |
+| `sign_in_vendor`                      | Optional: live sign-in with a vendor's OAuth, as the upstream sign-in                                                                        |
+| `testing`                             | Runs an executor in-process, or the agent on a port signed in as a vault would, for an app's tests                                           |
+| `preview_credential`                  | A token from your running agent for Stellify's `preview`, signed in as one of its fake accounts                                              |
+| `upstream_patches`                    | Local fixes over the pinned A2UI releases, applied at import, each until a release carries it                                                |
 
 The system prompt puts three rules every app shares ahead of the app's own workflow: a failure reported in prose is worded for a person who may not work in tech, with no status code, tool name, URL or sign-in term; a write drafted for the person to confirm is a proposal, never declared a question, and one dismissed outright is repainted settled; and the person's time zone is passed to every tool that takes one, a time from a tool that takes none is shown with its zone named, and no time is converted by the model.
 
