@@ -6,7 +6,14 @@ from pathlib import Path
 
 import pytest
 
-from a2ui_agent_kit.modes import build_tools, model_name, resolve_executor
+from a2ui_agent_kit.modes import (
+    build_model,
+    build_tools,
+    generate_content_config,
+    model_effort,
+    model_name,
+    resolve_executor,
+)
 from a2ui_agent_kit.server import build_agent_card, build_app
 
 V091_URI = "https://a2ui.org/a2a-extension/a2ui/v0.9.1"
@@ -143,3 +150,95 @@ def test_model_resolution_prefers_env_then_config_then_default(basic_config, tmp
     assert model_name(config) == "gemini-x"
     monkeypatch.setenv("MODEL_NAME", "gemini-env")
     assert model_name(config) == "gemini-env"
+
+
+def test_effort_resolution_prefers_env_then_config_then_default(basic_config, tmp_path, monkeypatch):
+    # The thinking tier resolves as the model name does (a2uiverse task-17.1 decision 3).
+    from a2ui_agent_kit.config import DEFAULT_EFFORT
+
+    from .conftest import make_config
+
+    # The kit's default is `low` (a2uiverse task-17.11 decision 7, chosen in task 17.8).
+    monkeypatch.delenv("MODEL_EFFORT", raising=False)
+    assert DEFAULT_EFFORT == "low"
+    assert model_effort(basic_config) == DEFAULT_EFFORT
+    config = make_config("basic", tmp_path, effort="default")
+    assert model_effort(config) == "default"
+    monkeypatch.setenv("MODEL_EFFORT", "low")
+    assert model_effort(config) == "low"
+
+
+def test_effort_refuses_a_word_outside_the_tier(basic_config, monkeypatch):
+    monkeypatch.setenv("MODEL_EFFORT", "high")
+    with pytest.raises(ValueError, match="MODEL_EFFORT"):
+        model_effort(basic_config)
+
+
+def test_an_anthropic_name_builds_the_direct_api_class():
+    # ADK's registry sends a bare `claude-…` to Vertex and `anthropic/…` to LiteLLM; the kit
+    # builds the direct-API class itself for the prefixed name (a2uiverse task-17.1 decision 2).
+    from google.adk.models.anthropic_llm import AnthropicLlm
+
+    model = build_model("anthropic/claude-x")
+    assert isinstance(model, AnthropicLlm)
+    assert model.model == "claude-x"
+
+
+def test_any_other_name_reaches_adk_as_the_string_it_was():
+    assert build_model("gemini-3.8-flash") == "gemini-3.8-flash"
+    assert build_model("some-other/model") == "some-other/model"
+
+
+def test_low_effort_on_gemini_is_the_low_thinking_level():
+    """Gemini 3 takes a thinking level, and a zero budget is not honoured on it: measured on
+    gemini-3.8-flash in a2uiverse task-17.3, a budget of zero left the model thinking for
+    47k tokens where the low level left none (amending task-17.1 decision 3)."""
+    from google.genai import types as genai_types
+
+    config = generate_content_config("low", "gemini-3.8-flash")
+    assert config.thinking_config.thinking_level == genai_types.ThinkingLevel.LOW
+    assert config.thinking_config.thinking_budget is None
+
+
+def test_low_effort_on_claude_disables_thinking_through_the_budget():
+    """ADK's Anthropic class reads the budget alone and maps zero to thinking disabled."""
+    config = generate_content_config("low", "anthropic/claude-x")
+    assert config.thinking_config.thinking_budget == 0
+    assert config.thinking_config.thinking_level is None
+
+
+def test_default_effort_configures_nothing():
+    assert generate_content_config("default", "gemini-3.8-flash") is None
+    assert generate_content_config("default", "anthropic/claude-x") is None
+
+
+def test_build_llm_agent_wires_the_model_and_the_tier(basic_config, monkeypatch):
+    from google.adk.models.anthropic_llm import AnthropicLlm
+    from google.genai import types as genai_types
+
+    from a2ui_agent_kit.modes import build_llm_agent
+
+    monkeypatch.setenv("MODEL_EFFORT", "low")
+    agent = build_llm_agent(basic_config, "stub", model="anthropic/claude-x")
+    assert isinstance(agent.model, AnthropicLlm)
+    assert agent.model.model == "claude-x"
+    assert agent.generate_content_config.thinking_config.thinking_budget == 0
+    agent = build_llm_agent(basic_config, "stub", model="gemini-x")
+    assert agent.model == "gemini-x"
+    assert agent.generate_content_config.thinking_config.thinking_level == genai_types.ThinkingLevel.LOW
+    assert agent.generate_content_config.thinking_config.thinking_budget is None
+    monkeypatch.setenv("MODEL_EFFORT", "default")
+    agent = build_llm_agent(basic_config, "stub", model="gemini-x")
+    # ADK normalizes a missing config to an empty one; nothing about thinking is set.
+    assert agent.generate_content_config.thinking_config is None
+
+
+def test_build_llm_agent_wires_the_measurement_callbacks(basic_config):
+    """The model layer is the seam: ADK's before- and after-model callbacks measure every
+    request (a2uiverse task-17.3 decision 6)."""
+    from a2ui_agent_kit.measurement import after_model, before_model
+    from a2ui_agent_kit.modes import build_llm_agent
+
+    agent = build_llm_agent(basic_config, "stub", model="gemini-x")
+    assert before_model in agent.canonical_before_model_callbacks
+    assert after_model in agent.canonical_after_model_callbacks

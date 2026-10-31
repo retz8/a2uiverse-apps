@@ -142,7 +142,8 @@ SHELL_DESCRIPTION = (
 
 # Subject resolution (there is no configured default repository) plus tool-call
 # economy: a filtered list is one search call, not a list call followed by a
-# per-item fan-out that burns the rate limit. What the fetched objects MEAN —
+# per-item fan-out that burns the rate limit, and calls that do not wait on each
+# other go out in one turn, each turn re-reading the prompt. What the fetched objects MEAN —
 # and what a request is deciding — is domain knowledge, and lives in
 # knowledge/github-domain.md rather than here. This block stays operational.
 SCOPE_DESCRIPTION = (
@@ -169,7 +170,10 @@ SCOPE_DESCRIPTION = (
     "'label:' only when the user names a label, or when no qualifier expresses what they "
     "asked; if you do filter by label, say on the surface that the label is the basis. "
     "Drilling into one specific pull request is different: fetching its detail, reviews, "
-    "comments, status checks, and changed files takes several calls, and that is expected."
+    "comments, status checks, and changed files takes several calls, and that is expected. "
+    "Make the calls that do not wait on each other's results together, in one turn — the "
+    "status checks of five pull requests, one pull request's reviews and its comments — rather "
+    "than one turn each: every turn re-reads this whole prompt."
 )
 
 

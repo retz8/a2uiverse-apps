@@ -25,7 +25,7 @@ import {CATALOG, CATALOG_ID, Provider} from 'github-catalog';
 - **`CATALOG_ID`**: the catalog's id. A surface created with it renders with this catalog.
 - **`Provider`**: Primer's theme and styles. Wrap each surface rendered with this catalog in it; nothing else needs setting up.
 
-The Provider keeps Primer inside its own wrapper. Its tokens are scoped to that wrapper rather than the page, and Primer's overlays open inside it, so they stay themed and never land on top of anything else on the page. Light or dark follows the OS. A page layout follows the width of the fragment it is drawn in, not the window's: below Primer's breakpoint, 48rem, it takes Primer's narrow layout, its regions stacked.
+The Provider keeps Primer inside its own wrapper. Its tokens are scoped to that wrapper rather than the page, and Primer's overlays open inside it, so they stay themed and never land on top of anything else on the page. `ConfirmationDialog` is drawn in place in the view rather than over it, and takes focus only while nothing else on the page holds it. Light or dark follows the OS. A page layout follows the width of the fragment it is drawn in, not the window's: below Primer's breakpoint, 48rem, it takes Primer's narrow layout, its regions stacked.
 
 The package ships Primer itself at exact versions. The host supplies only what must be shared: React, `@a2ui/react` / `@a2ui/web_core`, and zod.
 

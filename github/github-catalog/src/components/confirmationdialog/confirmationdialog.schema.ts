@@ -2,24 +2,26 @@ import {z} from 'zod';
 import {CommonSchemas} from '@a2ui/web_core/v0_9';
 
 /**
- * Runtime (zod) representation of Primer `ConfirmationDialog`, props-only. A modal confirmation
- * prompt with exactly two buttons — one to cancel and one to confirm an action.
+ * Runtime (zod) representation of Primer `ConfirmationDialog`, props-only. A confirmation prompt
+ * with exactly two buttons — one to cancel and one to confirm an action — drawn in place in the
+ * fragment, not over a backdrop: an app's fragment shares the screen with other apps.
  *
- * A rigid wrapper over `Dialog` (6.52): it hard-codes `role = 'alertdialog'` and synthesizes exactly
- * two footer buttons (cancel + confirm) wired to the single `onClose(gesture)` callback. Rendering is
- * self-contained — the same portalled overlay path as the Dialog family, no new infrastructure.
+ * Primer's is a rigid wrapper over `Dialog` (6.52) with exactly two footer buttons (cancel +
+ * confirm) wired to a single `onClose(gesture)` callback; the implementation draws the same parts
+ * from Primer's `Button` and `IconButton`.
  *
  * The `onClose` split — a single real `onClose(gesture)` callback where
  * `gesture ∈ {'confirm','cancel','close-button','escape'}` — is materialized at authoring time into
  * two synthetic required Actions:
  * - `confirmAction` ← `onClose('confirm')` — the confirm button.
  * - `cancelAction` ← `onClose('cancel' | 'close-button' | 'escape')` — the cancel button, the header
- *   close button, the Escape key, and the backdrop.
+ *   close button, and the Escape key inside the dialog.
  *
  * - `title` is REQUIRED — usually a brief question, and the dialog's accessible name.
  * - `confirmButtonType` is a plain enum; `danger` marks a destructive action (default `"normal"`).
  * - `overrideButtonFocus` has no static default — the applied focus is computed (confirm button, or
- *   cancel button when `confirmButtonType === 'danger'`); optional.
+ *   cancel button when `confirmButtonType === 'danger'`) and taken only while nothing else on the
+ *   page holds focus; optional.
  * - `width` carries the same `DialogWidth` union as the Dialog family, but ConfirmationDialog's code
  *   default is `'medium'` (surfaced only in `catalog.json`).
  * - `children` is the body message content only — no header/body/footer slot scanning.

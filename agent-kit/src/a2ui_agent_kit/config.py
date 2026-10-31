@@ -20,7 +20,15 @@ from a2ui_agent_kit.sign_in import ApiKeySignIn, SignIn
 
 # Overridable per app via `AgentAppConfig.model`, and at runtime via MODEL_NAME. Not
 # the lite tier — it could not reliably emit a well-formed surface at this payload size.
+# A Claude model is named `anthropic/<model>` (a2uiverse task-17.1 decision 2).
 DEFAULT_MODEL = "gemini-3.8-flash"
+
+# The thinking tier, the orchestrator's two words: `low` spends no thinking, `default`
+# configures nothing. Overridable per app via `AgentAppConfig.effort`, and at runtime via
+# MODEL_EFFORT (a2uiverse task-17.1 decision 3). `low` by default (a2uiverse task-17.11
+# decision 7): chosen in task 17.8, Linear's answers coming without thinking at it.
+EFFORTS = ("low", "default")
+DEFAULT_EFFORT = "low"
 
 CatalogKind = Literal["custom", "basic"]
 
@@ -96,6 +104,7 @@ class AgentAppConfig:
     live_toolset_factory: Callable[[], Any] | None = None
     after_tool: AfterTool | None = None
     model: str | None = None  # None -> kit DEFAULT_MODEL (MODEL_NAME env still wins)
+    effort: str | None = None  # None -> kit DEFAULT_EFFORT (MODEL_EFFORT env still wins)
 
     # Where a person finishes on the app's own side: the card's `provider` — the vendor whose
     # service the agent fronts, its site — and `documentationUrl`, the app's help page.

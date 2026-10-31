@@ -43,7 +43,9 @@ class NullRecorder:
 
     def record_batch(self, _parts: list[Part]) -> None: ...
 
-    def end_turn(self, _outcome: str, *, task_id: str | None = None) -> None: ...
+    def end_turn(
+        self, _outcome: str, *, task_id: str | None = None, requests: list[dict] | None = None
+    ) -> None: ...
 
 
 class SessionRecorder:
@@ -69,16 +71,27 @@ class SessionRecorder:
         kind: str,
         prompt: str,
         action: dict | None = None,
+        started: float | None = None,
+        model: str | None = None,
+        effort: str | None = None,
     ) -> None:
+        """Opens a turn. `started` is its origin on the monotonic clock, when the executor
+        took one for the measurement too, so the batches' offsets and the requests' share it.
+        `model` and `effort` are what the agent resolved at startup (a2uiverse task-17.3
+        decision 5): the agent's own word on its conditions, beside the driver's."""
         self._context_id = context_id or self._context_id or "unknown"
-        self._started = time.monotonic()
+        self._started = started if started is not None else time.monotonic()
         self._turn = {
             "taskId": task_id,
             "kind": kind,
             "prompt": prompt,
             "action": action,
-            "batches": [],
         }
+        if model is not None:
+            self._turn["model"] = model
+        if effort is not None:
+            self._turn["effort"] = effort
+        self._turn["batches"] = []
 
     def record_batch(self, parts: list[Part]) -> None:
         if self._turn is None:
@@ -107,12 +120,18 @@ class SessionRecorder:
             }
         )
 
-    def end_turn(self, outcome: str, *, task_id: str | None = None) -> None:
+    def end_turn(
+        self, outcome: str, *, task_id: str | None = None, requests: list[dict] | None = None
+    ) -> None:
         """Closes the held turn with `outcome` and rewrites its conversation's file.
 
         With `task_id`, only when the held turn is that task's. A cancel passes it: under
         Retry's race a turn started since has replaced the cancelled one, and must not
         take its outcome (task-8.9 decision 6).
+
+        `requests` is the turn's measurement — one record per model request (a2uiverse
+        task-17.3 decision 4) — kept beside the batches; a turn handed none carries no
+        `requests` key, as every fixture recorded before the measurement existed.
         """
         if self._turn is None:
             return
@@ -120,6 +139,8 @@ class SessionRecorder:
             return
         self._turn["outcome"] = outcome
         self._turn["durationMs"] = int((time.monotonic() - self._started) * 1000)
+        if requests is not None:
+            self._turn["requests"] = requests
         self._sessions.setdefault(self._context_id or "unknown", []).append(self._turn)
         self._turn = None
         # Best-effort: a fixture that cannot be written must never fail a good turn.

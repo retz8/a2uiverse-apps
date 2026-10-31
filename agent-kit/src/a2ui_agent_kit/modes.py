@@ -11,16 +11,65 @@ from __future__ import annotations
 import logging
 import os
 
-from a2ui_agent_kit.config import DEFAULT_MODEL, AgentAppConfig
+from a2ui_agent_kit.config import DEFAULT_EFFORT, DEFAULT_MODEL, EFFORTS, AgentAppConfig
+from a2ui_agent_kit.measurement import after_model, before_model
 from a2ui_agent_kit.sign_in import SignIn
 
 logger = logging.getLogger(__name__)
 
 MODES = ("deterministic", "stub", "live")
 
+ANTHROPIC_PREFIX = "anthropic/"
+
 
 def model_name(config: AgentAppConfig) -> str:
     return os.environ.get("MODEL_NAME", config.model or DEFAULT_MODEL)
+
+
+def model_effort(config: AgentAppConfig) -> str:
+    """The thinking tier, resolved as the model name is: env, then config, then default."""
+    effort = os.environ.get("MODEL_EFFORT", config.effort or DEFAULT_EFFORT)
+    if effort not in EFFORTS:
+        raise ValueError(
+            f"MODEL_EFFORT {effort!r} is not a tier; expected one of {', '.join(EFFORTS)}."
+        )
+    return effort
+
+
+def build_model(name: str):
+    """The model ADK's LlmAgent takes: a Claude name as the direct-API class, any other as is.
+
+    ADK's own registry sends a bare `claude-…` to its Vertex class and `anthropic/…` to
+    LiteLLM; neither reaches the Anthropic API with an ANTHROPIC_API_KEY, so the kit builds
+    that class itself for the prefixed name. Every other name goes to ADK untouched.
+    """
+    if name.startswith(ANTHROPIC_PREFIX):
+        from google.adk.models.anthropic_llm import AnthropicLlm
+
+        return AnthropicLlm(model=name.removeprefix(ANTHROPIC_PREFIX))
+    return name
+
+
+def generate_content_config(effort: str, model: str):
+    """The generation config for a tier on `model`: `low` the least thinking the provider
+    offers, `default` none.
+
+    ADK hands the config through as it is. Gemini 3 takes a thinking level, and a budget
+    of zero is not honoured on it: measured on gemini-3.8-flash (a2uiverse task-17.3), a
+    zero budget left the model thinking for 47k tokens where the low level left none — so
+    `low` is the low level there (amending task-17.1 decision 3). ADK's Anthropic class
+    reads the budget alone and maps zero to thinking disabled, so a Claude name keeps the
+    zero budget; Google refuses a request carrying both knobs.
+    """
+    if effort != "low":
+        return None
+    from google.genai import types as genai_types
+
+    if model.startswith(ANTHROPIC_PREFIX):
+        thinking = genai_types.ThinkingConfig(thinking_budget=0)
+    else:
+        thinking = genai_types.ThinkingConfig(thinking_level=genai_types.ThinkingLevel.LOW)
+    return genai_types.GenerateContentConfig(thinking_config=thinking)
 
 
 def build_tools(config: AgentAppConfig, mode: str, account=None) -> list:
@@ -95,14 +144,21 @@ def build_llm_agent(
     dump_path.write_text(prompt, encoding="utf-8")
     if old_prompt is not None:
         (config.app_dir / "system_prompt.old.dump.txt").write_text(old_prompt, encoding="utf-8")
+    name = model or model_name(config)
     return LlmAgent(
         name=config.adk_agent_name,
-        model=model or model_name(config),
+        model=build_model(name),
+        generate_content_config=generate_content_config(model_effort(config), name),
         # A provider callable, not a plain string: ADK templates string instructions
         # against session state, and the schema/example JSON braces in the prompt
         # (e.g. `{path}`) would be read as state variables and raise KeyError.
         instruction=lambda _ctx: old_prompt if old is not None and turn_line() is old else prompt,
         tools=build_tools(config, mode, account),
+        # Every request the turn makes is measured here, the one place all of them pass:
+        # the start as it leaves, the first token, the end and the usage as the responses
+        # arrive (a2uiverse task-17.3 decision 6).
+        before_model_callback=before_model,
+        after_model_callback=after_model,
         # A tool needing a scope the token lacks ends the run before it runs.
         before_tool_callback=before_tool_check if config.sign_in is not None else None,
         after_tool_callback=_make_after_tool(config) if config.after_tool else None,

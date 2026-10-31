@@ -12,6 +12,7 @@ import contextlib
 import json
 import logging
 import os
+import time
 
 from a2a.server.agent_execution import AgentExecutor, RequestContext
 from a2a.server.events import EventQueue
@@ -36,6 +37,8 @@ from a2ui_agent_kit.catalog_lines import (
     unbind_turn_line,
 )
 from a2ui_agent_kit.config import AgentAppConfig
+from a2ui_agent_kit.measurement import TurnMeasurement, bind_measurement, unbind_measurement
+from a2ui_agent_kit.modes import model_effort, model_name
 from a2ui_agent_kit.paint_meta import PaintTitleTagFilter, create_paint_meta_part
 from a2ui_agent_kit.recorder import RECORD_DIR_ENV, create_recorder
 from a2ui_agent_kit.responder import LlmResponder, ModelTurnError
@@ -333,6 +336,10 @@ class LlmAgentExecutor(AgentExecutor):
         self._max_attempts = max_attempts
         self._lines = catalog_lines(config)
         self._surfaces = SurfaceCatalogs()
+        # The conditions the agent runs under, resolved as modes.py resolves them for the
+        # agent it builds, stamped on every recorded turn (a2uiverse task-17.3 decision 5).
+        self._model = model_name(config)
+        self._effort = model_effort(config)
         # Off unless A2UI_RECORD_DIR is set; see recorder.py. Injectable so tests arm
         # it without touching the environment.
         self._recorder = recorder or create_recorder(os.environ.get(RECORD_DIR_ENV))
@@ -439,17 +446,27 @@ class LlmAgentExecutor(AgentExecutor):
             "execute start: task=%s context=%s prompt=%r", task.id, task.context_id, prompt
         )
         self._reset_failed_stream_dump()
+        # One clock for the turn: the recorder's batches and the measurement's requests
+        # offset from the same instant (a2uiverse task-17.3 decision 3).
+        started = time.monotonic()
         self._recorder.start_turn(
             context_id=task.context_id,
             task_id=task.id,
             kind=kind,
             prompt=prompt,
             action=action,
+            started=started,
+            model=self._model,
+            effort=self._effort,
         )
+        # The turn's measurement, fed by the model callbacks on the agent (measurement.py)
+        # and handed to the recorder's turn at the end (task-17.3 decision 6).
+        measuring = TurnMeasurement(started)
+        bound_measurement = bind_measurement(measuring)
         bound = bind_turn_line(turn.line)
         try:
             fresh_from = pressed if turn.fresh_surface else None
-            await self._attempts(prompt, task, updater, turn, fresh_from)
+            await self._attempts(prompt, task, updater, turn, fresh_from, measuring)
         except AuthRequired as err:
             # A tool needed a scope the token lacks: the run ends here, asking for it, and
             # nothing follows. The hub sends the press again once it is granted, as a
@@ -460,7 +477,9 @@ class LlmAgentExecutor(AgentExecutor):
                 auth_required_message(err, task.context_id, task.id),
                 final=True,
             )
-            self._recorder.end_turn("auth-required", task_id=task.id)
+            self._recorder.end_turn(
+                "auth-required", task_id=task.id, requests=measuring.records()
+            )
         except VendorSignInEnded as err:
             # The vendor no longer takes the account's token: the run fails, and the
             # account's sign-ins end so the client's next request asks the person to sign
@@ -475,7 +494,7 @@ class LlmAgentExecutor(AgentExecutor):
                 new_agent_parts_message([Part(root=TextPart(text=text))], task.context_id, task.id),
                 final=True,
             )
-            self._recorder.end_turn("failed", task_id=task.id)
+            self._recorder.end_turn("failed", task_id=task.id, requests=measuring.records())
         except asyncio.CancelledError:
             # tasks/cancel: once `cancel` has answered `canceled`, the SDK cancels this
             # run. The CancelledError lands on whatever the attempt was awaiting — the
@@ -484,10 +503,11 @@ class LlmAgentExecutor(AgentExecutor):
             # already sent is abandoned: its server finishes it and the reply goes
             # nowhere (task-8.9 decision 2).
             logger.info("task %s canceled", task.id)
-            self._recorder.end_turn("canceled", task_id=task.id)
+            self._recorder.end_turn("canceled", task_id=task.id, requests=measuring.records())
             raise
         finally:
             unbind_turn_line(bound)
+            unbind_measurement(bound_measurement)
 
     async def _attempts(
         self,
@@ -496,11 +516,15 @@ class LlmAgentExecutor(AgentExecutor):
         updater: TaskUpdater,
         turn: Turn,
         fresh_from: str | None = None,
+        measuring: TurnMeasurement | None = None,
     ) -> None:
         """One turn's model attempts, until a surface lands or the attempts run out.
 
         `fresh_from` is the surface an action came from, when the turn must leave it be.
+        `measuring` is the turn's measurement, told which attempt each request belongs to.
         """
+        if measuring is None:
+            measuring = TurnMeasurement(time.monotonic())
         # What the client holds of the turn, across its attempts: the parser of each attempt
         # starts afresh, and the filter sends only what is new to the client, so a retry
         # patches the surface attempt 1 created in place (a2uiverse task-16.2 decision 3).
@@ -527,15 +551,12 @@ class LlmAgentExecutor(AgentExecutor):
             accumulated = ""
             stream_error: Exception | None = None
             logger.info("attempt %d: calling model", attempt)
-            first_token = True
+            measuring.begin_attempt(attempt)
             stream = self._responder.stream(
                 prompt, correction, context_id=task.context_id
             )
             try:
                 async for token in stream:
-                    if first_token:
-                        logger.info("attempt %d: first model token received", attempt)
-                        first_token = False
                     accumulated += token
                     # The parser judges a block as it closes. One that is not JSON raises
                     # here: that is the same failure class as an invalid surface, so it
@@ -626,7 +647,7 @@ class LlmAgentExecutor(AgentExecutor):
                     attempt,
                     task.id,
                 )
-                self._recorder.end_turn("completed")
+                self._recorder.end_turn("completed", requests=measuring.records())
                 await updater.update_status(TaskState.completed, final=True)
                 return
             try:
@@ -683,7 +704,7 @@ class LlmAgentExecutor(AgentExecutor):
                     new_agent_parts_message(unsent_parts, task.context_id, task.id),
                 )
             logger.info("attempt %d: surface valid, task %s completed", attempt, task.id)
-            self._recorder.end_turn("completed")
+            self._recorder.end_turn("completed", requests=measuring.records())
             await updater.update_status(TaskState.completed, final=True)
             return
 
@@ -693,7 +714,9 @@ class LlmAgentExecutor(AgentExecutor):
         apology = UNAVAILABLE_TEXT if model_unavailable else APOLOGY_TEXT
         apology_parts = [Part(root=TextPart(text=apology))]
         self._recorder.record_batch(apology_parts)
-        self._recorder.end_turn("unavailable" if model_unavailable else "apology")
+        self._recorder.end_turn(
+            "unavailable" if model_unavailable else "apology", requests=measuring.records()
+        )
         await updater.update_status(
             TaskState.completed,
             new_agent_parts_message(apology_parts, task.context_id, task.id),

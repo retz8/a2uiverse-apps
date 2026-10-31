@@ -5,6 +5,7 @@ coverage lives in test_llm_catalog; question-policy coverage in test_paint_meta)
 """
 
 import json
+import logging
 
 import pytest
 from a2a.types import DataPart, Message, Part, Role, TextPart
@@ -1211,3 +1212,121 @@ async def test_a_retry_sends_no_component_the_client_already_holds():
     assert ids.count("t") == 1
     assert "bad" not in ids
     assert queue.events[-1].status.state.value == "completed"
+
+
+# ---- the turn's measurement (a2uiverse task-17.3) -------------------------------------------
+
+from google.adk.models.llm_response import LlmResponse  # noqa: E402
+from google.genai import types as genai_types  # noqa: E402
+
+from a2ui_agent_kit import measurement  # noqa: E402
+
+
+class _MeasuredResponder(_FakeResponder):
+    """A fake responder that drives the model callbacks the way ADK does around a request,
+    so the executor's wiring — the collection opened per turn, the attempt stamped, the
+    records handed to the recorder — is exercised without a model."""
+
+    async def stream(self, prompt, correction=None, context_id=None):
+        measurement.before_model(None, None)
+        text = genai_types.Content(role="model", parts=[genai_types.Part(text="Here")])
+        measurement.after_model(None, LlmResponse(content=text, partial=True))
+        usage = genai_types.GenerateContentResponseUsageMetadata(
+            prompt_token_count=7000, candidates_token_count=600
+        )
+        measurement.after_model(None, LlmResponse(content=None, partial=False, usage_metadata=usage))
+        async for chunk in super().stream(prompt, correction, context_id):
+            yield chunk
+
+
+@pytest.mark.asyncio
+async def test_an_armed_turn_records_one_request_per_model_call(tmp_path):
+    executor = _executor(
+        _MeasuredResponder([_valid_surface_text()]), recorder=create_recorder(str(tmp_path))
+    )
+    await executor.execute(_Ctx("show me open PRs"), _FakeQueue())
+
+    (turn,) = _recorded_session(tmp_path)["turns"]
+    (request,) = turn["requests"]
+    assert request["attempt"] == 1 and request["index"] == 1
+    assert request["ended"] == "text"
+    assert request["usage"] == {"promptTokens": 7000, "outputTokens": 600}
+    # On the turn's clock: the request started after the turn did and ended before it.
+    assert 0 <= request["startMs"] <= request["endMs"] <= turn["durationMs"]
+
+
+@pytest.mark.asyncio
+async def test_a_retry_is_a_second_attempt_in_the_records(tmp_path, failed_stream_dump):
+    executor = _executor(
+        _MeasuredResponder([_BAD_SURFACE_S1, _valid_surface_text_with_id("s1")]),
+        recorder=create_recorder(str(tmp_path)),
+    )
+    await executor.execute(_Ctx("show me open PRs"), _FakeQueue())
+
+    (turn,) = _recorded_session(tmp_path)["turns"]
+    assert turn["outcome"] == "completed"
+    assert [(r["attempt"], r["index"]) for r in turn["requests"]] == [(1, 1), (2, 1)]
+
+
+@pytest.mark.asyncio
+async def test_the_turn_is_stamped_with_the_model_and_effort_the_agent_resolved(tmp_path, monkeypatch):
+    monkeypatch.setenv("MODEL_NAME", "anthropic/claude-haiku-5-5")
+    monkeypatch.setenv("MODEL_EFFORT", "low")
+    executor = _executor(
+        _FakeResponder([_valid_surface_text()]), recorder=create_recorder(str(tmp_path))
+    )
+    await executor.execute(_Ctx("show me open PRs"), _FakeQueue())
+
+    (turn,) = _recorded_session(tmp_path)["turns"]
+    assert turn["model"] == "anthropic/claude-haiku-5-5"
+    assert turn["effort"] == "low"
+
+
+@pytest.mark.asyncio
+async def test_a_turn_without_a_model_call_records_no_requests(tmp_path):
+    """The plain fake responder drives no callbacks: the list is there and empty, as the
+    measurement found it."""
+    executor = _executor(
+        _FakeResponder([_valid_surface_text()]), recorder=create_recorder(str(tmp_path))
+    )
+    await executor.execute(_Ctx("show me open PRs"), _FakeQueue())
+    (turn,) = _recorded_session(tmp_path)["turns"]
+    assert turn["requests"] == []
+
+
+@pytest.mark.asyncio
+async def test_an_exhausted_turn_keeps_its_requests(tmp_path, failed_stream_dump):
+    executor = _executor(
+        _MeasuredResponder([_BAD_SURFACE_S1]), recorder=create_recorder(str(tmp_path))
+    )
+    await executor.execute(_Ctx("show me open PRs"), _FakeQueue())
+    (turn,) = _recorded_session(tmp_path)["turns"]
+    assert turn["outcome"] == "apology"
+    assert [r["attempt"] for r in turn["requests"]] == [1, 2]
+
+
+@pytest.mark.asyncio
+async def test_the_measurement_is_bound_to_the_turn_and_unbound_after(tmp_path):
+    seen: list = []
+
+    class _Peeking(_FakeResponder):
+        async def stream(self, prompt, correction=None, context_id=None):
+            seen.append(measurement.current_measurement())
+            async for chunk in super().stream(prompt, correction, context_id):
+                yield chunk
+
+    await _executor(_Peeking([_valid_surface_text()])).execute(_Ctx("hi"), _FakeQueue())
+    assert isinstance(seen[0], measurement.TurnMeasurement)
+    assert measurement.current_measurement() is None
+
+
+@pytest.mark.asyncio
+async def test_an_unarmed_executor_still_logs_each_request(caplog):
+    """Armed or not, the agent's log says where a request's time went (decision 7)."""
+    with caplog.at_level(logging.INFO, logger="a2ui_agent_kit.measurement"):
+        await _executor(_MeasuredResponder([_valid_surface_text()])).execute(
+            _Ctx("hi"), _FakeQueue()
+        )
+    lines = [r.getMessage() for r in caplog.records if "request 1.1" in r.getMessage()]
+    assert len(lines) == 1
+    assert "7000 prompt" in lines[0]
