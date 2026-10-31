@@ -39,10 +39,13 @@ visual language.
 - Use exactly one `Heading` for the surface's primary title. Use additional headings only to label
   genuine subsections, and step their `as` level down (`h1` → `h2` → `h3`) rather than restyling
   size on the same level.
-- Keep that title's `variant` at `"small"` (or `"medium"` when the surface is unusually dense). A
-  surface is a panel inside a conversation, not a standalone web page: a `large` title outweighs
-  the rows it introduces and pushes the actual content out of view. The content is the subject;
-  the title only names it.
+- Keep a `Heading` title's `variant` at `"small"` (or `"medium"` when the surface is unusually
+  dense). A surface is a panel inside a conversation, not a standalone web page: a `large` title
+  outweighs the rows it introduces and pushes the actual content out of view. The content is the
+  subject; the title only names it.
+- A `PageHeader`'s title is sized on its `PageHeader.TitleArea`, whose `variant` has sizes of its
+  own: `"medium"` for a screen's title — a list, a queue, a summary — and `"large"` only for the
+  title of one issue or pull request, the words a person wrote.
 - Render list-item primary labels as `Text`, not `Heading`. Reserve `Heading` for section titles.
 - **Decompose a markdown body into components — never emit it as one `Text`.** An issue or pull
   request description arrives as markdown, and there is no markdown component: its headings become

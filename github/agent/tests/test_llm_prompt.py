@@ -103,6 +103,13 @@ def test_workflow_instructs_send_data_model():
     assert '"sendDataModel": true' in build_system_prompt()
 
 
+def test_scope_asks_for_independent_calls_together():
+    # Every tool round re-reads the whole prompt, and 42 of GitHub's 43 rounds in a2uiverse task
+    # 17.11's acceptance called one tool, five pull requests' checks read a round each. Gemini
+    # returns independent calls in one answer, and ADK runs that answer's calls together.
+    assert "together, in one turn" in build_system_prompt()
+
+
 def test_elided_bulk_is_actually_present():
     prompt = build_system_prompt()
     # schema render present
