@@ -18,6 +18,7 @@ stub corpus. Nothing is pseudonymized: the data is a public repository's CI.
 
 from __future__ import annotations
 
+import os
 from typing import Any
 
 from google.adk.tools.mcp_tool import StreamableHTTPConnectionParams
@@ -36,7 +37,9 @@ __all__ = [
     "mcp_headers",
 ]
 
-CIRCLECI_MCP_URL = "https://mcp.circleci.com/v1/mcp"
+# The hosted server, unless the environment names another address for it, such as a proxy in
+# front of it. The sign-in's resource stays the hosted server (`app/sign_in.py`).
+CIRCLECI_MCP_URL = os.environ.get("CIRCLECI_MCP_URL") or "https://mcp.circleci.com/v1/mcp"
 
 # The pipeline chain and its two writes, by the server's own names (pinned from a live
 # tools/list). Everything absent is absent deliberately.

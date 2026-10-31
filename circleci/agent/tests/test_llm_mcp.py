@@ -11,6 +11,8 @@ deliberate edit to a test, not a quiet edit to a tuple.
 
 from __future__ import annotations
 
+import importlib
+
 import pytest
 from a2ui_agent_kit.sign_in import SignedInAccount, VendorSignInEnded
 from a2ui_agent_kit.testing import serve_unauthorized
@@ -51,6 +53,15 @@ WITHHELD = {
 
 def test_endpoint_is_the_hosted_server():
     assert CIRCLECI_MCP_URL == "https://mcp.circleci.com/v1/mcp"
+
+
+def test_endpoint_is_read_from_the_environment(monkeypatch):
+    monkeypatch.setenv("CIRCLECI_MCP_URL", "http://127.0.0.1:9823/v1/mcp")
+    try:
+        assert importlib.reload(mcp).CIRCLECI_MCP_URL == "http://127.0.0.1:9823/v1/mcp"
+    finally:
+        monkeypatch.delenv("CIRCLECI_MCP_URL")
+        importlib.reload(mcp)
 
 
 def test_the_admitted_set_is_the_pipeline_chain_and_its_two_writes():

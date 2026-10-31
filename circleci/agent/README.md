@@ -30,6 +30,8 @@ uv run python -m app --mode deterministic
 
 Other flags: `--port`, `--host`, `--base-url`, the address the agent card advertises, and `--public-url`, the address the browser reaches its sign-in pages at — a tunnel address, when the browser is on another machine. `--state-dir` moves the sign-in store from `.state/`.
 
+In `live` mode, `CIRCLECI_MCP_URL` in the environment is the MCP server's address, `https://mcp.circleci.com/v1/mcp` when unset; a proxy in front of CircleCI's server, such as a dev tool's, is set there. The sign-in still asks CircleCI for its hosted server.
+
 ## Signing in
 
 The agent is its own sign-in: A2UIVerse signs in to it, and it signs in to CircleCI. Its card asks for two scopes, in the words A2UIVerse shows when it asks you:
