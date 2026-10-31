@@ -6447,7 +6447,7 @@
     },
     "ConfirmationDialog": {
       "type": "object",
-      "description": "A modal confirmation prompt with exactly two buttons — one to cancel and one to confirm an action — used to confirm a user's action before it proceeds; the confirm button can be styled to mark a destructive choice.",
+      "description": "A confirmation prompt with exactly two buttons — one to cancel and one to confirm an action — used to confirm a user's action before it proceeds, drawn in place in the view rather than over it; the confirm button can be styled to mark a destructive choice.",
       "properties": {
         "component": {
           "const": "ConfirmationDialog"
@@ -6458,7 +6458,7 @@
         },
         "cancelAction": {
           "$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/Action",
-          "description": "The action performed when the user cancels or dismisses the dialog — the cancel button, the close button, the Escape key, or the backdrop."
+          "description": "The action performed when the user cancels or dismisses the dialog — the cancel button, the close button, or the Escape key."
         },
         "title": {
           "$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/DynamicString",
@@ -6491,7 +6491,7 @@
         "overrideButtonFocus": {
           "type": "string",
           "enum": ["cancel", "confirm"],
-          "description": "Which button receives focus when the dialog opens; defaults to the confirm button, or the cancel button for a destructive action."
+          "description": "Which button receives focus when the dialog appears while nothing else on the page holds focus; defaults to the confirm button, or the cancel button for a destructive action."
         },
         "width": {
           "anyOf": [
@@ -6507,13 +6507,13 @@
             }
           ],
           "default": "medium",
-          "description": "The dialog's width: preset sizes (small 296px, medium 320px, large 480px, xlarge 640px) or any CSS width value."
+          "description": "The dialog's width at most: preset sizes (small 296px, medium 320px, large 480px, xlarge 640px) or any CSS width value; narrower when the view is."
         },
         "height": {
           "type": "string",
           "enum": ["small", "large", "auto"],
           "default": "auto",
-          "description": "The dialog's height: small 480px, large 640px, auto sizes to the contents."
+          "description": "The dialog's height at most, its body scrolling past it: small 480px, large 640px, auto sizes to the contents."
         },
         "children": {
           "$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/ChildList",
