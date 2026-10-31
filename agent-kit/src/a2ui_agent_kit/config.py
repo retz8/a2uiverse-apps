@@ -25,9 +25,10 @@ DEFAULT_MODEL = "gemini-3.8-flash"
 
 # The thinking tier, the orchestrator's two words: `low` spends no thinking, `default`
 # configures nothing. Overridable per app via `AgentAppConfig.effort`, and at runtime via
-# MODEL_EFFORT (a2uiverse task-17.1 decision 3).
+# MODEL_EFFORT (a2uiverse task-17.1 decision 3). `low` by default (a2uiverse task-17.11
+# decision 7): chosen in task 17.8, Linear's answers coming without thinking at it.
 EFFORTS = ("low", "default")
-DEFAULT_EFFORT = "default"
+DEFAULT_EFFORT = "low"
 
 CatalogKind = Literal["custom", "basic"]
 

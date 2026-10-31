@@ -158,13 +158,14 @@ def test_effort_resolution_prefers_env_then_config_then_default(basic_config, tm
 
     from .conftest import make_config
 
+    # The kit's default is `low` (a2uiverse task-17.11 decision 7, chosen in task 17.8).
     monkeypatch.delenv("MODEL_EFFORT", raising=False)
-    assert DEFAULT_EFFORT == "default"
+    assert DEFAULT_EFFORT == "low"
     assert model_effort(basic_config) == DEFAULT_EFFORT
-    config = make_config("basic", tmp_path, effort="low")
-    assert model_effort(config) == "low"
-    monkeypatch.setenv("MODEL_EFFORT", "default")
+    config = make_config("basic", tmp_path, effort="default")
     assert model_effort(config) == "default"
+    monkeypatch.setenv("MODEL_EFFORT", "low")
+    assert model_effort(config) == "low"
 
 
 def test_effort_refuses_a_word_outside_the_tier(basic_config, monkeypatch):
