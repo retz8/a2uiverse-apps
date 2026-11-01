@@ -6,7 +6,7 @@ import {CATALOG, COMPONENT_APIS} from './catalog';
 import {CATALOG_ID} from './catalog-id';
 
 type JsonProp = {enum?: string[]; $ref?: string; type?: string};
-type JsonComponent = {properties: Record<string, JsonProp>; required: string[]};
+type JsonComponent = {allOf: {$ref: string}[]; properties: Record<string, JsonProp>; required: string[]};
 
 // Path from the package root (vitest's cwd); import.meta.url is http-scheme under jsdom.
 const schema = JSON.parse(readFileSync('catalogs/v0.9.1/catalog.json', 'utf8')) as {
@@ -48,6 +48,12 @@ test('anyComponent covers exactly the declared components', () => {
 describe.each(Object.entries(COMPONENT_APIS))('%s: zod ↔ catalog.json', (name, api) => {
   const json = schema.components[name];
   const shape = shapeOf(api);
+
+  it("takes the protocol's common props, its id among them", () => {
+    expect(json.allOf).toEqual([
+      {$ref: 'https://a2ui.org/specification/v0_9/common_types.json#/$defs/ComponentCommon'},
+    ]);
+  });
 
   it('names itself in its discriminator', () => {
     expect((json.properties.component as {const?: string}).const).toBe(name);

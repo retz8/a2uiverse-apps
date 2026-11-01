@@ -8,6 +8,9 @@
     "Panel": {
       "type": "object",
       "description": "A view's surface: a bordered, rounded panel one step above the page, holding one child. Each view is one Panel; never nest one Panel in another.",
+      "allOf": [
+        {"$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/ComponentCommon"}
+      ],
       "properties": {
         "component": {
           "const": "Panel"
@@ -29,6 +32,9 @@
     "Stack": {
       "type": "object",
       "description": "A flex container laying its children out in a column or a row. The default container inside a panel.",
+      "allOf": [
+        {"$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/ComponentCommon"}
+      ],
       "properties": {
         "component": {
           "const": "Stack"
@@ -79,6 +85,9 @@
     "Divider": {
       "type": "object",
       "description": "A hairline between two sections. It separates; it does not decorate.",
+      "allOf": [
+        {"$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/ComponentCommon"}
+      ],
       "properties": {
         "component": {
           "const": "Divider"
@@ -90,6 +99,9 @@
     "ViewHeader": {
       "type": "object",
       "description": "A view's header bar, one line at the top of a panel: an optional context, a separator, then the title — a team and an issue's identifier, or a list and what it shows.",
+      "allOf": [
+        {"$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/ComponentCommon"}
+      ],
       "properties": {
         "component": {
           "const": "ViewHeader"
@@ -113,6 +125,9 @@
     "Section": {
       "type": "object",
       "description": "A titled block of a view, such as its links or its activity, with an optional count beside the title.",
+      "allOf": [
+        {"$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/ComponentCommon"}
+      ],
       "properties": {
         "component": {
           "const": "Section"
@@ -136,6 +151,9 @@
     "Text": {
       "type": "object",
       "description": "A run of plain text in one of the type registers. Markdown is shown as written; use Markdown for text written in it.",
+      "allOf": [
+        {"$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/ComponentCommon"}
+      ],
       "properties": {
         "component": {
           "const": "Text"
@@ -167,6 +185,9 @@
     "Markdown": {
       "type": "object",
       "description": "Text written in Markdown, such as a description or a comment, rendered with its formatting. HTML is shown as text, a link as its text, an image as its alt text.",
+      "allOf": [
+        {"$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/ComponentCommon"}
+      ],
       "properties": {
         "component": {
           "const": "Markdown"
@@ -182,6 +203,9 @@
     "Button": {
       "type": "object",
       "description": "A labelled button that performs an action. `primary` is the one action a view leads with; `secondary` is any other; `ghost` is the quiet way out.",
+      "allOf": [
+        {"$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/ComponentCommon"}
+      ],
       "properties": {
         "component": {
           "const": "Button"
@@ -215,6 +239,9 @@
     "List": {
       "type": "object",
       "description": "A dense list of rows, one line each, with hairlines between them. Its children are ListItems, or ListGroups of them.",
+      "allOf": [
+        {"$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/ComponentCommon"}
+      ],
       "properties": {
         "component": {
           "const": "List"
@@ -230,6 +257,9 @@
     "ListGroup": {
       "type": "object",
       "description": "A group of rows inside a List, headed by its label, an optional leading glyph and a count — one group per workflow state, for example.",
+      "allOf": [
+        {"$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/ComponentCommon"}
+      ],
       "properties": {
         "component": {
           "const": "ListGroup"
@@ -257,6 +287,9 @@
     "ListItem": {
       "type": "object",
       "description": "One row of a List or a ListGroup: its leading glyphs and identifiers, its content taking the remaining width on one line, and its trailing meta at the far end. With an action the whole row is pressable, so a row with an action holds no Button.",
+      "allOf": [
+        {"$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/ComponentCommon"}
+      ],
       "properties": {
         "component": {
           "const": "ListItem"
@@ -284,6 +317,9 @@
     "Property": {
       "type": "object",
       "description": "A labelled property of an item, such as its status or its assignee: the label, and the value's parts beside it.",
+      "allOf": [
+        {"$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/ComponentCommon"}
+      ],
       "properties": {
         "component": {
           "const": "Property"
@@ -303,6 +339,9 @@
     "Chip": {
       "type": "object",
       "description": "A small rounded chip naming one thing, such as a label: its name, and before it a colour dot or a leading glyph.",
+      "allOf": [
+        {"$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/ComponentCommon"}
+      ],
       "properties": {
         "component": {
           "const": "Chip"
@@ -326,6 +365,9 @@
     "Avatar": {
       "type": "object",
       "description": "A person, drawn as their initials in a circle, labelled with their full name.",
+      "allOf": [
+        {"$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/ComponentCommon"}
+      ],
       "properties": {
         "component": {
           "const": "Avatar"
@@ -347,6 +389,9 @@
     "Icon": {
       "type": "object",
       "description": "A small system glyph: `arrow-right` between a value and what it changes to, `branch`, `pull-request`, `link`, `plus`, `check`. Decorative unless it carries a label.",
+      "allOf": [
+        {"$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/ComponentCommon"}
+      ],
       "properties": {
         "component": {
           "const": "Icon"
@@ -367,6 +412,9 @@
     "StatusIcon": {
       "type": "object",
       "description": "A workflow state's glyph, drawn from the state's type and labelled with its name. Bind both per row in a list.",
+      "allOf": [
+        {"$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/ComponentCommon"}
+      ],
       "properties": {
         "component": {
           "const": "StatusIcon"
@@ -386,6 +434,9 @@
     "PriorityIcon": {
       "type": "object",
       "description": "A priority's glyph: bars rising with the priority, a mark for urgent, dashes for none. Labelled with the priority's name. Bind it per row in a list.",
+      "allOf": [
+        {"$ref": "https://a2ui.org/specification/v0_9/common_types.json#/$defs/ComponentCommon"}
+      ],
       "properties": {
         "component": {
           "const": "PriorityIcon"
