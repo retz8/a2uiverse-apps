@@ -23,6 +23,7 @@ it, are left alone: they are what another vendor's branch matches.
 
 from __future__ import annotations
 
+import os
 import re
 from typing import Any
 
@@ -42,7 +43,9 @@ __all__ = [
     "replace_email",
 ]
 
-LINEAR_MCP_URL = "https://mcp.linear.app/mcp"
+# The hosted server, unless the environment names another address for it, such as a proxy in
+# front of it. The sign-in's resource stays the hosted server (`app/sign_in.py`).
+LINEAR_MCP_URL = os.environ.get("LINEAR_MCP_URL") or "https://mcp.linear.app/mcp"
 
 # What the key's own email address becomes in a recorded run.
 PLACEHOLDER_EMAIL = "me@example.com"

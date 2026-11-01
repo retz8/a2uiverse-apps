@@ -11,6 +11,7 @@ it has to be a deliberate edit to a test, not a quiet edit to a tuple.
 
 from __future__ import annotations
 
+import importlib
 import json
 
 import httpx
@@ -103,6 +104,15 @@ WITHHELD = {
 
 def test_endpoint_is_the_hosted_server():
     assert LINEAR_MCP_URL == "https://mcp.linear.app/mcp"
+
+
+def test_endpoint_is_read_from_the_environment(monkeypatch):
+    monkeypatch.setenv("LINEAR_MCP_URL", "http://127.0.0.1:9824/mcp")
+    try:
+        assert importlib.reload(mcp).LINEAR_MCP_URL == "http://127.0.0.1:9824/mcp"
+    finally:
+        monkeypatch.delenv("LINEAR_MCP_URL")
+        importlib.reload(mcp)
 
 
 def test_the_admitted_set_is_issues_and_their_two_writes():
