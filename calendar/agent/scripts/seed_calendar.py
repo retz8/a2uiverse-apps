@@ -101,7 +101,11 @@ def _wipe(client: httpx.Client, calendar_id: str) -> int:
     while True:
         response = client.get(f"/calendars/{calendar_id}/events", params={"maxResults": 250})
         response.raise_for_status()
-        items = response.json().get("items", [])
+        # A cancelled instance of a recurring event someone else organized stays in the list
+        # and answers 403 to a delete; it is already gone, so it is left alone.
+        items = [
+            item for item in response.json().get("items", []) if item.get("status") != "cancelled"
+        ]
         if not items:
             return removed
         for item in items:
