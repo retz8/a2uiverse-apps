@@ -48,7 +48,7 @@
   "devDependencies": {
     "@a2ui/react": "0.14.0",
     "@a2ui/web_core": "0.14.0",
-    "@a2uiverse/stellify": "github:retz8/a2uiverse#91bbe21dd1ee40db673468de875218d6bc80e782&path:packages/stellify",
+    "@a2uiverse/stellify": "github:retz8/a2uiverse#1e14169dc580afea62a152ddcebdd102872de43e&path:packages/stellify",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@types/markdown-it": "14.2.0",
