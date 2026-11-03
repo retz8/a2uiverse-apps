@@ -6,7 +6,11 @@ import {CATALOG, COMPONENT_APIS} from './catalog';
 import {CATALOG_ID} from './catalog-id';
 
 type JsonProp = {enum?: string[]; $ref?: string; type?: string};
-type JsonComponent = {allOf: {$ref: string}[]; properties: Record<string, JsonProp>; required: string[]};
+type JsonComponent = {
+  allOf: {$ref: string}[];
+  properties: Record<string, JsonProp>;
+  required: string[];
+};
 
 // Path from the package root (vitest's cwd); import.meta.url is http-scheme under jsdom.
 const schema = JSON.parse(readFileSync('catalogs/v0.9.1/catalog.json', 'utf8')) as {
