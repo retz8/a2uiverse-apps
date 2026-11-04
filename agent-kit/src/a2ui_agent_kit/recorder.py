@@ -28,7 +28,7 @@ from typing import Any
 
 from a2a.types import DataPart, Part, TextPart
 
-from a2ui_agent_kit.versions import WIRE_VERSION
+from a2ui_agent_kit.versions import A2UI_VERSIONS
 
 logger = logging.getLogger(__name__)
 
@@ -103,10 +103,12 @@ class SessionRecorder:
         for part in parts:
             root = part.root
             if isinstance(root, DataPart) and (
-                root.data.get("version") == WIRE_VERSION or "paintMeta" in root.data
+                root.data.get("version") in A2UI_VERSIONS or "paintMeta" in root.data
             ):
-                # paintMeta shell parts (task 8.5) record alongside the A2UI messages,
-                # so a replayed fixture exercises the titled path too.
+                # A message in any version the kit speaks is kept as it went out, stamp
+                # and all (a2uiverse task-19.4). paintMeta shell parts (task 8.5) record
+                # alongside the A2UI messages, so a replayed fixture exercises the titled
+                # path too.
                 messages.append(root.data)
             elif isinstance(root, TextPart) and root.text:
                 texts.append(root.text)

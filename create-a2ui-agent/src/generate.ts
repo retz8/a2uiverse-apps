@@ -115,6 +115,8 @@ CONFIG = AgentAppConfig(
     description=APP_DESCRIPTION,
     version="0.1.0",
     skills=SKILLS,
+    # The A2UI versions the agent speaks: ["v0.9"], ["v0.9.1"] or both.
+    a2ui_versions=["v0.9", "v0.9.1"],
     default_port=${a.port},
     responder_app_name="a2ui_${ident}_live",
     adk_agent_name="a2ui_${ident}_live_agent",

@@ -165,8 +165,11 @@ def build_llm_agent(
     )
 
 
-def resolve_executor(config: AgentAppConfig, mode: str):
-    """The executor for a mode, behind lazy imports (deterministic never imports ADK)."""
+def resolve_executor(config: AgentAppConfig, mode: str, card=None):
+    """The executor for a mode, behind lazy imports (deterministic never imports ADK).
+
+    `card` is the card the app serves, which each request's version is chosen against.
+    """
     if mode == "deterministic":
         from a2ui_agent_kit.executor_deterministic import DeterministicAgentExecutor
 
@@ -177,6 +180,8 @@ def resolve_executor(config: AgentAppConfig, mode: str):
             config.build_text_response,
             config.sign_in,
             lines=catalog_lines(config),
+            card=card,
+            versions=config.a2ui_versions,
         )
     if mode in ("stub", "live"):
         from a2ui_agent_kit.executor_llm import LlmAgentExecutor
@@ -193,7 +198,7 @@ def resolve_executor(config: AgentAppConfig, mode: str):
             responder = AdkLlmResponder(
                 build_llm_agent(config, mode), app_name=config.responder_app_name
             )
-        return LlmAgentExecutor(responder, config)
+        return LlmAgentExecutor(responder, config, card=card)
     raise ValueError(
         f"mode {mode!r} is not a known mode; expected 'deterministic', 'stub' or 'live'."
     )

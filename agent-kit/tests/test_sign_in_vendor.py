@@ -39,7 +39,7 @@ from a2ui_agent_kit.sign_in import (
 from a2ui_agent_kit.sign_in_store import SignInStore
 from a2ui_agent_kit.sign_in_vendor import ClientFromEnv, VendorOAuth, id_token_claims
 from a2ui_agent_kit.toolset import PolicyMcpToolset, is_unauthorized
-from a2ui_agent_kit.versions import WIRE_VERSION
+from a2ui_agent_kit.versions import FIXTURE_VERSION
 from tests.conftest import make_config
 from tests.test_sign_in import REDIRECT, Agent, _config, _free_port, _serving, _sign_in, running
 
@@ -407,7 +407,7 @@ def _send(action: str) -> dict:
                 "messageId": secrets.token_hex(4),
                 "role": "user",
                 "parts": [
-                    {"kind": "data", "data": {"version": WIRE_VERSION, "action": {"name": action, "surfaceId": "s"}}}
+                    {"kind": "data", "data": {"version": FIXTURE_VERSION, "action": {"name": action, "surfaceId": "s"}}}
                 ],
             }
         },

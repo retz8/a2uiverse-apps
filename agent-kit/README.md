@@ -41,6 +41,7 @@ CONFIG = AgentAppConfig(
     name=APP_NAME,
     version="0.1.0",                         # the agent card's version
     skills=SKILLS,                            # the agent card's skills
+    a2ui_versions=["v0.9", "v0.9.1"],         # the A2UI versions it speaks (below)
     default_port=11005,
     catalog_path=CATALOG_JSON,                # the app's A2UI catalog
     catalog_kind="basic",                     # or "custom"
@@ -79,6 +80,17 @@ uv run python -m app --mode live            # the model over the real MCP server
 A Claude model runs with three limits on the kit: `low` turns its thinking off, which Sonnet, Opus and Fable refuse, so run them with `MODEL_EFFORT=default`; an answer stops at 8,192 output tokens, ADK's default for Claude; and nothing is cached, so every tool round pays for the whole prompt.
 
 `version` is the agent card's version, the app's: when the card changes, it moves to one the app has never published, or the marketplace refuses the publish. `provider` and `documentation_url` go on the card too — where a person finishes on the app's own side, such as A2UIVerse's "Continue on" link and the help link on its key page. [`src/a2ui_agent_kit/config.py`](src/a2ui_agent_kit/config.py) lists every field.
+
+## A2UI versions
+
+`a2ui_versions` names the A2UI versions the app speaks: `["v0.9"]`, `["v0.9.1"]`, or both, `["v0.9", "v0.9.1"]`. Left out, it's both. A version the kit doesn't speak, or an empty list, stops the app at startup.
+
+- **The card** has one A2UI entry per version. The params are flat for v0.9 alone and for both, and keyed under `v0.9.1` for v0.9.1 alone.
+- **The choice.** Each request is answered in the newest version it names in its A2A extensions that the app speaks, through a2ui-a2a's activation helper. A request naming none of them gets the app's newest.
+- **The stamp.** Every A2UI message the agent sends carries that version, whatever its fixture or the model wrote.
+- **The actions accepted.** Answering in v0.9, the agent takes actions stamped `v0.9`; in v0.9.1, those stamped `v0.9` or `v0.9.1`. Any other stamp isn't an action.
+
+Why it works this way: [A2UI versions, per request](https://github.com/retz8/a2uiverse/blob/main/docs/design/agent-kit.md#a2ui-versions-per-request) in the kit's design record.
 
 ## Sign-in
 

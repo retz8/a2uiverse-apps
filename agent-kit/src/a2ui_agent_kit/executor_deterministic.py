@@ -6,17 +6,19 @@ canned `paintMeta` rides as the shell part the live executor emits, ahead of eve
 so the paint it names is titled and a question is marked (task-10.9 decision 8).
 
 Given the app's catalog lines, each turn is answered by the pair of the line it is painted in
-(a2uiverse task-15.7).
+(a2uiverse task-15.7). Each request is answered in the version chosen for it, stamped on every
+A2UI part whatever the fixture says (a2uiverse task-19.4).
 """
 
 from __future__ import annotations
 
+from collections.abc import Sequence
+
 from a2a.server.agent_execution import AgentExecutor, RequestContext
 from a2a.server.events import EventQueue
 from a2a.server.tasks import TaskUpdater
-from a2a.types import DataPart, Part, Task, TaskState, TextPart
+from a2a.types import AgentCard, Part, Task, TaskState, TextPart
 from a2a.utils import new_agent_parts_message, new_task
-from a2ui.a2a.parts import create_a2ui_part
 
 from a2ui_agent_kit.catalog_lines import CatalogLines, SurfaceCatalogs, advertised_catalog_ids
 from a2ui_agent_kit.config import BuildResponse, BuildTextResponse
@@ -29,20 +31,7 @@ from a2ui_agent_kit.sign_in import (
     require_action_scopes,
     unbind_account,
 )
-from a2ui_agent_kit.versions import WIRE_VERSION
-
-
-def _extract_action(context: RequestContext) -> dict | None:
-    message = context.message
-    if not message or not message.parts:
-        return None
-    for part in message.parts:
-        root = part.root
-        if isinstance(root, DataPart) and root.data.get("version") == WIRE_VERSION:
-            action = root.data.get("action")
-            if isinstance(action, dict):
-                return action
-    return None
+from a2ui_agent_kit.versions import A2UI_VERSIONS, choose_version, extract_action, stamped_part
 
 
 def _context_id(context: RequestContext) -> str | None:
@@ -72,6 +61,9 @@ class DeterministicAgentExecutor(AgentExecutor):
         build_text_response: BuildTextResponse,
         sign_in: SignIn | None = None,
         lines: CatalogLines | None = None,
+        *,
+        card: AgentCard | None = None,
+        versions: Sequence[str] = A2UI_VERSIONS,
     ):
         self._build_response = build_response
         self._build_text_response = build_text_response
@@ -80,6 +72,10 @@ class DeterministicAgentExecutor(AgentExecutor):
         # above goes unused; absent, every turn is the pair's, in whatever id it paints.
         self._lines = lines
         self._surfaces = SurfaceCatalogs()
+        # The card the app serves and the versions it speaks, which each request's version is
+        # chosen from; without the card, every request takes the app's newest.
+        self._card = card
+        self._versions = tuple(versions)
 
     async def execute(self, context: RequestContext, event_queue: EventQueue) -> None:
         # The request's signed-in account, readable by the app's answer code through
@@ -91,7 +87,8 @@ class DeterministicAgentExecutor(AgentExecutor):
             unbind_account(bound)
 
     async def _execute(self, context: RequestContext, event_queue: EventQueue) -> None:
-        action = _extract_action(context)
+        version = choose_version(context, self._card, self._versions)
+        action = extract_action(context.message, version)
         text = _extract_text(context) if action is None else None
         build_response, build_text_response = self._build_response, self._build_text_response
         context_id = _context_id(context)
@@ -101,7 +98,7 @@ class DeterministicAgentExecutor(AgentExecutor):
                 if action is not None
                 else None
             )
-            turn = self._lines.choose(advertised_catalog_ids(context.message), pressed)
+            turn = self._lines.choose(advertised_catalog_ids(context.message, version), pressed)
             if turn is None:
                 await self._say(context, event_queue, self._lines.not_shown_text)
                 return
@@ -121,11 +118,7 @@ class DeterministicAgentExecutor(AgentExecutor):
         self._surfaces.record(context_id, messages)
         parts: list[Part] = [
             *(create_paint_meta_part(msg["paintMeta"]) for msg in messages if "paintMeta" in msg),
-            *(
-                create_a2ui_part(msg, version=WIRE_VERSION)
-                for msg in messages
-                if "paintMeta" not in msg
-            ),
+            *(stamped_part(msg, version) for msg in messages if "paintMeta" not in msg),
         ]
 
         task = context.current_task

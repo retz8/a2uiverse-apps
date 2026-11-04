@@ -149,7 +149,7 @@ async def test_a_cancelled_stream_is_answered_canceled_its_run_ends_and_it_stays
     responder = _EndlessResponder()
     config = make_config("basic", tmp_path)
     executor = LlmAgentExecutor(responder, config)
-    monkeypatch.setattr(server, "resolve_executor", lambda _config, _mode: executor)
+    monkeypatch.setattr(server, "resolve_executor", lambda _config, _mode, _card=None: executor)
     app = server.build_app(config, "stub", "127.0.0.1", 0)
 
     async with _serving(app) as client:

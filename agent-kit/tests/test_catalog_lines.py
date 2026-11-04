@@ -139,17 +139,18 @@ async def _turn(executor, message: Message) -> _Queue:
 
 
 def test_the_card_names_both_ids_newest_first(tmp_path):
-    (extension,) = build_agent_card(
+    # Every version's entry names the same ids (a2uiverse task-19.4).
+    extensions = build_agent_card(
         _two_line_config(tmp_path), "http://localhost:19999"
     ).capabilities.extensions
-    assert extension.params["supportedCatalogIds"] == [NEW_ID, OLD_ID]
+    assert [e.params["supportedCatalogIds"] for e in extensions] == [[NEW_ID, OLD_ID]] * 2
 
 
 def test_an_app_with_one_line_names_its_one_id(tmp_path):
-    (extension,) = build_agent_card(
+    extensions = build_agent_card(
         make_config("basic", tmp_path), "http://localhost:19999"
     ).capabilities.extensions
-    assert extension.params["supportedCatalogIds"] == [NEW_ID]
+    assert [e.params["supportedCatalogIds"] for e in extensions] == [[NEW_ID]] * 2
 
 
 def test_the_kit_refuses_to_start_when_the_old_line_is_the_new_lines_id(tmp_path):
@@ -211,8 +212,10 @@ def test_an_action_on_a_surface_of_a_line_no_longer_held_falls_to_a_fresh_surfac
         ({"a2uiClientCapabilities": {"v0.9": {"supportedCatalogIds": "not a list"}}}, None),
     ],
 )
-def test_the_advertised_ids_are_read_keyed_or_flat(metadata, expected):
-    assert advertised_catalog_ids(_text_message("hi", metadata)) == expected
+@pytest.mark.parametrize("version", ["v0.9", "v0.9.1"])
+def test_the_advertised_ids_are_read_keyed_or_flat(metadata, expected, version):
+    # One shape on the message: whichever version the request is answered in reads it.
+    assert advertised_catalog_ids(_text_message("hi", metadata), version) == expected
 
 
 def test_each_line_has_its_own_prompt(tmp_path):

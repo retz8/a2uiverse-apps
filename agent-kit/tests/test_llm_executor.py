@@ -880,7 +880,8 @@ async def test_the_recorded_batches_carry_the_surface_the_client_would_have_rece
     (turn,) = _recorded_session(tmp_path)["turns"]
     streamed = [msg for batch in turn["batches"] for msg in batch["messages"]]
     assert any("createSurface" in msg for msg in streamed)
-    assert all(msg["version"] == "v0.9" for msg in streamed)
+    # As they went out: in the app's newest, the request naming no version.
+    assert all(msg["version"] == "v0.9.1" for msg in streamed)
 
 
 @pytest.mark.asyncio
@@ -1153,7 +1154,7 @@ async def test_a_turn_deleting_a_surface_painted_before_sends_the_delete():
     queue = _FakeQueue()
     await _executor(responder).execute(_Ctx("close it"), queue)
     assert [d for d in _data_parts(queue) if "deleteSurface" in d] == [
-        {"version": "v0.9", "deleteSurface": {"surfaceId": "old"}}
+        {"version": "v0.9.1", "deleteSurface": {"surfaceId": "old"}}
     ]
 
 

@@ -23,7 +23,6 @@ from typing import Any
 
 from a2ui_agent_kit.config import BuildResponse, BuildTextResponse
 from a2ui_agent_kit.sign_in import fake_account_id
-from a2ui_agent_kit.versions import WIRE_VERSION
 
 # The keys whose object carries the surfaceId we stamp: the A2UI operations, and the paint's
 # shell metadata, which names the surface it titles (task-10.9 decision 8).
@@ -79,10 +78,10 @@ def stamp_surface(messages: list[dict], surface_id: str) -> list[dict]:
 
 
 def fallback(name: str, surface_id: str) -> list[dict]:
-    """A visible "unhandled" response, rather than a silent no-op."""
+    """A visible "unhandled" response, rather than a silent no-op. It carries no version: the
+    executor stamps the request's own at send."""
     return [
         {
-            "version": WIRE_VERSION,
             "updateComponents": {
                 "surfaceId": surface_id,
                 "components": [

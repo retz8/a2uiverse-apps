@@ -26,7 +26,12 @@ def test_skills_are_capabilities_with_several_examples_each():
 
 
 def test_the_card_advertises_the_a2ui_extension_and_the_catalog():
+    # Both versions, as `a2ui_versions` in app/config.py names them: one entry per version,
+    # each naming the catalog flat.
     card = _card()
     assert card.capabilities.streaming is True
-    uris = [ext.uri for ext in card.capabilities.extensions]
-    assert "https://a2ui.org/a2a-extension/a2ui/v0.9.1" in uris
+    params = {"supportedCatalogIds": ["__CATALOG_ID__"]}
+    assert [(ext.uri, ext.params) for ext in card.capabilities.extensions] == [
+        ("https://a2ui.org/a2a-extension/a2ui/v0.9", params),
+        ("https://a2ui.org/a2a-extension/a2ui/v0.9.1", params),
+    ]

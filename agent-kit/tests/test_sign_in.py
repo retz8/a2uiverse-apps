@@ -44,7 +44,7 @@ from a2ui_agent_kit.sign_in import (
     require_tool_scopes,
     unbind_account,
 )
-from a2ui_agent_kit.versions import WIRE_VERSION
+from a2ui_agent_kit.versions import FIXTURE_VERSION
 from tests.conftest import make_config
 
 REDIRECT = "http://localhost:8765/callback"
@@ -75,7 +75,7 @@ def _respond(action: dict) -> list[dict]:
     who = (account.claims.get("email") or account.claims.get("name")) if account else None
     return [
         {
-            "version": WIRE_VERSION,
+            "version": FIXTURE_VERSION,
             "updateDataModel": {
                 "surfaceId": "s",
                 "path": "/",
@@ -200,7 +200,7 @@ class Agent:
                 "parts": [
                     {
                         "kind": "data",
-                        "data": {"version": WIRE_VERSION, "action": {"name": action, "surfaceId": "s"}},
+                        "data": {"version": FIXTURE_VERSION, "action": {"name": action, "surfaceId": "s"}},
                     }
                 ],
             }
@@ -251,7 +251,7 @@ async def running(tmp_path, mode="deterministic", config=None, state_dir=None, p
         executor = DeterministicAgentExecutor(
             config.build_response, config.build_text_response, config.sign_in
         )
-        server.resolve_executor = lambda _config, _mode: executor
+        server.resolve_executor = lambda _config, _mode, _card=None: executor
     try:
         app = server.build_app(
             config, mode, "127.0.0.1", port, base, state_dir=state_dir, **build

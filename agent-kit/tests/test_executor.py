@@ -43,8 +43,9 @@ async def test_a_text_turn_answers_with_the_digest_on_a_fresh_surface():
 
 
 async def test_every_emitted_part_is_version_tagged():
+    # Built without a card, the executor answers in the app's newest, both being the default.
     payload = await run_executor(_executor(), {"name": "greet", "surfaceId": "s1"})
-    assert all(m.get("version") == "v0.9" for m in payload)
+    assert all(m.get("version") == "v0.9.1" for m in payload)
 
 
 async def test_a_canned_paint_meta_rides_as_the_shell_part_ahead_of_the_create_it_names():
@@ -77,7 +78,7 @@ async def test_a_canned_paint_meta_rides_as_the_shell_part_ahead_of_the_create_i
     assert parts[1].root.data["createSurface"]["surfaceId"] == "test-1"
     # The A2UI harness reads the A2UI parts alone.
     payload = await run_executor(_executor(), {"name": "open", "surfaceId": "s1"})
-    assert all(m.get("version") == "v0.9" for m in payload)
+    assert all(m.get("version") == "v0.9.1" for m in payload)
 
 
 async def test_a_cancel_is_answered_with_a_bare_canceled():

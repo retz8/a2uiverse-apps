@@ -92,8 +92,9 @@ def test_stamp_surface_names_the_surface_in_a_paint_meta():
 
 
 def test_fallback_shape():
+    # No version until the executor stamps the request's own (a2uiverse task-19.4).
     messages = fallback("x", "s")
-    assert messages[0]["version"] == "v0.9"
+    assert "version" not in messages[0]
     assert messages[0]["updateComponents"]["surfaceId"] == "s"
 
 

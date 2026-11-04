@@ -1,4 +1,4 @@
-"""Server/card/mode wiring: one card at v0.9.1, mode resolution, ADK isolation."""
+"""Server/card/mode wiring: one card for every mode, mode resolution, ADK isolation."""
 
 import subprocess
 import sys
@@ -16,17 +16,18 @@ from a2ui_agent_kit.modes import (
 )
 from a2ui_agent_kit.server import build_agent_card, build_app
 
+V09_URI = "https://a2ui.org/a2a-extension/a2ui/v0.9"
 V091_URI = "https://a2ui.org/a2a-extension/a2ui/v0.9.1"
 
 
-def test_card_carries_the_config_identity_and_v091_extension(any_config):
+def test_card_carries_the_config_identity_and_an_entry_per_version(any_config):
     card = build_agent_card(any_config, "http://localhost:19999")
     assert card.name == any_config.name
     assert card.description == any_config.description
     assert card.version == any_config.version
     assert [s.id for s in card.skills] == [s.id for s in any_config.skills]
     uris = [e.uri for e in card.capabilities.extensions]
-    assert uris == [V091_URI]  # one card, v0.9.1, every mode
+    assert uris == [V09_URI, V091_URI]  # one card, both versions by default, every mode
 
 
 def test_card_names_its_provider_and_help_page_when_the_config_does(tmp_path):
@@ -61,9 +62,9 @@ def test_card_advertises_the_apps_catalog(any_config):
     from a2ui_agent_kit.catalog import catalog_context
 
     card = build_agent_card(any_config, "http://localhost:19999")
-    (extension,) = card.capabilities.extensions
     expected = catalog_context(any_config).supported_catalog_ids()
-    assert extension.params["supportedCatalogIds"] == expected
+    for extension in card.capabilities.extensions:
+        assert extension.params["supportedCatalogIds"] == expected
 
 
 def test_deterministic_app_builds_and_serves_without_adk(basic_config):

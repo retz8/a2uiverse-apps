@@ -9,7 +9,7 @@ creates a surface; both are updates to one that already exists.
 
 from __future__ import annotations
 
-from a2ui_agent_kit.versions import WIRE_VERSION
+from a2ui_agent_kit.versions import FIXTURE_VERSION
 
 from app import dataset
 from app.card import STORE_BRAND
@@ -19,7 +19,7 @@ POLICY_SURFACE = "policy"
 
 
 def _msg(op: str, payload: dict) -> dict:
-    return {"version": WIRE_VERSION, op: payload}
+    return {"version": FIXTURE_VERSION, op: payload}
 
 
 def create(surface_id: str, catalog_id: str) -> dict:

@@ -23,14 +23,14 @@ from a2a.types import DataPart, Message, Part, Role, TextPart
 from a2ui.a2a.parts import get_a2ui_datapart, is_a2ui_part
 
 from a2ui_agent_kit.sign_in import SignedInAccount, SignIn, bind_account, unbind_account
-from a2ui_agent_kit.versions import WIRE_VERSION
+from a2ui_agent_kit.versions import FIXTURE_VERSION
 
 
 def _incoming_message(action: dict) -> Message:
     return Message(
         message_id="test-msg",
         role=Role.user,
-        parts=[Part(root=DataPart(data={"version": WIRE_VERSION, "action": action}))],
+        parts=[Part(root=DataPart(data={"version": FIXTURE_VERSION, "action": action}))],
         kind="message",
     )
 
@@ -176,7 +176,7 @@ class SignedInAgent:
 
     async def send_action(self, name: str, token: str | None, context: dict | None = None):
         action = {"name": name, "surfaceId": "s", "context": context or {}}
-        data = {"kind": "data", "data": {"version": WIRE_VERSION, "action": action}}
+        data = {"kind": "data", "data": {"version": FIXTURE_VERSION, "action": action}}
         return await self.send(data, {"Authorization": f"Bearer {token}"} if token else {})
 
     async def send_text(self, text: str, token: str | None):

@@ -20,6 +20,7 @@ from pathlib import Path
 from typing import Any
 
 from a2ui_agent_kit.recorder import RECORD_DIR_ENV
+from a2ui_agent_kit.versions import FIXTURE_VERSION
 
 logger = logging.getLogger(__name__)
 
@@ -103,7 +104,7 @@ def settled_messages(beat_path: Path) -> list[dict]:
     if kept:
         out.append(
             {
-                "version": "v0.9",
+                "version": FIXTURE_VERSION,
                 "updateComponents": {"components": kept},
             }
         )

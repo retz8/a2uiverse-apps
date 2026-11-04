@@ -2,7 +2,9 @@
 
 Catalog validation, the question policy, and the debug-dump anchor all come from the
 app's config — the catalog and the policy from the catalog line the turn is painted in
-(a2uiverse task-15.7); the streaming/retry machinery is vendor-free.
+(a2uiverse task-15.7); the streaming/retry machinery is vendor-free. Each request is answered
+in the version chosen for it, stamped on every A2UI part whatever the model wrote
+(a2uiverse task-19.4).
 """
 
 from __future__ import annotations
@@ -17,9 +19,8 @@ import time
 from a2a.server.agent_execution import AgentExecutor, RequestContext
 from a2a.server.events import EventQueue
 from a2a.server.tasks import TaskUpdater
-from a2a.types import DataPart, Part, Task, TaskState, TextPart
+from a2a.types import AgentCard, Part, Task, TaskState, TextPart
 from a2a.utils import new_agent_parts_message, new_task
-from a2ui.a2a.parts import create_a2ui_part
 from a2ui.constants import A2UI_CLIENT_DATA_MODEL_KEY, DEFAULT_PROGRESSIVE_KEYS
 from a2ui.core import A2uiParseError
 from a2ui.inference_formats import to_message_dicts
@@ -50,7 +51,7 @@ from a2ui_agent_kit.sign_in import (
     current_account,
     unbind_account,
 )
-from a2ui_agent_kit.versions import WIRE_VERSION
+from a2ui_agent_kit.versions import choose_version, extract_action, stamped_part
 
 logger = logging.getLogger(__name__)
 
@@ -89,26 +90,6 @@ def _extract_text(context: RequestContext) -> str:
             if isinstance(root, TextPart) and root.text:
                 return root.text
     return ""
-
-
-def _extract_action(context: RequestContext) -> dict | None:
-    """Returns the A2UI action carried by a v0.9 DataPart, or None.
-
-    The chat client ships a component action as one DataPart shaped
-    `{version: "v0.9", action: {name, surfaceId, sourceComponentId, context, ...}}`
-    (client/src/a2a/messages.ts -> buildActionMessageParams). The action's `context`
-    is already resolved to concrete values on the client before it is sent.
-    """
-    message = context.message
-    if not message or not message.parts:
-        return None
-    for part in message.parts:
-        root = part.root
-        if isinstance(root, DataPart) and root.data.get("version") == WIRE_VERSION:
-            action = root.data.get("action")
-            if isinstance(action, dict):
-                return action
-    return None
 
 
 def _frame_action_prompt(action: dict) -> str:
@@ -159,8 +140,13 @@ def _frame_client_data_model(surfaces: dict) -> str:
     )
 
 
-def _resolve_prompt(context: RequestContext) -> str:
-    """Resolves the incoming message to a model prompt: text first, then an action.
+def _resolve_prompt(context: RequestContext, action: dict | None) -> str:
+    """Resolves the incoming message to a model prompt: text first, then its action.
+
+    `action` is the A2UI action the message carries, as the request's version admits it.
+    The client ships a component action as one DataPart shaped
+    `{version, action: {name, surfaceId, sourceComponentId, context, ...}}`, its `context`
+    already resolved to concrete values.
 
     Returns "" when the message carries neither usable text nor an A2UI action; the
     executor turns that into a plain-text apology rather than calling the model with
@@ -169,10 +155,8 @@ def _resolve_prompt(context: RequestContext) -> str:
     the user is acting on.
     """
     prompt = _extract_text(context)
-    if not prompt:
-        action = _extract_action(context)
-        if action is not None:
-            prompt = _frame_action_prompt(action)
+    if not prompt and action is not None:
+        prompt = _frame_action_prompt(action)
     if not prompt:
         return ""
     surfaces = _extract_client_data_model(context)
@@ -329,6 +313,7 @@ class LlmAgentExecutor(AgentExecutor):
         config: AgentAppConfig,
         max_attempts: int = MAX_ATTEMPTS,
         recorder=None,
+        card: AgentCard | None = None,
     ):
         self._responder = responder
         self._sign_in = config.sign_in
@@ -336,6 +321,10 @@ class LlmAgentExecutor(AgentExecutor):
         self._max_attempts = max_attempts
         self._lines = catalog_lines(config)
         self._surfaces = SurfaceCatalogs()
+        # The card the app serves and the versions it speaks, which each request's version is
+        # chosen from; without the card, every request takes the app's newest.
+        self._card = card
+        self._versions = tuple(config.a2ui_versions)
         # The conditions the agent runs under, resolved as modes.py resolves them for the
         # agent it builds, stamped on every recorded turn (a2uiverse task-17.3 decision 5).
         self._model = model_name(config)
@@ -394,8 +383,9 @@ class LlmAgentExecutor(AgentExecutor):
             unbind_account(bound)
 
     async def _execute(self, context: RequestContext, event_queue: EventQueue) -> None:
-        prompt = _resolve_prompt(context)
-        action = _extract_action(context)
+        version = choose_version(context, self._card, self._versions)
+        action = extract_action(context.message, version)
+        prompt = _resolve_prompt(context, action)
         # An action message carries no text; that is what distinguishes the two drivers
         # of a paint on the wire, and the fixture records which one it was.
         kind = "surface-action" if action is not None and not _extract_text(context) else "utterance"
@@ -426,7 +416,7 @@ class LlmAgentExecutor(AgentExecutor):
         # in that surface's id, while a line holds it and the client renders it.
         pressed = action.get("surfaceId") if kind == "surface-action" else None
         turn = self._lines.choose(
-            advertised_catalog_ids(context.message),
+            advertised_catalog_ids(context.message, version),
             self._surfaces.catalog_of(task.context_id, pressed),
         )
         if turn is None:
@@ -466,7 +456,9 @@ class LlmAgentExecutor(AgentExecutor):
         bound = bind_turn_line(turn.line)
         try:
             fresh_from = pressed if turn.fresh_surface else None
-            await self._attempts(prompt, task, updater, turn, fresh_from, measuring)
+            await self._attempts(
+                prompt, task, updater, turn, fresh_from, measuring, version=version
+            )
         except AuthRequired as err:
             # A tool needed a scope the token lacks: the run ends here, asking for it, and
             # nothing follows. The hub sends the press again once it is granted, as a
@@ -517,11 +509,14 @@ class LlmAgentExecutor(AgentExecutor):
         turn: Turn,
         fresh_from: str | None = None,
         measuring: TurnMeasurement | None = None,
+        *,
+        version: str,
     ) -> None:
         """One turn's model attempts, until a surface lands or the attempts run out.
 
         `fresh_from` is the surface an action came from, when the turn must leave it be.
         `measuring` is the turn's measurement, told which attempt each request belongs to.
+        `version` is the one the request is answered in, stamped on every A2UI part.
         """
         if measuring is None:
             measuring = TurnMeasurement(time.monotonic())
@@ -577,7 +572,12 @@ class LlmAgentExecutor(AgentExecutor):
                         continue
                     for response_part in response_parts:
                         parts = self._parts_for(
-                            response_part, stream_filter, tag_filter, paint_metas, turn.catalog_id
+                            response_part,
+                            stream_filter,
+                            tag_filter,
+                            paint_metas,
+                            turn.catalog_id,
+                            version=version,
                         )
                         if parts:
                             self._recorder.record_batch(parts)
@@ -697,7 +697,7 @@ class LlmAgentExecutor(AgentExecutor):
             # delete to a surface painted in an earlier turn, whole, and what the stream did
             # not reach of the turn's own surfaces.
             if unsent := stream_filter.flush(payload):
-                unsent_parts = [create_a2ui_part(m, version=WIRE_VERSION) for m in unsent]
+                unsent_parts = [stamped_part(m, version) for m in unsent]
                 self._recorder.record_batch(unsent_parts)
                 await updater.update_status(
                     TaskState.working,
@@ -710,7 +710,7 @@ class LlmAgentExecutor(AgentExecutor):
 
         # Attempts exhausted -> clean up the half-baked surface (so the client is not
         # left with broken partial UI), then apologize, matched to the last failure kind.
-        await self._teardown(updater, task, stream_filter.created)
+        await self._teardown(updater, task, stream_filter.created, version)
         apology = UNAVAILABLE_TEXT if model_unavailable else APOLOGY_TEXT
         apology_parts = [Part(root=TextPart(text=apology))]
         self._recorder.record_batch(apology_parts)
@@ -723,16 +723,15 @@ class LlmAgentExecutor(AgentExecutor):
             final=True,
         )
 
-    async def _teardown(self, updater: TaskUpdater, task, surface_ids: set[str]) -> None:
+    async def _teardown(
+        self, updater: TaskUpdater, task, surface_ids: set[str], version: str
+    ) -> None:
         """Deletes surfaces a failed attempt created, so the client is not left with
         a half-streamed zombie surface (and a retry can re-create the same id)."""
         if not surface_ids:
             return
         parts = [
-            create_a2ui_part(
-                {"version": WIRE_VERSION, "deleteSurface": {"surfaceId": sid}},
-                version=WIRE_VERSION,
-            )
+            stamped_part({"deleteSurface": {"surfaceId": sid}}, version)
             for sid in sorted(surface_ids)
         ]
         self._recorder.record_batch(parts)
@@ -748,6 +747,8 @@ class LlmAgentExecutor(AgentExecutor):
         tag_filter: PaintTitleTagFilter | None = None,
         paint_metas: dict[str, dict] | None = None,
         catalog_id: str | None = None,
+        *,
+        version: str,
     ) -> list[Part]:
         parts: list[Part] = []
         if isinstance(response_part, A2uiPart):
@@ -761,7 +762,7 @@ class LlmAgentExecutor(AgentExecutor):
             if catalog_id is not None:
                 messages = paint_in(messages, catalog_id)
             for msg in messages:
-                parts.append(create_a2ui_part(msg, version=WIRE_VERSION))
+                parts.append(stamped_part(msg, version))
             return parts
         if response_part.text:
             text = response_part.text

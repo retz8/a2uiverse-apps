@@ -17,6 +17,7 @@ from typing import Any, Literal
 from a2a.types import AgentProvider, AgentSkill
 
 from a2ui_agent_kit.sign_in import ApiKeySignIn, SignIn
+from a2ui_agent_kit.versions import A2UI_VERSIONS, version_set
 
 # Overridable per app via `AgentAppConfig.model`, and at runtime via MODEL_NAME. Not
 # the lite tier — it could not reliably emit a well-formed surface at this payload size.
@@ -118,3 +119,12 @@ class AgentAppConfig:
 
     # The old catalog id painted in beside the current one, while the hub advertises it.
     old_catalog_line: CatalogLine | None = None
+
+    # The A2UI versions the app speaks: `v0.9`, `v0.9.1`, or both. They decide the card's
+    # entries, the version each request is answered in and the actions it takes; held in the
+    # kit's order, oldest first, whatever order the app wrote them in (a2uiverse task-19.4).
+    a2ui_versions: Sequence[str] = A2UI_VERSIONS
+
+    def __post_init__(self) -> None:
+        # A version the kit does not speak, or none, stops the app before it serves.
+        object.__setattr__(self, "a2ui_versions", version_set(self.a2ui_versions))

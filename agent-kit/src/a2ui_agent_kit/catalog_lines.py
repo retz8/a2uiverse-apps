@@ -18,11 +18,8 @@ from a2ui.constants import A2UI_CLIENT_CAPABILITIES_KEY
 
 from a2ui_agent_kit.catalog import CatalogContext, catalog_context
 from a2ui_agent_kit.config import AgentAppConfig, CatalogLine
+from a2ui_agent_kit.versions import A2UI_VERSIONS
 
-# A client keys its capabilities by the protocol version — the hub under `v0.9`, as the pinned
-# schemas have it, others under `v0.9.1` — or writes them flat, as upstream's guide shows
-# (a2uiverse SPEC §14).
-_CAPABILITIES_VERSION_KEYS = ("v0.9", "v0.9.1")
 # The capabilities' field naming the ids a client renders; the SDK holds no constant for it.
 SUPPORTED_CATALOG_IDS_KEY = "supportedCatalogIds"
 
@@ -112,24 +109,30 @@ def catalog_lines(config: AgentAppConfig) -> CatalogLines:
     return CatalogLines(config)
 
 
-def advertised_catalog_ids(message) -> list[str] | None:
+def advertised_catalog_ids(message, version: str) -> list[str] | None:
     """The catalog ids the client renders, from its `a2uiClientCapabilities`; None when it
-    sent none."""
+    sent none.
+
+    A client keys its capabilities by the protocol version — the hub writes each version's
+    set under its key — or writes them flat, as upstream's guide shows (a2uiverse SPEC §14).
+    The ids are read under `version`, the one the request is answered in, first, then under
+    the other version's key, then flat (a2uiverse task-19.4).
+    """
     metadata = getattr(message, "metadata", None) if message else None
     capabilities = (
         metadata.get(A2UI_CLIENT_CAPABILITIES_KEY) if isinstance(metadata, dict) else None
     )
     if not isinstance(capabilities, dict):
         return None
-    if SUPPORTED_CATALOG_IDS_KEY not in capabilities:
-        capabilities = next(
-            (
-                capabilities[key]
-                for key in _CAPABILITIES_VERSION_KEYS
-                if isinstance(capabilities.get(key), dict)
-            ),
-            {},
-        )
+    keys = (version, *(other for other in A2UI_VERSIONS if other != version))
+    capabilities = next(
+        (
+            scoped
+            for scoped in (*(capabilities.get(key) for key in keys), capabilities)
+            if isinstance(scoped, dict) and SUPPORTED_CATALOG_IDS_KEY in scoped
+        ),
+        {},
+    )
     ids = capabilities.get(SUPPORTED_CATALOG_IDS_KEY)
     if not isinstance(ids, list):
         return None
