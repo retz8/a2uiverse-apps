@@ -8,16 +8,22 @@ from tests.helpers import run_executor
 
 validate_payload = catalog_context(CONFIG).validate_payload
 
+# Every in-process answer is stamped in the newest of the app's versions, whatever its
+# fixture says.
+NEWEST_VERSION = CONFIG.a2ui_versions[-1]
+
 
 @pytest.mark.parametrize("event", sorted(_EVENT_FIXTURES))
 async def test_emitted_event_payload_conforms_to_catalog(event):
     payload = await run_executor({"name": event, "surfaceId": "test", "context": {}})
     validate_payload(payload)  # must not raise
+    assert {message["version"] for message in payload} == {NEWEST_VERSION}
 
 
 async def test_emitted_unknown_event_fallback_conforms_to_catalog():
     payload = await run_executor({"name": "nope", "surfaceId": "s2", "context": {}})
     validate_payload(payload)  # must not raise
+    assert {message["version"] for message in payload} == {NEWEST_VERSION}
 
 
 def test_validator_rejects_non_conformant_component():
@@ -39,3 +45,4 @@ async def test_emitted_text_prompt_payload_conforms_to_catalog():
 
     payload = await run_executor_text("hello agent")
     validate_payload(payload)  # must not raise
+    assert {message["version"] for message in payload} == {NEWEST_VERSION}

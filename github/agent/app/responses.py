@@ -6,6 +6,7 @@ from itertools import count
 from pathlib import Path
 
 from a2ui_agent_kit.responses import fallback, load_fixture, stamp_surface
+from a2ui_agent_kit.versions import FIXTURE_VERSION
 
 _FIXTURES_DIR = Path(__file__).resolve().parent / "fixtures" / "deterministic"
 _EVENT_FIXTURES = {
@@ -50,11 +51,11 @@ def _change_response(action: dict, surface_id: str) -> list[dict]:
     )
     return [
         {
-            "version": "v0.9",
+            "version": FIXTURE_VERSION,
             "updateDataModel": {"surfaceId": surface_id, "path": "/view", "value": index},
         },
         {
-            "version": "v0.9",
+            "version": FIXTURE_VERSION,
             "updateComponents": {
                 "surfaceId": surface_id,
                 "components": [
@@ -81,11 +82,11 @@ def _select_assigned_response(action: dict, surface_id: str) -> list[dict]:
     assigned = action.get("context", {}).get("assigned", False)
     return [
         {
-            "version": "v0.9",
+            "version": FIXTURE_VERSION,
             "updateDataModel": {"surfaceId": surface_id, "path": "/assigned", "value": assigned},
         },
         {
-            "version": "v0.9",
+            "version": FIXTURE_VERSION,
             "updateComponents": {
                 "surfaceId": surface_id,
                 "components": [
@@ -112,11 +113,11 @@ def _label_select_response(action: dict, surface_id: str) -> list[dict]:
     selected = action.get("context", {}).get("selected", False)
     return [
         {
-            "version": "v0.9",
+            "version": FIXTURE_VERSION,
             "updateDataModel": {"surfaceId": surface_id, "path": "/sel/bug", "value": selected},
         },
         {
-            "version": "v0.9",
+            "version": FIXTURE_VERSION,
             "updateComponents": {
                 "surfaceId": surface_id,
                 "components": [

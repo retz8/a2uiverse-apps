@@ -32,8 +32,10 @@ def _live_tools():
 CONFIG = AgentAppConfig(
     name=APP_NAME,
     description=APP_DESCRIPTION,
-    version="0.1.0",
+    version="0.2.0",
     skills=SKILLS,
+    # The A2UI versions the agent speaks: ["v0.9"], ["v0.9.1"] or both.
+    a2ui_versions=["v0.9"],
     provider=AgentProvider(organization="Aperture & Co", url="https://aperture.example"),
     documentation_url="https://github.com/retz8/a2uiverse-apps/blob/main/mocks/shop-a/agent/README.md",
     default_port=12001,

@@ -29,15 +29,15 @@ From the `a2uiverse` repo, the launcher runs them all: `pnpm dev:all` for the ap
 
 ## Apps
 
-| App                          | Answers about                                         | Catalog                                          | Port    |
-| ---------------------------- | ----------------------------------------------------- | ------------------------------------------------ | ------- |
-| [GitHub](github/)            | repositories, issues, pull requests and notifications | Primer, GitHub's own design system               | `11001` |
-| [Gmail](gmail/)              | your mail                                             | Gmail's own components in its Material 3 look    | `11002` |
-| [Google Calendar](calendar/) | your calendar                                         | Calendar's own components in its Material 3 look | `11003` |
-| [CircleCI](circleci/)        | your pipelines                                        | CircleCI's own components in its look            | `11004` |
-| [Linear](linear/)            | your issues                                           | Linear's own components in its look              | `11005` |
-| [Shop A](mocks/shop-a/)      | a mock camera store, Aperture & Co                    | the basic catalog, themed                        | `12001` |
-| [Shop B](mocks/shop-b/)      | a mock camera store, Northlight                       | the basic catalog, themed                        | `12002` |
+| App                          | Answers about                                         | Catalog                                          | A2UI versions    | Port    |
+| ---------------------------- | ----------------------------------------------------- | ------------------------------------------------ | ---------------- | ------- |
+| [GitHub](github/)            | repositories, issues, pull requests and notifications | Primer, GitHub's own design system               | `v0.9.1`         | `11001` |
+| [Gmail](gmail/)              | your mail                                             | Gmail's own components in its Material 3 look    | `v0.9`           | `11002` |
+| [Google Calendar](calendar/) | your calendar                                         | Calendar's own components in its Material 3 look | `v0.9`, `v0.9.1` | `11003` |
+| [CircleCI](circleci/)        | your pipelines                                        | CircleCI's own components in its look            | `v0.9`, `v0.9.1` | `11004` |
+| [Linear](linear/)            | your issues                                           | Linear's own components in its look              | `v0.9`           | `11005` |
+| [Shop A](mocks/shop-a/)      | a mock camera store, Aperture & Co                    | the basic catalog, themed                        | `v0.9`           | `12001` |
+| [Shop B](mocks/shop-b/)      | a mock camera store, Northlight                       | the basic catalog, themed                        | `v0.9.1`         | `12002` |
 
 Every vendor app is backed by its vendor's official MCP server. Each app's README says what it covers, and its agent's README what it can and can't do.
 

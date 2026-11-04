@@ -4,6 +4,7 @@ from starlette.testclient import TestClient
 
 from a2ui_agent_kit.catalog import catalog_context
 from a2ui_agent_kit.server import CORS_ORIGIN_REGEX, build_agent_card, build_app
+from a2ui_agent_kit.versions import EXTENSION_URIS
 
 from app.config import CONFIG
 
@@ -20,18 +21,15 @@ def test_cors_regex_allows_localhost_and_devtunnel_but_not_arbitrary():
 
 
 def test_agent_card_advertises_streaming_and_the_a2ui_extension():
-    # One card for all modes, at the spec-fixed v0.9.1 URI (the deterministic card's
-    # old v0.9 advertisement was stale — task-3.2 decision 9).
-    card = build_agent_card(CONFIG, "http://localhost:11001")
+    # One card for all modes. Both versions, as `a2ui_versions` in app/config.py names them: one
+    # entry per version, oldest first, each naming the catalog flat.
+    card = build_agent_card(CONFIG, "http://localhost:11003")
     assert card.capabilities.streaming is True
-    uris = [ext.uri for ext in card.capabilities.extensions]
-    assert "https://a2ui.org/a2a-extension/a2ui/v0.9.1" in uris
-    a2ui_ext = next(
-        e for e in card.capabilities.extensions if e.uri.endswith("a2ui/v0.9.1")
-    )
-    assert a2ui_ext.params["supportedCatalogIds"] == (
-        catalog_context(CONFIG).supported_catalog_ids()
-    )
+    params = {"supportedCatalogIds": catalog_context(CONFIG).supported_catalog_ids()}
+    assert [(ext.uri, ext.params) for ext in card.capabilities.extensions] == [
+        (EXTENSION_URIS["v0.9"], params),
+        (EXTENSION_URIS["v0.9.1"], params),
+    ]
 
 
 def test_build_app_defaults_card_url_to_host_port():

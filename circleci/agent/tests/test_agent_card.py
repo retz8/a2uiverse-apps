@@ -2,7 +2,9 @@
 skills named by capability, each with real example utterances — and every run mode
 presents the same card."""
 
+from a2ui_agent_kit.catalog import catalog_context
 from a2ui_agent_kit.server import build_agent_card
+from a2ui_agent_kit.versions import EXTENSION_URIS
 
 from app.card import APP_NAME
 from app.config import CONFIG
@@ -26,7 +28,12 @@ def test_skills_are_capabilities_with_several_examples_each():
 
 
 def test_the_card_advertises_the_a2ui_extension_and_the_catalog():
+    # Both versions, as `a2ui_versions` in app/config.py names them: one entry per
+    # version, oldest first, each naming the catalog flat.
     card = _card()
     assert card.capabilities.streaming is True
-    uris = [ext.uri for ext in card.capabilities.extensions]
-    assert "https://a2ui.org/a2a-extension/a2ui/v0.9.1" in uris
+    params = {"supportedCatalogIds": catalog_context(CONFIG).supported_catalog_ids()}
+    assert [(ext.uri, ext.params) for ext in card.capabilities.extensions] == [
+        (EXTENSION_URIS["v0.9"], params),
+        (EXTENSION_URIS["v0.9.1"], params),
+    ]
