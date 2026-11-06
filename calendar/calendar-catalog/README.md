@@ -1,6 +1,6 @@
 # calendar-catalog
 
-An A2UI catalog for Google Calendar: Calendar's own components in **Material 3**'s design language, very similar to the product without imitating it. It targets A2UI **v0.9.1** on top of [`@a2ui/react`](https://www.npmjs.com/package/@a2ui/react).
+An A2UI catalog for Google Calendar: Calendar's own components in **Material 3**'s design language, very similar to the product without imitating it. It targets A2UI **v0.9** and **v0.9.1** on top of [`@a2ui/react`](https://www.npmjs.com/package/@a2ui/react).
 
 ## What's in it
 

@@ -1,6 +1,6 @@
 # gmail-catalog
 
-An A2UI catalog for Gmail: Gmail's own components in **Material 3**'s design language, very similar to the product without imitating it. It targets A2UI **v0.9.1** on top of [`@a2ui/react`](https://www.npmjs.com/package/@a2ui/react).
+An A2UI catalog for Gmail: Gmail's own components in **Material 3**'s design language, very similar to the product without imitating it. It targets A2UI **v0.9** on top of [`@a2ui/react`](https://www.npmjs.com/package/@a2ui/react).
 
 ## What's in it
 

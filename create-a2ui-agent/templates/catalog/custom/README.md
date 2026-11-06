@@ -1,6 +1,6 @@
 # __PACKAGE_NAME__
 
-An A2UI catalog for __DISPLAY_NAME__, built on __DISPLAY_NAME__'s own design system. It targets A2UI **v0.9.1** on top of `@a2ui/react`.
+An A2UI catalog for __DISPLAY_NAME__, built on __DISPLAY_NAME__'s own design system. It targets A2UI **v0.9** and **v0.9.1** on top of `@a2ui/react`.
 
 ## Two halves of one contract
 
