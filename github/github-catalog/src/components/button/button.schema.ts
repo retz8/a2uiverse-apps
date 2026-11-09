@@ -19,7 +19,7 @@ import {CommonSchemas} from '@a2ui/web_core/v0_9';
  * - `variant`/`size`/`alignContent` are Primer enums lifted verbatim.
  * - `disabled`/`loading`/`inactive` are bound runtime state -> DynamicBoolean; `count` is a
  *   bound display value -> DynamicString; `block`/`labelWrap`/`loadingAnnouncement` are fixed
- *   configuration -> plain. (Bound-state-vs-config rule: a2ui-sdk-design skill.)
+ *   configuration -> plain. (Bound-state-vs-config rule: the coding-principles skill's a2uiverse-catalog-conventions.)
  * - `accessibility` is carried because Button's type spreads React.ButtonHTMLAttributes (the
  *   aria-* slice); it maps to CommonSchemas.AccessibilityAttributes. See finding #3.
  *

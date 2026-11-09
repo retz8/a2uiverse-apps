@@ -5,7 +5,9 @@
 > **INSTRUCTION FOR ALL AGENTS — do this before any task:**
 >
 > 1. **Read the platform design: `../a2uiverse/SPEC.md` in full.** This repo builds the apps that design composes; §4 (surface model), §8 (authority), §9 (apps, catalogs, store), and §13 (repositories) are the sections that bind this repo.
-> 2. **For work on a catalog, an adapter, or a renderer:** also read [.claude/skills/a2ui-sdk-design/SKILL.md](.claude/skills/a2ui-sdk-design/SKILL.md) in full.
+> 2. **For authoring, refactoring or reviewing TypeScript — a vendor catalog, a mock's catalog, the scaffolder `create-a2ui-agent`:** read [.claude/skills/coding-principles/SKILL.md](.claude/skills/coding-principles/SKILL.md) and follow its routing.
+> 3. **For moving an app to a newer A2UI SDK or protocol version:** read [.claude/skills/a2ui-migration/SKILL.md](.claude/skills/a2ui-migration/SKILL.md) in full.
+> 4. **For writing a README, a doc or a PR description:** read [.claude/skills/natural-writing/SKILL.md](.claude/skills/natural-writing/SKILL.md) in full.
 
 This file (`CLAUDE.md`) holds only the **operational rules** not covered elsewhere.
 
@@ -19,7 +21,7 @@ No import, package, or path into `../a2uiverse/`; `@a2uiverse/sdk` is consumed a
 
 ### Layout
 
-One folder per app: `<vendor>/agent/` (the A2A agent, its own project) and `<vendor>/<vendor>-catalog/` (catalog schema + React implementation). Catalogs are packages of the root pnpm workspace, run with Turborepo. Vocabulary (catalog / schema / implementation; "adapter" only for the framework layer) is defined in the `a2ui-sdk-design` skill.
+One folder per app: `<vendor>/agent/` (the A2A agent, its own project) and `<vendor>/<vendor>-catalog/` (catalog schema + React implementation). Catalogs are packages of the root pnpm workspace, run with Turborepo. Vocabulary: a **catalog** is the package pairing a `catalog.json` with its framework implementation, named `<vendor>-catalog`; the **catalog schema** is the `catalog.json` and the **catalog implementation** the framework code that renders it, upstream's terms; an **adapter** is upstream's word for the framework layer only (`@a2ui/react` is the React adapter), never a catalog package here.
 
 ### Mock apps
 
@@ -55,7 +57,11 @@ This project targets a single protocol version at a time.
 - **Authority Rule:** Default to version **v0.9.1** as the primary authority, unless the user specifies otherwise.
 - **Refresh the spec:** Include the phrase **"sync spec"** in your prompt. A `UserPromptSubmit` hook (`.claude/hooks/sync-spec-hook.sh`, wired in `.claude/settings.json`) runs a non-destructive `git fetch upstream` that updates the `upstream/main` ref without touching the fork's working tree or branch.
 - Do not hardcode schema contents; read them from the `upstream/main` ref dynamically.
-- **How to read the spec** (paths, git commands, critical source-of-truth files): see the `a2ui-sdk-design` skill's "Specifications Navigation".
+- **How to read the spec.** From the `upstream/main` ref of `../A2UI`, never its working tree, which is usually on a feature branch:
+  - list a tree: `git -C ../A2UI ls-tree -r --name-only upstream/main specification/`
+  - read a file in full: `git -C ../A2UI show upstream/main:specification/v0_9_1/json/server_to_client.json`
+  - search: `git -C ../A2UI grep <pattern> upstream/main -- specification/`
+- **Critical sources of truth** under `specification/<version>/`, each read in full for the targeted version: the JSON schemas (`json/server_to_client.json` for stream envelopes, `client_to_server.json` for action events, `common_types.json` for the dynamic binding primitives and the other `$defs`); the catalogs (`catalogs/<name>/catalog.json`, bundled under the version for v0.9 and v0.9.1 and under the repo's `catalogs/` from v1.0; the basic catalog is the structural reference when authoring one); the protocol semantics (`docs/a2ui_protocol.md`); the SDK architecture (`docs/sdks_spec.md`: the core SDK, the inference SDK, the framework adapters); the basic catalog implementation guide (`docs/basic_catalog_implementation_guide.md`); custom functions (`docs/a2ui_custom_functions.md`); the conformance suite (`test/`) the sdk's validator is measured against.
 
 ---
 
@@ -67,12 +73,12 @@ This project targets a single protocol version at a time.
 - **Credential-collecting components are not in any catalog.** No password, card, or OTP input. Auth is declared on the AgentCard (`securitySchemes`) and painted by the platform, never by an app.
 - **READMEs are a DX product.** A README is a doc for a human — concise but understandable and easy to read, not a complex dev doc. Its shape: what the package is, in one line; a quick start that works in a minute; the commands or the API, one line each; the details below in short sections or collapsed; the _why_ pointed at the platform's design records (`../a2uiverse/docs/design/`), never restated.
 
-Catalog-authoring and renderer-design conventions live in the `a2ui-sdk-design` skill (read per the top instruction before that work).
+Catalog-authoring and renderer conventions live in the `coding-principles` skill's TypeScript subskills — A2UIVerse's own in `.claude/skills/coding-principles/subskills/typescript/a2uiverse-catalog-conventions.md` — and the component design flow in `design-catalog-component` and `build-catalog-component`.
 
 ### Setup and gates
 
 - **Fresh clone:** `pnpm install` at the root (Node ≥ 22; Corepack resolves the pinned pnpm). Each app's agent is its own project — follow that app's README for its setup (e.g. `uv sync` for a Python agent).
-- **Gates:** `pnpm verify` — `turbo run build typecheck test check` over every `*/*-catalog`, `check` being Stellify's gate over the built catalog, then `eslint .` and `prettier --check .`. Agent test suites run per that app's README. Must be green before any commit lands on `main`.
+- **Gates:** `pnpm verify` — `turbo run build typecheck test check` over every `*/*-catalog`, `check` being Stellify's gate over the built catalog, then `eslint .` and `prettier --check .`. Agent test suites run per that app's README. Must be green before any commit that touches code lands on `main`. A commit that touches only documents — `_dev/`, READMEs, this file — needs only `prettier --check` on the files it changes.
 
 ### Daily-work harness
 
@@ -88,6 +94,6 @@ This repo is planned from the platform TODO: `../a2uiverse/_dev/TODO.md` is the 
 ## 4. Maintenance & Update Policy
 
 - **`../a2uiverse/SPEC.md` is the source of truth for design.** When a design decision changes, it changes there — not in this file.
-- Keep this file and the `a2ui-sdk-design` skill synchronized with the targeted protocol version as the project evolves.
-- When the targeted A2UI version changes, update the Authority Rule in both this file and the skill.
+- Keep this file synchronized with the targeted protocol version as the project evolves. The skills copied from upstream (`a2ui-migration`, `coding-principles`, `natural-writing`) each open with a provenance line naming the upstream path and commit; refresh one by re-copying it from upstream, keeping A2UIVerse's own additions apart from the copy.
+- When the targeted A2UI version changes, update the Authority Rule in this file.
 - Suggest documentation updates to the user at the end of a task if any change affects documented files.
