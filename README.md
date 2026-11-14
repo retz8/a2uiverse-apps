@@ -15,7 +15,7 @@ cp .env.example .env                        # the Gemini key the model modes nee
 uv run python -m app --mode deterministic   # canned answers, no model, port 11005
 ```
 
-Every agent built on the kit runs in three modes, on the same ports: JSON-RPC and HTTP+JSON on its port, gRPC on its gRPC port, each at A2A 1.0 and 0.3. Its card lists the six paths in an order the app sets, and a client takes the first it speaks: the table's First path. Shop C, written by hand, has no modes and answers A2A 1.0 alone.
+Every agent built on the kit runs in three modes, on the same ports: JSON-RPC and HTTP+JSON on its port, gRPC on its gRPC port, each at A2A 1.0 and 0.3. Its card lists the six paths in an order the app sets, and a client takes the first it speaks: the First path in the table of [what each agent is built with](#what-each-agent-is-built-with). Shop C, written by hand, has no modes and answers A2A 1.0 alone.
 
 | Mode            | What answers                            | Needs                                                                      |
 | --------------- | --------------------------------------- | -------------------------------------------------------------------------- |
@@ -29,20 +29,37 @@ From the `a2uiverse` repo, the launcher runs them all: `pnpm dev:all` for the ap
 
 ## Apps
 
-| App                          | Answers about                                         | Catalog                                          | A2UI versions    | Port    | gRPC port | First path           |
-| ---------------------------- | ----------------------------------------------------- | ------------------------------------------------ | ---------------- | ------- | --------- | -------------------- |
-| [GitHub](github/)            | repositories, issues, pull requests and notifications | Primer, GitHub's own design system               | `v0.9.1`         | `11001` | `11101`   | gRPC at A2A 1.0      |
-| [Gmail](gmail/)              | your mail                                             | Gmail's own components in its Material 3 look    | `v0.9`           | `11002` | `11102`   | HTTP+JSON at A2A 1.0 |
-| [Google Calendar](calendar/) | your calendar                                         | Calendar's own components in its Material 3 look | `v0.9`, `v0.9.1` | `11003` | `11103`   | JSON-RPC at A2A 0.3  |
-| [CircleCI](circleci/)        | your pipelines                                        | CircleCI's own components in its look            | `v0.9`, `v0.9.1` | `11004` | `11104`   | JSON-RPC at A2A 1.0  |
-| [Linear](linear/)            | your issues                                           | Linear's own components in its look              | `v0.9`           | `11005` | `11105`   | HTTP+JSON at A2A 0.3 |
-| [Shop A](mocks/shop-a/)      | a mock camera store, Aperture & Co                    | the basic catalog, themed                        | `v0.9`           | `12001` | `12101`   | JSON-RPC at A2A 1.0  |
-| [Shop B](mocks/shop-b/)      | a mock camera store, Northlight                       | the basic catalog, themed                        | `v0.9.1`         | `12002` | `12102`   | gRPC at A2A 0.3      |
-| [Shop C](mocks/shop-c/)      | a mock members' warehouse, Halide Supply              | the basic catalog                                | `v0.9.1`         | `12003` | `12103`   | gRPC at A2A 1.0      |
+| App                          | Answers about                                         | Catalog                                          | Port    | gRPC port |
+| ---------------------------- | ----------------------------------------------------- | ------------------------------------------------ | ------- | --------- |
+| [GitHub](github/)            | repositories, issues, pull requests and notifications | Primer, GitHub's own design system               | `11001` | `11101`   |
+| [Gmail](gmail/)              | your mail                                             | Gmail's own components in its Material 3 look    | `11002` | `11102`   |
+| [Google Calendar](calendar/) | your calendar                                         | Calendar's own components in its Material 3 look | `11003` | `11103`   |
+| [CircleCI](circleci/)        | your pipelines                                        | CircleCI's own components in its look            | `11004` | `11104`   |
+| [Linear](linear/)            | your issues                                           | Linear's own components in its look              | `11005` | `11105`   |
+| [Shop A](mocks/shop-a/)      | a mock camera store, Aperture & Co                    | the basic catalog, themed                        | `12001` | `12101`   |
+| [Shop B](mocks/shop-b/)      | a mock camera store, Northlight                       | the basic catalog, themed                        | `12002` | `12102`   |
+| [Shop C](mocks/shop-c/)      | a mock members' warehouse, Halide Supply              | the basic catalog                                | `12003` | `12103`   |
 
 Every vendor app is backed by its vendor's official MCP server. Each app's README says what it covers, and its agent's README what it can and can't do.
 
 The three **mock stores** exist for testing A2UIVerse. All three read one dataset, [`mocks/dataset/products.json`](mocks/dataset/products.json) — the same cameras, each store with its own prices, ratings and stock — so a merge across them is right by construction; they have no MCP server, and every answer, canned or the model's, comes from that file. They sit one level down, in `mocks/`. Shop A and Shop B are built like any app and run by A2UIVerse's launcher as a tier of their own. Shop C is written by hand in Go on the Go A2A SDK, with no kit and no A2UI library, and is started by hand.
+
+### What each agent is built with
+
+| App                          | Built on                 | A2A SDK         | A2A it answers                               | First path           | A2UI versions    | Catalog                               | Sign-in                | Data behind it               |
+| ---------------------------- | ------------------------ | --------------- | -------------------------------------------- | -------------------- | ---------------- | ------------------------------------- | ---------------------- | ---------------------------- |
+| [GitHub](github/)            | the agent kit, in Python | `a2a-sdk` 1.x   | 1.0 and 0.3, on JSON-RPC, HTTP+JSON and gRPC | gRPC at A2A 1.0      | `v0.9.1`         | custom                                | OAuth by redirect      | GitHub's MCP server          |
+| [Gmail](gmail/)              | the agent kit, in Python | `a2a-sdk` 1.x   | 1.0 and 0.3, on JSON-RPC, HTTP+JSON and gRPC | HTTP+JSON at A2A 1.0 | `v0.9`           | custom                                | OAuth by redirect      | Google's Gmail MCP server    |
+| [Google Calendar](calendar/) | the agent kit, in Python | `a2a-sdk` 1.x   | 1.0 and 0.3, on JSON-RPC, HTTP+JSON and gRPC | JSON-RPC at A2A 0.3  | `v0.9`, `v0.9.1` | custom                                | OAuth by redirect      | Google's Calendar MCP server |
+| [CircleCI](circleci/)        | the agent kit, in Python | `a2a-sdk` 1.x   | 1.0 and 0.3, on JSON-RPC, HTTP+JSON and gRPC | JSON-RPC at A2A 1.0  | `v0.9`, `v0.9.1` | custom                                | OAuth by redirect      | CircleCI's MCP server        |
+| [Linear](linear/)            | the agent kit, in Python | `a2a-sdk` 1.x   | 1.0 and 0.3, on JSON-RPC, HTTP+JSON and gRPC | HTTP+JSON at A2A 0.3 | `v0.9`           | custom                                | OAuth by redirect      | Linear's MCP server          |
+| [Shop A](mocks/shop-a/)      | the agent kit, in Python | `a2a-sdk` 1.x   | 1.0 and 0.3, on JSON-RPC, HTTP+JSON and gRPC | JSON-RPC at A2A 1.0  | `v0.9`           | basic, themed                         | none                   | the mock stores' dataset     |
+| [Shop B](mocks/shop-b/)      | the agent kit, in Python | `a2a-sdk` 1.x   | 1.0 and 0.3, on JSON-RPC, HTTP+JSON and gRPC | gRPC at A2A 0.3      | `v0.9.1`         | basic, themed                         | an API key in a header | the mock stores' dataset     |
+| [Shop C](mocks/shop-c/)      | by hand, in Go           | `a2a-go` v2.8.0 | 1.0 alone, on gRPC, HTTP+JSON and JSON-RPC   | gRPC at A2A 1.0      | `v0.9.1`         | basic, the public one, nothing packed | OAuth by device code   | the mock stores' dataset     |
+
+A custom catalog is the app's own components; a basic one is A2UI's basic catalog. The First path is the binding and the A2A version an agent's card lists first, the one a client takes.
+
+The agent kit is [`a2ui-agent-kit`](agent-kit/) 0.2.0, on Python 3.14 or newer: `a2a-sdk` for A2A, from 1.3.0 below 2.0.0; `a2ui-agent-sdk` 0.9.0 and `a2ui-core` 0.4.0 for A2UI; Google ADK 2.x for the model, `gemini-3.8-flash` by default; Authlib for each agent's own sign-in server. No kit agent signs its card or serves a signed-in account a card of its own. Shop C has no model: it signs its card, and serves each member a card of their own.
 
 ## Signing in
 
