@@ -27,7 +27,7 @@ Every input is a flag, and anything missing is asked for. `--yes`, or a non-inte
 | `--id <id>`                      | kebab-case app id: folder and catalog package prefix      | none                                 |
 | `--display-name <name>`          | the product name                                          | the id, title-cased                  |
 | `--description <text>`           | one line for the agent card                               | from the display name                |
-| `--port <n>`                     | the agent's port                                          | next above the sibling agents' ports |
+| `--port <n>`                     | the agent's port; it answers gRPC on the port 100 above   | next above the sibling agents' ports |
 | `--catalog basic\|custom`        | the basic A2UI catalog under a theme, or a custom catalog | `basic`                              |
 | `--ecosystem` / `--no-ecosystem` | send the paint titles A2UIVerse's canvas uses (see below) | off                                  |
 | `--repo-url <url>`               | the repository the app lives in                           | the target folder's git origin       |
@@ -36,7 +36,7 @@ Every input is a flag, and anything missing is asked for. `--yes`, or a non-inte
 
 The agent depends on the kit as a git dependency pinned to one commit, so an app scaffolded at a given commit matches the kit at that commit. The CLI warns when the checkout has uncommitted or unpushed changes. The catalog depends on [Stellify](https://github.com/retz8/a2uiverse/tree/main/packages/stellify), A2UIVerse's pack tool, at the commit every catalog in this repo pins; outside any pnpm workspace, the catalog is a workspace of its own, approving the install script of Stellify's esbuild and not that of protobufjs, which Stellify's gRPC transport brings.
 
-The suggested port is one above the highest `default_port` any sibling agent declares in its `app/config.py`, looking in the folders beside the target and beside the working directory, or 11001 when there are none.
+The suggested port is one above the highest `default_port` any sibling agent declares in its `app/config.py`, looking in the folders beside the target and beside the working directory, or 11001 when there are none. The agent's `default_grpc_port` is that port plus 100.
 
 The catalog id is the URL of the generated `catalog.json` on `main` in the app's repository, written into `catalog.json`, `src/catalog-id.ts` and the agent's tests.
 

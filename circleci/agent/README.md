@@ -1,6 +1,6 @@
 # CircleCI agent
 
-An A2A agent for CircleCI. It answers CI questions by painting A2UI surfaces with [`circleci-catalog`](../circleci-catalog/), CircleCI's own set of A2UI components in its look. It runs on port **11004** and is built on [`a2ui-agent-kit`](../../agent-kit/).
+An A2A agent for CircleCI. It answers CI questions by painting A2UI surfaces with [`circleci-catalog`](../circleci-catalog/), CircleCI's own set of A2UI components in its look. It runs on port **11004**, gRPC on **11104**, and is built on [`a2ui-agent-kit`](../../agent-kit/).
 
 ## What it can do
 
@@ -28,7 +28,7 @@ uv run python -m app --mode deterministic
 
 `deterministic` answers any question with the recorded recent runs, and replays the recorded actions: opening a run, opening a job, proposing a rerun and confirming or declining it. Opening a run or a job paints a new surface, as the live agent does.
 
-Other flags: `--port`, `--host`, `--base-url`, the address the agent card advertises, and `--public-url`, the address the browser reaches its sign-in pages at — a tunnel address, when the browser is on another machine. `--state-dir` moves the sign-in store from `.state/`.
+Other flags: `--port`, `--grpc-port`, `--host`, `--base-url`, the address the agent card advertises, and `--public-url`, the address the browser reaches its sign-in pages at — a tunnel address, when the browser is on another machine. `--state-dir` moves the sign-in store from `.state/`.
 
 In `live` mode, `CIRCLECI_MCP_URL` in the environment is the MCP server's address, `https://mcp.circleci.com/v1/mcp` when unset; a proxy in front of CircleCI's server, such as a dev tool's, is set there. The sign-in still asks CircleCI for its hosted server.
 

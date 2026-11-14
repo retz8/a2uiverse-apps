@@ -5,7 +5,8 @@ then refresh — registered by a client ID metadata document or by dynamic regis
 (RFC 7591). The account comes from the upstream sign-in: the fake chooser in
 deterministic and stub mode, the app's vendor sign-in in live mode. The agent issues
 opaque tokens, an OpenID Connect ID token signed ES256, rotates refresh tokens, and
-revokes (RFC 7009). An A2A request without a live token it issued is answered 401.
+revokes (RFC 7009). An A2A call without a live token it issued is refused for sign-in by the
+kit's credential check (`gates`).
 
 Authlib's server core is framework-neutral; this module is its Starlette adapter. Its
 calls are synchronous, so everything a call needs from the network — a client ID
@@ -16,8 +17,6 @@ from __future__ import annotations
 
 import asyncio
 import dataclasses
-import functools
-import hmac
 import logging
 import secrets
 import time
@@ -31,9 +30,10 @@ from a2a.types import (
     APIKeySecurityScheme,
     AuthorizationCodeOAuthFlow,
     OAuth2SecurityScheme,
-    In,
     OAuthFlows,
+    SecurityRequirement,
     SecurityScheme,
+    StringList,
 )
 from authlib.common.security import is_secure_transport
 from authlib.oauth2 import AuthorizationServer
@@ -53,7 +53,6 @@ from authlib.oauth2.rfc7591 import ClientRegistrationEndpoint
 from authlib.oauth2.rfc7591.errors import InvalidClientMetadataError
 from authlib.oauth2.rfc7636 import CodeChallenge
 from authlib.oidc.core import grants as oidc_grants
-from starlette.datastructures import Headers
 from starlette.requests import Request
 from starlette.responses import JSONResponse, Response
 from starlette.routing import Route
@@ -123,17 +122,20 @@ def card_security(sign_in: SignIn, base_url: str, public_url: str | None = None)
         oauth2_metadata_url=f"{issuer}{METADATA_PATH}",
     )
     return (
-        {SCHEME_KEY: SecurityScheme(root=scheme)},
-        [{SCHEME_KEY: list(sign_in.first_sign_in_scopes)}],
+        {SCHEME_KEY: SecurityScheme(oauth2_security_scheme=scheme)},
+        [SecurityRequirement(schemes={SCHEME_KEY: StringList(list=sign_in.first_sign_in_scopes)})],
     )
 
 
 def api_key_card_security(sign_in: ApiKeySignIn):
-    """The card's `apiKey` scheme in a header, and the `security` requiring it."""
+    """The card's `apiKey` scheme in a header, and the requirement asking for it."""
     scheme = APIKeySecurityScheme(
-        in_=In.header, name=sign_in.header, description=sign_in.description
+        location="header", name=sign_in.header, description=sign_in.description
     )
-    return {API_KEY_SCHEME_KEY: SecurityScheme(root=scheme)}, [{API_KEY_SCHEME_KEY: []}]
+    return (
+        {API_KEY_SCHEME_KEY: SecurityScheme(api_key_security_scheme=scheme)},
+        [SecurityRequirement(schemes={API_KEY_SCHEME_KEY: StringList()})],
+    )
 
 
 # ---- Authlib's models --------------------------------------------------------------
@@ -505,7 +507,8 @@ class _Pending:
 
 @dataclass
 class SignInServer:
-    """The authorization server for one app run: its routes, its 401 gate."""
+    """The authorization server for one app run: its routes, and the accounts its tokens
+    sign in."""
 
     config: SignIn
     app_name: str
@@ -814,88 +817,3 @@ class SignInServer:
             Route(REVOKE_PATH, self.revoke, methods=["POST"]),
             Route(REGISTER_PATH, self.register, methods=["POST"]),
         ]
-
-
-# ---- the 401 gate ---------------------------------------------------------------------
-
-
-class _Principal:
-    """The Starlette user a2a-sdk's call context reads; the account rides `auth`."""
-
-    is_authenticated = True
-
-    def __init__(self, sub: str):
-        self.display_name = sub
-        self.identity = sub
-
-
-class SignInGate:
-    """An A2A request must carry a live token this agent issued (RFC 6750 §3).
-
-    The account it stands for rides the ASGI scope's `auth`, which a2a-sdk puts on the
-    call context the executor reads. The card and the sign-in routes stay open.
-    """
-
-    def __init__(self, app, sign_in: SignInServer, rpc_path: str = "/"):
-        self.app = app
-        self._sign_in = sign_in
-        self._rpc_path = rpc_path
-
-    async def __call__(self, scope, receive, send):
-        if scope["type"] == "http" and scope["method"] == "POST" and scope["path"] == self._rpc_path:
-            header = Headers(scope=scope).get("authorization", "")
-            scheme, _, token = header.partition(" ")
-            if scheme.lower() != "bearer" or not token.strip():
-                return await _unauthorized(None)(scope, receive, send)
-            account = self._sign_in.store.signed_in(token.strip(), self._sign_in.kind)
-            if account is not None:
-                account = await self._sign_in.fresh(account)
-            if account is None:
-                return await _unauthorized("invalid_token")(scope, receive, send)
-            scope["user"] = _Principal(account.sub)
-            scope["auth"] = dataclasses.replace(
-                account, end_sign_ins=functools.partial(self._sign_in.end_account, account.sub)
-            )
-        await self.app(scope, receive, send)
-
-
-class ApiKeyGate:
-    """An A2A request must carry one of the app's keys in its header; the account the key
-    signs in rides the ASGI scope's `auth`. The card stays open."""
-
-    def __init__(self, app, sign_in: ApiKeySignIn, rpc_path: str = "/"):
-        self.app = app
-        self._sign_in = sign_in
-        self._rpc_path = rpc_path
-
-    def _account(self, key: str) -> SignedInAccount | None:
-        for valid, account in self._sign_in.keys.items():
-            if hmac.compare_digest(valid.encode(), key.encode()):
-                return SignedInAccount(
-                    sub=account.id,
-                    account_id=account.id,
-                    claims=dict(account.claims),
-                    scopes=frozenset(),
-                )
-        return None
-
-    async def __call__(self, scope, receive, send):
-        if scope["type"] == "http" and scope["method"] == "POST" and scope["path"] == self._rpc_path:
-            key = Headers(scope=scope).get(self._sign_in.header, "").strip()
-            account = self._account(key) if key else None
-            if account is None:
-                response = JSONResponse({"error": "unauthorized"}, status_code=401)
-                return await response(scope, receive, send)
-            scope["user"] = _Principal(account.sub)
-            scope["auth"] = account
-        await self.app(scope, receive, send)
-
-
-def _unauthorized(error: str | None) -> Response:
-    # RFC 6750 §3.1: a request with no credentials gets no error code.
-    challenge = f'Bearer error="{error}"' if error else "Bearer"
-    return JSONResponse(
-        {"error": error or "unauthorized"},
-        status_code=401,
-        headers={"WWW-Authenticate": challenge},
-    )

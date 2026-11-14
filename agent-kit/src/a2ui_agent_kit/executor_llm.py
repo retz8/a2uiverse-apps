@@ -19,8 +19,7 @@ import time
 from a2a.server.agent_execution import AgentExecutor, RequestContext
 from a2a.server.events import EventQueue
 from a2a.server.tasks import TaskUpdater
-from a2a.types import AgentCard, Part, Task, TaskState, TextPart
-from a2a.utils import new_agent_parts_message, new_task
+from a2a.types import AgentCard, Part, TaskState
 from a2ui.constants import A2UI_CLIENT_DATA_MODEL_KEY, DEFAULT_PROGRESSIVE_KEYS
 from a2ui.core import A2uiParseError
 from a2ui.inference_formats import to_message_dicts
@@ -52,6 +51,7 @@ from a2ui_agent_kit.sign_in import (
     unbind_account,
 )
 from a2ui_agent_kit.versions import choose_version, extract_action, stamped_part
+from a2ui_agent_kit.wire import first_text, message_metadata, open_task, text_part
 
 logger = logging.getLogger(__name__)
 
@@ -83,13 +83,7 @@ FRESH_SURFACE = (
 
 
 def _extract_text(context: RequestContext) -> str:
-    message = context.message
-    if message and message.parts:
-        for part in message.parts:
-            root = part.root
-            if isinstance(root, TextPart) and root.text:
-                return root.text
-    return ""
+    return first_text(context.message) or ""
 
 
 def _frame_action_prompt(action: dict) -> str:
@@ -121,11 +115,7 @@ def _extract_client_data_model(context: RequestContext) -> dict | None:
     model — including local edits the agent never saw, like checkbox selections — to
     every message it sends, as metadata["a2uiClientDataModel"] = {version, surfaces}.
     """
-    message = context.message
-    metadata = getattr(message, "metadata", None) if message else None
-    if not isinstance(metadata, dict):
-        return None
-    payload = metadata.get(CLIENT_DATA_MODEL_KEY)
+    payload = message_metadata(context.message).get(CLIENT_DATA_MODEL_KEY)
     surfaces = payload.get("surfaces") if isinstance(payload, dict) else None
     if isinstance(surfaces, dict) and surfaces:
         return surfaces
@@ -390,25 +380,18 @@ class LlmAgentExecutor(AgentExecutor):
         # of a paint on the wire, and the fixture records which one it was.
         kind = "surface-action" if action is not None and not _extract_text(context) else "utterance"
 
-        task = context.current_task
-        if not task:
-            task = new_task(context.message)
-            await event_queue.enqueue_event(task)
-        updater = TaskUpdater(event_queue, task.id, task.context_id)
+        updater = await open_task(context, event_queue)
 
         if not prompt:
             # Neither usable text nor an A2UI action: apologize in plain text instead
             # of calling the model with an empty prompt (which the provider rejects).
             logger.info(
                 "execute: empty message (no text or action) for task=%s; apologizing",
-                task.id,
+                updater.task_id,
             )
             await updater.update_status(
-                TaskState.completed,
-                new_agent_parts_message(
-                    [Part(root=TextPart(text=APOLOGY_TEXT))], task.context_id, task.id
-                ),
-                final=True,
+                TaskState.TASK_STATE_COMPLETED,
+                updater.new_agent_message([text_part(APOLOGY_TEXT)])
             )
             return
 
@@ -417,31 +400,28 @@ class LlmAgentExecutor(AgentExecutor):
         pressed = action.get("surfaceId") if kind == "surface-action" else None
         turn = self._lines.choose(
             advertised_catalog_ids(context.message, version),
-            self._surfaces.catalog_of(task.context_id, pressed),
+            self._surfaces.catalog_of(updater.context_id, pressed),
         )
         if turn is None:
             # A client rendering neither of the app's ids gets no UI, and no model call.
             await updater.update_status(
-                TaskState.completed,
-                new_agent_parts_message(
-                    [Part(root=TextPart(text=self._lines.not_shown_text))], task.context_id, task.id
-                ),
-                final=True,
+                TaskState.TASK_STATE_COMPLETED,
+                updater.new_agent_message([text_part(self._lines.not_shown_text)])
             )
             return
         if turn.fresh_surface:
             prompt += "\n\n" + FRESH_SURFACE
 
         logger.info(
-            "execute start: task=%s context=%s prompt=%r", task.id, task.context_id, prompt
+            "execute start: task=%s context=%s prompt=%r", updater.task_id, updater.context_id, prompt
         )
         self._reset_failed_stream_dump()
         # One clock for the turn: the recorder's batches and the measurement's requests
         # offset from the same instant (a2uiverse task-17.3 decision 3).
         started = time.monotonic()
         self._recorder.start_turn(
-            context_id=task.context_id,
-            task_id=task.id,
+            context_id=updater.context_id,
+            task_id=updater.task_id,
             kind=kind,
             prompt=prompt,
             action=action,
@@ -457,36 +437,34 @@ class LlmAgentExecutor(AgentExecutor):
         try:
             fresh_from = pressed if turn.fresh_surface else None
             await self._attempts(
-                prompt, task, updater, turn, fresh_from, measuring, version=version
+                prompt, updater, turn, fresh_from, measuring, version=version
             )
         except AuthRequired as err:
             # A tool needed a scope the token lacks: the run ends here, asking for it, and
             # nothing follows. The hub sends the press again once it is granted, as a
             # fresh request (task-12.9 decision 6).
-            logger.info("task %s needs more access: %s", task.id, ", ".join(err.missing))
+            logger.info("task %s needs more access: %s", updater.task_id, ", ".join(err.missing))
             await updater.update_status(
-                TaskState.auth_required,
-                auth_required_message(err, task.context_id, task.id),
-                final=True,
+                TaskState.TASK_STATE_AUTH_REQUIRED,
+                auth_required_message(err, updater.context_id, updater.task_id)
             )
             self._recorder.end_turn(
-                "auth-required", task_id=task.id, requests=measuring.records()
+                "auth-required", task_id=updater.task_id, requests=measuring.records()
             )
         except VendorSignInEnded as err:
             # The vendor no longer takes the account's token: the run fails, and the
             # account's sign-ins end so the client's next request asks the person to sign
             # in again (task-12.10 decision 7).
-            logger.info("task %s: %s; the account's sign-ins end", task.id, err)
+            logger.info("task %s: %s; the account's sign-ins end", updater.task_id, err)
             account = current_account()
             if account is not None and account.end_sign_ins is not None:
                 await account.end_sign_ins()
             text = f"Your {self._app_name} sign-in has ended. Sign in again to continue."
             await updater.update_status(
-                TaskState.failed,
-                new_agent_parts_message([Part(root=TextPart(text=text))], task.context_id, task.id),
-                final=True,
+                TaskState.TASK_STATE_FAILED,
+                updater.new_agent_message([text_part(text)])
             )
-            self._recorder.end_turn("failed", task_id=task.id, requests=measuring.records())
+            self._recorder.end_turn("failed", task_id=updater.task_id, requests=measuring.records())
         except asyncio.CancelledError:
             # tasks/cancel: once `cancel` has answered `canceled`, the SDK cancels this
             # run. The CancelledError lands on whatever the attempt was awaiting — the
@@ -494,8 +472,8 @@ class LlmAgentExecutor(AgentExecutor):
             # stream, and with it ADK's run; no further attempt starts. An MCP call
             # already sent is abandoned: its server finishes it and the reply goes
             # nowhere (task-8.9 decision 2).
-            logger.info("task %s canceled", task.id)
-            self._recorder.end_turn("canceled", task_id=task.id, requests=measuring.records())
+            logger.info("task %s canceled", updater.task_id)
+            self._recorder.end_turn("canceled", task_id=updater.task_id, requests=measuring.records())
             raise
         finally:
             unbind_turn_line(bound)
@@ -504,7 +482,6 @@ class LlmAgentExecutor(AgentExecutor):
     async def _attempts(
         self,
         prompt: str,
-        task: Task,
         updater: TaskUpdater,
         turn: Turn,
         fresh_from: str | None = None,
@@ -548,7 +525,7 @@ class LlmAgentExecutor(AgentExecutor):
             logger.info("attempt %d: calling model", attempt)
             measuring.begin_attempt(attempt)
             stream = self._responder.stream(
-                prompt, correction, context_id=task.context_id
+                prompt, correction, context_id=updater.context_id
             )
             try:
                 async for token in stream:
@@ -582,8 +559,8 @@ class LlmAgentExecutor(AgentExecutor):
                         if parts:
                             self._recorder.record_batch(parts)
                             await updater.update_status(
-                                TaskState.working,
-                                new_agent_parts_message(parts, task.context_id, task.id),
+                                TaskState.TASK_STATE_WORKING,
+                                updater.new_agent_message(parts),
                             )
             except ModelTurnError as err:  # the turn errored out with zero output
                 logger.warning("attempt %d model turn failed: %s", attempt, err)
@@ -627,11 +604,11 @@ class LlmAgentExecutor(AgentExecutor):
             # skipped on a parser error — that attempt's tail is about to be retried.
             held = tag_filter.flush()
             if stream_error is None and held.strip():
-                held_parts = [Part(root=TextPart(text=held))]
+                held_parts = [text_part(held)]
                 self._recorder.record_batch(held_parts)
                 await updater.update_status(
-                    TaskState.working,
-                    new_agent_parts_message(held_parts, task.context_id, task.id),
+                    TaskState.TASK_STATE_WORKING,
+                    updater.new_agent_message(held_parts),
                 )
 
             payload = paint_in(_collect_payload(parser, accumulated), turn.catalog_id)
@@ -645,10 +622,10 @@ class LlmAgentExecutor(AgentExecutor):
                 logger.info(
                     "attempt %d: declared no-surface turn, task %s completed",
                     attempt,
-                    task.id,
+                    updater.task_id,
                 )
                 self._recorder.end_turn("completed", requests=measuring.records())
-                await updater.update_status(TaskState.completed, final=True)
+                await updater.update_status(TaskState.TASK_STATE_COMPLETED)
                 return
             try:
                 # A block that is not JSON leaves nothing for the kit's checks to read: the
@@ -692,7 +669,7 @@ class LlmAgentExecutor(AgentExecutor):
                 continue
 
             self._dump_surface(payload)
-            self._surfaces.record(task.context_id, payload)
+            self._surfaces.record(updater.context_id, payload)
             # What the client still lacks of the validated payload goes now: an update or a
             # delete to a surface painted in an earlier turn, whole, and what the stream did
             # not reach of the turn's own surfaces.
@@ -700,31 +677,30 @@ class LlmAgentExecutor(AgentExecutor):
                 unsent_parts = [stamped_part(m, version) for m in unsent]
                 self._recorder.record_batch(unsent_parts)
                 await updater.update_status(
-                    TaskState.working,
-                    new_agent_parts_message(unsent_parts, task.context_id, task.id),
+                    TaskState.TASK_STATE_WORKING,
+                    updater.new_agent_message(unsent_parts),
                 )
-            logger.info("attempt %d: surface valid, task %s completed", attempt, task.id)
+            logger.info("attempt %d: surface valid, task %s completed", attempt, updater.task_id)
             self._recorder.end_turn("completed", requests=measuring.records())
-            await updater.update_status(TaskState.completed, final=True)
+            await updater.update_status(TaskState.TASK_STATE_COMPLETED)
             return
 
         # Attempts exhausted -> clean up the half-baked surface (so the client is not
         # left with broken partial UI), then apologize, matched to the last failure kind.
-        await self._teardown(updater, task, stream_filter.created, version)
+        await self._teardown(updater, stream_filter.created, version)
         apology = UNAVAILABLE_TEXT if model_unavailable else APOLOGY_TEXT
-        apology_parts = [Part(root=TextPart(text=apology))]
+        apology_parts = [text_part(apology)]
         self._recorder.record_batch(apology_parts)
         self._recorder.end_turn(
             "unavailable" if model_unavailable else "apology", requests=measuring.records()
         )
         await updater.update_status(
-            TaskState.completed,
-            new_agent_parts_message(apology_parts, task.context_id, task.id),
-            final=True,
+            TaskState.TASK_STATE_COMPLETED,
+            updater.new_agent_message(apology_parts)
         )
 
     async def _teardown(
-        self, updater: TaskUpdater, task, surface_ids: set[str], version: str
+        self, updater: TaskUpdater, surface_ids: set[str], version: str
     ) -> None:
         """Deletes surfaces a failed attempt created, so the client is not left with
         a half-streamed zombie surface (and a retry can re-create the same id)."""
@@ -736,8 +712,8 @@ class LlmAgentExecutor(AgentExecutor):
         ]
         self._recorder.record_batch(parts)
         await updater.update_status(
-            TaskState.working,
-            new_agent_parts_message(parts, task.context_id, task.id),
+            TaskState.TASK_STATE_WORKING,
+            updater.new_agent_message(parts),
         )
 
     @staticmethod
@@ -776,13 +752,10 @@ class LlmAgentExecutor(AgentExecutor):
                         paint_metas[meta["surfaceId"]] = meta
                     parts.append(create_paint_meta_part(meta))
             if text:
-                parts.append(Part(root=TextPart(text=text)))
+                parts.append(text_part(text))
         return parts
 
-    async def cancel(
-        self, context: RequestContext, event_queue: EventQueue
-    ) -> Task | None:
+    async def cancel(self, context: RequestContext, event_queue: EventQueue) -> None:
         # A bare `canceled` (task-8.9 decision 3). The SDK then cancels the running
         # execute(), which stops the model (see there).
         await TaskUpdater(event_queue, context.task_id, context.context_id).cancel()
-        return None

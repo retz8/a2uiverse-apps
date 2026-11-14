@@ -20,8 +20,8 @@ import httpx
 import pytest
 import uvicorn
 from a2a.server.agent_execution import RequestContext
-from a2a.server.events import EventQueue
-from a2a.types import DataPart, Message, Part, Role, TaskState, TextPart
+from a2a.server.context import ServerCallContext
+from a2a.types import Message, Role, SendMessageRequest, TaskState
 from authlib.common.security import generate_token
 from authlib.integrations.httpx_client import AsyncOAuth2Client
 from joserfc import jwt
@@ -45,6 +45,7 @@ from a2ui_agent_kit.sign_in import (
     unbind_account,
 )
 from a2ui_agent_kit.versions import FIXTURE_VERSION
+from a2ui_agent_kit.wire import part_data, text_part
 from tests.conftest import make_config
 
 REDIRECT = "http://localhost:8765/callback"
@@ -275,14 +276,16 @@ def _result(response: httpx.Response) -> dict:
 async def test_the_card_declares_one_oauth2_scheme_and_the_first_sign_in(tmp_path):
     async with running(tmp_path) as agent:
         card = (await agent.http.get("/.well-known/agent-card.json")).json()
-    scheme = card["securitySchemes"]["signIn"]
-    assert scheme["type"] == "oauth2"
+    # Read in A2A 1.0's shape, as the platform reads the card (a2uiverse task-20.3).
+    scheme = card["securitySchemes"]["signIn"]["oauth2SecurityScheme"]
     flow = scheme["flows"]["authorizationCode"]
     assert flow["authorizationUrl"] == f"{agent.base}/oauth/authorize"
     assert flow["tokenUrl"] == flow["refreshUrl"] == f"{agent.base}/oauth/token"
     assert flow["scopes"] == SCOPES
+    # The card says what it said before A2A 1.0 (a2uiverse task-20.9 decision 13).
+    assert "pkceRequired" not in flow
     assert scheme["oauth2MetadataUrl"] == f"{agent.base}/.well-known/oauth-authorization-server"
-    assert card["security"] == [{"signIn": ["issues.read"]}]
+    assert card["securityRequirements"] == [{"schemes": {"signIn": {"list": ["issues.read"]}}}]
 
 
 async def test_the_metadata_advertises_openid_both_registrations_and_s256(tmp_path):
@@ -304,8 +307,8 @@ async def test_the_pages_the_browser_opens_follow_the_public_address(tmp_path):
         card = (await agent.http.get("/.well-known/agent-card.json")).json()
         meta = await agent.metadata()
     assert agent.public != agent.base
-    assert card["url"] == agent.base
-    scheme = card["securitySchemes"]["signIn"]
+    assert card["supportedInterfaces"][0]["url"] == agent.base
+    scheme = card["securitySchemes"]["signIn"]["oauth2SecurityScheme"]
     flow = scheme["flows"]["authorizationCode"]
     assert flow["authorizationUrl"] == f"{agent.public}/oauth/authorize"
     assert flow["tokenUrl"] == flow["refreshUrl"] == f"{agent.base}/oauth/token"
@@ -340,7 +343,8 @@ async def test_an_app_without_sign_in_is_unchanged(tmp_path):
         agent = Agent(f"http://127.0.0.1:{port}", httpx.AsyncClient(base_url=f"http://127.0.0.1:{port}"), None)
         async with agent.http:
             card = (await agent.http.get("/.well-known/agent-card.json")).json()
-            assert "securitySchemes" not in card and "security" not in card
+            assert "securitySchemes" not in card and "securityRequirements" not in card
+            assert "security" not in card
             assert (await agent.http.get("/oauth/authorize")).status_code == 404
             result = _result(await agent.send("list_issues", None))
             assert result["status"]["state"] == "completed"
@@ -536,7 +540,11 @@ async def test_an_action_needing_a_scope_ends_the_run_asking_for_it(tmp_path):
     parts = status["message"]["parts"]
     assert [p["kind"] for p in parts] == ["text", "data"]
     assert parts[0]["text"] == "More access is needed: Close your issues."
-    assert parts[1]["data"] == {"security": [{"signIn": ["issues.write"]}]}
+    # The request in A2A 1.0's requirement shape, to a caller on A2A 0.3 too (a2uiverse
+    # task-20.9 decision 3).
+    assert parts[1]["data"] == {
+        "securityRequirements": [{"schemes": {"signIn": {"list": ["issues.write"]}}}]
+    }
 
 
 async def test_escalation_binds_the_account_and_grants_the_union(tmp_path):
@@ -601,19 +609,21 @@ async def test_the_llm_executor_ends_a_run_at_the_scope_boundary(tmp_path):
     executor = LlmAgentExecutor(_ScopeBoundaryResponder(), config)
     account = SignedInAccount("sub-1", "ada", {}, frozenset({"issues.read"}))
     message = Message(
-        message_id="m", role=Role.user, parts=[Part(root=TextPart(text="close #4"))], kind="message"
+        message_id="m", role=Role.ROLE_USER, parts=[text_part("close #4")]
     )
-    context = RequestContext(request=SimpleNamespace(message=message, configuration=None, metadata=None))
-    context._call_context = SimpleNamespace(state={"auth": account}, activated_extensions=set(), requested_extensions=set())
-    queue = EventQueue()
+    context = RequestContext(
+        ServerCallContext(state={"auth": account}),
+        SendMessageRequest(message=message),
+        task_id="t1",
+        context_id="c1",
+    )
+    queue = _Events()
     await executor.execute(context, queue)
-    events = []
-    while not queue.queue.empty():
-        events.append(await queue.dequeue_event(no_wait=True))
+    events = queue.events
     final = events[-1]
-    assert final.status.state == TaskState.auth_required and final.final
-    data = [p.root.data for p in final.status.message.parts if isinstance(p.root, DataPart)]
-    assert data == [{"security": [{"signIn": ["issues.write"]}]}]
+    assert final.status.state == TaskState.TASK_STATE_AUTH_REQUIRED
+    data = [part_data(p) for p in final.status.message.parts if p.HasField("data")]
+    assert data == [{"securityRequirements": [{"schemes": {"signIn": {"list": ["issues.write"]}}}]}]
 
 
 async def test_a_cut_off_run_is_kept_out_of_the_conversation(tmp_path):
@@ -787,3 +797,13 @@ async def test_a_token_from_one_mode_means_nothing_in_the_other(tmp_path):
     async with running(tmp_path, "live", config=config) as agent:
         assert (await agent.send("list_issues", token["access_token"])).status_code == 401
         assert (await agent.refresh(client_id, token["refresh_token"])).status_code == 400
+
+
+class _Events:
+    """An event queue that keeps what the executor enqueues."""
+
+    def __init__(self):
+        self.events = []
+
+    async def enqueue_event(self, event):
+        self.events.append(event)

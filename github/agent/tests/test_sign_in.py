@@ -18,7 +18,7 @@ async def test_the_card_asks_to_read_first_in_the_customers_words(tmp_path):
         card = await agent.card()
     scheme = card["securitySchemes"]["signIn"]
     assert scheme["flows"]["authorizationCode"]["scopes"] == SCOPES
-    assert card["security"] == [{"signIn": ["github.read"]}]
+    assert card["securityRequirements"] == [{"schemes": {"signIn": {"list": ["github.read"]}}}]
 
 
 async def test_a_signed_in_account_is_answered_and_a_write_asks_for_more_access(tmp_path):
@@ -29,10 +29,10 @@ async def test_a_signed_in_account_is_answered_and_a_write_asks_for_more_access(
         write = await agent.send_action("approve", token["access_token"])
         more = await agent.sign_in("retz8", ["github.write"], login_hint=await agent.sub(token))
         allowed = await agent.send_action("approve", more["access_token"])
-    assert task_state(read) == "completed"
-    assert task_state(write) == "auth-required"
-    assert requested_access(write) == [[{"signIn": ["github.write"]}]]
-    assert task_state(allowed) == "completed"
+    assert task_state(read) == "TASK_STATE_COMPLETED"
+    assert task_state(write) == "TASK_STATE_AUTH_REQUIRED"
+    assert requested_access(write) == [[{"schemes": {"signIn": {"list": ["github.write"]}}}]]
+    assert task_state(allowed) == "TASK_STATE_COMPLETED"
 
 
 def test_live_mode_signs_in_with_the_publishers_oauth_app_asking_for_repo_and_notifications():

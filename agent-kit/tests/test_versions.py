@@ -1,6 +1,6 @@
 """The per-app version set and what it drives (a2uiverse task-19.4): the config, the card, the
-version each request is answered in, the stamp at send, the actions taken, the entitlement
-read and the recorder — over the three sets, v0.9 only, v0.9.1 only and both.
+version each request is answered in, the stamp and the mark at send, the actions taken, the
+entitlement read and the recorder — over the three sets, v0.9 only, v0.9.1 only and both.
 """
 
 from __future__ import annotations
@@ -9,8 +9,8 @@ import json
 from pathlib import Path
 
 import pytest
-from a2a.types import DataPart, Message, Part, Role, TextPart
-from a2ui.a2a.parts import A2UI_MIME_TYPE, DEPRECATED_A2UI_MIME_TYPE
+from a2a.types import Message, Part, Role
+from google.protobuf.json_format import MessageToDict
 from starlette.testclient import TestClient
 
 from a2ui_agent_kit.catalog_lines import advertised_catalog_ids, catalog_lines
@@ -20,7 +20,14 @@ from a2ui_agent_kit.paint_meta import PAINT_META_MIME
 from a2ui_agent_kit.recorder import SessionRecorder
 from a2ui_agent_kit.responses import fixture_responder
 from a2ui_agent_kit.server import build_agent_card, build_app
-from a2ui_agent_kit.versions import A2UI_VERSIONS, EXTENSION_URIS, stamped_part
+from a2ui_agent_kit.versions import (
+    A2UI_MIME_TYPE,
+    A2UI_VERSIONS,
+    DEPRECATED_A2UI_MIME_TYPE,
+    EXTENSION_URIS,
+    stamped_part,
+)
+from a2ui_agent_kit.wire import data_part, part_data, part_text, plain, text_part
 
 from .conftest import FIXTURES_DIR, make_config
 from .test_catalog_lines import NEW_ID, OLD_ID, _two_line_config
@@ -28,6 +35,8 @@ from .test_llm_executor import _BAD_SURFACE_S1, _FakeResponder, _valid_surface_t
 
 V09_URI = "https://a2ui.org/a2a-extension/a2ui/v0.9"
 V091_URI = "https://a2ui.org/a2a-extension/a2ui/v0.9.1"
+BASE = "http://localhost:19999"
+GRPC = "localhost:19998"
 
 SETS = {"v0.9": ["v0.9"], "v0.9.1": ["v0.9.1"], "both": ["v0.9", "v0.9.1"]}
 # The extension URIs a request names: the hub names both.
@@ -35,20 +44,20 @@ REQUESTS = {"both": [V09_URI, V091_URI], "v0.9": [V09_URI], "v0.9.1": [V091_URI]
 # The MIME type upstream's part helper gives each version.
 MIME = {"v0.9": DEPRECATED_A2UI_MIME_TYPE, "v0.9.1": A2UI_MIME_TYPE}
 
-# Each set's request answered: the version landed on and the URI A2A names back as activated.
+# Each set's request answered: the version landed on.
 CHOICES = [
-    ("v0.9", "both", "v0.9", V09_URI),
-    ("v0.9", "v0.9", "v0.9", V09_URI),
-    ("v0.9", "v0.9.1", "v0.9", None),
-    ("v0.9", "none", "v0.9", None),
-    ("v0.9.1", "both", "v0.9.1", V091_URI),
-    ("v0.9.1", "v0.9", "v0.9.1", None),
-    ("v0.9.1", "v0.9.1", "v0.9.1", V091_URI),
-    ("v0.9.1", "none", "v0.9.1", None),
-    ("both", "both", "v0.9.1", V091_URI),
-    ("both", "v0.9", "v0.9", V09_URI),
-    ("both", "v0.9.1", "v0.9.1", V091_URI),
-    ("both", "none", "v0.9.1", None),
+    ("v0.9", "both", "v0.9"),
+    ("v0.9", "v0.9", "v0.9"),
+    ("v0.9", "v0.9.1", "v0.9"),
+    ("v0.9", "none", "v0.9"),
+    ("v0.9.1", "both", "v0.9.1"),
+    ("v0.9.1", "v0.9", "v0.9.1"),
+    ("v0.9.1", "v0.9.1", "v0.9.1"),
+    ("v0.9.1", "none", "v0.9.1"),
+    ("both", "both", "v0.9.1"),
+    ("both", "v0.9", "v0.9"),
+    ("both", "v0.9.1", "v0.9.1"),
+    ("both", "none", "v0.9.1"),
 ]
 # One request per set as the hub sends it, and the both app asked by an upstream v0.9 client:
 # every version a set can land on.
@@ -145,11 +154,18 @@ class _Ctx:
     def __init__(self, message: Message, requested: list[str] = ()):
         self.message = message
         self.current_task = None
+        self.task_id = "t1"
+        self.context_id = message.context_id or "c1"
         self.requested_extensions = set(requested)
-        self.activated: set[str] = set()
 
-    def add_activated_extension(self, uri: str) -> None:
-        self.activated.add(uri)
+
+class _Sent:
+    """A data part as it went out, made plain."""
+
+    def __init__(self, part: Part):
+        self.data = part_data(part)
+        self.metadata = plain(part.metadata)
+        self.media_type = part.media_type
 
 
 class _Queue:
@@ -162,26 +178,27 @@ class _Queue:
     def parts(self) -> list[Part]:
         found = []
         for event in self.events:
-            message = getattr(getattr(event, "status", None), "message", None)
-            found.extend(getattr(message, "parts", None) or [])
+            status = getattr(event, "status", None)
+            if status is not None and status.HasField("message"):
+                found.extend(status.message.parts)
         return found
 
-    def a2ui_parts(self) -> list[DataPart]:
+    def a2ui_parts(self) -> list[_Sent]:
         return [
-            p.root
+            _Sent(p)
             for p in self.parts()
-            if isinstance(p.root, DataPart) and "paintMeta" not in p.root.data
+            if isinstance(part_data(p), dict) and "paintMeta" not in part_data(p)
         ]
 
     def texts(self) -> list[str]:
-        return [p.root.text for p in self.parts() if isinstance(p.root, TextPart)]
+        return [text for p in self.parts() if (text := part_text(p)) is not None]
 
 
 def _text(text: str = "What needs my attention today?", metadata=None) -> Message:
     return Message(
         message_id="m1",
-        role=Role.user,
-        parts=[Part(root=TextPart(text=text))],
+        role=Role.ROLE_USER,
+        parts=[text_part(text)],
         metadata=metadata,
         context_id="c1",
     )
@@ -190,8 +207,8 @@ def _text(text: str = "What needs my attention today?", metadata=None) -> Messag
 def _action(name: str, stamp: str) -> Message:
     return Message(
         message_id="m2",
-        role=Role.user,
-        parts=[Part(root=DataPart(data={"version": stamp, "action": {"name": name, "surfaceId": "s1"}}))],
+        role=Role.ROLE_USER,
+        parts=[data_part({"version": stamp, "action": {"name": name, "surfaceId": "s1"}})],
         context_id="c1",
     )
 
@@ -201,15 +218,13 @@ def _deterministic(config) -> DeterministicAgentExecutor:
         config.build_response,
         config.build_text_response,
         lines=catalog_lines(config),
-        card=build_agent_card(config, "http://localhost:19999"),
+        card=build_agent_card(config, BASE, grpc_address=GRPC),
         versions=config.a2ui_versions,
     )
 
 
 def _llm(config, responder, **kwargs) -> LlmAgentExecutor:
-    return LlmAgentExecutor(
-        responder, config, card=build_agent_card(config, "http://localhost:19999"), **kwargs
-    )
+    return LlmAgentExecutor(responder, config, card=build_agent_card(config, BASE, grpc_address=GRPC), **kwargs)
 
 
 def _model_text(text: str, version: str) -> str:
@@ -224,11 +239,14 @@ def _other(version: str) -> str:
     return next(v for v in A2UI_VERSIONS if v != version)
 
 
-def _assert_stamped(parts: list[DataPart], version: str) -> None:
+def _assert_stamped(parts: list[_Sent], version: str) -> None:
+    # Stamped `version` and marked by upstream's mapping in both fields (a2uiverse task-20.9
+    # decision 1).
     assert parts
     for part in parts:
         assert part.data["version"] == version
         assert part.metadata == {"mimeType": MIME[version]}
+        assert part.media_type == MIME[version]
 
 
 # ---- the config --------------------------------------------------------------------------
@@ -279,75 +297,102 @@ def test_the_card_is_the_sdks_fixture_for_its_set(tmp_path, name):
     catalog_path.write_text(json.dumps(catalog), encoding="utf-8")
     config = make_config("basic", tmp_path, catalog_path=catalog_path, a2ui_versions=SETS[name])
 
-    card = build_agent_card(config, "http://localhost:19999")
+    card = build_agent_card(config, BASE, grpc_address=GRPC)
 
-    built = [
-        e.model_dump(mode="json", by_alias=True, exclude_none=True)
-        for e in card.capabilities.extensions
-    ]
+    built = [MessageToDict(e) for e in card.capabilities.extensions]
     assert built == extensions
 
 
 # ---- the choice --------------------------------------------------------------------------
 
 
-def _send(client: TestClient, method: str, message: dict, requested: list[str]):
-    headers = {"X-A2A-Extensions": ", ".join(requested)} if requested else {}
-    rpc = {"jsonrpc": "2.0", "id": "1", "method": method, "params": {"message": message}}
-    return client.post("/", json=rpc, headers=headers)
-
-
-_WIRE_TEXT = {
-    "kind": "message",
-    "messageId": "m1",
-    "role": "user",
-    "parts": [{"kind": "text", "text": "What needs my attention today?"}],
+# A request as each JSON-RPC wire writes it: A2A 1.0's, and A2A 0.3's through the Python A2A
+# SDK's own 0.3 layer. Each names the extensions in its own header.
+WIRES = {
+    "1.0": {
+        "send": "SendMessage",
+        "stream": "SendStreamingMessage",
+        "header": "A2A-Extensions",
+        "message": {
+            "messageId": "m1",
+            "role": "ROLE_USER",
+            "parts": [{"text": "What needs my attention today?"}],
+        },
+    },
+    "0.3": {
+        "send": "message/send",
+        "stream": "message/stream",
+        "header": "X-A2A-Extensions",
+        "message": {
+            "kind": "message",
+            "messageId": "m1",
+            "role": "user",
+            "parts": [{"kind": "text", "text": "What needs my attention today?"}],
+        },
+    },
 }
 
 
-@pytest.mark.parametrize(("name", "request_name", "landed", "activated"), CHOICES)
-def test_a_served_request_lands_on_its_version_and_names_it_back(
-    tmp_path, name, request_name, landed, activated
+def _send(client: TestClient, wire: str, method: str, requested: list[str]):
+    spoken = WIRES[wire]
+    headers = {"A2A-Version": wire}
+    if requested:
+        headers[spoken["header"]] = ", ".join(requested)
+    rpc = {
+        "jsonrpc": "2.0",
+        "id": "1",
+        "method": spoken[method],
+        "params": {"message": spoken["message"]},
+    }
+    return client.post("/", json=rpc, headers=headers)
+
+
+def _status_message_parts(result: dict) -> list[dict]:
+    """The parts of the status message an answer or a stream event carries, on either wire."""
+    status = (result.get("task") or result.get("statusUpdate") or result).get("status") or {}
+    return (status.get("message") or {}).get("parts", [])
+
+
+def _stamps(parts: list[dict]) -> set[str]:
+    return {p["data"]["version"] for p in parts if isinstance(p.get("data"), dict) and "version" in p["data"]}
+
+
+@pytest.mark.parametrize("wire", WIRES)
+@pytest.mark.parametrize(("name", "request_name", "landed"), CHOICES)
+def test_a_served_request_lands_on_its_version_and_no_response_names_it(
+    tmp_path, wire, name, request_name, landed
 ):
+    # a2a-sdk 1.x gives an executor no way to mark an extension activated: the stamp alone
+    # carries the choice (a2uiverse task-20.9 decision 5).
     app = build_app(_config(tmp_path, SETS[name]), "deterministic", "localhost", 19999)
     with TestClient(app) as client:
-        response = _send(client, "message/send", _WIRE_TEXT, REQUESTS[request_name])
+        response = _send(client, wire, "send", REQUESTS[request_name])
 
-    assert response.headers.get("X-A2A-Extensions") == activated
-    parts = response.json()["result"]["status"]["message"]["parts"]
-    stamps = {p["data"]["version"] for p in parts if p["kind"] == "data"}
-    assert stamps == {landed}
+    assert "A2A-Extensions" not in response.headers
+    assert "X-A2A-Extensions" not in response.headers
+    assert _stamps(_status_message_parts(response.json()["result"])) == {landed}
 
 
-@pytest.mark.parametrize(("name", "request_name", "landed", "_activated"), CHOICES)
-def test_a_streamed_request_lands_on_its_version(tmp_path, name, request_name, landed, _activated):
-    # The hub streams. A2A writes a stream's response headers before the agent runs, so the
-    # activation header is not on a stream; the stamp is.
+@pytest.mark.parametrize("wire", WIRES)
+@pytest.mark.parametrize(("name", "request_name", "landed"), CHOICES)
+def test_a_streamed_request_lands_on_its_version(tmp_path, wire, name, request_name, landed):
     app = build_app(_config(tmp_path, SETS[name]), "deterministic", "localhost", 19999)
     with TestClient(app) as client:
-        response = _send(client, "message/stream", _WIRE_TEXT, REQUESTS[request_name])
+        response = _send(client, wire, "stream", REQUESTS[request_name])
 
     events = [json.loads(line[5:]) for line in response.text.splitlines() if line.startswith("data:")]
-    stamps = {
-        p["data"]["version"]
-        for e in events
-        for p in ((e["result"].get("status") or {}).get("message") or {}).get("parts", [])
-        if p["kind"] == "data"
-    }
+    stamps = set().union(*(_stamps(_status_message_parts(e["result"])) for e in events))
     assert stamps == {landed}
 
 
-@pytest.mark.parametrize(("name", "request_name", "landed", "activated"), CHOICES)
-async def test_the_model_path_lands_on_its_version_and_registers_it(
-    tmp_path, name, request_name, landed, activated
-):
+@pytest.mark.parametrize(("name", "request_name", "landed"), CHOICES)
+async def test_the_model_path_lands_on_its_version(tmp_path, name, request_name, landed):
     config = _config(tmp_path, SETS[name])
     context = _Ctx(_text(), REQUESTS[request_name])
     queue = _Queue()
 
     await _llm(config, _FakeResponder([_valid_surface_text()])).execute(context, queue)
 
-    assert context.activated == ({activated} if activated else set())
     assert {p.data["version"] for p in queue.a2ui_parts()} == {landed}
 
 
@@ -370,9 +415,13 @@ async def test_a_paint_meta_part_is_left_as_it_is(tmp_path, name, request_name, 
     context = _Ctx(_action("open", "v0.9"), REQUESTS[request_name])
     await _deterministic(_config(tmp_path, SETS[name])).execute(context, queue)
 
-    metas = [p.root for p in queue.parts() if "paintMeta" in p.root.data]
-    assert [(m.data, m.metadata) for m in metas] == [
-        ({"paintMeta": {"surfaceId": "test-1", "title": "Digest"}}, {"mimeType": PAINT_META_MIME})
+    metas = [_Sent(p) for p in queue.parts() if "paintMeta" in (part_data(p) or {})]
+    assert [(m.data, m.metadata, m.media_type) for m in metas] == [
+        (
+            {"paintMeta": {"surfaceId": "test-1", "title": "Digest"}},
+            {"mimeType": PAINT_META_MIME},
+            PAINT_META_MIME,
+        )
     ]
     _assert_stamped(queue.a2ui_parts(), landed)
 
@@ -449,8 +498,9 @@ async def test_the_teardown_delete_goes_out_in_the_version_landed_on(
 def test_the_stamp_writes_over_any_version_and_leaves_the_message_as_it_was():
     message = {"version": "v0.9", "deleteSurface": {"surfaceId": "s"}}
     part = stamped_part(message, "v0.9.1")
-    assert part.root.data == {"version": "v0.9.1", "deleteSurface": {"surfaceId": "s"}}
-    assert part.root.metadata == {"mimeType": A2UI_MIME_TYPE}
+    assert part_data(part) == {"version": "v0.9.1", "deleteSurface": {"surfaceId": "s"}}
+    assert plain(part.metadata) == {"mimeType": A2UI_MIME_TYPE}
+    assert part.media_type == A2UI_MIME_TYPE
     assert message == {"version": "v0.9", "deleteSurface": {"surfaceId": "s"}}
 
 

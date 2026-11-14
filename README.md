@@ -15,7 +15,7 @@ cp .env.example .env                        # the Gemini key the model modes nee
 uv run python -m app --mode deterministic   # canned answers, no model, port 11005
 ```
 
-Every agent runs in three modes, on the same port:
+Every agent runs in three modes, on the same ports: JSON-RPC and HTTP+JSON on its port, gRPC on its gRPC port, each at A2A 1.0 and 0.3.
 
 | Mode            | What answers                            | Needs                                                                      |
 | --------------- | --------------------------------------- | -------------------------------------------------------------------------- |
@@ -23,21 +23,21 @@ Every agent runs in three modes, on the same port:
 | `stub`          | the model, over canned data             | a Gemini key                                                               |
 | `live`          | the model, over the vendor's MCP server | a Gemini key; for GitHub, Gmail and Calendar, an OAuth client you register |
 
-The canned data is recorded from live runs, not written by hand. Other flags: `--port`, `--host`, `--base-url` (the address the agent card advertises), `--public-url` (the address the browser reaches the sign-in pages at) and `--state-dir` (where the sign-in store lives, in place of the agent's `.state/`).
+The canned data is recorded from live runs, not written by hand. Other flags: `--port`, `--grpc-port`, `--host`, `--base-url` (the address the agent card advertises), `--public-url` (the address the browser reaches the sign-in pages at) and `--state-dir` (where the sign-in store lives, in place of the agent's `.state/`).
 
 From the `a2uiverse` repo, the launcher runs them all: `pnpm dev:all` for the apps and A2UIVerse together, `pnpm dev:agents` for the apps alone installed into a running A2UIVerse, `--only gmail,linear --mode live` for two apps live, `--tier mocks` for the two stores in place of the apps, `--publish --leave-uninstalled shop-b` for Shop B in the Store but not installed, for a question to offer it.
 
 ## Apps
 
-| App                          | Answers about                                         | Catalog                                          | A2UI versions    | Port    |
-| ---------------------------- | ----------------------------------------------------- | ------------------------------------------------ | ---------------- | ------- |
-| [GitHub](github/)            | repositories, issues, pull requests and notifications | Primer, GitHub's own design system               | `v0.9.1`         | `11001` |
-| [Gmail](gmail/)              | your mail                                             | Gmail's own components in its Material 3 look    | `v0.9`           | `11002` |
-| [Google Calendar](calendar/) | your calendar                                         | Calendar's own components in its Material 3 look | `v0.9`, `v0.9.1` | `11003` |
-| [CircleCI](circleci/)        | your pipelines                                        | CircleCI's own components in its look            | `v0.9`, `v0.9.1` | `11004` |
-| [Linear](linear/)            | your issues                                           | Linear's own components in its look              | `v0.9`           | `11005` |
-| [Shop A](mocks/shop-a/)      | a mock camera store, Aperture & Co                    | the basic catalog, themed                        | `v0.9`           | `12001` |
-| [Shop B](mocks/shop-b/)      | a mock camera store, Northlight                       | the basic catalog, themed                        | `v0.9.1`         | `12002` |
+| App                          | Answers about                                         | Catalog                                          | A2UI versions    | Port    | gRPC port |
+| ---------------------------- | ----------------------------------------------------- | ------------------------------------------------ | ---------------- | ------- | --------- |
+| [GitHub](github/)            | repositories, issues, pull requests and notifications | Primer, GitHub's own design system               | `v0.9.1`         | `11001` | `11101`   |
+| [Gmail](gmail/)              | your mail                                             | Gmail's own components in its Material 3 look    | `v0.9`           | `11002` | `11102`   |
+| [Google Calendar](calendar/) | your calendar                                         | Calendar's own components in its Material 3 look | `v0.9`, `v0.9.1` | `11003` | `11103`   |
+| [CircleCI](circleci/)        | your pipelines                                        | CircleCI's own components in its look            | `v0.9`, `v0.9.1` | `11004` | `11104`   |
+| [Linear](linear/)            | your issues                                           | Linear's own components in its look              | `v0.9`           | `11005` | `11105`   |
+| [Shop A](mocks/shop-a/)      | a mock camera store, Aperture & Co                    | the basic catalog, themed                        | `v0.9`           | `12001` | `12101`   |
+| [Shop B](mocks/shop-b/)      | a mock camera store, Northlight                       | the basic catalog, themed                        | `v0.9.1`         | `12002` | `12102`   |
 
 Every vendor app is backed by its vendor's official MCP server. Each app's README says what it covers, and its agent's README what it can and can't do.
 

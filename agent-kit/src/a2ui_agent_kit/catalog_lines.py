@@ -19,6 +19,7 @@ from a2ui.constants import A2UI_CLIENT_CAPABILITIES_KEY
 from a2ui_agent_kit.catalog import CatalogContext, catalog_context
 from a2ui_agent_kit.config import AgentAppConfig, CatalogLine
 from a2ui_agent_kit.versions import A2UI_VERSIONS
+from a2ui_agent_kit.wire import message_metadata
 
 # The capabilities' field naming the ids a client renders; the SDK holds no constant for it.
 SUPPORTED_CATALOG_IDS_KEY = "supportedCatalogIds"
@@ -118,10 +119,7 @@ def advertised_catalog_ids(message, version: str) -> list[str] | None:
     The ids are read under `version`, the one the request is answered in, first, then under
     the other version's key, then flat (a2uiverse task-19.4).
     """
-    metadata = getattr(message, "metadata", None) if message else None
-    capabilities = (
-        metadata.get(A2UI_CLIENT_CAPABILITIES_KEY) if isinstance(metadata, dict) else None
-    )
+    capabilities = message_metadata(message).get(A2UI_CLIENT_CAPABILITIES_KEY)
     if not isinstance(capabilities, dict):
         return None
     keys = (version, *(other for other in A2UI_VERSIONS if other != version))

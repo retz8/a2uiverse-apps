@@ -3,21 +3,21 @@
 import json
 
 import pytest
-from a2a.types import Part, TextPart
-from a2ui.a2a.parts import create_a2ui_part
+from a2a.types import Part
 
 from a2ui_agent_kit.recorder import NullRecorder, SessionRecorder, create_recorder
+from a2ui_agent_kit.versions import stamped_part
+from a2ui_agent_kit.wire import text_part
 
 
 def _a2ui_part(surface_id: str) -> Part:
-    return create_a2ui_part(
-        {"version": "v0.9", "createSurface": {"surfaceId": surface_id, "catalogId": "c"}},
-        version="v0.9",
+    return stamped_part(
+        {"version": "v0.9", "createSurface": {"surfaceId": surface_id, "catalogId": "c"}}, "v0.9"
     )
 
 
 def _text_part(text: str) -> Part:
-    return Part(root=TextPart(text=text))
+    return text_part(text)
 
 
 def test_create_recorder_without_a_dir_is_a_null_recorder():

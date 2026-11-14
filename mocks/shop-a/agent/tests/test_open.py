@@ -9,6 +9,6 @@ from app.config import CONFIG
 async def test_shop_a_asks_for_no_sign_in_and_answers_without_one():
     async with serving(CONFIG) as agent:
         card = await agent.card()
-        answer = await agent.send({"kind": "text", "text": "What cameras do you have?"})
-    assert "securitySchemes" not in card and "security" not in card
-    assert task_state(answer) == "completed"
+        answer = await agent.send({"text": "What cameras do you have?"})
+    assert "securitySchemes" not in card and "securityRequirements" not in card
+    assert task_state(answer) == "TASK_STATE_COMPLETED"

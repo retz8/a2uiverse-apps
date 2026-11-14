@@ -20,7 +20,7 @@ async def test_the_card_asks_to_see_the_inbox_first_in_the_customers_words(tmp_p
         card = await agent.card()
     assert card["securitySchemes"]["signIn"]["flows"]["authorizationCode"]["scopes"] == SCOPES
     assert SCOPES["inbox"] == "See your inbox"
-    assert card["security"] == [{"signIn": ["inbox"]}]
+    assert card["securityRequirements"] == [{"schemes": {"signIn": {"list": ["inbox"]}}}]
 
 
 async def test_opening_a_message_asks_to_read_your_email(tmp_path):
@@ -31,12 +31,12 @@ async def test_opening_a_message_asks_to_read_your_email(tmp_path):
         more = await agent.sign_in("you", ["messages"], login_hint=await agent.sub(token))
         read = await agent.send_action("open-thread", more["access_token"])
         draft = await agent.send_action("confirm-draft", more["access_token"])
-    assert task_state(inbox) == "completed"
-    assert task_state(opened) == "auth-required"
-    assert requested_access(opened) == [[{"signIn": ["messages"]}]]
+    assert task_state(inbox) == "TASK_STATE_COMPLETED"
+    assert task_state(opened) == "TASK_STATE_AUTH_REQUIRED"
+    assert requested_access(opened) == [[{"schemes": {"signIn": {"list": ["messages"]}}}]]
     assert SCOPES["messages"] == "Read your email"
-    assert task_state(read) == "completed"
-    assert requested_access(draft) == [[{"signIn": ["organize"]}]]
+    assert task_state(read) == "TASK_STATE_COMPLETED"
+    assert requested_access(draft) == [[{"schemes": {"signIn": {"list": ["organize"]}}}]]
 
 
 async def test_each_fake_account_signs_in_to_its_own_mail(tmp_path):
@@ -47,7 +47,7 @@ async def test_each_fake_account_signs_in_to_its_own_mail(tmp_path):
         for account in ("you", "personal"):
             token = await agent.sign_in(account, ["inbox"])
             answer = await agent.send_text("What needs my attention?", token["access_token"])
-            assert task_state(answer) == "completed"
+            assert task_state(answer) == "TASK_STATE_COMPLETED"
             painted[account] = json.dumps(answer.json())
     assert painted["you"] != painted["personal"]
     assert "Mei Silva" in painted["you"] and "Mei Silva" not in painted["personal"]

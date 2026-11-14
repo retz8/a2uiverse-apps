@@ -1,6 +1,6 @@
 # Google Calendar agent
 
-An A2A agent for Google Calendar. It answers schedule questions by painting A2UI surfaces with [`calendar-catalog`](../calendar-catalog/), Calendar's own components in Material 3's design language. It runs on port **11003** and is built on [`a2ui-agent-kit`](../../agent-kit/).
+An A2A agent for Google Calendar. It answers schedule questions by painting A2UI surfaces with [`calendar-catalog`](../calendar-catalog/), Calendar's own components in Material 3's design language. It runs on port **11003**, gRPC on **11103**, and is built on [`a2ui-agent-kit`](../../agent-kit/).
 
 ## What it can do
 
@@ -47,7 +47,7 @@ uv run python -m app --mode deterministic
 
 `deterministic` answers any question with a recorded agenda, and replays the recorded actions: opening an event, confirming or cancelling a new one, answering an invitation. Opening an event paints a new surface, as the live agent does.
 
-Other flags: `--port`, `--host`, `--base-url`, the address the agent card advertises, and `--public-url`, the address the browser reaches its sign-in pages at — a tunnel address, when the browser is on another machine. `--state-dir` moves the sign-in store from `.state/`.
+Other flags: `--port`, `--grpc-port`, `--host`, `--base-url`, the address the agent card advertises, and `--public-url`, the address the browser reaches its sign-in pages at — a tunnel address, when the browser is on another machine. `--state-dir` moves the sign-in store from `.state/`.
 
 ## Signing in
 

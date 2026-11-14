@@ -3,8 +3,9 @@
 The canvas shell wants a per-paint human title and a question marker on the wire
 (phase-8 decisions 8 and task-8.5). A2UI v0.9 messages are sealed
 (additionalProperties: false), so both ride OUTSIDE the protocol, as a dedicated
-shell-metadata DataPart -- `{"paintMeta": {surfaceId, title, kind?}}` under its own
-MIME type -- emitted ahead of the createSurface it names. The model sources them as
+shell-metadata DataPart -- `{"paintMeta": {surfaceId, title, kind?}}` marked
+`application/a2ui-shell+json` in its metadata's `mimeType` and in its `media_type`
+(a2uiverse task-20.9 decision 2) -- emitted ahead of the createSurface it names. The model sources them as
 a tagged element in its prose, before the surface's <a2ui-json> block:
 
     <paint-title surface="thread-2251" kind="question">Send this reply?</paint-title>
@@ -31,13 +32,15 @@ from __future__ import annotations
 import logging
 import re
 
-from a2a.types import DataPart, Part
+from a2a.types import Part
+
+from a2ui_agent_kit.wire import data_part
 
 logger = logging.getLogger(__name__)
 
-# The shell-metadata DataPart's MIME tag. Distinct from the A2UI parts' MIME and from
-# their inline `version` field, so neither side's A2UI extraction can confuse the two.
-PAINT_META_MIME = "application/json+a2ui-shell"
+# The shell-metadata part's mark, the string the platform writes for its own (a2uiverse
+# task-20.4 decision 8). The platform reads the part by its `paintMeta` key whatever its mark.
+PAINT_META_MIME = "application/a2ui-shell+json"
 QUESTION_KIND = "question"
 
 _TAG_RE = re.compile(r"<paint-title\b([^>]*)>(.*?)</paint-title>", re.DOTALL)
@@ -50,9 +53,7 @@ _HOLD_PREFIXES = (_OPEN_PREFIX, "<no-surface", "</no-surface")
 
 def create_paint_meta_part(meta: dict) -> Part:
     """The paintMeta shell DataPart, as it rides the A2A stream."""
-    return Part(
-        root=DataPart(data={"paintMeta": meta}, metadata={"mimeType": PAINT_META_MIME})
-    )
+    return data_part({"paintMeta": meta}, PAINT_META_MIME)
 
 
 def _parse_tag(attr_text: str, inner: str) -> dict | None:

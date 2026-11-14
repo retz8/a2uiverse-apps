@@ -1,6 +1,6 @@
 # Shop B agent
 
-An A2A agent for Northlight, an invented camera store. It answers shopping questions by painting A2UI surfaces with [`shop-b-catalog`](../shop-b-catalog/). It runs on port **12002** and is built on [`a2ui-agent-kit`](../../../agent-kit/).
+An A2A agent for Northlight, an invented camera store. It answers shopping questions by painting A2UI surfaces with [`shop-b-catalog`](../shop-b-catalog/). It runs on port **12002**, gRPC on **12102**, and is built on [`a2ui-agent-kit`](../../../agent-kit/).
 
 There is no store and no MCP server behind it. Its stock is [`mocks/dataset/products.json`](../../dataset/products.json), which [Shop A](../../shop-a/) reads too.
 
@@ -29,7 +29,7 @@ uv run python -m app --mode deterministic
 
 `deterministic` answers any question with the catalogue, and a question about shipping, returns or warranty with the policy. Opening a camera, going back and sorting all update the catalogue in place.
 
-Other flags: `--port`, `--host`, and `--base-url`, the address the agent card advertises.
+Other flags: `--port`, `--grpc-port`, `--host`, and `--base-url`, the address the agent card advertises.
 
 ## Signing in
 

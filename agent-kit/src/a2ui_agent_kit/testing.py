@@ -19,41 +19,38 @@ from unittest.mock import AsyncMock, MagicMock
 
 from a2a.server.agent_execution import AgentExecutor, RequestContext
 from a2a.server.events import EventQueue
-from a2a.types import DataPart, Message, Part, Role, TextPart
-from a2ui.a2a.parts import get_a2ui_datapart, is_a2ui_part
+from a2a.types import Message, Role, TaskStatusUpdateEvent
 
 from a2ui_agent_kit.sign_in import SignedInAccount, SignIn, bind_account, unbind_account
-from a2ui_agent_kit.versions import FIXTURE_VERSION
+from a2ui_agent_kit.versions import FIXTURE_VERSION, a2ui_messages
+from a2ui_agent_kit.wire import data_part, text_part
 
 
 def _incoming_message(action: dict) -> Message:
     return Message(
         message_id="test-msg",
-        role=Role.user,
-        parts=[Part(root=DataPart(data={"version": FIXTURE_VERSION, "action": action}))],
-        kind="message",
+        role=Role.ROLE_USER,
+        parts=[data_part({"version": FIXTURE_VERSION, "action": action})],
     )
 
 
 def _incoming_text_message(text: str) -> Message:
-    return Message(
-        message_id="test-msg",
-        role=Role.user,
-        parts=[Part(root=TextPart(text=text))],
-        kind="message",
-    )
+    return Message(message_id="test-msg", role=Role.ROLE_USER, parts=[text_part(text)])
 
 
 def _parts_from_event(event) -> list:
-    status = getattr(event, "status", None)
-    message = getattr(status, "message", None) if status is not None else None
-    return list(getattr(message, "parts", []) or [])
+    if isinstance(event, TaskStatusUpdateEvent) and event.status.HasField("message"):
+        return list(event.status.message.parts)
+    return []
 
 
 async def _run(executor: AgentExecutor, message: Message) -> list[dict]:
     context = MagicMock(spec=RequestContext)
     context.message = message
     context.current_task = None
+    context.task_id = "test-task"
+    context.context_id = "test-context"
+    context.requested_extensions = set()
 
     queue = MagicMock(spec=EventQueue)
     queue.enqueue_event = AsyncMock()
@@ -64,8 +61,7 @@ async def _run(executor: AgentExecutor, message: Message) -> list[dict]:
     for call in queue.enqueue_event.call_args_list:
         event = call.args[0]
         for part in _parts_from_event(event):
-            if is_a2ui_part(part):
-                payload.append(get_a2ui_datapart(part).data)
+            payload.extend(a2ui_messages(part))
     return payload
 
 
@@ -110,12 +106,13 @@ def _free_port() -> int:
 
 
 class SignedInAgent:
-    """An app's agent running on a port, and a vault's view of it: Authlib's OAuth client
-    signing in through the deterministic sign-in's non-interactive entry."""
+    """An app's agent running on a port, gRPC on another, and a vault's view of it: Authlib's
+    OAuth client signing in through the deterministic sign-in's non-interactive entry."""
 
-    def __init__(self, base: str, http):
+    def __init__(self, base: str, http, grpc_address: str | None = None):
         self.base = base
         self.http = http
+        self.grpc_address = grpc_address
 
     async def card(self) -> dict:
         return (await self.http.get("/.well-known/agent-card.json")).json()
@@ -164,42 +161,36 @@ class SignedInAgent:
         return jwt.decode(token["id_token"], keys).claims["sub"]
 
     async def send(self, part: dict, headers: dict[str, str] | None = None):
-        """One `message/send` carrying `part`; the HTTP response."""
-        message = {
-            "kind": "message",
-            "messageId": secrets.token_hex(8),
-            "role": "user",
-            "parts": [part],
-        }
-        rpc = {"jsonrpc": "2.0", "id": "1", "method": "message/send", "params": {"message": message}}
-        return await self.http.post("/", json=rpc, headers=headers or {})
+        """One `SendMessage` over JSON-RPC at A2A 1.0 carrying `part`; the HTTP response."""
+        message = {"messageId": secrets.token_hex(8), "role": "ROLE_USER", "parts": [part]}
+        rpc = {"jsonrpc": "2.0", "id": "1", "method": "SendMessage", "params": {"message": message}}
+        return await self.http.post("/", json=rpc, headers={"A2A-Version": "1.0", **(headers or {})})
 
     async def send_action(self, name: str, token: str | None, context: dict | None = None):
         action = {"name": name, "surfaceId": "s", "context": context or {}}
-        data = {"kind": "data", "data": {"version": FIXTURE_VERSION, "action": action}}
+        data = {"data": {"version": FIXTURE_VERSION, "action": action}}
         return await self.send(data, {"Authorization": f"Bearer {token}"} if token else {})
 
     async def send_text(self, text: str, token: str | None):
-        part = {"kind": "text", "text": text}
-        return await self.send(part, {"Authorization": f"Bearer {token}"} if token else {})
+        return await self.send({"text": text}, {"Authorization": f"Bearer {token}"} if token else {})
 
 
 def task_state(response) -> str:
-    """The state a `message/send` answer ended in."""
+    """The state a `SendMessage` answer ended in, as A2A 1.0 names it: `TASK_STATE_COMPLETED`."""
     body = response.json()
     assert "result" in body, body
-    return body["result"]["status"]["state"]
+    return body["result"]["task"]["status"]["state"]
 
 
-def requested_access(response) -> list[dict]:
-    """The `security` an `auth-required` answer asks for."""
-    parts = response.json()["result"]["status"]["message"]["parts"]
-    return [p["data"]["security"] for p in parts if p.get("kind") == "data"]
+def requested_access(response) -> list[list[dict]]:
+    """The `securityRequirements` an `auth-required` answer asks for."""
+    parts = response.json()["result"]["task"]["status"]["message"]["parts"]
+    return [p["data"]["securityRequirements"] for p in parts if "data" in p]
 
 
 def serving(config, mode: str = "deterministic", state_dir=None):
-    """Runs the app's agent on a free port for the length of an `async with`, yielding a
-    `SignedInAgent`."""
+    """Runs the app's agent on a free port, gRPC on another, for the length of an
+    `async with`, yielding a `SignedInAgent`."""
     import asyncio
     import contextlib
 
@@ -210,18 +201,22 @@ def serving(config, mode: str = "deterministic", state_dir=None):
 
     @contextlib.asynccontextmanager
     async def run():
-        port = _free_port()
+        port, grpc_port = _free_port(), _free_port()
         base = f"http://127.0.0.1:{port}"
-        app = build_app(config, mode, "127.0.0.1", port, base, state_dir=state_dir)
+        app = build_app(
+            config, mode, "127.0.0.1", port, base, state_dir=state_dir, grpc_port=grpc_port
+        )
         server = uvicorn.Server(
-            uvicorn.Config(app, host="127.0.0.1", port=port, log_level="warning", lifespan="off")
+            uvicorn.Config(app, host="127.0.0.1", port=port, log_level="warning", lifespan="on")
         )
         task = asyncio.create_task(server.serve())
         while not server.started:
+            if task.done():
+                await task
             await asyncio.sleep(0.01)
         try:
             async with httpx.AsyncClient(base_url=base, timeout=20) as http:
-                yield SignedInAgent(base, http)
+                yield SignedInAgent(base, http, f"127.0.0.1:{grpc_port}")
         finally:
             server.should_exit = True
             await task

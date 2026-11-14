@@ -13,6 +13,7 @@ from a2ui_agent_kit.paint_meta import (
     require_carries_action,
     require_root_component,
 )
+from a2ui_agent_kit.wire import part_data, plain
 
 
 def test_complete_tag_in_one_chunk():
@@ -118,11 +119,14 @@ def test_no_surface_flag_defaults_false():
 
 def test_create_paint_meta_part_shape():
     part = create_paint_meta_part({"surfaceId": "s1", "title": "T"})
-    assert part.root.data == {"paintMeta": {"surfaceId": "s1", "title": "T"}}
-    assert part.root.metadata == {"mimeType": PAINT_META_MIME}
+    assert part_data(part) == {"paintMeta": {"surfaceId": "s1", "title": "T"}}
+    # Marked as the platform marks its own, in both fields (a2uiverse task-20.9 decision 2).
+    assert PAINT_META_MIME == "application/a2ui-shell+json"
+    assert plain(part.metadata) == {"mimeType": PAINT_META_MIME}
+    assert part.media_type == PAINT_META_MIME
     # No inline `version` field: the client's A2UI extractor must never take this
     # for a protocol message.
-    assert "version" not in part.root.data
+    assert "version" not in part_data(part)
 
 
 # --- require_carries_action (the basic-catalog agents' policy) ---

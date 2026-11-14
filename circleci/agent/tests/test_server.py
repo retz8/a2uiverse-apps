@@ -37,7 +37,7 @@ def test_build_app_defaults_card_url_to_host_port():
     with TestClient(app) as client:
         resp = client.get("/.well-known/agent-card.json")
     assert resp.status_code == 200
-    assert resp.json()["url"] == f"http://localhost:{CONFIG.default_port}"
+    assert resp.json()["supportedInterfaces"][0]["url"] == f"http://localhost:{CONFIG.default_port}"
 
 
 def test_build_app_advertises_base_url_override():
@@ -47,4 +47,4 @@ def test_build_app_advertises_base_url_override():
     with TestClient(app) as client:
         resp = client.get("/.well-known/agent-card.json")
     assert resp.status_code == 200
-    assert resp.json()["url"] == "https://tunnel.example"
+    assert resp.json()["supportedInterfaces"][0]["url"] == "https://tunnel.example"

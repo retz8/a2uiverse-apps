@@ -46,6 +46,7 @@ CONFIG = AgentAppConfig(
     provider=AgentProvider(organization="Google", url="https://mail.google.com"),
     documentation_url="https://github.com/retz8/a2uiverse-apps/blob/main/gmail/agent/README.md",
     default_port=11002,
+    default_grpc_port=11102,
     responder_app_name="a2ui_gmail_live",
     adk_agent_name="a2ui_gmail_live_agent",
     app_dir=_AGENT_DIR,

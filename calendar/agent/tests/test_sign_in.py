@@ -13,7 +13,7 @@ async def test_the_card_asks_to_see_the_calendar_first_in_the_customers_words(tm
     async with serving(CONFIG, state_dir=tmp_path) as agent:
         card = await agent.card()
     assert card["securitySchemes"]["signIn"]["flows"]["authorizationCode"]["scopes"] == SCOPES
-    assert card["security"] == [{"signIn": ["calendar.read"]}]
+    assert card["securityRequirements"] == [{"schemes": {"signIn": {"list": ["calendar.read"]}}}]
 
 
 async def test_a_signed_in_account_is_answered_and_a_write_asks_for_more_access(tmp_path):
@@ -24,11 +24,11 @@ async def test_a_signed_in_account_is_answered_and_a_write_asks_for_more_access(
         rsvp = await agent.send_action("rsvp-toggle", token["access_token"])
         more = await agent.sign_in("you", ["calendar.write"], login_hint=await agent.sub(token))
         allowed = await agent.send_action("rsvp-toggle", more["access_token"])
-    assert task_state(agenda) == "completed"
-    assert task_state(opened) == "completed"
-    assert task_state(rsvp) == "auth-required"
-    assert requested_access(rsvp) == [[{"signIn": ["calendar.write"]}]]
-    assert task_state(allowed) == "completed"
+    assert task_state(agenda) == "TASK_STATE_COMPLETED"
+    assert task_state(opened) == "TASK_STATE_COMPLETED"
+    assert task_state(rsvp) == "TASK_STATE_AUTH_REQUIRED"
+    assert requested_access(rsvp) == [[{"schemes": {"signIn": {"list": ["calendar.write"]}}}]]
+    assert task_state(allowed) == "TASK_STATE_COMPLETED"
 
 
 def test_google_is_asked_for_what_the_granted_scopes_need():

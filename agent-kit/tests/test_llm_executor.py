@@ -6,12 +6,11 @@ coverage lives in test_llm_catalog; question-policy coverage in test_paint_meta)
 
 import json
 import logging
+import tempfile
+from pathlib import Path
 
 import pytest
-from a2a.types import DataPart, Message, Part, Role, TextPart
-
-from pathlib import Path
-import tempfile
+from a2a.types import Message, Role
 
 from a2ui_agent_kit.catalog import catalog_context
 from a2ui_agent_kit.executor_llm import (
@@ -27,6 +26,7 @@ from a2ui_agent_kit.recorder import (
     create_recorder,
 )
 from a2ui_agent_kit.responder import ModelTurnError
+from a2ui_agent_kit.wire import data_part, part_data, part_text, text_part
 
 from .conftest import make_config
 
@@ -98,11 +98,14 @@ class _Ctx:
     def __init__(self, prompt, metadata=None):
         self.message = Message(
             message_id="m1",
-            role=Role.user,
-            parts=[Part(root=TextPart(text=prompt))],
+            role=Role.ROLE_USER,
+            parts=[text_part(prompt)],
             metadata=metadata,
         )
         self.current_task = None
+        self.task_id = "t1"
+        self.context_id = "c1"
+        self.requested_extensions = set()
 
 
 class _ActionCtx:
@@ -111,11 +114,14 @@ class _ActionCtx:
     def __init__(self, action, metadata=None):
         self.message = Message(
             message_id="m1",
-            role=Role.user,
-            parts=[Part(root=DataPart(data={"version": "v0.9", "action": action}))],
+            role=Role.ROLE_USER,
+            parts=[data_part({"version": "v0.9", "action": action})],
             metadata=metadata,
         )
         self.current_task = None
+        self.task_id = "t1"
+        self.context_id = "c1"
+        self.requested_extensions = set()
 
 
 class _EmptyCtx:
@@ -128,10 +134,13 @@ class _EmptyCtx:
     def __init__(self):
         self.message = Message(
             message_id="m1",
-            role=Role.user,
-            parts=[Part(root=DataPart(data={"version": "v0.9"}))],
+            role=Role.ROLE_USER,
+            parts=[data_part({"version": "v0.9"})],
         )
         self.current_task = None
+        self.task_id = "t1"
+        self.context_id = "c1"
+        self.requested_extensions = set()
 
 
 class _FakeQueue:
@@ -150,8 +159,7 @@ def _all_text(queue: _FakeQueue) -> str:
         parts = getattr(obj, "parts", None)
         if parts:
             for p in parts:
-                root = getattr(p, "root", p)
-                text = getattr(root, "text", None)
+                text = part_text(p)
                 if text:
                     chunks.append(text)
 
@@ -234,8 +242,7 @@ def _data_parts(queue: _FakeQueue) -> list[dict]:
 
     def _scan(obj):
         for p in getattr(obj, "parts", None) or []:
-            root = getattr(p, "root", p)
-            data = getattr(root, "data", None)
+            data = part_data(p)
             if data is not None:
                 out.append(data)
 
@@ -486,8 +493,7 @@ async def test_streamed_parts_preserve_relative_template_bindings():
 
     def _scan(obj):
         for p in getattr(obj, "parts", None) or []:
-            root = getattr(p, "root", p)
-            data = getattr(root, "data", None)
+            data = part_data(p)
             if data is not None:
                 data_parts.append(data)
 
@@ -1007,8 +1013,7 @@ def _all_data_parts(queue: _FakeQueue) -> list[dict]:
         parts = getattr(obj, "parts", None)
         if parts:
             for p in parts:
-                root = getattr(p, "root", p)
-                data = getattr(root, "data", None)
+                data = part_data(p)
                 if isinstance(data, dict):
                     datas.append(data)
 
@@ -1087,9 +1092,8 @@ async def test_a_cancel_is_answered_with_a_bare_canceled():
     (event,) = queue.events
     assert isinstance(event, TaskStatusUpdateEvent)
     assert (event.task_id, event.context_id) == ("t1", "c1")
-    assert event.status.state == TaskState.canceled
-    assert event.final is True
-    assert event.status.message is None
+    assert event.status.state == TaskState.TASK_STATE_CANCELED
+    assert not event.status.HasField("message")
 
 
 @pytest.mark.asyncio
@@ -1144,7 +1148,7 @@ async def test_a_turn_updating_a_surface_painted_before_sends_its_update():
     assert sent[0]["updateComponents"]["surfaceId"] == "proposal"
     assert {c["id"] for c in sent[0]["updateComponents"]["components"]} == {"root", "said"}
     assert len([d for d in _data_parts(queue) if "updateDataModel" in d]) == 1
-    assert queue.events[-1].status.state.value == "completed"
+    assert queue.events[-1].status.state == TaskState.TASK_STATE_COMPLETED
 
 
 @pytest.mark.asyncio
@@ -1212,7 +1216,7 @@ async def test_a_retry_sends_no_component_the_client_already_holds():
     assert ids.count("root") == 1
     assert ids.count("t") == 1
     assert "bad" not in ids
-    assert queue.events[-1].status.state.value == "completed"
+    assert queue.events[-1].status.state == TaskState.TASK_STATE_COMPLETED
 
 
 # ---- the turn's measurement (a2uiverse task-17.3) -------------------------------------------

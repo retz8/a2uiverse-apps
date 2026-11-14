@@ -39,6 +39,7 @@ CONFIG = AgentAppConfig(
     provider=AgentProvider(organization="Aperture & Co", url="https://aperture.example"),
     documentation_url="https://github.com/retz8/a2uiverse-apps/blob/main/mocks/shop-a/agent/README.md",
     default_port=12001,
+    default_grpc_port=12101,
     responder_app_name="a2ui_shop_a_live",
     adk_agent_name="a2ui_shop_a_live_agent",
     app_dir=_AGENT_DIR,

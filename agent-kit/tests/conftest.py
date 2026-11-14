@@ -45,6 +45,7 @@ def make_config(kind: str, tmp_path: Path, **overrides) -> AgentAppConfig:
             )
         ],
         default_port=19999,
+        default_grpc_port=19998,
         responder_app_name="a2ui_test_live",
         adk_agent_name="a2ui_test_live_agent",
         app_dir=tmp_path,

@@ -17,8 +17,7 @@ from collections.abc import Sequence
 from a2a.server.agent_execution import AgentExecutor, RequestContext
 from a2a.server.events import EventQueue
 from a2a.server.tasks import TaskUpdater
-from a2a.types import AgentCard, Part, Task, TaskState, TextPart
-from a2a.utils import new_agent_parts_message, new_task
+from a2a.types import AgentCard, Part
 
 from a2ui_agent_kit.catalog_lines import CatalogLines, SurfaceCatalogs, advertised_catalog_ids
 from a2ui_agent_kit.config import BuildResponse, BuildTextResponse
@@ -32,24 +31,7 @@ from a2ui_agent_kit.sign_in import (
     unbind_account,
 )
 from a2ui_agent_kit.versions import A2UI_VERSIONS, choose_version, extract_action, stamped_part
-
-
-def _context_id(context: RequestContext) -> str | None:
-    """The conversation the turn is in: the task's, else the message's, which a new task
-    takes."""
-    task = context.current_task
-    return task.context_id if task else getattr(context.message, "context_id", None)
-
-
-def _extract_text(context: RequestContext) -> str | None:
-    message = context.message
-    if not message or not message.parts:
-        return None
-    for part in message.parts:
-        root = part.root
-        if isinstance(root, TextPart) and root.text:
-            return root.text
-    return None
+from a2ui_agent_kit.wire import first_text, open_task, text_part
 
 
 class DeterministicAgentExecutor(AgentExecutor):
@@ -89,9 +71,9 @@ class DeterministicAgentExecutor(AgentExecutor):
     async def _execute(self, context: RequestContext, event_queue: EventQueue) -> None:
         version = choose_version(context, self._card, self._versions)
         action = extract_action(context.message, version)
-        text = _extract_text(context) if action is None else None
+        text = first_text(context.message) if action is None else None
         build_response, build_text_response = self._build_response, self._build_text_response
-        context_id = _context_id(context)
+        context_id = context.context_id
         if self._lines is not None:
             pressed = (
                 self._surfaces.catalog_of(context_id, action.get("surfaceId"))
@@ -120,47 +102,22 @@ class DeterministicAgentExecutor(AgentExecutor):
             *(create_paint_meta_part(msg["paintMeta"]) for msg in messages if "paintMeta" in msg),
             *(stamped_part(msg, version) for msg in messages if "paintMeta" not in msg),
         ]
-
-        task = context.current_task
-        if not task:
-            task = new_task(context.message)
-            await event_queue.enqueue_event(task)
-
-        updater = TaskUpdater(event_queue, task.id, task.context_id)
-        await updater.update_status(
-            TaskState.completed,
-            new_agent_parts_message(parts, task.context_id, task.id),
-            final=True,
-        )
+        updater = await open_task(context, event_queue)
+        await updater.complete(updater.new_agent_message(parts))
 
     async def _say(self, context: RequestContext, event_queue: EventQueue, text: str) -> None:
         """A turn answered in words alone, nothing painted."""
-        task = context.current_task
-        if not task:
-            task = new_task(context.message)
-            await event_queue.enqueue_event(task)
-        await TaskUpdater(event_queue, task.id, task.context_id).update_status(
-            TaskState.completed,
-            new_agent_parts_message([Part(root=TextPart(text=text))], task.context_id, task.id),
-            final=True,
-        )
+        updater = await open_task(context, event_queue)
+        await updater.complete(updater.new_agent_message([text_part(text)]))
 
     async def _auth_required(
         self, context: RequestContext, event_queue: EventQueue, err: AuthRequired
     ) -> None:
-        task = context.current_task
-        if not task:
-            task = new_task(context.message)
-            await event_queue.enqueue_event(task)
-        await TaskUpdater(event_queue, task.id, task.context_id).update_status(
-            TaskState.auth_required,
-            auth_required_message(err, task.context_id, task.id),
-            final=True,
-        )
+        updater = await open_task(context, event_queue)
+        await updater.requires_auth(auth_required_message(err, context.context_id, context.task_id))
 
-    async def cancel(self, context: RequestContext, event_queue: EventQueue) -> Task | None:
+    async def cancel(self, context: RequestContext, event_queue: EventQueue) -> None:
         # Nothing of its own to stop: a turn is one completed final, and the SDK answers
         # a task that already ended not cancelable without calling here. A cancel that
         # lands before that final is answered with a bare `canceled` (task-8.9 decision 3).
         await TaskUpdater(event_queue, context.task_id, context.context_id).cancel()
-        return None

@@ -14,7 +14,7 @@ async def test_the_card_asks_to_see_pipelines_first_in_the_customers_words(tmp_p
     async with serving(CONFIG, state_dir=tmp_path) as agent:
         card = await agent.card()
     assert card["securitySchemes"]["signIn"]["flows"]["authorizationCode"]["scopes"] == SCOPES
-    assert card["security"] == [{"signIn": ["pipelines.read"]}]
+    assert card["securityRequirements"] == [{"schemes": {"signIn": {"list": ["pipelines.read"]}}}]
 
 
 async def test_a_signed_in_account_is_answered_and_a_rerun_asks_for_more_access(tmp_path):
@@ -25,10 +25,10 @@ async def test_a_signed_in_account_is_answered_and_a_rerun_asks_for_more_access(
         rerun = await agent.send_action("confirm-rerun", token["access_token"])
         more = await agent.sign_in("retz8", ["pipelines.write"], login_hint=await agent.sub(token))
         allowed = await agent.send_action("confirm-rerun", more["access_token"])
-    assert task_state(runs) == task_state(proposal) == "completed"
-    assert task_state(rerun) == "auth-required"
-    assert requested_access(rerun) == [[{"signIn": ["pipelines.write"]}]]
-    assert task_state(allowed) == "completed"
+    assert task_state(runs) == task_state(proposal) == "TASK_STATE_COMPLETED"
+    assert task_state(rerun) == "TASK_STATE_AUTH_REQUIRED"
+    assert requested_access(rerun) == [[{"schemes": {"signIn": {"list": ["pipelines.write"]}}}]]
+    assert task_state(allowed) == "TASK_STATE_COMPLETED"
 
 
 def test_circleci_is_asked_for_no_scopes_and_registered_by_its_metadata():

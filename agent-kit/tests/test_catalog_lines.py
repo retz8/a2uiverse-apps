@@ -9,7 +9,7 @@ import json
 from pathlib import Path
 
 import pytest
-from a2a.types import DataPart, Message, Part, Role, TextPart
+from a2a.types import Message, Part, Role
 
 from a2ui_agent_kit.catalog_lines import (
     advertised_catalog_ids,
@@ -22,6 +22,7 @@ from a2ui_agent_kit.executor_llm import LlmAgentExecutor
 from a2ui_agent_kit.paint_meta import require_root_component
 from a2ui_agent_kit.prompt import build_system_prompt
 from a2ui_agent_kit.server import build_agent_card
+from a2ui_agent_kit.wire import data_part, part_data, part_text, plain, text_part
 
 from .conftest import FIXTURES_DIR, make_config
 
@@ -81,8 +82,8 @@ def _capabilities(*ids: str) -> dict:
 def _text_message(text: str, metadata: dict | None, context_id: str = "c1") -> Message:
     return Message(
         message_id="m1",
-        role=Role.user,
-        parts=[Part(root=TextPart(text=text))],
+        role=Role.ROLE_USER,
+        parts=[text_part(text)],
         metadata=metadata,
         context_id=context_id,
     )
@@ -91,8 +92,8 @@ def _text_message(text: str, metadata: dict | None, context_id: str = "c1") -> M
 def _action_message(action: dict, metadata: dict | None, context_id: str = "c1") -> Message:
     return Message(
         message_id="m2",
-        role=Role.user,
-        parts=[Part(root=DataPart(data={"version": "v0.9", "action": action}))],
+        role=Role.ROLE_USER,
+        parts=[data_part({"version": "v0.9", "action": action})],
         metadata=metadata,
         context_id=context_id,
     )
@@ -102,6 +103,9 @@ class _Ctx:
     def __init__(self, message: Message):
         self.message = message
         self.current_task = None
+        self.task_id = "t1"
+        self.context_id = "c1"
+        self.requested_extensions = set()
 
 
 class _Queue:
@@ -113,13 +117,13 @@ class _Queue:
 
     def a2ui(self) -> list[dict]:
         return [
-            p.root.data
+            part_data(p)
             for p in self._parts()
-            if isinstance(p.root, DataPart) and "version" in p.root.data
+            if p.HasField("data") and "version" in part_data(p)
         ]
 
     def texts(self) -> list[str]:
-        return [p.root.text for p in self._parts() if isinstance(p.root, TextPart)]
+        return [part_text(p) for p in self._parts() if p.HasField("text")]
 
     def _parts(self) -> list[Part]:
         parts = []
@@ -141,16 +145,16 @@ async def _turn(executor, message: Message) -> _Queue:
 def test_the_card_names_both_ids_newest_first(tmp_path):
     # Every version's entry names the same ids (a2uiverse task-19.4).
     extensions = build_agent_card(
-        _two_line_config(tmp_path), "http://localhost:19999"
+        _two_line_config(tmp_path), "http://localhost:19999", grpc_address="localhost:19998"
     ).capabilities.extensions
-    assert [e.params["supportedCatalogIds"] for e in extensions] == [[NEW_ID, OLD_ID]] * 2
+    assert [plain(e.params)["supportedCatalogIds"] for e in extensions] == [[NEW_ID, OLD_ID]] * 2
 
 
 def test_an_app_with_one_line_names_its_one_id(tmp_path):
     extensions = build_agent_card(
-        make_config("basic", tmp_path), "http://localhost:19999"
+        make_config("basic", tmp_path), "http://localhost:19999", grpc_address="localhost:19998"
     ).capabilities.extensions
-    assert [e.params["supportedCatalogIds"] for e in extensions] == [[NEW_ID]] * 2
+    assert [plain(e.params)["supportedCatalogIds"] for e in extensions] == [[NEW_ID]] * 2
 
 
 def test_the_kit_refuses_to_start_when_the_old_line_is_the_new_lines_id(tmp_path):
@@ -160,7 +164,7 @@ def test_the_kit_refuses_to_start_when_the_old_line_is_the_new_lines_id(tmp_path
         old_catalog_line=_old_line(tmp_path, catalog_path=FIXTURES_DIR / "catalog-basic.json"),
     )
     with pytest.raises(ValueError, match="old catalog line"):
-        build_agent_card(config, "http://localhost:19999")
+        build_agent_card(config, "http://localhost:19999", grpc_address="localhost:19998")
 
 
 def test_both_advertised_a_new_surface_takes_the_newer_whatever_the_hubs_order(tmp_path):

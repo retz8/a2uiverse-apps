@@ -18,8 +18,8 @@ from urllib.parse import parse_qs, urlencode, urlsplit
 import httpx
 import pytest
 from a2a.server.agent_execution import RequestContext
-from a2a.server.events import EventQueue
-from a2a.types import Message, Part, Role, TaskState, TextPart
+from a2a.server.context import ServerCallContext
+from a2a.types import Message, Role, SendMessageRequest, TaskState
 from joserfc import jwt
 from joserfc.jwk import KeySet, OctKey
 from starlette.applications import Starlette
@@ -40,8 +40,17 @@ from a2ui_agent_kit.sign_in_store import SignInStore
 from a2ui_agent_kit.sign_in_vendor import ClientFromEnv, VendorOAuth, id_token_claims
 from a2ui_agent_kit.toolset import PolicyMcpToolset, is_unauthorized
 from a2ui_agent_kit.versions import FIXTURE_VERSION
+from a2ui_agent_kit.wire import part_text, text_part
 from tests.conftest import make_config
-from tests.test_sign_in import REDIRECT, Agent, _config, _free_port, _serving, _sign_in, running
+from tests.test_sign_in import (
+    REDIRECT,
+    Agent,
+    _config,
+    _free_port,
+    _serving,
+    _sign_in,
+    running,
+)
 
 
 class FakeVendor:
@@ -350,19 +359,19 @@ async def test_a_vendor_401_in_a_run_fails_it_and_ends_the_accounts_sign_ins(tmp
 
     executor = LlmAgentExecutor(_Refused(), _config(tmp_path))
     account = SignedInAccount("sub-1", "ada", {}, frozenset({"issues.read"}), end_sign_ins=end)
-    message = Message(message_id="m", role=Role.user, parts=[Part(root=TextPart(text="hi"))], kind="message")
-    context = RequestContext(request=SimpleNamespace(message=message, configuration=None, metadata=None))
-    context._call_context = SimpleNamespace(
-        state={"auth": account}, activated_extensions=set(), requested_extensions=set()
+    message = Message(message_id="m", role=Role.ROLE_USER, parts=[text_part("hi")])
+    context = RequestContext(
+        ServerCallContext(state={"auth": account}),
+        SendMessageRequest(message=message),
+        task_id="t1",
+        context_id="c1",
     )
-    queue = EventQueue()
+    queue = _Events()
     await executor.execute(context, queue)
-    events = []
-    while not queue.queue.empty():
-        events.append(await queue.dequeue_event(no_wait=True))
+    events = queue.events
     final = events[-1]
-    assert final.status.state == TaskState.failed and final.final
-    assert final.status.message.parts[0].root.text == (
+    assert final.status.state == TaskState.TASK_STATE_FAILED
+    assert part_text(final.status.message.parts[0]) == (
         "Your Test Agent sign-in has ended. Sign in again to continue."
     )
     assert ended == [True]
@@ -432,15 +441,13 @@ async def test_an_api_key_sign_in_declares_its_scheme_and_lets_only_its_keys_in(
             wrong = await http.post("/", json=_send("browse"), headers={"X-Shop-Key": "nope"})
             right = await http.post("/", json=_send("browse"), headers={"X-Shop-Key": "demo-key-1"})
             routes = await http.get("/.well-known/oauth-authorization-server")
-    assert card["securitySchemes"] == {
-        "apiKey": {
-            "type": "apiKey",
-            "in": "header",
-            "name": "X-Shop-Key",
-            "description": "Your Shop key, from Account settings.",
-        }
+    # Read in A2A 1.0's shape, as the platform reads the card (a2uiverse task-20.3).
+    assert card["securitySchemes"]["apiKey"]["apiKeySecurityScheme"] == {
+        "location": "header",
+        "name": "X-Shop-Key",
+        "description": "Your Shop key, from Account settings.",
     }
-    assert card["security"] == [{"apiKey": []}]
+    assert card["securityRequirements"] == [{"schemes": {"apiKey": {}}}]
     assert none.status_code == 401 and wrong.status_code == 401
     assert right.status_code == 200 and "result" in right.json()
     assert seen == ["Demo shopper"]
@@ -455,7 +462,12 @@ def test_an_api_key_sign_in_needs_a_header_and_a_key():
 
 
 def test_a_tool_its_server_does_not_mark_read_only_needs_the_unmarked_scopes():
-    from a2ui_agent_kit.sign_in import AuthRequired, bind_account, before_tool_check, unbind_account
+    from a2ui_agent_kit.sign_in import (
+        AuthRequired,
+        before_tool_check,
+        bind_account,
+        unbind_account,
+    )
 
     sign_in = _sign_in(unmarked_tool_scopes=["issues.write"])
     account = SignedInAccount("sub-1", "ada", {}, frozenset({"issues.read"}))
@@ -473,3 +485,13 @@ def test_a_tool_its_server_does_not_mark_read_only_needs_the_unmarked_scopes():
                 before_tool_check(tool=unmarked, args={}, tool_context=None)
     finally:
         unbind_account(token)
+
+
+class _Events:
+    """An event queue that keeps what the executor enqueues."""
+
+    def __init__(self):
+        self.events = []
+
+    async def enqueue_event(self, event):
+        self.events.append(event)

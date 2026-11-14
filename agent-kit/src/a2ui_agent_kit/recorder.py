@@ -26,9 +26,10 @@ import time
 from pathlib import Path
 from typing import Any
 
-from a2a.types import DataPart, Part, TextPart
+from a2a.types import Part
 
 from a2ui_agent_kit.versions import A2UI_VERSIONS
+from a2ui_agent_kit.wire import part_data, part_text
 
 logger = logging.getLogger(__name__)
 
@@ -101,17 +102,18 @@ class SessionRecorder:
         messages: list[dict] = []
         texts: list[str] = []
         for part in parts:
-            root = part.root
-            if isinstance(root, DataPart) and (
-                root.data.get("version") in A2UI_VERSIONS or "paintMeta" in root.data
+            data = part_data(part)
+            text = part_text(part)
+            if isinstance(data, dict) and (
+                data.get("version") in A2UI_VERSIONS or "paintMeta" in data
             ):
                 # A message in any version the kit speaks is kept as it went out, stamp
                 # and all (a2uiverse task-19.4). paintMeta shell parts (task 8.5) record
                 # alongside the A2UI messages, so a replayed fixture exercises the titled
                 # path too.
-                messages.append(root.data)
-            elif isinstance(root, TextPart) and root.text:
-                texts.append(root.text)
+                messages.append(data)
+            elif text:
+                texts.append(text)
         if not messages and not texts:
             return
         self._turn["batches"].append(

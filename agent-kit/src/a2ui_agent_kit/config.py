@@ -1,10 +1,10 @@
 """The per-vendor config: everything an app supplies to run on the kit.
 
 One frozen dataclass, instantiated once per app (in its `app/config.py`) and handed
-to the kit CLI explicitly. It carries the app's data (identity, port, paths, prompt
-prose) and its callables (deterministic response pair, stub tools, live toolset
-factory, question policy, after-tool hook, sign-in). The kit never discovers a config —
-it is handed one.
+to the kit CLI explicitly. It carries the app's data (identity, ports, the order of the
+paths it answers on, paths, prompt prose) and its callables (deterministic response pair,
+stub tools, live toolset factory, question policy, after-tool hook, sign-in, an account's
+skills). The kit never discovers a config — it is handed one.
 """
 
 from __future__ import annotations
@@ -16,7 +16,13 @@ from typing import Any, Literal
 
 from a2a.types import AgentProvider, AgentSkill
 
-from a2ui_agent_kit.sign_in import ApiKeySignIn, SignIn
+from a2ui_agent_kit.bindings import (
+    DEFAULT_INTERFACES,
+    Interface,
+    grpc_metadata_key,
+    interface_order,
+)
+from a2ui_agent_kit.sign_in import ApiKeySignIn, SignedInAccount, SignIn
 from a2ui_agent_kit.versions import A2UI_VERSIONS, version_set
 
 # Overridable per app via `AgentAppConfig.model`, and at runtime via MODEL_NAME. Not
@@ -43,6 +49,9 @@ BuildTextResponse = Callable[[str], list[dict]]
 QuestionPolicy = Callable[[list[dict], dict[str, dict]], None]
 # (tool_name, tool_response) -> shaped response, or None to pass through.
 AfterTool = Callable[[str, Any], Any]
+# (the signed-in account) -> that account's skills, in place of the card's own on the extended
+# card the agent serves the account.
+AccountSkills = Callable[[SignedInAccount], Sequence[AgentSkill]]
 
 
 @dataclass(frozen=True, eq=False)
@@ -79,6 +88,8 @@ class AgentAppConfig:
     version: str
     skills: Sequence[AgentSkill]
     default_port: int  # manual-run fallback; launched runs pass --port explicitly
+    # The gRPC port, beside the HTTP one; --grpc-port at launch takes its place.
+    default_grpc_port: int
     responder_app_name: str  # ADK Runner app_name, e.g. "a2ui_gmail_live"
     adk_agent_name: str  # ADK LlmAgent name, e.g. "a2ui_gmail_live_agent"
     app_dir: Path  # agent project root: anchors .env and the debug dumps
@@ -125,6 +136,32 @@ class AgentAppConfig:
     # kit's order, oldest first, whatever order the app wrote them in (a2uiverse task-19.4).
     a2ui_versions: Sequence[str] = A2UI_VERSIONS
 
+    # The six paths the agent answers on, in the order its card lists them (a2uiverse
+    # task-20.9 decision 6): JSON-RPC, HTTP+JSON and gRPC on A2A 1.0, then on A2A 0.3.
+    interfaces: Sequence[Interface | tuple[str, str]] = DEFAULT_INTERFACES
+
+    # On, the card is signed with a key the kit makes and keeps in the app's state directory
+    # (a2uiverse task-20.9 decision 14).
+    sign_card: bool = False
+
+    # Set, the agent serves each signed-in account an extended card: the public card with the
+    # account's skills in place of its own (a2uiverse task-20.9 decision 15).
+    account_skills: AccountSkills | None = None
+
     def __post_init__(self) -> None:
-        # A version the kit does not speak, or none, stops the app before it serves.
+        # Each of these stops the app before it serves: a version the kit does not speak, or
+        # none; a path list that is not the six paths once each; a key header gRPC cannot
+        # carry; an account's skills with no account to serve them to.
         object.__setattr__(self, "a2ui_versions", version_set(self.a2ui_versions))
+        object.__setattr__(self, "interfaces", interface_order(self.interfaces))
+        if isinstance(self.sign_in, ApiKeySignIn) and grpc_metadata_key(self.sign_in.header) is None:
+            raise ValueError(
+                f"the key header {self.sign_in.header!r} cannot ride on gRPC, which carries "
+                "a credential as a metadata entry under the header's name in lowercase: a "
+                "name of 0-9, a-z, '_', '-' and '.', not starting 'grpc-' or ending '-bin'"
+            )
+        if self.account_skills is not None and self.sign_in is None:
+            raise ValueError(
+                "account_skills serves each signed-in account a card of its own, and the app "
+                "has no sign-in"
+            )

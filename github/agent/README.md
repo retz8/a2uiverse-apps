@@ -1,6 +1,6 @@
 # GitHub agent
 
-An A2A agent for GitHub. It answers GitHub questions by painting A2UI surfaces with [`github-catalog`](../github-catalog/), built on Primer, GitHub's own design system. It runs on port **11001** and is built on [`a2ui-agent-kit`](../../agent-kit/).
+An A2A agent for GitHub. It answers GitHub questions by painting A2UI surfaces with [`github-catalog`](../github-catalog/), built on Primer, GitHub's own design system. It runs on port **11001**, gRPC on **11101**, and is built on [`a2ui-agent-kit`](../../agent-kit/).
 
 ## What it can do
 
@@ -29,7 +29,7 @@ uv run python -m app --mode deterministic
 
 `deterministic` answers any question with a recorded notifications digest, and answers the Primer components' demo actions with canned responses.
 
-Other flags: `--port`, `--host`, `--base-url`, the address the agent card advertises, and `--public-url`, the address the browser reaches its sign-in pages at — a tunnel address, when the browser is on another machine. `--state-dir` moves the sign-in store from `.state/`.
+Other flags: `--port`, `--grpc-port`, `--host`, `--base-url`, the address the agent card advertises, and `--public-url`, the address the browser reaches its sign-in pages at — a tunnel address, when the browser is on another machine. `--state-dir` moves the sign-in store from `.state/`.
 
 ## Signing in
 

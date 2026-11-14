@@ -1,6 +1,6 @@
 # __DISPLAY_NAME__ agent
 
-An A2A agent for __DISPLAY_NAME__. It answers questions by painting A2UI surfaces with [`__PACKAGE_NAME__`](../__PACKAGE_NAME__/). It runs on port **__PORT__** and is built on [`a2ui-agent-kit`](https://github.com/retz8/a2uiverse-apps/tree/main/agent-kit), pinned to a commit in `pyproject.toml`.
+An A2A agent for __DISPLAY_NAME__. It answers questions by painting A2UI surfaces with [`__PACKAGE_NAME__`](../__PACKAGE_NAME__/). It answers JSON-RPC and HTTP+JSON on port **__PORT__** and gRPC on **__GRPC_PORT__**, at A2A 1.0 and 0.3, and is built on [`a2ui-agent-kit`](https://github.com/retz8/a2uiverse-apps/tree/main/agent-kit), pinned to a commit in `pyproject.toml`.
 
 ## What to fill in
 
@@ -40,7 +40,7 @@ uv run python -m app --mode deterministic
 
 A fresh scaffold runs before you edit anything: `deterministic` paints a greeting card, `stub` holds one placeholder tool, and `live` stops with a "not wired yet" message until `app/mcp.py` names the MCP server.
 
-Other flags: `--port`, `--host`, and `--base-url`, the address the agent card advertises.
+Other flags: `--port`, `--grpc-port`, `--host`, and `--base-url`, the address the agent card advertises.
 
 ## Credentials (live mode)
 

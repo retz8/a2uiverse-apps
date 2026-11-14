@@ -8,7 +8,13 @@
 import {existsSync, mkdirSync, readdirSync, writeFileSync} from 'node:fs';
 import {join, relative} from 'node:path';
 
-import {catalogIdUrl, catalogPackageName, pythonIdent, type ScaffoldAnswers} from './answers.js';
+import {
+  catalogIdUrl,
+  catalogPackageName,
+  grpcPortFor,
+  pythonIdent,
+  type ScaffoldAnswers,
+} from './answers.js';
 import {agentConfigPy, agentMcpPy, agentPyproject} from './generate.js';
 import {workspaceRoot} from './install.js';
 import {templatesDir} from './kit.js';
@@ -38,6 +44,7 @@ export function tokensFor(a: ScaffoldAnswers, catalogId: string, repoDirectory: 
     DISPLAY_NAME: a.displayName,
     DESCRIPTION: a.description,
     PORT: String(a.port),
+    GRPC_PORT: String(grpcPortFor(a.port)),
     CATALOG_ID: catalogId,
     REPO_URL: a.repoUrl,
     REPO_DIRECTORY: repoDirectory,

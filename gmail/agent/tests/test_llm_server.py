@@ -12,7 +12,7 @@ def test_default_port_is_the_app_port_in_every_mode():
 
 def test_card_advertises_the_a2ui_extension_and_our_catalog():
     card = build_agent_card(CONFIG, "http://localhost:11002")
-    assert card.url == "http://localhost:11002"
+    assert card.supported_interfaces[0].url == "http://localhost:11002"
     assert card.capabilities.streaming is True
     # v0.9 alone, as `a2ui_versions` in app/config.py names it: one entry, naming
     # the catalog flat.

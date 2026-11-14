@@ -40,6 +40,7 @@ CONFIG = AgentAppConfig(
     provider=AgentProvider(organization="Linear", url="https://linear.app"),
     documentation_url="https://github.com/retz8/a2uiverse-apps/blob/main/linear/agent/README.md",
     default_port=11005,
+    default_grpc_port=11105,
     responder_app_name="a2ui_linear_live",
     adk_agent_name="a2ui_linear_live_agent",
     app_dir=_AGENT_DIR,

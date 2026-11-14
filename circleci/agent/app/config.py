@@ -40,6 +40,7 @@ CONFIG = AgentAppConfig(
     provider=AgentProvider(organization="CircleCI", url="https://app.circleci.com"),
     documentation_url="https://github.com/retz8/a2uiverse-apps/blob/main/circleci/agent/README.md",
     default_port=11004,
+    default_grpc_port=11104,
     responder_app_name="a2ui_circleci_live",
     adk_agent_name="a2ui_circleci_live_agent",
     app_dir=_AGENT_DIR,

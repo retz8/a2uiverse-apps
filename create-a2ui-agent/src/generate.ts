@@ -3,7 +3,7 @@
  * the agent config, the agent project file with the kit pin, and the MCP wiring module.
  * Everything else is a template copy.
  */
-import {catalogPackageName, pythonIdent, type ScaffoldAnswers} from './answers.js';
+import {catalogPackageName, grpcPortFor, pythonIdent, type ScaffoldAnswers} from './answers.js';
 import {KIT_PACKAGE, KIT_REPO_URL, KIT_SUBDIRECTORY} from './kit.js';
 
 const py = (s: string) => JSON.stringify(s);
@@ -18,7 +18,7 @@ requires-python = ">=3.14"
 dependencies = [
     "${KIT_PACKAGE}",
     "a2ui-agent-sdk==0.9.0",
-    "a2a-sdk[http-server]>=0.3.0,<0.4.0",
+    "a2a-sdk[http-server,grpc,signing]>=1.3.0,<2.0.0",
     "google-adk>=2.5.0,<3.0.0",
     "python-dotenv>=1.0.0",
     "uvicorn>=0.40.0",
@@ -118,6 +118,7 @@ CONFIG = AgentAppConfig(
     # The A2UI versions the agent speaks: ["v0.9"], ["v0.9.1"] or both.
     a2ui_versions=["v0.9", "v0.9.1"],
     default_port=${a.port},
+    default_grpc_port=${grpcPortFor(a.port)},
     responder_app_name="a2ui_${ident}_live",
     adk_agent_name="a2ui_${ident}_live_agent",
     app_dir=_AGENT_DIR,

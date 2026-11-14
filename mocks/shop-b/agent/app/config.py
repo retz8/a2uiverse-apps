@@ -40,6 +40,7 @@ CONFIG = AgentAppConfig(
     provider=AgentProvider(organization="Northlight", url="https://northlight.example"),
     documentation_url="https://github.com/retz8/a2uiverse-apps/blob/main/mocks/shop-b/agent/README.md",
     default_port=12002,
+    default_grpc_port=12102,
     responder_app_name="a2ui_shop_b_live",
     adk_agent_name="a2ui_shop_b_live_agent",
     app_dir=_AGENT_DIR,

@@ -33,6 +33,14 @@ export const ID_PATTERN = /^[a-z][a-z0-9]*(-[a-z0-9]+)*$/;
 /** Ports the in-repo apps use start here; a fresh workspace suggests the first one. */
 export const FIRST_AGENT_PORT = 11001;
 
+/** An agent answers gRPC on a port of its own, this far above its HTTP port. */
+export const GRPC_PORT_OFFSET = 100;
+
+/** The gRPC port that goes with an agent's HTTP port. */
+export function grpcPortFor(port: number): number {
+  return port + GRPC_PORT_OFFSET;
+}
+
 export function validateId(id: string): string | undefined {
   if (!id) return 'An app id is required.';
   if (!ID_PATTERN.test(id)) {
@@ -45,8 +53,9 @@ export function validateId(id: string): string | undefined {
 }
 
 export function validatePort(port: number): string | undefined {
-  if (!Number.isInteger(port) || port < 1024 || port > 65535) {
-    return 'The port must be an integer between 1024 and 65535.';
+  const highest = 65535 - GRPC_PORT_OFFSET;
+  if (!Number.isInteger(port) || port < 1024 || port > highest) {
+    return `The port must be an integer between 1024 and ${highest}: the agent answers gRPC on the port ${GRPC_PORT_OFFSET} above it.`;
   }
   return undefined;
 }

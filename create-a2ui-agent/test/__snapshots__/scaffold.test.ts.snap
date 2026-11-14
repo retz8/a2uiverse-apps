@@ -39,6 +39,7 @@ CONFIG = AgentAppConfig(
     # The A2UI versions the agent speaks: ["v0.9"], ["v0.9.1"] or both.
     a2ui_versions=["v0.9", "v0.9.1"],
     default_port=11004,
+    default_grpc_port=11104,
     responder_app_name="a2ui_acme_mail_live",
     adk_agent_name="a2ui_acme_mail_live_agent",
     app_dir=_AGENT_DIR,
@@ -186,7 +187,7 @@ requires-python = ">=3.14"
 dependencies = [
     "a2ui-agent-kit",
     "a2ui-agent-sdk==0.9.0",
-    "a2a-sdk[http-server]>=0.3.0,<0.4.0",
+    "a2a-sdk[http-server,grpc,signing]>=1.3.0,<2.0.0",
     "google-adk>=2.5.0,<3.0.0",
     "python-dotenv>=1.0.0",
     "uvicorn>=0.40.0",
@@ -267,6 +268,7 @@ CONFIG = AgentAppConfig(
     # The A2UI versions the agent speaks: ["v0.9"], ["v0.9.1"] or both.
     a2ui_versions=["v0.9", "v0.9.1"],
     default_port=11004,
+    default_grpc_port=11104,
     responder_app_name="a2ui_acme_mail_live",
     adk_agent_name="a2ui_acme_mail_live_agent",
     app_dir=_AGENT_DIR,

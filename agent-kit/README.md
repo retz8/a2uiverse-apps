@@ -18,7 +18,7 @@ An app anywhere else pins it to a commit:
 a2ui-agent-kit = { git = "https://github.com/retz8/a2uiverse-apps", subdirectory = "agent-kit", rev = "<sha>" }
 ```
 
-Either way it brings A2UI's Python packages at exact pins: `a2ui-agent-sdk` 0.9.0, `a2ui-core` 0.4.0 and `a2ui-a2a` 0.1.0.
+Either way it brings A2UI's Python packages at exact pins, `a2ui-agent-sdk` 0.9.0 and `a2ui-core` 0.4.0, and the Python A2A SDK, `a2a-sdk` 1.x. It writes its own A2UI parts in place of `a2ui-a2a`, which requires `a2a-sdk` below 0.4.0.
 
 [`create-a2ui-agent`](../create-a2ui-agent/) scaffolds a whole app with the config below already filled in, `provider` and `documentation_url` aside.
 
@@ -42,7 +42,8 @@ CONFIG = AgentAppConfig(
     version="0.1.0",                         # the agent card's version
     skills=SKILLS,                            # the agent card's skills
     a2ui_versions=["v0.9", "v0.9.1"],         # the A2UI versions it speaks (below)
-    default_port=11005,
+    default_port=11005,                       # JSON-RPC and HTTP+JSON
+    default_grpc_port=11105,                  # gRPC
     catalog_path=CATALOG_JSON,                # the app's A2UI catalog
     catalog_kind="basic",                     # or "custom"
     role_description=prose.ROLE_DESCRIPTION,  # who the agent is
@@ -69,10 +70,11 @@ uv run python -m app --mode live            # the model over the real MCP server
 | Flag or variable          | What it does                                                                                                                                                                         |
 | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `--mode`                  | `deterministic`, `stub` or `live`                                                                                                                                                    |
-| `--port`, `--host`        | Where the agent listens                                                                                                                                                              |
-| `--base-url`              | The address the agent card advertises; the card's endpoint, the sign-in metadata and the token endpoint stay here                                                                    |
+| `--port`, `--host`        | Where the agent listens for JSON-RPC and HTTP+JSON                                                                                                                                   |
+| `--grpc-port`             | Where it listens for gRPC, on the same host; `default_grpc_port` by default                                                                                                          |
+| `--base-url`              | The address the agent card advertises for JSON-RPC and HTTP+JSON; the signed card's key set, the sign-in metadata and the token endpoint stay here                                   |
 | `--public-url`            | With sign-in on, the address the browser reaches the sign-in pages at — the sign-in page, the account chooser's form and the finish address; defaults to `--base-url`                |
-| `--state-dir`             | Moves the sign-in store, an owner-only file in `<app>/.state/` by default, which git ignores                                                                                         |
+| `--state-dir`             | Moves the sign-in store and the card's signing key, owner-only files in `<app>/.state/` by default, which git ignores                                                                |
 | `--access-token-lifetime` | Shortens the tokens the agent issues, for exercising refresh in development                                                                                                          |
 | `MODEL_NAME`              | The model; `gemini-3.8-flash` by default. A Gemini name as ADK takes it, with `GOOGLE_API_KEY`; a Claude model as `anthropic/<model>`, with `ANTHROPIC_API_KEY` and the limits below |
 | `MODEL_EFFORT`            | The thinking tier: `low` the least thinking the provider offers (Gemini's `low` level, Claude's thinking disabled), `default` leaves the model's own; `low` by default               |
@@ -86,11 +88,48 @@ A Claude model runs with three limits on the kit: `low` turns its thinking off, 
 `a2ui_versions` names the A2UI versions the app speaks: `["v0.9"]`, `["v0.9.1"]`, or both, `["v0.9", "v0.9.1"]`. Left out, it's both. A version the kit doesn't speak, or an empty list, stops the app at startup.
 
 - **The card** has one A2UI entry per version. The params are flat for v0.9 alone and for both, and keyed under `v0.9.1` for v0.9.1 alone.
-- **The choice.** Each request is answered in the newest version it names in its A2A extensions that the app speaks, through a2ui-a2a's activation helper. A request naming none of them gets the app's newest.
+- **The choice.** Each request is answered in the newest version it names in its A2A extensions that the app speaks, as upstream's helper `a2ui-a2a` chooses. A request naming none of them gets the app's newest. No response names the choice; the stamp below carries it.
 - **The stamp.** Every A2UI message the agent sends carries that version, whatever its fixture or the model wrote.
 - **The actions accepted.** Answering in v0.9, the agent takes actions stamped `v0.9`; in v0.9.1, those stamped `v0.9` or `v0.9.1`. Any other stamp isn't an action.
 
 Why it works this way: [A2UI versions, per request](https://github.com/retz8/a2uiverse/blob/main/docs/design/agent-kit.md#a2ui-versions-per-request) in the kit's design record.
+
+## Six paths
+
+An agent answers A2A 1.0 and A2A 0.3 over JSON-RPC, HTTP+JSON and gRPC: six paths, each a binding at an A2A version. JSON-RPC answers both versions at the base URL itself, HTTP+JSON both under `<base URL>/rest`, and gRPC both on the gRPC port, which the card lists as a bare `host:port`.
+
+The card lists all six in the order `interfaces` on the config gives, A2A 1.0's three first by default:
+
+```python
+from a2ui_agent_kit.bindings import DEFAULT_INTERFACES
+
+CONFIG = AgentAppConfig(
+    ...,
+    # gRPC at A2A 0.3 first, then the rest in the default order.
+    interfaces=[("GRPC", "0.3"), *(i for i in DEFAULT_INTERFACES if i != ("GRPC", "0.3"))],
+)
+```
+
+The list names all six, each once: one that repeats a path, names another or leaves one out stops the app at startup. A client takes the first path in the card's order that it speaks.
+
+An A2UI part goes out as upstream's helper writes it, one message per part, marked `application/json+a2ui` for a message stamped v0.9 and `application/a2ui+json` for v0.9.1, in its metadata's `mimeType` and in its `media_type`. A press is read by what the part holds, one message or a list of them, whatever its mark.
+
+## Signing the card
+
+`sign_card=True` on the config signs the card. At its first run the kit makes a P-256 key and keeps it in `card-signing-key.json` in the state directory; it signs every card it serves with it under ES256 and serves the key set at `<base URL>/.well-known/jwks.json`, which each signature names as its `jku`. Off by default.
+
+## An account's own card
+
+`account_skills` on the config serves each signed-in account an extended card of its own: the public card with the skills the function returns for the account in place of the card's own.
+
+```python
+def account_skills(account: SignedInAccount) -> list[AgentSkill]:
+    return [*SKILLS, *skills_only_this_account_has(account.account_id)]
+
+CONFIG = AgentAppConfig(..., sign_in=SIGN_IN, account_skills=account_skills)
+```
+
+The card then says it serves an extended card, and A2A's Get Extended Agent Card brings the account's card on any of the six paths, with the account's credential. Signed when `sign_card` is on, with the same key. An app that sets `account_skills` and has no sign-in stops at startup. Off by default.
 
 ## Sign-in
 
@@ -117,9 +156,9 @@ CONFIG = AgentAppConfig(..., sign_in=SIGN_IN)
 
 With it on:
 
-- **The card** declares one `oauth2` scheme, `signIn`, with the authorization-code flow, the `scopes` map and its metadata address; its `security` is the first sign-in's scopes.
+- **The card** declares one `oauth2` scheme, `signIn`, with the authorization-code flow, the `scopes` map and its metadata address; its `securityRequirements` are the first sign-in's scopes.
 - **The agent serves its authorization server** next to A2A: metadata at `/.well-known/oauth-authorization-server`; sign-in at `/oauth/authorize`, S256 PKCE required; the token endpoint, with refresh tokens that rotate on every use; registration, by a client ID metadata document or dynamic registration; revocation; and an OpenID Connect ID token signed ES256, carrying a stable `sub` and the account's `email`, `preferred_username` and `name`. A `login_hint` naming an account the agent holds binds the sign-in to that account, asked again for what it already granted beside the new scopes.
-- **Requests.** An A2A request without a live token the agent issued is answered 401. Inside a request, `current_account()` is the signed-in account; in deterministic mode the app's answer code reads it to answer from that account's data. An action or tool that needs a scope the token lacks ends the run in A2A's `auth-required`, naming the missing scopes — a cut-off LLM run kept out of the conversation history — and the client sends the request again once the user has signed in with more access. In live mode `live_toolset_factory` is called with the account, once per account, so each account's MCP connection carries its own vendor token.
+- **Requests.** An A2A call on any of the six paths without a live token the agent issued is refused for sign-in: HTTP 401 on JSON-RPC and HTTP+JSON, `UNAUTHENTICATED` on gRPC, where the token rides in the `authorization` metadata entry. The card, the sign-in routes and the card's key set stay open. Inside a request, `current_account()` is the signed-in account; in deterministic mode the app's answer code reads it to answer from that account's data. An action or tool that needs a scope the token lacks ends the run in A2A's `auth-required`, naming the missing scopes as `securityRequirements` in A2A 1.0's requirement shape to a caller on either version, and the answer ends there — a cut-off LLM run kept out of the conversation history — and the client sends the request again once the user has signed in with more access. In live mode `live_toolset_factory` is called with the account, once per account, so each account's MCP connection carries its own vendor token.
 - **Fake accounts.** Deterministic and stub mode sign in with the fake accounts on a chooser page; `fake_account=<id>` on the sign-in address skips the chooser, for recordings and tests, never in live mode. When fake accounts each have their own data, the app keeps a subdirectory per id in each fixtures directory — `fixtures/deterministic/<id>/`, `fixtures/stub/<id>/` — and `fixture_responder` and `stub_fixture_loader` read the signed-in account's; an app with one set keeps it flat. `testing.signed_in_as(sign_in, id)` binds a fake account for answer code called directly in a test.
 - **The beat driver** signs in to an agent whose card asks sign-in, for every scope on the card: `--account <id>` as that fake account; without it, the agent's sign-in page opens in the browser and the return is caught on a `localhost` address (RFC 8252) — the vendor's sign-in in live mode, the chooser otherwise. An agent signing in with a key takes `--api-key`. `per_account=True` on `beats.main` records each account's beats apart, in `recordings/beats/<id>/`. A trial run takes `--fixture-dir <dir>`, the recordings left as they are, and `--attempts 1`, a failing beat sent once and kept flagged.
 
@@ -162,7 +201,7 @@ SIGN_IN = ApiKeySignIn(
 )
 ```
 
-The card declares one `apiKey` scheme in that header, with the description in your customer's words. A request without one of the keys is answered 401, and `current_account()` is the key's account. There are no sign-in routes and no request for more access.
+The card declares one `apiKey` scheme in that header, with the description in your customer's words. A call without one of the keys is refused as above, and `current_account()` is the key's account. On gRPC the key rides in the metadata entry under the header's name in lowercase, so a header gRPC can't carry as one stops the app at startup: a name of `0-9`, `a-z`, `_`, `-` and `.` once lowercased, not starting `grpc-` or ending `-bin`. There are no sign-in routes and no request for more access.
 
 ## Shipping a breaking catalog change
 
@@ -212,7 +251,10 @@ export STELLIFY_CREDENTIAL=$(uv run python -m a2ui_agent_kit.preview_credential 
 
 | Module                                | What it does                                                                                                                                 |
 | ------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| `cli`, `server`, `modes`              | The entrypoint, the A2A server with one agent card for every mode, and the executor per mode                                                 |
+| `cli`, `server`, `modes`              | The entrypoint, the A2A server on the six paths with one agent card for every mode, and the executor per mode                                |
+| `bindings`, `gates`                   | The six paths in the card's order, and the one credential check over every A2A call on them                                                  |
+| `wire`, `versions`                    | The A2A parts and messages the kit reads and writes, the A2UI part, the press read by content, and the A2UI version a request is answered in |
+| `card_signing`                        | Optional: the card's signing key, its signer and its key set                                                                                 |
 | `executor_llm`                        | Streams the model's A2UI as it's written, validates it against the catalog at the end, sends what the stream held back, and retries          |
 | `executor_deterministic`, `responses` | Deterministic mode: canned A2UI per action or question, from the app's fixtures, titled as recorded                                          |
 | `catalog`, `prompt`, `knowledge`      | Loads the app's catalog, validates surfaces against it, and assembles the system prompt                                                      |
@@ -220,7 +262,7 @@ export STELLIFY_CREDENTIAL=$(uv run python -m a2ui_agent_kit.preview_credential 
 | `toolset`, `tool_shaping`             | A hook on every MCP call, to change its arguments on the way out or its result on the way back                                               |
 | `recorder`, `corpus`, `beats`         | Recording: what the agent painted, what each model request cost in time and tokens, what the MCP server returned, and scripted conversations |
 | `paint_meta`                          | Optional: a short title per painted surface, and a mark on a surface that asks something                                                     |
-| `sign_in`, `sign_in_server`           | Optional: the app's sign-in, the OAuth authorization server it serves and the 401 on A2A requests                                            |
+| `sign_in`, `sign_in_server`           | Optional: the app's sign-in and the OAuth authorization server it serves                                                                     |
 | `sign_in_store`, `sign_in_fake`       | The owner-only store behind sign-in, and the chooser over the fake accounts                                                                  |
 | `sign_in_vendor`                      | Optional: live sign-in with a vendor's OAuth, as the upstream sign-in                                                                        |
 | `testing`                             | Runs an executor in-process, or the agent on a port signed in as a vault would, for an app's tests                                           |
@@ -229,7 +271,7 @@ export STELLIFY_CREDENTIAL=$(uv run python -m a2ui_agent_kit.preview_credential 
 
 The system prompt puts three rules every app shares ahead of the app's own workflow: a failure reported in prose is worded for a person who may not work in tech, with no status code, tool name, URL or sign-in term; a write drafted for the person to confirm is a proposal, never declared a question, and one dismissed outright is repainted settled; and the person's time zone is passed to every tool that takes one, a time from a tool that takes none is shown with its zone named, and no time is converted by the model.
 
-`paint_meta` is the part A2UIVerse's canvas reads: the paint titles and question marks ride beside the A2UI, and any other client ignores them. A2UIVerse's launcher starts an agent through this same entrypoint, passing `--host localhost` and the port from its roster, `--public-url` when `A2UIVERSE_PUBLIC_URL` is set, and `--state-dir` under its `--agent-state`.
+`paint_meta` is the part A2UIVerse's canvas reads: the paint titles and question marks ride beside the A2UI, and any other client ignores them. A2UIVerse's launcher starts an agent through this same entrypoint, passing `--host localhost` and the port from its roster, `--public-url` when `A2UIVERSE_PUBLIC_URL` is set, and `--state-dir` under its `--agent-state`; gRPC takes the config's `default_grpc_port`, and a gRPC port another process holds stops the agent, as a taken HTTP port does.
 
 ## Developing the kit
 

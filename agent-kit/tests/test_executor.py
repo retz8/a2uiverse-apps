@@ -5,13 +5,13 @@ from unittest.mock import AsyncMock, MagicMock
 
 from a2a.server.agent_execution import RequestContext
 from a2a.server.events import EventQueue
-from a2a.types import DataPart, Message, Part, Role, TaskState, TaskStatusUpdateEvent
+from a2a.types import Message, Role, TaskState, TaskStatusUpdateEvent
 
 from a2ui_agent_kit.executor_deterministic import DeterministicAgentExecutor
 from a2ui_agent_kit.paint_meta import PAINT_META_MIME
 from a2ui_agent_kit.responses import fixture_responder
-
 from a2ui_agent_kit.testing import run_executor, run_executor_text
+from a2ui_agent_kit.wire import data_part, part_data, plain
 
 FIXTURES = Path(__file__).resolve().parent / "fixtures" / "deterministic"
 
@@ -53,17 +53,14 @@ async def test_a_canned_paint_meta_rides_as_the_shell_part_ahead_of_the_create_i
     context = MagicMock(spec=RequestContext)
     context.message = Message(
         message_id="m1",
-        role=Role.user,
+        role=Role.ROLE_USER,
         parts=[
-            Part(
-                root=DataPart(
-                    data={"version": "v0.9", "action": {"name": "open", "surfaceId": "s1"}}
-                )
-            )
+            data_part({"version": "v0.9", "action": {"name": "open", "surfaceId": "s1"}})
         ],
-        kind="message",
     )
     context.current_task = MagicMock(id="t1", context_id="c1")
+    context.task_id, context.context_id = "t1", "c1"
+    context.requested_extensions = set()
     queue = MagicMock(spec=EventQueue)
     queue.enqueue_event = AsyncMock()
 
@@ -71,11 +68,12 @@ async def test_a_canned_paint_meta_rides_as_the_shell_part_ahead_of_the_create_i
 
     (call,) = queue.enqueue_event.call_args_list
     parts = call.args[0].status.message.parts
-    first = parts[0].root
-    assert first.metadata == {"mimeType": PAINT_META_MIME}
-    assert first.data == {"paintMeta": {"surfaceId": "test-1", "title": "Digest"}}
-    assert "createSurface" in parts[1].root.data
-    assert parts[1].root.data["createSurface"]["surfaceId"] == "test-1"
+    first = parts[0]
+    assert plain(first.metadata) == {"mimeType": PAINT_META_MIME}
+    assert first.media_type == PAINT_META_MIME
+    assert part_data(first) == {"paintMeta": {"surfaceId": "test-1", "title": "Digest"}}
+    assert "createSurface" in part_data(parts[1])
+    assert part_data(parts[1])["createSurface"]["surfaceId"] == "test-1"
     # The A2UI harness reads the A2UI parts alone.
     payload = await run_executor(_executor(), {"name": "open", "surfaceId": "s1"})
     assert all(m.get("version") == "v0.9.1" for m in payload)
@@ -95,6 +93,5 @@ async def test_a_cancel_is_answered_with_a_bare_canceled():
     event = call.args[0]
     assert isinstance(event, TaskStatusUpdateEvent)
     assert (event.task_id, event.context_id) == ("t1", "c1")
-    assert event.status.state == TaskState.canceled
-    assert event.final is True
-    assert event.status.message is None
+    assert event.status.state == TaskState.TASK_STATE_CANCELED
+    assert not event.status.HasField("message")

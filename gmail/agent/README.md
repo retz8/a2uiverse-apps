@@ -1,6 +1,6 @@
 # Gmail agent
 
-An A2A agent for Gmail. It answers mail questions by painting A2UI surfaces with [`gmail-catalog`](../gmail-catalog/), Gmail's own components in Material 3's design language. It runs on port **11002** and is built on [`a2ui-agent-kit`](../../agent-kit/).
+An A2A agent for Gmail. It answers mail questions by painting A2UI surfaces with [`gmail-catalog`](../gmail-catalog/), Gmail's own components in Material 3's design language. It runs on port **11002**, gRPC on **11102**, and is built on [`a2ui-agent-kit`](../../agent-kit/).
 
 ## What it can do
 
@@ -30,7 +30,7 @@ uv run python -m app --mode deterministic
 
 `deterministic` answers any question with the signed-in account's recorded inbox digest, and replays the recorded actions: opening a thread, confirming or cancelling a draft, toggling a label. Opening a thread paints a new surface, as the live agent does.
 
-Other flags: `--port`, `--host`, `--base-url`, the address the agent card advertises, and `--public-url`, the address the browser reaches its sign-in pages at — a tunnel address, when the browser is on another machine. `--state-dir` moves the sign-in store from `.state/`.
+Other flags: `--port`, `--grpc-port`, `--host`, `--base-url`, the address the agent card advertises, and `--public-url`, the address the browser reaches its sign-in pages at — a tunnel address, when the browser is on another machine. `--state-dir` moves the sign-in store from `.state/`.
 
 ## Signing in
 

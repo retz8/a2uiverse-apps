@@ -15,13 +15,15 @@ from a2ui_agent_kit.modes import (
     resolve_executor,
 )
 from a2ui_agent_kit.server import build_agent_card, build_app
+from a2ui_agent_kit.wire import plain
 
 V09_URI = "https://a2ui.org/a2a-extension/a2ui/v0.9"
 V091_URI = "https://a2ui.org/a2a-extension/a2ui/v0.9.1"
+GRPC = "localhost:19998"
 
 
 def test_card_carries_the_config_identity_and_an_entry_per_version(any_config):
-    card = build_agent_card(any_config, "http://localhost:19999")
+    card = build_agent_card(any_config, "http://localhost:19999", grpc_address=GRPC)
     assert card.name == any_config.name
     assert card.description == any_config.description
     assert card.version == any_config.version
@@ -43,28 +45,28 @@ def test_card_names_its_provider_and_help_page_when_the_config_does(tmp_path):
         provider=AgentProvider(organization="Example", url="https://example.com"),
         documentation_url="https://example.com/help",
     )
-    card = build_agent_card(named, "http://localhost:19999")
+    card = build_agent_card(named, "http://localhost:19999", grpc_address=GRPC)
     assert card.provider == AgentProvider(organization="Example", url="https://example.com")
     assert card.documentation_url == "https://example.com/help"
-    bare = build_agent_card(make_config("basic", tmp_path), "http://localhost:19999")
-    assert bare.provider is None and bare.documentation_url is None
+    bare = build_agent_card(make_config("basic", tmp_path), "http://localhost:19999", grpc_address=GRPC)
+    assert not bare.HasField("provider") and not bare.HasField("documentation_url")
 
 
 def test_card_version_is_the_configs(tmp_path):
     # The app's version moves through its config (a2uiverse task-13.7 decision 5).
     from .conftest import make_config
 
-    card = build_agent_card(make_config("basic", tmp_path, version="2.3.0"), "http://localhost:19999")
+    card = build_agent_card(make_config("basic", tmp_path, version="2.3.0"), "http://localhost:19999", grpc_address=GRPC)
     assert card.version == "2.3.0"
 
 
 def test_card_advertises_the_apps_catalog(any_config):
     from a2ui_agent_kit.catalog import catalog_context
 
-    card = build_agent_card(any_config, "http://localhost:19999")
+    card = build_agent_card(any_config, "http://localhost:19999", grpc_address=GRPC)
     expected = catalog_context(any_config).supported_catalog_ids()
     for extension in card.capabilities.extensions:
-        assert extension.params["supportedCatalogIds"] == expected
+        assert plain(extension.params)["supportedCatalogIds"] == expected
 
 
 def test_deterministic_app_builds_and_serves_without_adk(basic_config):
@@ -243,3 +245,9 @@ def test_build_llm_agent_wires_the_measurement_callbacks(basic_config):
     agent = build_llm_agent(basic_config, "stub", model="gemini-x")
     assert before_model in agent.canonical_before_model_callbacks
     assert after_model in agent.canonical_after_model_callbacks
+
+
+def test_the_grpc_interfaces_default_to_the_base_url_s_host_at_the_config_s_grpc_port(basic_config):
+    card = build_agent_card(basic_config, "http://agent.example:19999")
+    grpc = {i.url for i in card.supported_interfaces if i.protocol_binding == "GRPC"}
+    assert grpc == {"agent.example:19998"}

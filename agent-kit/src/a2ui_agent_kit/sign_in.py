@@ -11,12 +11,13 @@ A2A request without a token it issued.
 Inside a request, `current_account()` is the signed-in account the request's token
 stands for — its stable `sub`, its display claims, the scopes it granted and, in live
 mode, its vendor token. A missing scope raises `AuthRequired`, which ends the run with
-A2A's `auth-required` naming the missing keys (task-12.2 decision 12). A vendor that no
+A2A's `auth-required` naming the missing keys (task-12.2 decision 12), in A2A 1.0's
+requirement shape to a caller on either A2A version (a2uiverse task-20.9 decision 3). A vendor that no
 longer takes the account's token raises `VendorSignInEnded`, which fails the run and
 ends the account's sign-ins.
 
 An app with no OAuth of its own puts an `ApiKeySignIn` on its config instead: the card
-declares an `apiKey` scheme, and a request without one of its keys is answered 401.
+declares an `apiKey` scheme, and a request without one of its keys is refused for sign-in.
 """
 
 from __future__ import annotations
@@ -26,8 +27,9 @@ from collections.abc import Awaitable, Callable, Mapping, Sequence
 from dataclasses import dataclass, field
 from typing import TYPE_CHECKING, Any, Protocol, runtime_checkable
 
-from a2a.types import DataPart, Message, Part, TextPart
-from a2a.utils import new_agent_parts_message
+from a2a.types import Message
+
+from a2ui_agent_kit.wire import agent_message, data_part, text_part
 
 if TYPE_CHECKING:
     from a2a.server.agent_execution import RequestContext
@@ -290,7 +292,8 @@ def before_tool_check(*, tool, args, tool_context, **_extra):  # noqa: ANN001, A
 
 def auth_required_message(err: AuthRequired, context_id: str, task_id: str) -> Message:
     """The `auth-required` status message: one short line in the card's words for a
-    plain A2A client, and the request in the card's own `security` shape."""
+    plain A2A client, and the request as `securityRequirements` in A2A 1.0's requirement
+    shape, the part unmarked."""
     run = _run.get()
     words = (
         run.sign_in.words_for(err.missing)
@@ -298,8 +301,5 @@ def auth_required_message(err: AuthRequired, context_id: str, task_id: str) -> M
         else list(err.missing)
     )
     text = f"More access is needed: {'; '.join(words)}."
-    parts = [
-        Part(root=TextPart(text=text)),
-        Part(root=DataPart(data={"security": [{SCHEME_KEY: list(err.missing)}]})),
-    ]
-    return new_agent_parts_message(parts, context_id, task_id)
+    request = {"securityRequirements": [{"schemes": {SCHEME_KEY: {"list": list(err.missing)}}}]}
+    return agent_message([text_part(text), data_part(request)], context_id, task_id)

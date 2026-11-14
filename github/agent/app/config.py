@@ -46,6 +46,7 @@ CONFIG = AgentAppConfig(
     provider=AgentProvider(organization="GitHub", url="https://github.com"),
     documentation_url="https://github.com/retz8/a2uiverse-apps/blob/main/github/agent/README.md",
     default_port=11001,
+    default_grpc_port=11101,
     responder_app_name="a2ui_github_live",
     adk_agent_name="a2ui_github_live_agent",
     app_dir=_AGENT_DIR,

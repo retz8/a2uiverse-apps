@@ -46,6 +46,7 @@ CONFIG = AgentAppConfig(
     provider=AgentProvider(organization="Google", url="https://calendar.google.com"),
     documentation_url="https://github.com/retz8/a2uiverse-apps/blob/main/calendar/agent/README.md",
     default_port=11003,
+    default_grpc_port=11103,
     responder_app_name="a2ui_calendar_live",
     adk_agent_name="a2ui_calendar_live_agent",
     app_dir=_AGENT_DIR,

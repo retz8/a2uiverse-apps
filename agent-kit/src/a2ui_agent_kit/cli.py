@@ -29,13 +29,20 @@ def build_command(config: AgentAppConfig) -> click.Command:
     @click.option("--host", default="localhost")
     @click.option("--port", default=config.default_port, show_default=True)
     @click.option(
+        "--grpc-port",
+        default=config.default_grpc_port,
+        show_default=True,
+        help="Port gRPC answers on, beside the HTTP port, at A2A 1.0 and 0.3.",
+    )
+    @click.option(
         "--base-url",
         default=None,
         help=(
-            "URL to advertise in the agent card: its message/send endpoint, and with "
-            "sign-in the issuer, metadata and token endpoint. Defaults to "
+            "URL to advertise in the agent card: its JSON-RPC and HTTP+JSON endpoints, the "
+            "signed card's key set, and with sign-in the issuer, metadata and token "
+            "endpoint. Defaults to "
             "http://<host>:<port>. Set this when the caller reaches the server through a "
-            "tunnel/proxy so message/send targets a reachable URL."
+            "tunnel/proxy so a request reaches the agent."
         ),
     )
     @click.option(
@@ -51,7 +58,8 @@ def build_command(config: AgentAppConfig) -> click.Command:
         "--state-dir",
         type=click.Path(file_okay=False, path_type=Path),
         default=None,
-        help="Where the sign-in store lives. Defaults to <app>/.state.",
+        help="Where the sign-in store and the card's signing key live. Defaults to "
+        "<app>/.state.",
     )
     @click.option(
         "--access-token-lifetime",
@@ -65,6 +73,7 @@ def build_command(config: AgentAppConfig) -> click.Command:
         mode: str,
         host: str,
         port: int,
+        grpc_port: int,
         base_url: str | None,
         public_url: str | None,
         state_dir: Path | None,
@@ -100,6 +109,7 @@ def build_command(config: AgentAppConfig) -> click.Command:
                 state_dir=state_dir,
                 access_token_lifetime=access_token_lifetime,
                 public_url=public_url,
+                grpc_port=grpc_port,
             ),
             host=host,
             port=port,

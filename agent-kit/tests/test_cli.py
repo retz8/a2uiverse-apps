@@ -32,3 +32,9 @@ def test_beats_module_imports():
 def test_help_names_the_public_address_for_the_sign_in_pages(basic_config):
     result = CliRunner().invoke(build_command(basic_config), ["--help"])
     assert "--public-url" in result.output
+
+
+def test_the_grpc_port_defaults_to_the_config_grpc_port(basic_config):
+    result = CliRunner().invoke(build_command(basic_config), ["--help"])
+    assert "--grpc-port" in result.output
+    assert str(basic_config.default_grpc_port) in result.output

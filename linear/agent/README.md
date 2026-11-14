@@ -1,6 +1,6 @@
 # Linear agent
 
-An A2A agent for Linear. It answers issue-tracking questions by painting A2UI surfaces with [`linear-catalog`](../linear-catalog/), Linear's own set of A2UI components in its look. It runs on port **11005** and is built on [`a2ui-agent-kit`](../../agent-kit/).
+An A2A agent for Linear. It answers issue-tracking questions by painting A2UI surfaces with [`linear-catalog`](../linear-catalog/), Linear's own set of A2UI components in its look. It runs on port **11005**, gRPC on **11105**, and is built on [`a2ui-agent-kit`](../../agent-kit/).
 
 ## What it can do
 
@@ -28,7 +28,7 @@ uv run python -m app --mode deterministic
 
 `deterministic` answers any question with the recorded list of your issues, and replays the recorded actions: opening an issue, proposing a status change and confirming or declining it. Opening an issue paints a new surface, as the live agent does.
 
-Other flags: `--port`, `--host`, `--base-url`, the address the agent card advertises, and `--public-url`, the address the browser reaches its sign-in pages at — a tunnel address, when the browser is on another machine. `--state-dir` moves the sign-in store from `.state/`.
+Other flags: `--port`, `--grpc-port`, `--host`, `--base-url`, the address the agent card advertises, and `--public-url`, the address the browser reaches its sign-in pages at — a tunnel address, when the browser is on another machine. `--state-dir` moves the sign-in store from `.state/`.
 
 In `live` mode, `LINEAR_MCP_URL` in the environment is the MCP server's address, `https://mcp.linear.app/mcp` when unset; a proxy in front of Linear's server, such as a dev tool's, is set there. The sign-in still asks Linear for its hosted server.
 
