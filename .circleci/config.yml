@@ -1,4 +1,4 @@
-# The repository's gates on every branch: `pnpm verify` over the catalogs, and each Python project's own tests, in parallel.
+# The repository's gates on every branch: `pnpm verify` over the catalogs, each Python project's own tests, and Shop C's Go checks, in parallel.
 
 version: 2.1
 
@@ -11,6 +11,9 @@ executors:
   base:
     docker:
       - image: cimg/base:current
+  go:
+    docker:
+      - image: cimg/go:1.26
 
 jobs:
   verify:
@@ -55,8 +58,22 @@ jobs:
             done
             exit $failed
 
+  go:
+    executor: go
+    steps:
+      - checkout
+      - run:
+          name: Shop C's formatting, vet and tests
+          working_directory: mocks/shop-c/agent
+          command: |
+            unformatted=$(gofmt -l .)
+            if [ -n "$unformatted" ]; then echo "$unformatted"; exit 1; fi
+            go vet ./...
+            go test ./...
+
 workflows:
   verify:
     jobs:
       - verify
       - pytest
+      - go

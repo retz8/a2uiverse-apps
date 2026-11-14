@@ -1,5 +1,5 @@
 {
-  "$comment": "The mock tier's single source of truth (task-4.6 decision 3). Product identity is shared; each store's listing carries its own values, its own subset, and its own order. Every mode of both mock agents derives from this file, so the two stores cannot disagree about what a camera is. Three cameras are stocked by both; lumen-z6 is Shop A's alone and orbit-gm3 is Shop B's alone (decision 2). Each store's authored order matches neither of its sorted orders, so the reorder instrument always moves something and always bumps a generation.",
+  "$comment": "The mock tier's single source of truth (task-4.6 decision 3). Product identity is shared; each store's listing carries its own values, its own subset, and its own order. Every mode of every mock agent derives from this file, so the stores cannot disagree about what a camera is. Three cameras are stocked by Shop A and Shop B both; lumen-z6 is Shop A's alone and orbit-gm3 is Shop B's alone (decision 2). Shop C, a members' warehouse, stocks all five, each with a trade price beside its price (task-20.10 decision 2). Each store's authored order matches neither of its sorted orders, so the reorder instrument always moves something and always bumps a generation.",
   "products": [
     {
       "id": "lumen-x100",
@@ -44,6 +44,16 @@
         {"id": "lumen-x100", "price": 1379, "rating": 4.5},
         {"id": "orbit-gm3", "price": 899, "rating": 4.2},
         {"id": "kestrel-r5", "price": 3149, "rating": 4.3}
+      ]
+    },
+    "shop-c": {
+      "policy": "Halide Supply ships members' orders insured within one working day, and trade accounts can collect from the warehouse instead. Unused stock can be returned within thirty days; a body used on a job is assessed on receipt.",
+      "listing": [
+        {"id": "kestrel-r5", "price": 3229, "rating": 4.7, "tradePrice": 2940},
+        {"id": "lumen-x100", "price": 1419, "rating": 4.9, "tradePrice": 1290},
+        {"id": "orbit-gm3", "price": 919, "rating": 4.1, "tradePrice": 835},
+        {"id": "verity-a7", "price": 2189, "rating": 4.6, "tradePrice": 1990},
+        {"id": "lumen-z6", "price": 1849, "rating": 4.5, "tradePrice": 1680}
       ]
     }
   }

@@ -11,7 +11,7 @@
 
 This file (`CLAUDE.md`) holds only the **operational rules** not covered elsewhere.
 
-`a2uiverse-apps` holds the **vendor apps** of A2UIVerse — all of them external apps; there are no internal agents. Each app is an A2A agent backed by its vendor's **official public MCP server**, painting its own UI with A2UI, installed into A2UIVerse from its agent's card with its catalog packed by Stellify, A2UIVerse's pack tool. A vendor catalog is its own component vocabulary in its vendor's design language, as GitHub's is Primer — very similar to the product without imitating it: no exact colors unless the vendor discloses them publicly, no product icons, no logos (`../a2uiverse/SPEC.md` §9.2). The mock stores and the scaffolder's `basic` template carry the themed basic catalog: the A2UI basic catalog under its `--a2ui-*` tokens, appending product components only for what the basic vocabulary cannot express. Every agent runs in one of three modes, `deterministic`, `stub`, `live`, answering JSON-RPC and HTTP+JSON on its port and gRPC on its gRPC port, 100 above it. This repo is a **downstream consumer** of the A2UI and A2A protocols — not the protocol repo. The protocol, schemas, and standard catalogs live in the sibling fork at `../A2UI/`, which tracks `a2ui-project/a2ui` via its `upstream` remote. Read the spec from the `upstream/main` ref (see §2), not the fork's working tree.
+`a2uiverse-apps` holds the **vendor apps** of A2UIVerse — all of them external apps; there are no internal agents. Each app is an A2A agent backed by its vendor's **official public MCP server**, painting its own UI with A2UI, installed into A2UIVerse from its agent's card with its catalog packed by Stellify, A2UIVerse's pack tool. A vendor catalog is its own component vocabulary in its vendor's design language, as GitHub's is Primer — very similar to the product without imitating it: no exact colors unless the vendor discloses them publicly, no product icons, no logos (`../a2uiverse/SPEC.md` §9.2). Shop A, Shop B and the scaffolder's `basic` template carry the themed basic catalog: the A2UI basic catalog under its `--a2ui-*` tokens, appending product components only for what the basic vocabulary cannot express. Every agent built on the kit runs in one of three modes, `deterministic`, `stub`, `live`, answering JSON-RPC and HTTP+JSON on its port and gRPC on its gRPC port, 100 above it. This repo is a **downstream consumer** of the A2UI and A2A protocols — not the protocol repo. The protocol, schemas, and standard catalogs live in the sibling fork at `../A2UI/`, which tracks `a2ui-project/a2ui` via its `upstream` remote. Read the spec from the `upstream/main` ref (see §2), not the fork's working tree.
 
 ### The one rule
 
@@ -27,12 +27,14 @@ One folder per app: `<vendor>/agent/` (the A2A agent, its own project) and `<ven
 
 A **mock app** is not a vendor app. It is an instrument — an agent authored so a platform mechanism can be exercised against data whose shape is known and controlled, rather than against a real vendor that may return anything.
 
-A mock is shaped like any other app: scaffolded by `create-a2ui-agent`, built on the kit, with an agent and a catalog. It differs in two ways.
+A mock is shaped like any other app, Shop C aside: scaffolded by `create-a2ui-agent`, built on the kit, with an agent and a catalog. It differs in two ways.
 
 - **No MCP.** There is no backend behind an invented vendor, so `live` means the model working over an in-repo dataset. The official-public-MCP rule above does not apply to mocks — and does not relax for anything else.
 - **Not beside the vendor apps.** Mocks live in their own tier, outside the one-folder-per-app vendor layout, and A2UIVerse's launcher runs them only as that tier, in place of the vendor apps, so they are never installed beside them. The platform's Router retrieves over the installed apps' AgentCards; fictional vendors resident there would be noise in every composition it plans.
 
-The tier is **`mocks/<id>/`**, mirroring the vendor layout one level down. Opting in is the launcher's mock tier (`--tier mocks`). Mocks take ports from **`12001+`**, a band of their own, so a mock and a vendor can never collide and the scaffold's sibling-based port suggestion stays correct in both places. A mock in this repo takes the kit as a **path dependency**, as the vendor apps do, rather than the scaffold's git pin — an in-repo app on a pinned commit could not exercise a kit change until it was pushed, and the mocks are the tier that finds those changes first.
+The tier is **`mocks/<id>/`**, mirroring the vendor layout one level down. Opting in is the launcher's mock tier (`--tier mocks`). Mocks take ports from **`12001+`**, a band of their own, so a mock and a vendor can never collide and the scaffold's sibling-based port suggestion stays correct in both places. A mock built on the kit takes it as a **path dependency**, as the vendor apps do, rather than the scaffold's git pin — an in-repo app on a pinned commit could not exercise a kit change until it was pushed, and the mocks are the tier that finds those changes first.
+
+**Shop C** (`mocks/shop-c/`) is the mock written by hand: an agent alone, in Go on the Go A2A SDK (`a2a-go`), with no kit, no catalog package and no A2UI library. It answers A2A 1.0 alone on gRPC, HTTP+JSON and JSON-RPC, has no run modes, paints in the public basic catalog, and is its own authorization server. The launcher does not run it: it is started, installed and published by hand, as its agent's README says. Its gates are `gofmt`, `go vet` and `go test` in `mocks/shop-c/agent/`, CI's `go` job.
 
 Mocks are kept rather than deleted once the work that motivated them lands: they are the only substrate where a mechanism can be re-tested against data guaranteed to be well-formed.
 
@@ -77,7 +79,7 @@ Catalog-authoring and renderer conventions live in the `coding-principles` skill
 
 ### Setup and gates
 
-- **Fresh clone:** `pnpm install` at the root (Node ≥ 22; Corepack resolves the pinned pnpm). Each app's agent is its own project — follow that app's README for its setup (e.g. `uv sync` for a Python agent).
+- **Fresh clone:** `pnpm install` at the root (Node ≥ 22; Corepack resolves the pinned pnpm). Each app's agent is its own project — follow that app's README for its setup (e.g. `uv sync` for a Python agent, Go 1.26 for Shop C).
 - **Gates:** `pnpm verify` — `turbo run build typecheck test check` over every `*/*-catalog`, `check` being Stellify's gate over the built catalog, then `eslint .` and `prettier --check .`. Agent test suites run per that app's README. Must be green before any commit that touches code lands on `main`. A commit that touches only documents — `_dev/`, READMEs, this file — needs only `prettier --check` on the files it changes.
 
 ### Daily-work harness
