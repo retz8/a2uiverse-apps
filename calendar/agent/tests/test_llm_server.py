@@ -12,7 +12,8 @@ def test_default_port_is_the_app_port_in_every_mode():
 
 def test_card_advertises_the_a2ui_extension_and_our_catalog():
     card = build_agent_card(CONFIG, "http://localhost:11003")
-    assert card.supported_interfaces[0].url == "http://localhost:11003"
+    jsonrpc = next(i for i in card.supported_interfaces if i.protocol_binding == "JSONRPC")
+    assert jsonrpc.url == "http://localhost:11003"
     assert card.capabilities.streaming is True
     # Both versions, as `a2ui_versions` in app/config.py names them: one entry per
     # version, oldest first, each naming the catalog flat.

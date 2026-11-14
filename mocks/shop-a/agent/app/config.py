@@ -10,6 +10,7 @@ from __future__ import annotations
 from pathlib import Path
 
 from a2a.types import AgentProvider
+from a2ui_agent_kit.bindings import DEFAULT_INTERFACES
 from a2ui_agent_kit.config import AgentAppConfig
 from a2ui_agent_kit.paint_meta import require_carries_action
 
@@ -40,6 +41,8 @@ CONFIG = AgentAppConfig(
     documentation_url="https://github.com/retz8/a2uiverse-apps/blob/main/mocks/shop-a/agent/README.md",
     default_port=12001,
     default_grpc_port=12101,
+    # The default order: JSON-RPC, HTTP+JSON and gRPC at A2A 1.0, then the same at A2A 0.3.
+    interfaces=DEFAULT_INTERFACES,
     responder_app_name="a2ui_shop_a_live",
     adk_agent_name="a2ui_shop_a_live_agent",
     app_dir=_AGENT_DIR,

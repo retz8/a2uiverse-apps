@@ -9,6 +9,11 @@ from a2ui_agent_kit.versions import EXTENSION_URIS
 from app.config import CONFIG
 
 
+def jsonrpc_url(card: dict) -> str:
+    """The address the card lists JSON-RPC at, found by its binding, whichever path comes first."""
+    return next(i["url"] for i in card["supportedInterfaces"] if i["protocolBinding"] == "JSONRPC")
+
+
 def test_default_port_is_the_app_port():
     assert CONFIG.default_port == 11005
 
@@ -31,12 +36,23 @@ def test_agent_card_advertises_streaming_and_the_a2ui_extension():
     ]
 
 
+def test_card_lists_http_json_at_a2a_0_3_first():
+    # The path a client takes first, in the order app/config.py gives; the apps README's roster
+    # table names it.
+    first = build_agent_card(CONFIG, "http://localhost:11005").supported_interfaces[0]
+    assert (first.protocol_binding, first.protocol_version, first.url) == (
+        "HTTP+JSON",
+        "0.3",
+        "http://localhost:11005/rest",
+    )
+
+
 def test_build_app_defaults_card_url_to_host_port():
     app = build_app(CONFIG, "deterministic", "localhost", CONFIG.default_port)
     with TestClient(app) as client:
         resp = client.get("/.well-known/agent-card.json")
     assert resp.status_code == 200
-    assert resp.json()["supportedInterfaces"][0]["url"] == f"http://localhost:{CONFIG.default_port}"
+    assert jsonrpc_url(resp.json()) == f"http://localhost:{CONFIG.default_port}"
 
 
 def test_build_app_advertises_base_url_override():
@@ -46,4 +62,4 @@ def test_build_app_advertises_base_url_override():
     with TestClient(app) as client:
         resp = client.get("/.well-known/agent-card.json")
     assert resp.status_code == 200
-    assert resp.json()["supportedInterfaces"][0]["url"] == "https://tunnel.example"
+    assert jsonrpc_url(resp.json()) == "https://tunnel.example"

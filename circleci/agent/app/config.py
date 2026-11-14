@@ -10,6 +10,7 @@ from __future__ import annotations
 from pathlib import Path
 
 from a2a.types import AgentProvider
+from a2ui_agent_kit.bindings import DEFAULT_INTERFACES
 from a2ui_agent_kit.config import AgentAppConfig
 from a2ui_agent_kit.paint_meta import require_carries_action
 
@@ -41,6 +42,8 @@ CONFIG = AgentAppConfig(
     documentation_url="https://github.com/retz8/a2uiverse-apps/blob/main/circleci/agent/README.md",
     default_port=11004,
     default_grpc_port=11104,
+    # JSON-RPC at A2A 1.0 first, then the rest in the default order.
+    interfaces=[("JSONRPC", "1.0"), *(i for i in DEFAULT_INTERFACES if i != ("JSONRPC", "1.0"))],
     responder_app_name="a2ui_circleci_live",
     adk_agent_name="a2ui_circleci_live_agent",
     app_dir=_AGENT_DIR,

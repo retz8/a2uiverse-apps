@@ -10,6 +10,7 @@ from __future__ import annotations
 from pathlib import Path
 
 from a2a.types import AgentProvider
+from a2ui_agent_kit.bindings import DEFAULT_INTERFACES
 from a2ui_agent_kit.config import AgentAppConfig
 from a2ui_agent_kit.paint_meta import require_carries_action
 
@@ -41,6 +42,8 @@ CONFIG = AgentAppConfig(
     documentation_url="https://github.com/retz8/a2uiverse-apps/blob/main/linear/agent/README.md",
     default_port=11005,
     default_grpc_port=11105,
+    # HTTP+JSON at A2A 0.3 first, then the rest in the default order.
+    interfaces=[("HTTP+JSON", "0.3"), *(i for i in DEFAULT_INTERFACES if i != ("HTTP+JSON", "0.3"))],
     responder_app_name="a2ui_linear_live",
     adk_agent_name="a2ui_linear_live_agent",
     app_dir=_AGENT_DIR,

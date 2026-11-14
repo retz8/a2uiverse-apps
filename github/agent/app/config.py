@@ -6,6 +6,7 @@ from pathlib import Path
 from typing import Any
 
 from a2a.types import AgentProvider
+from a2ui_agent_kit.bindings import DEFAULT_INTERFACES
 from a2ui_agent_kit.config import AgentAppConfig
 from a2ui_agent_kit.paint_meta import require_root_component
 
@@ -47,6 +48,8 @@ CONFIG = AgentAppConfig(
     documentation_url="https://github.com/retz8/a2uiverse-apps/blob/main/github/agent/README.md",
     default_port=11001,
     default_grpc_port=11101,
+    # gRPC at A2A 1.0 first, then the rest in the default order.
+    interfaces=[("GRPC", "1.0"), *(i for i in DEFAULT_INTERFACES if i != ("GRPC", "1.0"))],
     responder_app_name="a2ui_github_live",
     adk_agent_name="a2ui_github_live_agent",
     app_dir=_AGENT_DIR,
