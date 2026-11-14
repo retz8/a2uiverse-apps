@@ -116,11 +116,11 @@ describe('Stellify in the catalog', () => {
     expect(pkg.scripts.check).toBe('stellify check');
   });
 
-  it('makes a catalog outside any pnpm workspace its own, approving esbuild', () => {
+  it('makes a catalog outside any pnpm workspace its own, approving esbuild and not protobufjs', () => {
     const {result, read} = run({});
     expect(result.files).toContain('acme-mail-catalog/pnpm-workspace.yaml');
     expect(read('acme-mail-catalog/pnpm-workspace.yaml')).toMatch(
-      /allowBuilds:\n {2}esbuild: true/,
+      /allowBuilds:\n {2}esbuild: true\n {2}protobufjs: false/,
     );
   });
 

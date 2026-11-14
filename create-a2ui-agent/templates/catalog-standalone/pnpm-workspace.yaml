@@ -1,4 +1,5 @@
 # A catalog outside any pnpm workspace is its own: esbuild, which Stellify bundles with,
-# runs its install script.
+# runs its install script; protobufjs, which Stellify's gRPC transport brings, does not.
 allowBuilds:
   esbuild: true
+  protobufjs: false

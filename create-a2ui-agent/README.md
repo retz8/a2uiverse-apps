@@ -34,7 +34,7 @@ Every input is a flag, and anything missing is asked for. `--yes`, or a non-inte
 | `--kit-rev <sha>`                | the kit commit to pin                                     | this checkout's newest pushed commit |
 | `--install` / `--no-install`     | run `uv sync` and `pnpm install` after writing            | asked; off with `--yes`              |
 
-The agent depends on the kit as a git dependency pinned to one commit, so an app scaffolded at a given commit matches the kit at that commit. The CLI warns when the checkout has uncommitted or unpushed changes. The catalog depends on [Stellify](https://github.com/retz8/a2uiverse/tree/main/packages/stellify), A2UIVerse's pack tool, at the commit every catalog in this repo pins; outside any pnpm workspace, the catalog is a workspace of its own, approving the install script of Stellify's esbuild.
+The agent depends on the kit as a git dependency pinned to one commit, so an app scaffolded at a given commit matches the kit at that commit. The CLI warns when the checkout has uncommitted or unpushed changes. The catalog depends on [Stellify](https://github.com/retz8/a2uiverse/tree/main/packages/stellify), A2UIVerse's pack tool, at the commit every catalog in this repo pins; outside any pnpm workspace, the catalog is a workspace of its own, approving the install script of Stellify's esbuild and not that of protobufjs, which Stellify's gRPC transport brings.
 
 The suggested port is one above the highest `default_port` any sibling agent declares in its `app/config.py`, looking in the folders beside the target and beside the working directory, or 11001 when there are none.
 

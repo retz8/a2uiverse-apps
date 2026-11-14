@@ -87,7 +87,8 @@ export function scaffold({
   }
 
   // Catalog half: the whole package for the chosen kind; outside any pnpm workspace, the
-  // package is its own, approving the install script of Stellify's esbuild.
+  // package is its own, approving the install script of Stellify's esbuild and not that of
+  // protobufjs.
   record(
     catalogDir,
     copyTemplateTree(join(templates, 'catalog', answers.catalogKind), catalogDir, tokens),
