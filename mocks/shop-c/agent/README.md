@@ -32,7 +32,7 @@ Every answer is built by code from the dataset. Shop C has no run modes.
 | `--public-url` | `--base-url`             | the address a browser reaches the sign-in page at, such as a tunnel's      |
 | `--state-dir`  | `.state` beside `go.mod` | where the keys, the registered clients and the tokens are kept, owner-only |
 
-The kit's agents take the same options, all but `--mode`.
+The kit's agents take the same options, and two more, `--mode` and `--access-token-lifetime`.
 
 ## The members
 

@@ -40,7 +40,7 @@ uv run python -m app --mode deterministic
 
 A fresh scaffold runs before you edit anything: `deterministic` paints a greeting card, `stub` holds one placeholder tool, and `live` stops with a "not wired yet" message until `app/mcp.py` names the MCP server.
 
-Other flags: `--port`, `--grpc-port`, `--host`, and `--base-url`, the address the agent card advertises.
+Other flags: `--port`, `--grpc-port`, `--host`, and `--base-url`, the address the agent card advertises for JSON-RPC and HTTP+JSON.
 
 ## Credentials (live mode)
 

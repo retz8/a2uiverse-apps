@@ -23,7 +23,7 @@ Every agent built on the kit runs in three modes, on the same ports: JSON-RPC an
 | `stub`          | the model, over canned data             | a Gemini key                                                               |
 | `live`          | the model, over the vendor's MCP server | a Gemini key; for GitHub, Gmail and Calendar, an OAuth client you register |
 
-The canned data is recorded from live runs, not written by hand. Other flags: `--port`, `--grpc-port`, `--host`, `--base-url` (the address the agent card advertises), `--public-url` (the address the browser reaches the sign-in pages at) and `--state-dir` (where the sign-in store lives, in place of the agent's `.state/`).
+The canned data is recorded from live runs, not written by hand. Other flags: `--port`, `--grpc-port`, `--host`, `--base-url` (the address the agent card advertises for JSON-RPC and HTTP+JSON), `--public-url` (the address the browser reaches the sign-in pages at) and `--state-dir` (where the sign-in store lives, in place of the agent's `.state/`).
 
 From the `a2uiverse` repo, the launcher runs them all: `pnpm dev:all` for the apps and A2UIVerse together, `pnpm dev:agents` for the apps alone installed into a running A2UIVerse, `--only gmail,linear --mode live` for two apps live, `--tier mocks` for the two stores in place of the apps, `--publish --leave-uninstalled shop-b` for Shop B in the Store but not installed, for a question to offer it.
 
@@ -46,7 +46,7 @@ The three **mock stores** exist for testing A2UIVerse. All three read one datase
 
 ## Signing in
 
-Each vendor agent is its own sign-in: an OAuth authorization server A2UIVerse signs in to, declared on its card. A request without a token the agent issued is refused, HTTP 401 on JSON-RPC and HTTP+JSON and `UNAUTHENTICATED` on gRPC, and an action that needs more access than the account granted ends in A2A's `auth-required`, naming the missing scopes. The agent holds the vendor's token, and A2UIVerse only the agent's.
+Each vendor agent is its own sign-in: an OAuth authorization server A2UIVerse signs in to, declared on its card. A request without a token the agent issued is refused, HTTP 401 on JSON-RPC and HTTP+JSON and `UNAUTHENTICATED` on gRPC, and an action that needs more access than the account granted ends in A2A's `TASK_STATE_AUTH_REQUIRED`, `auth-required` to a caller on A2A 0.3, naming the missing scopes. The agent holds the vendor's token, and A2UIVerse only the agent's.
 
 - **In `deterministic` and `stub` mode**, the sign-in page offers made-up accounts — Gmail has two, each with its own mail; the other apps one.
 - **In `live` mode**, the sign-in sends you to the vendor. GitHub needs an OAuth App you register, Gmail and Calendar an OAuth client in a Google Cloud project, the two sharing it; Linear and CircleCI register themselves with the vendor on the first sign-in. Each agent's README has the steps.
@@ -80,16 +80,16 @@ pnpm exec stellify preview linear http://localhost:11005/.well-known/agent-card.
 pnpm exec stellify publish linear http://localhost:11005/.well-known/agent-card.json dist/artifact --preview preview.json
 ```
 
-| App id | Port | Catalog folder | Preview credential |
-| ---------- | ------- | ----------------------------- | ------------------------------------------------------------------------ | --- |
-| `github` | `11001` | `github/github-catalog` | `preview_credential --account retz8` |
-| `gmail` | `11002` | `gmail/gmail-catalog` | `preview_credential --account you`, or `personal` |
-| `calendar` | `11003` | `calendar/calendar-catalog` | `preview_credential --account you` |
-| `circleci` | `11004` | `circleci/circleci-catalog` | `preview_credential --account retz8` |
-| `linear` | `11005` | `linear/linear-catalog` | `preview_credential --account me` |
-| `shop-a` | `12001` | `mocks/shop-a/shop-a-catalog` | none: no sign-in, so the marketplace takes its preview itself at publish |
-| `shop-b` | `12002` | `mocks/shop-b/shop-b-catalog` | its demo key, `northlight-demo-key-4f7c2a` |
-| `shop-c` | `12003` | none: nothing is packed | `go run . token --member mara` in `mocks/shop-c/agent` |
+| App id     | Port    | Catalog folder                | Preview credential                                                       |
+| ---------- | ------- | ----------------------------- | ------------------------------------------------------------------------ |
+| `github`   | `11001` | `github/github-catalog`       | `preview_credential --account retz8`                                     |
+| `gmail`    | `11002` | `gmail/gmail-catalog`         | `preview_credential --account you`, or `personal`                        |
+| `calendar` | `11003` | `calendar/calendar-catalog`   | `preview_credential --account you`                                       |
+| `circleci` | `11004` | `circleci/circleci-catalog`   | `preview_credential --account retz8`                                     |
+| `linear`   | `11005` | `linear/linear-catalog`       | `preview_credential --account me`                                        |
+| `shop-a`   | `12001` | `mocks/shop-a/shop-a-catalog` | none: no sign-in, so the marketplace takes its preview itself at publish |
+| `shop-b`   | `12002` | `mocks/shop-b/shop-b-catalog` | its demo key, `northlight-demo-key-4f7c2a`                               |
+| `shop-c`   | `12003` | none: nothing is packed       | `go run . token --member mara` in `mocks/shop-c/agent`                   |
 
 The preview is the app's first screen on its Store listing, so it is taken in `deterministic` or `stub` mode, over canned data: the fake accounts sign in nowhere else. An agent running `live` is previewed from a `deterministic` run of the same checkout and published with the live agent's card URL; the card is the same in every mode, so the preview is at its version. When the card changes, move `version` in the agent's `app/config.py` to one the app has never published, or the marketplace refuses the publish. Stellify's README has every verb; A2UIVerse's launcher does all of this for the roster with `pnpm dev:all --publish`, `--mode live` included.
 

@@ -29,11 +29,11 @@ uv run python -m app --mode deterministic
 
 `deterministic` answers any question with the catalogue, and a question about shipping, returns or warranty with the policy. Opening a camera, going back and sorting all update the catalogue in place.
 
-Other flags: `--port`, `--grpc-port`, `--host`, and `--base-url`, the address the agent card advertises.
+Other flags: `--port`, `--grpc-port`, `--host`, and `--base-url`, the address the agent card advertises for JSON-RPC and HTTP+JSON.
 
 ## Signing in
 
-Shop B signs in with a key, in every mode. Its card declares an `apiKey` scheme in the `X-Northlight-Key` header, described as "Your Northlight key. You'll find it on your Northlight account page." A2UIVerse's tile for Shop B says Connect, and opens A2UIVerse's own page to paste the key, which shows that description and a link to the card's `documentationUrl`, this README. A request without a valid key is refused: HTTP 401 on JSON-RPC and HTTP+JSON, and `UNAUTHENTICATED` on gRPC, where the key rides in the `x-northlight-key` metadata entry.
+Shop B signs in with a key, in every mode. Its card declares an API key scheme in the `X-Northlight-Key` header, described as "Your Northlight key. You'll find it on your Northlight account page." A2UIVerse's tile for Shop B says Connect, and opens A2UIVerse's own page to paste the key, which shows that description and a link to the card's `documentationUrl`, this README. A request without a valid key is refused: HTTP 401 on JSON-RPC and HTTP+JSON, and `UNAUTHENTICATED` on gRPC, where the key rides in the `x-northlight-key` metadata entry.
 
 The demo key is:
 

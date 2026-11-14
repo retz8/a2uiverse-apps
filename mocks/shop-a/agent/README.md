@@ -29,7 +29,7 @@ uv run python -m app --mode deterministic
 
 `deterministic` answers any question with the catalogue, and a question about shipping, returns or warranty with the policy. Opening a camera, going back and sorting all update the catalogue in place.
 
-Other flags: `--port`, `--grpc-port`, `--host`, and `--base-url`, the address the agent card advertises.
+Other flags: `--port`, `--grpc-port`, `--host`, and `--base-url`, the address the agent card advertises for JSON-RPC and HTTP+JSON.
 
 ## Surfaces
 
