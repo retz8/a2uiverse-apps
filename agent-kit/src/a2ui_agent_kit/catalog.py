@@ -21,7 +21,6 @@ from a2ui.core import CatalogApi
 from a2ui.processor import CatalogConfig
 from a2ui.utils import validate_payload
 
-from a2ui_agent_kit import upstream_patches  # noqa: F401 — applied at import
 from a2ui_agent_kit.config import AgentAppConfig, CatalogLine
 from a2ui_agent_kit.versions import CATALOG_VERSION
 

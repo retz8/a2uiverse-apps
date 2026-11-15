@@ -1162,6 +1162,60 @@ async def test_a_turn_deleting_a_surface_painted_before_sends_the_delete():
     ]
 
 
+@pytest.mark.asyncio
+async def test_the_blocks_after_one_the_stream_refuses_still_stream():
+    # The stream checks a response against an empty renderer state, so it refuses the block
+    # updating a surface an earlier turn painted; it reads on, and the new surface after it
+    # streams as it is written rather than landing whole at the end.
+    settle = json.dumps(
+        [
+            {
+                "version": "v0.9",
+                "updateDataModel": {"surfaceId": "old", "path": "/state", "value": "done"},
+            }
+        ]
+    )
+    responder = _FakeResponder(
+        ["<a2ui-json>" + settle + "</a2ui-json>\n" + _valid_surface_text_with_id("s1")]
+    )
+    queue = _FakeQueue()
+    await _executor(responder).execute(_Ctx("replace it"), queue)
+
+    def first_event(holds) -> int:
+        return next(
+            i
+            for i, event in enumerate(queue.events)
+            if any(holds(d) for d in _data_parts(_OneEvent(event)))
+        )
+
+    created = first_event(lambda d: (d.get("createSurface") or {}).get("surfaceId") == "s1")
+    settled = first_event(lambda d: (d.get("updateDataModel") or {}).get("surfaceId") == "old")
+    # The new surface went out as it streamed; the update the filter held back, at the end.
+    assert created < settled
+    assert responder.calls == 1
+    assert queue.events[-1].status.state == TaskState.TASK_STATE_COMPLETED
+
+
+@pytest.mark.asyncio
+async def test_a_response_ending_inside_a_block_retries_with_the_parsers_verdict():
+    # A block still open when the response ends leaves nothing to judge: the stream's verdict
+    # is the correction.
+    cut_off = 'Here is your surface:\n<a2ui-json>\n[{"version": "v0.9", "createSurface"'
+    responder = _FakeResponder([cut_off, _valid_surface_text()])
+    queue = _FakeQueue()
+    await _executor(responder).execute(_Ctx("show me open PRs"), queue)
+    assert responder.calls == 2
+    assert "ended inside" in responder.corrections[1]
+    assert queue.events[-1].status.state == TaskState.TASK_STATE_COMPLETED
+
+
+class _OneEvent:
+    """One event read as a queue of its own, for `_data_parts`."""
+
+    def __init__(self, event):
+        self.events = [event]
+
+
 def _streamed_components(queue: _FakeQueue, surface_id: str) -> list[dict]:
     """Every component the stream sent for `surface_id`, in order, repeats included."""
     return [

@@ -23,9 +23,8 @@ from a2a.types import AgentCard, Part, TaskState
 from a2ui.constants import A2UI_CLIENT_DATA_MODEL_KEY, DEFAULT_PROGRESSIVE_KEYS
 from a2ui.core import A2uiParseError
 from a2ui.inference_formats import to_message_dicts
-from a2ui.inference_formats.direct_json import DirectJsonParser
-from a2ui.inference_formats.direct_json.json_reader import read_json
-from a2ui.parser import A2uiPart, RawA2uiPart
+from a2ui.inference_formats.direct_json import DirectJsonParser, read_json
+from a2ui.parser import A2uiPart, ErrorPart, RawA2uiPart, StreamPart
 
 from a2ui_agent_kit.catalog_lines import (
     SurfaceCatalogs,
@@ -497,7 +496,7 @@ class LlmAgentExecutor(AgentExecutor):
         """
         if measuring is None:
             measuring = TurnMeasurement(time.monotonic())
-        # What the client holds of the turn, across its attempts: the parser of each attempt
+        # What the client holds of the turn, across its attempts: the stream of each attempt
         # starts afresh, and the filter sends only what is new to the client, so a retry
         # patches the surface attempt 1 created in place (a2uiverse task-16.2 decision 3).
         stream_filter = _StreamFilter()
@@ -509,6 +508,13 @@ class LlmAgentExecutor(AgentExecutor):
             if line is not turn.line
         ]
 
+        # One parser for the turn, which holds no state; each attempt reads through a stream
+        # of its own, checked against an empty renderer state. So a retry may create again a
+        # surface attempt 1 created, and an update to a surface an earlier turn painted is
+        # refused with the rest of its block: the filter holds those back anyway, the kit
+        # judges the whole response at the end of the attempt, and the filter's `flush`
+        # sends what the stream did not.
+        parser = DirectJsonParser(catalogs, progressive_keys=DEFAULT_PROGRESSIVE_KEYS)
         correction: str | None = None
         model_unavailable = False
         # Request-level paint metas (surfaceId -> meta), fed by the per-attempt tag
@@ -516,7 +522,8 @@ class LlmAgentExecutor(AgentExecutor):
         # judges the latest declaration.
         paint_metas: dict[str, dict] = {}
         for attempt in range(1, self._max_attempts + 1):
-            parser = DirectJsonParser(catalogs, progressive_keys=DEFAULT_PROGRESSIVE_KEYS)
+            # A block the stream refuses is skipped, and the stream reads on past it.
+            response_stream = parser.open_stream(after_rejected_block="continue")
             # Fresh per attempt: a partial tag a failed attempt left buffered must not
             # bleed into the next attempt's prose.
             tag_filter = PaintTitleTagFilter()
@@ -530,38 +537,46 @@ class LlmAgentExecutor(AgentExecutor):
             try:
                 async for token in stream:
                     accumulated += token
-                    # The parser judges a block as it closes. One that is not JSON raises
-                    # here: that is the same failure class as an invalid surface, so it
-                    # feeds the same correction/retry loop instead of escaping as a server
-                    # error. One a renderer would refuse is the kit's to judge, at the end
-                    # of the attempt and in its own words; the rest of the response streams
-                    # through a fresh parser.
-                    try:
-                        response_parts = parser.parse_chunk(token)
-                    except A2uiParseError as err:
-                        stream_error = err
-                        break
-                    except (ValueError, TypeError) as err:
-                        logger.debug("attempt %d: the parser refused a block: %s", attempt, err)
-                        parser = DirectJsonParser(
-                            catalogs, progressive_keys=DEFAULT_PROGRESSIVE_KEYS
-                        )
+                    if response_stream is None:
                         continue
-                    for response_part in response_parts:
-                        parts = self._parts_for(
-                            response_part,
+                    try:
+                        stream_parts = response_stream.feed(token)
+                    except (ValueError, TypeError) as err:
+                        # Anything the stream raises ends it; the kit judges the attempt
+                        # at its end and sends it then.
+                        logger.debug("attempt %d: the response stream ended: %s", attempt, err)
+                        response_stream = None
+                        continue
+                    stream_error = await self._send_stream_parts(
+                        stream_parts,
+                        updater,
+                        stream_filter,
+                        tag_filter,
+                        paint_metas,
+                        turn.catalog_id,
+                        attempt=attempt,
+                        version=version,
+                    )
+                    if stream_error is not None:
+                        break
+                if stream_error is None and response_stream is not None:
+                    # The text the stream still held as a possible tag, and the verdict on
+                    # a block the response never closed.
+                    try:
+                        stream_parts = response_stream.close()
+                    except (ValueError, TypeError) as err:
+                        logger.debug("attempt %d: the response stream ended: %s", attempt, err)
+                    else:
+                        stream_error = await self._send_stream_parts(
+                            stream_parts,
+                            updater,
                             stream_filter,
                             tag_filter,
                             paint_metas,
                             turn.catalog_id,
+                            attempt=attempt,
                             version=version,
                         )
-                        if parts:
-                            self._recorder.record_batch(parts)
-                            await updater.update_status(
-                                TaskState.TASK_STATE_WORKING,
-                                updater.new_agent_message(parts),
-                            )
             except ModelTurnError as err:  # the turn errored out with zero output
                 logger.warning("attempt %d model turn failed: %s", attempt, err)
                 if "MALFORMED_FUNCTION_CALL" in err.error_code:
@@ -715,6 +730,50 @@ class LlmAgentExecutor(AgentExecutor):
             TaskState.TASK_STATE_WORKING,
             updater.new_agent_message(parts),
         )
+
+    async def _send_stream_parts(
+        self,
+        stream_parts: list[StreamPart],
+        updater: TaskUpdater,
+        stream_filter: _StreamFilter,
+        tag_filter: PaintTitleTagFilter,
+        paint_metas: dict[str, dict],
+        catalog_id: str | None,
+        *,
+        attempt: int,
+        version: str,
+    ) -> A2uiParseError | None:
+        """Sends what the response stream made ready, and returns the verdict on a block that
+        cannot be read, where the attempt stops.
+
+        A block that is not JSON, or that the response never closed, is the same failure class
+        as an invalid surface, so it feeds the same correction/retry loop instead of escaping
+        as a server error. A block the stream refuses for any other reason is the kit's to
+        judge, at the end of the attempt and in its own words.
+        """
+        for response_part in stream_parts:
+            if isinstance(response_part, ErrorPart):
+                if isinstance(response_part.error, A2uiParseError):
+                    return response_part.error
+                logger.debug(
+                    "attempt %d: the stream refused a block: %s", attempt, response_part.error
+                )
+                continue
+            parts = self._parts_for(
+                response_part,
+                stream_filter,
+                tag_filter,
+                paint_metas,
+                catalog_id,
+                version=version,
+            )
+            if parts:
+                self._recorder.record_batch(parts)
+                await updater.update_status(
+                    TaskState.TASK_STATE_WORKING,
+                    updater.new_agent_message(parts),
+                )
+        return None
 
     @staticmethod
     def _parts_for(

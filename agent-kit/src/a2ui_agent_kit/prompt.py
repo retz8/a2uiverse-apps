@@ -1,13 +1,14 @@
 """System-prompt assembly for the live modes: authored prose + SDK-generated bulk.
 
 The prose itself — role, workflow blocks, examples framing — is vendor data on the
-config; the SDK generates the base rules, the schema block and the examples; this module
-owns only the assembly: the sections, their order, and the examples framing.
+config; the SDK generates the base rules with the protocol's schema block, the catalog's
+schema block and the examples; this module owns only the assembly: the sections, their
+order, and the examples framing.
 """
 
 from __future__ import annotations
 
-from a2ui.inference_formats.direct_json import DirectJsonPromptGenerator
+from a2ui.inference_formats.direct_json import DirectJsonFormat
 from a2ui.utils import load_examples
 
 from a2ui_agent_kit.catalog import catalog_context
@@ -64,15 +65,15 @@ def build_system_prompt(config: AgentAppConfig, line: CatalogLine | None = None)
     Authored content is the config's role prose; the workflow section, the SDK's base rules
     followed by the kit's failure wording, proposals rule and time rule, the config's
     workflow blocks and the domain doc; the brand doc as the UI description; and the
-    examples framing under the examples header. The SDK generates the base rules, the
-    catalog's schema block and the examples.
+    examples framing under the examples header. The SDK generates the base rules, which end
+    with the protocol's schema block, the catalog's schema block and the examples.
 
     `line` is an old catalog line the prompt is for — its catalog, examples and brand doc in
     place of the current line's; the rest is the config's (a2uiverse task-15.7).
     """
     source = line or config
     catalogs = [catalog_context(source).get_catalog()]
-    generator = DirectJsonPromptGenerator(catalogs)
+    generator = DirectJsonFormat(catalogs).prompt_generator
     workflow = "\n\n".join(
         [
             FAILURE_WORDING,
@@ -84,7 +85,7 @@ def build_system_prompt(config: AgentAppConfig, line: CatalogLine | None = None)
     )
     parts = [
         config.role_description,
-        f"## Workflow Description:\n{generator.generate_base_rules()}\n{workflow}",
+        f"## Workflow Description:\n{generator.generate_base_rules().rstrip()}\n\n{workflow}",
     ]
     if ui_description := load_brand_guidance(source):
         parts.append(f"## UI Description:\n{ui_description}")

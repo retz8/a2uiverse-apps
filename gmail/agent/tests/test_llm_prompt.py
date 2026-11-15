@@ -1,11 +1,11 @@
 """Hybrid snapshot for the assembled system prompt (spec decision 9).
 
 Byte-pins the stable framing (authored role, default workflow rules, authored workflow
-description, section headers, schema-block markers) while eliding the four volatile
-bulks to markers: the GitHub domain doc, the UI Description (brand doc), the catalog
-schema render, and the examples. Presence assertions prove each elided bulk is actually
-there. This keeps 7.7's constant knowledge-doc/example edits from churning the snapshot
-while the framing stays byte-pinned.
+description, section headers, schema-block markers) while eliding the volatile bulks to
+markers: the GitHub domain doc, the UI Description (brand doc), the protocol's and the
+catalog's schema renders, and the examples. Presence assertions prove each elided bulk is
+actually there. This keeps 7.7's constant knowledge-doc/example edits from churning the
+snapshot while the framing stays byte-pinned.
 """
 
 import re
@@ -27,6 +27,7 @@ _GOLDEN = Path(__file__).resolve().parent / "golden" / "llm_system_prompt.skelet
 
 _DOMAIN_MARKER = "<<<GMAIL_DOMAIN>>>"
 _UI_MARKER = "<<<UI_DESCRIPTION>>>"
+_PROTOCOL_SCHEMA_MARKER = "<<<PROTOCOL_SCHEMA>>>"
 _SCHEMA_MARKER = "<<<CATALOG_SCHEMA>>>"
 _EXAMPLES_MARKER = "<<<EXAMPLES>>>"
 
@@ -48,7 +49,16 @@ def _skeletonize(prompt: str) -> str:
         prompt,
         flags=re.DOTALL,
     )
-    # 2. Catalog schema render block -> marker.
+    # 2. The protocol's schema block, which ends the SDK's base rules, then the
+    #    catalog's schema block -> markers.
+    prompt = re.sub(
+        re.escape(A2UI_SCHEMA_BLOCK_START)
+        + r"\s*### Agent to Renderer Schema:.*?"
+        + re.escape(A2UI_SCHEMA_BLOCK_END),
+        _PROTOCOL_SCHEMA_MARKER,
+        prompt,
+        flags=re.DOTALL,
+    )
     prompt = re.sub(
         re.escape(A2UI_SCHEMA_BLOCK_START) + r".*?" + re.escape(A2UI_SCHEMA_BLOCK_END),
         _SCHEMA_MARKER,
@@ -74,10 +84,11 @@ def test_prompt_skeleton_matches_golden():
     assert skeleton == _GOLDEN.read_text(encoding="utf-8")
 
 
-def test_skeleton_elided_all_four_bulks():
+def test_skeleton_elided_every_bulk():
     skeleton = _skeletonize(build_system_prompt())
     assert _DOMAIN_MARKER in skeleton
     assert _UI_MARKER in skeleton
+    assert _PROTOCOL_SCHEMA_MARKER in skeleton
     assert _SCHEMA_MARKER in skeleton
     assert _EXAMPLES_MARKER in skeleton
     # the volatile bulk itself must be gone from the skeleton
