@@ -105,7 +105,9 @@ SIGN_IN = SignIn(
     fake_accounts=[FakeAccount("retz8", {"preferred_username": "retz8"})],
     # Deterministic mode: submitting and approving a review write.
     action_scopes={"submit": [WRITE], "approve": [WRITE]},
-    # Stub and live mode: GitHub marks its read tools read-only; every other tool writes.
+    # Stub mode: the canned review writes.
+    tool_scopes={"submit_pull_request_review": [WRITE]},
+    # Live mode: GitHub marks its read tools read-only; every other tool writes.
     unmarked_tool_scopes=[WRITE],
     upstream=UPSTREAM,
 )

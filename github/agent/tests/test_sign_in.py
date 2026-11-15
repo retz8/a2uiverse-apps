@@ -4,8 +4,17 @@ sign-in with GitHub — who signed in, and the grant revoked at the end.
 """
 
 import json
+from types import SimpleNamespace
 
 import httpx
+import pytest
+from a2ui_agent_kit.sign_in import (
+    AuthRequired,
+    SignedInAccount,
+    before_tool_check,
+    bind_account,
+    unbind_account,
+)
 from a2ui_agent_kit.sign_in_vendor import VendorOAuth
 from a2ui_agent_kit.testing import requested_access, serving, task_state
 
@@ -33,6 +42,21 @@ async def test_a_signed_in_account_is_answered_and_a_write_asks_for_more_access(
     assert task_state(write) == "TASK_STATE_AUTH_REQUIRED"
     assert requested_access(write) == [[{"schemes": {"signIn": {"list": ["github.write"]}}}]]
     assert task_state(allowed) == "TASK_STATE_COMPLETED"
+
+
+def test_in_stub_mode_submitting_a_review_asks_for_more_access_before_it_runs():
+    account = SignedInAccount("sub-retz8", "retz8", {}, frozenset({"github.read"}))
+    context = SimpleNamespace(call_context=SimpleNamespace(state={"auth": account}))
+    bound = bind_account(context, SIGN_IN)
+    try:
+        before_tool_check(tool=SimpleNamespace(name="get_pull_request"), args={}, tool_context=None)
+        with pytest.raises(AuthRequired) as raised:
+            before_tool_check(
+                tool=SimpleNamespace(name="submit_pull_request_review"), args={}, tool_context=None
+            )
+        assert raised.value.missing == ("github.write",)
+    finally:
+        unbind_account(bound)
 
 
 def test_live_mode_signs_in_with_the_publishers_oauth_app_asking_for_repo_and_notifications():

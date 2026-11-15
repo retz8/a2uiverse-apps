@@ -40,7 +40,7 @@ The agent is its own sign-in: A2UIVerse signs in to it, and it signs in to GitHu
 | `github.read`  | See your repositories, pull requests, issues and notifications | at the first sign-in          |
 | `github.write` | Comment, review, merge, and open issues and pull requests as you | the first time you ask to write |
 
-In `deterministic` and `stub` mode the sign-in offers one made-up account, `retz8`. In `deterministic` mode, submitting or approving a review asks for `github.write`.
+In `deterministic` and `stub` mode the sign-in offers one made-up account, `retz8`. In `deterministic` mode, submitting or approving a review asks for `github.write`. In `stub` mode, so does the model's one write, `submit_pull_request_review`, which writes nothing and answers as GitHub does.
 
 In `live` mode the sign-in sends you to GitHub. The agent keeps your GitHub token and gives A2UIVerse a token of its own. GitHub tool calls that GitHub doesn't mark read-only need `github.write`.
 

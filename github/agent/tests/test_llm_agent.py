@@ -26,9 +26,13 @@ def test_model_name_reads_env(monkeypatch):
     assert model_name(CONFIG) == "gemini-1.5-pro"
 
 
-def test_stub_mode_gives_the_read_only_pair():
+def test_stub_mode_gives_two_reads_and_a_review():
     tools = build_tools(CONFIG, "stub")
-    assert {t.__name__ for t in tools} == {"list_pull_requests", "get_pull_request"}
+    assert {t.__name__ for t in tools} == {
+        "list_pull_requests",
+        "get_pull_request",
+        "submit_pull_request_review",
+    }
 
 
 def test_live_mode_gives_the_signed_in_accounts_mcp_toolset():
@@ -63,9 +67,9 @@ def test_build_llm_agent_wires_prompt_and_tools():
     # instruction carries the authored role and the SDK-injected schema block
     assert "GitHub agent" in prompt
     assert A2UI_SCHEMA_BLOCK_START in prompt
-    assert len(a.tools) == 2
+    assert len(a.tools) == 3
 
 
-def test_stub_tools_are_the_read_only_pair():
+def test_stub_tools_are_two_reads_and_a_review():
     names = {t.__name__ for t in STUB_TOOLS}
-    assert names == {"list_pull_requests", "get_pull_request"}
+    assert names == {"list_pull_requests", "get_pull_request", "submit_pull_request_review"}

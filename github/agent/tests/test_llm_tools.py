@@ -1,4 +1,4 @@
-from app.tools import STUB_TOOLS, get_pull_request, list_pull_requests
+from app.tools import STUB_TOOLS, get_pull_request, list_pull_requests, submit_pull_request_review
 
 
 def test_list_returns_open_prs_with_bindable_fields():
@@ -41,5 +41,18 @@ def test_get_unknown_pr_returns_error():
     assert "error" in get_pull_request(999999)
 
 
-def test_stub_tools_are_read_only_pair():
-    assert STUB_TOOLS == [list_pull_requests, get_pull_request]
+def test_submitting_a_review_answers_as_github_does_and_writes_nothing():
+    review = submit_pull_request_review(231, "APPROVE", "Looks good.")
+    assert review == {"number": 231, "state": "APPROVED", "body": "Looks good."}
+    assert submit_pull_request_review(231, "REQUEST_CHANGES")["state"] == "CHANGES_REQUESTED"
+    assert submit_pull_request_review(231, "COMMENT", "A note.")["state"] == "COMMENTED"
+    assert get_pull_request(231) == get_pull_request(231)
+
+
+def test_submitting_a_review_on_an_unknown_pr_or_with_an_unknown_event_returns_error():
+    assert "error" in submit_pull_request_review(999999, "APPROVE")
+    assert "error" in submit_pull_request_review(231, "MERGE")
+
+
+def test_stub_tools_are_two_reads_and_a_review():
+    assert STUB_TOOLS == [list_pull_requests, get_pull_request, submit_pull_request_review]
