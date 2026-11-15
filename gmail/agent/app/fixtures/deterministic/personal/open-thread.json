@@ -201,8 +201,7 @@
           "id": "thread",
           "component": "Stack",
           "children": [
-            "messages",
-            "actions"
+            "messages"
           ],
           "gap": "none"
         },
@@ -214,16 +213,6 @@
             "componentId": "message"
           },
           "dividers": true
-        },
-        {
-          "id": "actions",
-          "component": "Stack",
-          "children": [
-            "archive"
-          ],
-          "direction": "horizontal",
-          "gap": "sm",
-          "padding": "md"
         },
         {
           "id": "message",
@@ -265,23 +254,6 @@
           "component": "Text",
           "text": {
             "path": "body"
-          }
-        },
-        {
-          "id": "archive",
-          "component": "Button",
-          "label": "Archive",
-          "variant": "outlined",
-          "icon": "archive",
-          "action": {
-            "event": {
-              "name": "label-toggle",
-              "context": {
-                "threadId": "1988d441e2356bf7",
-                "labelId": "INBOX",
-                "add": false
-              }
-            }
           }
         }
       ]

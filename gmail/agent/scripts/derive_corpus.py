@@ -33,14 +33,15 @@ def write(path: Path, payload: object, note: str) -> None:
     print(f"{path.name:22} <- {note}")
 
 
-# The presses the thread view paints that the corpus has no recorded answer to: drafting a
-# reply is a typed request in the beats, so the thread view keeps Archive alone.
-UNANSWERED_PRESSES = ("draft-reply",)
+# The presses the thread view paints that the corpus has no answer to that says what the press
+# did: drafting a reply is a typed request in the beats, and Archive's beat is the labels
+# question. The canned thread view paints neither.
+UNANSWERED_PRESSES = ("draft-reply", "label-toggle")
 
 
 def without_presses(messages: list[dict], names: tuple[str, ...]) -> list[dict]:
-    """The messages with every component pressing one of `names` dropped, and its id
-    taken out of its parent's children."""
+    """The messages with every component pressing one of `names` dropped, its id taken out
+    of its parent's children, and a container left with no children dropped in turn."""
 
     def presses(component: dict) -> bool:
         event = (component.get("action") or {}).get("event") or {}
@@ -52,14 +53,17 @@ def without_presses(messages: list[dict], names: tuple[str, ...]) -> list[dict]:
         if update is None:
             kept.append(message)
             continue
-        dropped = {c["id"] for c in update["components"] if presses(c)}
-        components = [
-            {**c, "children": [i for i in c["children"] if i not in dropped]}
-            if isinstance(c.get("children"), list)
-            else c
-            for c in update["components"]
-            if c["id"] not in dropped
-        ]
+        components = update["components"]
+        dropped = {c["id"] for c in components if presses(c)}
+        while dropped:
+            components = [
+                {**c, "children": [i for i in c["children"] if i not in dropped]}
+                if isinstance(c.get("children"), list)
+                else c
+                for c in components
+                if c["id"] not in dropped
+            ]
+            dropped = {c["id"] for c in components if c.get("children") == []}
         kept.append({**message, "updateComponents": {**update, "components": components}})
     return kept
 
@@ -85,7 +89,6 @@ def derive_deterministic(account: str) -> None:
     for beat, name in (
         ("beat-2-thread-detail.json", "open-thread.json"),
         ("beat-3-reply-compose.json", "confirm-draft.json"),
-        ("beat-4-label-toggle.json", "label-toggle.json"),
     ):
         path = beats / beat
         if not path.is_file():

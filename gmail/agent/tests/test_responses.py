@@ -22,7 +22,7 @@ from app.sign_in import SIGN_IN
 
 validate_payload = catalog_context(CONFIG).validate_payload
 
-ACTIONS = ("open-thread", "confirm-draft", "label-toggle", "cancel-draft")
+ACTIONS = ("open-thread", "confirm-draft", "cancel-draft")
 # The actions that open a new screen.
 DRILL_DOWNS = ["open-thread"]
 
@@ -130,8 +130,15 @@ class TestActionPath:
             created = "createSurface" in _ops(build_response(_action(name)))
             assert created == (name in DRILL_DOWNS)
 
-    def test_the_thread_view_shows_only_presses_the_corpus_answers(self):
-        assert _presses(build_response(_action("open-thread"))) <= set(ACTIONS)
+    def test_every_canned_answer_shows_only_presses_the_corpus_answers(self):
+        assert _presses(build_text_response("anything")) <= set(ACTIONS)
+        for name in ACTIONS:
+            assert _presses(build_response(_action(name))) <= set(ACTIONS), name
+
+    def test_the_thread_view_shows_no_press(self):
+        # Drafting a reply is a typed request in the beats, and Archive's beat is the labels
+        # question: neither has an answer that says what the press did.
+        assert _presses(build_response(_action("open-thread"))) == set()
 
     def test_an_unknown_event_is_visibly_unhandled(self):
         # A silent no-op looks like a working round-trip that changed nothing.

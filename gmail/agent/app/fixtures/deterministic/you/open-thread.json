@@ -174,8 +174,7 @@
           "id": "thread",
           "component": "Stack",
           "children": [
-            "messages",
-            "actions"
+            "messages"
           ],
           "gap": "none"
         },
@@ -229,33 +228,6 @@
           "component": "Text",
           "text": {
             "path": "body"
-          }
-        },
-        {
-          "id": "actions",
-          "component": "Stack",
-          "children": [
-            "archive"
-          ],
-          "direction": "horizontal",
-          "gap": "sm",
-          "padding": "md"
-        },
-        {
-          "id": "archive",
-          "component": "Button",
-          "label": "Archive",
-          "variant": "outlined",
-          "icon": "archive",
-          "action": {
-            "event": {
-              "name": "label-toggle",
-              "context": {
-                "threadId": "19829cbece7facf1",
-                "labelId": "INBOX",
-                "add": false
-              }
-            }
           }
         }
       ]

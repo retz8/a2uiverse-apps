@@ -87,7 +87,6 @@ SIGN_IN = SignIn(
     action_scopes={
         "open-thread": [MESSAGES],
         "confirm-draft": [ORGANIZE],
-        "label-toggle": [ORGANIZE],
     },
     tool_scopes={
         "get_thread": [MESSAGES],
