@@ -620,7 +620,7 @@ class LlmAgentExecutor(AgentExecutor):
             held = tag_filter.flush()
             if stream_error is None and held.strip():
                 held_parts = [text_part(held)]
-                self._recorder.record_batch(held_parts)
+                self._recorder.record_batch(held_parts, task_id=updater.task_id)
                 await updater.update_status(
                     TaskState.TASK_STATE_WORKING,
                     updater.new_agent_message(held_parts),
@@ -639,7 +639,9 @@ class LlmAgentExecutor(AgentExecutor):
                     attempt,
                     updater.task_id,
                 )
-                self._recorder.end_turn("completed", requests=measuring.records())
+                self._recorder.end_turn(
+                    "completed", task_id=updater.task_id, requests=measuring.records()
+                )
                 await updater.update_status(TaskState.TASK_STATE_COMPLETED)
                 return
             try:
@@ -690,13 +692,15 @@ class LlmAgentExecutor(AgentExecutor):
             # not reach of the turn's own surfaces.
             if unsent := stream_filter.flush(payload):
                 unsent_parts = [stamped_part(m, version) for m in unsent]
-                self._recorder.record_batch(unsent_parts)
+                self._recorder.record_batch(unsent_parts, task_id=updater.task_id)
                 await updater.update_status(
                     TaskState.TASK_STATE_WORKING,
                     updater.new_agent_message(unsent_parts),
                 )
             logger.info("attempt %d: surface valid, task %s completed", attempt, updater.task_id)
-            self._recorder.end_turn("completed", requests=measuring.records())
+            self._recorder.end_turn(
+                "completed", task_id=updater.task_id, requests=measuring.records()
+            )
             await updater.update_status(TaskState.TASK_STATE_COMPLETED)
             return
 
@@ -705,9 +709,11 @@ class LlmAgentExecutor(AgentExecutor):
         await self._teardown(updater, stream_filter.created, version)
         apology = UNAVAILABLE_TEXT if model_unavailable else APOLOGY_TEXT
         apology_parts = [text_part(apology)]
-        self._recorder.record_batch(apology_parts)
+        self._recorder.record_batch(apology_parts, task_id=updater.task_id)
         self._recorder.end_turn(
-            "unavailable" if model_unavailable else "apology", requests=measuring.records()
+            "unavailable" if model_unavailable else "apology",
+            task_id=updater.task_id,
+            requests=measuring.records(),
         )
         await updater.update_status(
             TaskState.TASK_STATE_COMPLETED,
@@ -725,7 +731,7 @@ class LlmAgentExecutor(AgentExecutor):
             stamped_part({"deleteSurface": {"surfaceId": sid}}, version)
             for sid in sorted(surface_ids)
         ]
-        self._recorder.record_batch(parts)
+        self._recorder.record_batch(parts, task_id=updater.task_id)
         await updater.update_status(
             TaskState.TASK_STATE_WORKING,
             updater.new_agent_message(parts),
@@ -768,7 +774,7 @@ class LlmAgentExecutor(AgentExecutor):
                 version=version,
             )
             if parts:
-                self._recorder.record_batch(parts)
+                self._recorder.record_batch(parts, task_id=updater.task_id)
                 await updater.update_status(
                     TaskState.TASK_STATE_WORKING,
                     updater.new_agent_message(parts),

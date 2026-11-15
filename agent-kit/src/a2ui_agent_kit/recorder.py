@@ -8,7 +8,9 @@ sequence, so a fixture has to preserve the batches and their order.
 
 Armed by `A2UI_RECORD_DIR`; a `NullRecorder` otherwise, so an unarmed agent pays nothing
 and behaves identically. One file per conversation (`contextId`), rewritten at the end of
-every turn so a run that dies partway still leaves every completed turn on disk.
+every turn so a run that dies partway still leaves every completed turn on disk. A turn is
+held by its task, so turns running at once — two accounts of one app answering together, or
+a Retry beside the request it races — each keep only what they streamed.
 
 The batch shape mirrors the split the client performs on each stream event
 (`extractA2uiMessagesFromEvent` / `extractAgentTextFromEvent` in client/src/a2a/messages.ts):
@@ -42,27 +44,34 @@ class NullRecorder:
 
     def start_turn(self, **_kwargs: Any) -> None: ...
 
-    def record_batch(self, _parts: list[Part]) -> None: ...
+    def record_batch(self, _parts: list[Part], *, task_id: str) -> None: ...
 
     def end_turn(
-        self, _outcome: str, *, task_id: str | None = None, requests: list[dict] | None = None
+        self, _outcome: str, *, task_id: str, requests: list[dict] | None = None
     ) -> None: ...
+
+
+class _OpenTurn:
+    """A turn in flight: its conversation, its clock's origin, and the record being built."""
+
+    def __init__(self, context_id: str, started: float, record: dict):
+        self.context_id = context_id
+        self.started = started
+        self.record = record
 
 
 class SessionRecorder:
     """Accumulates turns per conversation and rewrites that conversation's file after each.
 
-    Assumes one turn is in flight at a time, which is what the beat driver does — it sends the
-    next prompt only once the previous stream has closed. Two turns overlapping would interleave
-    their batches into whichever started last.
+    Each turn is held by its task id from `start_turn` to `end_turn`, and each batch goes to
+    the turn of the task that streamed it, so turns that overlap stay apart. A conversation's
+    turns are kept in the order they ended.
     """
 
     def __init__(self, record_dir: Path):
         self._dir = record_dir
         self._sessions: dict[str, list[dict]] = {}
-        self._context_id: str | None = None
-        self._turn: dict | None = None
-        self._started: float = 0.0
+        self._turns: dict[str, _OpenTurn] = {}
 
     def start_turn(
         self,
@@ -76,26 +85,31 @@ class SessionRecorder:
         model: str | None = None,
         effort: str | None = None,
     ) -> None:
-        """Opens a turn. `started` is its origin on the monotonic clock, when the executor
-        took one for the measurement too, so the batches' offsets and the requests' share it.
-        `model` and `effort` are what the agent resolved at startup (a2uiverse task-17.3
-        decision 5): the agent's own word on its conditions, beside the driver's."""
-        self._context_id = context_id or self._context_id or "unknown"
-        self._started = started if started is not None else time.monotonic()
-        self._turn = {
+        """Opens the turn of `task_id`. `started` is its origin on the monotonic clock, when the
+        executor took one for the measurement too, so the batches' offsets and the requests'
+        share it. `model` and `effort` are what the agent resolved at startup (a2uiverse
+        task-17.3 decision 5): the agent's own word on its conditions, beside the driver's."""
+        record: dict = {
             "taskId": task_id,
             "kind": kind,
             "prompt": prompt,
             "action": action,
         }
         if model is not None:
-            self._turn["model"] = model
+            record["model"] = model
         if effort is not None:
-            self._turn["effort"] = effort
-        self._turn["batches"] = []
+            record["effort"] = effort
+        record["batches"] = []
+        self._turns[task_id or ""] = _OpenTurn(
+            context_id or "unknown",
+            started if started is not None else time.monotonic(),
+            record,
+        )
 
-    def record_batch(self, parts: list[Part]) -> None:
-        if self._turn is None:
+    def record_batch(self, parts: list[Part], *, task_id: str) -> None:
+        """Adds what the task `task_id` streamed in one event to its turn."""
+        turn = self._turns.get(task_id)
+        if turn is None:
             # An emission outside a turn: nothing to attach it to. Recording is
             # diagnostics, so this is dropped rather than raised.
             return
@@ -116,44 +130,40 @@ class SessionRecorder:
                 texts.append(text)
         if not messages and not texts:
             return
-        self._turn["batches"].append(
+        turn.record["batches"].append(
             {
-                "offsetMs": int((time.monotonic() - self._started) * 1000),
+                "offsetMs": int((time.monotonic() - turn.started) * 1000),
                 "messages": messages,
                 "texts": texts,
             }
         )
 
     def end_turn(
-        self, outcome: str, *, task_id: str | None = None, requests: list[dict] | None = None
+        self, outcome: str, *, task_id: str, requests: list[dict] | None = None
     ) -> None:
-        """Closes the held turn with `outcome` and rewrites its conversation's file.
+        """Closes the turn of `task_id` with `outcome` and rewrites its conversation's file.
 
-        With `task_id`, only when the held turn is that task's. A cancel passes it: under
-        Retry's race a turn started since has replaced the cancelled one, and must not
-        take its outcome (task-8.9 decision 6).
+        A task with no turn open ends nothing: a cancel never takes the outcome of another
+        task's turn, such as the Retry racing it (task-8.9 decision 6).
 
         `requests` is the turn's measurement — one record per model request (a2uiverse
         task-17.3 decision 4) — kept beside the batches; a turn handed none carries no
         `requests` key, as every fixture recorded before the measurement existed.
         """
-        if self._turn is None:
+        turn = self._turns.pop(task_id, None)
+        if turn is None:
             return
-        if task_id is not None and self._turn["taskId"] != task_id:
-            return
-        self._turn["outcome"] = outcome
-        self._turn["durationMs"] = int((time.monotonic() - self._started) * 1000)
+        turn.record["outcome"] = outcome
+        turn.record["durationMs"] = int((time.monotonic() - turn.started) * 1000)
         if requests is not None:
-            self._turn["requests"] = requests
-        self._sessions.setdefault(self._context_id or "unknown", []).append(self._turn)
-        self._turn = None
+            turn.record["requests"] = requests
+        self._sessions.setdefault(turn.context_id, []).append(turn.record)
         # Best-effort: a fixture that cannot be written must never fail a good turn.
         with contextlib.suppress(OSError, TypeError, ValueError):
-            self._write()
+            self._write(turn.context_id)
 
-    def _write(self) -> None:
+    def _write(self, context_id: str) -> None:
         self._dir.mkdir(parents=True, exist_ok=True)
-        context_id = self._context_id or "unknown"
         payload = {
             "contextId": context_id,
             "turns": self._sessions.get(context_id, []),

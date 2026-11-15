@@ -604,8 +604,10 @@ def test_the_recorder_keeps_a_v091_part_as_it_was_sent(tmp_path):
     recorder.start_turn(context_id="ctx", task_id="t", kind="utterance", prompt="p")
     sent = {"version": "v0.9.1", "createSurface": {"surfaceId": "s1", "catalogId": "c"}}
     foreign = {"version": "v1.0", "createSurface": {"surfaceId": "s2", "catalogId": "c"}}
-    recorder.record_batch([stamped_part(sent, "v0.9.1"), stamped_part(foreign, "v1.0")])
-    recorder.end_turn("completed")
+    recorder.record_batch(
+        [stamped_part(sent, "v0.9.1"), stamped_part(foreign, "v1.0")], task_id="t"
+    )
+    recorder.end_turn("completed", task_id="t")
 
     session = json.loads(next(tmp_path.glob("*.json")).read_text(encoding="utf-8"))
     (batch,) = session["turns"][0]["batches"]

@@ -28,8 +28,8 @@ def test_create_recorder_without_a_dir_is_a_null_recorder():
 def test_null_recorder_accepts_every_call_and_writes_nothing(tmp_path):
     rec = create_recorder(None)
     rec.start_turn(context_id="ctx", task_id="t", kind="utterance", prompt="hi")
-    rec.record_batch([_a2ui_part("s1")])
-    rec.end_turn("completed")
+    rec.record_batch([_a2ui_part("s1")], task_id="t")
+    rec.end_turn("completed", task_id="t")
     assert list(tmp_path.iterdir()) == []
 
 
@@ -40,8 +40,8 @@ def test_create_recorder_with_a_dir_is_a_session_recorder(tmp_path):
 def test_a_recorded_turn_lands_as_a_session_file(tmp_path):
     rec = create_recorder(str(tmp_path))
     rec.start_turn(context_id="ctx-1", task_id="task-1", kind="utterance", prompt="show me")
-    rec.record_batch([_a2ui_part("s1")])
-    rec.end_turn("completed")
+    rec.record_batch([_a2ui_part("s1")], task_id="task-1")
+    rec.end_turn("completed", task_id="task-1")
 
     written = list(tmp_path.glob("*.json"))
     assert len(written) == 1
@@ -58,8 +58,8 @@ def test_a_batch_splits_a2ui_messages_from_agent_text_the_way_the_client_does(tm
     """The client pulls messages and text out of one event separately; a batch mirrors that."""
     rec = create_recorder(str(tmp_path))
     rec.start_turn(context_id="ctx", task_id="t", kind="utterance", prompt="p")
-    rec.record_batch([_text_part("thinking..."), _a2ui_part("s1")])
-    rec.end_turn("completed")
+    rec.record_batch([_text_part("thinking..."), _a2ui_part("s1")], task_id="t")
+    rec.end_turn("completed", task_id="t")
 
     session = json.loads(next(tmp_path.glob("*.json")).read_text(encoding="utf-8"))
     (batch,) = session["turns"][0]["batches"]
@@ -74,8 +74,8 @@ def test_batch_order_is_preserved_because_replay_is_a_stream_not_a_snapshot(tmp_
     rec = create_recorder(str(tmp_path))
     rec.start_turn(context_id="ctx", task_id="t", kind="utterance", prompt="p")
     for sid in ("s1", "s2", "s3"):
-        rec.record_batch([_a2ui_part(sid)])
-    rec.end_turn("completed")
+        rec.record_batch([_a2ui_part(sid)], task_id="t")
+    rec.end_turn("completed", task_id="t")
 
     session = json.loads(next(tmp_path.glob("*.json")).read_text(encoding="utf-8"))
     batches = session["turns"][0]["batches"]
@@ -86,11 +86,11 @@ def test_turns_of_one_session_accumulate_into_the_same_file(tmp_path):
     """A chained beat (beat 3 follows beat 2) is one session with two turns."""
     rec = create_recorder(str(tmp_path))
     rec.start_turn(context_id="ctx", task_id="t1", kind="utterance", prompt="first")
-    rec.record_batch([_a2ui_part("s1")])
-    rec.end_turn("completed")
+    rec.record_batch([_a2ui_part("s1")], task_id="t1")
+    rec.end_turn("completed", task_id="t1")
     rec.start_turn(context_id="ctx", task_id="t2", kind="utterance", prompt="second")
-    rec.record_batch([_a2ui_part("s2")])
-    rec.end_turn("completed")
+    rec.record_batch([_a2ui_part("s2")], task_id="t2")
+    rec.end_turn("completed", task_id="t2")
 
     assert len(list(tmp_path.glob("*.json"))) == 1
     session = json.loads(next(tmp_path.glob("*.json")).read_text(encoding="utf-8"))
@@ -101,8 +101,8 @@ def test_the_file_is_written_at_the_end_of_every_turn_not_only_at_the_end(tmp_pa
     """A run that dies on beat 7 must still leave beats 1-6 on disk."""
     rec = create_recorder(str(tmp_path))
     rec.start_turn(context_id="ctx", task_id="t1", kind="utterance", prompt="first")
-    rec.record_batch([_a2ui_part("s1")])
-    rec.end_turn("completed")
+    rec.record_batch([_a2ui_part("s1")], task_id="t1")
+    rec.end_turn("completed", task_id="t1")
 
     session = json.loads(next(tmp_path.glob("*.json")).read_text(encoding="utf-8"))
     assert len(session["turns"]) == 1
@@ -112,8 +112,8 @@ def test_a_failed_turn_is_recorded_with_its_outcome(tmp_path):
     """A failed paint is itself a fixture: the shell must prove it never reaches the stage."""
     rec = create_recorder(str(tmp_path))
     rec.start_turn(context_id="ctx", task_id="t", kind="utterance", prompt="p")
-    rec.record_batch([_text_part("Sorry - I couldn't compose a valid interface for that request.")])
-    rec.end_turn("apology")
+    rec.record_batch([_text_part("Sorry - I couldn't compose a valid interface for that request.")], task_id="t")
+    rec.end_turn("apology", task_id="t")
 
     session = json.loads(next(tmp_path.glob("*.json")).read_text(encoding="utf-8"))
     assert session["turns"][0]["outcome"] == "apology"
@@ -123,8 +123,8 @@ def test_an_action_turn_records_the_action_it_was_driven_by(tmp_path):
     rec = create_recorder(str(tmp_path))
     action = {"name": "open-pull-request", "surfaceId": "prs", "context": {"number": 2093}}
     rec.start_turn(context_id="ctx", task_id="t", kind="surface-action", prompt="framed", action=action)
-    rec.record_batch([_a2ui_part("s1")])
-    rec.end_turn("completed")
+    rec.record_batch([_a2ui_part("s1")], task_id="t")
+    rec.end_turn("completed", task_id="t")
 
     session = json.loads(next(tmp_path.glob("*.json")).read_text(encoding="utf-8"))
     turn = session["turns"][0]
@@ -139,15 +139,15 @@ def test_a_write_failure_never_takes_down_the_turn(tmp_path, monkeypatch):
         SessionRecorder, "_write", lambda self: (_ for _ in ()).throw(OSError("disk full"))
     )
     rec.start_turn(context_id="ctx", task_id="t", kind="utterance", prompt="p")
-    rec.record_batch([_a2ui_part("s1")])
-    rec.end_turn("completed")  # must not raise
+    rec.record_batch([_a2ui_part("s1")], task_id="t")
+    rec.end_turn("completed", task_id="t")  # must not raise
 
 
 def test_recording_a_batch_before_a_turn_starts_is_ignored(tmp_path):
     """Defensive: an emission outside a turn must not crash the executor."""
     rec = create_recorder(str(tmp_path))
-    rec.record_batch([_a2ui_part("s1")])
-    rec.end_turn("completed")
+    rec.record_batch([_a2ui_part("s1")], task_id="t")
+    rec.end_turn("completed", task_id="t")
     assert list(tmp_path.glob("*.json")) == []
 
 
@@ -156,8 +156,8 @@ def test_the_context_id_is_sanitized_into_the_filename(tmp_path, bad_context):
     """A context id reaches the filesystem; it must not be able to point outside the dir."""
     rec = create_recorder(str(tmp_path))
     rec.start_turn(context_id=bad_context, task_id="t", kind="utterance", prompt="p")
-    rec.record_batch([_a2ui_part("s1")])
-    rec.end_turn("completed")
+    rec.record_batch([_a2ui_part("s1")], task_id="t")
+    rec.end_turn("completed", task_id="t")
 
     written = list(tmp_path.glob("*.json"))
     assert len(written) == 1
@@ -168,11 +168,11 @@ def test_two_conversations_land_in_two_files(tmp_path):
     """Turns are keyed by conversation; two contexts must never merge into one fixture."""
     rec = create_recorder(str(tmp_path))
     rec.start_turn(context_id="ctx-a", task_id="t1", kind="utterance", prompt="a")
-    rec.record_batch([_a2ui_part("s1")])
-    rec.end_turn("completed")
+    rec.record_batch([_a2ui_part("s1")], task_id="t1")
+    rec.end_turn("completed", task_id="t1")
     rec.start_turn(context_id="ctx-b", task_id="t2", kind="utterance", prompt="b")
-    rec.record_batch([_a2ui_part("s2")])
-    rec.end_turn("completed")
+    rec.record_batch([_a2ui_part("s2")], task_id="t2")
+    rec.end_turn("completed", task_id="t2")
 
     written = sorted(p.name for p in tmp_path.glob("*.json"))
     assert written == ["session-ctx-a.json", "session-ctx-b.json"]
@@ -186,7 +186,7 @@ def test_a_cancelled_turn_is_recorded_with_what_it_streamed(tmp_path):
     """task-8.9 decision 6: the turn happened; it lands as canceled, never as a beat."""
     rec = create_recorder(str(tmp_path))
     rec.start_turn(context_id="ctx", task_id="t1", kind="utterance", prompt="p")
-    rec.record_batch([_text_part("Looking up your pull requests.")])
+    rec.record_batch([_text_part("Looking up your pull requests.")], task_id="t1")
     rec.end_turn("canceled", task_id="t1")
 
     (turn,) = json.loads(next(tmp_path.glob("*.json")).read_text(encoding="utf-8"))["turns"]
@@ -195,18 +195,53 @@ def test_a_cancelled_turn_is_recorded_with_what_it_streamed(tmp_path):
 
 
 def test_a_cancel_never_takes_a_turn_that_is_not_its_own(tmp_path):
-    """Retry's race: the re-dispatch's turn replaced the one being cancelled."""
+    """Retry's race: the re-dispatch's turn runs beside the one being cancelled, each its own."""
     rec = create_recorder(str(tmp_path))
     rec.start_turn(context_id="ctx", task_id="original", kind="utterance", prompt="p")
     rec.start_turn(context_id="ctx", task_id="retry", kind="utterance", prompt="p")
-    rec.record_batch([_a2ui_part("s1")])
+    rec.record_batch([_a2ui_part("s1")], task_id="retry")
     rec.end_turn("canceled", task_id="original")
-    assert list(tmp_path.glob("*.json")) == []
+    rec.end_turn("completed", task_id="retry")
 
-    rec.end_turn("completed")
+    turns = json.loads(next(tmp_path.glob("*.json")).read_text(encoding="utf-8"))["turns"]
+    assert [(t["taskId"], t["outcome"]) for t in turns] == [
+        ("original", "canceled"),
+        ("retry", "completed"),
+    ]
+    assert turns[0]["batches"] == []
+    assert turns[1]["batches"][0]["messages"][0]["createSurface"]["surfaceId"] == "s1"
+
+
+def test_two_turns_at_once_each_keep_their_own_batches(tmp_path):
+    """Two accounts of one app answering at once in one agent, each in its own conversation:
+    both turns stay on record, each with only what it streamed."""
+    rec = create_recorder(str(tmp_path))
+    rec.start_turn(context_id="ctx-you", task_id="t-you", kind="utterance", prompt="inbox")
+    rec.start_turn(context_id="ctx-work", task_id="t-work", kind="utterance", prompt="inbox")
+    rec.record_batch([_a2ui_part("you-1")], task_id="t-you")
+    rec.record_batch([_a2ui_part("work-1")], task_id="t-work")
+    rec.record_batch([_a2ui_part("you-2")], task_id="t-you")
+    rec.end_turn("completed", task_id="t-work")
+    rec.end_turn("completed", task_id="t-you")
+
+    def surfaces(context_id):
+        doc = json.loads((tmp_path / f"session-{context_id}.json").read_text(encoding="utf-8"))
+        (turn,) = doc["turns"]
+        return [b["messages"][0]["createSurface"]["surfaceId"] for b in turn["batches"]]
+
+    assert surfaces("ctx-you") == ["you-1", "you-2"]
+    assert surfaces("ctx-work") == ["work-1"]
+
+
+def test_a_batch_or_an_end_for_a_task_with_no_open_turn_is_ignored(tmp_path):
+    rec = create_recorder(str(tmp_path))
+    rec.start_turn(context_id="ctx", task_id="t", kind="utterance", prompt="p")
+    rec.record_batch([_a2ui_part("s1")], task_id="other")
+    rec.end_turn("completed", task_id="other")
+    assert list(tmp_path.glob("*.json")) == []
+    rec.end_turn("completed", task_id="t")
     (turn,) = json.loads(next(tmp_path.glob("*.json")).read_text(encoding="utf-8"))["turns"]
-    assert turn["taskId"] == "retry"
-    assert turn["outcome"] == "completed"
+    assert turn["batches"] == []
 
 
 def test_the_null_recorder_accepts_a_cancel(tmp_path):
@@ -226,8 +261,8 @@ def test_the_turn_carries_the_model_and_the_effort_the_agent_ran_under(tmp_path)
         context_id="ctx", task_id="t", kind="utterance", prompt="p",
         model="anthropic/claude-haiku-5-5", effort="low",
     )
-    rec.record_batch([_a2ui_part("s1")])
-    rec.end_turn("completed")
+    rec.record_batch([_a2ui_part("s1")], task_id="t")
+    rec.end_turn("completed", task_id="t")
 
     (turn,) = json.loads(next(tmp_path.glob("*.json")).read_text(encoding="utf-8"))["turns"]
     assert turn["model"] == "anthropic/claude-haiku-5-5"
@@ -238,9 +273,9 @@ def test_the_turn_carries_the_requests_handed_to_it_at_the_end(tmp_path):
     """One record per model request, beside the batches (decision 4)."""
     rec = create_recorder(str(tmp_path))
     rec.start_turn(context_id="ctx", task_id="t", kind="utterance", prompt="p")
-    rec.record_batch([_a2ui_part("s1")])
+    rec.record_batch([_a2ui_part("s1")], task_id="t")
     requests = [{"attempt": 1, "index": 1, "startMs": 0, "endMs": 900, "ended": "text"}]
-    rec.end_turn("completed", requests=requests)
+    rec.end_turn("completed", requests=requests, task_id="t")
 
     (turn,) = json.loads(next(tmp_path.glob("*.json")).read_text(encoding="utf-8"))["turns"]
     assert turn["requests"] == requests
@@ -252,8 +287,8 @@ def test_the_turn_carries_the_requests_handed_to_it_at_the_end(tmp_path):
 def test_a_turn_handed_no_requests_has_no_requests_key(tmp_path):
     rec = create_recorder(str(tmp_path))
     rec.start_turn(context_id="ctx", task_id="t", kind="utterance", prompt="p")
-    rec.record_batch([_a2ui_part("s1")])
-    rec.end_turn("completed")
+    rec.record_batch([_a2ui_part("s1")], task_id="t")
+    rec.end_turn("completed", task_id="t")
     (turn,) = json.loads(next(tmp_path.glob("*.json")).read_text(encoding="utf-8"))["turns"]
     assert "requests" not in turn
     assert "model" not in turn and "effort" not in turn
@@ -268,8 +303,8 @@ def test_the_turns_clock_can_be_the_one_the_measurement_uses(tmp_path):
         context_id="ctx", task_id="t", kind="utterance", prompt="p",
         started=time.monotonic() - 5.0,
     )
-    rec.record_batch([_a2ui_part("s1")])
-    rec.end_turn("completed")
+    rec.record_batch([_a2ui_part("s1")], task_id="t")
+    rec.end_turn("completed", task_id="t")
     (turn,) = json.loads(next(tmp_path.glob("*.json")).read_text(encoding="utf-8"))["turns"]
     assert turn["batches"][0]["offsetMs"] >= 5000
     assert turn["durationMs"] >= 5000
@@ -281,5 +316,5 @@ def test_the_null_recorder_accepts_the_measurement_too(tmp_path):
         context_id="ctx", task_id="t", kind="utterance", prompt="p",
         model="m", effort="low", started=0.0,
     )
-    rec.end_turn("completed", requests=[{"attempt": 1, "index": 1}])
+    rec.end_turn("completed", requests=[{"attempt": 1, "index": 1}], task_id="t")
     assert list(tmp_path.iterdir()) == []
