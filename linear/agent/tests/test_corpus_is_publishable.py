@@ -1,7 +1,7 @@
 """No tracked artifact may carry a credential (task-7.3 decision 11).
 
-The recorded corpus keeps its real values — the data is the user's own Linear workspace — so
-the guard is not about people but about secrets: a token that leaked into a payload, a log line
+The recorded corpus keeps its real values but the account's own email address and full name —
+the data is the user's own Linear workspace — so the guard is not about people but about secrets: a token that leaked into a payload, a log line
 or a painted stream would be pushed to a public repository. It is asserted over the files
 that would be pushed, not trusted to the code that captured them.
 """

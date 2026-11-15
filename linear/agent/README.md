@@ -76,7 +76,7 @@ uv run python scripts/record_beats.py --model <model> --record-dir <scratch dir>
 uv run python scripts/derive_corpus.py --beats-only
 ```
 
-Values stay real except your email: while recording, the agent replaces the signed-in account's address with `me@example.com` before the model reads anything. Set a full name on the Linear account first. Without one, Linear shows the email as your name, and every assignee and author records as the placeholder. The last test fails the recordings on anything token-shaped or any other email address.
+Values stay real except your email and your name: while recording, the agent replaces the signed-in account's address with `me@example.com` and its full name with `Alex Rivera` before the model reads anything. Set a full name on the Linear account first. Without one, Linear shows the email as your name, and every assignee and author records as `me@example.com`. The last test fails the recordings on anything token-shaped or any other email address.
 
 ## Allowing more tools
 

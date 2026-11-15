@@ -14,11 +14,11 @@ The first sign-in reads; the writes are asked for the first time the person make
 interaction grammar (proposed, then confirmed) still brakes each.
 
 In record mode (`A2UI_RECORD_DIR` set) every tool result is captured as it returns, for the
-stub corpus. Values stay real with one exception (task-7.3 decision 11): the signed-in
-account's own email address is replaced with a placeholder in every result before the model
-reads it — at the source, as Gmail pseudonymizes (task-2.6 decision 8), so the captured
-payloads and the painted streams are both clean. The username, and the branch names built on
-it, are left alone: they are what another vendor's branch matches.
+stub corpus. Values stay real with two exceptions (task-7.3 decision 11): the signed-in
+account's own email address and full name are each replaced with a placeholder in every result
+before the model reads it — at the source, as Gmail pseudonymizes (task-2.6 decision 8), so the
+captured payloads and the painted streams are both clean. The username, and the branch names
+built on it, are left alone: they are what another vendor's branch matches.
 """
 
 from __future__ import annotations
@@ -37,18 +37,20 @@ __all__ = [
     "LINEAR_MCP_URL",
     "LINEAR_TOOLS",
     "PLACEHOLDER_EMAIL",
+    "PLACEHOLDER_NAME",
     "build_live_toolset",
     "linear_connection_params",
     "mcp_headers",
-    "replace_email",
+    "replace_identity",
 ]
 
 # The hosted server, unless the environment names another address for it, such as a proxy in
 # front of it. The sign-in's resource stays the hosted server (`app/sign_in.py`).
 LINEAR_MCP_URL = os.environ.get("LINEAR_MCP_URL") or "https://mcp.linear.app/mcp"
 
-# What the key's own email address becomes in a recorded run.
+# What the account's own email address and full name become in a recorded run.
 PLACEHOLDER_EMAIL = "me@example.com"
+PLACEHOLDER_NAME = "Alex Rivera"
 
 # Issues and their two writes, by the server's own names (pinned from a live tools/list,
 # 2026-09-18). Everything absent is absent deliberately.
@@ -87,14 +89,22 @@ def linear_connection_params(account: SignedInAccount) -> StreamableHTTPConnecti
     )
 
 
-def replace_email(value: Any, email: str) -> Any:
-    """Every occurrence of `email`, in any case, replaced with the placeholder — through dicts,
-    lists and strings alike, so a result's `content` text and its `structuredContent` both."""
-    pattern = re.compile(re.escape(email), re.IGNORECASE)
+def replace_identity(value: Any, email: str | None, name: str | None) -> Any:
+    """Every occurrence of `email` and of `name`, in any case, replaced with its placeholder —
+    through dicts, lists and strings alike, so a result's `content` text and its
+    `structuredContent` both. The email goes first: a name Linear wrote as the address is gone
+    with it."""
+    swaps = [
+        (re.compile(re.escape(own), re.IGNORECASE), placeholder)
+        for own, placeholder in ((email, PLACEHOLDER_EMAIL), (name, PLACEHOLDER_NAME))
+        if own
+    ]
 
     def walk(node: Any) -> Any:
         if isinstance(node, str):
-            return pattern.sub(PLACEHOLDER_EMAIL, node)
+            for pattern, placeholder in swaps:
+                node = pattern.sub(placeholder, node)
+            return node
         if isinstance(node, list):
             return [walk(item) for item in node]
         if isinstance(node, dict):
@@ -104,17 +114,11 @@ def replace_email(value: Any, email: str) -> Any:
     return walk(value)
 
 
-def _own_email() -> str | None:
-    """The signed-in account's own email address: what a recording replaces."""
-    account = current_account()
-    return account.claims.get("email") if account else None
-
-
 class RecordingMcpTool(PolicyMcpTool):
-    """In record mode, replaces the signed-in account's own email address in each result,
-    then captures it.
+    """In record mode, replaces the signed-in account's own email address and full name in each
+    result, then captures it.
 
-    The replaced result is what the model reads, so nothing downstream holds the address. A
+    The replaced result is what the model reads, so nothing downstream holds either. A
     comment list names no issue, so its capture carries the `issueId` it was read for — the key
     the stub serves it back under.
     """
@@ -128,8 +132,8 @@ class RecordingMcpTool(PolicyMcpTool):
     def shape_result(self, result: Any) -> Any:
         if not (recording() and isinstance(result, dict)):
             return result
-        if email := _own_email():
-            result = replace_email(result, email)
+        if account := current_account():
+            result = replace_identity(result, account.claims.get("email"), account.claims.get("name"))
         payload = corpus_payload(result)
         if self._issue and isinstance(payload, dict):
             payload = {"issueId": self._issue, **payload}

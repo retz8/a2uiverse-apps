@@ -26,18 +26,20 @@ from app.mcp import (
     LINEAR_MCP_URL,
     LINEAR_TOOLS,
     PLACEHOLDER_EMAIL,
+    PLACEHOLDER_NAME,
     RecordingMcpTool,
     build_live_toolset,
     linear_connection_params,
     mcp_headers,
-    replace_email,
+    replace_identity,
 )
 from app.sign_in import SIGN_IN, _jsonrpc_message
 
 ADDRESS = "someone@example.org"
+FULL_NAME = "Sam Someone"
 
 ACCOUNT = SignedInAccount(
-    "sub-1", "lin-1", {"email": ADDRESS}, frozenset({"issues.read"}),
+    "sub-1", "lin-1", {"email": ADDRESS, "name": FULL_NAME}, frozenset({"issues.read"}),
     vendor_token={"access_token": "lin_oauth_x"},
 )
 
@@ -169,8 +171,8 @@ def armed(monkeypatch, tmp_path, signed_in):
     return tmp_path
 
 
-def _result() -> dict:
-    user = {"name": "Someone@Example.org", "email": ADDRESS, "displayName": "someone"}
+def _result(name: str = "Sam SOMEONE") -> dict:
+    user = {"name": name, "email": ADDRESS, "displayName": "someone"}
     return {
         "content": [{"type": "text", "text": json.dumps(user)}],
         "structuredContent": user,
@@ -185,19 +187,29 @@ def _tool(name: str) -> RecordingMcpTool:
 
 
 def test_the_swap_reaches_both_copies_of_a_result_in_any_case():
-    swapped = replace_email(_result(), ADDRESS)
+    swapped = replace_identity(_result(), ADDRESS, FULL_NAME)
     assert ADDRESS not in json.dumps(swapped).lower()
+    assert FULL_NAME.lower() not in json.dumps(swapped).lower()
     assert swapped["structuredContent"]["email"] == PLACEHOLDER_EMAIL
-    assert swapped["structuredContent"]["name"] == PLACEHOLDER_EMAIL
+    assert swapped["structuredContent"]["name"] == PLACEHOLDER_NAME
     assert json.loads(swapped["content"][0]["text"])["email"] == PLACEHOLDER_EMAIL
+    assert json.loads(swapped["content"][0]["text"])["name"] == PLACEHOLDER_NAME
     assert swapped["structuredContent"]["displayName"] == "someone"
+
+
+def test_a_name_linear_wrote_as_the_address_becomes_the_email_placeholder():
+    # Without a full name on the account, Linear writes the email as the name.
+    swapped = replace_identity(_result(name="Someone@Example.org"), ADDRESS, "someone@example.org")
+    assert swapped["structuredContent"]["name"] == PLACEHOLDER_EMAIL
 
 
 def test_record_mode_swaps_before_the_model_reads_and_captures_the_swapped_payload(armed):
     returned = _tool("get_user").shape_result(_result())
     assert ADDRESS not in json.dumps(returned).lower()
+    assert FULL_NAME.lower() not in json.dumps(returned).lower()
     captured = (armed / "payloads" / "get_user.jsonl").read_text(encoding="utf-8")
     assert ADDRESS not in captured.lower() and PLACEHOLDER_EMAIL in captured
+    assert FULL_NAME.lower() not in captured.lower() and PLACEHOLDER_NAME in captured
 
 
 def test_outside_record_mode_a_result_is_untouched(monkeypatch, signed_in):

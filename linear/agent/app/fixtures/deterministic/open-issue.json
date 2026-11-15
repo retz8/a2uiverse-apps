@@ -1,151 +1,94 @@
 [
   {
-    "version": "v0.9",
     "createSurface": {
-      "surfaceId": "issue-detail",
+      "sendDataModel": true,
       "catalogId": "https://github.com/retz8/a2uiverse-apps/blob/main/linear/linear-catalog/catalogs/v0.9.1/catalog.json",
-      "sendDataModel": true
+      "surfaceId": "issue-detail"
+    },
+    "version": "v0.9"
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "path": "/",
+      "surfaceId": "issue-detail"
     }
   },
   {
     "version": "v0.9",
     "updateDataModel": {
-      "surfaceId": "issue-detail",
-      "value": {
-        "team": "A2uiverse"
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "issue-detail",
-      "value": {
-        "id": "A2U-5"
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "issue-detail",
-      "value": {
-        "title": "Say on the canvas when an utterance fails",
-        "status": "In Review",
-        "statusType": "started"
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "issue-detail",
-      "value": {
-        "priority": "High",
-        "assignee": "Jioh In"
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "issue-detail",
-      "value": {
-        "labels": "Bug"
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "issue-detail",
-      "value": {
-        "description": "A failed utterance leaves the canvas idle with no word: the palette closes and nothing paints, and the failure shows up only in the orchestrator's log. Found in the CircleCI app's canvas pass (7.2).\n\nThe canvas should say the turn failed, in words, where the answer would have painted."
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "issue-detail",
-      "value": {
-        "pullRequests": [
-          {
-            "title": "Say on the canvas when an utterance fails",
-            "number": "#6"
-          }
-        ]
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "issue-detail",
-      "value": {
-        "branch": "ekkicb71/a2u-5-say-on-the-canvas-when-an-utterance-fails"
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "issue-detail",
-      "value": {
-        "comments": [
-          {
-            "author": "GitHub",
-            "when": "Sep 18, 2026, 11:50 AM UTC"
-          }
-        ]
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "issue-detail",
-      "value": {
-        "comments": [
-          {
-            "author": "GitHub",
-            "when": "Sep 18, 2026, 11:50 AM UTC",
-            "body": "This comment thread is synced to a corresponding [GitHub issue](https://github.com/retz8/a2uiverse/issues/3). All replies are displayed in both locations."
-          }
-        ]
-      }
-    }
-  },
-  {
-    "version": "v0.9",
-    "updateDataModel": {
-      "surfaceId": "issue-detail",
       "path": "/",
       "value": {
-        "team": "A2uiverse",
-        "id": "A2U-5",
         "title": "Say on the canvas when an utterance fails",
-        "status": "In Review",
-        "statusType": "started",
         "priority": "High",
-        "assignee": "Jioh In",
+        "statusType": "started",
+        "id": "A2U-5",
+        "team": "A2uiverse",
         "labels": "Bug",
-        "description": "A failed utterance leaves the canvas idle with no word: the palette closes and nothing paints, and the failure shows up only in the orchestrator's log. Found in the CircleCI app's canvas pass (7.2).\n\nThe canvas should say the turn failed, in words, where the answer would have painted.",
+        "pullRequests": [],
+        "assignee": "Alex Rivera",
+        "status": "In Review",
+        "description": "A failed utterance leaves the canvas idle with no word: the palette closes and nothing paints, and the failure shows up only in the orchestrator's log. Found in the CircleCI app's canvas pass (7.2).\n\nThe canvas should say the turn failed, in words, where the answer would have painted."
+      },
+      "surfaceId": "issue-detail"
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "path": "/",
+      "value": {
+        "title": "Say on the canvas when an utterance fails",
+        "priority": "High",
+        "statusType": "started",
+        "id": "A2U-5",
+        "team": "A2uiverse",
+        "comments": [],
+        "labels": "Bug",
         "pullRequests": [
           {
             "title": "Say on the canvas when an utterance fails",
             "number": "#6"
           }
         ],
+        "assignee": "Alex Rivera",
+        "status": "In Review",
         "branch": "ekkicb71/a2u-5-say-on-the-canvas-when-an-utterance-fails",
+        "description": "A failed utterance leaves the canvas idle with no word: the palette closes and nothing paints, and the failure shows up only in the orchestrator's log. Found in the CircleCI app's canvas pass (7.2).\n\nThe canvas should say the turn failed, in words, where the answer would have painted."
+      },
+      "surfaceId": "issue-detail"
+    }
+  },
+  {
+    "version": "v0.9",
+    "updateDataModel": {
+      "path": "/",
+      "value": {
+        "title": "Say on the canvas when an utterance fails",
+        "priority": "High",
+        "statusType": "started",
+        "id": "A2U-5",
+        "team": "A2uiverse",
         "comments": [
           {
-            "author": "GitHub",
             "when": "Sep 18, 2026, 11:50 AM UTC",
-            "body": "This comment thread is synced to a corresponding [GitHub issue](https://github.com/retz8/a2uiverse/issues/3). All replies are displayed in both locations."
+            "body": "This comment thread is synced to a corresponding [GitHub issue](https://github.com/retz8/a2uiverse/issues/3). All replies are displayed in both locations.",
+            "author": "GitHub"
           }
-        ]
-      }
+        ],
+        "labels": "Bug",
+        "pullRequests": [
+          {
+            "title": "Say on the canvas when an utterance fails",
+            "number": "#6"
+          }
+        ],
+        "assignee": "Alex Rivera",
+        "status": "In Review",
+        "branch": "ekkicb71/a2u-5-say-on-the-canvas-when-an-utterance-fails",
+        "description": "A failed utterance leaves the canvas idle with no word: the palette closes and nothing paints, and the failure shows up only in the orchestrator's log. Found in the CircleCI app's canvas pass (7.2).\n\nThe canvas should say the turn failed, in words, where the answer would have painted."
+      },
+      "surfaceId": "issue-detail"
     }
   },
   {
@@ -153,35 +96,33 @@
     "updateComponents": {
       "components": [
         {
-          "id": "body",
-          "component": "Stack",
+          "component": "Panel",
+          "child": "body",
+          "padding": "none",
+          "id": "root"
+        },
+        {
           "gap": "none",
+          "component": "Stack",
           "children": [
             "header",
             "content"
-          ]
+          ],
+          "id": "body"
         },
         {
-          "id": "root",
-          "component": "Panel",
-          "padding": "none",
-          "child": "body"
-        },
-        {
-          "id": "header",
-          "component": "ViewHeader",
+          "title": {
+            "path": "/id"
+          },
           "context": {
             "path": "/team"
           },
-          "title": {
-            "path": "/id"
-          }
+          "component": "ViewHeader",
+          "id": "header"
         },
         {
-          "id": "content",
-          "component": "Stack",
-          "padding": "l",
           "gap": "l",
+          "component": "Stack",
           "children": [
             "title",
             "props",
@@ -189,267 +130,271 @@
             "description",
             "links",
             "activity"
-          ]
+          ],
+          "padding": "l",
+          "id": "content"
         },
         {
-          "id": "props",
-          "component": "Stack",
+          "variant": "title",
+          "component": "Text",
+          "text": {
+            "path": "/title"
+          },
+          "id": "title"
+        },
+        {
           "gap": "xs",
+          "component": "Stack",
           "children": [
             "status-prop",
             "priority-prop",
             "assignee-prop",
             "labels-prop"
-          ]
+          ],
+          "id": "props"
         },
         {
-          "id": "title",
-          "component": "Text",
-          "text": {
-            "path": "/title"
-          },
-          "variant": "title"
-        },
-        {
-          "id": "status-prop",
           "component": "Property",
-          "label": "Status",
           "children": [
             "status-icon",
             "status-name"
-          ]
+          ],
+          "id": "status-prop",
+          "label": "Status"
         },
         {
-          "id": "status-icon",
+          "type": {
+            "path": "/statusType"
+          },
           "component": "StatusIcon",
           "status": {
             "path": "/status"
           },
-          "type": {
-            "path": "/statusType"
-          }
+          "id": "status-icon"
         },
         {
-          "id": "status-name",
           "component": "Text",
           "text": {
             "path": "/status"
-          }
+          },
+          "id": "status-name"
         },
         {
-          "id": "priority-prop",
           "component": "Property",
-          "label": "Priority",
           "children": [
             "priority-icon",
             "priority-name"
-          ]
+          ],
+          "id": "priority-prop",
+          "label": "Priority"
         },
         {
-          "id": "priority-icon",
-          "component": "PriorityIcon",
           "priority": {
             "path": "/priority"
-          }
+          },
+          "component": "PriorityIcon",
+          "id": "priority-icon"
         },
         {
-          "id": "priority-name",
           "component": "Text",
           "text": {
             "path": "/priority"
-          }
+          },
+          "id": "priority-name"
         },
         {
-          "id": "assignee-prop",
           "component": "Property",
-          "label": "Assignee",
           "children": [
             "assignee-avatar",
             "assignee-name"
-          ]
+          ],
+          "id": "assignee-prop",
+          "label": "Assignee"
         },
         {
-          "id": "assignee-avatar",
           "component": "Avatar",
+          "id": "assignee-avatar",
           "name": {
             "path": "/assignee"
           }
         },
         {
-          "id": "assignee-name",
           "component": "Text",
           "text": {
             "path": "/assignee"
-          }
+          },
+          "id": "assignee-name"
         },
         {
-          "id": "labels-prop",
           "component": "Property",
-          "label": "Labels",
           "children": [
             "labels-chip"
-          ]
+          ],
+          "id": "labels-prop",
+          "label": "Labels"
         },
         {
-          "id": "labels-chip",
           "component": "Chip",
+          "id": "labels-chip",
           "label": {
             "path": "/labels"
           }
         },
         {
-          "id": "divider",
-          "component": "Divider"
+          "component": "Divider",
+          "id": "divider"
         },
         {
-          "id": "description",
           "component": "Markdown",
           "text": {
             "path": "/description"
-          }
+          },
+          "id": "description"
         },
         {
-          "id": "links",
-          "component": "Section",
           "title": "Links",
+          "count": "2",
+          "component": "Section",
           "children": [
             "pr-list",
             "branch"
-          ]
+          ],
+          "id": "links"
         },
         {
-          "id": "pr-list",
-          "component": "Stack",
           "gap": "xs",
+          "component": "Stack",
           "children": {
             "path": "/pullRequests",
             "componentId": "pr-row"
-          }
+          },
+          "id": "pr-list"
         },
         {
-          "id": "pr-row",
-          "component": "Stack",
-          "direction": "horizontal",
           "gap": "s",
+          "component": "Stack",
           "align": "center",
           "children": [
             "pr-icon",
             "pr-title",
             "pr-number"
-          ]
+          ],
+          "id": "pr-row",
+          "direction": "horizontal"
         },
         {
-          "id": "pr-icon",
           "component": "Icon",
+          "id": "pr-icon",
           "name": "pull-request"
         },
         {
-          "id": "pr-title",
           "component": "Text",
+          "weight": "medium",
           "text": {
             "path": "title"
           },
-          "weight": "medium"
+          "id": "pr-title"
         },
         {
-          "id": "pr-number",
+          "variant": "caption",
           "component": "Text",
           "text": {
             "path": "number"
           },
-          "variant": "caption"
+          "id": "pr-number"
         },
         {
-          "id": "branch",
-          "component": "Stack",
-          "direction": "horizontal",
           "gap": "s",
+          "component": "Stack",
           "align": "center",
           "children": [
             "branch-icon",
             "branch-name"
-          ]
+          ],
+          "id": "branch",
+          "direction": "horizontal"
         },
         {
-          "id": "branch-icon",
           "component": "Icon",
+          "id": "branch-icon",
           "name": "branch"
         },
         {
-          "id": "branch-name",
           "component": "Text",
           "text": {
             "path": "/branch"
           },
+          "id": "branch-name",
           "variant": "caption"
         },
         {
-          "id": "activity",
-          "component": "Section",
           "title": "Activity",
+          "count": "1",
+          "component": "Section",
           "children": {
             "path": "/comments",
             "componentId": "comment"
-          }
+          },
+          "id": "activity"
         },
         {
-          "id": "comment",
-          "component": "Stack",
           "gap": "xs",
+          "component": "Stack",
           "children": [
             "comment-meta",
             "comment-body"
-          ]
+          ],
+          "id": "comment"
         },
         {
-          "id": "comment-meta",
-          "component": "Stack",
-          "direction": "horizontal",
           "gap": "s",
+          "component": "Stack",
           "align": "center",
           "children": [
             "comment-avatar",
             "comment-author",
             "comment-when"
-          ]
+          ],
+          "id": "comment-meta",
+          "direction": "horizontal"
         },
         {
-          "id": "comment-avatar",
           "component": "Avatar",
+          "id": "comment-avatar",
           "name": {
             "path": "author"
           }
         },
         {
-          "id": "comment-author",
           "component": "Text",
+          "weight": "medium",
           "text": {
             "path": "author"
           },
-          "weight": "medium"
+          "id": "comment-author"
         },
         {
-          "id": "comment-when",
+          "variant": "caption",
           "component": "Text",
           "text": {
             "path": "when"
           },
-          "variant": "caption"
+          "id": "comment-when"
         },
         {
-          "id": "comment-body",
           "component": "Markdown",
           "text": {
             "path": "body"
-          }
+          },
+          "id": "comment-body"
         }
       ]
     }
   },
   {
     "paintMeta": {
-      "surfaceId": "issue-detail",
-      "title": "A2U-5"
+      "title": "A2U-5",
+      "surfaceId": "issue-detail"
     }
   }
 ]

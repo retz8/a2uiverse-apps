@@ -3,8 +3,8 @@
 One live run, three consumers (task-2.6 decision 11, task-7.3 decision 10): the captured MCP
 payloads become the stub backend's fixtures; the settled painted streams of the three beats
 become the deterministic agent's fixtures. Neither is hand-authored — that is what keeps the
-canned data real-shaped. Values stay real but for the key's own email address, which the recorder
-replaced before the model read it (task-7.3 decision 11); `tests/test_corpus_is_publishable.py`
+canned data real-shaped. Values stay real but for the account's own email address and full name,
+which the recorder replaced before the model read them (task-7.3 decision 11); `tests/test_corpus_is_publishable.py`
 guards the result against anything token- or secret-shaped and against any other address.
 
     A2UI_RECORD_DIR=.recordings uv run python -m app --mode live --host localhost
