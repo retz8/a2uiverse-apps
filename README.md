@@ -124,8 +124,9 @@ A publisher who runs A2UIVerse can publish from its Publish page instead, opened
 
 ```bash
 pnpm install                        # the catalogs and create-a2ui-agent, one workspace
-pnpm verify                         # build, typecheck, test, Stellify's check, lint and format check over all of them
-cd linear/agent && uv run pytest    # an agent's own tests: no model calls, no credentials
+pnpm verify                         # build, typecheck, test and Stellify's check over all of them, every agent's tests, lint and format check
+pnpm test:agents                    # every agent's own tests alone: no model calls, no credentials
+cd linear/agent && uv run pytest    # one agent's tests
 cd mocks/shop-c/agent && go test ./... # Shop C's tests, in Go
 ```
 

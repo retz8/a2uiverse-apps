@@ -12,7 +12,7 @@ Open an [issue](https://github.com/retz8/a2uiverse-apps/issues/new/choose) here 
 
 ## Code changes
 
-Open a discussion or an issue before writing code, so the change is agreed on first. On a pull request, `pnpm verify` must be green at the root, and `uv run pytest` in every agent the change touches. [Running an app](README.md#running-an-app) covers the setup, and [Building a new app](README.md#building-a-new-app) a new one.
+Open a discussion or an issue before writing code, so the change is agreed on first. On a pull request, `pnpm verify` must be green at the root; it runs every agent's tests too. [Running an app](README.md#running-an-app) covers the setup, and [Building a new app](README.md#building-a-new-app) a new one.
 
 ## Security
 

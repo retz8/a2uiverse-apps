@@ -13,7 +13,8 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "verify": "turbo run build typecheck test check && pnpm lint && pnpm format:check"
+    "test:agents": "node scripts/test-agents.mjs",
+    "verify": "turbo run build typecheck test check && pnpm test:agents && pnpm lint && pnpm format:check"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
