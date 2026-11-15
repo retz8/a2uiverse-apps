@@ -28,7 +28,7 @@ uv run python -m app --mode deterministic
 | `stub`          | the model over canned mail               | `GOOGLE_API_KEY`                                                          |
 | `live`          | the model over your mailbox, through MCP | `GOOGLE_API_KEY`, `GOOGLE_OAUTH_CLIENT_ID`, `GOOGLE_OAUTH_CLIENT_SECRET` |
 
-`deterministic` answers any question with the signed-in account's recorded inbox digest, and replays the recorded actions: opening a thread, confirming or cancelling a draft, toggling a label. Opening a thread paints a new surface, as the live agent does.
+`deterministic` answers any question with the signed-in account's recorded inbox digest, and replays the recorded actions: opening a thread, confirming or cancelling a draft, toggling a label. Opening a thread paints a new surface, as the live agent does, with Archive alone: drafting a reply is a typed request in the recorded beats, so the canned thread view has no Draft a reply.
 
 Other flags: `--port`, `--grpc-port`, `--host`, `--base-url`, the address the agent card advertises for JSON-RPC and HTTP+JSON, and `--public-url`, the address the browser reaches its sign-in pages at — a tunnel address, when the browser is on another machine. `--state-dir` moves the sign-in store from `.state/`.
 

@@ -219,7 +219,6 @@
           "id": "actions",
           "component": "Stack",
           "children": [
-            "reply",
             "archive"
           ],
           "direction": "horizontal",
@@ -266,21 +265,6 @@
           "component": "Text",
           "text": {
             "path": "body"
-          }
-        },
-        {
-          "id": "reply",
-          "component": "Button",
-          "label": "Draft a reply",
-          "variant": "outlined",
-          "icon": "reply",
-          "action": {
-            "event": {
-              "name": "draft-reply",
-              "context": {
-                "threadId": "1988d441e2356bf7"
-              }
-            }
           }
         },
         {

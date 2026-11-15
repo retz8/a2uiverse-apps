@@ -235,27 +235,11 @@
           "id": "actions",
           "component": "Stack",
           "children": [
-            "reply",
             "archive"
           ],
           "direction": "horizontal",
           "gap": "sm",
           "padding": "md"
-        },
-        {
-          "id": "reply",
-          "component": "Button",
-          "label": "Draft a reply",
-          "variant": "outlined",
-          "icon": "reply",
-          "action": {
-            "event": {
-              "name": "draft-reply",
-              "context": {
-                "threadId": "19829cbece7facf1"
-              }
-            }
-          }
         },
         {
           "id": "archive",

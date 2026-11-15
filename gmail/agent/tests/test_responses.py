@@ -59,6 +59,17 @@ def _ops(messages: list[dict]) -> list[str]:
     return [next(k for k in m if k != "version") for m in messages]
 
 
+def _presses(value: object) -> set[str]:
+    """The name of every press a canned answer paints."""
+    if isinstance(value, list):
+        return set().union(*(_presses(v) for v in value))
+    if not isinstance(value, dict):
+        return set()
+    event = value.get("action", {}).get("event") if isinstance(value.get("action"), dict) else None
+    named = {event["name"]} if isinstance(event, dict) and "name" in event else set()
+    return named.union(*(_presses(v) for v in value.values()))
+
+
 @requires_corpus
 class TestTextPath:
     def test_a_prompt_returns_the_canned_digest(self):
@@ -118,6 +129,9 @@ class TestActionPath:
         for name in ACTIONS:
             created = "createSurface" in _ops(build_response(_action(name)))
             assert created == (name in DRILL_DOWNS)
+
+    def test_the_thread_view_shows_only_presses_the_corpus_answers(self):
+        assert _presses(build_response(_action("open-thread"))) <= set(ACTIONS)
 
     def test_an_unknown_event_is_visibly_unhandled(self):
         # A silent no-op looks like a working round-trip that changed nothing.

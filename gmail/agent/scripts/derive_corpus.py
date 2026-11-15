@@ -33,6 +33,37 @@ def write(path: Path, payload: object, note: str) -> None:
     print(f"{path.name:22} <- {note}")
 
 
+# The presses the thread view paints that the corpus has no recorded answer to: drafting a
+# reply is a typed request in the beats, so the thread view keeps Archive alone.
+UNANSWERED_PRESSES = ("draft-reply",)
+
+
+def without_presses(messages: list[dict], names: tuple[str, ...]) -> list[dict]:
+    """The messages with every component pressing one of `names` dropped, and its id
+    taken out of its parent's children."""
+
+    def presses(component: dict) -> bool:
+        event = (component.get("action") or {}).get("event") or {}
+        return event.get("name") in names
+
+    kept = []
+    for message in messages:
+        update = message.get("updateComponents")
+        if update is None:
+            kept.append(message)
+            continue
+        dropped = {c["id"] for c in update["components"] if presses(c)}
+        components = [
+            {**c, "children": [i for i in c["children"] if i not in dropped]}
+            if isinstance(c.get("children"), list)
+            else c
+            for c in update["components"]
+            if c["id"] not in dropped
+        ]
+        kept.append({**message, "updateComponents": {**update, "components": components}})
+    return kept
+
+
 def derive_deterministic(account: str) -> None:
     beats = BEATS / account
     deterministic = DETERMINISTIC / account
@@ -66,6 +97,8 @@ def derive_deterministic(account: str) -> None:
             # The confirm replays the question's paint as its answer: the answer is no question.
             and not (name == "confirm-draft.json" and "paintMeta" in m)
         ]
+        if name == "open-thread.json":
+            messages = without_presses(messages, UNANSWERED_PRESSES)
         if messages:
             write(deterministic / name, messages, f"{len(messages)} messages")
 
