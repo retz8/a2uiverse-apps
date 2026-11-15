@@ -7,6 +7,7 @@ listing — and nothing of ADK's own transport.
 
 from __future__ import annotations
 
+import json
 from typing import Any
 from unittest.mock import AsyncMock, MagicMock
 
@@ -93,6 +94,60 @@ class TestHooks:
         tool = rewrap(make_tool(), ArgPinningTool)
         await tool._run_async_impl(args=None, tool_context=None, credential=None)
         assert base.call_args.kwargs["args"] is None
+
+
+RUNS = {"runs": [{"id": "8a6c87c2", "attributes": {"current_outcome": "failed"}}]}
+SUMMARY = {"type": "text", "text": "Found 1 run(s)"}
+
+
+class TestStructuredContentReachesContent:
+    """A server that leaves only a summary in `content`, as CircleCI's `list_runs` does, still
+    hands the model its structured half: ADK's Anthropic model class reads `content` alone."""
+
+    async def _call(self, monkeypatch, result: Any, cls: type[PolicyMcpTool] = PolicyMcpTool):
+        monkeypatch.setattr(McpTool, "_run_async_impl", AsyncMock(return_value=result))
+        tool = rewrap(make_tool(name="list_runs"), cls)
+        return await tool._run_async_impl(args={}, tool_context=None, credential=None)
+
+    async def test_a_summary_in_content_gains_the_structured_half_as_json_after_it(
+        self, monkeypatch
+    ):
+        out = await self._call(
+            monkeypatch, {"content": [SUMMARY], "structuredContent": RUNS, "isError": False}
+        )
+        assert out["content"] == [SUMMARY, {"type": "text", "text": json.dumps(RUNS)}]
+        assert out["structuredContent"] == RUNS
+        assert out["isError"] is False
+
+    async def test_content_already_holding_the_structured_half_is_left_as_it_is(
+        self, monkeypatch
+    ):
+        # MCP's rule: the serialized JSON in a text block, here written with its own spacing.
+        result = {
+            "content": [SUMMARY, {"type": "text", "text": json.dumps(RUNS, indent=2)}],
+            "structuredContent": RUNS,
+        }
+        assert await self._call(monkeypatch, dict(result)) == result
+
+    async def test_a_result_with_no_content_gets_the_structured_half_alone(self, monkeypatch):
+        out = await self._call(monkeypatch, {"structuredContent": RUNS})
+        assert out["content"] == [{"type": "text", "text": json.dumps(RUNS)}]
+
+    async def test_no_structured_half_or_an_empty_one_changes_nothing(self, monkeypatch):
+        for result in ({"content": [SUMMARY]}, {"content": [SUMMARY], "structuredContent": {}}):
+            assert await self._call(monkeypatch, dict(result)) == result
+
+    async def test_text_beyond_ascii_is_carried_as_written(self, monkeypatch):
+        named = {"runs": [{"author": "Jökull"}]}
+        out = await self._call(monkeypatch, {"content": [SUMMARY], "structuredContent": named})
+        assert "Jökull" in out["content"][1]["text"]
+
+    async def test_the_policy_hook_sees_the_carried_copy(self, monkeypatch):
+        # One dict for a policy (task 2.6): what it rewrites is what the model reads.
+        out = await self._call(
+            monkeypatch, {"content": [SUMMARY], "structuredContent": RUNS}, ResultWrappingTool
+        )
+        assert out["wrapped"]["content"][1] == {"type": "text", "text": json.dumps(RUNS)}
 
 
 class TestToolsetRewrapsAfterListing:

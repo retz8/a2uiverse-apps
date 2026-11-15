@@ -14,6 +14,14 @@ twice, in `content` and in `structuredContent`, and a callback that rewrites one
 leaves the other for the model to read. At this boundary there is only ever one
 dict, on the way out and on the way back.
 
+A server can also leave `content` as a summary and put the payload in
+`structuredContent` alone, as CircleCI's `list_runs` does ("Found 5 run(s)"),
+where MCP has it return the serialized JSON in a text block too. A model reading
+`content` alone then reads nothing, as ADK's Anthropic model class does for
+Claude. The base copies the structured half into `content` before the inbound
+hook (`carry_structured_content`), so a policy still sees the one dict the model
+reads.
+
 ADK builds its tools internally, so they are re-wrapped after the toolset has
 listed them. Re-wrapping rather than re-implementing keeps auth, filtering,
 retries and session management exactly as ADK does them — the only difference is
@@ -27,6 +35,7 @@ the vendor no longer takes the account's token (task-12.10 decision 7).
 from __future__ import annotations
 
 import contextvars
+import json
 from typing import Any, ClassVar
 
 import httpx
@@ -68,6 +77,40 @@ def is_unauthorized(error: BaseException) -> bool:
             stack.extend(current.exceptions)
         stack.extend([current.__cause__, current.__context__])
     return False
+
+
+def carry_structured_content(result: Any) -> Any:
+    """The result with its `structuredContent` also in `content`, where `content` lacks it.
+
+    MCP has a tool that returns structured content "also return the serialized JSON in a
+    TextContent block" (the 2025-06-18 and 2025-11-25 specifications, "Structured Content").
+    Where no text part of `content` reads as that JSON, one is appended after the server's own
+    parts; a result whose `content` holds it, or with no structured half, is returned as it is.
+    """
+    if not isinstance(result, dict):
+        return result
+    structured = result.get("structuredContent")
+    if not isinstance(structured, dict) or not structured:
+        return result
+    content = result.get("content")
+    parts = content if isinstance(content, list) else []
+    if any(_reads_as(part, structured) for part in parts):
+        return result
+    carried = {"type": "text", "text": json.dumps(structured, ensure_ascii=False)}
+    return {**result, "content": [*parts, carried]}
+
+
+def _reads_as(part: Any, structured: dict[str, Any]) -> bool:
+    """Whether a content part is a text part whose text is `structured` as JSON."""
+    if not isinstance(part, dict) or part.get("type") != "text":
+        return False
+    text = part.get("text")
+    if not isinstance(text, str):
+        return False
+    try:
+        return json.loads(text) == structured
+    except ValueError:
+        return False
 
 
 class PolicyMcpTool(McpTool):
@@ -113,7 +156,7 @@ class PolicyMcpTool(McpTool):
             if is_unauthorized(error) and (record := _unauthorized.get()) is not None:
                 record.append(error)
             raise
-        return self.shape_result(result)
+        return self.shape_result(carry_structured_content(result))
 
 
 class PolicyMcpToolset(McpToolset):

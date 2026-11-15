@@ -249,24 +249,24 @@ export STELLIFY_CREDENTIAL=$(uv run python -m a2ui_agent_kit.preview_credential 
 
 ## What's in it
 
-| Module                                | What it does                                                                                                                                 |
-| ------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| `cli`, `server`, `modes`              | The entrypoint, the A2A server on the six paths with one agent card for every mode, and the executor per mode                                |
-| `bindings`, `gates`                   | The six paths in the card's order, and the one credential check over every A2A call on them                                                  |
-| `wire`, `versions`                    | The A2A parts and messages the kit reads and writes, the A2UI part, the press read by content, and the A2UI version a request is answered in |
-| `card_signing`                        | Optional: the card's signing key, its signer and its key set                                                                                 |
-| `executor_llm`                        | Streams the model's A2UI as it's written, validates it against the catalog at the end, sends what the stream held back, and retries          |
-| `executor_deterministic`, `responses` | Deterministic mode: canned A2UI per action or question, from the app's fixtures, titled as recorded                                          |
-| `catalog`, `prompt`, `knowledge`      | Loads the app's catalog, validates surfaces against it, and assembles the system prompt                                                      |
-| `catalog_lines`                       | Optional: an old catalog id beside the current one, and the id each turn is painted in                                                       |
-| `toolset`, `tool_shaping`             | A hook on every MCP call, to change its arguments on the way out or its result on the way back                                               |
-| `recorder`, `corpus`, `beats`         | Recording: what the agent painted, what each model request cost in time and tokens, what the MCP server returned, and scripted conversations |
-| `paint_meta`                          | Optional: a short title per painted surface, and a mark on a surface that asks something                                                     |
-| `sign_in`, `sign_in_server`           | Optional: the app's sign-in and the OAuth authorization server it serves                                                                     |
-| `sign_in_store`, `sign_in_fake`       | The owner-only store behind sign-in, and the chooser over the fake accounts                                                                  |
-| `sign_in_vendor`                      | Optional: live sign-in with a vendor's OAuth, as the upstream sign-in                                                                        |
-| `testing`                             | Runs an executor in-process, or the agent on a port signed in as a vault would, for an app's tests                                           |
-| `preview_credential`                  | A token from your running agent for Stellify's `preview`, signed in as one of its fake accounts                                              |
+| Module                                | What it does                                                                                                                                                                                             |
+| ------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `cli`, `server`, `modes`              | The entrypoint, the A2A server on the six paths with one agent card for every mode, and the executor per mode                                                                                            |
+| `bindings`, `gates`                   | The six paths in the card's order, and the one credential check over every A2A call on them                                                                                                              |
+| `wire`, `versions`                    | The A2A parts and messages the kit reads and writes, the A2UI part, the press read by content, and the A2UI version a request is answered in                                                             |
+| `card_signing`                        | Optional: the card's signing key, its signer and its key set                                                                                                                                             |
+| `executor_llm`                        | Streams the model's A2UI as it's written, validates it against the catalog at the end, sends what the stream held back, and retries                                                                      |
+| `executor_deterministic`, `responses` | Deterministic mode: canned A2UI per action or question, from the app's fixtures, titled as recorded                                                                                                      |
+| `catalog`, `prompt`, `knowledge`      | Loads the app's catalog, validates surfaces against it, and assembles the system prompt                                                                                                                  |
+| `catalog_lines`                       | Optional: an old catalog id beside the current one, and the id each turn is painted in                                                                                                                   |
+| `toolset`, `tool_shaping`             | A hook on every MCP call, to change its arguments on the way out or its result on the way back, a result's `structuredContent` copied into its `content` first when the server left only a summary there |
+| `recorder`, `corpus`, `beats`         | Recording: what the agent painted, what each model request cost in time and tokens, what the MCP server returned, and scripted conversations                                                             |
+| `paint_meta`                          | Optional: a short title per painted surface, and a mark on a surface that asks something                                                                                                                 |
+| `sign_in`, `sign_in_server`           | Optional: the app's sign-in and the OAuth authorization server it serves                                                                                                                                 |
+| `sign_in_store`, `sign_in_fake`       | The owner-only store behind sign-in, and the chooser over the fake accounts                                                                                                                              |
+| `sign_in_vendor`                      | Optional: live sign-in with a vendor's OAuth, as the upstream sign-in                                                                                                                                    |
+| `testing`                             | Runs an executor in-process, or the agent on a port signed in as a vault would, for an app's tests                                                                                                       |
+| `preview_credential`                  | A token from your running agent for Stellify's `preview`, signed in as one of its fake accounts                                                                                                          |
 
 The system prompt puts three rules every app shares ahead of the app's own workflow: a failure reported in prose is worded for a person who may not work in tech, with no status code, tool name, URL or sign-in term; a write drafted for the person to confirm is a proposal, never declared a question, and one dismissed outright is repainted settled; and the person's time zone is passed to every tool that takes one, a time from a tool that takes none is shown with its zone named, and no time is converted by the model.
 
