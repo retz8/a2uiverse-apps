@@ -13,7 +13,7 @@
     "updateDataModel": {
       "surfaceId": "rsvp-o49vnbegq501jme5all5bt82eo",
       "value": {
-        "when": "Tomorrow, 10:00 \u2013 11:30"
+        "when": "Tomorrow, 10:00 \u2013 11:30 UTC"
       }
     }
   },
@@ -24,7 +24,7 @@
       "path": "/",
       "value": {
         "summary": "Quarter planning",
-        "when": "Tomorrow, 10:00 \u2013 11:30",
+        "when": "Tomorrow, 10:00 \u2013 11:30 UTC",
         "current": "You're going"
       }
     }

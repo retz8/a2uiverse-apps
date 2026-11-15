@@ -45,7 +45,9 @@ uv run python -m app --mode deterministic
 | `stub`          | the model over canned events              | `GOOGLE_API_KEY`                                                          |
 | `live`          | the model over your calendar, via MCP     | `GOOGLE_API_KEY`, `GOOGLE_OAUTH_CLIENT_ID`, `GOOGLE_OAUTH_CLIENT_SECRET` |
 
-`deterministic` answers any question with a recorded agenda, and replays the recorded actions: opening an event, confirming or cancelling a new one, answering an invitation. Opening an event paints a new surface, as the live agent does.
+`deterministic` answers any question with a recorded agenda, and replays the recorded actions: opening an event, confirming or cancelling a new one, answering an invitation. Opening an event paints a new surface, as the live agent does. Its times are the recording's, in UTC, and say so.
+
+In `stub` and `live`, every event time a tool returns is moved into the zone the person's question states before the model reads it, so the model shows the person's own clock and never converts a time.
 
 Other flags: `--port`, `--grpc-port`, `--host`, `--base-url`, the address the agent card advertises for JSON-RPC and HTTP+JSON, and `--public-url`, the address the browser reaches its sign-in pages at — a tunnel address, when the browser is on another machine. `--state-dir` moves the sign-in store from `.state/`.
 

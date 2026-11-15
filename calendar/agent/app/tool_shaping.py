@@ -29,10 +29,13 @@ exception Google injects is handled by `mask_injected_addresses`.
 from __future__ import annotations
 
 import hashlib
+import json
 import logging
 import re
+from datetime import datetime
 from pathlib import Path
 from typing import Any
+from zoneinfo import ZoneInfo
 
 from a2ui_agent_kit import tool_shaping as kit_shaping
 from a2ui_agent_kit.corpus import capture_payload, corpus_payload, recording
@@ -228,7 +231,7 @@ def annotate(payload: Any) -> Any | None:
     """Adds projection notes to a decoded payload. Returns None when nothing applies."""
     if not isinstance(payload, dict):
         return None
-    notes = [PROJECTION_NOTE]
+    notes = [*payload.get(_ANNOTATION_KEY, []), PROJECTION_NOTE]
     annotated = dict(payload)
     events = payload.get("events")
     if isinstance(events, list):
@@ -236,6 +239,65 @@ def annotate(payload: Any) -> Any | None:
         notes.append(EVENT_COUNT_NOTE)
     annotated[_ANNOTATION_KEY] = notes
     return annotated
+
+
+ZONE_NOTE = (
+    "Every event time here is in the person's own time zone, the one their request states, so "
+    "it is already theirs: show it as given."
+)
+
+
+def in_person_zone(value: Any, zone: str) -> Any:
+    """`value` with every event time moved into `zone`, the zone the person's request stated:
+    each `dateTime` with an offset rewritten as the same instant there, its `timeZone` named
+    `zone`, and a payload whose times moved noted so. An all-day `date` and the calendar's own
+    `timeZone` stay as they are. A result's JSON text part moves as its `structuredContent`
+    does, so the two branches still agree. The model then restates the person's own clock, and
+    never converts a time (the prompt's rule).
+    """
+    there = ZoneInfo(zone)
+
+    def move(item: Any) -> Any:
+        if isinstance(item, list):
+            return [move(each) for each in item]
+        if not isinstance(item, dict):
+            return item
+        moved = {key: move(each) for key, each in item.items()}
+        when = moved.get("dateTime")
+        if isinstance(when, str):
+            try:
+                at = datetime.fromisoformat(when)
+            except ValueError:
+                at = None
+            if at is not None and at.tzinfo is not None:
+                moved["dateTime"] = at.astimezone(there).isoformat()
+                moved["timeZone"] = zone
+        return moved
+
+    def payload(item: Any) -> Any:
+        moved = move(item)
+        if moved != item and isinstance(moved, dict):
+            moved[_ANNOTATION_KEY] = [*moved.get(_ANNOTATION_KEY, []), ZONE_NOTE]
+        return moved
+
+    if not (isinstance(value, dict) and isinstance(value.get("content"), list)):
+        return payload(value)
+    parts = []
+    for part in value["content"]:
+        text = part.get("text") if isinstance(part, dict) else None
+        try:
+            decoded = json.loads(text) if isinstance(text, str) else None
+        except ValueError:
+            decoded = None
+        if decoded is None:
+            parts.append(part)
+            continue
+        moved = payload(decoded)
+        parts.append({**part, "text": json.dumps(moved)} if moved != decoded else part)
+    result = {**value, "content": parts}
+    if "structuredContent" in value:
+        result["structuredContent"] = payload(value["structuredContent"])
+    return result
 
 
 def shape_tool_response(response: Any, tool_name: str = "tool") -> Any | None:

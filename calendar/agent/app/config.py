@@ -8,13 +8,14 @@ from typing import Any
 from a2a.types import AgentProvider
 from a2ui_agent_kit.bindings import DEFAULT_INTERFACES
 from a2ui_agent_kit.config import AgentAppConfig
+from a2ui_agent_kit.local_time import current_time_zone
 from a2ui_agent_kit.paint_meta import require_carries_action
 
 from app import prose
 from app.card import APP_DESCRIPTION, APP_NAME, SKILLS
 from app.responses import build_response, build_text_response
 from app.sign_in import SIGN_IN
-from app.tool_shaping import record_shape, shape_tool_response
+from app.tool_shaping import in_person_zone, record_shape, shape_tool_response
 from app.tools import STUB_TOOLS
 
 _AGENT_DIR = Path(__file__).resolve().parents[1]  # calendar/agent/
@@ -34,7 +35,14 @@ def _after_tool(tool_name: str, tool_response: Any) -> Any:
     # args parameter is passed empty, so the env-gated shape dump loses only the
     # sorted arg names.
     record_shape(tool_name, {}, tool_response)
-    return shape_tool_response(tool_response, tool_name)
+    # Every event time in the person's zone, when their request stated one: canned and live
+    # results alike (a2ui_agent_kit.local_time).
+    zone = current_time_zone()
+    moved = in_person_zone(tool_response, zone) if zone else tool_response
+    shaped = shape_tool_response(moved, tool_name)
+    if shaped is not None:
+        return shaped
+    return moved if moved != tool_response else None
 
 
 CONFIG = AgentAppConfig(

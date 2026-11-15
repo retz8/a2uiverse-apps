@@ -21,7 +21,7 @@
     "updateDataModel": {
       "surfaceId": "event-7nuujj9h9ru89blofii3m5otlo",
       "value": {
-        "when": "Today, 11:00 \u2013 12:00",
+        "when": "Today, 11:00 \u2013 12:00 UTC",
         "where": "Room 4B"
       }
     }
@@ -118,7 +118,7 @@
       "path": "/",
       "value": {
         "summary": "Design review \u2014 agenda surface",
-        "when": "Today, 11:00 \u2013 12:00",
+        "when": "Today, 11:00 \u2013 12:00 UTC",
         "where": "Room 4B",
         "note_intro": "Walk through the three fragment layouts.",
         "note_bring": "Bring the density comparison and the token divergence notes.",

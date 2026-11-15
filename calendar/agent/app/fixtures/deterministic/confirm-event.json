@@ -13,7 +13,7 @@
     "updateDataModel": {
       "surfaceId": "propose-event",
       "value": {
-        "when": "Thursday, 14:00 \u2013 14:30"
+        "when": "Thursday, 14:00 \u2013 14:30 UTC"
       }
     }
   },
@@ -34,7 +34,7 @@
       "path": "/",
       "value": {
         "summary": "Design team sync",
-        "when": "Thursday, 14:00 \u2013 14:30",
+        "when": "Thursday, 14:00 \u2013 14:30 UTC",
         "guests": "Alex Bergman, Mei Silva",
         "notice": "Guests will not be notified automatically; you will need to tell them."
       }

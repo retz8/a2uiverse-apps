@@ -21,6 +21,7 @@ runs over the result. Do not commit a corpus that fails it.
 from __future__ import annotations
 
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -122,6 +123,25 @@ def derive_stub() -> None:
         write(STUB / "query-freebusy.json", clean(freebusy), f"{len(freebusy['busy'])} busy")
 
 
+# The zone the recorded times are in: the test account's calendar, whose seed writes times
+# local to it, answered in UTC. A canned answer cannot follow the person's zone, so it names its own.
+RECORDED_ZONE = "UTC"
+_TIME = re.compile(r"\d{1,2}:\d{2}")
+
+
+def named_zone(value: object, zone: str = RECORDED_ZONE) -> object:
+    """`value` with every `when` that shows a time ending in the zone it is in."""
+    if isinstance(value, list):
+        return [named_zone(each, zone) for each in value]
+    if not isinstance(value, dict):
+        return value
+    named = {key: named_zone(each, zone) for key, each in value.items()}
+    when = named.get("when")
+    if isinstance(when, str) and _TIME.search(when) and not when.endswith(f" {zone}"):
+        named["when"] = f"{when} {zone}"
+    return named
+
+
 def derive_deterministic() -> None:
     # All or nothing: a partial corpus is worse than none, because the tests that depend on
     # it key on the directory existing and would run against a half-set.
@@ -133,7 +153,7 @@ def derive_deterministic() -> None:
     if digest.is_file():
         messages = settled_messages(digest)
         if messages:
-            write(DETERMINISTIC / "agenda-digest.json", messages, f"{len(messages)} messages")
+            write(DETERMINISTIC / "agenda-digest.json", named_zone(messages), f"{len(messages)} messages")
 
     # A drill-down is a new screen, as the live agent paints it, so it keeps its createSurface
     # and the kit answers it on a fresh surface; every other action response is a partial
@@ -154,7 +174,7 @@ def derive_deterministic() -> None:
             and not (name == "confirm-event.json" and "paintMeta" in m)
         ]
         if messages:
-            write(DETERMINISTIC / name, messages, f"{len(messages)} messages")
+            write(DETERMINISTIC / name, named_zone(messages), f"{len(messages)} messages")
 
     # Declining a proposal paints nothing new; the canned response says so on the live surface.
     write(

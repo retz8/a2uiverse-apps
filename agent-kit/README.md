@@ -265,6 +265,7 @@ export STELLIFY_CREDENTIAL=$(uv run python -m a2ui_agent_kit.preview_credential 
 | `sign_in`, `sign_in_server`           | Optional: the app's sign-in and the OAuth authorization server it serves                                                                                                                                 |
 | `sign_in_store`, `sign_in_fake`       | The owner-only store behind sign-in, and the chooser over the fake accounts                                                                                                                              |
 | `sign_in_vendor`                      | Optional: live sign-in with a vendor's OAuth, as the upstream sign-in                                                                                                                                    |
+| `local_time`                          | The person's time zone, read from the sentence A2UIVerse adds to a question, bound for each run and kept for its conversation, for an app's tool code to give its times in it                            |
 | `testing`                             | Runs an executor in-process, or the agent on a port signed in as a vault would, for an app's tests                                                                                                       |
 | `preview_credential`                  | A token from your running agent for Stellify's `preview`, signed in as one of its fake accounts                                                                                                          |
 

@@ -36,6 +36,7 @@ from a2ui_agent_kit.catalog_lines import (
     unbind_turn_line,
 )
 from a2ui_agent_kit.config import AgentAppConfig
+from a2ui_agent_kit.local_time import bind_time_zone, time_zone_stated, unbind_time_zone
 from a2ui_agent_kit.measurement import TurnMeasurement, bind_measurement, unbind_measurement
 from a2ui_agent_kit.modes import model_effort, model_name
 from a2ui_agent_kit.paint_meta import PaintTitleTagFilter, create_paint_meta_part
@@ -310,6 +311,8 @@ class LlmAgentExecutor(AgentExecutor):
         self._max_attempts = max_attempts
         self._lines = catalog_lines(config)
         self._surfaces = SurfaceCatalogs()
+        # Each conversation's last stated zone: a press carries no words (local_time).
+        self._zones: dict[str, str] = {}
         # The card the app serves and the versions it speaks, which each request's version is
         # chosen from; without the card, every request takes the app's newest.
         self._card = card
@@ -366,9 +369,15 @@ class LlmAgentExecutor(AgentExecutor):
         # The request's signed-in account, for the scope check and the per-account
         # toolset, for this run only.
         bound = bind_account(context, self._sign_in)
+        # The person's zone, as this request states it or its conversation last did.
+        stated = time_zone_stated(_extract_text(context))
+        if stated is not None and context.context_id:
+            self._zones[context.context_id] = stated
+        zone = bind_time_zone(stated or self._zones.get(context.context_id or ""))
         try:
             await self._execute(context, event_queue)
         finally:
+            unbind_time_zone(zone)
             unbind_account(bound)
 
     async def _execute(self, context: RequestContext, event_queue: EventQueue) -> None:

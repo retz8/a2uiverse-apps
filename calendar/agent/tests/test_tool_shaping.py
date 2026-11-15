@@ -11,12 +11,17 @@ from __future__ import annotations
 
 import json
 
+from a2ui_agent_kit.local_time import bind_time_zone, unbind_time_zone
+
+from app.config import CONFIG
 from app.tool_shaping import (
     EVENT_COUNT_NOTE,
     PROJECTION_NOTE,
+    ZONE_NOTE,
     annotate,
     capture_tool_result,
     default_to_primary,
+    in_person_zone,
     mask_injected_addresses,
     recording,
     shape_tool_response,
@@ -279,3 +284,69 @@ class TestInjectedAddressMasking:
         written = (tmp_path / "payloads" / "list_events.jsonl").read_text(encoding="utf-8")
         assert "a-real-place" not in written
         assert json.loads(returned["content"][0]["text"]) == returned["structuredContent"]
+
+
+class TestTimesInThePersonsZone:
+    """Every event time a tool hands the model is moved into the zone the person's request
+    stated, so the model restates the person's own clock and never converts one."""
+
+    EVENTS = {
+        "timeZone": "America/New_York",
+        "events": [
+            {
+                "id": "e1",
+                "start": {"dateTime": "2026-08-30T09:45:00-04:00", "timeZone": "America/New_York"},
+                "end": {"dateTime": "2026-08-30T10:30:00-04:00", "timeZone": "America/New_York"},
+            },
+            {"id": "e2", "start": {"date": "2026-08-31"}, "end": {"date": "2026-09-01"}},
+            {"id": "e3", "start": {"dateTime": "2026-09-19T11:00:00Z"}},
+        ],
+    }
+
+    def test_each_time_is_moved_into_the_zone_and_named_there(self):
+        moved = in_person_zone(self.EVENTS, "Asia/Seoul")
+        first = moved["events"][0]
+        assert first["start"] == {"dateTime": "2026-08-30T22:45:00+09:00", "timeZone": "Asia/Seoul"}
+        assert first["end"] == {"dateTime": "2026-08-30T23:30:00+09:00", "timeZone": "Asia/Seoul"}
+        assert moved["events"][2]["start"] == {
+            "dateTime": "2026-09-19T20:00:00+09:00",
+            "timeZone": "Asia/Seoul",
+        }
+
+    def test_an_all_day_date_and_the_calendars_own_zone_are_left_as_they_are(self):
+        moved = in_person_zone(self.EVENTS, "Asia/Seoul")
+        assert moved["events"][1] == self.EVENTS["events"][1]
+        assert moved["timeZone"] == "America/New_York"
+
+    def test_both_branches_of_a_tool_result_move_alike(self):
+        result = {
+            "content": [{"type": "text", "text": json.dumps(self.EVENTS)}],
+            "structuredContent": json.loads(json.dumps(self.EVENTS)),
+        }
+        moved = in_person_zone(result, "Asia/Seoul")
+        assert json.loads(moved["content"][0]["text"]) == moved["structuredContent"]
+        assert moved["structuredContent"] == in_person_zone(self.EVENTS, "Asia/Seoul")
+
+    def test_a_payload_whose_times_moved_says_so_and_one_with_none_is_untouched(self):
+        assert in_person_zone(self.EVENTS, "Asia/Seoul")["_payload_notes"] == [ZONE_NOTE]
+        all_day = {"events": [self.EVENTS["events"][1]]}
+        assert in_person_zone(all_day, "Asia/Seoul") == all_day
+
+    def test_the_projection_note_joins_the_zone_note(self):
+        moved = in_person_zone(_mcp(self.EVENTS), "Asia/Seoul")
+        shaped = shape_tool_response(moved, "list_events")
+        assert json.loads(shaped["content"][0]["text"])["_payload_notes"][:2] == [
+            ZONE_NOTE,
+            PROJECTION_NOTE,
+        ]
+
+    def test_the_hook_moves_a_canned_result_while_a_zone_is_bound(self):
+        bound = bind_time_zone("Asia/Seoul")
+        try:
+            moved = CONFIG.after_tool("list_events", json.loads(json.dumps(self.EVENTS)))
+        finally:
+            unbind_time_zone(bound)
+        assert moved["events"][0]["start"]["dateTime"] == "2026-08-30T22:45:00+09:00"
+
+    def test_with_no_zone_stated_nothing_moves(self):
+        assert CONFIG.after_tool("list_events", json.loads(json.dumps(self.EVENTS))) is None
