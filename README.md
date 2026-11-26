@@ -59,7 +59,7 @@ The three **mock stores** exist for testing A2UIVerse. All three read one datase
 
 A custom catalog is the app's own components; a basic one is A2UI's basic catalog. The First path is the binding and the A2A version an agent's card lists first, the one a client takes.
 
-The agent kit is [`a2ui-agent-kit`](agent-kit/) 0.2.0, on Python 3.14 or newer: `a2a-sdk` for A2A, from 1.3.0 below 2.0.0; `a2ui-agent-sdk` 0.11.0 and `a2ui-core` 0.6.0 for A2UI; Google ADK 2.x for the model, `gemini-3.8-flash` by default; Authlib for each agent's own sign-in server. No kit agent signs its card or serves a signed-in account a card of its own. Shop C has no model: it signs its card, and serves each member a card of their own.
+The agent kit is [`a2ui-agent-kit`](agent-kit/) 0.2.0, on Python 3.14 or newer: `a2a-sdk` for A2A, from 1.3.0 below 2.0.0; `a2ui-agent-sdk` 0.12.1 and `a2ui-core` 0.7.1 for A2UI; Google ADK 2.x for the model, `gemini-3.8-flash` by default; Authlib for each agent's own sign-in server. No kit agent signs its card or serves a signed-in account a card of its own. Shop C has no model: it signs its card, and serves each member a card of their own.
 
 ## Signing in
 

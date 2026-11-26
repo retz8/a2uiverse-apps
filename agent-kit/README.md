@@ -18,7 +18,7 @@ An app anywhere else pins it to a commit:
 a2ui-agent-kit = { git = "https://github.com/retz8/a2uiverse-apps", subdirectory = "agent-kit", rev = "<sha>" }
 ```
 
-Either way it brings A2UI's Python packages at exact pins, `a2ui-agent-sdk` 0.11.0 and `a2ui-core` 0.6.0, and the Python A2A SDK, `a2a-sdk` 1.x. It writes its own A2UI parts in place of `a2ui-a2a`, which requires `a2a-sdk` below 0.4.0.
+Either way it brings A2UI's Python packages at exact pins, `a2ui-agent-sdk` 0.12.1 and `a2ui-core` 0.7.1, and the Python A2A SDK, `a2a-sdk` 1.x. It writes its own A2UI parts in place of `a2ui-a2a`, which requires `a2a-sdk` below 0.4.0.
 
 [`create-a2ui-agent`](../create-a2ui-agent/) scaffolds a whole app with the config below already filled in, `provider` and `documentation_url` aside.
 

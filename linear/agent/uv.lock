@@ -56,8 +56,8 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "a2a-sdk", extras = ["http-server", "grpc", "signing"], specifier = ">=1.3.0,<2.0.0" },
-    { name = "a2ui-agent-sdk", specifier = "==0.11.0" },
-    { name = "a2ui-core", specifier = "==0.6.0" },
+    { name = "a2ui-agent-sdk", specifier = "==0.12.1" },
+    { name = "a2ui-core", specifier = "==0.7.1" },
     { name = "anthropic", specifier = ">=0.78" },
     { name = "authlib", specifier = ">=1.8.0" },
     { name = "click", specifier = ">=8.1.8" },
@@ -77,7 +77,7 @@ dev = [
 
 [[package]]
 name = "a2ui-agent-sdk"
-version = "0.11.0"
+version = "0.12.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "a2ui-core" },
@@ -86,14 +86,14 @@ dependencies = [
     { name = "pydantic" },
     { name = "pyyaml" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/ff/dc/43f4206c2a9419139b20aeb9a6565d478442e3d1971e61f89e5676598c8d/a2ui_agent_sdk-0.11.0.tar.gz", hash = "sha256:9e922ade1747e29bb3fc6e41c3a30dc7cc99eb4ffd81c89f68dc59dd6dfe778c", size = 505463, upload-time = "2026-11-10T22:20:48.215Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/6c/db/166e4b178125a31c37713d81c4d3ac8085d0030ed21be903a3ef83c449b0/a2ui_agent_sdk-0.12.1.tar.gz", hash = "sha256:4cfc6450d06e87a7fbbe4419cd474c1fadb1006bc0f309067cbae8839db7d062", size = 519614, upload-time = "2026-11-23T18:52:54.949Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/60/90/acdbfdca50c931aa678fc0814cb70224c1be06c2135f65dfd237dfddda71/a2ui_agent_sdk-0.11.0-py3-none-any.whl", hash = "sha256:39f297396a5c242d98412046c2f68fd804e82679153299f243364b4792b1e94e", size = 358090, upload-time = "2026-11-10T22:20:43.505Z" },
+    { url = "https://files.pythonhosted.org/packages/8e/03/dcc29fde34103cc4607c4342f7ce977f214dda6daaec6cfa29e7712f833e/a2ui_agent_sdk-0.12.1-py3-none-any.whl", hash = "sha256:834a7b8491c6d39285f55cb6f5ffddaa37b45013f0fa667c672f8137dfd3f5e4", size = 367957, upload-time = "2026-11-23T18:52:51.918Z" },
 ]
 
 [[package]]
 name = "a2ui-core"
-version = "0.6.0"
+version = "0.7.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "babel" },
@@ -102,9 +102,9 @@ dependencies = [
     { name = "referencing" },
     { name = "regex" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/c7/69/616c649b2acecaf30e7ebd8841fd27a9bb98443d61a048dd2a83fe6d9b6f/a2ui_core-0.6.0.tar.gz", hash = "sha256:c1d149f698981f2cf525b7d409a7873a9a7b8b6c46ab190a393370ce4dcd04b5", size = 408230, upload-time = "2026-11-10T22:20:47.17Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/1c/f1/8faa8e814c6990616dd8b0706434fc95246ac07215951f7cc9ee07546715/a2ui_core-0.7.1.tar.gz", hash = "sha256:796b65007cb2ae7e45823503003216afca397beeb0a21aac5c5c82fe4f674a71", size = 423792, upload-time = "2026-11-23T18:52:56.1Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/24/b5/418cfb670f9d3e9920cda90029a6ec45768f4f7e83905faa7b9c9d6e6090/a2ui_core-0.6.0-py3-none-any.whl", hash = "sha256:6df953da2848998f24aa4aa7b00ca59ffe560aec3cf9280d2ac680ed29725359", size = 316994, upload-time = "2026-11-10T22:20:41.936Z" },
+    { url = "https://files.pythonhosted.org/packages/2d/75/cd3ab128cdaeda54ab973a72126d93ad9756e287a31a19d35d5e5ea4f525/a2ui_core-0.7.1-py3-none-any.whl", hash = "sha256:ac7dab01d40f4a172ce8bec3b8695d06515fd4ea56511b38f83eb7291a30671e", size = 324967, upload-time = "2026-11-23T18:52:53.535Z" },
 ]
 
 [[package]]
@@ -132,7 +132,7 @@ dev = [
 requires-dist = [
     { name = "a2a-sdk", extras = ["http-server", "grpc", "signing"], specifier = ">=1.3.0,<2.0.0" },
     { name = "a2ui-agent-kit", editable = "../../agent-kit" },
-    { name = "a2ui-agent-sdk", specifier = "==0.11.0" },
+    { name = "a2ui-agent-sdk", specifier = "==0.12.1" },
     { name = "click", specifier = ">=8.1.8" },
     { name = "google-adk", specifier = ">=2.5.0,<3.0.0" },
     { name = "mcp", specifier = ">=1.28.1,<2.0.0" },
