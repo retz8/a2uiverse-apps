@@ -1,6 +1,6 @@
 {
   "name": "github-catalog",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "The GitHub app catalog for A2UIVerse: the A2UI catalog schema, its Primer React implementation, and the Provider \u2014 the bundle ships Primer itself; the host supplies only React, the A2UI runtime, and zod.",
   "license": "MIT",
   "repository": {
@@ -38,16 +38,16 @@
     "@primer/react": "38.36.0"
   },
   "peerDependencies": {
-    "@a2ui/react": "0.14.0",
-    "@a2ui/web_core": "0.14.0",
+    "@a2ui/react": "0.16.1",
+    "@a2ui/web_core": "0.16.1",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "zod": "^3.25.76"
   },
   "devDependencies": {
-    "@a2ui/react": "0.14.0",
-    "@a2ui/web_core": "0.14.0",
-    "@a2uiverse/stellify": "github:retz8/a2uiverse#37519a10f4f5c86f8106e2f36b78107c11e994aa&path:packages/stellify",
+    "@a2ui/react": "0.16.1",
+    "@a2ui/web_core": "0.16.1",
+    "@a2uiverse/stellify": "github:retz8/a2uiverse#3f8760a8a6d2541831b82e3ff2dc9382e7b823aa&path:packages/stellify",
     "@preact/signals-core": "^1.14.2",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",

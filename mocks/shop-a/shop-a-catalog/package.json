@@ -1,6 +1,6 @@
 {
   "name": "shop-a-catalog",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "The Shop A app catalog: the A2UI basic catalog under a product theme, as schema + implementation + Provider. The host supplies React, the A2UI runtime, and zod.",
   "license": "MIT",
   "repository": {
@@ -39,16 +39,16 @@
     "check": "stellify check"
   },
   "peerDependencies": {
-    "@a2ui/react": "0.14.0",
-    "@a2ui/web_core": "0.14.0",
+    "@a2ui/react": "0.16.1",
+    "@a2ui/web_core": "0.16.1",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "zod": "^3.25.76"
   },
   "devDependencies": {
-    "@a2ui/react": "0.14.0",
-    "@a2ui/web_core": "0.14.0",
-    "@a2uiverse/stellify": "github:retz8/a2uiverse#37519a10f4f5c86f8106e2f36b78107c11e994aa&path:packages/stellify",
+    "@a2ui/react": "0.16.1",
+    "@a2ui/web_core": "0.16.1",
+    "@a2uiverse/stellify": "github:retz8/a2uiverse#3f8760a8a6d2541831b82e3ff2dc9382e7b823aa&path:packages/stellify",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@types/react": "^19.2.17",
