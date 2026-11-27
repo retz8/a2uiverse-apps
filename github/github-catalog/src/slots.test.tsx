@@ -5,6 +5,7 @@
  * children.
  */
 import {cleanup, fireEvent, render, screen, within} from '@testing-library/react';
+import {ActionBar as PrimerActionBar} from '@primer/react';
 import {A2uiSurface} from '@a2ui/react/v0_9';
 import {MessageProcessor, type A2uiMessage} from '@a2ui/web_core/v0_9';
 import {afterEach, beforeEach, describe, expect, it, vi} from 'vitest';
@@ -156,6 +157,44 @@ describe('SelectPanel', () => {
     expect(bug.closest('li')?.querySelector('svg')).not.toBeNull();
     expectEveryChildBuilt(container);
   });
+
+  it('lists one item for each row of a template, each read in its own row', () => {
+    const {container} = paint(
+      [
+        {
+          id: 'root',
+          component: 'SelectPanel',
+          anchor: 'anchor',
+          open: true,
+          title: 'Labels',
+          children: {componentId: 'row', path: '/labels'},
+        },
+        {id: 'anchor', component: 'Button', child: 'anchor-text', action: {event: {name: 'pick'}}},
+        {id: 'anchor-text', component: 'Text', text: 'Pick labels'},
+        {
+          id: 'row',
+          component: 'SelectPanel.Item',
+          text: {path: 'name'},
+          selected: {path: 'picked'},
+          leadingVisual: 'row-icon',
+        },
+        {id: 'row-icon', component: 'Icon', name: 'tag'},
+      ],
+      {
+        labels: [
+          {name: 'bug', picked: true},
+          {name: 'documentation', picked: false},
+        ],
+      },
+    );
+    const bug = screen.getByText('bug').closest('li')!;
+    const docs = screen.getByText('documentation').closest('li')!;
+    expect(bug.getAttribute('aria-selected')).toBe('true');
+    expect(docs.getAttribute('aria-selected')).toBe('false');
+    expect(bug.querySelector('svg')).not.toBeNull();
+    expect(docs.querySelector('svg')).not.toBeNull();
+    expectEveryChildBuilt(container);
+  });
 });
 
 describe('ActionMenu', () => {
@@ -222,5 +261,45 @@ describe('ActionBar.Menu', () => {
     const archive = screen.getByText('Archive').closest('li')!;
     expect(archive.querySelector('svg')).not.toBeNull();
     expect(archive.textContent).not.toMatch(/Unresolved/);
+  });
+
+  it('shows a top-level trailing visual that is text as that text', () => {
+    const {container} = paint([
+      {id: 'root', component: 'ActionBar', children: ['menu'], accessibility: {label: 'Tools'}},
+      {
+        id: 'menu',
+        component: 'ActionBar.Menu',
+        icon: 'menu-icon',
+        accessibility: {label: 'More'},
+        items: [{label: 'Copy', trailingVisual: '⌘C'}],
+      },
+      {id: 'menu-icon', component: 'Icon', name: 'kebab-horizontal'},
+    ]);
+    fireEvent.click(screen.getByRole('button', {name: 'More'}));
+    const copy = within(screen.getByRole('menu')).getByText('Copy').closest('li')!;
+    expect(within(copy).getByText('⌘C')).toBeInTheDocument();
+    expect(copy.querySelector('svg')).toBeNull();
+    expectEveryChildBuilt(container);
+  });
+
+  it('hands Primer an overflow icon written none as none', () => {
+    // Primer draws the overflow icon only once the bar is too narrow for the menu, which takes a
+    // real layout, so what the menu hands Primer is what is read.
+    const menu = vi.spyOn(PrimerActionBar.Menu as unknown as {render: () => unknown}, 'render');
+    paint([
+      {id: 'root', component: 'ActionBar', children: ['menu'], accessibility: {label: 'Tools'}},
+      {
+        id: 'menu',
+        component: 'ActionBar.Menu',
+        icon: 'menu-icon',
+        accessibility: {label: 'More'},
+        overflowIcon: 'none',
+        items: [{label: 'Copy'}],
+      },
+      {id: 'menu-icon', component: 'Icon', name: 'kebab-horizontal'},
+    ]);
+    expect(menu).toHaveBeenCalled();
+    expect(menu.mock.lastCall?.[0]).toMatchObject({overflowIcon: 'none'});
+    menu.mockRestore();
   });
 });

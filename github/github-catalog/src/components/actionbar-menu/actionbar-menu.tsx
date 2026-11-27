@@ -13,8 +13,8 @@ type BuildChild = (id: string, basePath?: string) => ReactNode;
 type ResolvedAccessibility = {label?: string; description?: string};
 
 /**
- * A menu entry AFTER binder resolution: `action` is a ready-to-call closure, `leadingVisual` /
- * `trailingVisual` are plain strings (a ComponentId, or — for trailingVisual — literal text). The
+ * A menu entry AFTER binder resolution: `action` is a ready-to-call closure, `leadingVisual` is a
+ * built child's id, and `trailingVisual` is as written (an icon's id, or literal text). The
  * inferred prop type still shows the raw pre-resolution shapes, so `props.items` is cast to this.
  */
 type ResolvedMenuItem = {
@@ -36,9 +36,9 @@ type PrimerOverflowIcon = PrimerActionBarMenuProps['overflowIcon'];
 
 /**
  * An icon reference as a component. One the renderer resolves arrives as its node's own id, which
- * names no component, and is built. One it does not — a union with text or `'none'`, an entry
- * inside a submenu — arrives as written, naming its `Icon`: a parent builds only its own children,
- * so that icon is drawn from its model.
+ * names no component, and is built. One it does not — a `trailingVisual` or an `overflowIcon`,
+ * declared a plain string, or an entry inside a submenu — arrives as written, naming its `Icon`: a
+ * parent builds only its own children, so that icon is drawn from its model.
  */
 function iconOf(
   value: string,
@@ -124,8 +124,8 @@ export function ActionBarMenuView({icon, label, items, overflowIcon}: ActionBarM
  * - `props.items` is resolved deeply by the binder — each entry's `action` is a ready-to-call
  *   closure (passed as Primer's per-item `onClick`), and icon references are built via buildChild.
  * - `props.accessibility.label` is the required menu-button accessible name -> `aria-label`.
- * - `props.overflowIcon` ('none' or a ComponentId) controls the icon when the menu collapses into
- *   a parent ActionBar's overflow menu.
+ * - `props.overflowIcon` ('none' or an icon's id, as written) controls the icon when the menu
+ *   collapses into a parent ActionBar's overflow menu.
  * Props are passed explicitly (no spread): resolved props include extra binder setters.
  */
 export const ActionBarMenuComponent = createComponentImplementation(

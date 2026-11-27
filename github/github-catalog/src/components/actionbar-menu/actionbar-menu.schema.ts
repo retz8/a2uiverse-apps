@@ -6,10 +6,12 @@ import {CommonSchemas} from '@a2ui/web_core/v0_9';
  * (faithful to Primer's data-driven `items` API), so its scalar fields are plain
  * (`z.string()`/`z.boolean()`/`z.enum`); its reference fields are the A2UI primitives the generic
  * binder resolves in place — `action` (`Action` -> a ready-to-call closure, dispatched on select)
- * and `leadingVisual`/`trailingVisual` (`ComponentId` icons, resolved via `buildChild`).
+ * and `leadingVisual` (a `ComponentId` icon, resolved via `buildChild`).
  *
- * A `trailingVisual` may instead be a short text string (`z.union([ComponentId, z.string()])`);
- * both collapse to a JSON string, so the render disambiguates by looking the id up in the surface.
+ * A `trailingVisual` is an icon's id or a short text string. It is a plain `z.string()`, where the
+ * catalog schema declares a union of a `ComponentId` and a string: the renderer builds a union
+ * holding a `ComponentId` as a child whatever was written, so the text would never arrive. The
+ * component receives it as written and disambiguates by looking the id up in the surface.
  *
  * NOTE (build-time judgment): the decision doc specifies the item as a `z.discriminatedUnion` with
  * a `z.lazy` self-reference for arbitrarily-deep submenus. The generic binder's schema scraper only
@@ -25,7 +27,7 @@ const menuItemBase = {
   action: CommonSchemas.Action.optional(),
   disabled: z.boolean().optional(),
   leadingVisual: CommonSchemas.ComponentId.optional(),
-  trailingVisual: z.union([CommonSchemas.ComponentId, z.string()]).optional(),
+  trailingVisual: z.string().optional(),
   variant: z.enum(['default', 'danger']).optional(),
 };
 
@@ -50,7 +52,9 @@ export const actionBarMenuItemSchema = z
  *   `aria-label` (or `aria-labelledby`).
  * - `items` is the required authored menu structure (see the item schema above).
  * - `overflowIcon` is the icon shown when the toolbar collapses this menu into its overflow menu;
- *   defaults to the menu button's own `icon`, or `'none'` to show no icon.
+ *   defaults to the menu button's own `icon`, or `'none'` to show no icon. A plain `z.string()`,
+ *   where the catalog schema declares a union of a `ComponentId` and `'none'`, for the same reason
+ *   as `trailingVisual`: received as written, `'none'` arrives as `'none'`.
  *
  * The menu button emits no author action of its own (clicking it opens the overlay — internal
  * state); interactions live on the per-item `action` fields. `variant` (hardcoded `invisible`) and
@@ -64,7 +68,7 @@ export const ActionBarMenuApi = {
       icon: CommonSchemas.ComponentId,
       accessibility: CommonSchemas.AccessibilityAttributes,
       items: z.array(actionBarMenuItemSchema),
-      overflowIcon: z.union([CommonSchemas.ComponentId, z.literal('none')]).optional(),
+      overflowIcon: z.string().optional(),
     })
     .strict(),
 } as const;

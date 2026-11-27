@@ -21,8 +21,9 @@ describe('not function', () => {
     expect(not.execute({value: false}, ctx)).toBe(true);
   });
 
-  it('inverts truthiness, which is how it negates a validator result', () => {
+  it('reads a string as true only when it reads "true"', () => {
     expect(not.execute({value: ''}, ctx)).toBe(true);
-    expect(not.execute({value: 'filled'}, ctx)).toBe(false);
+    expect(not.execute({value: 'filled'}, ctx)).toBe(true);
+    expect(not.execute({value: 'true'}, ctx)).toBe(false);
   });
 });
